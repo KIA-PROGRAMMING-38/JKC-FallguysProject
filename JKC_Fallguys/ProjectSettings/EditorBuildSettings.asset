@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/2_Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Jinsoo/Rooms.unity
+    guid: 828531c9829e54a0aaf79fcc1fece90f
+  - enabled: 1
+    path: Assets/Jinsoo/Game.unity
+    guid: 3fda08d95c46e4936bfb4fb7c9ecaf5d
   m_configObjects: {}
