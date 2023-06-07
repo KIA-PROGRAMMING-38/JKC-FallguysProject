@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Jinsoo/01_Lobby.unity
     guid: 923b410b6813d41e3960d16c429a0824
+  - enabled: 1
+    path: Assets/Jinsoo/02_MatchingStandby.unity
+    guid: 3f93cd8575b48499b8958efa396b20c7
   m_configObjects: {}
