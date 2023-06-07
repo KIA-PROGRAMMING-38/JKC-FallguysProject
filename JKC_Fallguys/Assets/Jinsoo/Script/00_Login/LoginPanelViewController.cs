@@ -1,12 +1,12 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class LoginPanelViewController : MonoBehaviour
+public class LoginPanelViewController : ViewController
 {
     private void Awake()
     {
-        
+        View = transform.Find("LoginPanelView").GetComponent<LoginPanelView>();
+        Debug.Assert(View != null);
+        Presenter = new LoginPanelPresenter();
+        Debug.Assert(Presenter != null);
     }
 }

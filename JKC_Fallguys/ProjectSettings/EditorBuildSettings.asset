@@ -6,9 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Jinsoo/Rooms.unity
-    guid: 828531c9829e54a0aaf79fcc1fece90f
+    path: Assets/Jinsoo/00_Login.unity
+    guid: 0b7d8f3495eb044628291fc6e769a2ac
   - enabled: 1
-    path: Assets/Jinsoo/Game.unity
-    guid: 3fda08d95c46e4936bfb4fb7c9ecaf5d
+    path: Assets/Jinsoo/01_Lobby.unity
+    guid: 923b410b6813d41e3960d16c429a0824
   m_configObjects: {}
