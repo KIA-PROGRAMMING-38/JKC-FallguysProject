@@ -39,5 +39,3 @@ a
 +Assets/Editor/ResourcesPrefabPathBuilder.cs,a/2/a2a48346243bcb24039e2896f28969c34d928f1a
 c
 3Assets/Jinsoo/Script/SingleUse/RaiseEventExample.cs,0/6/064c579a8bc4d42a4719f22c8ee2ecad87626c38
-R
-"Assets/1_Scripts/UI/Define/View.cs,e/0/e025a0be4f5bb78c03598e8aa7fa2ebc473507cf

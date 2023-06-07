@@ -23,7 +23,7 @@ public class PhotonLoginManager : MonoBehaviourPunCallbacks
     }
     
     /// <summary>
-    /// Photon 서버와의 연결이 끊겼을 때 호출되는 콜백 메서드
+    /// Photon 서버와의 연결이 끊겼을 때 호출되는 콜백 메서드입니다.
     /// </summary>
     /// <param name="cause"></param>
     public override void OnDisconnected(DisconnectCause cause)
@@ -32,7 +32,7 @@ public class PhotonLoginManager : MonoBehaviourPunCallbacks
     }
     
     /// <summary>
-    /// 로비에 성공적으로 접속하였을 때 호출되는 콜백 메서드
+    /// 로비에 성공적으로 접속하였을 때 호출되는 콜백 메서드입니다.
     /// </summary>
     public override void OnJoinedLobby()
     {
