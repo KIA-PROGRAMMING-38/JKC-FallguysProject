@@ -7,8 +7,6 @@ i
 +Assets/Editor/ResourcesPrefabPathBuilder.cs,a/2/a2a48346243bcb24039e2896f28969c34d928f1a
 T
 $Assets/1_Scripts/Util/PathLiteral.cs,1/9/19f6ea64967edb4c623054c20e121cd0f16b4989
-f
-6Assets/1_Scripts/Scene/0_Login/LoginSceneInitialize.cs,0/2/026bafb5bafe5af7c6144a8f86b261afd4971d72
 `
 0Assets/1_Scripts/Scene/Define/SceneInitialize.cs,6/6/660d4d6a4e870989e295a37b0d5864319b803b4a
 g
