@@ -39,5 +39,3 @@ U
 %Assets/Jinsoo/Script/UI/CreateRoom.cs,0/b/0b2b41ad1d99992f213582f6b074a7004d2c4164
 [
 +Assets/Editor/ResourcesPrefabPathBuilder.cs,a/2/a2a48346243bcb24039e2896f28969c34d928f1a
-R
-"Assets/1_Scripts/UI/Define/View.cs,e/0/e025a0be4f5bb78c03598e8aa7fa2ebc473507cf
