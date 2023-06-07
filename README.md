@@ -20,6 +20,3 @@ InputSystem v1.5.1
 UniTask v2.3.3
 UniRx v7.1.0
 PUN 2 FREE v2.42
-
-
-
