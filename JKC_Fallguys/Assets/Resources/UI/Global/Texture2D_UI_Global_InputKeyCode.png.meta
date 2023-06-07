@@ -6,7 +6,7 @@ TextureImporter:
   serializedVersion: 12
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -36,13 +36,13 @@ TextureImporter:
     filterMode: 1
     aniso: 1
     mipBias: 0
-    wrapU: 0
-    wrapV: 0
+    wrapU: 1
+    wrapV: 1
     wrapW: 0
-  nPOTScale: 1
+  nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 0
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -51,9 +51,9 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
-  alphaIsTransparency: 0
+  alphaIsTransparency: 1
   spriteTessellationDetail: -1
-  textureType: 0
+  textureType: 8
   textureShape: 1
   singleChannelComponent: 0
   flipbookRows: 1
@@ -127,18 +127,5430 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_0
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 959
+        width: 120
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8618d119d08734cd3a1de53000847e47
+      internalID: 967047994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_1
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 963
+        width: 116
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eca9a15b87cd442f293eff993d4d55fb
+      internalID: -62594041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_2
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 959
+        width: 114
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5f96f7a59ced45bca5539047c0fea1c
+      internalID: -1733332456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_3
+      rect:
+        serializedVersion: 2
+        x: 366
+        y: 952
+        width: 35
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cef703e1935424dee8e591d98d25212b
+      internalID: -150658661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_4
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 952
+        width: 33
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d40cd9613aa524691b672cd9c591d147
+      internalID: -734132853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_5
+      rect:
+        serializedVersion: 2
+        x: 442
+        y: 952
+        width: 35
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cda2a6d5607ac46aa946c74c84f804c0
+      internalID: -1202241264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_6
+      rect:
+        serializedVersion: 2
+        x: 483
+        y: 967
+        width: 108
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54bdbbc828e974bb8a43da9876b8eb34
+      internalID: 1130633124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_7
+      rect:
+        serializedVersion: 2
+        x: 595
+        y: 969
+        width: 110
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ece739eceb10f4683a80723e2fa53d44
+      internalID: -1695732867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_8
+      rect:
+        serializedVersion: 2
+        x: 709
+        y: 978
+        width: 110
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 889d337ec217e41ec818df9e87188ee1
+      internalID: 750069600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_9
+      rect:
+        serializedVersion: 2
+        x: 823
+        y: 979
+        width: 110
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87e708caa708f4e27a5411be5281ddd8
+      internalID: -1639398884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_10
+      rect:
+        serializedVersion: 2
+        x: 937
+        y: 934
+        width: 82
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73634f09ab01d4fb8b85b86ec0545a67
+      internalID: 873479885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_11
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 911
+        width: 114
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68fd443fd8fe84f2097e1c3340a8ffc2
+      internalID: -1292531313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_12
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 898
+        width: 114
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfd553b27ec28452ca41034b11d1703f
+      internalID: 556060854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_13
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 888
+        width: 33
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65ebcfde3e7244ec48c731480fa9f047
+      internalID: 335582857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_14
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 887
+        width: 101
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eca31685c7ebb42edb6e5100fb4a8166
+      internalID: 615948556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_15
+      rect:
+        serializedVersion: 2
+        x: 481
+        y: 914
+        width: 106
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e01687d48dccc45eeafa4faecfb90b89
+      internalID: 1078067748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_16
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 914
+        width: 106
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca3d3ef9c168b4f8cb4e05187aaf8541
+      internalID: 1615234635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_17
+      rect:
+        serializedVersion: 2
+        x: 747
+        y: 943
+        width: 30
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 278701d6288354db2ba8ca75d9bc9755
+      internalID: -1194954033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_18
+      rect:
+        serializedVersion: 2
+        x: 861
+        y: 944
+        width: 30
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9bfa41cf8dd4a40868bd794dd46f4038
+      internalID: 94595934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_19
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 888
+        width: 35
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1670d57f52ea547b68c79ff3e4d73560
+      internalID: -1112207336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_20
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 888
+        width: 35
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86a0b7406dde94ed4b27e1e9eb894088
+      internalID: -2014101068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_21
+      rect:
+        serializedVersion: 2
+        x: 709
+        y: 911
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78b56d5fa98614257827d1f2777851f4
+      internalID: -1353936587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_22
+      rect:
+        serializedVersion: 2
+        x: 747
+        y: 911
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f3cbc661f818460585d203e6792cfa6
+      internalID: -1699867290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_23
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 911
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcf114615ed934bcba2507edc806ccba
+      internalID: 800496633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_24
+      rect:
+        serializedVersion: 2
+        x: 823
+        y: 911
+        width: 31
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3405b911b15a74b00907cdf43e52e353
+      internalID: -600249521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_25
+      rect:
+        serializedVersion: 2
+        x: 862
+        y: 911
+        width: 30
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e593eaa96edc4990a9d224953a74c4c
+      internalID: 1644064139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_26
+      rect:
+        serializedVersion: 2
+        x: 899
+        y: 911
+        width: 31
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20257a76712104d3bb9b398c643f9b53
+      internalID: 1782430508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_27
+      rect:
+        serializedVersion: 2
+        x: 934
+        y: 842
+        width: 86
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c77b441cc964a41bbac0d51135a138de
+      internalID: -279196628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_28
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 860
+        width: 114
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 025478b4ca9b844abbcddc1afe830959
+      internalID: 252849556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_29
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 837
+        width: 110
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8d29db34c907415ebe044222b7cad1c
+      internalID: 1074189526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_30
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 823
+        width: 101
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8dc9ddbbeec3469f879a7f0ba6a04a3
+      internalID: -764454668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_31
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 810
+        width: 80
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f79e0dc57e214c048468a88298b38c8
+      internalID: 1755471412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_32
+      rect:
+        serializedVersion: 2
+        x: 425
+        y: 873
+        width: 33
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fcd30e1c8435f4ae1837d5cd1f60c702
+      internalID: 562632583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_33
+      rect:
+        serializedVersion: 2
+        x: 465
+        y: 837
+        width: 80
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ee9f3beae23643a7b3272a9d9d7ca3f
+      internalID: -43616774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_34
+      rect:
+        serializedVersion: 2
+        x: 549
+        y: 844
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 045e7708bc77144aab4be40259794960
+      internalID: -251251804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_35
+      rect:
+        serializedVersion: 2
+        x: 619
+        y: 844
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae4703639a94d4f91a6249100e943193
+      internalID: 1647054838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_36
+      rect:
+        serializedVersion: 2
+        x: 691
+        y: 841
+        width: 64
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a5fa49b16851452088b92f1733c4202
+      internalID: -585271216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_37
+      rect:
+        serializedVersion: 2
+        x: 759
+        y: 845
+        width: 62
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76572848c6ee14c01a34a2f057988ee3
+      internalID: 828399671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_38
+      rect:
+        serializedVersion: 2
+        x: 827
+        y: 845
+        width: 60
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27df11fb1a6bc4acdbef69bcfd6fe9fa
+      internalID: -1233544203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_39
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 799
+        width: 110
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf9f974ae69e44139ba4d10b6246c43c
+      internalID: 1448786433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_40
+      rect:
+        serializedVersion: 2
+        x: 118
+        y: 776
+        width: 97
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7da0b3893975449f6a26a3745f1c1862
+      internalID: 1155019731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_41
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 750
+        width: 76
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebbc951cfde5149aa806e0808f09a246
+      internalID: 1403312667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_42
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 809
+        width: 34
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed8802798292d4aac9e2b7c325fa5102
+      internalID: 180421584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_43
+      rect:
+        serializedVersion: 2
+        x: 425
+        y: 807
+        width: 33
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb2f8dfad8e38435eb3d08996a47ea34
+      internalID: -605473122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_44
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 740
+        width: 64
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b07e138021a354abd9e62e3da31eab81
+      internalID: -1354764754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_45
+      rect:
+        serializedVersion: 2
+        x: 549
+        y: 774
+        width: 65
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 943068271941e4f4c8c5e1320aa201b3
+      internalID: 378435160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_46
+      rect:
+        serializedVersion: 2
+        x: 618
+        y: 747
+        width: 64
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66dbcca28c8584baca7eaaec5094845c
+      internalID: 1187654175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_47
+      rect:
+        serializedVersion: 2
+        x: 686
+        y: 775
+        width: 62
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42b989b86080e4aeaa883291944d9e72
+      internalID: -698305719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_48
+      rect:
+        serializedVersion: 2
+        x: 759
+        y: 779
+        width: 60
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 876c2739f1a0e4e6d895a0f40b22bf4a
+      internalID: -2094940946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_49
+      rect:
+        serializedVersion: 2
+        x: 825
+        y: 779
+        width: 62
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4338133127ac4ee7a018df0a7d40089
+      internalID: -263830269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_50
+      rect:
+        serializedVersion: 2
+        x: 891
+        y: 774
+        width: 61
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f6c6bc2ee7434ee7adca0bfc1802db9
+      internalID: 2098201035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_51
+      rect:
+        serializedVersion: 2
+        x: 956
+        y: 777
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2aea6fbe1684a49b8b7f2b54423a4941
+      internalID: -268713761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_52
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 738
+        width: 97
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da9f0bf7904fc47b2bf6ec3a526e6743
+      internalID: 1888346223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_53
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 675
+        width: 68
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4172b82734b6b4b38869a0cebe473368
+      internalID: 2126678044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_54
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 682
+        width: 67
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c68b0b2be4c24ea6b470050dd003746
+      internalID: 44708633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_55
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 736
+        width: 45
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0cf0c4edcf9344ce786b9875b8c8c6c7
+      internalID: -1003945212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_56
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 745
+        width: 29
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 712b9c22d7c424c75a56a4577a5dfa89
+      internalID: -8609256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_57
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 737
+        width: 76
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2068ef134643040838bad4e5f98a369e
+      internalID: -1675407682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_58
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 745
+        width: 40
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3a7efb3a93e74d16af21c49e2afd99e
+      internalID: -130550471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_59
+      rect:
+        serializedVersion: 2
+        x: 532
+        y: 728
+        width: 27
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afec5a6d3d50443758b49d7f2673eaab
+      internalID: 72600490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_60
+      rect:
+        serializedVersion: 2
+        x: 554
+        y: 743
+        width: 20
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8082883806de440a48d68fc70220a299
+      internalID: 560864220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_61
+      rect:
+        serializedVersion: 2
+        x: 569
+        y: 728
+        width: 26
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 688fcad8f53bc4ce18b8634a72a84f21
+      internalID: 2093874059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_62
+      rect:
+        serializedVersion: 2
+        x: 686
+        y: 712
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 710978165200c4924a2df49e66cf0989
+      internalID: 265499404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_63
+      rect:
+        serializedVersion: 2
+        x: 752
+        y: 716
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe77d55c6ce624f0ab88135e7bb8c30e
+      internalID: -847805592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_64
+      rect:
+        serializedVersion: 2
+        x: 817
+        y: 716
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d239eef79af24a56bc1adc6042080d6
+      internalID: -1827848797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_65
+      rect:
+        serializedVersion: 2
+        x: 882
+        y: 711
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc42b700352b146a6a52c8dfac6ee646
+      internalID: 699057166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_66
+      rect:
+        serializedVersion: 2
+        x: 956
+        y: 712
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 804dc2b19e9b641e2b8ab4e2dc09de99
+      internalID: 1308412414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_67
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 637
+        width: 68
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72d29610731c94fe08c6049bc92e8b32
+      internalID: 702721328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_68
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 670
+        width: 32
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ceb70edf30574d8bb4bd56092e5cb4c
+      internalID: 95190523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_69
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 706
+        width: 20
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a16fc642808f44758c167cd5277fb55
+      internalID: -443683330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_70
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 723
+        width: 45
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de7dde0095bf945178b8e17c953e994e
+      internalID: 850154738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_71
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 683
+        width: 40
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95d62976155ea49df9af9b27026a789d
+      internalID: -1426578497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_72
+      rect:
+        serializedVersion: 2
+        x: 483
+        y: 709
+        width: 20
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebf1761639a86475c82e37b6b04face6
+      internalID: 1657585682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_73
+      rect:
+        serializedVersion: 2
+        x: 554
+        y: 708
+        width: 21
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c67a8f17b3f1402fb676bdd902fbfc3
+      internalID: 852369581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_74
+      rect:
+        serializedVersion: 2
+        x: 599
+        y: 684
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c87dc88eedb049f8857c44619f3aaaa
+      internalID: 376970329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_75
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 691
+        width: 27
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07b7e08b70f684cdb876953632f0ab9e
+      internalID: -1390326941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_76
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 671
+        width: 21
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e18b43aa87ea442f9edc34eb8e723b9
+      internalID: 1633953290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_77
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 691
+        width: 26
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a722db3cdfcb4c849476ce8933ffbf3
+      internalID: -2144015572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_78
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 659
+        width: 29
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 138b81bf713ef4a7a831c560a963721a
+      internalID: -1540968238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_79
+      rect:
+        serializedVersion: 2
+        x: 461
+        y: 694
+        width: 27
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 045b8736eff484633876dd830365f6b2
+      internalID: 36021585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_80
+      rect:
+        serializedVersion: 2
+        x: 483
+        y: 674
+        width: 21
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79b087bb539b942a7bad4d1ce21daa99
+      internalID: 99139283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_81
+      rect:
+        serializedVersion: 2
+        x: 498
+        y: 694
+        width: 26
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d152a15749174dd8852056175fea461
+      internalID: -1862934659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_82
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 645
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64d1bf35dd1f44d55a7209734eb3ef4c
+      internalID: 1801607438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_83
+      rect:
+        serializedVersion: 2
+        x: 664
+        y: 645
+        width: 61
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eeb6454f296e74954b2a0c2866dbe698
+      internalID: -1956879002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_84
+      rect:
+        serializedVersion: 2
+        x: 751
+        y: 651
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fa5ce2ee95bd433a9f7ed93ae67d0f3
+      internalID: -1239763412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_85
+      rect:
+        serializedVersion: 2
+        x: 816
+        y: 651
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae35df430f7e14ec59553383d699f251
+      internalID: 1800440222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_86
+      rect:
+        serializedVersion: 2
+        x: 881
+        y: 644
+        width: 61
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44ebc5fea2982452a81a8213cb37aa82
+      internalID: -1067374496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_87
+      rect:
+        serializedVersion: 2
+        x: 947
+        y: 647
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 189a21fd386564a9699b638b090e01ad
+      internalID: 217465520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_88
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 607
+        width: 67
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47b24011401154eacb6e9feee6a66daf
+      internalID: 1336013634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_89
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 612
+        width: 67
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9891eef1500304737a2fc200b8c3db2d
+      internalID: -1399017696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_90
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 604
+        width: 44
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d09c85aa9dbbf48aba0db4a91272d855
+      internalID: 100278654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_91
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 625
+        width: 27
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 807fc09275d9f4de087b5f02757736dc
+      internalID: 328164416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_92
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 640
+        width: 20
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b36fc06574326400cbf3368ecb96c803
+      internalID: 1710591912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_93
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 625
+        width: 26
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43c069b02e42441d48ad68c26bdb5cf0
+      internalID: 589346868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_94
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 593
+        width: 44
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0c0bd60b72d740d49dd0c8a08f14f5d
+      internalID: -1760398544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_95
+      rect:
+        serializedVersion: 2
+        x: 413
+        y: 617
+        width: 44
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62022d65fbefc4df783388b8247ab492
+      internalID: -984840944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_96
+      rect:
+        serializedVersion: 2
+        x: 461
+        y: 611
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d96898c9dc45436098775af6a39af14
+      internalID: -1947637912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_97
+      rect:
+        serializedVersion: 2
+        x: 593
+        y: 617
+        width: 61
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 529b4ac4ae0414d1ea713006ee5c7621
+      internalID: 781119683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_98
+      rect:
+        serializedVersion: 2
+        x: 658
+        y: 582
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a963e3418d9349989f7509afd2eec68
+      internalID: -78701881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_99
+      rect:
+        serializedVersion: 2
+        x: 729
+        y: 586
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b92ec534d07874aff89e17df5a1c596a
+      internalID: -1100796604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_100
+      rect:
+        serializedVersion: 2
+        x: 794
+        y: 586
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2bf1ca876360745238a93bdee7a766ad
+      internalID: 992073661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_101
+      rect:
+        serializedVersion: 2
+        x: 946
+        y: 582
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1e84e4d5327541c38ec284b96968414
+      internalID: -446514265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_102
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 569
+        width: 67
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e39940e301fe74480946480a8c8c6ae7
+      internalID: -810136418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_103
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 544
+        width: 62
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aea9e56fc43394a06a88f782c63ed60d
+      internalID: -1126283556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_104
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 605
+        width: 21
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dea8fc5b3e8064026b8c161aff8a1fdc
+      internalID: 479198523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_105
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 551
+        width: 44
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b9ae3a1d4fc14a2186878d8dddd05d5
+      internalID: 249714189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_106
+      rect:
+        serializedVersion: 2
+        x: 526
+        y: 580
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a31d60f0fd03844be9dbdc98802acf6b
+      internalID: 1254014691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_107
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 552
+        width: 61
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 858a0449a63a24f2b98e1e027ee0c301
+      internalID: -120238118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_108
+      rect:
+        serializedVersion: 2
+        x: 859
+        y: 581
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c312892edab154c03b2e00734380358b
+      internalID: 1481169586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_109
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 501
+        width: 60
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22144f6c64de24bb280ac8c52dff6436
+      internalID: 616156452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_110
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 539
+        width: 62
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e42a4c20ff5c249b7aa72fa9d186c2b1
+      internalID: -82210505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_111
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 538
+        width: 60
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eca26e549a1e5478eaba88d487e60627
+      internalID: -931011167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_112
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 539
+        width: 62
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e8ebc51ac05a4fe9ac148f60acb29ee
+      internalID: -1533099346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_113
+      rect:
+        serializedVersion: 2
+        x: 362
+        y: 531
+        width: 40
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5715e491ce7504fff9429ef44c48cfd2
+      internalID: 941437034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_114
+      rect:
+        serializedVersion: 2
+        x: 406
+        y: 489
+        width: 40
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69199fe6bb0914f6ea14c6101fdf60f8
+      internalID: 222981618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_115
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 544
+        width: 61
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d3d520ecf09d41d5b530fb5fb2201d4
+      internalID: -1632950346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_116
+      rect:
+        serializedVersion: 2
+        x: 525
+        y: 515
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b78bf302e62148cea404c316c676bcd
+      internalID: 1742554972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_117
+      rect:
+        serializedVersion: 2
+        x: 590
+        y: 489
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11888485088484920a1e32e96d55f5f4
+      internalID: 1867849235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_118
+      rect:
+        serializedVersion: 2
+        x: 656
+        y: 515
+        width: 61
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c4dff06afe934e71b9b8ee17b7e5db6
+      internalID: -1572446147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_119
+      rect:
+        serializedVersion: 2
+        x: 723
+        y: 521
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16839dae9a2f24b83b5ff13bf2000adc
+      internalID: -155220940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_120
+      rect:
+        serializedVersion: 2
+        x: 788
+        y: 521
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d578839bb390f4e88908a49921a4d338
+      internalID: 1076521096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_121
+      rect:
+        serializedVersion: 2
+        x: 853
+        y: 516
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d413800cbe18493f86a94175b548de2
+      internalID: -1928111420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_122
+      rect:
+        serializedVersion: 2
+        x: 924
+        y: 517
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68f43e2a8ede841feb1166ce20d69b3a
+      internalID: 937796882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_123
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 435
+        width: 62
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3b8c9ec63a504b55915a4ac0f7482c3
+      internalID: 2050830288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_124
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 475
+        width: 60
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 489d955474b0242d58dfd7b9a7e9c6da
+      internalID: 2014778448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_125
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 480
+        width: 60
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5aacc9466ea4d42818cd0591f073cfe9
+      internalID: -37864547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_126
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 473
+        width: 61
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2238eeb03e4b7496dbbec60929583cdb
+      internalID: -887181622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_127
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 476
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb1489beb32f647089861cbbdf21ff19
+      internalID: 1731606032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_128
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 469
+        width: 58
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2e6e46c2d7cf47c99e0967dff7b3336
+      internalID: -1010195914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_129
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 479
+        width: 61
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adfc9b8e07cee45b09af974960be6f9d
+      internalID: 1519360356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_130
+      rect:
+        serializedVersion: 2
+        x: 515
+        y: 450
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b662c1a098e94db3b4d9a8606fff401
+      internalID: -892799731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_131
+      rect:
+        serializedVersion: 2
+        x: 580
+        y: 424
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42ec0f3e7a3824320a4e2d8cc9c19f5c
+      internalID: 154101655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_132
+      rect:
+        serializedVersion: 2
+        x: 655
+        y: 452
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5d17e4cd65314f1b80924c0a51e5515
+      internalID: -2137197228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_133
+      rect:
+        serializedVersion: 2
+        x: 721
+        y: 456
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2217891e01a654217b561e0d362693e2
+      internalID: 297084402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_134
+      rect:
+        serializedVersion: 2
+        x: 786
+        y: 456
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8402fa984a7f4b95adf17801a7f65b9
+      internalID: 196181769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_135
+      rect:
+        serializedVersion: 2
+        x: 851
+        y: 451
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 398709e0943724153a5cd1ec91492a30
+      internalID: 453329624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_136
+      rect:
+        serializedVersion: 2
+        x: 918
+        y: 452
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 260084557bc264d02aa83e10dd541855
+      internalID: 849756946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_137
+      rect:
+        serializedVersion: 2
+        x: 980
+        y: 451
+        width: 42
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85eaefb36c841406eb8a39d342bf3b65
+      internalID: -1455760868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_138
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 372
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d276f88e8d53c4fe88123d29716127eb
+      internalID: -551437754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_139
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 410
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b21bacee8012747faad51f39d8fbbfb1
+      internalID: -276041456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_140
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 415
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b7483e1fbcc14fd5a2830b503b66fb8
+      internalID: -1284115203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_141
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 408
+        width: 61
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 616676410cc9342c09eee7b4b2ea7a75
+      internalID: -1242663947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_142
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 411
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c16d0b1dd34f485286b26592da1688f
+      internalID: -654007931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_143
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 404
+        width: 61
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 332ad7e2be24c43458a88adf0c3d428e
+      internalID: -433940491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_144
+      rect:
+        serializedVersion: 2
+        x: 406
+        y: 414
+        width: 61
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e375e31ec823a413b9b17681cb088186
+      internalID: -361454631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_145
+      rect:
+        serializedVersion: 2
+        x: 471
+        y: 385
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c07e2f7f210844d0292bc12b1901300b
+      internalID: 2119997893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_146
+      rect:
+        serializedVersion: 2
+        x: 536
+        y: 360
+        width: 58
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43b43ad1b4aab48a5872e65fb7f9ca25
+      internalID: -461803115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_147
+      rect:
+        serializedVersion: 2
+        x: 645
+        y: 388
+        width: 58
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9e00b3fb0ca1453782c75ef064f4f0f
+      internalID: -921765367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_148
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 392
+        width: 58
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7b5dc3b0c6a342c6acb3b39760ce95b
+      internalID: 1625172815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_149
+      rect:
+        serializedVersion: 2
+        x: 782
+        y: 392
+        width: 58
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3cd543583c59495782f129c71096665
+      internalID: 258067071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_150
+      rect:
+        serializedVersion: 2
+        x: 844
+        y: 387
+        width: 58
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c30e67ebd209455c9e0d794d1a658a5
+      internalID: -412324449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_151
+      rect:
+        serializedVersion: 2
+        x: 916
+        y: 385
+        width: 61
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2140b1eaad05410cbc34a4eeb5e147a
+      internalID: 2096717671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_152
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 307
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a5bc3606b8c1416691db8867191f41b
+      internalID: -701276722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_153
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 345
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c90243bb88ec4716908b2cf095891b0
+      internalID: -2008678131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_154
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 350
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 221fd2d420f974d67bbba57f2844f31a
+      internalID: 145792545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_155
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 345
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26669e347a22e4f538abd94fef853ef1
+      internalID: -943127156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_156
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 346
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a7ad069cc3df48b6a6ae4d958afaa65
+      internalID: 1588985674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_157
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 341
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8dc0c24d9a97e400094b67763261d6a7
+      internalID: 1332331018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_158
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 351
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d488042a7a8140c4b5e7b284b48801d
+      internalID: 1838921719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_159
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 321
+        width: 58
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ca76241d96fd4334b8d8fad077d7839
+      internalID: 354375319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_160
+      rect:
+        serializedVersion: 2
+        x: 529
+        y: 299
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b09b71b362a346b2819a25de79b2b32
+      internalID: 2098596501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_161
+      rect:
+        serializedVersion: 2
+        x: 598
+        y: 327
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a61d38b710bc0460bbb70358615a15ca
+      internalID: -670459878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_162
+      rect:
+        serializedVersion: 2
+        x: 707
+        y: 331
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 981a6bea711f84b1f966d0b8a0b91d5f
+      internalID: -1438952789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_163
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 331
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00dee1b5a89b64df0ab3fc842a719876
+      internalID: -1123892328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_164
+      rect:
+        serializedVersion: 2
+        x: 829
+        y: 326
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7456ce07a1d6405397d35b11b895df2
+      internalID: 1511851767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_165
+      rect:
+        serializedVersion: 2
+        x: 890
+        y: 324
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0256fbdf4a759435b9d29d5c9a6c1ac0
+      internalID: -1844987958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_166
+      rect:
+        serializedVersion: 2
+        x: 951
+        y: 324
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ade760db1351045e1b63c2244da3b8f4
+      internalID: -883980118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_167
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 242
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a89f8acc7ab294efaaf05de7be23dc83
+      internalID: 66373284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_168
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 278
+        width: 61
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74add8a75cd7e4defbbc4ef27a6c0c3f
+      internalID: -641437054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_169
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 285
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 068ac31d76cb84673bcf3360b4dff83b
+      internalID: 1124363651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_170
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 280
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d736b74513a4f41f88dc127963c1143d
+      internalID: -1755569290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_171
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 281
+        width: 61
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a90df3fec0c24d1a8163102b7edc7ea
+      internalID: 401723031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_172
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 278
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a19da0dc5caf42c2826eb2c421c8937
+      internalID: 1933671035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_173
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 288
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1caff561f30fb47d3b431a8fd94e74d1
+      internalID: -836190152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_174
+      rect:
+        serializedVersion: 2
+        x: 457
+        y: 260
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8b225eeae09847d1ab4f3fec1ffdfb5
+      internalID: 865523858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_175
+      rect:
+        serializedVersion: 2
+        x: 518
+        y: 238
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2378697ba37604061a631fa001c5523b
+      internalID: -807894387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_176
+      rect:
+        serializedVersion: 2
+        x: 590
+        y: 266
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa16702ffd92644818a9dd0b38576489
+      internalID: 934026747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_177
+      rect:
+        serializedVersion: 2
+        x: 659
+        y: 270
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a07741f61c9af45bb9b31e5ffcde4611
+      internalID: 1667378307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_178
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 270
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8fa33a1ffa66d494dab047953f21f5a6
+      internalID: 207723613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_179
+      rect:
+        serializedVersion: 2
+        x: 781
+        y: 265
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05bd619698ce54d528ce4b592063b464
+      internalID: -1144189287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_180
+      rect:
+        serializedVersion: 2
+        x: 842
+        y: 263
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74acf8a3475094bf4b711b42455766b3
+      internalID: -2141922945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_181
+      rect:
+        serializedVersion: 2
+        x: 903
+        y: 263
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bf81552d79814d2080092f8d0e26ebf
+      internalID: -732313173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_182
+      rect:
+        serializedVersion: 2
+        x: 978
+        y: 262
+        width: 38
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8455274f1d564f32acf0df0d020d605
+      internalID: 921758534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_183
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 178
+        width: 58
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb61cd425ecd14cf086c0dbcd79ae970
+      internalID: -52022313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_184
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 216
+        width: 58
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf050787950f24347b38947ab8256c59
+      internalID: 39791566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_185
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 221
+        width: 58
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31ffbafc5c25349448da4487083a6b9d
+      internalID: 1009803446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_186
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 217
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bfa3591d0a6b493797aa10d756d9532
+      internalID: -1765909171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_187
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 218
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d9f59efe547c4c459d8a49d39498a16
+      internalID: -1764042029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_188
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 217
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0678788d793f1413f90ffb39942fb710
+      internalID: -1758391987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_189
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 227
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41961804cf25846d5b31b53225101727
+      internalID: -1480089701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_190
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 199
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7affa1d1895184d95b203999d51bf057
+      internalID: 1288748503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_191
+      rect:
+        serializedVersion: 2
+        x: 513
+        y: 177
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30339914beb6e4ded8895f6e94016a09
+      internalID: 1659930324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_192
+      rect:
+        serializedVersion: 2
+        x: 579
+        y: 205
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e9e130374bfc4f469925431f301061c
+      internalID: 1354427004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_193
+      rect:
+        serializedVersion: 2
+        x: 651
+        y: 209
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4424e5eb5f49d459a9b9cdbcca5a21ea
+      internalID: -330016889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_194
+      rect:
+        serializedVersion: 2
+        x: 712
+        y: 209
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c877c7a813714fe8aaad27fb20cc795
+      internalID: 499509781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_195
+      rect:
+        serializedVersion: 2
+        x: 773
+        y: 204
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3aa77853f761f4254bca70993dc074b7
+      internalID: 1758625327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_196
+      rect:
+        serializedVersion: 2
+        x: 834
+        y: 202
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 336a555c2021541f5b0d3293ddaf309f
+      internalID: -599387127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_197
+      rect:
+        serializedVersion: 2
+        x: 895
+        y: 193
+        width: 98
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebdb366331a1f42bbb25b6da50635f93
+      internalID: -622819193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_198
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 117
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5eeccbe32ab1348deaf0396c97d9ea13
+      internalID: -517870836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_199
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 155
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a19b39e16c1994669aee27357818b6ba
+      internalID: -1060669106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_200
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 160
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3fb5d31240244c5881d0a3f301b7165
+      internalID: -525055505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_201
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 156
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d4d7714296cc471db68387a54fb127a
+      internalID: 574279908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_202
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 157
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f4305af584a74b3698726a6302e4bac
+      internalID: -404402666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_203
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 166
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81e907b398d034ee6aad7e32fb78229d
+      internalID: 73327136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_204
+      rect:
+        serializedVersion: 2
+        x: 447
+        y: 138
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffb4044e308b7409c9e792350c46e993
+      internalID: -1870549508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_205
+      rect:
+        serializedVersion: 2
+        x: 553
+        y: 116
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d42a8301477e94bfd97d767ef14f3bf4
+      internalID: 1488134155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_206
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 148
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa2f2987183ab476c8d883e6ae77084b
+      internalID: 616109093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_207
+      rect:
+        serializedVersion: 2
+        x: 701
+        y: 148
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d140db01c1e74fd3ac262bcffa213a1
+      internalID: -346513624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_208
+      rect:
+        serializedVersion: 2
+        x: 805
+        y: 134
+        width: 42
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b0cc3229f0fb42e48b26da2555bcf47
+      internalID: 813415581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_209
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 94
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e46ad460511134f80a0ac8fab8d20255
+      internalID: 648084592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_210
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 99
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b771900b9a8aa4eaa86d87ddf763a610
+      internalID: -895746821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_211
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 95
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9b4d65db66024ff9a53eda821317647
+      internalID: -782268613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_212
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 96
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7cd8bb0e89bc4b3f996c98e428e9c5b
+      internalID: -546854193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_213
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 105
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b92414aeece447d1b85aade6f71104c
+      internalID: -525618655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_214
+      rect:
+        serializedVersion: 2
+        x: 614
+        y: 87
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98bfdf4b00ce84d4ba5a32ee0cbd099f
+      internalID: 1053761746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_215
+      rect:
+        serializedVersion: 2
+        x: 675
+        y: 87
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0ee6268cf7c3476eb320566341f5806
+      internalID: -302000113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_216
+      rect:
+        serializedVersion: 2
+        x: 736
+        y: 87
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 973ff676b0f0a4b6b84e23f1592a783c
+      internalID: -1803605844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_217
+      rect:
+        serializedVersion: 2
+        x: 860
+        y: 134
+        width: 15
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abf937c0ecf0643e09cb643b798c5d7b
+      internalID: -594908421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_218
+      rect:
+        serializedVersion: 2
+        x: 902
+        y: 134
+        width: 14
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d26f6358f63847de910f7e1cb21b9a4
+      internalID: -410767146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_219
+      rect:
+        serializedVersion: 2
+        x: 944
+        y: 133
+        width: 14
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91e57a0460f794d30a1e09ac54f25420
+      internalID: -1427503138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_220
+      rect:
+        serializedVersion: 2
+        x: 986
+        y: 134
+        width: 15
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9f5f186561854ce7ad3a51e95f110cb
+      internalID: 1048287225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_221
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 56
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77c83a6f3b55b4dc987a9f63681e29ec
+      internalID: 1999933467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_222
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 33
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68220203c106548b9a80e8e00ba03835
+      internalID: -754621417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_223
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 38
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ea93dd0475904d0d8829458b89752df
+      internalID: 1720802475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_224
+      rect:
+        serializedVersion: 2
+        x: 187
+        y: 38
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 244a9ff472b954bfaaeb8cc54646a705
+      internalID: 1709942323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_225
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 34
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ddc3a5c2a7db48569c8bdab27a79a9f
+      internalID: 2034227348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_226
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 35
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 029291c3c9f30476a8ba65bd26bf8c91
+      internalID: 1890099116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_227
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 44
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ff337962e2864f63afc166a4ae37236
+      internalID: 411385005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_228
+      rect:
+        serializedVersion: 2
+        x: 431
+        y: 77
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a21dd3e5169b044aca0d8ea494e605a2
+      internalID: -1901309946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_229
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 77
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 275e8b1923f9d4db7bba1e6ad81bc06a
+      internalID: -686772114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_230
+      rect:
+        serializedVersion: 2
+        x: 553
+        y: 55
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78d1b827de526434bbd99d00c8f3bcae
+      internalID: 322261453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_231
+      rect:
+        serializedVersion: 2
+        x: 614
+        y: 26
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f81eefb52ae642b88c03e99a3da23da
+      internalID: 997083921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_232
+      rect:
+        serializedVersion: 2
+        x: 675
+        y: 26
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d0e78cc2cbb04e169c3eb5c1da97724
+      internalID: 1276082364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_233
+      rect:
+        serializedVersion: 2
+        x: 736
+        y: 26
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c0e1c7297ed9421f868688fa1438d82
+      internalID: 738114482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_234
+      rect:
+        serializedVersion: 2
+        x: 807
+        y: 72
+        width: 38
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94d566f7f9dd640808aefe61398e883c
+      internalID: -1930910679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_235
+      rect:
+        serializedVersion: 2
+        x: 847
+        y: 70
+        width: 41
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d97d46226c9d4083a997a26bc5fdc98
+      internalID: -832002303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_236
+      rect:
+        serializedVersion: 2
+        x: 890
+        y: 72
+        width: 38
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: baae9e55f0e5047bf9882491a91755f2
+      internalID: 736342569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_237
+      rect:
+        serializedVersion: 2
+        x: 930
+        y: 69
+        width: 42
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb4d0b6c996634ccd85f08001115a304
+      internalID: -474254723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_238
+      rect:
+        serializedVersion: 2
+        x: 974
+        y: 72
+        width: 39
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c2104ce15fae41f99431f902c7327b5
+      internalID: 45083883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_239
+      rect:
+        serializedVersion: 2
+        x: 431
+        y: 16
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 338a14472d8b94c7d9c9fcdd9bdd4c96
+      internalID: -1591963947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_240
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 16
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 577980773ca184b77bcd232678fa2a48
+      internalID: 253745310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_241
+      rect:
+        serializedVersion: 2
+        x: 807
+        y: 10
+        width: 38
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ab4d4acafb6c4e999bd5098645d2b61
+      internalID: -1349667770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_242
+      rect:
+        serializedVersion: 2
+        x: 847
+        y: 9
+        width: 42
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc3dae4e1266b4669a10721e9ad91044
+      internalID: 597162265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_243
+      rect:
+        serializedVersion: 2
+        x: 890
+        y: 8
+        width: 42
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a699fad1ad41945068a733aef199fefd
+      internalID: -939299495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_244
+      rect:
+        serializedVersion: 2
+        x: 934
+        y: 10
+        width: 38
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4b8d0d92f6a54828851752c2470573c
+      internalID: 1791744772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_Global_InputKeyCode_245
+      rect:
+        serializedVersion: 2
+        x: 974
+        y: 8
+        width: 42
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c9eef360ad4446f285e0f09e668e775
+      internalID: 2044232473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: d997f12b7b7d546cda6e9850ea552e5e
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Texture2D_UI_Global_InputKeyCode_0: 967047994
+      Texture2D_UI_Global_InputKeyCode_1: -62594041
+      Texture2D_UI_Global_InputKeyCode_10: 873479885
+      Texture2D_UI_Global_InputKeyCode_100: 992073661
+      Texture2D_UI_Global_InputKeyCode_101: -446514265
+      Texture2D_UI_Global_InputKeyCode_102: -810136418
+      Texture2D_UI_Global_InputKeyCode_103: -1126283556
+      Texture2D_UI_Global_InputKeyCode_104: 479198523
+      Texture2D_UI_Global_InputKeyCode_105: 249714189
+      Texture2D_UI_Global_InputKeyCode_106: 1254014691
+      Texture2D_UI_Global_InputKeyCode_107: -120238118
+      Texture2D_UI_Global_InputKeyCode_108: 1481169586
+      Texture2D_UI_Global_InputKeyCode_109: 616156452
+      Texture2D_UI_Global_InputKeyCode_11: -1292531313
+      Texture2D_UI_Global_InputKeyCode_110: -82210505
+      Texture2D_UI_Global_InputKeyCode_111: -931011167
+      Texture2D_UI_Global_InputKeyCode_112: -1533099346
+      Texture2D_UI_Global_InputKeyCode_113: 941437034
+      Texture2D_UI_Global_InputKeyCode_114: 222981618
+      Texture2D_UI_Global_InputKeyCode_115: -1632950346
+      Texture2D_UI_Global_InputKeyCode_116: 1742554972
+      Texture2D_UI_Global_InputKeyCode_117: 1867849235
+      Texture2D_UI_Global_InputKeyCode_118: -1572446147
+      Texture2D_UI_Global_InputKeyCode_119: -155220940
+      Texture2D_UI_Global_InputKeyCode_12: 556060854
+      Texture2D_UI_Global_InputKeyCode_120: 1076521096
+      Texture2D_UI_Global_InputKeyCode_121: -1928111420
+      Texture2D_UI_Global_InputKeyCode_122: 937796882
+      Texture2D_UI_Global_InputKeyCode_123: 2050830288
+      Texture2D_UI_Global_InputKeyCode_124: 2014778448
+      Texture2D_UI_Global_InputKeyCode_125: -37864547
+      Texture2D_UI_Global_InputKeyCode_126: -887181622
+      Texture2D_UI_Global_InputKeyCode_127: 1731606032
+      Texture2D_UI_Global_InputKeyCode_128: -1010195914
+      Texture2D_UI_Global_InputKeyCode_129: 1519360356
+      Texture2D_UI_Global_InputKeyCode_13: 335582857
+      Texture2D_UI_Global_InputKeyCode_130: -892799731
+      Texture2D_UI_Global_InputKeyCode_131: 154101655
+      Texture2D_UI_Global_InputKeyCode_132: -2137197228
+      Texture2D_UI_Global_InputKeyCode_133: 297084402
+      Texture2D_UI_Global_InputKeyCode_134: 196181769
+      Texture2D_UI_Global_InputKeyCode_135: 453329624
+      Texture2D_UI_Global_InputKeyCode_136: 849756946
+      Texture2D_UI_Global_InputKeyCode_137: -1455760868
+      Texture2D_UI_Global_InputKeyCode_138: -551437754
+      Texture2D_UI_Global_InputKeyCode_139: -276041456
+      Texture2D_UI_Global_InputKeyCode_14: 615948556
+      Texture2D_UI_Global_InputKeyCode_140: -1284115203
+      Texture2D_UI_Global_InputKeyCode_141: -1242663947
+      Texture2D_UI_Global_InputKeyCode_142: -654007931
+      Texture2D_UI_Global_InputKeyCode_143: -433940491
+      Texture2D_UI_Global_InputKeyCode_144: -361454631
+      Texture2D_UI_Global_InputKeyCode_145: 2119997893
+      Texture2D_UI_Global_InputKeyCode_146: -461803115
+      Texture2D_UI_Global_InputKeyCode_147: -921765367
+      Texture2D_UI_Global_InputKeyCode_148: 1625172815
+      Texture2D_UI_Global_InputKeyCode_149: 258067071
+      Texture2D_UI_Global_InputKeyCode_15: 1078067748
+      Texture2D_UI_Global_InputKeyCode_150: -412324449
+      Texture2D_UI_Global_InputKeyCode_151: 2096717671
+      Texture2D_UI_Global_InputKeyCode_152: -701276722
+      Texture2D_UI_Global_InputKeyCode_153: -2008678131
+      Texture2D_UI_Global_InputKeyCode_154: 145792545
+      Texture2D_UI_Global_InputKeyCode_155: -943127156
+      Texture2D_UI_Global_InputKeyCode_156: 1588985674
+      Texture2D_UI_Global_InputKeyCode_157: 1332331018
+      Texture2D_UI_Global_InputKeyCode_158: 1838921719
+      Texture2D_UI_Global_InputKeyCode_159: 354375319
+      Texture2D_UI_Global_InputKeyCode_16: 1615234635
+      Texture2D_UI_Global_InputKeyCode_160: 2098596501
+      Texture2D_UI_Global_InputKeyCode_161: -670459878
+      Texture2D_UI_Global_InputKeyCode_162: -1438952789
+      Texture2D_UI_Global_InputKeyCode_163: -1123892328
+      Texture2D_UI_Global_InputKeyCode_164: 1511851767
+      Texture2D_UI_Global_InputKeyCode_165: -1844987958
+      Texture2D_UI_Global_InputKeyCode_166: -883980118
+      Texture2D_UI_Global_InputKeyCode_167: 66373284
+      Texture2D_UI_Global_InputKeyCode_168: -641437054
+      Texture2D_UI_Global_InputKeyCode_169: 1124363651
+      Texture2D_UI_Global_InputKeyCode_17: -1194954033
+      Texture2D_UI_Global_InputKeyCode_170: -1755569290
+      Texture2D_UI_Global_InputKeyCode_171: 401723031
+      Texture2D_UI_Global_InputKeyCode_172: 1933671035
+      Texture2D_UI_Global_InputKeyCode_173: -836190152
+      Texture2D_UI_Global_InputKeyCode_174: 865523858
+      Texture2D_UI_Global_InputKeyCode_175: -807894387
+      Texture2D_UI_Global_InputKeyCode_176: 934026747
+      Texture2D_UI_Global_InputKeyCode_177: 1667378307
+      Texture2D_UI_Global_InputKeyCode_178: 207723613
+      Texture2D_UI_Global_InputKeyCode_179: -1144189287
+      Texture2D_UI_Global_InputKeyCode_18: 94595934
+      Texture2D_UI_Global_InputKeyCode_180: -2141922945
+      Texture2D_UI_Global_InputKeyCode_181: -732313173
+      Texture2D_UI_Global_InputKeyCode_182: 921758534
+      Texture2D_UI_Global_InputKeyCode_183: -52022313
+      Texture2D_UI_Global_InputKeyCode_184: 39791566
+      Texture2D_UI_Global_InputKeyCode_185: 1009803446
+      Texture2D_UI_Global_InputKeyCode_186: -1765909171
+      Texture2D_UI_Global_InputKeyCode_187: -1764042029
+      Texture2D_UI_Global_InputKeyCode_188: -1758391987
+      Texture2D_UI_Global_InputKeyCode_189: -1480089701
+      Texture2D_UI_Global_InputKeyCode_19: -1112207336
+      Texture2D_UI_Global_InputKeyCode_190: 1288748503
+      Texture2D_UI_Global_InputKeyCode_191: 1659930324
+      Texture2D_UI_Global_InputKeyCode_192: 1354427004
+      Texture2D_UI_Global_InputKeyCode_193: -330016889
+      Texture2D_UI_Global_InputKeyCode_194: 499509781
+      Texture2D_UI_Global_InputKeyCode_195: 1758625327
+      Texture2D_UI_Global_InputKeyCode_196: -599387127
+      Texture2D_UI_Global_InputKeyCode_197: -622819193
+      Texture2D_UI_Global_InputKeyCode_198: -517870836
+      Texture2D_UI_Global_InputKeyCode_199: -1060669106
+      Texture2D_UI_Global_InputKeyCode_2: -1733332456
+      Texture2D_UI_Global_InputKeyCode_20: -2014101068
+      Texture2D_UI_Global_InputKeyCode_200: -525055505
+      Texture2D_UI_Global_InputKeyCode_201: 574279908
+      Texture2D_UI_Global_InputKeyCode_202: -404402666
+      Texture2D_UI_Global_InputKeyCode_203: 73327136
+      Texture2D_UI_Global_InputKeyCode_204: -1870549508
+      Texture2D_UI_Global_InputKeyCode_205: 1488134155
+      Texture2D_UI_Global_InputKeyCode_206: 616109093
+      Texture2D_UI_Global_InputKeyCode_207: -346513624
+      Texture2D_UI_Global_InputKeyCode_208: 813415581
+      Texture2D_UI_Global_InputKeyCode_209: 648084592
+      Texture2D_UI_Global_InputKeyCode_21: -1353936587
+      Texture2D_UI_Global_InputKeyCode_210: -895746821
+      Texture2D_UI_Global_InputKeyCode_211: -782268613
+      Texture2D_UI_Global_InputKeyCode_212: -546854193
+      Texture2D_UI_Global_InputKeyCode_213: -525618655
+      Texture2D_UI_Global_InputKeyCode_214: 1053761746
+      Texture2D_UI_Global_InputKeyCode_215: -302000113
+      Texture2D_UI_Global_InputKeyCode_216: -1803605844
+      Texture2D_UI_Global_InputKeyCode_217: -594908421
+      Texture2D_UI_Global_InputKeyCode_218: -410767146
+      Texture2D_UI_Global_InputKeyCode_219: -1427503138
+      Texture2D_UI_Global_InputKeyCode_22: -1699867290
+      Texture2D_UI_Global_InputKeyCode_220: 1048287225
+      Texture2D_UI_Global_InputKeyCode_221: 1999933467
+      Texture2D_UI_Global_InputKeyCode_222: -754621417
+      Texture2D_UI_Global_InputKeyCode_223: 1720802475
+      Texture2D_UI_Global_InputKeyCode_224: 1709942323
+      Texture2D_UI_Global_InputKeyCode_225: 2034227348
+      Texture2D_UI_Global_InputKeyCode_226: 1890099116
+      Texture2D_UI_Global_InputKeyCode_227: 411385005
+      Texture2D_UI_Global_InputKeyCode_228: -1901309946
+      Texture2D_UI_Global_InputKeyCode_229: -686772114
+      Texture2D_UI_Global_InputKeyCode_23: 800496633
+      Texture2D_UI_Global_InputKeyCode_230: 322261453
+      Texture2D_UI_Global_InputKeyCode_231: 997083921
+      Texture2D_UI_Global_InputKeyCode_232: 1276082364
+      Texture2D_UI_Global_InputKeyCode_233: 738114482
+      Texture2D_UI_Global_InputKeyCode_234: -1930910679
+      Texture2D_UI_Global_InputKeyCode_235: -832002303
+      Texture2D_UI_Global_InputKeyCode_236: 736342569
+      Texture2D_UI_Global_InputKeyCode_237: -474254723
+      Texture2D_UI_Global_InputKeyCode_238: 45083883
+      Texture2D_UI_Global_InputKeyCode_239: -1591963947
+      Texture2D_UI_Global_InputKeyCode_24: -600249521
+      Texture2D_UI_Global_InputKeyCode_240: 253745310
+      Texture2D_UI_Global_InputKeyCode_241: -1349667770
+      Texture2D_UI_Global_InputKeyCode_242: 597162265
+      Texture2D_UI_Global_InputKeyCode_243: -939299495
+      Texture2D_UI_Global_InputKeyCode_244: 1791744772
+      Texture2D_UI_Global_InputKeyCode_245: 2044232473
+      Texture2D_UI_Global_InputKeyCode_25: 1644064139
+      Texture2D_UI_Global_InputKeyCode_26: 1782430508
+      Texture2D_UI_Global_InputKeyCode_27: -279196628
+      Texture2D_UI_Global_InputKeyCode_28: 252849556
+      Texture2D_UI_Global_InputKeyCode_29: 1074189526
+      Texture2D_UI_Global_InputKeyCode_3: -150658661
+      Texture2D_UI_Global_InputKeyCode_30: -764454668
+      Texture2D_UI_Global_InputKeyCode_31: 1755471412
+      Texture2D_UI_Global_InputKeyCode_32: 562632583
+      Texture2D_UI_Global_InputKeyCode_33: -43616774
+      Texture2D_UI_Global_InputKeyCode_34: -251251804
+      Texture2D_UI_Global_InputKeyCode_35: 1647054838
+      Texture2D_UI_Global_InputKeyCode_36: -585271216
+      Texture2D_UI_Global_InputKeyCode_37: 828399671
+      Texture2D_UI_Global_InputKeyCode_38: -1233544203
+      Texture2D_UI_Global_InputKeyCode_39: 1448786433
+      Texture2D_UI_Global_InputKeyCode_4: -734132853
+      Texture2D_UI_Global_InputKeyCode_40: 1155019731
+      Texture2D_UI_Global_InputKeyCode_41: 1403312667
+      Texture2D_UI_Global_InputKeyCode_42: 180421584
+      Texture2D_UI_Global_InputKeyCode_43: -605473122
+      Texture2D_UI_Global_InputKeyCode_44: -1354764754
+      Texture2D_UI_Global_InputKeyCode_45: 378435160
+      Texture2D_UI_Global_InputKeyCode_46: 1187654175
+      Texture2D_UI_Global_InputKeyCode_47: -698305719
+      Texture2D_UI_Global_InputKeyCode_48: -2094940946
+      Texture2D_UI_Global_InputKeyCode_49: -263830269
+      Texture2D_UI_Global_InputKeyCode_5: -1202241264
+      Texture2D_UI_Global_InputKeyCode_50: 2098201035
+      Texture2D_UI_Global_InputKeyCode_51: -268713761
+      Texture2D_UI_Global_InputKeyCode_52: 1888346223
+      Texture2D_UI_Global_InputKeyCode_53: 2126678044
+      Texture2D_UI_Global_InputKeyCode_54: 44708633
+      Texture2D_UI_Global_InputKeyCode_55: -1003945212
+      Texture2D_UI_Global_InputKeyCode_56: -8609256
+      Texture2D_UI_Global_InputKeyCode_57: -1675407682
+      Texture2D_UI_Global_InputKeyCode_58: -130550471
+      Texture2D_UI_Global_InputKeyCode_59: 72600490
+      Texture2D_UI_Global_InputKeyCode_6: 1130633124
+      Texture2D_UI_Global_InputKeyCode_60: 560864220
+      Texture2D_UI_Global_InputKeyCode_61: 2093874059
+      Texture2D_UI_Global_InputKeyCode_62: 265499404
+      Texture2D_UI_Global_InputKeyCode_63: -847805592
+      Texture2D_UI_Global_InputKeyCode_64: -1827848797
+      Texture2D_UI_Global_InputKeyCode_65: 699057166
+      Texture2D_UI_Global_InputKeyCode_66: 1308412414
+      Texture2D_UI_Global_InputKeyCode_67: 702721328
+      Texture2D_UI_Global_InputKeyCode_68: 95190523
+      Texture2D_UI_Global_InputKeyCode_69: -443683330
+      Texture2D_UI_Global_InputKeyCode_7: -1695732867
+      Texture2D_UI_Global_InputKeyCode_70: 850154738
+      Texture2D_UI_Global_InputKeyCode_71: -1426578497
+      Texture2D_UI_Global_InputKeyCode_72: 1657585682
+      Texture2D_UI_Global_InputKeyCode_73: 852369581
+      Texture2D_UI_Global_InputKeyCode_74: 376970329
+      Texture2D_UI_Global_InputKeyCode_75: -1390326941
+      Texture2D_UI_Global_InputKeyCode_76: 1633953290
+      Texture2D_UI_Global_InputKeyCode_77: -2144015572
+      Texture2D_UI_Global_InputKeyCode_78: -1540968238
+      Texture2D_UI_Global_InputKeyCode_79: 36021585
+      Texture2D_UI_Global_InputKeyCode_8: 750069600
+      Texture2D_UI_Global_InputKeyCode_80: 99139283
+      Texture2D_UI_Global_InputKeyCode_81: -1862934659
+      Texture2D_UI_Global_InputKeyCode_82: 1801607438
+      Texture2D_UI_Global_InputKeyCode_83: -1956879002
+      Texture2D_UI_Global_InputKeyCode_84: -1239763412
+      Texture2D_UI_Global_InputKeyCode_85: 1800440222
+      Texture2D_UI_Global_InputKeyCode_86: -1067374496
+      Texture2D_UI_Global_InputKeyCode_87: 217465520
+      Texture2D_UI_Global_InputKeyCode_88: 1336013634
+      Texture2D_UI_Global_InputKeyCode_89: -1399017696
+      Texture2D_UI_Global_InputKeyCode_9: -1639398884
+      Texture2D_UI_Global_InputKeyCode_90: 100278654
+      Texture2D_UI_Global_InputKeyCode_91: 328164416
+      Texture2D_UI_Global_InputKeyCode_92: 1710591912
+      Texture2D_UI_Global_InputKeyCode_93: 589346868
+      Texture2D_UI_Global_InputKeyCode_94: -1760398544
+      Texture2D_UI_Global_InputKeyCode_95: -984840944
+      Texture2D_UI_Global_InputKeyCode_96: -1947637912
+      Texture2D_UI_Global_InputKeyCode_97: 781119683
+      Texture2D_UI_Global_InputKeyCode_98: -78701881
+      Texture2D_UI_Global_InputKeyCode_99: -1100796604
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
