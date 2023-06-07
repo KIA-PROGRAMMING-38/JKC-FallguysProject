@@ -13,8 +13,6 @@ R
 "Assets/1_Scripts/UI/Define/View.cs,e/0/e025a0be4f5bb78c03598e8aa7fa2ebc473507cf
 `
 0Assets/1_Scripts/Scene/Define/SceneInitialize.cs,6/6/660d4d6a4e870989e295a37b0d5864319b803b4a
-f
-6Assets/1_Scripts/Scene/0_Login/LoginSceneInitialize.cs,0/2/026bafb5bafe5af7c6144a8f86b261afd4971d72
 g
 7Assets/1_Scripts/UI/0_Login/LoginPanelViewController.cs,d/0/d009443926c544c2318cbcea2a01ced2352b6773
 ]
