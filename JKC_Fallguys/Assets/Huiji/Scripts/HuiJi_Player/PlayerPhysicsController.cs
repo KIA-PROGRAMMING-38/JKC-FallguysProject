@@ -37,9 +37,6 @@ public class PlayerPhysicsController : MonoBehaviour
         DiveGetUpState.OnDiveGetUp -= ActivateGetUp;
         DiveGetUpState.OnDiveGetUp += ActivateGetUp;
 
-        RecoveryState.OnRecoveryState -= ActivateRecovery;
-        RecoveryState.OnRecoveryState += ActivateRecovery;
-
         _playerInput.OnMovement -= CurrentMoveDirection;
         _playerInput.OnMovement += CurrentMoveDirection;
     }
@@ -154,7 +151,7 @@ public class PlayerPhysicsController : MonoBehaviour
     }
 
     // 평지에서 Fall 이후 다시 일어나게 하는 함수.
-    void ActivateRecovery()
+    public void ActivateRecovery()
     {
         Recovery().Forget();
     }
@@ -169,10 +166,7 @@ public class PlayerPhysicsController : MonoBehaviour
         _targetRotation = Quaternion.Euler(0, _currentRotation.y, 0);
         
         _playerRigidbody.constraints = RigidbodyConstraints.FreezeRotation;
-        
-        Debug.Log($"Fall Rotation : {_currentRotation}");
-        // Debug.Break();
-        
+
         while (Quaternion.Angle(transform.rotation, _targetRotation) > 0.1f)
         {
             // 캐릭터의 원래 방향으로 rotation한다.
