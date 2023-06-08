@@ -10,13 +10,6 @@ public class PlayerInput : MonoBehaviour
     public Vector3 InputVec { get; private set; }
     public Vector2 ScreenToMousePos { get; private set; }
     
-    private Animator _animator;
-
-    private void Awake()
-    {
-        _animator = GetComponent<Animator>();
-    }
-
     public event Action OnMovement;
     
     private void Update()
@@ -27,7 +20,7 @@ public class PlayerInput : MonoBehaviour
         }
     }
 
-    public bool CanMove { get; set; }
+    public bool CannotMove { get; set; }
     private bool _isMoving;
     
     public void OnMove(InputAction.CallbackContext context)

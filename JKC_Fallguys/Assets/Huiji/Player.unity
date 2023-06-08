@@ -351,9 +351,24 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 122906923565191160, guid: 706b1566e96244a07a153da44bbc8622,
         type: 3}
+      propertyPath: _diveForce
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 122906923565191160, guid: 706b1566e96244a07a153da44bbc8622,
+        type: 3}
       propertyPath: _respawnPosition
       value: 
       objectReference: {fileID: 801527185}
+    - target: {fileID: 122906923565191160, guid: 706b1566e96244a07a153da44bbc8622,
+        type: 3}
+      propertyPath: _getUpRotationSpeed
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 122906923565191160, guid: 706b1566e96244a07a153da44bbc8622,
+        type: 3}
+      propertyPath: _diveHeightDirection
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 122906925103003171, guid: 706b1566e96244a07a153da44bbc8622,
         type: 3}
       propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_Target

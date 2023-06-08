@@ -39,11 +39,11 @@ public class ObstacleBumper : MonoBehaviour
     private async UniTaskVoid UnableToControlPlayerInput(Collision col)
     {
         PlayerInput playerInput = col.gameObject.GetComponentInParent<PlayerInput>();
-        playerInput.CanMove = true;
+        playerInput.CannotMove = true;
         
         await UniTask.Delay(TimeSpan.FromSeconds(0.3f));
 
-        playerInput.CanMove = false;
+        playerInput.CannotMove = false;
     }
     
 }
