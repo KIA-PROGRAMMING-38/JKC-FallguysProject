@@ -11,9 +11,9 @@ public class LoginSceneInitialize : SceneInitialize
     protected override void OnGetResources()
     {
         Instantiate(DataManager.GetGameObjectData
-            (PathLiteral.Prefabs, PathLiteral.UI, "00_Login", "LoginBackgroundViewController"));
+            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Login, "LoginBackgroundViewController"));
         Instantiate(DataManager.GetGameObjectData
-            (PathLiteral.Prefabs, PathLiteral.UI, "00_Login", "LoginPanelViewController"));
+            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Login, "LoginPanelViewController"));
         Instantiate(DataManager.GetGameObjectData
             (PathLiteral.Prefabs, PathLiteral.Manager, "PhotonLoginManager"));
     }

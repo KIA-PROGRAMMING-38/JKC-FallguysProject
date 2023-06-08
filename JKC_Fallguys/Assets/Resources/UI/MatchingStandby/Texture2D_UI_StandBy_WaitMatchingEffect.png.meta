@@ -6,7 +6,7 @@ TextureImporter:
   serializedVersion: 12
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -36,13 +36,13 @@ TextureImporter:
     filterMode: 1
     aniso: 1
     mipBias: 0
-    wrapU: 0
-    wrapV: 0
+    wrapU: 1
+    wrapV: 1
     wrapW: 0
-  nPOTScale: 1
+  nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 0
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -51,9 +51,9 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
-  alphaIsTransparency: 0
+  alphaIsTransparency: 1
   spriteTessellationDetail: -1
-  textureType: 0
+  textureType: 8
   textureShape: 1
   singleChannelComponent: 0
   flipbookRows: 1
@@ -127,18 +127,304 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Texture2D_UI_StandBy_WaitMatchingEffect_0
+      rect:
+        serializedVersion: 2
+        x: 382
+        y: 1211
+        width: 15
+        height: 949
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d520888a4a93c49718667f1649961078
+      internalID: 1793324300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_StandBy_WaitMatchingEffect_1
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 1065
+        width: 14
+        height: 1095
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea077fbee2fb242468bbc10eb074ea4b
+      internalID: -198697843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_StandBy_WaitMatchingEffect_2
+      rect:
+        serializedVersion: 2
+        x: 1457
+        y: 1206
+        width: 14
+        height: 954
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9e82716c869c46aba13248d111236c5
+      internalID: 2123445598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_StandBy_WaitMatchingEffect_3
+      rect:
+        serializedVersion: 2
+        x: 1825
+        y: 2156
+        width: 5
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c72e68b93a5b46e1a5581d3bb036103
+      internalID: -69072896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_StandBy_WaitMatchingEffect_4
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 819
+        width: 14
+        height: 805
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe0388f3908b944b4a84bd7c21f1c7b9
+      internalID: -2036778660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_StandBy_WaitMatchingEffect_5
+      rect:
+        serializedVersion: 2
+        x: 1211
+        y: 628
+        width: 14
+        height: 1245
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b04998c4c243c4c49a0dc41ea8654edb
+      internalID: -1148461412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_StandBy_WaitMatchingEffect_6
+      rect:
+        serializedVersion: 2
+        x: 1663
+        y: 340
+        width: 14
+        height: 1245
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28ea0c48596444ccca53392fbd2fddba
+      internalID: -393644680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_StandBy_WaitMatchingEffect_7
+      rect:
+        serializedVersion: 2
+        x: 1818
+        y: 1309
+        width: 14
+        height: 805
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 854a320966edf4066a18be605b486998
+      internalID: 240869909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_StandBy_WaitMatchingEffect_8
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 61
+        width: 14
+        height: 1244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7533b83a18b6740dfb477e2673644de0
+      internalID: 143585934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_StandBy_WaitMatchingEffect_9
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 302
+        width: 15
+        height: 805
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 004996020209d4cc09286a5a9588d483
+      internalID: 762682665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_StandBy_WaitMatchingEffect_10
+      rect:
+        serializedVersion: 2
+        x: 799
+        y: 92
+        width: 14
+        height: 806
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a5d3be7a0bd34b42bb3ed6ff18d3b06
+      internalID: 1173999270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_StandBy_WaitMatchingEffect_11
+      rect:
+        serializedVersion: 2
+        x: 912
+        y: 234
+        width: 17
+        height: 818
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95803fba681a94c689c29bd9cf553289
+      internalID: 700689359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Texture2D_UI_StandBy_WaitMatchingEffect_12
+      rect:
+        serializedVersion: 2
+        x: 1436
+        y: 5
+        width: 14
+        height: 805
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9f18dd7306bf465db105fd75a83d1ad
+      internalID: -2007981722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Texture2D_UI_StandBy_WaitMatchingEffect_0: 1793324300
+      Texture2D_UI_StandBy_WaitMatchingEffect_1: -198697843
+      Texture2D_UI_StandBy_WaitMatchingEffect_10: 1173999270
+      Texture2D_UI_StandBy_WaitMatchingEffect_11: 700689359
+      Texture2D_UI_StandBy_WaitMatchingEffect_12: -2007981722
+      Texture2D_UI_StandBy_WaitMatchingEffect_2: 2123445598
+      Texture2D_UI_StandBy_WaitMatchingEffect_3: -69072896
+      Texture2D_UI_StandBy_WaitMatchingEffect_4: -2036778660
+      Texture2D_UI_StandBy_WaitMatchingEffect_5: -1148461412
+      Texture2D_UI_StandBy_WaitMatchingEffect_6: -393644680
+      Texture2D_UI_StandBy_WaitMatchingEffect_7: 240869909
+      Texture2D_UI_StandBy_WaitMatchingEffect_8: 143585934
+      Texture2D_UI_StandBy_WaitMatchingEffect_9: 762682665
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
