@@ -2,7 +2,7 @@ using UnityEngine;
 
 public abstract class SceneInitialize : MonoBehaviour
 {
-    protected void Start()
+    protected virtual void Start()
     {
         InitializeScene();
     }

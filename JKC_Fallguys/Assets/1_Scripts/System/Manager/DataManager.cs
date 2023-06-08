@@ -22,7 +22,7 @@ public static class DataManager
     /// </summary>
     /// <param name="filePath">파일 경로 세그먼트를 나타내는 문자열 배열입니다.</param>
     /// <returns>조합된 파일 경로를 나타내는 문자열을 반환합니다.</returns>
-    private static string SetDataPath(params string[] filePath)
+    public static string SetDataPath(params string[] filePath)
     {
         return string.Join("/", filePath);
     }

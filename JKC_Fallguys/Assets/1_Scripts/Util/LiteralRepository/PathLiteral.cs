@@ -3,7 +3,14 @@ namespace LiteralRepository
     public static class PathLiteral
     {
         public static readonly string UI = "UI";
+        public static readonly string Scene = "Scene";
+        public static readonly string Object = "Object";
         public static readonly string Prefabs = "Prefabs";
         public static readonly string Manager = "Manager";
+
+        public static readonly string Login = "00_Login";
+        public static readonly string Lobby = "01_Lobby";
+        public static readonly string MatchingStandby = "02_MatchingStandby";
+        public static readonly string InGame = "03_MatchingStandby";
     }
 }
