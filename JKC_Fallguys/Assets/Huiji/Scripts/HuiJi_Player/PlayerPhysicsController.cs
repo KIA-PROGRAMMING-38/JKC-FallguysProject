@@ -37,9 +37,6 @@ public class PlayerPhysicsController : MonoBehaviour
         DiveGetUpState.OnDiveGetUp -= ActivateGetUp;
         DiveGetUpState.OnDiveGetUp += ActivateGetUp;
 
-        RecoveryState.OnRecoveryState -= ActivateRecovery;
-        RecoveryState.OnRecoveryState += ActivateRecovery;
-
         _playerInput.OnMovement -= CurrentMoveDirection;
         _playerInput.OnMovement += CurrentMoveDirection;
     }
@@ -61,11 +58,10 @@ public class PlayerPhysicsController : MonoBehaviour
     public void Move()
     {
         // 인풋이 있을때만 회전을 한다. 
-        if (_playerInput.InputVec != _zeroVec && _playerInput.IsReflect == false)
+        if (_playerInput.InputVec != _zeroVec && _playerInput.CanMove == false)
         {
-            // Debug.Log($"moveDir : {_moveDir}");
-            Debug.Log(Quaternion.LookRotation(_moveDir));
-            
+            Debug.Log($"moveDir : {_moveDir}");
+
             _playerRigidbody.velocity = _moveDir * _moveSpeed;
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(_moveDir), _rotSpeed * Time.deltaTime);
         }
@@ -75,7 +71,7 @@ public class PlayerPhysicsController : MonoBehaviour
     public void OnJumping()
     {
         // 인풋이 있을때만 회전을 한다. 
-        if (_playerInput.InputVec != _zeroVec && _playerInput.IsReflect == false)
+        if (_playerInput.InputVec != _zeroVec && _playerInput.CanMove == false)
         {
             _playerRigidbody.AddForce(_moveDir * _jumpMovementForce, ForceMode.Force);
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(_moveDir), _rotSpeed * Time.deltaTime);    
@@ -111,6 +107,8 @@ public class PlayerPhysicsController : MonoBehaviour
         _playerDirection = transform.forward;
         _diveDirection = new Vector3(_playerDirection.x, 1.5f, _playerDirection.z);
         
+        Debug.Log(_diveDirection);
+        
         // Dive Direction으로 힘을 준다.
         _playerRigidbody.AddForce(_diveDirection * _diveForce, ForceMode.Impulse);
     }
@@ -129,6 +127,8 @@ public class PlayerPhysicsController : MonoBehaviour
     // 캐릭터가 Dive이후 일어나게 하는 함수.
     private async UniTaskVoid GetUp()
     {
+        _playerInput.CanMove = true;
+        
         _currentRotation = transform.rotation.eulerAngles;
         _targetRotation = Quaternion.Euler(0, _currentRotation.y, _currentRotation.z);
         
@@ -140,6 +140,8 @@ public class PlayerPhysicsController : MonoBehaviour
             
             await UniTask.Yield();
         }
+        
+        _playerInput.CanMove = false;
     }
 
     // 넘어지면서 회전축을 푼다.
@@ -149,14 +151,14 @@ public class PlayerPhysicsController : MonoBehaviour
     }
 
     // 평지에서 Fall 이후 다시 일어나게 하는 함수.
-    void ActivateRecovery()
+    public void ActivateRecovery()
     {
         Recovery().Forget();
     }
     
     private async UniTaskVoid Recovery()
     {
-        _playerInput.IsReflect = true;
+        _playerInput.CanMove = true;
         
         await UniTask.Delay(TimeSpan.FromSeconds(0.5f));
         
@@ -164,10 +166,7 @@ public class PlayerPhysicsController : MonoBehaviour
         _targetRotation = Quaternion.Euler(0, _currentRotation.y, 0);
         
         _playerRigidbody.constraints = RigidbodyConstraints.FreezeRotation;
-        
-        Debug.Log($"Fall Rotation : {_currentRotation}");
-        // Debug.Break();
-        
+
         while (Quaternion.Angle(transform.rotation, _targetRotation) > 0.1f)
         {
             // 캐릭터의 원래 방향으로 rotation한다.
@@ -177,6 +176,13 @@ public class PlayerPhysicsController : MonoBehaviour
             await UniTask.Yield();
         }
         
-        _playerInput.IsReflect = false;
+        _playerInput.CanMove = false;
+    }
+
+    [SerializeField] private Transform _respawnPosition; 
+    public void Respawn()
+    {
+        transform.position = _respawnPosition.position;
+        _playerRigidbody.constraints = RigidbodyConstraints.FreezeRotation;
     }
 }
