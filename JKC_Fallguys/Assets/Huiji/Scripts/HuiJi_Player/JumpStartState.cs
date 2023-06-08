@@ -3,13 +3,14 @@ using UnityEngine;
 
 public class JumpStartState : StateMachineBehaviour
 {
-    private Rigidbody _playerRigidbody;
-
-    public static event Action OnJump; 
-
+    private PlayerPhysicsController _playerPhysicsController;
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        _playerPhysicsController = animator.GetComponent<PlayerPhysicsController>();
+        
         animator.SetLayerWeight(1, 0);
-        OnJump?.Invoke();
+        
+        // 위로 점프한다.
+        _playerPhysicsController.ActivateJumpAction();
     }
 }
