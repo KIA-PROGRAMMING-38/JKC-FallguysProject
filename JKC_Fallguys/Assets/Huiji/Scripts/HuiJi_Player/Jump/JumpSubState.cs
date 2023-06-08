@@ -1,4 +1,4 @@
-using Literal;
+using LiteralRepository;
 using UnityEngine;
 
 public class JumpSubState : StateMachineBehaviour
@@ -14,7 +14,7 @@ public class JumpSubState : StateMachineBehaviour
     {
         if (_playerInput.IsDive)
         {
-            animator.SetBool(AnimLiteral.ISDIVING, true);
+            animator.SetBool(AnimLiteral.IsDiving, true);
         }
     }
 }

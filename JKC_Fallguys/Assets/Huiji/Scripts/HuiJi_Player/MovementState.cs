@@ -1,4 +1,4 @@
-using Literal;
+using LiteralRepository;
 using UnityEngine;
 
 public class MovementState : StateMachineBehaviour
@@ -20,18 +20,18 @@ public class MovementState : StateMachineBehaviour
         if (_playerInput.IsJump)
         {
             //Jump State로 전이
-            animator.SetBool(AnimLiteral.ISJUMPING, true);
+            animator.SetBool(AnimLiteral.IsJumping, true);
         }
 
         // Grab키를 눌렀을때
         if (_playerInput.IsAttemptingGrab)
         {
-            animator.SetBool(AnimLiteral.ISGRAB, true);
+            animator.SetBool(AnimLiteral.IsGrab, true);
         }
 
         if (_playerInput.IsDive)
         {
-            animator.SetBool(AnimLiteral.ISDIVING, true);
+            animator.SetBool(AnimLiteral.IsDiving, true);
         }
     }
 }

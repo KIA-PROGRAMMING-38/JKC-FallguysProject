@@ -1,6 +1,6 @@
 using System;
 using Cysharp.Threading.Tasks;
-using Literal;
+using LiteralRepository;
 using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
@@ -46,46 +46,46 @@ public class PlayerAnimation : MonoBehaviour
             _velocity = Mathf.Clamp(_velocity, 0, 1);
         }
         
-        _animator.SetFloat(AnimLiteral.MOVESPEED, _velocity);
+        _animator.SetFloat(AnimLiteral.MoveSpeed, _velocity);
     }
 
     private bool _isGround;
     private void OnCollisionEnter(Collision collision)
     {
         // AttempingGrab중 GrabBox랑 닿으면 Grab로 전이
-        if (collision.gameObject.CompareTag(TagLiteral.BOX) && _animator.GetBool(AnimLiteral.ISGRAB))
+        if (collision.gameObject.CompareTag(TagLiteral.Box) && _animator.GetBool(AnimLiteral.IsGrab))
         {
-            _animator.SetBool(AnimLiteral.ISGRABSUCCESS, true);
+            _animator.SetBool(AnimLiteral.IsGrabSuccess, true);
         }
 
         // Jump후 땅이랑 닿으면 Movement로 Exit.
-        if (collision.gameObject.CompareTag(TagLiteral.GROUND) && _animator.GetBool(AnimLiteral.ISJUMPING))
+        if (collision.gameObject.CompareTag(TagLiteral.Ground) && _animator.GetBool(AnimLiteral.IsJumping))
         {
-            _animator.SetBool(AnimLiteral.ISJUMPING, false);
+            _animator.SetBool(AnimLiteral.IsJumping, false);
         }
 
-        if (collision.gameObject.CompareTag(TagLiteral.GROUND) && _animator.GetBool(AnimLiteral.ISDIVING))
+        if (collision.gameObject.CompareTag(TagLiteral.Ground) && _animator.GetBool(AnimLiteral.IsDiving))
         {
-            _animator.SetBool(AnimLiteral.ISDIVING, false);
+            _animator.SetBool(AnimLiteral.IsDiving, false);
         }
 
-        if (collision.gameObject.CompareTag(TagLiteral.GROUND))
+        if (collision.gameObject.CompareTag(TagLiteral.Ground))
         {
-            _animator.SetBool(AnimLiteral.ISFALL, false);
+            _animator.SetBool(AnimLiteral.IsFall, false);
 
             _isGround = true;
         }
         
-        if (collision.impulse.magnitude > _topplingForce && !collision.gameObject.CompareTag(TagLiteral.GROUND))
+        if (collision.impulse.magnitude > _topplingForce && !collision.gameObject.CompareTag(TagLiteral.Ground))
         {
-            _animator.SetBool(AnimLiteral.ISFALL, true);
+            _animator.SetBool(AnimLiteral.IsFall, true);
             CheckFallStateAfterDelay(delay: 0.5f).Forget();
         }
     }
 
     private void OnCollisionExit(Collision other)
     {
-        if (other.gameObject.CompareTag(TagLiteral.GROUND))
+        if (other.gameObject.CompareTag(TagLiteral.Ground))
         {
             _isGround = false;
         }
@@ -96,30 +96,30 @@ public class PlayerAnimation : MonoBehaviour
     {
         await UniTask.Delay(TimeSpan.FromSeconds(delay));
 
-        if (_animator.GetBool(AnimLiteral.ISFALL) && _isGround)
+        if (_animator.GetBool(AnimLiteral.IsFall) && _isGround)
         {
-            _animator.SetBool(AnimLiteral.ISFALL, false);
+            _animator.SetBool(AnimLiteral.IsFall, false);
         }
     }
 
     
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag(TagLiteral.BOUNDARY))
+        if (other.gameObject.CompareTag(TagLiteral.Boundary))
         {
-            _animator.SetBool(AnimLiteral.ISFALL, true);
+            _animator.SetBool(AnimLiteral.IsFall, true);
         }
 
-        if (other.gameObject.CompareTag(TagLiteral.RESPAWN))
+        if (other.gameObject.CompareTag(TagLiteral.Respawn))
         {
-            _animator.SetBool(AnimLiteral.ISRESPAWNING, true);
+            _animator.SetBool(AnimLiteral.IsRespawning, true);
             _playerPhysicsController.Respawn();
         }
     }
 
     private void ReleaseGrab()
     {
-        _animator.SetBool(AnimLiteral.ISGRAB, false);
-        _animator.SetBool(AnimLiteral.ISGRABSUCCESS, false);
+        _animator.SetBool(AnimLiteral.IsGrab, false);
+        _animator.SetBool(AnimLiteral.IsGrabSuccess, false);
     }
 }

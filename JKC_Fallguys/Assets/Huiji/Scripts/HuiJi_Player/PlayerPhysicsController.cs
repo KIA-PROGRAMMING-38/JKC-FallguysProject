@@ -31,12 +31,6 @@ public class PlayerPhysicsController : MonoBehaviour
 
     private void Start()
     {
-        DiveStartState.OnDive -= ActivateDiveAction;
-        DiveStartState.OnDive += ActivateDiveAction;
-
-        DiveGetUpState.OnDiveGetUp -= ActivateGetUp;
-        DiveGetUpState.OnDiveGetUp += ActivateGetUp;
-
         _playerInput.OnMovement -= CurrentMoveDirection;
         _playerInput.OnMovement += CurrentMoveDirection;
     }
@@ -54,11 +48,12 @@ public class PlayerPhysicsController : MonoBehaviour
         _moveDir = _forwardAngleVec * _playerInput.InputVec.z + _rightAngleVec * _playerInput.InputVec.x;
     }
 
-    // 평지이동
+    /// <summary>
+    /// Movement State에서 호출.
+    /// </summary>
     public void Move()
     {
-        // 인풋이 있을때만 회전을 한다. 
-        if (_playerInput.InputVec != _zeroVec && _playerInput.CanMove == false)
+        if (_playerInput.InputVec != _zeroVec && _playerInput.CannotMove == false)
         {
             Debug.Log($"moveDir : {_moveDir}");
 
@@ -68,16 +63,21 @@ public class PlayerPhysicsController : MonoBehaviour
     }
 
     [SerializeField] private float _jumpMovementForce;
+    /// <summary>
+    /// Jumping State에서 호출.
+    /// </summary>
     public void OnJumping()
     {
-        // 인풋이 있을때만 회전을 한다. 
-        if (_playerInput.InputVec != _zeroVec && _playerInput.CanMove == false)
+        if (_playerInput.InputVec != _zeroVec && _playerInput.CannotMove == false)
         {
             _playerRigidbody.AddForce(_moveDir * _jumpMovementForce, ForceMode.Force);
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(_moveDir), _rotSpeed * Time.deltaTime);    
         }
     }
 
+    /// <summary>
+    /// Jump Start State에서 호출.
+    /// </summary>
     public void ActivateJumpAction()
     {
         JumpAction().Forget();
@@ -90,47 +90,28 @@ public class PlayerPhysicsController : MonoBehaviour
         await UniTask.Yield();
     }
 
-    void ActivateDiveAction()
+    /// <summary>
+    /// DiveStartState에서 호출.
+    /// </summary>
+    public void ActivateDiveAction()
     {
+        DiveRotation().Forget();
         DiveAction().Forget();
     }
-
-    private Vector3 _playerDirection;
-    private Vector3 _diveDirection;
     
-    // Dive시 앞으로 점프한다.
-    private async UniTaskVoid DiveAction()
-    {
-        await UniTask.DelayFrame(3);
-        
-        // Player가 바라보고 있는 방향을 구한뒤 Dive Direction을 구한다.
-        _playerDirection = transform.forward;
-        _diveDirection = new Vector3(_playerDirection.x, 1.5f, _playerDirection.z);
-        
-        Debug.Log(_diveDirection);
-        
-        // Dive Direction으로 힘을 준다.
-        _playerRigidbody.AddForce(_diveDirection * _diveForce, ForceMode.Impulse);
-    }
-
-    // GetUp을 실행시킨다.
-    void ActivateGetUp()
-    {
-        GetUp().Forget();
-    }
-
     private Vector3 _currentRotation;
     private Quaternion _targetRotation;
-    [SerializeField] private float _diveRotationSpeed;
-    [SerializeField] private float _fallRotationSpeed;
     
-    // 캐릭터가 Dive이후 일어나게 하는 함수.
-    private async UniTaskVoid GetUp()
+    private float _diveRotationX = 90;
+    [SerializeField] private float _diveRotationSpeed;
+    
+    // 캐릭터가 Dive할때 회전하는 함수.
+    private async UniTaskVoid DiveRotation()
     {
-        _playerInput.CanMove = true;
+        _playerInput.CannotMove = true;
         
         _currentRotation = transform.rotation.eulerAngles;
-        _targetRotation = Quaternion.Euler(0, _currentRotation.y, _currentRotation.z);
+        _targetRotation = Quaternion.Euler(_diveRotationX, _currentRotation.y, _currentRotation.z);
         
         while (Quaternion.Angle(transform.rotation, _targetRotation) > 0.1f)
         {
@@ -141,24 +122,76 @@ public class PlayerPhysicsController : MonoBehaviour
             await UniTask.Yield();
         }
         
-        _playerInput.CanMove = false;
+        _playerInput.CannotMove = false;
     }
 
-    // 넘어지면서 회전축을 푼다.
+    private Vector3 _playerDirection;
+    private Vector3 _diveDirection;
+    [SerializeField] private float _diveHeightDirection;
+    
+    // Dive시 앞으로 힘을 주어 점프하는 함수.
+    private async UniTaskVoid DiveAction()
+    {
+        await UniTask.DelayFrame(3);
+        
+        // Player가 바라보고 있는 방향을 구한뒤 Dive Direction을 구한다.
+        _playerDirection = transform.forward;
+        _diveDirection = new Vector3(_playerDirection.x, _diveHeightDirection, _playerDirection.z);
+
+        // Dive Direction으로 힘을 준다.
+        _playerRigidbody.AddForce(_diveDirection * _diveForce, ForceMode.Impulse);
+    }
+
+    /// <summary>
+    /// GetUpState에서 호출.
+    /// </summary>
+    public void ActivateGetUp()
+    {
+        GetUp().Forget();
+    }
+    
+    [SerializeField] private float _getUpRotationSpeed;
+
+    // 캐릭터가 Dive이후 일어나게 하는 함수.
+    private async UniTaskVoid GetUp()
+    {
+        _playerInput.CannotMove = true;
+        
+        _currentRotation = transform.rotation.eulerAngles;
+        _targetRotation = Quaternion.Euler(0, _currentRotation.y, _currentRotation.z);
+        
+        while (Quaternion.Angle(transform.rotation, _targetRotation) > 0.1f)
+        {
+            // 캐릭터의 원래 방향으로 rotation한다.
+            float step = _getUpRotationSpeed * Time.deltaTime;
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, _targetRotation, step);
+            
+            await UniTask.Yield();
+        }
+        
+        _playerInput.CannotMove = false;
+    }
+
+    /// <summary>
+    /// 넘어지면서 회전축을 푸는 함수. Fall State에서 호출.
+    /// </summary>
     public void UnfreezeRotationAxis()
     {
         _playerRigidbody.constraints = RigidbodyConstraints.None;
     }
 
-    // 평지에서 Fall 이후 다시 일어나게 하는 함수.
+    /// <summary>
+    /// Recovery State에서 호출.
+    /// </summary>
     public void ActivateRecovery()
     {
         Recovery().Forget();
     }
     
+    // 평지에서 Fall 이후 다시 일어나게 하는 함수.
     private async UniTaskVoid Recovery()
     {
-        _playerInput.CanMove = true;
+        _playerInput.CannotMove = true;
         
         await UniTask.Delay(TimeSpan.FromSeconds(0.5f));
         
@@ -170,16 +203,19 @@ public class PlayerPhysicsController : MonoBehaviour
         while (Quaternion.Angle(transform.rotation, _targetRotation) > 0.1f)
         {
             // 캐릭터의 원래 방향으로 rotation한다.
-            float step = _fallRotationSpeed * Time.deltaTime;
+            float step = _getUpRotationSpeed * Time.deltaTime;
             transform.rotation = Quaternion.RotateTowards(transform.rotation, _targetRotation, step);
             
             await UniTask.Yield();
         }
         
-        _playerInput.CanMove = false;
+        _playerInput.CannotMove = false;
     }
 
     [SerializeField] private Transform _respawnPosition; 
+    /// <summary>
+    /// Fall 이후 다시 원위치 되는 함수. Respawn Boundary랑 충돌햇을때 호출. 
+    /// </summary>
     public void Respawn()
     {
         transform.position = _respawnPosition.position;
