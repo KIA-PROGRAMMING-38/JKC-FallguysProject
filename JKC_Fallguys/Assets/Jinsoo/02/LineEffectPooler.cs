@@ -24,7 +24,7 @@ public class LineEffectPooler : MonoBehaviour
     
     // 생성 간 쿨다운을 제어하기 위한 상수들입니다.
     private const float SPAWN_COOLDOWN_TIME_MIN_VALUE = 0.2f;
-    private const float SPAWN_COOLDOWN_TIME_MAX_VALUE = 0.8f;
+    private const float SPAWN_COOLDOWN_TIME_MAX_VALUE = 0.5f;
     
     // 카메라에 대한 상대적인 생성 위치를 결정하기 위한 상수들입니다.
     private const int SPAWN_WEIGHT_MIN_VALUE = 0;

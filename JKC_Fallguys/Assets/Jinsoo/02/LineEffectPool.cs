@@ -6,6 +6,7 @@ using UnityEngine.Pool;
 public class LineEffectPool
 {
     public ObjectPool<LineEffect> LineEffectPoolInstance { get; private set; }
+    
     private Queue<LineEffect> _lineEffectPrefabs;
     private GameObject _parentObject;
     
