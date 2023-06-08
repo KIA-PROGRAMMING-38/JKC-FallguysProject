@@ -37,9 +37,6 @@ public class PlayerPhysicsController : MonoBehaviour
         DiveGetUpState.OnDiveGetUp -= ActivateGetUp;
         DiveGetUpState.OnDiveGetUp += ActivateGetUp;
 
-        JumpStartState.OnJump -= ActivateJumpAction;
-        JumpStartState.OnJump += ActivateJumpAction;
-
         RecoveryState.OnRecoveryState -= ActivateRecovery;
         RecoveryState.OnRecoveryState += ActivateRecovery;
 
@@ -85,7 +82,7 @@ public class PlayerPhysicsController : MonoBehaviour
         }
     }
 
-    private void ActivateJumpAction()
+    public void ActivateJumpAction()
     {
         JumpAction().Forget();
     }

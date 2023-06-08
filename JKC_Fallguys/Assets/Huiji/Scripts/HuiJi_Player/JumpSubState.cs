@@ -9,16 +9,12 @@ public class JumpSubState : StateMachineBehaviour
         _playerInput = animator.GetComponentInParent<PlayerInput>();
     }
     
+    // JumpState동안 Dive 키를 누르면 Dive로 전이할 수 있게 한다.
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         if (_playerInput.IsDive)
         {
             animator.SetBool(AnimLiteral.ISDIVING, true);
         }
-    }
-    
-    override public void OnStateMachineExit(Animator animator, int stateMachinePathHash)
-    {
-        // animator.SetBool(AnimLiteral.ISJUMPING, false);
     }
 }
