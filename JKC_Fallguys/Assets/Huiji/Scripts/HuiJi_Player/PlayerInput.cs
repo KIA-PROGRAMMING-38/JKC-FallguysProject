@@ -27,7 +27,7 @@ public class PlayerInput : MonoBehaviour
         }
     }
 
-    public bool IsReflect { get; set; }
+    public bool CanMove { get; set; }
     private bool _isMoving;
     
     public void OnMove(InputAction.CallbackContext context)

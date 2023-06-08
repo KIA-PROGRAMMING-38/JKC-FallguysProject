@@ -7,8 +7,9 @@ public class PlayerAnimation : MonoBehaviour
 {
     private Animator _animator;
     private PlayerInput _playerInput;
-    private Rigidbody _playerRigidbody;
+    private PlayerPhysicsController _playerPhysicsController;
     
+    // 플레이어 데이터로 변환 필요.
     [SerializeField] private float _acceleration = 0.5f;
     [SerializeField] private float _deceleration = 0.5f;
     [SerializeField] private float _topplingForce;
@@ -19,7 +20,7 @@ public class PlayerAnimation : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
         _playerInput = GetComponentInParent<PlayerInput>();
-        _playerRigidbody = GetComponent<Rigidbody>();
+        _playerPhysicsController = GetComponent<PlayerPhysicsController>();
     }
 
     private void Start()
@@ -75,7 +76,7 @@ public class PlayerAnimation : MonoBehaviour
             _isGround = true;
         }
         
-        if (collision.impulse.magnitude > _topplingForce && collision.gameObject.CompareTag(TagLiteral.GROUND))
+        if (collision.impulse.magnitude > _topplingForce && !collision.gameObject.CompareTag(TagLiteral.GROUND))
         {
             _animator.SetBool(AnimLiteral.ISFALL, true);
             CheckFallStateAfterDelay(delay: 0.5f).Forget();
@@ -101,7 +102,7 @@ public class PlayerAnimation : MonoBehaviour
         }
     }
 
-    [SerializeField] private Transform _respawnPosition; 
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag(TagLiteral.BOUNDARY))
@@ -111,9 +112,8 @@ public class PlayerAnimation : MonoBehaviour
 
         if (other.gameObject.CompareTag(TagLiteral.RESPAWN))
         {
-            transform.position = _respawnPosition.position;
             _animator.SetBool(AnimLiteral.ISRESPAWNING, true);
-            _playerRigidbody.constraints = RigidbodyConstraints.FreezeRotation;
+            _playerPhysicsController.Respawn();
         }
     }
 
