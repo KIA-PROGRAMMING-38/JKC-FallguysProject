@@ -4,20 +4,11 @@ using UnityEngine;
 
 public class FallState : StateMachineBehaviour
 {
-    private Rigidbody _playerRigidbody;
+    private PlayerPhysicsController _playerPhysicsController;
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.SetFloat("CollisionForce", 0);
+        _playerPhysicsController = animator.GetComponent<PlayerPhysicsController>();
         
-        _playerRigidbody = animator.GetComponent<Rigidbody>();
-        _playerRigidbody.constraints = RigidbodyConstraints.None;
-    }
-    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        
-    }
-    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        
+        _playerPhysicsController.UnfreezeRotationAxis();
     }
 }

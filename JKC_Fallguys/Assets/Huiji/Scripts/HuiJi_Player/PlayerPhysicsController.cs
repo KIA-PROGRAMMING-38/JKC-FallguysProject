@@ -142,6 +142,12 @@ public class PlayerPhysicsController : MonoBehaviour
         }
     }
 
+    // 넘어지면서 회전축을 푼다.
+    public void UnfreezeRotationAxis()
+    {
+        _playerRigidbody.constraints = RigidbodyConstraints.None;
+    }
+
     // 평지에서 Fall 이후 다시 일어나게 하는 함수.
     void ActivateRecovery()
     {
