@@ -11,11 +11,5 @@ R
 "Assets/1_Scripts/UI/Define/View.cs,e/0/e025a0be4f5bb78c03598e8aa7fa2ebc473507cf
 W
 'Assets/1_Scripts/UI/Define/Presenter.cs,3/3/33fe2cf1892aaa38bbcf73b88e0b7ea8eb066707
-T
-$Assets/Jinsoo/02/LineEffectPooler.cs,0/4/0404ff141f47528a4473aa4c393fc61d4db7f8cd
-N
-Assets/Jinsoo/02/LineEffect.cs,5/d/5dd8818e4ba2a03a15aec95a2064ed21850feb80
-c
-3Assets/Jinsoo/02/MatchingStandbySceneInitializer.cs,2/c/2c2ec2c0b3ddce4eb5c6d192dcc4dfd1aafe2121
 f
 6Assets/1_Scripts/Util/LiteralRepository/PathLiteral.cs,6/f/6ff13450df0cfa717f77e4df2a8d08cd45e6d24c

@@ -5,7 +5,7 @@ public class LineEffect : MonoBehaviour
     // 이 LineEffect가 속한 풀의 소유자입니다.
     public LineEffectPool PoolOwner { private get; set; }
 
-    private float _moveSpeed = 10f;  
+    private float _moveSpeed = 12f;  
 
     /// <summary>
     /// LineEffect 객체는 생성되면 Vector3.up 방향으로 이동합니다
