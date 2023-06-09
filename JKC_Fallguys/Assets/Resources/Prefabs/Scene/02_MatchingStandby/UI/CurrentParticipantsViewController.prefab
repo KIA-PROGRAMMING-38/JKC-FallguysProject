@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 396415618481425067}
+  - component: {fileID: 120150084081213038}
   m_Layer: 0
   m_Name: CurrentParticipantsViewController
   m_TagString: Untagged
@@ -32,6 +33,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &120150084081213038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 396415618481425066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e0b4a585d8134660a5b0caa77fefde3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &396415618606168410
 GameObject:
   m_ObjectHideFlags: 0
@@ -124,6 +137,7 @@ GameObject:
   - component: {fileID: 396415619707000993}
   - component: {fileID: 396415619707000992}
   - component: {fileID: 396415619707001007}
+  - component: {fileID: 3722416192026153712}
   m_Layer: 0
   m_Name: CurrentParticipantsView
   m_TagString: Untagged
@@ -213,3 +227,15 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &3722416192026153712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 396415619707001005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcc86f911704949968a0f491cfe78d4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

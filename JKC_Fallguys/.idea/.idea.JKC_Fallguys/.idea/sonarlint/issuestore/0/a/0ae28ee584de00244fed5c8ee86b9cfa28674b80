@@ -1,0 +1,5 @@
+
+Lcsharpsquid:S1125"*Remove the unnecessary Boolean literal(s).(ô‚çØüÿÿÿÿ
+Icsharpsquid:S3903",Move 'ResourceCache' into a named namespace.(ìÿü›
+‰csharpsquid:S3887	"gUse an immutable collection or reduce the accessibility of the non-private readonly field '_resources'.(šĞÁÛıÿÿÿÿ
+‚csharpsquid:S2386	"`Use an immutable collection or reduce the accessibility of the public static field '_resources'.(šĞÁÛıÿÿÿÿ

@@ -1,15 +1,27 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
-
 
 public class EnterLobbyFromMatchingView : View
 {
-    public Button UIPopUpButton { get; private set; }
+    public Button CancelButton { get; private set; }
+    public Button CheckButton { get; private set; }
+
+    private EnterLobbyFromMatchingViewController _enterLobbyFromMatchingViewController;
+    public EnterLobbyFromMatchingViewController EnterLobbyFromMatchingViewController
+    {
+        get { return _enterLobbyFromMatchingViewController; }
+    }
 
     private void Awake()
     {
-        UIPopUpButton = transform.Find("UIPopUpButton").GetComponent<Button>();
+        CancelButton = transform.Find("CancelButton").GetComponent<Button>();
+        Debug.Assert(CancelButton != null);
+        CheckButton = transform.Find("CheckButton").GetComponent<Button>();
+        Debug.Assert(CheckButton != null);
+    }
+
+    public void SetReference(EnterLobbyFromMatchingViewController enterLobbyFromMatchingViewController)
+    {
+        _enterLobbyFromMatchingViewController = enterLobbyFromMatchingViewController;
     }
 }

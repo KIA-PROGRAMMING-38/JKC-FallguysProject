@@ -5,11 +5,16 @@ using UnityEngine.Pool;
 
 public class LineEffectPool
 {
+    // Object Pool 인스턴스를 관리하는 프로퍼티.
     public ObjectPool<LineEffect> LineEffectPoolInstance { get; private set; }
     
     private Queue<LineEffect> _lineEffectPrefabs;
+    // LineEffect 인스턴스의 부모 객체.
     private GameObject _parentObject;
     
+    /// <summary>
+    /// 생성자에서 부모 객체를 받아 LineEffectPool을 초기화합니다.
+    /// </summary>
     public LineEffectPool(GameObject parent)
     {
         _lineEffectPrefabs = SetLineEffectPrefabs();
@@ -20,6 +25,7 @@ public class LineEffectPool
             true, 28, 40);
     }
 
+    // LineEffect 프리팹을 불러와 큐에 저장합니다
     private Queue<LineEffect> SetLineEffectPrefabs()
     {
         string filePath = DataManager.SetDataPath(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.MatchingStandby, "LineEffect");

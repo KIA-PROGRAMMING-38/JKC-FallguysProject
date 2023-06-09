@@ -209,6 +209,7 @@ GameObject:
   - component: {fileID: 6270613323492109296}
   - component: {fileID: 6270613323492109299}
   - component: {fileID: 6270613323492109298}
+  - component: {fileID: 7917484249092893125}
   m_Layer: 0
   m_Name: ReturnButtonView
   m_TagString: Untagged
@@ -299,6 +300,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &7917484249092893125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6270613323492109300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 840c333cf96614e8cb33eccfdab22a20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6270613324012617870
 GameObject:
   m_ObjectHideFlags: 0
@@ -388,6 +401,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6270613324090479871}
+  - component: {fileID: 6192490400616362832}
   m_Layer: 0
   m_Name: ReturnButtonViewController
   m_TagString: Untagged
@@ -411,6 +425,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6192490400616362832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6270613324090479870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3781b1b2273454c76b4f882ab775f060, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6270613324406317883
 GameObject:
   m_ObjectHideFlags: 0
