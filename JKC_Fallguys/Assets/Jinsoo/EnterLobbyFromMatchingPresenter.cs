@@ -18,13 +18,19 @@ public class EnterLobbyFromMatchingPresenter : Presenter
             .OnClickAsObservable()
             .Subscribe(_ => Model.MatchingSceneModel.DeActiveEnterLobbyPanel())
             .AddTo(_compositeDisposable);
+
+        Observable.EveryUpdate()
+            .ObserveEveryValueChanged(_ => Model.MatchingSceneModel.IsActionPossible)
+            .Where(_ => !Model.MatchingSceneModel.IsActionPossible)
+            .Subscribe(_ => Model.MatchingSceneModel.DeActiveEnterLobbyPanel())
+            .AddTo(_compositeDisposable);
     }
 
     protected override void OnUpdatedModel()
     {
         Observable.EveryUpdate()
-            .ObserveEveryValueChanged(_ => Model.MatchingSceneModel.IsEnterLobbyFromMatching)
-            .Where(_ => !Model.MatchingSceneModel.IsEnterLobbyFromMatching)
+            .ObserveEveryValueChanged(_ => Model.MatchingSceneModel.IsEnterLobbyFromMatchingScene)
+            .Where(_ => !Model.MatchingSceneModel.IsEnterLobbyFromMatchingScene)
             .Subscribe(_ => DeActivateEnterLobbyPanel())
             .AddTo(_compositeDisposable);
     }

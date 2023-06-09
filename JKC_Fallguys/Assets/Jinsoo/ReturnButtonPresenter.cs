@@ -8,6 +8,8 @@ public class ReturnButtonPresenter : Presenter
     public override void OnInitialize(View view)
     {
         _returnButtonView = view as ReturnButtonView;
+        // 룸에 입장할 경우의 변수 초기화.
+        Model.MatchingSceneModel.PossibleToEnter(true);
         
         InitializeRx();
     }
@@ -23,8 +25,9 @@ public class ReturnButtonPresenter : Presenter
     protected override void OnUpdatedModel()
     {
         Observable.EveryUpdate()
-            .ObserveEveryValueChanged(_ => Model.MatchingSceneModel.IsEnterLobbyFromMatching)
-            .Where(_ => Model.MatchingSceneModel.IsEnterLobbyFromMatching)
+            .ObserveEveryValueChanged(_ => Model.MatchingSceneModel.IsEnterLobbyFromMatchingScene)
+            .Where(_ => Model.MatchingSceneModel.IsEnterLobbyFromMatchingScene)
+            .Where(_ => Model.MatchingSceneModel.IsActionPossible)
             .Subscribe(_ => OnActiveEnterLobbyPanel())
             .AddTo(_compositeDisposable);
     }

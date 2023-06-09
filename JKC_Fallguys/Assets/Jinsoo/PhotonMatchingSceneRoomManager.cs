@@ -39,6 +39,7 @@ public class PhotonMatchingSceneRoomManager : MonoBehaviourPun
     private void LockUpEntrance()
     {
         PhotonNetwork.CurrentRoom.IsOpen = false;
+        Model.MatchingSceneModel.PossibleToEnter(false);
 
         int index = 1;
         foreach (KeyValuePair<int, Player> player in PhotonNetwork.CurrentRoom.Players)
