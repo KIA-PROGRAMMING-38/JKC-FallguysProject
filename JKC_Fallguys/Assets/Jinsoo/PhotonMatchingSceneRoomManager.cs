@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Photon.Pun;
 using Photon.Realtime;
 using UniRx;
+using UnityEngine;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class PhotonMatchingSceneRoomManager : MonoBehaviourPun

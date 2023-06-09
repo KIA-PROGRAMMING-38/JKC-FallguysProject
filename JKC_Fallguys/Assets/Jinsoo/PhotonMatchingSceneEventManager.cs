@@ -1,3 +1,6 @@
+using System;
+using System.IO;
+using LiteralRepository;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
@@ -6,9 +9,9 @@ public class PhotonMatchingSceneEventManager : MonoBehaviourPunCallbacks
 {
     private PhotonMatchingSceneRoomManager _roomManager;
 
-    public void OnInitialize(PhotonMatchingSceneRoomManager roomManager)
+    private void Awake()
     {
-        _roomManager = roomManager;
+        PhotonNetwork.JoinRandomRoom();
     }
  
     /// <summary>
@@ -22,12 +25,26 @@ public class PhotonMatchingSceneEventManager : MonoBehaviourPunCallbacks
     
     public override void OnJoinedRoom()
     {
+        OnInstantiatePhotonRoomManager();
+        
         _roomManager.PlayerEnterTheRoom();
         _roomManager.SetGameStartStream();
         
         PhotonNetwork.AutomaticallySyncScene = true;
 
         Debug.Log("Joined to a room successfully");
+    }
+
+    private void OnInstantiatePhotonRoomManager()
+    {
+        string filePath = DataManager.SetDataPath
+            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.MatchingStandby, PathLiteral.Object, "PhotonMatchingSceneRoomManager");
+        
+        PhotonMatchingSceneRoomManager roomManager = 
+            PhotonNetwork.Instantiate(filePath, transform.position, transform.rotation)
+            .GetComponent<PhotonMatchingSceneRoomManager>();
+
+        _roomManager = roomManager;
     }
     
     public override void OnJoinRandomFailed(short returnCode, string message)

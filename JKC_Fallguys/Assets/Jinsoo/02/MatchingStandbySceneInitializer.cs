@@ -11,17 +11,12 @@ public class MatchingStandbySceneInitializer : SceneInitialize
     private ReturnButtonViewController _returnButtonViewController;
     private EnterLobbyFromMatchingViewController _enterLobbyFromMatchingViewController;
 
-    [Header("Photon")] 
-    private PhotonMatchingSceneRoomManager _photonMatchingSceneRoomManager;
-    private PhotonMatchingSceneEventManager _photonMatchingSceneEventManager;
-    
     protected override void Start()
     {
         base.Start();
         
         _lineEffectPooler.OnInitialize(_respawnZone);
         _returnButtonViewController.OnInitialize(_enterLobbyFromMatchingViewController);
-        _photonMatchingSceneEventManager.OnInitialize(_photonMatchingSceneRoomManager);
     }
     
     protected override void OnGetResources()
@@ -38,13 +33,9 @@ public class MatchingStandbySceneInitializer : SceneInitialize
         _enterLobbyFromMatchingViewController = Instantiate(DataManager.GetGameObjectData
             (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.MatchingStandby, PathLiteral.UI, "EnterLobbyFromMatchingViewController"))
             .GetComponent<EnterLobbyFromMatchingViewController>();
-        _photonMatchingSceneRoomManager = Instantiate(DataManager.GetGameObjectData
-                (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.MatchingStandby, PathLiteral.Object, "PhotonMatchingSceneRoomManager"))
-            .GetComponent<PhotonMatchingSceneRoomManager>();
-        _photonMatchingSceneEventManager = Instantiate(DataManager.GetGameObjectData
-                (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.MatchingStandby, PathLiteral.Object, "PhotonMatchingSceneEventManager"))
-            .GetComponent<PhotonMatchingSceneEventManager>();
-        
+
+        Instantiate(DataManager.GetGameObjectData
+            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.MatchingStandby, PathLiteral.Object, "PhotonMatchingSceneEventManager"));
         Instantiate(DataManager.GetGameObjectData
             (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.MatchingStandby, PathLiteral.Object, "ReleaseZone"));
         Instantiate(DataManager.GetGameObjectData
@@ -53,6 +44,5 @@ public class MatchingStandbySceneInitializer : SceneInitialize
             (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.MatchingStandby, PathLiteral.UI, "RotationFaceIconViewController"));
         Instantiate(DataManager.GetGameObjectData
             (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.MatchingStandby, PathLiteral.UI, "CurrentParticipantsViewController"));
-        
     }
 }

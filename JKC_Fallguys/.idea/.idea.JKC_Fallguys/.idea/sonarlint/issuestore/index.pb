@@ -1,8 +1,4 @@
 
-m
-=Assets/Photon/PhotonUnityNetworking/Code/PhotonNetworkPart.cs,f/2/f257eb6a4665a6f4f169907056c56c781e4b7e95
-i
-9Assets/Photon/PhotonUnityNetworking/Code/PhotonNetwork.cs,8/a/8af7c70f8fb3b930507796d5b7a87f76deaaefab
 [
 +Assets/Editor/ResourcesPrefabPathBuilder.cs,a/2/a2a48346243bcb24039e2896f28969c34d928f1a
 R
@@ -25,16 +21,12 @@ N
 Assets/Jinsoo/02/LineEffect.cs,5/d/5dd8818e4ba2a03a15aec95a2064ed21850feb80
 T
 $Assets/Jinsoo/02/LineEffectPooler.cs,0/4/0404ff141f47528a4473aa4c393fc61d4db7f8cd
-U
-%Assets/Jinsoo/RotationFaceIconView.cs,f/1/f1be401a53ef2bed154d63c1470b2450799de0de
 _
 /Assets/Jinsoo/RotationFaceIconViewController.cs,b/5/b522f1bffa792029f0f7ca7fb35de3819395fef5
 X
 (Assets/Jinsoo/CurrentParticipantsView.cs,c/3/c3940437e976dc7152e0e1a14619858db8efa2aa
 d
 4Assets/1_Scripts/UI/01_Lobby/LobbySceneInitialize.cs,3/4/3413941270634a587fa4a11784eabb2b4506eb74
-Z
-*Assets/Jinsoo/RotationFaceIconPresenter.cs,f/9/f95e7149a0fb5347da0c85148a89be99ca7210ed
 b
 2Assets/Jinsoo/CurrentParticipantsViewController.cs,c/b/cbd80807945e29d1304f1f424475c23b329a611d
 ]
