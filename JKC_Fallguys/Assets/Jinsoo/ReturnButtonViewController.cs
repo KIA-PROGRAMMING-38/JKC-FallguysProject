@@ -19,7 +19,7 @@ public class ReturnButtonViewController : ViewController
         View.GetComponent<ReturnButtonView>().SetReference(EnterLobbyFromMatchingViewController);
     }
 
-    public void SetReference
+    public void OnInitialize
         (EnterLobbyFromMatchingViewController enterLobbyFromMatchingViewController)
     {
         EnterLobbyFromMatchingViewController = enterLobbyFromMatchingViewController;
