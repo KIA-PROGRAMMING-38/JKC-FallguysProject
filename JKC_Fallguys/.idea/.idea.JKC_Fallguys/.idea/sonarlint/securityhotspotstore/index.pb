@@ -29,8 +29,6 @@ X
 (Assets/Jinsoo/CurrentParticipantsView.cs,c/3/c3940437e976dc7152e0e1a14619858db8efa2aa
 b
 2Assets/Jinsoo/CurrentParticipantsViewController.cs,c/b/cbd80807945e29d1304f1f424475c23b329a611d
-]
--Assets/Jinsoo/CurrentParticipantsPresenter.cs,8/7/871d769c3ebc1b34e990eec692fb8cab37d636ea
 \
 ,Assets/1_Scripts/UI/Define/ViewController.cs,0/5/057052b2700a0a11f8c31d551b0150f4eace8274
 Q

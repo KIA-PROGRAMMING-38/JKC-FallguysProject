@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
+using Photon.Pun;
 using UniRx;
-using UnityEngine;
 
 public class CurrentParticipantsPresenter : Presenter
 {
@@ -22,7 +20,28 @@ public class CurrentParticipantsPresenter : Presenter
 
     protected override void OnUpdatedModel()
     {
+        Observable.EveryUpdate()
+            .ObserveEveryValueChanged(_ => Model.MatchingSceneModel.IsEnterPhotonRoom)
+            .Where(_ => Model.MatchingSceneModel.IsEnterPhotonRoom)
+            .Subscribe(_ => OnActiveCurrentPlayerCount())
+            .AddTo(_compositeDisposable);
+    }
+    
+    private void OnActiveCurrentPlayerCount()
+    {
+        _currentParticipantsView.CurrentParticipantsCount.gameObject.SetActive(true);
         
+        Observable.EveryUpdate()
+            .ObserveEveryValueChanged(_ => PhotonNetwork.CurrentRoom.PlayerCount)
+            .Subscribe(_ => UpdateCurrentPlayerCountText())
+            .AddTo(_compositeDisposable);
+    }
+    
+    // 현재 참여자 수를 업데이트하는 메서드입니다.
+    private void UpdateCurrentPlayerCountText()
+    {
+        int playerCount = PhotonNetwork.CurrentRoom.PlayerCount;
+        _currentParticipantsView.CurrentParticipantsCount.text = $"{playerCount}명의 플레이어와 매치 발견!";
     }
     
     public override void OnRelease()

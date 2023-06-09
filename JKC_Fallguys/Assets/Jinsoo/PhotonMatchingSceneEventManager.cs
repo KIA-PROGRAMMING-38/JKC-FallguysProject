@@ -1,5 +1,3 @@
-using System;
-using System.IO;
 using LiteralRepository;
 using Photon.Pun;
 using Photon.Realtime;
@@ -26,13 +24,19 @@ public class PhotonMatchingSceneEventManager : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         OnInstantiatePhotonRoomManager();
+        OnInitialzeJoinRoom();
+
+        Debug.Log("Joined to a room successfully");
+    }
+
+    private void OnInitialzeJoinRoom()
+    {
+        Model.MatchingSceneModel.RoomAdmissionStatus(true);
         
         _roomManager.PlayerEnterTheRoom();
         _roomManager.SetGameStartStream();
         
         PhotonNetwork.AutomaticallySyncScene = true;
-
-        Debug.Log("Joined to a room successfully");
     }
 
     private void OnInstantiatePhotonRoomManager()

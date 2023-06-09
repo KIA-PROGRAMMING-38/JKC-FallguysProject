@@ -8,6 +8,13 @@ namespace Model
         {
             get { return _isEnterLobbyFromMatching; }
         }
+
+        // 포톤 룸에 입장했음을 알리는 불리언 값입니다.
+        private static bool _isEnterPhotonRoom;
+        public static bool IsEnterPhotonRoom
+        {
+            get { return _isEnterPhotonRoom; }
+        }
         
         // 게임 시작까지 카운트다운 할 숫자를 나타냅니다.
         private static int _startCount;
@@ -48,6 +55,15 @@ namespace Model
         public static void DecreaseStartCount()
         {
             --_startCount;
+        }
+
+        /// <summary>
+        /// 현재 포톤 룸에 입장했음을 알려줄 수 있는 함수입니다.
+        /// </summary>
+        /// <param name="status">입장했을 경우 true, 나갈 경우 false를 인수로 넘겨줍니다.</param>
+        public static void RoomAdmissionStatus(bool status)
+        {
+            _isEnterPhotonRoom = status;
         }
     }
 }

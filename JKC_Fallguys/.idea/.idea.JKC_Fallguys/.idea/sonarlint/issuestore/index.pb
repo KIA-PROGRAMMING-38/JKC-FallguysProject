@@ -29,8 +29,6 @@ d
 4Assets/1_Scripts/UI/01_Lobby/LobbySceneInitialize.cs,3/4/3413941270634a587fa4a11784eabb2b4506eb74
 b
 2Assets/Jinsoo/CurrentParticipantsViewController.cs,c/b/cbd80807945e29d1304f1f424475c23b329a611d
-]
--Assets/Jinsoo/CurrentParticipantsPresenter.cs,8/7/871d769c3ebc1b34e990eec692fb8cab37d636ea
 `
 0Assets/Jinsoo/EnterLobbyFromMatchingPresenter.cs,5/e/5eca3a25de31877ef2fff699c22da363e7d7c630
 V
