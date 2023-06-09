@@ -1,0 +1,23 @@
+
+rcsharpsquid:S101%"QRename class 'PunRPC' to match pascal case naming rules, consider using 'PunRpc'.(òôª‘ûÿÿÿÿ
+mcsharpsquid:S1118µ"OAdd a 'protected' constructor or the 'static' keyword to the class declaration.(“­Ñì
+rcsharpsquid:S1118İ"OAdd a 'protected' constructor or the 'static' keyword to the class declaration.(åëÈéıÿÿÿÿ
+gcsharpsquid:S1104‰"DMake this field 'private' and encapsulate it in a 'public' property.(åÏ·àşÿÿÿÿ
+Lcsharpsquid:S3376%"*Make this class name end with 'Attribute'.(òôª‘ûÿÿÿÿ
+ˆcsharpsquid:S3887Ü"jUse an immutable collection or reduce the accessibility of the non-private readonly field 'ResourceCache'.(µÉí™
+Œcsharpsquid:S2386‰"iUse an immutable collection or reduce the accessibility of the public static field 'ParametersOfMethods'.(åÏ·àşÿÿÿÿ
+Scsharpsquid:S1133º"5Do not forget to remove this deprecated code someday.(æşÁì
+Scsharpsquid:S1133¶"5Do not forget to remove this deprecated code someday.(æ¼½Ñ
+Xcsharpsquid:S1133ä"5Do not forget to remove this deprecated code someday.(¤Ğ÷¡üÿÿÿÿ
+Rcsharpsquid:S1905›"/Remove this unnecessary cast to 'PhotonView[]'.(÷–¼Øÿÿÿÿÿ
+Pcsharpsquid:S1905 "-Remove this unnecessary cast to 'PhotonView'.(¬¨®ûÿÿÿÿ
+Pcsharpsquid:S1905÷"-Remove this unnecessary cast to 'GameObject'.(æÖ³üÿÿÿÿ
+scsharpsquid:S2223‰"PChange the visibility of 'ParametersOfMethods' or make it 'const' or 'readonly'.(åÏ·àşÿÿÿÿ
+Pcsharpsquid:S2259ô"-'res' is null on at least one execution path.(‚Ó˜şşÿÿÿÿ
+Rcsharpsquid:S112©"5'System.Exception' should not be thrown by user code.(×Áª¼
+;csharpsquid:S125N"Remove this commented out code.(Ú°à¬
+<csharpsquid:S125Ô"Remove this commented out code.(—÷’¯
+Wcsharpsquid:S1135ˆ"4Complete the task associated to this 'TODO' comment.(—íÀÒüÿÿÿÿ
+Wcsharpsquid:S1135"4Complete the task associated to this 'TODO' comment.(—íÀÒüÿÿÿÿ
+Wcsharpsquid:S1135¦"4Complete the task associated to this 'TODO' comment.(£¼äøÿÿÿÿ
+Wcsharpsquid:S1135¬"4Complete the task associated to this 'TODO' comment.(£¼äøÿÿÿÿ

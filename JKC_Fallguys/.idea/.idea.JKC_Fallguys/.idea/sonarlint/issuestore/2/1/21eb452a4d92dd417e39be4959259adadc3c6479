@@ -1,0 +1,62 @@
+
+~csharpsquid:S3928Ì"[Use a constructor overloads that allows a more meaningful exception message to be provided.(«èñıÿÿÿÿ
+~csharpsquid:S3928é"[Use a constructor overloads that allows a more meaningful exception message to be provided.(«èñıÿÿÿÿ
+mcsharpsquid:S1118İ"OAdd a 'protected' constructor or the 'static' keyword to the class declaration.(”¶¹„
+pcsharpsquid:S3776®"RRefactor this method to reduce its Cognitive Complexity from 23 to the 15 allowed.(ÿ–Ê—
+vcsharpsquid:S3776¿"SRefactor this method to reduce its Cognitive Complexity from 104 to the 15 allowed.(éĞ„ßıÿÿÿÿ
+pcsharpsquid:S3776ˆ"RRefactor this method to reduce its Cognitive Complexity from 70 to the 15 allowed.(¾À×Š
+pcsharpsquid:S3776î"RRefactor this method to reduce its Cognitive Complexity from 46 to the 15 allowed.(¢ÑÖÁ
+ucsharpsquid:S3776Ë"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(ñ¨Ğğÿÿÿÿÿ
+kcsharpsquid:S1699"MRemove this call from a constructor to the overridable 'CreatePlayer' method.(’©÷Ò
+7csharpsquid:S2933¥""Make 'client' 'readonly'.(Å‹Û¹
+7csharpsquid:S2933Á""Make 'client' 'readonly'.(Å‹Û¹
+bcsharpsquid:S1104€"DMake this field 'private' and encapsulate it in a 'public' property.(¢œşÑ
+gcsharpsquid:S1104‚"DMake this field 'private' and encapsulate it in a 'public' property.(ãÉš–øÿÿÿÿ
+bcsharpsquid:S1104„"DMake this field 'private' and encapsulate it in a 'public' property.(úÉ¸‰
+bcsharpsquid:S1104Ã"DMake this field 'private' and encapsulate it in a 'public' property.(ù™€×
+bcsharpsquid:S1104Æ"DMake this field 'private' and encapsulate it in a 'public' property.(–ÃïË
+bcsharpsquid:S1104é"DMake this field 'private' and encapsulate it in a 'public' property.(Ÿø¶¾
+gcsharpsquid:S1104„"DMake this field 'private' and encapsulate it in a 'public' property.( µÀ³üÿÿÿÿ
+bcsharpsquid:S1104³"DMake this field 'private' and encapsulate it in a 'public' property.(ë„°‚
+gcsharpsquid:S1104—"DMake this field 'private' and encapsulate it in a 'public' property.(‡œ’şÿÿÿÿ
+bcsharpsquid:S1104›"DMake this field 'private' and encapsulate it in a 'public' property.(†Ïêà
+gcsharpsquid:S1104Ó"DMake this field 'private' and encapsulate it in a 'public' property.(äÅÌãùÿÿÿÿ
+gcsharpsquid:S1104Ë"DMake this field 'private' and encapsulate it in a 'public' property.(•ïÊ÷øÿÿÿÿ
+gcsharpsquid:S1104Ñ"DMake this field 'private' and encapsulate it in a 'public' property.(½îĞşÿÿÿÿ
+gcsharpsquid:S1104¬"DMake this field 'private' and encapsulate it in a 'public' property.(Øñ´¢üÿÿÿÿ
+6csharpsquid:S907º"Remove this use of 'goto'.(³Ë€L
+„csharpsquid:S3260İ"fPrivate classes or records which are not derived in the current assembly should be marked as 'sealed'.(”¶¹„
+ƒcsharpsquid:S3260î"fPrivate classes or records which are not derived in the current assembly should be marked as 'sealed'.(ì£Ìj
+Wcsharpsquid:S1133<"5Do not forget to remove this deprecated code someday.(áëñÑÿÿÿÿÿ
+Wcsharpsquid:S1133A"5Do not forget to remove this deprecated code someday.(ÊªôÛûÿÿÿÿ
+Qcsharpsquid:S1133F"5Do not forget to remove this deprecated code someday.(ñŒ›)
+Wcsharpsquid:S1133T"5Do not forget to remove this deprecated code someday.(½“ò˜úÿÿÿÿ
+Wcsharpsquid:S1133Y"5Do not forget to remove this deprecated code someday.(”ôÃùÿÿÿÿ
+Rcsharpsquid:S1133d"5Do not forget to remove this deprecated code someday.(Ó‚¡…
+Rcsharpsquid:S1133f"5Do not forget to remove this deprecated code someday.(Ó‚¡…
+Xcsharpsquid:S1133ó"5Do not forget to remove this deprecated code someday.(‰Ûïøÿÿÿÿ
+Xcsharpsquid:S1133¶"5Do not forget to remove this deprecated code someday.(Õìóøÿÿÿÿ
+vcsharpsquid:S927Î!"TRename parameter 'changedProp' to 'changedProps' to match the interface declaration.(Å…°ºÿÿÿÿÿ
+ncsharpsquid:S927î"QRename parameter 'photonEvent' to 'eventData' to match the interface declaration.(¢ÑÖÁ
+^csharpsquid:S2259œ";'originatingPlayer' is null on at least one execution path.(§™Şâøÿÿÿÿ
+hcsharpsquid:S3241‰"JChange return type to 'void'; not a single caller uses the returned value.(Áç¸Ø
+<csharpsquid:S125ï"Remove this commented out code.(«ôà†
+<csharpsquid:S125Ë"Remove this commented out code.(Ú°à¬
+<csharpsquid:S125Á"Remove this commented out code.(ì™’í
+<csharpsquid:S125É"Remove this commented out code.(áØ’
+;csharpsquid:S125Ÿ"Remove this commented out code.(øÆâe
+<csharpsquid:S125¡"Remove this commented out code.(ïÑÄÆ
+<csharpsquid:S125ê"Remove this commented out code.(Ë®ÅÌ
+<csharpsquid:S125©"Remove this commented out code.(”¥Î
+<csharpsquid:S125«"Remove this commented out code.(ÿÒ¡›
+Acsharpsquid:S125ä"Remove this commented out code.(ÁïÚ¯üÿÿÿÿ
+<csharpsquid:S125—"Remove this commented out code.(ü’ë“
+Acsharpsquid:S125º"Remove this commented out code.(ºİÑ¬ÿÿÿÿÿ
+<csharpsquid:S125™"Remove this commented out code.(¿¿·á
+Acsharpsquid:S125Õ"Remove this commented out code.(¹û¨Ãøÿÿÿÿ
+Acsharpsquid:S125ß"Remove this commented out code.(€áâñùÿÿÿÿ
+Rcsharpsquid:S1135"4Complete the task associated to this 'TODO' comment.(’©÷Ò
+Rcsharpsquid:S1135§"4Complete the task associated to this 'TODO' comment.(ÕßÙ
+Wcsharpsquid:S1135ü"4Complete the task associated to this 'TODO' comment.(¬é¼Àıÿÿÿÿ
+Wcsharpsquid:S1135æ"4Complete the task associated to this 'TODO' comment.(¢´Ø‹úÿÿÿÿ
+Wcsharpsquid:S1135°"4Complete the task associated to this 'TODO' comment.(äñËÃûÿÿÿÿ

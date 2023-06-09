@@ -21,7 +21,7 @@ public class PlayerNamePlatePresenter : Presenter
 
     private void UpdatePlayerDataModel(string playerName)
     {
-        Model.LobbyDataModel.SetPlayerName(playerName);
+        Model.LobbySceneModel.SetPlayerName(playerName);
     }
 
     protected override void OnUpdatedModel()
@@ -31,7 +31,7 @@ public class PlayerNamePlatePresenter : Presenter
 
     private void UpdateNamePlate()
     {
-        _playerNamePlateView.PlayerNameText.text = Model.LobbyDataModel.PlayerName;
+        _playerNamePlateView.PlayerNameText.text = Model.LobbySceneModel.PlayerName;
     }
     
     public override void OnRelease()

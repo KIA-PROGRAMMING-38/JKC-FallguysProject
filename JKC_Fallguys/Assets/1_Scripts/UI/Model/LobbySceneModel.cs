@@ -1,6 +1,6 @@
 namespace Model
 {
-    public static class LobbyDataModel
+    public static class LobbySceneModel
     {
         public enum CurrentLobbyState
         {
