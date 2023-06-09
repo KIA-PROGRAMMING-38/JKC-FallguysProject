@@ -9,7 +9,7 @@ public class TopButtonListPresenter : Presenter
     public override void OnInitialize(View view)
     {
         _topButtonListView = view as TopButtonListView;
-        Model.LobbyDataModel.SetLobbyState(Model.LobbyDataModel.CurrentLobbyState.Home);
+        Model.LobbySceneModel.SetLobbyState(Model.LobbySceneModel.CurrentLobbyState.Home);
     
         InitializeRx();
     }
@@ -21,12 +21,12 @@ public class TopButtonListPresenter : Presenter
     {
         _topButtonListView.HomeButton
             .OnClickAsObservable()
-            .Subscribe(_ => Model.LobbyDataModel.SetLobbyState(Model.LobbyDataModel.CurrentLobbyState.Home))
+            .Subscribe(_ => Model.LobbySceneModel.SetLobbyState(Model.LobbySceneModel.CurrentLobbyState.Home))
             .AddTo(_compositeDisposable);
         
         _topButtonListView.CustomizeButton
             .OnClickAsObservable()
-            .Subscribe(_ => Model.LobbyDataModel.SetLobbyState(Model.LobbyDataModel.CurrentLobbyState.Customization))
+            .Subscribe(_ => Model.LobbySceneModel.SetLobbyState(Model.LobbySceneModel.CurrentLobbyState.Customization))
             .AddTo(_compositeDisposable);
     }
     
@@ -36,14 +36,14 @@ public class TopButtonListPresenter : Presenter
     protected override void OnUpdatedModel()
     {
         Observable.EveryUpdate()
-            .ObserveEveryValueChanged(_ => Model.LobbyDataModel.LobbyState)
-            .Where(_ => Model.LobbyDataModel.LobbyState == Model.LobbyDataModel.CurrentLobbyState.Home)
+            .ObserveEveryValueChanged(_ => Model.LobbySceneModel.LobbyState)
+            .Where(_ => Model.LobbySceneModel.LobbyState == Model.LobbySceneModel.CurrentLobbyState.Home)
             .Subscribe(_ => Debug.Log("홈 UI가 실행됩니다."))
             .AddTo(_compositeDisposable);
         
         Observable.EveryUpdate()
-            .ObserveEveryValueChanged(_ => Model.LobbyDataModel.LobbyState)
-            .Where(_ => Model.LobbyDataModel.LobbyState == Model.LobbyDataModel.CurrentLobbyState.Customization)
+            .ObserveEveryValueChanged(_ => Model.LobbySceneModel.LobbyState)
+            .Where(_ => Model.LobbySceneModel.LobbyState == Model.LobbySceneModel.CurrentLobbyState.Customization)
             .Subscribe(_ => Debug.Log("커스터마이즈 UI가 실행됩니다."))
             .AddTo(_compositeDisposable);
     }

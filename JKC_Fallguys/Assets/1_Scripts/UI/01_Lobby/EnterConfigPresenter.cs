@@ -9,7 +9,7 @@ public class EnterConfigPresenter : Presenter
     public override void OnInitialize(View view)
     {
         _enterConfigView = view as EnterConfigView;
-        Model.LobbyDataModel.SetActiveConfigView(false);
+        Model.LobbySceneModel.SetActiveConfigView(false);
         
         InitializeRx();
     }
@@ -21,7 +21,7 @@ public class EnterConfigPresenter : Presenter
     {
         _enterConfigView.EnterConfigButton
             .OnClickAsObservable()
-            .Subscribe(_ => Model.LobbyDataModel.SetActiveConfigView(true))
+            .Subscribe(_ => Model.LobbySceneModel.SetActiveConfigView(true))
             .AddTo(_compositeDisposable);
     }
 
@@ -31,8 +31,8 @@ public class EnterConfigPresenter : Presenter
     protected override void OnUpdatedModel()
     {
         Observable.EveryUpdate()
-            .ObserveEveryValueChanged(_ => Model.LobbyDataModel.IsConfigurationRunning)
-            .Where(_ => Model.LobbyDataModel.IsConfigurationRunning)
+            .ObserveEveryValueChanged(_ => Model.LobbySceneModel.IsConfigurationRunning)
+            .Where(_ => Model.LobbySceneModel.IsConfigurationRunning)
             .Subscribe(_ => Debug.Log("환경설정창이 실행됩니다."))
             .AddTo(_compositeDisposable);
     }
