@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: LosePlayer
+  m_Controller: {fileID: 9100000, guid: 4c0a2e04e394845858769aaf87cf7f81, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7149610348155728239, guid: a67ce34e77af84b01a3bed1163906a51,
+      type: 3}
+    m_OverrideClip: {fileID: -4172729066700134712, guid: a67ce34e77af84b01a3bed1163906a51,
+      type: 3}
+  - m_OriginalClip: {fileID: -2746488339373379492, guid: a67ce34e77af84b01a3bed1163906a51,
+      type: 3}
+    m_OverrideClip: {fileID: 3241454174637189745, guid: a67ce34e77af84b01a3bed1163906a51,
+      type: 3}
+  - m_OriginalClip: {fileID: 3592587521371947791, guid: a67ce34e77af84b01a3bed1163906a51,
+      type: 3}
+    m_OverrideClip: {fileID: 6156902771286847519, guid: a67ce34e77af84b01a3bed1163906a51,
+      type: 3}
