@@ -5,14 +5,14 @@ public class LobbySceneInitialize : SceneInitialize
     protected override void OnGetResources()
     {
         Instantiate(DataManager.GetGameObjectData
-            (PathLiteral.Prefabs, PathLiteral.UI, "01_Lobby", "LobbyBackgroundImage"));
+            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Lobby, "LobbyBackgroundImage"));
         Instantiate(DataManager.GetGameObjectData
-            (PathLiteral.Prefabs, PathLiteral.UI, "01_Lobby", "PlayerNamePlateViewController"));
+            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Lobby, "PlayerNamePlateViewController"));
         Instantiate(DataManager.GetGameObjectData
-            (PathLiteral.Prefabs, PathLiteral.UI, "01_Lobby", "TopButtonListViewController"));
+            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Lobby, "TopButtonListViewController"));
         Instantiate(DataManager.GetGameObjectData
-            (PathLiteral.Prefabs, PathLiteral.UI, "01_Lobby", "EnterConfigViewController"));
+            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Lobby, "EnterConfigViewController"));
         Instantiate(DataManager.GetGameObjectData
-            (PathLiteral.Prefabs, PathLiteral.UI, "01_Lobby", "EnterMatchingStandbyViewController"));
+            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Lobby, "EnterMatchingStandbyViewController"));
     }
 }

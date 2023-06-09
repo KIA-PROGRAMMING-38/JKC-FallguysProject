@@ -12,7 +12,7 @@ public class ViewController : MonoBehaviour
     /// ViewController를 상속받은 클래스에서 Start 호출합니다.
     /// ViewController를 상속받은 클래스는 반드시 Awake에서 Presenter와 View의 참조를 연결해주어야 합니다.
     /// </summary>
-    protected void Start()
+    protected virtual void Start()
     {
         Presenter.OnInitialize(View);
     }

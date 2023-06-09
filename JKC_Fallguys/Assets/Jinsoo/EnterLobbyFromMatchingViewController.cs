@@ -1,18 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class EnterLobbyFromMatchingViewController : MonoBehaviour
+public class EnterLobbyFromMatchingViewController : ViewController
 {
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        
+        View = transform.Find("EnterLobbyFromMatchingView").GetComponent<EnterLobbyFromMatchingView>();
+        Debug.Assert(View != null);
+        Presenter = new EnterLobbyFromMatchingPresenter();
+        Debug.Assert(Presenter != null);
     }
-
-    // Update is called once per frame
-    void Update()
+    
+    protected override void Start()
     {
-        
+        base.Start();
+
+        View.GetComponent<EnterLobbyFromMatchingView>().SetReference(this);
     }
 }

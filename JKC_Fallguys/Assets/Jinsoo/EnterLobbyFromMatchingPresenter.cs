@@ -1,18 +1,42 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using UniRx;
 
-public class EnterLobbyFromMatchingPresenter : MonoBehaviour
+public class EnterLobbyFromMatchingPresenter : Presenter
 {
-    // Start is called before the first frame update
-    void Start()
+    private EnterLobbyFromMatchingView _enterLobbyFromMatchingView;
+    private CompositeDisposable _compositeDisposable = new CompositeDisposable();
+    
+    public override void OnInitialize(View view)
     {
+        _enterLobbyFromMatchingView = view as EnterLobbyFromMatchingView;
         
+        InitializeRx();
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override void OnOccuredUserEvent()
     {
-        
+        _enterLobbyFromMatchingView.CancelButton
+            .OnClickAsObservable()
+            .Subscribe(_ => Model.MatchingSceneModel.DeActiveEnterLobbyPanel())
+            .AddTo(_compositeDisposable);
+    }
+
+    protected override void OnUpdatedModel()
+    {
+        Observable.EveryUpdate()
+            .ObserveEveryValueChanged(_ => Model.MatchingSceneModel.IsEnterLobbyFromMatching)
+            .Where(_ => !Model.MatchingSceneModel.IsEnterLobbyFromMatching)
+            .Subscribe(_ => DeActivateEnterLobbyPanel())
+            .AddTo(_compositeDisposable);
+    }
+    
+    private void DeActivateEnterLobbyPanel()
+    {
+        _enterLobbyFromMatchingView.EnterLobbyFromMatchingViewController.gameObject.SetActive(false);
+    }
+    
+    public override void OnRelease()
+    {
+        _enterLobbyFromMatchingView = default;
+        _compositeDisposable.Dispose();
     }
 }
