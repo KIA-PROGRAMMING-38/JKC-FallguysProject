@@ -2,6 +2,7 @@ using LiteralRepository;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PhotonMatchingSceneEventManager : MonoBehaviourPunCallbacks
 {
@@ -64,5 +65,13 @@ public class PhotonMatchingSceneEventManager : MonoBehaviourPunCallbacks
     public override void OnJoinedLobby()
     {
         Debug.Log("Joined Lobby");
+    }
+
+    public override void OnLeftRoom()
+    {
+        if (Model.MatchingSceneModel.IsEnterPhotonRoom == false)
+        {
+            SceneManager.LoadScene(SceneIndex.Lobby);
+        }
     }
 }

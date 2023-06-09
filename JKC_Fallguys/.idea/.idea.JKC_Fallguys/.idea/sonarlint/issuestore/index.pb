@@ -5,38 +5,14 @@ R
 "Assets/1_Scripts/UI/Define/View.cs,e/0/e025a0be4f5bb78c03598e8aa7fa2ebc473507cf
 W
 'Assets/1_Scripts/UI/Define/Presenter.cs,3/3/33fe2cf1892aaa38bbcf73b88e0b7ea8eb066707
-R
-"Assets/Jinsoo/02/LineEffectPool.cs,0/8/08b5a7a3e8b8a60b95674134729358c64917b325
-Q
-!Assets/Jinsoo/02/ResourceCache.cs,0/a/0ae28ee584de00244fed5c8ee86b9cfa28674b80
 e
 5Assets/1_Scripts/Util/LiteralRepository/SceneIndex.cs,3/e/3e5e92ecbee6b5e8582c313ff1acbeae3a02dfb0
 f
 6Assets/1_Scripts/Util/LiteralRepository/PathLiteral.cs,6/f/6ff13450df0cfa717f77e4df2a8d08cd45e6d24c
-O
-Assets/Jinsoo/02/RespawnZone.cs,c/4/c491e0d6b197e8a618810ccc23539656cc9ace53
-O
-Assets/Jinsoo/02/ReleaseZone.cs,1/c/1cefddc4c38613ea188f61fa94ae571539047142
-N
-Assets/Jinsoo/02/LineEffect.cs,5/d/5dd8818e4ba2a03a15aec95a2064ed21850feb80
-T
-$Assets/Jinsoo/02/LineEffectPooler.cs,0/4/0404ff141f47528a4473aa4c393fc61d4db7f8cd
-_
-/Assets/Jinsoo/RotationFaceIconViewController.cs,b/5/b522f1bffa792029f0f7ca7fb35de3819395fef5
-X
-(Assets/Jinsoo/CurrentParticipantsView.cs,c/3/c3940437e976dc7152e0e1a14619858db8efa2aa
 d
 4Assets/1_Scripts/UI/01_Lobby/LobbySceneInitialize.cs,3/4/3413941270634a587fa4a11784eabb2b4506eb74
-b
-2Assets/Jinsoo/CurrentParticipantsViewController.cs,c/b/cbd80807945e29d1304f1f424475c23b329a611d
 \
 ,Assets/1_Scripts/UI/Define/ViewController.cs,0/5/057052b2700a0a11f8c31d551b0150f4eace8274
-Q
-!Assets/Jinsoo/ReturnButtonView.cs,f/1/f1ba70bfcd1029d078d0e6fd78584375307c3c6b
-e
-5Assets/Jinsoo/EnterLobbyFromMatchingViewController.cs,7/7/77c1569e558ba797768804bcaefcafa8943a8829
-h
-8Assets/Photon/PhotonRealtime/Code/LoadBalancingClient.cs,2/1/21eb452a4d92dd417e39be4959259adadc3c6479
 f
 6Assets/Photon/PhotonUnityNetworking/Code/PunClasses.cs,0/b/0b7b22286786986ea2b88f8d55b9461d2c7afae0
 m
@@ -47,5 +23,3 @@ f
 6Assets/1_Scripts/UI/01_Lobby/TopButtonListPresenter.cs,2/8/280936c7267256ec31842fc5604c9248861cfe30
 ^
 .Assets/1_Scripts/System/Manager/DataManager.cs,0/c/0c6919b8f3ae9e58070acde9c737c2715226b050
-\
-,Assets/1_Scripts/UI/Model/LobbySceneModel.cs,6/f/6f6655417aafe4cfc586ee8fd3491041105b686f

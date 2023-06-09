@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using UnityEngine;
 using Cysharp.Threading.Tasks;
 using Random = UnityEngine.Random;
@@ -8,6 +9,8 @@ public class LineEffectPooler : MonoBehaviour
     private LineEffectPool _lineEffectPool;
     private RespawnZone _spawnZone;
     private BoxCollider _spawnZoneCollider;
+
+    private CancellationTokenSource _cancellationTokenSource;
     
     // SpawnZone의 위치 경계값들입니다.
     private float _colliderXMinPosition;
@@ -33,15 +36,16 @@ public class LineEffectPooler : MonoBehaviour
     private void Awake()
     {
         _lineEffectPool = new LineEffectPool(gameObject);
+        _cancellationTokenSource = new CancellationTokenSource();
     }
 
     private void Start()
     {
-        SpawnLineEffectsContinuously().Forget();
+        SpawnLineEffectsContinuously(_cancellationTokenSource.Token).Forget();
     }
     
     // 랜덤한 딜레이를 가지고 계속해서 LineEffect를 생성하는 UniTask입니다.
-    private async UniTaskVoid SpawnLineEffectsContinuously()
+    private async UniTaskVoid SpawnLineEffectsContinuously(CancellationToken cancelToken)
     {
         while (true)
         {
@@ -51,7 +55,7 @@ public class LineEffectPooler : MonoBehaviour
             LineEffect lineEffect = _lineEffectPool.LineEffectPoolInstance.Get();
             lineEffect.transform.position = SetSpawnPosition();
 
-            await UniTask.Delay(TimeSpan.FromSeconds(randomSpawnCooldown));
+            await UniTask.Delay(TimeSpan.FromSeconds(randomSpawnCooldown), cancellationToken: cancelToken);
         }
     }
 
@@ -101,5 +105,10 @@ public class LineEffectPooler : MonoBehaviour
         {
             return Random.Range(_colliderXMinPosition, _colliderXMaxPosition);
         }
+    }
+
+    private void OnDestroy()
+    {
+        _cancellationTokenSource.Cancel();
     }
 }

@@ -1,3 +1,4 @@
+using Photon.Pun;
 using UniRx;
 
 public class EnterLobbyFromMatchingPresenter : Presenter
@@ -18,6 +19,11 @@ public class EnterLobbyFromMatchingPresenter : Presenter
             .OnClickAsObservable()
             .Subscribe(_ => Model.MatchingSceneModel.DeActiveEnterLobbyPanel())
             .AddTo(_compositeDisposable);
+        
+        _enterLobbyFromMatchingView.CheckButton
+            .OnClickAsObservable()
+            .Subscribe(_ => Model.MatchingSceneModel.RoomAdmissionStatus(false))
+            .AddTo(_compositeDisposable);
 
         Observable.EveryUpdate()
             .ObserveEveryValueChanged(_ => Model.MatchingSceneModel.IsActionPossible)
@@ -33,11 +39,22 @@ public class EnterLobbyFromMatchingPresenter : Presenter
             .Where(_ => !Model.MatchingSceneModel.IsEnterLobbyFromMatchingScene)
             .Subscribe(_ => DeActivateEnterLobbyPanel())
             .AddTo(_compositeDisposable);
+
+        Observable.EveryUpdate()
+            .ObserveEveryValueChanged(_ => Model.MatchingSceneModel.IsEnterPhotonRoom)
+            .Where(_ => !Model.MatchingSceneModel.IsEnterPhotonRoom)
+            .Subscribe(_ => ReturnLobby())
+            .AddTo(_compositeDisposable);
     }
     
     private void DeActivateEnterLobbyPanel()
     {
         _enterLobbyFromMatchingView.EnterLobbyFromMatchingViewController.gameObject.SetActive(false);
+    }
+
+    private void ReturnLobby()
+    {
+        PhotonNetwork.LeaveRoom();
     }
     
     public override void OnRelease()
