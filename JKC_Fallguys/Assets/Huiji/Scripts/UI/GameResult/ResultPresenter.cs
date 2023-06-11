@@ -5,6 +5,8 @@ using UniRx;
 public class ResultPresenter : Presenter
 {
     private ResultView _resultView;
+    private CompositeDisposable _compositeDisposable = new CompositeDisposable();
+    
     public override void OnInitialize(View view)
     {
         _resultView = view as ResultView;
@@ -17,27 +19,33 @@ public class ResultPresenter : Presenter
         // 유저 이벤트 없음.
     }
 
+    /// <summary>
+    /// 이전 씬에서 승리 여부에 따라 텍스트 이미지를 바인딩합니다.
+    /// </summary>
     protected override void OnUpdatedModel()
     {
         ResultSceneModel.IsVictorious.Where(isVictorious => isVictorious == true)
-            .Subscribe(_ => LoadVictorySprite());
+            .Subscribe(_ => LoadVictorySprite())
+            .AddTo(_compositeDisposable);
         
         ResultSceneModel.IsVictorious.Where(isVictorious => isVictorious == false)
-            .Subscribe(_ => LoadLoseSprite());
+            .Subscribe(_ => LoadLoseSprite())
+            .AddTo(_compositeDisposable);
     }
 
     private void LoadVictorySprite()
     {
-        _resultView.ResultTextImage.sprite = DataManager.GetSpriteData(PathLiteral.UI, "GameResult", "VictoryText");
+        _resultView.ResultTextImage.sprite = DataManager.GetSpriteData(PathLiteral.UI, PathLiteral.GameResult, PathLiteral.VictoryTextImage);
     }
     
     private void LoadLoseSprite()
     {
-        _resultView.ResultTextImage.sprite = DataManager.GetSpriteData(PathLiteral.UI, "GameResult", "LoseText");
+        _resultView.ResultTextImage.sprite = DataManager.GetSpriteData(PathLiteral.UI, PathLiteral.GameResult, PathLiteral.LoseTextImage);
     }
     
     public override void OnRelease()
     {
-        // 스트림 아직 없음.
+        _resultView = default;
+        _compositeDisposable.Dispose();
     }
 }

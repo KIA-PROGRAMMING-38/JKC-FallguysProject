@@ -1,3 +1,4 @@
+using Model;
 using UnityEngine;
 
 public class ResultViewController : ViewController
@@ -8,5 +9,7 @@ public class ResultViewController : ViewController
         Debug.Assert(View != null);
         Presenter = new ResultPresenter();
         Debug.Assert(Presenter != null);
+
+        ResultSceneModel.IsVictorious.Value = true;
     }
 }

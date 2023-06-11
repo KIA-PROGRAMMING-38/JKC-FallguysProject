@@ -8,15 +8,8 @@ namespace Model
 
         public static ReactiveProperty<bool> IsVictorious
         {
-            get
-            {
-                return _isVictorious;
-            }
-
-            set
-            {
-                _isVictorious.Value = value.Value;
-            }
+            get => _isVictorious;
+            set => _isVictorious.Value = value.Value;
         }
     }
 }
