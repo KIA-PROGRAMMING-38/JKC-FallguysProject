@@ -16,6 +16,11 @@ public static class DataManager
     {
         return Resources.Load<Sprite>(SetDataPath(filePath));
     }
+
+    public static RuntimeAnimatorController GetRuntimeAnimatorController(params string[] filePath)
+    {
+        return Resources.Load<RuntimeAnimatorController>(SetDataPath(filePath));
+    }
     
     /// <summary>
     /// 데이터 바인딩 위한 경로를 설정합니다.
