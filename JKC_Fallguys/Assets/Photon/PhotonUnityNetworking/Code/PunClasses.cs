@@ -335,9 +335,9 @@ namespace Photon.Pun
         /// <remarks>
         /// Changing properties must be done by Player.SetCustomProperties, which causes this callback locally, too.
         /// </remarks>
+        ///
         /// <param name="targetPlayer">Contains Player that changed.</param>
         /// <param name="changedProps">Contains the properties that changed.</param>
-        /// <param name="changedProps1"></param>
         public virtual void OnPlayerPropertiesUpdate(Player targetPlayer, Hashtable changedProps)
         {
         }
