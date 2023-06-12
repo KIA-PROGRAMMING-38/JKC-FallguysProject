@@ -1,3 +1,5 @@
+using System;
+using ExitGames.Client.Photon.StructWrapping;
 using LiteralRepository;
 using Photon.Pun;
 using Photon.Realtime;
@@ -7,6 +9,7 @@ using UnityEngine.SceneManagement;
 public class PhotonStageSceneEventManager : MonoBehaviourPunCallbacks
 {
     private PhotonStageSceneRoomManager _roomManager;
+    private GameObject _playerPrefab;
     
     private Vector3[] _spawnPoints =
     {
@@ -21,7 +24,13 @@ public class PhotonStageSceneEventManager : MonoBehaviourPunCallbacks
     {
         OnInstantiatePhotonRoomManager();
         
-        SceneManager.sceneLoaded += OnInitialzeLoadScene;
+        SceneManager.sceneLoaded += OnInitializeLoadScene;
+    }
+
+    private void Start()
+    {
+        PlayerReferenceManager playerReferenceManager = _playerPrefab.GetComponent<PlayerReferenceManager>();
+        playerReferenceManager.OnInitialize(_roomManager);
     }
 
     private void OnInstantiatePhotonRoomManager()
@@ -36,7 +45,7 @@ public class PhotonStageSceneEventManager : MonoBehaviourPunCallbacks
         _roomManager = roomManager;
     }
     
-    private void OnInitialzeLoadScene(Scene scene, LoadSceneMode mode)
+    private void OnInitializeLoadScene(Scene scene, LoadSceneMode mode)
     {
         Player player = PhotonNetwork.LocalPlayer;
         object indexObject;
@@ -47,11 +56,17 @@ public class PhotonStageSceneEventManager : MonoBehaviourPunCallbacks
             string filePath = DataManager.SetDataPath(PathLiteral.Prefabs, "Player");
         
             Vector3 spawnPoint = _spawnPoints[index];
-            PhotonNetwork.Instantiate(filePath, spawnPoint, Quaternion.identity);
+            _playerPrefab = PhotonNetwork.Instantiate(filePath, spawnPoint, Quaternion.identity);
         }
         else
         {
             Debug.LogWarning("Failed to get the player index from custom properties.");
         }
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnInitializeLoadScene;
+        Time.timeScale = 1f;
     }
 }

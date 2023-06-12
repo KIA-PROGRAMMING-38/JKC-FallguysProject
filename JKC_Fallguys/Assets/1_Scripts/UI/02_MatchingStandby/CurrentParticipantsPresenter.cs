@@ -15,6 +15,7 @@ public class CurrentParticipantsPresenter : Presenter
 
     protected override void OnOccuredUserEvent()
     {
+        
     }
 
     protected override void OnUpdatedModel()
