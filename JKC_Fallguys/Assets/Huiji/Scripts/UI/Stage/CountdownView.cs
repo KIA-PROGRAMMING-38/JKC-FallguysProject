@@ -19,5 +19,19 @@ public class CountdownView : View
         yield return _delay;
         
         CountdownImage.gameObject.SetActive(true);
+
+        CountdownImage.transform.localScale = Vector3.zero;
+        
+        Scale();
+    }
+
+    private void Scale()
+    {
+        float targetScale = 1.0f;
+        float duration = 1.5f;
+
+        CountdownImage.transform.ScaleTween(Vector3.one * targetScale, duration)
+            .SetEase(Ease.EaseOutElastic)
+            .SetDelay(0.2f);            
     }
 }
