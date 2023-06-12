@@ -55,8 +55,6 @@ public class PlayerPhysicsController : MonoBehaviour
     {
         if (_playerInput.InputVec != _zeroVec && _playerInput.CannotMove == false)
         {
-            Debug.Log($"moveDir : {_moveDir}");
-
             _playerRigidbody.velocity = _moveDir * _moveSpeed;
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(_moveDir), _rotSpeed * Time.deltaTime);
         }
