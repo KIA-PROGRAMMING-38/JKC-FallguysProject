@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3857683786640211353
+--- !u!1 &6005829052306939838
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,49 +8,50 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5910383567840215822}
-  - component: {fileID: 4822434040847430386}
-  - component: {fileID: 371472662460733896}
-  - component: {fileID: 5260593603736013170}
-  - component: {fileID: 5260593603736013171}
-  - component: {fileID: 8630039577549742524}
+  - component: {fileID: 3806709154772214057}
+  - component: {fileID: 2611376886650409173}
+  - component: {fileID: 7203084498089376751}
+  - component: {fileID: 3445431037501401941}
+  - component: {fileID: 3445431037501401940}
+  - component: {fileID: 1231114379893326747}
+  - component: {fileID: 3108241540194774787}
   m_Layer: 0
-  m_Name: Banana_GP_0
-  m_TagString: Untagged
+  m_Name: Banana
+  m_TagString: Fruit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5910383567840215822
+--- !u!4 &3806709154772214057
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3857683786640211353}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_GameObject: {fileID: 6005829052306939838}
+  m_LocalRotation: {x: -0.012080027, y: -0.20084316, z: 0.05881023, w: 0.97778195}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5659858698875391263}
+  m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &4822434040847430386
+  m_LocalEulerAnglesHint: {x: 0, y: -23.215, z: 6.884}
+--- !u!33 &2611376886650409173
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3857683786640211353}
+  m_GameObject: {fileID: 6005829052306939838}
   m_Mesh: {fileID: 3846957986485148521, guid: af8116979ac7d8b4fb3454ad04a24261, type: 3}
---- !u!23 &371472662460733896
+--- !u!23 &7203084498089376751
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3857683786640211353}
+  m_GameObject: {fileID: 6005829052306939838}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -86,13 +87,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!54 &5260593603736013170
+--- !u!54 &3445431037501401941
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3857683786640211353}
+  m_GameObject: {fileID: 6005829052306939838}
   serializedVersion: 2
   m_Mass: 50
   m_Drag: 0
@@ -102,13 +103,13 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &5260593603736013171
+--- !u!64 &3445431037501401940
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3857683786640211353}
+  m_GameObject: {fileID: 6005829052306939838}
   m_Material: {fileID: 13400000, guid: 621d29fd4cb35417790be303699b2c40, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
@@ -116,58 +117,25 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 3846957986485148521, guid: af8116979ac7d8b4fb3454ad04a24261, type: 3}
---- !u!75 &8630039577549742524
+--- !u!75 &1231114379893326747
 ConstantForce:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3857683786640211353}
+  m_GameObject: {fileID: 6005829052306939838}
   m_Enabled: 1
   m_Force: {x: 0, y: -650, z: 0}
   m_RelativeForce: {x: 0, y: 0, z: 0}
   m_Torque: {x: 0, y: 0, z: 0}
   m_RelativeTorque: {x: 0, y: 0, z: 0}
---- !u!1 &5026030186151221157
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5659858698875391263}
-  - component: {fileID: -4637427814606264416}
-  m_Layer: 0
-  m_Name: Banana
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5659858698875391263
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5026030186151221157}
-  m_LocalRotation: {x: -0.2593768, y: 0.20927425, z: -0.112171784, w: -0.93613327}
-  m_LocalPosition: {x: -36.527664, y: 14.30258, z: 128.03134}
-  m_LocalScale: {x: 2, y: 2, z: 2}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 5910383567840215822}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-4637427814606264416
+--- !u!114 &3108241540194774787
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5026030186151221157}
+  m_GameObject: {fileID: 6005829052306939838}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 54c17d386c53449e5972854e89686fbb, type: 3}
