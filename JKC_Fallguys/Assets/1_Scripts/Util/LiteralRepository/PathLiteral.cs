@@ -13,10 +13,13 @@ namespace LiteralRepository
         public static readonly string Login = "00_Login";
         public static readonly string Lobby = "01_Lobby";
         public static readonly string MatchingStandby = "02_MatchingStandby";
-        public static readonly string InGame = "03_MatchingStandby";
+        public static readonly string Stage = "03_Stage";
+        
         public static readonly string LoseTextImage = "LoseText";
         public static readonly string VictoryTextImage = "VictoryText";
         public static readonly string LoseAnimatorController = "LosePlayer";
         public static readonly string VictoryAnimatorController = "VictoryPlayer";
+        
+        public static readonly string Countdown = "Countdown";
     }
 }

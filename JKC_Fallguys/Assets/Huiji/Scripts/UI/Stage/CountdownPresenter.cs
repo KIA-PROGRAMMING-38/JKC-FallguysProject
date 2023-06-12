@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class CountdownPresenter : Presenter
 {
+    private CountdownView _countdownView;
     public override void OnInitialize(View view)
     {
+        _countdownView = view as CountdownView;
         
-    }
-
-    public override void OnRelease()
-    {
-        
+        InitializeRx();
     }
 
     protected override void OnOccuredUserEvent()
@@ -19,7 +17,21 @@ public class CountdownPresenter : Presenter
         
     }
 
+    private int _spriteIndex;
+    private void SetSprite()
+    {
+        if (_spriteIndex < CountdownSpriteRegistry.Sprites.Count)
+        {
+            
+        }
+    }
+
     protected override void OnUpdatedModel()
+    {
+        
+    }
+    
+    public override void OnRelease()
     {
         
     }
