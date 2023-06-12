@@ -14,15 +14,17 @@ public class CountdownPresenter : Presenter
 
     protected override void OnOccuredUserEvent()
     {
-        
+        SetSprite();
     }
 
     private int _spriteIndex;
     private void SetSprite()
     {
-        if (_spriteIndex < CountdownSpriteRegistry.Sprites.Count)
+        if (_spriteIndex < CountdownSpritesRegistry.Sprites.Count)
         {
-            
+            Sprite sprite = CountdownSpritesRegistry.Sprites[_spriteIndex];
+
+            _countdownView.CountdownImage.sprite = sprite;
         }
     }
 
