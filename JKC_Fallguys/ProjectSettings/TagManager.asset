@@ -8,6 +8,7 @@ TagManager:
   - Box
   - Boundary
   - LineEffect
+  - Fruit
   layers:
   - Default
   - TransparentFX

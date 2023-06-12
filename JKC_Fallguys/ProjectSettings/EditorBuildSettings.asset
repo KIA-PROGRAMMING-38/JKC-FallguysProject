@@ -16,8 +16,8 @@ EditorBuildSettings:
     guid: 3f93cd8575b48499b8958efa396b20c7
   - enabled: 1
     path: Assets/Jinsoo/03_Stage.unity
-    guid: dae159e3924ba40459f4c18770b2a78e
-  - enabled: 1
+    guid: 9dbf0e3072bb5bd48bc310a97c47d052
+  - enabled: 0
     path: Assets/Huiji/Scene/06_GameResult.unity
     guid: 5d9eb69ddf6f345f39791ac99516fac9
   m_configObjects: {}

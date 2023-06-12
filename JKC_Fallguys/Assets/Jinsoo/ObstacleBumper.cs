@@ -1,7 +1,6 @@
 using System;
 using Cysharp.Threading.Tasks;
 using LiteralRepository;
-using TMPro;
 using UnityEngine;
 
 public class ObstacleBumper : MonoBehaviour

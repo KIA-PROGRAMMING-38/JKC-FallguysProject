@@ -25,12 +25,12 @@ public class PhotonMatchingSceneEventManager : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         OnInstantiatePhotonRoomManager();
-        OnInitialzeJoinRoom();
+        OnInitializeJoinRoom();
 
         Debug.Log("Joined to a room successfully");
     }
 
-    private void OnInitialzeJoinRoom()
+    private void OnInitializeJoinRoom()
     {
         Model.MatchingSceneModel.RoomAdmissionStatus(true);
         

@@ -14,6 +14,11 @@ public static class FruitPrefabRegistry
     public static readonly int Orange = 2;
     public static readonly int StrawBerry = 3;
     public static readonly int WaterMelon = 4;
+
+    static FruitPrefabRegistry()
+    {
+        GetFruitsData();
+    }
     
     // 과일 데이터를 가져오는 메서드입니다.
     public static void GetFruitsData()

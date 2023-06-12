@@ -8,5 +8,6 @@ namespace LiteralRepository
         public static readonly string Boundary = "Boundary";
         public static readonly string Respawn = "Respawn";
         public static readonly string LineEffect = "LineEffect";
+        public static readonly string Fruit = "Fruit";
     }
 }
