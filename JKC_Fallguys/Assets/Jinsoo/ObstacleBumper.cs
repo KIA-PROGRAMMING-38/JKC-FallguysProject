@@ -1,38 +1,33 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
+using LiteralRepository;
+using TMPro;
 using UnityEngine;
 
 public class ObstacleBumper : MonoBehaviour
 {
     public float reflectForce;
-    public float MinimuCollisionValue;
     
-    private void OnCollisionEnter(Collision other)
+    private const float MIN_RFLECTION_VALUE = 50f;
+    private const float MAX_RFLECTION_VALUE = 270f;
+
+    private void OnCollisionEnter(Collision col)
     {
-        Rigidbody collisionObjectRigid = other.gameObject.GetComponent<Rigidbody>();
-        Vector3 collisionVector = collisionObjectRigid.velocity.normalized;
-        Vector3 normalVector = other.contacts[0].normal.normalized;
-        Vector3 reflectionDirection = 
-            Vector3.Reflect(collisionVector,normalVector);
+        if (col.gameObject.CompareTag(TagLiteral.Player))
+        {
+            Rigidbody collisionObjectRigid = col.gameObject.GetComponent<Rigidbody>();
+            Vector3 collisionVector = collisionObjectRigid.velocity.normalized;
+            Vector3 normalVector = col.contacts[0].normal.normalized;
+            Vector3 reflectionDirection = 
+                Vector3.Reflect(collisionVector,normalVector);
 
-        float collisionImpulseForce = other.impulse.magnitude;
-        // collisionImpulseForce = Mathf.Max(MinimuCollisionValue, collisionImpulseForce);
-        collisionImpulseForce = Mathf.Clamp(collisionImpulseForce, 50, 270);
+            float collisionImpulseForce = col.impulse.magnitude;
+            collisionImpulseForce = Mathf.Clamp(collisionImpulseForce, MIN_RFLECTION_VALUE, MAX_RFLECTION_VALUE);
         
-        Debug.Log($"impulseMagnitude : {other.impulse.magnitude}");
-        Debug.Log($"collisionImpulseForce : {collisionImpulseForce}");
-        
-        UnableToControlPlayerInput(other).Forget();
+            UnableToControlPlayerInput(col).Forget();
 
-        Debug.Log($"입사각 : {collisionVector}");
-        Debug.Log($"충돌 법선 벡터 : {other.contacts[0].normal}");
-        Debug.Log($"반사각 : {reflectionDirection}");
-        
-       // collisionObjectRigid.AddForce(reflectionDirection * reflectForce * collisionImpulseForce, ForceMode.Impulse);
-
-        collisionObjectRigid.velocity = reflectionDirection * reflectForce * collisionImpulseForce;
+            collisionObjectRigid.velocity = reflectionDirection * reflectForce * collisionImpulseForce;            
+        }
     }
     
     // 플레이어가 부딪힐 경우 잠시 조작할 수 없게 만드는 UniTask
@@ -45,5 +40,4 @@ public class ObstacleBumper : MonoBehaviour
 
         playerInput.CannotMove = false;
     }
-    
 }
