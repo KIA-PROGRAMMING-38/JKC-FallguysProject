@@ -3,13 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CountdownViewController : ViewController
+public class StageStartViewController : ViewController
 {
     private void Awake()
     {
-        View = transform.Find("CountdownView").GetComponent<CountdownView>();
+        View = transform.Find("StageStartView").GetComponent<StageStartView>();
         Debug.Assert(View != null);
-        Presenter = new CountdownPresenter();
+        Presenter = new StageStartPresenter();
         Debug.Assert(Presenter != null);
     }
 }
