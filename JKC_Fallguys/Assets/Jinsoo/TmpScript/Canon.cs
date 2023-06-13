@@ -56,6 +56,7 @@ public class Canon : MonoBehaviour
         fruitInstance.transform.position = _shootAngleTransform.position;
         fruitInstance.transform.rotation = _shootAngleTransform.rotation;
         Rigidbody fruitRigidbody = fruitInstance.GetComponentInChildren<Rigidbody>();
+        fruitRigidbody.velocity = Vector3.zero;
 
         fruitRigidbody.AddForce(-_shootAngleTransform.forward * _rejectionForce, ForceMode.VelocityChange);
     }

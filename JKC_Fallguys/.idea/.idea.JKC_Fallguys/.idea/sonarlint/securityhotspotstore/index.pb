@@ -44,8 +44,6 @@ m
 h
 8Assets/1_Scripts/Scene/02_MatchingStandby/ReleaseZone.cs,0/0/00962ab48f8de971626b221b1c8cb9f54853971e
 P
- Assets/Jinsoo/TmpScript/Canon.cs,6/3/635a698a027294f08466d09c727361d8f37782f0
-P
  Assets/Jinsoo/TmpScript/Fruit.cs,4/9/49823c243abe0f9e3bedb4f80106a715934a39c7
 T
 $Assets/Jinsoo/TmpScript/FruitPool.cs,a/a/aa558f467190a1b07ec86abf53665c17379e5e88
@@ -63,8 +61,6 @@ V
 LAssets/1_Scripts/Scene/02_MatchingStandby/PhotonMatchingSceneEventManager.cs,9/e/9e082ac094df2120dc245f43474014647d63805f
 f
 6Assets/Photon/PhotonUnityNetworking/Code/PunClasses.cs,0/b/0b7b22286786986ea2b88f8d55b9461d2c7afae0
-i
-9Assets/Photon/PhotonUnityNetworking/Code/PhotonNetwork.cs,8/a/8af7c70f8fb3b930507796d5b7a87f76deaaefab
 b
 2Assets/1_Scripts/Player/PlayerPhysicsController.cs,8/6/86441ad8885d08cc250ff50ad67c563873cbaffb
 {

@@ -41,8 +41,6 @@ O
 Assets/Jinsoo/ObstacleBumper.cs,e/5/e5f1d47d66c81a46aace523aa970fc6d1b496371
 e
 5Assets/1_Scripts/Util/LiteralRepository/TagLiteral.cs,8/4/842eb9fa69d1e6dca1aae6905a449cc0f2e0e118
-P
- Assets/Jinsoo/TmpScript/Canon.cs,6/3/635a698a027294f08466d09c727361d8f37782f0
 g
 7Assets/1_Scripts/Scene/02_MatchingStandby/LineEffect.cs,a/8/a8e37093bc1e11bc3294c0ba6b7501f6bd11900a
 m
@@ -61,8 +59,6 @@ $Assets/Jinsoo/TmpScript/FruitPool.cs,a/a/aa558f467190a1b07ec86abf53665c17379e5
 LAssets/1_Scripts/Scene/02_MatchingStandby/PhotonMatchingSceneEventManager.cs,9/e/9e082ac094df2120dc245f43474014647d63805f
 f
 6Assets/Photon/PhotonUnityNetworking/Code/PunClasses.cs,0/b/0b7b22286786986ea2b88f8d55b9461d2c7afae0
-i
-9Assets/Photon/PhotonUnityNetworking/Code/PhotonNetwork.cs,8/a/8af7c70f8fb3b930507796d5b7a87f76deaaefab
 b
 2Assets/1_Scripts/Player/PlayerPhysicsController.cs,8/6/86441ad8885d08cc250ff50ad67c563873cbaffb
 V
