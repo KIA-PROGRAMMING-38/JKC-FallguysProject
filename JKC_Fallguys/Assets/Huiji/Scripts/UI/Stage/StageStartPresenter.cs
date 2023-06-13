@@ -2,23 +2,32 @@ using System;
 using UniRx;
 using UnityEngine;
 
-public class CountdownPresenter : Presenter
+public class StageStartPresenter : Presenter
 {
-    private CountdownView _countdownView;
+    private StageStartView _stageStartView;
     private CompositeDisposable _compositeDisposable = new CompositeDisposable();
     public override void OnInitialize(View view)
     {
-        _countdownView = view as CountdownView;
+        _stageStartView = view as StageStartView;
         
         InitializeRx();
     }
 
     protected override void OnOccuredUserEvent()
     {
+        MoveUIAnimation();
+        
         // Game Start가 되면 실행되야 한다.
         Observable.Interval(TimeSpan.FromSeconds(1.5f))
             .Subscribe(_ => CountdownUIAnimation())
             .AddTo(_compositeDisposable);
+    }
+
+    private Vector2 _subTitleTargetPos = new Vector3(0.3f,0.2f);
+    private void MoveUIAnimation()
+    {
+        _stageStartView.SubTitle.rectTransform.MoveUI(_subTitleTargetPos, _stageStartView.StageStartCanvasRect, 1f)
+            .SetEase(Ease.EaseOutElastic);
     }
 
     private int _spriteIndex;
@@ -31,7 +40,7 @@ public class CountdownPresenter : Presenter
         {
             Sprite sprite = CountdownSpritesRegistry.Sprites[_spriteIndex];
 
-            _countdownView.CountdownImage.sprite = sprite;
+            _stageStartView.CountdownImage.sprite = sprite;
 
             ++_spriteIndex;
             
@@ -41,7 +50,7 @@ public class CountdownPresenter : Presenter
         else
         {
             _spriteIndex = 0;
-            _countdownView.CountdownImage.gameObject.SetActive(false);
+            _stageStartView.CountdownImage.gameObject.SetActive(false);
         }
     }
     
@@ -55,8 +64,8 @@ public class CountdownPresenter : Presenter
         float targetScale = 1.0f;
         float duration = 1.5f;
 
-        _countdownView.CountdownImage.transform.localScale = _vectorZero;
-        _countdownView.CountdownImage.transform.ScaleTween(_vectorOne * targetScale, duration)
+        _stageStartView.CountdownImage.transform.localScale = _vectorZero;
+        _stageStartView.CountdownImage.transform.ScaleTween(_vectorOne * targetScale, duration)
             .SetEase(Ease.EaseOutElastic);            
     }
 
@@ -67,7 +76,7 @@ public class CountdownPresenter : Presenter
     
     public override void OnRelease()
     {
-        _countdownView = default;
+        _stageStartView = default;
         _compositeDisposable.Dispose();
     }
 }
