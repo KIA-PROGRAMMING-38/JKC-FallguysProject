@@ -73,7 +73,6 @@ public class PlayerPhysicsController : MonoBehaviour
     [SerializeField] private Transform _groundCheckPoint;
     [SerializeField] private float _castRadius;
     [SerializeField] private float _groundCheckDistance;
-    private bool _isGrounded;
     
     private void CheckGround()
     {
@@ -92,12 +91,6 @@ public class PlayerPhysicsController : MonoBehaviour
             // 지면 벡터와 수직축을 교차한 벡터를 구한다.
             // 슬로프의 방향을 얻을 수 있다.
             groundSlopeAngle = Vector3.Angle(groundNormal, Vector3.up);
-
-            _isGrounded = true;
-        }
-        else
-        {
-            _isGrounded = false;
         }
 
         // 슬로프의 방향을 계산한다.
@@ -114,24 +107,6 @@ public class PlayerPhysicsController : MonoBehaviour
 
         _moveDir.y = slopeFactor;
     }
-    
-    void OnDrawGizmos()
-    {
-        // 캐스트의 시작 위치를 표시
-        Gizmos.color = Color.red;
-        Gizmos.DrawSphere(_groundCheckPoint.position, 0.1f);
-    
-        // 캐스트의 방향을 표시
-        Gizmos.color = Color.green;
-        Gizmos.DrawLine(_groundCheckPoint.position, _groundCheckPoint.position + Vector3.down * _groundCheckDistance);
-    
-        // 캐스트의 반지름을 표시
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(_groundCheckPoint.position + Vector3.down * _groundCheckDistance, _castRadius);
-    }
-    
-
-    private float yVelocityVector;
 
     [SerializeField] private float _jumpMovementForce;
     /// <summary>
