@@ -19,5 +19,7 @@ namespace LiteralRepository
         public static readonly string VictoryTextImage = "VictoryText";
         public static readonly string LoseAnimatorController = "LosePlayer";
         public static readonly string VictoryAnimatorController = "VictoryPlayer";
+        
+        public static readonly string Countdown = "Countdown";
     }
 }
