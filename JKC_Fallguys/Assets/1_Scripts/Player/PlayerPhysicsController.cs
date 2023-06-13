@@ -1,5 +1,7 @@
 using System;
 using Cysharp.Threading.Tasks;
+using UnityEditor;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 /// <summary>
@@ -22,6 +24,11 @@ public class PlayerPhysicsController : MonoBehaviour
     {
         _playerRigidbody = GetComponent<Rigidbody>();
         _playerInput = GetComponentInParent<PlayerInput>();
+    }
+
+    private void FixedUpdate()
+    {
+        
     }
 
     public void BindCameraAngle(CameraAngle cameraAngle)
@@ -53,12 +60,52 @@ public class PlayerPhysicsController : MonoBehaviour
     /// </summary>
     public void Move()
     {
+        CheckGround();
+        
         if (_playerInput.InputVec != _zeroVec && _playerInput.CannotMove == false)
         {
-            Vector3 testVec = new Vector3(_moveDir.x, 0f, _moveDir.z);
+            Vector3 testVec = new Vector3(_moveDir.x, _moveDir.y, _moveDir.z);
             _playerRigidbody.velocity = testVec * _moveSpeed;
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(_moveDir), _rotSpeed * Time.deltaTime);
         }
+    }
+
+    [SerializeField] private Transform _groundCheckPoint;
+    [SerializeField] private float _castRadius;
+    [SerializeField] private float _groundCheckDistance;
+    
+    private void CheckGround()
+    {
+        // 초기 슬로프 각도 설정.
+        float groundSlopeAngle = 0f;
+        // 지면과의 충돌 여부 확인.
+        int layerMask = 1 << LayerMask.NameToLayer("Ground");
+        bool cast = Physics.SphereCast
+        (_groundCheckPoint.position, _castRadius, Vector3.down, out var hit, 
+            _groundCheckDistance, layerMask);
+    
+        if (cast)
+        {   
+            // 지면의 법선 벡터를 구하고, 그 벡터와 수직축과의 벡터를 구함.
+            Vector3 groundNormal = hit.normal;
+            // 지면 벡터와 수직축을 교차한 벡터를 구한다.
+            // 슬로프의 방향을 얻을 수 있다.
+            groundSlopeAngle = Vector3.Angle(groundNormal, Vector3.up);
+        }
+
+        // 슬로프의 방향을 계산한다.
+        Vector3 slopeDirection = Vector3.Cross(hit.normal, Vector3.Cross(Vector3.up, hit.normal));
+
+        // 슬로프 각도를 -1과 1사이의 값으로 변환한다.
+        float slopeFactor = groundSlopeAngle / 90f;
+        
+        // 플레이어가 내리막을 향한다면 음수로 설정한다.
+        if (Vector3.Dot(_moveDir, slopeDirection) < 0) 
+        {
+            slopeFactor *= -1;
+        }
+
+        _moveDir.y = slopeFactor;
     }
 
     [SerializeField] private float _jumpMovementForce;
