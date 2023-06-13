@@ -15,7 +15,7 @@ public class StageStartPresenter : Presenter
 
     protected override void OnOccuredUserEvent()
     {
-        MoveUIAnimation();
+        SubTitlePopUpAnimation();
         
         // Game Start가 되면 실행되야 한다.
         Observable.Interval(TimeSpan.FromSeconds(1.5f))
@@ -23,11 +23,20 @@ public class StageStartPresenter : Presenter
             .AddTo(_compositeDisposable);
     }
 
-    private Vector2 _subTitleTargetPos = new Vector3(0.3f,0.2f);
-    private void MoveUIAnimation()
+    private Vector2 _subTitleTargetPos = new Vector2(0.3f,0.2f);
+    private void SubTitlePopUpAnimation()
     {
         _stageStartView.SubTitle.rectTransform.MoveUI(_subTitleTargetPos, _stageStartView.StageStartCanvasRect, 1f)
             .SetEase(Ease.EaseOutElastic);
+    }
+
+    private Vector2 _outPos = new Vector2(-0.5f, 0.2f);
+    private void AnimateTitleOut()
+    {
+        _stageStartView.Title.rectTransform.MoveUI(_outPos, _stageStartView.StageStartCanvasRect, 0.5f)
+            .SetEase(Ease.Linear);
+        _stageStartView.SubTitle.rectTransform.MoveUI(_outPos, _stageStartView.StageStartCanvasRect, 0.5f)
+            .SetEase(Ease.Linear);
     }
 
     private int _spriteIndex;
@@ -51,6 +60,7 @@ public class StageStartPresenter : Presenter
         {
             _spriteIndex = 0;
             _stageStartView.CountdownImage.gameObject.SetActive(false);
+            AnimateTitleOut();
         }
     }
     

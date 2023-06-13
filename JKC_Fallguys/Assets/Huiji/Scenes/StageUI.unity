@@ -792,7 +792,7 @@ GameObject:
   - component: {fileID: 2070191999}
   - component: {fileID: 2070191998}
   m_Layer: 0
-  m_Name: Title (1)
+  m_Name: ColorMask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
