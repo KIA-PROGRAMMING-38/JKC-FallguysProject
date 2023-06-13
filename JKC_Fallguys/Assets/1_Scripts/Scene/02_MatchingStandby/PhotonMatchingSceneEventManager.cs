@@ -1,3 +1,4 @@
+using ExitGames.Client.Photon;
 using LiteralRepository;
 using Photon.Pun;
 using Photon.Realtime;
@@ -57,6 +58,15 @@ public class PhotonMatchingSceneEventManager : MonoBehaviourPunCallbacks
         // 사용 가능한 방이 없을 때 새로운 방 생성
         // null을 전달하면 무작위 방 생성
         PhotonNetwork.CreateRoom(null);
+    }
+
+    public override void OnPlayerPropertiesUpdate(Player targetPlayer, Hashtable changedProps)
+    {
+        if (changedProps.ContainsKey("PersonalIndex"))
+        {
+            int newIndex = (int)changedProps["PersonalIndex"];
+            Debug.Log($"Player {targetPlayer.NickName}'s PersonalIndex changed to {newIndex}");
+        }
     }
     
     /// <summary>

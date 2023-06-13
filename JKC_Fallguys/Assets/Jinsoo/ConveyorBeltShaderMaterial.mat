@@ -54,5 +54,6 @@ Material:
     m_Floats:
     - _QueueControl: 0
     - _QueueOffset: 0
-    m_Colors: []
+    m_Colors:
+    - _TimeVector2: {r: 0, g: 0.3, b: 0, a: 0}
   m_BuildTextureStacks: []

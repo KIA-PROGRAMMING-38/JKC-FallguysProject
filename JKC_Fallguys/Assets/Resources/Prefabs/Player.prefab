@@ -419,10 +419,7 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents:
-  - {fileID: 4441897917212973170}
-  - {fileID: 7082175767991608424}
-  - {fileID: 6916337384426825303}
+  ObservedComponents: []
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -862,6 +859,7 @@ GameObject:
   - component: {fileID: 6916337384426825303}
   - component: {fileID: 8310932015461178466}
   - component: {fileID: 4231617488334469504}
+  - component: {fileID: 8102295055415878471}
   m_Layer: 0
   m_Name: Character
   m_TagString: Player
@@ -1097,6 +1095,24 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!143 &8102295055415878471
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1619785448565600724}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 0.02
+  m_Radius: 0.006
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0.009, z: 0}
 --- !u!1 &2391585823698486539
 GameObject:
   m_ObjectHideFlags: 0

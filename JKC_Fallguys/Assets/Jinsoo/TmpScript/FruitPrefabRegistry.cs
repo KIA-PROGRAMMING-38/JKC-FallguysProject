@@ -7,13 +7,7 @@ using UnityEngine;
 /// </summary>
 public static class FruitPrefabRegistry
 {
-    public static Dictionary<int, Fruit> Repository = new Dictionary<int, Fruit>();
-
-    public static readonly int Apple = 0;
-    public static readonly int Banana = 1;
-    public static readonly int Orange = 2;
-    public static readonly int StrawBerry = 3;
-    public static readonly int WaterMelon = 4;
+    public static List<Fruit> Repository = new List<Fruit>();
 
     static FruitPrefabRegistry()
     {
@@ -29,11 +23,8 @@ public static class FruitPrefabRegistry
         {
             string fruitPath = DataManager.SetDataPath(PathLiteral.Prefabs, "FruitChute", "Fruits", fruits[i]);
             Fruit fruit = Resources.Load<Fruit>(fruitPath);
-
-            if (!Repository.ContainsKey(i))
-            {
-                Repository.Add(i, fruit);
-            }
+            
+            Repository.Add(fruit);
         }
     }
 }
