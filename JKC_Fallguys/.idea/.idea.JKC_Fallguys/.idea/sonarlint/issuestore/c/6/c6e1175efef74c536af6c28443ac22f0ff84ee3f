@@ -1,0 +1,4 @@
+
+Wcsharpsquid:S3903"5Move 'SingletonMonoBehaviour' into a named namespace.(…§…ªÿÿÿÿÿ
+hcsharpsquid:S2223"FChange the visibility of '_instance' or make it 'const' or 'readonly'.(Â–€Äşÿÿÿÿ
+ecsharpsquid:S2696%"HRemove this set, which updates a 'static' field from an instance method.(½ÌŞ
