@@ -1,0 +1,60 @@
+
+ucsharpsquid:S3776ó"RRefactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.(Ü±ÿğúÿÿÿÿ
+ucsharpsquid:S3776’"RRefactor this method to reduce its Cognitive Complexity from 19 to the 15 allowed.(êò¹úÿÿÿÿ
+ocsharpsquid:S2365ú"LRefactor 'PlayerList' into a method, properties should not copy collections.(Ì„©Åşÿÿÿÿ
+ocsharpsquid:S2365‹"RRefactor 'PlayerListOthers' into a method, properties should not copy collections.(®Æô
+Kcsharpsquid:S108Ö")Either remove or fill this block of code.(ÒÌâ–øÿÿÿÿ
+fcsharpsquid:S1104""DMake this field 'private' and encapsulate it in a 'public' property.(¾™“–şÿÿÿÿ
+fcsharpsquid:S1104#"DMake this field 'private' and encapsulate it in a 'public' property.(ÙªŞŒùÿÿÿÿ
+acsharpsquid:S1104$"DMake this field 'private' and encapsulate it in a 'public' property.(´ê¹
+acsharpsquid:S1104%"DMake this field 'private' and encapsulate it in a 'public' property.(Ò·Ô
+fcsharpsquid:S1104&"DMake this field 'private' and encapsulate it in a 'public' property.(ÖÈ‰ñıÿÿÿÿ
+fcsharpsquid:S1104'"DMake this field 'private' and encapsulate it in a 'public' property.(Ø“Šõüÿÿÿÿ
+acsharpsquid:S1104("DMake this field 'private' and encapsulate it in a 'public' property.(·õìë
+fcsharpsquid:S1104)"DMake this field 'private' and encapsulate it in a 'public' property.(¡—àÍüÿÿÿÿ
+fcsharpsquid:S1104*"DMake this field 'private' and encapsulate it in a 'public' property.(Ô—Öùÿÿÿÿ
+`csharpsquid:S1104e"DMake this field 'private' and encapsulate it in a 'public' property.(Š»›t
+bcsharpsquid:S1104ü"DMake this field 'private' and encapsulate it in a 'public' property.(£¯Æ
+bcsharpsquid:S1104Ã"DMake this field 'private' and encapsulate it in a 'public' property.(Û‚¶Ş
+gcsharpsquid:S1104š"DMake this field 'private' and encapsulate it in a 'public' property.(²™ÇÈüÿÿÿÿ
+bcsharpsquid:S1104¢"DMake this field 'private' and encapsulate it in a 'public' property.(çúó
+bcsharpsquid:S1104§"DMake this field 'private' and encapsulate it in a 'public' property.(ãŒ¡‘
+gcsharpsquid:S1104¬"DMake this field 'private' and encapsulate it in a 'public' property.(ñ·üîúÿÿÿÿ
+bcsharpsquid:S1104¢"DMake this field 'private' and encapsulate it in a 'public' property.(ÎÔîï
+mcsharpsquid:S3963‚"JInitialize all 'static fields' inline and remove the 'static constructor'.(³†Öúÿÿÿÿ
+Vcsharpsquid:S4136·"9All 'AllocateViewID' method overloads should be adjacent.(®ö 
+[csharpsquid:S4136Ì"=All 'NetworkInstantiate' method overloads should be adjacent.(ê£Ï
+Xcsharpsquid:S1133ï"5Do not forget to remove this deprecated code someday.(‰Ûïøÿÿÿÿ
+Xcsharpsquid:S1133Ä"5Do not forget to remove this deprecated code someday.(àÑî»ÿÿÿÿÿ
+Xcsharpsquid:S1133µ"5Do not forget to remove this deprecated code someday.(ØºøÅøÿÿÿÿ
+gcsharpsquid:S2292˜"DMake this an auto-implemented property and remove its backing field.(âë¡Ìÿÿÿÿÿ
+Ecsharpsquid:S1905Ì"'Remove this unnecessary cast to 'byte'.(íŒØÈ
+Ecsharpsquid:S1905Ñ"'Remove this unnecessary cast to 'byte'.(íŒØÈ
+icsharpsquid:S2223e"MChange the visibility of 'NetworkingClient' or make it 'const' or 'readonly'.(Š»›t
+hcsharpsquid:S2223ü"JChange the visibility of 'ConnectMethod' or make it 'const' or 'readonly'.(£¯Æ
+ccsharpsquid:S2223Ã"EChange the visibility of 'LogLevel' or make it 'const' or 'readonly'.(Û‚¶Ş
+ucsharpsquid:S2223š"RChange the visibility of 'EnableCloseConnection' or make it 'const' or 'readonly'.(²™ÇÈüÿÿÿÿ
+|csharpsquid:S2223¢"^Change the visibility of 'PrecisionForVectorSynchronization' or make it 'const' or 'readonly'.(çúó
+€csharpsquid:S2223§"bChange the visibility of 'PrecisionForQuaternionSynchronization' or make it 'const' or 'readonly'.(ãŒ¡‘
+€csharpsquid:S2223¬"]Change the visibility of 'PrecisionForFloatSynchronization' or make it 'const' or 'readonly'.(ñ·üîúÿÿÿÿ
+‚csharpsquid:S2223¢"dChange the visibility of 'MinimalTimeScaleToDispatchInFixedUpdate' or make it 'const' or 'readonly'.(ÎÔîï
+:csharpsquid:S1643Æ"Use a StringBuilder instead.(º†ì
+Ycsharpsquid:S2259ø"6'targetPlayer' is null on at least one execution path.(Œ¡úúÿÿÿÿ
+gcsharpsquid:S2589ù"DChange this condition so that it does not always evaluate to 'true'.(•ÓŠÆúÿÿÿÿ
+Wcsharpsquid:S112Œ"5'System.Exception' should not be thrown by user code.(½¾şÙüÿÿÿÿ
+Wcsharpsquid:S112¤"5'System.Exception' should not be thrown by user code.(­—Øûÿÿÿÿ
+fcsharpsquid:S107,"EConstructor has 9 parameters, which is greater than the 7 authorized.(­çƒáşÿÿÿÿ
+bcsharpsquid:S107©"@Method has 8 parameters, which is greater than the 7 authorized.(Ş«¬´şÿÿÿÿ
+hcsharpsquid:S3241Ì"JChange return type to 'void'; not a single caller uses the returned value.(ê£Ï
+<csharpsquid:S125Ò"Remove this commented out code.(»óÁõ
+<csharpsquid:S125–"Remove this commented out code.(©ÿãÀ
+<csharpsquid:S125À"Remove this commented out code.(ä•¯Ö
+<csharpsquid:S125Ê"Remove this commented out code.(ÛÓÒ¸
+<csharpsquid:S125Ğ"Remove this commented out code.(º¦Ï¤
+<csharpsquid:S125â"Remove this commented out code.(Ê¢…›
+Qcsharpsquid:S1135ù"4Complete the task associated to this 'TODO' comment.(ªš£l
+Qcsharpsquid:S1135Š"4Complete the task associated to this 'TODO' comment.(ªš£l
+Wcsharpsquid:S1135ä"4Complete the task associated to this 'TODO' comment.(¶ººşÿÿÿÿ
+Rcsharpsquid:S1135±"4Complete the task associated to this 'TODO' comment.(íÈ’‰
+Rcsharpsquid:S1135Ñ	"4Complete the task associated to this 'TODO' comment.(Â˜
+Wcsharpsquid:S1135Ø"4Complete the task associated to this 'TODO' comment.(ŞÂ•³ıÿÿÿÿ
