@@ -3,6 +3,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using UniRx;
 using LiteralRepository;
+using UnityEngine;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 /// <summary>
@@ -44,7 +45,7 @@ public class PhotonMatchingSceneRoomManager : MonoBehaviourPun
         int index = 1;
         foreach (KeyValuePair<int, Player> player in PhotonNetwork.CurrentRoom.Players)
         {
-            Hashtable _playerIndex = new Hashtable() { { "PersonalIndex", index }}; 
+            Hashtable _playerIndex = new Hashtable() { { "PersonalIndex", index } }; 
             player.Value.SetCustomProperties(_playerIndex);
             ++index;
         }

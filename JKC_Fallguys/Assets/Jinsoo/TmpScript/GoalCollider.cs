@@ -9,6 +9,8 @@ public class GoalCollider : MonoBehaviour
         {
             PlayerPhotonController playerPhotonController = col.GetComponent<PlayerPhotonController>();
             playerPhotonController.SendMessageWinTheStage();
+            
+            Debug.Log(playerPhotonController.name);
         }
     }
 }

@@ -31,35 +31,12 @@ public class FruitPool
         return fruit;
     }
     
-    
-    
     // 무작위로 생성할 과일을 선택하는 메서드입니다.
     private Fruit FruitSelection()
     {
         Fruit fruit = default;
         int randomFruitPickNumber = Random.Range(0, 5);
-
-        switch (randomFruitPickNumber)
-        {
-            case 0:
-                fruit = FruitPrefabRegistry.Repository[FruitPrefabRegistry.Apple];
-                break;
-            case 1:
-                fruit = FruitPrefabRegistry.Repository[FruitPrefabRegistry.Banana];
-                break;
-            case 2:
-                fruit = FruitPrefabRegistry.Repository[FruitPrefabRegistry.Orange];
-                break;
-            case 3:
-                fruit = FruitPrefabRegistry.Repository[FruitPrefabRegistry.StrawBerry];
-                break;
-            case 4:
-                fruit = FruitPrefabRegistry.Repository[FruitPrefabRegistry.WaterMelon];
-                break;
-            default:
-                Debug.LogError($"The value of the key is invalid. The value of the key is {randomFruitPickNumber}");
-                break;
-        }
+        fruit = FruitPrefabRegistry.Repository[randomFruitPickNumber];
 
         return fruit;
     }

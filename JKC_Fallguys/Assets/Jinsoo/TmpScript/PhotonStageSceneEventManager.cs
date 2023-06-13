@@ -1,5 +1,4 @@
-using System;
-using ExitGames.Client.Photon.StructWrapping;
+using ExitGames.Client.Photon;
 using LiteralRepository;
 using Photon.Pun;
 using Photon.Realtime;
@@ -22,9 +21,10 @@ public class PhotonStageSceneEventManager : MonoBehaviourPunCallbacks
 
     private void Awake()
     {
-        OnInstantiatePhotonRoomManager();
-        
         SceneManager.sceneLoaded += OnInitializeLoadScene;
+        
+        TestFun();
+        OnInstantiatePhotonRoomManager();
     }
 
     private void Start()
@@ -44,8 +44,8 @@ public class PhotonStageSceneEventManager : MonoBehaviourPunCallbacks
 
         _roomManager = roomManager;
     }
-    
-    private void OnInitializeLoadScene(Scene scene, LoadSceneMode mode)
+
+    private void TestFun()
     {
         Player player = PhotonNetwork.LocalPlayer;
         object indexObject;
@@ -63,6 +63,14 @@ public class PhotonStageSceneEventManager : MonoBehaviourPunCallbacks
             Debug.LogWarning("Failed to get the player index from custom properties.");
         }
     }
+    
+    private void OnInitializeLoadScene(Scene scene, LoadSceneMode mode)
+    {
+        Debug.Log("로드 씬 호출");
+        
+        
+    }
+
 
     private void OnDestroy()
     {
