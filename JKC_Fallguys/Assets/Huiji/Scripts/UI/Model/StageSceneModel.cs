@@ -1,3 +1,5 @@
+using UniRx;
+
 namespace Model
 {
     public static class StageSceneModel
@@ -24,6 +26,32 @@ namespace Model
         public static void SetExitButtonActive(bool status)
         {
             _canClickButton = status;
+        }
+        
+        private static readonly ReactiveProperty<int> _enteredGoalPlayerCount = new IntReactiveProperty(0);
+        
+        /// <summary>
+        /// 현재 골에 들어간 플레이어의 수를 나타냅니다.
+        /// </summary>
+        public static ReadOnlyReactiveProperty<int> EnteredGoalPlayerCount
+            => _enteredGoalPlayerCount.ToReadOnlyReactiveProperty();
+
+        public static void IncreaseEnteredPlayerCount()
+        {
+            ++_enteredGoalPlayerCount.Value;
+        }
+        
+        private static readonly ReactiveProperty<int> _totalPlayerCount = new IntReactiveProperty(0);
+        
+        /// <summary>
+        /// Stage에 입장한 플레이어의 수를 나타냅니다.
+        /// </summary>
+        public static ReadOnlyReactiveProperty<int> TotalPlayerCount
+            => _totalPlayerCount.ToReadOnlyReactiveProperty();
+
+        public static void SetTotalPlayerCount(int value)
+        {
+            _totalPlayerCount.Value = value;
         }
     }
 }
