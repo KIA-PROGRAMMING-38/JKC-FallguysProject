@@ -13,11 +13,15 @@ public class ExitButtonPresenter : Presenter
         InitializeRx();
     }
 
+    /// <summary>
+    /// 버튼을 클릭할 수 있는 상태가 되고 나서 버튼을 클릭해야 패널을 띄울 수 있습니다.
+    /// </summary>
     protected override void OnOccuredUserEvent()
     {
         _exitButtonView.UIPopUpButton
             .OnClickAsObservable()
-            .Subscribe(_ => StageSceneModel.ActiveExitPanel(true))
+            .Where(_ => StageSceneModel.CanClickButton)
+            .Subscribe(_ => StageSceneModel.SetExitPanelActive(true))
             .AddTo(_compositeDisposable);
     }
 
@@ -26,6 +30,7 @@ public class ExitButtonPresenter : Presenter
         Observable.EveryUpdate()
             .ObserveEveryValueChanged(_ => StageSceneModel.IsExitPanelPopUp)
             .Where(_ => StageSceneModel.IsExitPanelPopUp)
+            .Where(_ => StageSceneModel.CanClickButton)
             .Subscribe(_ => ActivateExitPanel())
             .AddTo(_compositeDisposable);
     }

@@ -1,4 +1,5 @@
 using System;
+using Model;
 using UniRx;
 using UnityEngine;
 
@@ -61,6 +62,9 @@ public class StageStartPresenter : Presenter
             _spriteIndex = 0;
             _stageStartView.CountdownImage.gameObject.SetActive(false);
             AnimateTitleOut();
+            
+            // 카운트다운 후에 Exit 버튼을 누를 수 있게 합니다.
+            StageSceneModel.SetExitButtonActive(true);
         }
     }
     
