@@ -1,18 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
-public class EntryCounterViewController : MonoBehaviour
+public class EntryCounterViewController : ViewController
 {
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        View = transform.Find("EntryCounterView").GetComponent<EntryCounterView>();
+        Debug.Assert(View != null);
+        Presenter = new EntryCounterPresenter();
+        Debug.Assert(Presenter != null);
     }
 }
