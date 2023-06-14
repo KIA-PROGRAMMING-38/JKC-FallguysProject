@@ -1,3 +1,5 @@
+using UniRx;
+
 namespace Model
 {
     public static class StageSceneModel
@@ -25,5 +27,10 @@ namespace Model
         {
             _canClickButton = status;
         }
+        
+        private static readonly ReactiveProperty<int> _enteredGoalPlayerCount = new IntReactiveProperty(0);
+        
+        public static ReadOnlyReactiveProperty<int> EnteredGoalPlayerCount
+            => _enteredGoalPlayerCount.ToReadOnlyReactiveProperty();
     }
 }
