@@ -1,6 +1,7 @@
+using Photon.Pun;
 using UnityEngine;
 
-public class PlayerReferenceManager : MonoBehaviour
+public class PlayerReferenceManager : MonoBehaviourPun
 {
     private PlayerInput _playerInput;
     private CameraAngle _cameraAngle;
@@ -12,6 +13,9 @@ public class PlayerReferenceManager : MonoBehaviour
 
     private void Awake()
     {
+        if (!photonView.IsMine)
+            return;
+        
         _playerInput = GetComponentInChildren<PlayerInput>();
         _cameraAngle = GetComponentInChildren<CameraAngle>();
         _playerPhysicsController = GetComponentInChildren<PlayerPhysicsController>();
@@ -21,6 +25,9 @@ public class PlayerReferenceManager : MonoBehaviour
 
     private void Start()
     {
+        if (!photonView.IsMine)
+            return;
+        
         _cameraAngle.BindPlayerData(_playerInput, _playerCharacter);
         _playerPhysicsController.BindCameraAngle(_cameraAngle);
         _photonController.OnInitialize(this);

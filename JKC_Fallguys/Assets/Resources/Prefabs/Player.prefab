@@ -854,11 +854,11 @@ GameObject:
   - component: {fileID: 5463251385608106261}
   - component: {fileID: 5463251385608106258}
   - component: {fileID: 122906923565191160}
-  - component: {fileID: 4441897917212973170}
   - component: {fileID: 7082175767991608424}
   - component: {fileID: 6916337384426825303}
   - component: {fileID: 8310932015461178466}
   - component: {fileID: 4231617488334469504}
+  - component: {fileID: 9027429783437804086}
   m_Layer: 0
   m_Name: Character
   m_TagString: Player
@@ -982,29 +982,12 @@ MonoBehaviour:
   _moveSpeed: 7
   _groundCheckPoint: {fileID: 2387829583882509454}
   _castRadius: 0.2
-  _groundCheckDistance: 1
-  slopeAccel: 1
-  _jumpMovementForce: 50
+  _groundCheckDistance: 3
+  _jumpMovementForce: 40
   _diveRotationSpeed: 300
   _diveHeightDirection: 2
   _getUpRotationSpeed: 300
   _respawnPosition: {fileID: 801527185}
---- !u!114 &4441897917212973170
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1619785448565600724}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64179f3720bbfe947b7724caa67b7c1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizeVelocity: 1
-  m_SynchronizeAngularVelocity: 0
-  m_TeleportEnabled: 0
-  m_TeleportIfDistanceGreaterThan: 3
 --- !u!114 &7082175767991608424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1058,7 +1041,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SynchronizePosition: 1
+  m_SynchronizePosition: 0
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
@@ -1093,12 +1076,28 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
-  - {fileID: 4441897917212973170}
   - {fileID: 7082175767991608424}
   - {fileID: 6916337384426825303}
+  - {fileID: 9027429783437804086}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &9027429783437804086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1619785448565600724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64179f3720bbfe947b7724caa67b7c1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizeVelocity: 1
+  m_SynchronizeAngularVelocity: 0
+  m_TeleportEnabled: 0
+  m_TeleportIfDistanceGreaterThan: 3
 --- !u!1 &2391585823698486539
 GameObject:
   m_ObjectHideFlags: 0

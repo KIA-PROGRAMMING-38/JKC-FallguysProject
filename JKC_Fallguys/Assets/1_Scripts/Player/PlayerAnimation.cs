@@ -1,9 +1,10 @@
 using System;
 using Cysharp.Threading.Tasks;
 using LiteralRepository;
+using Photon.Pun;
 using UnityEngine;
 
-public class PlayerAnimation : MonoBehaviour
+public class PlayerAnimation : MonoBehaviourPun
 {
     private Animator _animator;
     private PlayerInput _playerInput;
@@ -18,6 +19,9 @@ public class PlayerAnimation : MonoBehaviour
 
     private void Awake()
     {
+        if (!photonView.IsMine)
+            return;
+        
         _animator = GetComponent<Animator>();
         _playerInput = GetComponentInParent<PlayerInput>();
         _playerPhysicsController = GetComponent<PlayerPhysicsController>();
@@ -25,12 +29,18 @@ public class PlayerAnimation : MonoBehaviour
 
     private void Start()
     {
+        if (!photonView.IsMine)
+            return;
+        
         _playerInput.OnReleaseGrab -= ReleaseGrab;
         _playerInput.OnReleaseGrab += ReleaseGrab;
     }
 
     private void Update()
     {
+        if (!photonView.IsMine)
+            return;
+        
         // Grab시 max값의 변수를 0.5로 변환하게 하는 로직 필요. 평소에는 max값이 1.
         // 위의 로직 함수를 Grab State에서 호출한다.
         
@@ -52,6 +62,9 @@ public class PlayerAnimation : MonoBehaviour
     private bool _isGround;
     private void OnCollisionEnter(Collision collision)
     {
+        if (!photonView.IsMine)
+            return;
+        
         // AttempingGrab중 GrabBox랑 닿으면 Grab로 전이
         if (collision.gameObject.CompareTag(TagLiteral.Box) && _animator.GetBool(AnimLiteral.IsGrab))
         {
@@ -85,6 +98,9 @@ public class PlayerAnimation : MonoBehaviour
 
     private void OnCollisionExit(Collision other)
     {
+        if (!photonView.IsMine)
+            return;
+        
         if (other.gameObject.CompareTag(TagLiteral.Ground))
         {
             _isGround = false;
@@ -105,6 +121,9 @@ public class PlayerAnimation : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
+        if (!photonView.IsMine)
+            return;
+        
         if (other.gameObject.CompareTag(TagLiteral.Boundary))
         {
             _animator.SetBool(AnimLiteral.IsFall, true);

@@ -1,11 +1,9 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
+using Photon.Pun;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
-public class PlayerInput : MonoBehaviour
+public class PlayerInput : MonoBehaviourPun
 {
     public Vector3 InputVec { get; private set; }
     public Vector2 ScreenToMousePos { get; private set; }
@@ -14,7 +12,7 @@ public class PlayerInput : MonoBehaviour
     
     private void Update()
     {
-        if (_isMoving)
+        if (_isMoving && photonView.IsMine)
         {
             OnMovement?.Invoke();
         }
@@ -27,12 +25,12 @@ public class PlayerInput : MonoBehaviour
     {
         InputVec = context.ReadValue<Vector3>();
         
-        if (context.started)
+        if (context.started && photonView.IsMine)
         {
             _isMoving = true;
         }
 
-        if (context.canceled)
+        if (context.canceled && photonView.IsMine)
         {
             _isMoving = false;
         }
@@ -42,12 +40,12 @@ public class PlayerInput : MonoBehaviour
     public void OnJump(InputAction.CallbackContext context)
     {
         // Jump Button을 눌렀을때 JumpState를 실행한다.
-        if (context.started)
+        if (context.started && photonView.IsMine)
         {
             IsJump = true;
         }
 
-        if (context.canceled)
+        if (context.canceled && photonView.IsMine)
         {
             IsJump = false;
         }
@@ -73,12 +71,12 @@ public class PlayerInput : MonoBehaviour
 
     public void OnGrab(InputAction.CallbackContext context)
     {
-        if (context.started)
+        if (context.started && photonView.IsMine)
         {
             IsAttemptingGrab = true;
         }
 
-        if (context.canceled)
+        if (context.canceled && photonView.IsMine)
         {
             IsAttemptingGrab = false;
         }
@@ -87,12 +85,12 @@ public class PlayerInput : MonoBehaviour
     public bool IsDive { get; private set; }
     public void OnDive(InputAction.CallbackContext context)
     {
-        if (context.started)
+        if (context.started && photonView.IsMine)
         {
             IsDive = true;
         }
 
-        if (context.canceled)
+        if (context.canceled && photonView.IsMine)
         {
             IsDive = false;
         }
@@ -101,7 +99,10 @@ public class PlayerInput : MonoBehaviour
     public event Action OnMouseMove;
     public void OnMouse(InputAction.CallbackContext context)
     {
-        ScreenToMousePos = context.ReadValue<Vector2>();
-        OnMouseMove?.Invoke();
+        if (photonView.IsMine)
+        {
+            ScreenToMousePos = context.ReadValue<Vector2>();
+            OnMouseMove?.Invoke();            
+        }
     }
 }
