@@ -71,3 +71,13 @@ V
 KAssets/1_Scripts/Scene/02_MatchingStandby/PhotonMatchingSceneRoomManager.cs,1/5/155a156dfd6769cc6cb969363be4992b651f3295
 |
 LAssets/1_Scripts/Scene/02_MatchingStandby/PhotonMatchingSceneEventManager.cs,9/e/9e082ac094df2120dc245f43474014647d63805f
+T
+$Assets/Jinsoo/TmpScript/FruitPool.cs,a/a/aa558f467190a1b07ec86abf53665c17379e5e88
+W
+'Assets/Jinsoo/TmpScript/GoalCollider.cs,9/9/991709d3b53136135e2184b786275fbd923b247b
+V
+&Assets/Jinsoo/TmpScript/FruitPooler.cs,8/b/8b16bbca315bda14140d116038cc005dbb9a95dd
+W
+'Assets/Jinsoo/PlayerPhotonController.cs,5/c/5c5bc0d39135aed76ba733b560bf6a3b833a104b
+^
+.Assets/Jinsoo/TmpScript/FruitPrefabRegistry.cs,6/9/69c27d42348296689e26bf1aa589ad086a683d02

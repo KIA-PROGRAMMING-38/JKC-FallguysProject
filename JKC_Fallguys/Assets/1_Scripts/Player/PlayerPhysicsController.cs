@@ -1,13 +1,13 @@
 using System;
 using Cysharp.Threading.Tasks;
-using UnityEditor;
-using UnityEditor.Experimental.GraphView;
+using LiteralRepository;
+using Photon.Pun;
 using UnityEngine;
 
 /// <summary>
 /// 플레이어 물리 움직임을 담당한다.
 /// </summary>
-public class PlayerPhysicsController : MonoBehaviour
+public class PlayerPhysicsController : MonoBehaviourPun
 {
     private Rigidbody _playerRigidbody;
     private PlayerInput _playerInput;
@@ -24,11 +24,6 @@ public class PlayerPhysicsController : MonoBehaviour
     {
         _playerRigidbody = GetComponent<Rigidbody>();
         _playerInput = GetComponentInParent<PlayerInput>();
-    }
-
-    private void FixedUpdate()
-    {
-        
     }
 
     public void BindCameraAngle(CameraAngle cameraAngle)
@@ -50,6 +45,9 @@ public class PlayerPhysicsController : MonoBehaviour
     // moveDir를 이용하여 플레이어가 움직인다
     private void CurrentMoveDirection()
     {
+        if (!photonView.IsMine)
+            return;
+        
         _forwardAngleVec = new Vector3(_camera.transform.forward.x, 0f, _camera.transform.forward.z).normalized;
         _rightAngleVec = new Vector3(_camera.transform.right.x, 0f, _camera.transform.right.z).normalized;
         _moveDir = _forwardAngleVec * _playerInput.InputVec.z + _rightAngleVec * _playerInput.InputVec.x;
@@ -60,6 +58,9 @@ public class PlayerPhysicsController : MonoBehaviour
     /// </summary>
     public void Move()
     {
+        if (!photonView.IsMine)
+            return;
+        
         CheckGround();
         
         if (_playerInput.InputVec != _zeroVec && _playerInput.CannotMove == false)
@@ -79,7 +80,7 @@ public class PlayerPhysicsController : MonoBehaviour
         // 초기 슬로프 각도 설정.
         float groundSlopeAngle = 0f;
         // 지면과의 충돌 여부 확인.
-        int layerMask = 1 << LayerMask.NameToLayer("Ground");
+        int layerMask = 1 << LayerMask.NameToLayer(TagLiteral.Ground);
         bool cast = Physics.SphereCast
         (_groundCheckPoint.position, _castRadius, Vector3.down, out var hit, 
             _groundCheckDistance, layerMask);
@@ -114,6 +115,9 @@ public class PlayerPhysicsController : MonoBehaviour
     /// </summary>
     public void OnJumping()
     {
+        if (!photonView.IsMine)
+            return;
+        
         if (_playerInput.InputVec != _zeroVec && _playerInput.CannotMove == false)
         {
             _playerRigidbody.AddForce(_moveDir * _jumpMovementForce, ForceMode.Force);
@@ -126,6 +130,9 @@ public class PlayerPhysicsController : MonoBehaviour
     /// </summary>
     public void ActivateJumpAction()
     {
+        if (!photonView.IsMine)
+            return;
+        
         JumpAction().Forget();
     }
 
@@ -141,6 +148,9 @@ public class PlayerPhysicsController : MonoBehaviour
     /// </summary>
     public void ActivateDiveAction()
     {
+        if (!photonView.IsMine)
+            return;
+        
         DiveRotation().Forget();
         DiveAction().Forget();
     }
@@ -193,6 +203,9 @@ public class PlayerPhysicsController : MonoBehaviour
     /// </summary>
     public void ActivateGetUp()
     {
+        if (!photonView.IsMine)
+            return;
+        
         GetUp().Forget();
     }
     
@@ -223,6 +236,9 @@ public class PlayerPhysicsController : MonoBehaviour
     /// </summary>
     public void UnfreezeRotationAxis()
     {
+        if (!photonView.IsMine)
+            return;
+        
         _playerRigidbody.constraints = RigidbodyConstraints.None;
     }
 
@@ -231,6 +247,9 @@ public class PlayerPhysicsController : MonoBehaviour
     /// </summary>
     public void ActivateRecovery()
     {
+        if (!photonView.IsMine)
+            return;
+        
         Recovery().Forget();
     }
     
@@ -264,6 +283,9 @@ public class PlayerPhysicsController : MonoBehaviour
     /// </summary>
     public void Respawn()
     {
+        if (!photonView.IsMine)
+            return;
+        
         transform.position = _respawnPosition.position;
         _playerRigidbody.constraints = RigidbodyConstraints.FreezeRotation;
     }

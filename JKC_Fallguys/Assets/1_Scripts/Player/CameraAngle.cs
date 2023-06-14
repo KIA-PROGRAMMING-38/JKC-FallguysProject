@@ -1,10 +1,29 @@
 using System;
+using Photon.Pun;
 using UnityEngine;
 
-public class CameraAngle : MonoBehaviour
+public class CameraAngle : MonoBehaviourPun
 {
     private PlayerInput _playerInput;
     private Transform _playerChracter;
+
+    private void Awake()
+    {
+        Camera camera = GetComponentInChildren<Camera>();
+        AudioListener myAudioListener = camera.GetComponent<AudioListener>();
+
+        if (photonView.IsMine)
+        {
+            camera.enabled = true;
+            myAudioListener.enabled = true;
+        }
+        else
+        {
+            camera.enabled = false;
+            myAudioListener.enabled = false;
+        }
+    }
+
     public void BindPlayerData(PlayerInput playerInput, Transform playerCharacter)
     {
         _playerInput = playerInput;
@@ -12,7 +31,7 @@ public class CameraAngle : MonoBehaviour
         _playerInput.OnMouseMove -= SetCameraAngle;
         _playerInput.OnMouseMove += SetCameraAngle;
     }
-    
+
     // 3인칭 카메라 앵글 구현
     private void SetCameraAngle()
     {
@@ -30,22 +49,26 @@ public class CameraAngle : MonoBehaviour
         {
             xValueOfAngle = Mathf.Clamp(xValueOfAngle, 345f, 361f);
         }
-        
+
         transform.rotation = Quaternion.Euler(
             xValueOfAngle,
-            cameraAngle.y + _playerInput.ScreenToMousePos.x, 
+            cameraAngle.y + _playerInput.ScreenToMousePos.x,
             cameraAngle.z);
     }
 
     private void LateUpdate()
     {
+        if (!photonView.IsMine)
+            return;
+        
         FollowPlayerBody();
     }
 
     // 카메라가 플레이어의 좌표를 따라가는 함수
     private void FollowPlayerBody()
     {
-        Vector3 targetPos = new Vector3(_playerChracter.position.x, _playerChracter.position.y - 1, _playerChracter.position.z);
+        Vector3 targetPos = new Vector3(_playerChracter.position.x, _playerChracter.position.y - 1,
+            _playerChracter.position.z);
         transform.position = targetPos;
     }
 }
