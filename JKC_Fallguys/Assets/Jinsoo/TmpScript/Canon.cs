@@ -1,6 +1,7 @@
 using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using Photon.Pun;
 using UnityEngine;
 
 public class Canon : MonoBehaviour
@@ -50,7 +51,18 @@ public class Canon : MonoBehaviour
         _canonAnimator.Play("ShootMotion");
     }
 
+    [PunRPC]
     public void ShootFruit()
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            
+        }
+        
+        
+    }
+
+    private void Foo()
     {
         Fruit fruitInstance = _fruitPooler.FruitPool.FruitPoolInstance.Get();
         fruitInstance.transform.position = _shootAngleTransform.position;

@@ -9,6 +9,7 @@ TagManager:
   - Boundary
   - LineEffect
   - Fruit
+  - SplashArtCard
   layers:
   - Default
   - TransparentFX

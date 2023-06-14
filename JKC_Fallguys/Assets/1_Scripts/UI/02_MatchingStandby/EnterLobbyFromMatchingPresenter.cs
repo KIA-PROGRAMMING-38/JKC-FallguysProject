@@ -24,12 +24,6 @@ public class EnterLobbyFromMatchingPresenter : Presenter
             .OnClickAsObservable()
             .Subscribe(_ => Model.MatchingSceneModel.RoomAdmissionStatus(false))
             .AddTo(_compositeDisposable);
-
-        Observable.EveryUpdate()
-            .ObserveEveryValueChanged(_ => Model.MatchingSceneModel.IsActionPossible)
-            .Where(_ => !Model.MatchingSceneModel.IsActionPossible)
-            .Subscribe(_ => Model.MatchingSceneModel.DeActiveEnterLobbyPanel())
-            .AddTo(_compositeDisposable);
     }
 
     protected override void OnUpdatedModel()
@@ -44,6 +38,12 @@ public class EnterLobbyFromMatchingPresenter : Presenter
             .ObserveEveryValueChanged(_ => Model.MatchingSceneModel.IsEnterPhotonRoom)
             .Where(_ => !Model.MatchingSceneModel.IsEnterPhotonRoom)
             .Subscribe(_ => ReturnLobby())
+            .AddTo(_compositeDisposable);
+        
+        Observable.EveryUpdate()
+            .ObserveEveryValueChanged(_ => Model.MatchingSceneModel.IsActionPossible)
+            .Where(_ => !Model.MatchingSceneModel.IsActionPossible)
+            .Subscribe(_ => Model.MatchingSceneModel.DeActiveEnterLobbyPanel())
             .AddTo(_compositeDisposable);
     }
     
