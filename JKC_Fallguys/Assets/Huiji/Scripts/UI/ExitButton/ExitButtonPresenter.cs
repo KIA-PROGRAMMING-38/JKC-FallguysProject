@@ -30,7 +30,6 @@ public class ExitButtonPresenter : Presenter
         Observable.EveryUpdate()
             .ObserveEveryValueChanged(_ => StageSceneModel.IsExitPanelPopUp)
             .Where(_ => StageSceneModel.IsExitPanelPopUp)
-            .Where(_ => StageSceneModel.CanClickButton)
             .Subscribe(_ => ActivateExitPanel())
             .AddTo(_compositeDisposable);
     }
