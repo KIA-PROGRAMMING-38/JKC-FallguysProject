@@ -1156,18 +1156,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &4780920579176839985
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7758790329187913941}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d4ca6af6404d42d4a917d19bb616c21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6270613323080001081
 GameObject:
   m_ObjectHideFlags: 0
@@ -1480,6 +1468,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd1b9f35cb2c248febade962647d7cde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _stageExitPanel: {fileID: 7758790329462444032}
 --- !u!1 &6270613323777619568
 GameObject:
   m_ObjectHideFlags: 0
@@ -1683,18 +1672,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6270613324708435397}
   m_CullTransparentMesh: 1
---- !u!114 &6991449612202654342
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7758790329462444031}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5cbeaf7600dfd4f6cbb7fe2539c1e866, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7758790328067960560
 GameObject:
   m_ObjectHideFlags: 0
@@ -2353,9 +2330,8 @@ GameObject:
   - component: {fileID: 7758790329187913937}
   - component: {fileID: 7758790329187913936}
   - component: {fileID: 7758790329187913943}
-  - component: {fileID: 4780920579176839985}
   m_Layer: 0
-  m_Name: EnterLobbyFromStageView
+  m_Name: StageExitPanelView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2839,14 +2815,26 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7758790329462444024}
-  - component: {fileID: 6991449612202654342}
+  - component: {fileID: 7758790329462444032}
   m_Layer: 0
-  m_Name: EnterLobbyFromStageViewController
+  m_Name: StageExitPanelViewController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
+--- !u!114 &7758790329462444032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7758790329462444031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d55167a834dc496db1160a5f1bcc8ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7758790329706841860
 MonoBehaviour:
   m_ObjectHideFlags: 0
