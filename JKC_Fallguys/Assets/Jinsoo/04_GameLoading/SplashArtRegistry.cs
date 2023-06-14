@@ -4,21 +4,16 @@ using UnityEngine;
 
 public static class SplashArtRegistry
 {
-    public static List<Texture2D> SpriteArts;
+    public static Queue<Sprite> SpriteArts;
 
     static SplashArtRegistry()
     {
         GetSplashArtData();
-
-        foreach (var elem in SpriteArts)
-        {
-            Debug.Log(elem.name);
-        }
     }
 
     public static void GetSplashArtData()
     {
-        SpriteArts = new List<Texture2D>
-            (Resources.LoadAll<Texture2D>(DataManager.SetDataPath(PathLiteral.UI, "GameLoading")));
+        SpriteArts = new Queue<Sprite>
+            (Resources.LoadAll<Sprite>(DataManager.SetDataPath(PathLiteral.UI, "GameLoading")));
     }
 }

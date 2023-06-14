@@ -1,0 +1,8 @@
+
+[csharpsquid:S3903"2Move 'FruitPrefabRegistry' into a named namespace.(âó¿ûÿÿÿÿ8šğØ„‹1
+gcsharpsquid:S1104
+"DMake this field 'private' and encapsulate it in a 'public' property.(ôÕ×8Ìäîœ‹1
+ƒcsharpsquid:S2386
+"`Use an immutable collection or reduce the accessibility of the public static field 'Repository'.(ôÕ×8Ìäîœ‹1
+jcsharpsquid:S2223
+"GChange the visibility of 'Repository' or make it 'const' or 'readonly'.(ôÕ×8Ìäîœ‹1
