@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using Cysharp.Threading.Tasks;
+using Unity.VisualScripting;
 using Random = UnityEngine.Random;
 
 public class LoadingSceneSplashArtCardPooler : MonoBehaviour
@@ -13,18 +15,21 @@ public class LoadingSceneSplashArtCardPooler : MonoBehaviour
     [SerializeField] 
     private float _reapeatCooldown;
 
+    private CancellationTokenSource _reapeatCancellationTokenSource;
+    
     private void Awake()
     {
         _cardPool = new LoadingSceneSplashArtCardPool(gameObject);
+        _reapeatCancellationTokenSource = new CancellationTokenSource();
         
-        ReapeatHorizontalEffect().Forget();
+        ReapeatHorizontalEffect(_reapeatCancellationTokenSource.Token).Forget();
     }
 
-    private async UniTaskVoid ReapeatHorizontalEffect()
+    private async UniTaskVoid ReapeatHorizontalEffect(CancellationToken cancelToken)
     {
         while (true)
         {
-            await UniTask.Delay(TimeSpan.FromSeconds(_reapeatCooldown));
+            await UniTask.Delay(TimeSpan.FromSeconds(_reapeatCooldown), cancellationToken: cancelToken);
             
             LoadingSceneSplashArtCard card = _cardPool.CardPoolInstance.Get();
             RectTransform cardRect = card.GetComponent<RectTransform>();
@@ -33,14 +38,20 @@ public class LoadingSceneSplashArtCardPooler : MonoBehaviour
 
             int randomSpriteIndex = Random.Range(0, SplashArtRegistry.SpriteArts.Count);
             card.SplashImage.sprite = SplashArtRegistry.SpriteArts[randomSpriteIndex];
-            ReleaseCard(card).Forget();
+            
+            ReleaseCard(card, card.ReleaseCancellationTokenSource.Token).Forget();
         }
     }
 
-    private async UniTaskVoid ReleaseCard(LoadingSceneSplashArtCard card)
+    private async UniTaskVoid ReleaseCard(LoadingSceneSplashArtCard card, CancellationToken cancelToken)
     {
-        await UniTask.Delay(TimeSpan.FromSeconds(1.5f));
+        await UniTask.Delay(TimeSpan.FromSeconds(1.5f), cancellationToken: cancelToken);
         
         card.Release();
+    }
+
+    private void OnDestroy()
+    {
+        _reapeatCancellationTokenSource.Cancel();
     }
 }
