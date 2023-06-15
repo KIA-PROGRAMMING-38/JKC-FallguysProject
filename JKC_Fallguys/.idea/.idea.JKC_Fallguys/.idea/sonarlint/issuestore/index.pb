@@ -57,8 +57,6 @@ W
 'Assets/Jinsoo/TmpScript/GoalCollider.cs,9/9/991709d3b53136135e2184b786275fbd923b247b
 g
 7Assets/Jinsoo/TmpScript/PhotonStageSceneEventManager.cs,5/4/543a9b1bd1a82faf0bb44126792f47517a06cd6e
-f
-6Assets/Jinsoo/TmpScript/PhotonStageSceneRoomManager.cs,d/6/d6ef6ee7d24bb560829d2bf80246960245d5e91f
 a
 1Assets/1_Scripts/Player/PlayerReferenceManager.cs,5/2/523a77881364c10afc45fedd8fcc234e6a373690
 b

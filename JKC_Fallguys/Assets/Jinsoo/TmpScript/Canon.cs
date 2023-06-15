@@ -54,16 +54,6 @@ public class Canon : MonoBehaviour
     [PunRPC]
     public void ShootFruit()
     {
-        if (PhotonNetwork.IsMasterClient)
-        {
-            
-        }
-        
-        
-    }
-
-    private void Foo()
-    {
         Fruit fruitInstance = _fruitPooler.FruitPool.FruitPoolInstance.Get();
         fruitInstance.transform.position = _shootAngleTransform.position;
         fruitInstance.transform.rotation = _shootAngleTransform.rotation;
