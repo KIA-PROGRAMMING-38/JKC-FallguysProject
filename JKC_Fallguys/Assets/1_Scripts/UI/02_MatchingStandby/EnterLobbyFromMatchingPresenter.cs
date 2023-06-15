@@ -28,21 +28,18 @@ public class EnterLobbyFromMatchingPresenter : Presenter
 
     protected override void OnUpdatedModel()
     {
-        Observable.EveryUpdate()
-            .ObserveEveryValueChanged(_ => Model.MatchingSceneModel.IsEnterLobbyFromMatchingScene)
-            .Where(_ => !Model.MatchingSceneModel.IsEnterLobbyFromMatchingScene)
+        Model.MatchingSceneModel.IsEnterLobbyFromMatchingScene
+            .Where(isActive => !isActive)
             .Subscribe(_ => DeActivateEnterLobbyPanel())
             .AddTo(_compositeDisposable);
 
-        Observable.EveryUpdate()
-            .ObserveEveryValueChanged(_ => Model.MatchingSceneModel.IsEnterPhotonRoom)
-            .Where(_ => !Model.MatchingSceneModel.IsEnterPhotonRoom)
+        Model.MatchingSceneModel.IsEnterPhotonRoom
+            .Where(isActive => !isActive)
             .Subscribe(_ => ReturnLobby())
             .AddTo(_compositeDisposable);
         
-        Observable.EveryUpdate()
-            .ObserveEveryValueChanged(_ => Model.MatchingSceneModel.IsActionPossible)
-            .Where(_ => !Model.MatchingSceneModel.IsActionPossible)
+        Model.MatchingSceneModel.IsActionPossible
+            .Where(isActive => !isActive)
             .Subscribe(_ => Model.MatchingSceneModel.DeActiveEnterLobbyPanel())
             .AddTo(_compositeDisposable);
     }

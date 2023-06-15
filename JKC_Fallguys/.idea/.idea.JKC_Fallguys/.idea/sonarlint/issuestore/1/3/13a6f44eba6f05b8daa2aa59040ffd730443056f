@@ -1,7 +1,0 @@
-
-Xcsharpsquid:S3903"6Move 'MapFruitChuteController' into a named namespace.(›îÁ†ûÿÿÿÿ
-}csharpsquid:S1450"[Remove the field '_fruitPooler' and declare it as a local variable in the relevant methods.(ÆÈîåıÿÿÿÿ
-‚csharpsquid:S1450"YRemove the field '_leftCanon' and declare it as a local variable in the relevant methods.(şæÊıÿÿÿÿ8€ü©øŠ1
-ƒcsharpsquid:S1450"ZRemove the field '_rightCanon' and declare it as a local variable in the relevant methods.(¤úÁãøÿÿÿÿ8ŸªøŠ1
-]csharpsquid:S2259"4'_leftCanon' is null on at least one execution path.(×¶ğâşÿÿÿÿ8€Š¿øŠ1
-Ycsharpsquid:S2259"5'_rightCanon' is null on at least one execution path.( šŒû8€Š¿øŠ1

@@ -20,9 +20,8 @@ public class CurrentParticipantsPresenter : Presenter
 
     protected override void OnUpdatedModel()
     {
-        Observable.EveryUpdate()
-            .ObserveEveryValueChanged(_ => Model.MatchingSceneModel.IsEnterPhotonRoom)
-            .Where(_ => Model.MatchingSceneModel.IsEnterPhotonRoom)
+        Model.MatchingSceneModel.IsEnterPhotonRoom
+            .Where(isActive => isActive)
             .Subscribe(_ => OnActiveCurrentPlayerCount())
             .AddTo(_compositeDisposable);
     }

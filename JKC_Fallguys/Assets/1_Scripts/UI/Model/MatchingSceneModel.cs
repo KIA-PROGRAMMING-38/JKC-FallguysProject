@@ -1,35 +1,24 @@
+using UniRx;
+
 namespace Model
 {
     public static class MatchingSceneModel
     {
-        // 패널 활성화 여부를 결정하는 불리언 값입니다.
-        private static bool _isEnterLobbyFromMatchingScene;
-        public static bool IsEnterLobbyFromMatchingScene
-        {
-            get { return _isEnterLobbyFromMatchingScene; }
-        }
+        // 패널 활성화 여부를 결정하는 불리언 값입니다
+        private static ReactiveProperty<bool> _isEnterLobbyFromMatchingScene = new ReactiveProperty<bool>();
+        public static IReadOnlyReactiveProperty<bool> IsEnterLobbyFromMatchingScene => _isEnterLobbyFromMatchingScene;
 
         // 포톤 룸에 입장했음을 알리는 불리언 값입니다.
-        private static bool _isEnterPhotonRoom;
-        public static bool IsEnterPhotonRoom
-        {
-            get { return _isEnterPhotonRoom; }
-        }
-
-        // 패널 조작이 가능한지를 결정하는 불리언 값입니다.
-        private static bool _isActionPossible;
-        public static bool IsActionPossible
-        {
-            get { return _isActionPossible; }
-        }
+        private static ReactiveProperty<bool> _isEnterPhotonRoom = new ReactiveProperty<bool>();
+        public static IReadOnlyReactiveProperty<bool> IsEnterPhotonRoom => _isEnterPhotonRoom;
         
-        // 게임 시작까지 카운트다운 할 숫자를 나타냅니다.
-        private static int _startCount;
-        public static int StartCount
-        {
-            get { return _startCount; }
-        }
+        // 패널 조작이 가능한지를 결정하는 불리언 값입니다.
+        private static ReactiveProperty<bool> _isActionPossible = new ReactiveProperty<bool>();
+        public static IReadOnlyReactiveProperty<bool> IsActionPossible => _isActionPossible;
 
+        // 게임 시작까지 카운트다운 할 숫자를 나타냅니다.
+        private static ReactiveProperty<int> _startCount = new ReactiveProperty<int>();
+        public static IReadOnlyReactiveProperty<int> StartCount => _startCount;
 
         /// <summary>
         /// IsEnterLobbyFromMatching 값을 true로 설정합니다.
@@ -37,7 +26,7 @@ namespace Model
         /// </summary>
         public static void ActiveEnterLobbyPanel()
         {
-            _isEnterLobbyFromMatchingScene = true;
+            _isEnterLobbyFromMatchingScene.Value = true;
         }
 
         /// <summary>
@@ -46,7 +35,7 @@ namespace Model
         /// </summary>
         public static void DeActiveEnterLobbyPanel()
         {
-            _isEnterLobbyFromMatchingScene = false;
+            _isEnterLobbyFromMatchingScene.Value = false;
         }
         
         /// <summary>
@@ -54,7 +43,7 @@ namespace Model
         /// </summary>
         public static void ResetStartCount()
         {
-            _startCount = 10;
+            _startCount.Value = 10;
         }
 
         /// <summary>
@@ -62,7 +51,7 @@ namespace Model
         /// </summary>
         public static void DecreaseStartCount()
         {
-            --_startCount;
+            --_startCount.Value;
         }
 
         /// <summary>
@@ -71,7 +60,7 @@ namespace Model
         /// <param name="status">입장했을 경우 true, 나갈 경우 false를 인수로 넘겨줍니다.</param>
         public static void RoomAdmissionStatus(bool status)
         {
-            _isEnterPhotonRoom = status;
+            _isEnterPhotonRoom.Value = status;
         }
 
         /// <summary>
@@ -80,7 +69,7 @@ namespace Model
         /// <param name="status">true일 경우 UI와의 상호작용이 가능하며, false일 경우 불가능합니다.</param>
         public static void PossibleToEnter(bool status)
         {
-            _isActionPossible = status;
+            _isActionPossible.Value = status;
         }
     }
 }
