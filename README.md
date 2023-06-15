@@ -15,8 +15,8 @@ macOS Windows
 # 개발환경
 Unity 2021.3.24f1
 
-## 써드파티 패키지/라이브러리
-InputSystem v1.5.1
-UniTask v2.3.3
-UniRx v7.1.0
-PUN 2 FREE v2.42
+## 써드파티 패키지/라이브러리  
+InputSystem v1.5.1  
+UniTask v2.3.3  
+UniRx v7.1.0  
+PUN 2 FREE v2.42  
