@@ -22,24 +22,23 @@ public class WhiteScreenPresenter : Presenter
 
     protected override void OnUpdatedModel()
     {
-        Observable.EveryUpdate()
-            .ObserveEveryValueChanged(_ => Model.GameLoadingSceneModel.IsWhitePanelActive)
-            .Where(_ => Model.GameLoadingSceneModel.IsWhitePanelActive)
+        Model.GameLoadingSceneModel.IsWhitePanelActive
+            .Where(isActive => isActive)
             .Subscribe(_ => IncreaseCanvasAlpha().Forget())
             .AddTo(_compositeDisposable);
-        
-        Observable.EveryUpdate()
-            .ObserveEveryValueChanged(_ => Model.GameLoadingSceneModel.IsWhitePanelActive)
-            .Where(_ => !Model.GameLoadingSceneModel.IsWhitePanelActive)
+
+        Model.GameLoadingSceneModel.IsWhitePanelActive
+            .Where(isActive => !isActive)
             .Subscribe(_ => DecreaseCanvasAlpha().Forget())
             .AddTo(_compositeDisposable);
+
     }
 
     private async UniTaskVoid IncreaseCanvasAlpha()
     {
         float duration = 1.0f;
         float elapsedTime = 0f;
-        
+    
         while (_whiteScreenView.ViewCanvasGroup.alpha < 0.99f)
         {
             elapsedTime += Time.deltaTime;
@@ -47,13 +46,15 @@ public class WhiteScreenPresenter : Presenter
 
             await UniTask.Yield();
         }
+
+        _whiteScreenView.ViewCanvasGroup.alpha = 1f;
     }
-    
+
     private async UniTaskVoid DecreaseCanvasAlpha()
     {
         float duration = 1.0f;
         float elapsedTime = 0f;
-        
+    
         while (_whiteScreenView.ViewCanvasGroup.alpha > 0.01f)
         {
             elapsedTime += Time.deltaTime;
@@ -61,6 +62,8 @@ public class WhiteScreenPresenter : Presenter
 
             await UniTask.Yield();
         }
+        
+        _whiteScreenView.ViewCanvasGroup.alpha = 0f;
     }
     
     public override void OnRelease()

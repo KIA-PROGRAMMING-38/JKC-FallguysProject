@@ -1,13 +1,18 @@
+using UniRx;
+
 namespace Model
 {
     public static class GameLoadingSceneModel
     {
-        // WhitePanel를 제어하는 값입니다.
-        private static bool _isWhitePanelActive = true;
-        public static bool IsWhitePanelActive
-        {
-            get { return _isWhitePanelActive; }
-        }
+        private static ReactiveProperty<bool> _isWhitePanelActive = new ReactiveProperty<bool>(true);
+        public static IReadOnlyReactiveProperty<bool> IsWhitePanelActive => _isWhitePanelActive;
+        
+        // // WhitePanel를 제어하는 값입니다.
+        // private static bool _isWhitePanelActive = true;
+        // public static bool IsWhitePanelActive
+        // {
+        //     get { return _isWhitePanelActive; }
+        // }
         
         // RandomPick UI들을 제어하는 값입니다.
         // true일 경우 RandomPick UI가 활성화되며, false일 경우 Map Information UI가 활성화됩니다..
@@ -23,7 +28,7 @@ namespace Model
         /// <param name="status">true일 시 패널 활성화, false일 시 패널 비활성화.</param>
         public static void SetActiveWhitePanel(bool status)
         {
-            _isWhitePanelActive = status;
+            _isWhitePanelActive.Value = status;
         }
 
         /// <summary>

@@ -1,5 +1,0 @@
-
-Ycsharpsquid:S3903"0Move 'SplashArtRegistry' into a named namespace.(™¿™Ÿüÿÿÿÿ8·¿÷Ë‹1
-mcsharpsquid:S1104"DMake this field 'private' and encapsulate it in a 'public' property.(§ÛÓÀûÿÿÿÿ8…µˆÌ‹1
-‰csharpsquid:S2386"`Use an immutable collection or reduce the accessibility of the public static field 'SpriteArts'.(§ÛÓÀûÿÿÿÿ8İÓøæ‹1
-pcsharpsquid:S2223"GChange the visibility of 'SpriteArts' or make it 'const' or 'readonly'.(§ÛÓÀûÿÿÿÿ8ËñˆÌ‹1
