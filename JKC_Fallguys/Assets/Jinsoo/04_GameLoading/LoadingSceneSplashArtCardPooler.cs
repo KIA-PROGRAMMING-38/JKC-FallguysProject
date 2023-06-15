@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Cysharp.Threading.Tasks;
+using Random = UnityEngine.Random;
 
 public class LoadingSceneSplashArtCardPooler : MonoBehaviour
 {
@@ -27,9 +28,11 @@ public class LoadingSceneSplashArtCardPooler : MonoBehaviour
             
             LoadingSceneSplashArtCard card = _cardPool.CardPoolInstance.Get();
             RectTransform cardRect = card.GetComponent<RectTransform>();
-            cardRect.offsetMin = new Vector2(2200, 350); // left, bottom
-            cardRect.offsetMax = new Vector2(880, -350); // -right, -top
-            card.SplashImage.sprite = SplashArtRegistry.SpriteArts.Dequeue();
+            cardRect.offsetMin = new Vector2(2200, 320); // left, bottom
+            cardRect.offsetMax = new Vector2(880, -380); // -right, -top
+
+            int randomSpriteIndex = Random.Range(0, SplashArtRegistry.SpriteArts.Count);
+            card.SplashImage.sprite = SplashArtRegistry.SpriteArts[randomSpriteIndex];
             ReleaseCard(card).Forget();
         }
     }
@@ -39,6 +42,5 @@ public class LoadingSceneSplashArtCardPooler : MonoBehaviour
         await UniTask.Delay(TimeSpan.FromSeconds(1.5f));
         
         card.Release();
-        SplashArtRegistry.SpriteArts.Enqueue(card.SplashImage.sprite);
     }
 }

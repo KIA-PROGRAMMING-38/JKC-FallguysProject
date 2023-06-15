@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class SplashArtRegistry
 {
-    public static Queue<Sprite> SpriteArts;
+    public static List<Sprite> SpriteArts;
 
     static SplashArtRegistry()
     {
@@ -13,7 +13,7 @@ public static class SplashArtRegistry
 
     public static void GetSplashArtData()
     {
-        SpriteArts = new Queue<Sprite>
+        SpriteArts = new List<Sprite>
             (Resources.LoadAll<Sprite>(DataManager.SetDataPath(PathLiteral.UI, "GameLoading")));
     }
 }
