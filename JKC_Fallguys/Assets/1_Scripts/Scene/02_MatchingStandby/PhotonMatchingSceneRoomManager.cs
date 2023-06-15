@@ -19,7 +19,7 @@ public class PhotonMatchingSceneRoomManager : MonoBehaviourPun
         {
             Observable.EveryUpdate()
                 .Where(_ => Model.MatchingSceneModel.StartCount == 0)
-                .Subscribe(_ => EnterStage())
+                .Subscribe(_ => EnterGameLoading())
                 .AddTo(_compositeDisposable);
             
             Observable.EveryUpdate()
@@ -30,10 +30,10 @@ public class PhotonMatchingSceneRoomManager : MonoBehaviourPun
     }
     
     // EnterLevel 메서드는 게임 시작 카운트를 감소시키고, 다음 레벨을 로드합니다.
-    private void EnterStage()
+    private void EnterGameLoading()
     {
         Model.MatchingSceneModel.DecreaseStartCount();
-        PhotonNetwork.LoadLevel(SceneIndex.Stage);
+        PhotonNetwork.LoadLevel(SceneIndex.GameLoading);
     }
     
     // LockUpEntrance 메서드는 현재 방의 입장을 막고, 모든 플레이어에게 개인 인덱스를 부여합니다.

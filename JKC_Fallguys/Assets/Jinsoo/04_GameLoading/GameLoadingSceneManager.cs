@@ -1,5 +1,7 @@
 using System;
 using Cysharp.Threading.Tasks;
+using LiteralRepository;
+using Photon.Pun;
 using UnityEngine;
 
 public class GameLoadingSceneManager : MonoBehaviour
@@ -24,8 +26,16 @@ public class GameLoadingSceneManager : MonoBehaviour
 
         Model.GameLoadingSceneModel.SetStatusLoadingSceneUI(false);
 
-        await UniTask.Delay(TimeSpan.FromSeconds(0.3f));
+        await UniTask.Delay(TimeSpan.FromSeconds(0.8f));
         
         Model.GameLoadingSceneModel.SetActiveWhitePanel(false);
+        
+        await UniTask.Delay(TimeSpan.FromSeconds(10f));
+        
+        Model.GameLoadingSceneModel.SetActiveWhitePanel(true);
+        
+        await UniTask.Delay(TimeSpan.FromSeconds(2f));
+        
+        PhotonNetwork.LoadLevel(SceneIndex.Stage);    
     }
 }
