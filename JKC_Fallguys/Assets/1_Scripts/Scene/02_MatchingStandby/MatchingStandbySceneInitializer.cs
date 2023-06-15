@@ -1,7 +1,7 @@
 using LiteralRepository;
 using UnityEngine;
 
-public class MatchingStandbySceneInitializer : SceneInitialize
+public class MatchingStandbySceneInitializer : SceneInitializer
 {
     [Header("Object")]
     private LineEffectPooler _lineEffectPooler;
