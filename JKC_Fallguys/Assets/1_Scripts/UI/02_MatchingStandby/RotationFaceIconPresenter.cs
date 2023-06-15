@@ -41,8 +41,7 @@ public class RotationFaceIconPresenter : Presenter
     
     private void EnterRoom()
     {
-        Observable.EveryUpdate()
-            .ObserveEveryValueChanged(_ => Model.MatchingSceneModel.StartCount)
+        Model.MatchingSceneModel.StartCount
             .Subscribe(_ => SetCountDownText())
             .AddTo(_compositeDisposable);
         

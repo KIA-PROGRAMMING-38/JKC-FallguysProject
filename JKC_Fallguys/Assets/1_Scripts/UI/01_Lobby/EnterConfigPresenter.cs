@@ -30,9 +30,8 @@ public class EnterConfigPresenter : Presenter
     /// </summary>
     protected override void OnUpdatedModel()
     {
-        Observable.EveryUpdate()
-            .ObserveEveryValueChanged(_ => Model.LobbySceneModel.IsConfigurationRunning)
-            .Where(_ => Model.LobbySceneModel.IsConfigurationRunning)
+        Model.LobbySceneModel.IsConfigurationRunning
+            .Where(isRunning => isRunning)
             .Subscribe(_ => Debug.Log("환경설정창이 실행됩니다."))
             .AddTo(_compositeDisposable);
     }
