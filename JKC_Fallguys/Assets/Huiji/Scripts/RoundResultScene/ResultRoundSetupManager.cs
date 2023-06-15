@@ -15,7 +15,6 @@ public class ResultRoundSetupManager : MonoBehaviour
     };
 
     private RuntimeAnimatorController[] _runtimeAnimator;
-        
 
     private Animator _animator;
     

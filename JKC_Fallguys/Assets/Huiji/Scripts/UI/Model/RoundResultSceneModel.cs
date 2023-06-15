@@ -1,9 +1,16 @@
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
+using UniRx;
+using UnityEngine;
 
 namespace Model
 {
     public static class RoundResultSceneModel
     {
+        // private static readonly ReactiveProperty<bool> _time;
+        // public static ReadOnlyReactiveProperty<bool> Time
+        //     => _time.ToReadOnlyReactiveProperty();
+        
         // Stage에 입장했던 플레이어들을 List에 저장합니다.
         private static List<FallGuyData> fallGuy = new List<FallGuyData>()
         {
@@ -17,7 +24,6 @@ namespace Model
         static RoundResultSceneModel()
         {
             SortFallGuysByScore();
-            SetRankingScores();
         }
         
         /// <summary>
@@ -44,20 +50,45 @@ namespace Model
             });
         }
 
-        private static int _firstScore;
-        public static int FirstScore => _firstScore;
+        private static readonly ReactiveProperty<int> _firstScore = new IntReactiveProperty(0);
+        public static ReadOnlyReactiveProperty<int> FirstScore
+            => _firstScore.ToReadOnlyReactiveProperty();
         
-        private static int _secondScore;
-        public static int SecondScore => _secondScore;
-        
-        private static int _thirdScore;
-        public static int ThirdScore => _thirdScore;
+        private static readonly ReactiveProperty<int> _secondScore = new IntReactiveProperty(0);
+        public static ReadOnlyReactiveProperty<int> SecondScore
+            => _secondScore.ToReadOnlyReactiveProperty();
 
-        private static void SetRankingScores()
+        private static readonly ReactiveProperty<int> _thirdScore = new IntReactiveProperty(0);
+        public static ReadOnlyReactiveProperty<int> ThirdScore
+            => _thirdScore.ToReadOnlyReactiveProperty();
+
+        /// <summary>
+        /// Score를 순차적으로 증가시키는 연출을 하는 함수입니다.
+        /// </summary>
+        /// <param name="scoreProperty"></param>
+        /// <param name="targetScore"></param>
+        private static async UniTaskVoid RaiseScore(ReactiveProperty<int> scoreProperty, float targetScore)
         {
-            _firstScore = fallGuy[0].Score;
-            _secondScore = fallGuy[1].Score;
-            _thirdScore = fallGuy[2].Score;
+            float duration = 0.9f;
+            float offset = targetScore / duration;
+        
+            while (scoreProperty.Value < targetScore)
+            {
+                scoreProperty.Value += Mathf.RoundToInt(offset * Time.deltaTime);
+                await UniTask.Yield();
+            }
+        
+            scoreProperty.Value = (int)targetScore;
+        }
+
+        /// <summary>
+        /// Score를 순차적으로 증가시키는 연출을 하는 함수를 실행합니다.
+        /// </summary>
+        public static void PerformScoreRaise()
+        {
+            RaiseScore(_firstScore, fallGuy[0].Score).Forget();
+            RaiseScore(_secondScore, fallGuy[1].Score).Forget();
+            RaiseScore(_thirdScore, fallGuy[2].Score).Forget();
         }
     }
 }
