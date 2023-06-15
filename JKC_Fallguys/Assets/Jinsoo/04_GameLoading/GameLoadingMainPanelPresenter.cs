@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using UniRx;
 
 public class GameLoadingMainPanelPresenter : Presenter
@@ -19,9 +20,8 @@ public class GameLoadingMainPanelPresenter : Presenter
 
     protected override void OnUpdatedModel()
     {
-        Observable.EveryUpdate()
-            .ObserveEveryValueChanged(_ => Model.GameLoadingSceneModel.IsLoadingSceneSwitch)
-            .Where(_ => !Model.GameLoadingSceneModel.IsLoadingSceneSwitch)
+        Model.GameLoadingSceneModel.IsLoadingSceneSwitch
+            .Where(isActive => !isActive)
             .Subscribe(_ => SetActiveGameObject(false))
             .AddTo(_compositeDisposable);
     }

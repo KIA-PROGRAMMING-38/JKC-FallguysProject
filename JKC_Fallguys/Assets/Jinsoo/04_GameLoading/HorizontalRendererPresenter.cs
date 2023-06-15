@@ -19,9 +19,8 @@ public class HorizontalRendererPresenter : Presenter
 
     protected override void OnUpdatedModel()
     {
-        Observable.EveryUpdate()
-            .ObserveEveryValueChanged(_ => Model.GameLoadingSceneModel.IsLoadingSceneSwitch)
-            .Where(_ => !Model.GameLoadingSceneModel.IsLoadingSceneSwitch)
+        Model.GameLoadingSceneModel.IsLoadingSceneSwitch
+            .Where(isActive => !isActive)
             .Subscribe(_ => SetActiveGameObject(false))
             .AddTo(_compositeDisposable);
     }
