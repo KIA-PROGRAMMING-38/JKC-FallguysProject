@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 using Cysharp.Threading.Tasks;
-using Unity.VisualScripting;
 using Random = UnityEngine.Random;
 
 public class LoadingSceneSplashArtCardPooler : MonoBehaviour
@@ -25,11 +24,14 @@ public class LoadingSceneSplashArtCardPooler : MonoBehaviour
         ReapeatHorizontalEffect(_reapeatCancellationTokenSource.Token).Forget();
     }
 
+    private Stack<CancellationTokenSource> cardTokenStack = new Stack<CancellationTokenSource>();
     private async UniTaskVoid ReapeatHorizontalEffect(CancellationToken cancelToken)
     {
         while (true)
         {
             await UniTask.Delay(TimeSpan.FromSeconds(_reapeatCooldown), cancellationToken: cancelToken);
+            
+            CancellationTokenSource cardCancellationTokenSource = new CancellationTokenSource();
             
             LoadingSceneSplashArtCard card = _cardPool.CardPoolInstance.Get();
             RectTransform cardRect = card.GetComponent<RectTransform>();
@@ -39,7 +41,9 @@ public class LoadingSceneSplashArtCardPooler : MonoBehaviour
             int randomSpriteIndex = Random.Range(0, SplashArtRegistry.SpriteArts.Count);
             card.SplashImage.sprite = SplashArtRegistry.SpriteArts[randomSpriteIndex];
             
-            ReleaseCard(card, card.ReleaseCancellationTokenSource.Token).Forget();
+            // 생성된 카드에 대해 ReleaseCard 작업을 시작하고 취소 토큰을 저장합니다.
+            ReleaseCard(card, cardCancellationTokenSource.Token).Forget();
+            cardTokenStack.Push(cardCancellationTokenSource);
         }
     }
 
@@ -53,5 +57,12 @@ public class LoadingSceneSplashArtCardPooler : MonoBehaviour
     private void OnDestroy()
     {
         _reapeatCancellationTokenSource.Cancel();
+        
+        // 모든 카드에 대한 작업을 취소합니다.
+        while (cardTokenStack.Count > 0)
+        {
+            CancellationTokenSource cardCancellationTokenSource = cardTokenStack.Pop();
+            cardCancellationTokenSource.Cancel();
+        }
     }
 }

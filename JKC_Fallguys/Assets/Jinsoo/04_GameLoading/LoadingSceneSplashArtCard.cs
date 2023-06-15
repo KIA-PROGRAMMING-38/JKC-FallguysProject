@@ -1,4 +1,3 @@
-using System;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,11 +15,6 @@ public class LoadingSceneSplashArtCard : MonoBehaviour
     private void Awake()
     {
         _rectTransform = GetComponent<RectTransform>();
-    }
-
-    private void OnEnable()
-    {
-        ReleaseCancellationTokenSource = new CancellationTokenSource();
     }
 
     private void Update()
@@ -46,10 +40,5 @@ public class LoadingSceneSplashArtCard : MonoBehaviour
     public void Destroy()
     {
         Destroy(gameObject);
-    }
-
-    private void OnDestroy()
-    {
-        ReleaseCancellationTokenSource.Cancel();
     }
 }

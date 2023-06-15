@@ -9,17 +9,26 @@ public class HorizontalRendererPresenter : Presenter
     {
         _horizontalRendererView = view as HorizontalRendererView;
         
-        // InitializeRx();
+        InitializeRx();
     }
 
     protected override void OnOccuredUserEvent()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     protected override void OnUpdatedModel()
     {
-        throw new System.NotImplementedException();
+        Observable.EveryUpdate()
+            .ObserveEveryValueChanged(_ => Model.GameLoadingSceneModel.IsLoadingSceneSwitch)
+            .Where(_ => !Model.GameLoadingSceneModel.IsLoadingSceneSwitch)
+            .Subscribe(_ => SetActiveGameObject(false))
+            .AddTo(_compositeDisposable);
+    }
+
+    private void SetActiveGameObject(bool status)
+    {
+        _horizontalRendererView.SplashArtPooler.SetActive(status);
     }
     
     public override void OnRelease()

@@ -1,4 +1,3 @@
-using System;
 using Cysharp.Threading.Tasks;
 using UniRx;
 using UnityEngine;
@@ -11,23 +10,15 @@ public class WhiteScreenPresenter : Presenter
     public override void OnInitialize(View view)
     {
         _whiteScreenView = view as WhiteScreenView;
-        DecreaseCanvasAlpha().Forget();
+        // 씬이 시작될 떄, Canvas Alpha가 줄어들어 자연스러운 연출이 되도록 실행합니다.
         
         InitializeRx();
     }
 
     protected override void OnOccuredUserEvent()
     {
-        DeActiveRandomPickUIEffect().Forget();
+        
     }
-
-    private async UniTaskVoid DeActiveRandomPickUIEffect()
-    {
-        await UniTask.Delay(TimeSpan.FromSeconds(10f));
-
-        Model.GameLoadingSceneModel.SetActiveWhitePanel(true);
-    }
-    
 
     protected override void OnUpdatedModel()
     {
