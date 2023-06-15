@@ -17,15 +17,16 @@ public class PhotonMatchingSceneRoomManager : MonoBehaviourPun
     {
         if (PhotonNetwork.IsMasterClient)
         {
-            Observable.EveryUpdate()
-                .Where(_ => Model.MatchingSceneModel.StartCount == 0)
+            Model.MatchingSceneModel.StartCount
+                .Where(count => count == 0)
                 .Subscribe(_ => EnterGameLoading())
                 .AddTo(_compositeDisposable);
-            
-            Observable.EveryUpdate()
-                .Where(_ => Model.MatchingSceneModel.StartCount == 3)
+
+            Model.MatchingSceneModel.StartCount
+                .Where(count => count == 3)
                 .Subscribe(_ => LockUpEntrance())
                 .AddTo(_compositeDisposable);
+
         }
     }
     

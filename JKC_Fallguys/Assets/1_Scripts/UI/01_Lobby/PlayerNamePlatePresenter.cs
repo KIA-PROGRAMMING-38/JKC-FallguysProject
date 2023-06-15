@@ -31,7 +31,7 @@ public class PlayerNamePlatePresenter : Presenter
 
     private void UpdateNamePlate()
     {
-        _playerNamePlateView.PlayerNameText.text = Model.LobbySceneModel.PlayerName;
+        _playerNamePlateView.PlayerNameText.text = Model.LobbySceneModel.PlayerName.Value;
     }
     
     public override void OnRelease()

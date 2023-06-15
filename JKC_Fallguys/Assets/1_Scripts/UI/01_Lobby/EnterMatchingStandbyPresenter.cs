@@ -1,3 +1,4 @@
+using LiteralRepository;
 using UniRx;
 using UnityEngine.SceneManagement;
 
@@ -23,7 +24,7 @@ public class EnterMatchingStandbyPresenter : Presenter
 
     private void TryEnterMatchingStandby()
     {
-        SceneManager.LoadScene(2); // MatchingStandby
+        SceneManager.LoadScene(SceneIndex.MatchingStandby);
     }
 
     protected override void OnUpdatedModel()

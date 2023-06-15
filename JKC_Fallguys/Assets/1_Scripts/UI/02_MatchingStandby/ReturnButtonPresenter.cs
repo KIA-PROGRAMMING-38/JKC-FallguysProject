@@ -24,13 +24,15 @@ public class ReturnButtonPresenter : Presenter
 
     protected override void OnUpdatedModel()
     {
-        Observable.EveryUpdate()
-            .ObserveEveryValueChanged(_ => Model.MatchingSceneModel.IsEnterLobbyFromMatchingScene)
-            .Where(_ => Model.MatchingSceneModel.IsEnterLobbyFromMatchingScene)
-            .Where(_ => Model.MatchingSceneModel.IsActionPossible)
+        Model.MatchingSceneModel.IsEnterLobbyFromMatchingScene
+            .Where(isActive => isActive)
+            .CombineLatest
+                (Model.MatchingSceneModel.IsActionPossible, (enterLobby, actionPossible) => enterLobby && actionPossible)
+            .Where(canEnterLobby => canEnterLobby)
             .Subscribe(_ => OnActiveEnterLobbyPanel())
             .AddTo(_compositeDisposable);
     }
+
 
     private void OnActiveEnterLobbyPanel()
     {

@@ -79,7 +79,7 @@ public class PhotonMatchingSceneEventManager : MonoBehaviourPunCallbacks
 
     public override void OnLeftRoom()
     {
-        if (Model.MatchingSceneModel.IsEnterPhotonRoom == false)
+        if (Model.MatchingSceneModel.IsEnterPhotonRoom.Value == false)
         {
             SceneManager.LoadScene(SceneIndex.Lobby);
         }

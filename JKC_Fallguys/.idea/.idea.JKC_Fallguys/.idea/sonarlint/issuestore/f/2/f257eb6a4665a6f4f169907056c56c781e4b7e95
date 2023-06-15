@@ -1,102 +1,0 @@
-
-Mcsharpsquid:S1125é"*Remove the unnecessary Boolean literal(s).(ùœôÿıÿÿÿÿ
-Mcsharpsquid:S1125é"*Remove the unnecessary Boolean literal(s).(ùœôÿıÿÿÿÿ
-Hcsharpsquid:S1125˜"*Remove the unnecessary Boolean literal(s).(êôèÃ
-Mcsharpsquid:S1125Å"*Remove the unnecessary Boolean literal(s).(ëü‡£ùÿÿÿÿ
-kcsharpsquid:S3247À"HReplace this type-check-and-cast sequence with an 'as' and a null check.(ìÅĞûøÿÿÿÿ
-kcsharpsquid:S3247‚"HReplace this type-check-and-cast sequence with an 'as' and a null check.( Åû˜üÿÿÿÿ
-vcsharpsquid:S3776å"SRefactor this method to reduce its Cognitive Complexity from 152 to the 15 allowed.(‹µªùÿÿÿÿ
-ucsharpsquid:S3776‰"RRefactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.(ê›Ú”ıÿÿÿÿ
-ucsharpsquid:S3776«	"RRefactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.(İÀÛøøÿÿÿÿ
-ucsharpsquid:S3776À
-"RRefactor this method to reduce its Cognitive Complexity from 30 to the 15 allowed.(‚“ÍÁÿÿÿÿÿ
-ocsharpsquid:S3776Â"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(õ®·,
-pcsharpsquid:S3776Õ"RRefactor this method to reduce its Cognitive Complexity from 19 to the 15 allowed.(ÓŠò¶
-ucsharpsquid:S3776Ú"RRefactor this method to reduce its Cognitive Complexity from 21 to the 15 allowed.(»ŸëÚûÿÿÿÿ
-pcsharpsquid:S3776Ê"RRefactor this method to reduce its Cognitive Complexity from 19 to the 15 allowed.(ã—§Î
-ucsharpsquid:S3776Š"RRefactor this method to reduce its Cognitive Complexity from 92 to the 15 allowed.(Æ¼”ıÿÿÿÿ
-acsharpsquid:S1854ç">Remove this useless assignment to local variable 'argsLength'.(Àµ¡ùÿÿÿÿ
-<csharpsquid:S2933‰"Make 'defaultSize' 'readonly'.(ˆïäô
-7csharpsquid:S2933Š"Make 'offset' 'readonly'.(Ì¹ˆÙ
-bcsharpsquid:S1104Ì"DMake this field 'private' and encapsulate it in a 'public' property.(×’‘«
-bcsharpsquid:S1104Ù"DMake this field 'private' and encapsulate it in a 'public' property.(›İ–Â
-gcsharpsquid:S1104ê"DMake this field 'private' and encapsulate it in a 'public' property.(ğÛ ùøÿÿÿÿ
-Zcsharpsquid:S2328ù"7Refactor 'GetHashCode' to not reference mutable fields.(û§ğèşÿÿÿÿ
-Mcsharpsquid:S1066£"/Merge this if statement with the enclosing one.(ÈÙ˜ù
-Rcsharpsquid:S1066Á"/Merge this if statement with the enclosing one.(Œ‘®€şÿÿÿÿ
-Mcsharpsquid:S1066Ş"/Merge this if statement with the enclosing one.(³»øó
-Rcsharpsquid:S1066Â"/Merge this if statement with the enclosing one.(Öİæõşÿÿÿÿ
-„csharpsquid:S3260…"fPrivate classes or records which are not derived in the current assembly should be marked as 'sealed'.(â¸º†
-Qcsharpsquid:S11330"5Do not forget to remove this deprecated code someday.(Ş‡•^
-scsharpsquid:S1206ô"PThis struct overrides 'GetHashCode' and should therefore also override 'Equals'.(ïÂ¬ıÿÿÿÿ
-Jcsharpsquid:S1905«"'Remove this unnecessary cast to 'byte'.(¿×¬¥ùÿÿÿÿ
-Dcsharpsquid:S1905À	"&Remove this unnecessary cast to 'int'.(¨•ÕÑ
-Icsharpsquid:S1905Õ	"+Remove this unnecessary cast to 'object[]'.(¾®é¥
-Ecsharpsquid:S1905ï	"'Remove this unnecessary cast to 'byte'.(Ó°ã
-Jcsharpsquid:S1905÷	"'Remove this unnecessary cast to 'byte'.(ƒœéùüÿÿÿÿ
-Ecsharpsquid:S1905š
-"'Remove this unnecessary cast to 'byte'.(ñÉñÒ
-Ecsharpsquid:S1905¥
-"'Remove this unnecessary cast to 'byte'.(¢éÕ±
-9csharpsquid:S3626Û"Remove this redundant jump.(ÉŠ©ƒ
-Icsharpsquid:S1168­"+Return an empty collection instead of null.(¥¹ï
-Ncsharpsquid:S1168Ş"+Return an empty collection instead of null.(„çÅ†úÿÿÿÿ
-Icsharpsquid:S1168¢"+Return an empty collection instead of null.(¥¹ï
-rcsharpsquid:S2223š"OChange the visibility of 'currentLevelPrefix' or make it 'const' or 'readonly'.(È­«Œûÿÿÿÿ
-wcsharpsquid:S2223"YChange the visibility of 'loadingLevelAndPausedNetwork' or make it 'const' or 'readonly'.(Ö·Õ“
-scsharpsquid:S2223Ì"UChange the visibility of 'UseRpcMonoBehaviourCache' or make it 'const' or 'readonly'.(×’‘«
-kcsharpsquid:S2223Ù"MChange the visibility of 'RunRpcCoroutines' or make it 'const' or 'readonly'.(›İ–Â
-ccsharpsquid:S2223"EChange the visibility of 'foundPVs' or make it 'const' or 'readonly'.(äÿÀ
-kcsharpsquid:S2223æ"MChange the visibility of 'SendToAllOptions' or make it 'const' or 'readonly'.(Ÿ»‰„
-ncsharpsquid:S2223ç"PChange the visibility of 'SendToOthersOptions' or make it 'const' or 'readonly'.(œ²™¿
-ncsharpsquid:S2223è"PChange the visibility of 'SendToSingleOptions' or make it 'const' or 'readonly'.(õÃ¼
-rcsharpsquid:S2223ê"OChange the visibility of 'ObjectsInOneUpdate' or make it 'const' or 'readonly'.(ğÛ ùøÿÿÿÿ
-?csharpsquid:S1643í"Use a StringBuilder instead.(Óôæúÿÿÿÿ
-?csharpsquid:S1643ò"Use a StringBuilder instead.(÷óı“úÿÿÿÿ
-?csharpsquid:S1643ö"Use a StringBuilder instead.(¿ËÇïøÿÿÿÿ
-Wcsharpsquid:S112¶"5'System.Exception' should not be thrown by user code.(Ø‰›ùÿÿÿÿ
-Ucsharpsquid:S1144Ô"8Remove the unused private field 'typePhotonMessageInfo'.(¿´
-Vcsharpsquid:S1144Ş"3Remove the unused private field 'emptyObjectArray'.(ğä†ñùÿÿÿÿ
-Ocsharpsquid:S1144ß"1Remove the unused private field 'emptyTypeArray'.(ä‰¸š
-_csharpsquid:S1144¥"<Remove the unused private method 'RemoveCacheOfLeftPlayers'.(İ®ùÆüÿÿÿÿ
-Acsharpsquid:S125¡"Remove this commented out code.(¦›§şÿÿÿÿ
-Acsharpsquid:S125‰"Remove this commented out code.(Îû¥Ãşÿÿÿÿ
-Acsharpsquid:S125˜"Remove this commented out code.(Îû¥Ãşÿÿÿÿ
-Acsharpsquid:S125­"Remove this commented out code.(Îû¥Ãşÿÿÿÿ
-Acsharpsquid:S125Å"Remove this commented out code.(Îû¥Ãşÿÿÿÿ
-Acsharpsquid:S125Õ"Remove this commented out code.(Îû¥Ãşÿÿÿÿ
-<csharpsquid:S125¢"Remove this commented out code.(Õ´Ï³
-<csharpsquid:S125"Remove this commented out code.(ËıÌ
-<csharpsquid:S125¤"Remove this commented out code.(Ä÷®
-<csharpsquid:S125Æ"Remove this commented out code.(êÔÚ¢
-Acsharpsquid:S125û"Remove this commented out code.(Õø³Çùÿÿÿÿ
-Acsharpsquid:S125ô"Remove this commented out code.(ÒÏÊÿÿÿÿÿ
-<csharpsquid:S125—	"Remove this commented out code.(Ú°à¬
-;csharpsquid:S125å	"Remove this commented out code.(©Ís
-Acsharpsquid:S125×"Remove this commented out code.(ø²¡»ıÿÿÿÿ
-<csharpsquid:S125„"Remove this commented out code.(Ä–È÷
-<csharpsquid:S125‰"Remove this commented out code.(–Û¦ø
-Acsharpsquid:S125¤"Remove this commented out code.(ûÂİ¡ıÿÿÿÿ
-<csharpsquid:S125½"Remove this commented out code.(•…ÂÀ
-;csharpsquid:S125Û"Remove this commented out code.(«´‘8
-Acsharpsquid:S125ß"Remove this commented out code.(×Úİêùÿÿÿÿ
-Acsharpsquid:S125ë"Remove this commented out code.(®çÃ½üÿÿÿÿ
-<csharpsquid:S125Ÿ"Remove this commented out code.(ÅêÒ
-Acsharpsquid:S125£"Remove this commented out code.(ø²¡»ıÿÿÿÿ
-;csharpsquid:S125ñ"Remove this commented out code.(ì˜ç}
-;csharpsquid:S125«"Remove this commented out code.(áÆ“?
-Rcsharpsquid:S1135"4Complete the task associated to this 'TODO' comment.(¿Ë—
-Wcsharpsquid:S1135¼"4Complete the task associated to this 'TODO' comment.(ëã³™ùÿÿÿÿ
-Wcsharpsquid:S1135«"4Complete the task associated to this 'TODO' comment.(¿×¬¥ùÿÿÿÿ
-Rcsharpsquid:S1135’	"4Complete the task associated to this 'TODO' comment.(Ï½à±
-Rcsharpsquid:S1135•	"4Complete the task associated to this 'TODO' comment.(•ä¤
-Rcsharpsquid:S1135Â
-"4Complete the task associated to this 'TODO' comment.(Ï½à±
-Rcsharpsquid:S1135"4Complete the task associated to this 'TODO' comment.(Ï½à±
-Rcsharpsquid:S1135¦"4Complete the task associated to this 'TODO' comment.(Ï½à±
-Qcsharpsquid:S1135Ü"4Complete the task associated to this 'TODO' comment.(É4
-Qcsharpsquid:S1135ã"4Complete the task associated to this 'TODO' comment.(É4
-Wcsharpsquid:S1135î"4Complete the task associated to this 'TODO' comment.(ª¢‹Ÿüÿÿÿÿ
-Qcsharpsquid:S1135õ"4Complete the task associated to this 'TODO' comment.(É4
-Wcsharpsquid:S1135µ"4Complete the task associated to this 'TODO' comment.(  ôíüÿÿÿÿ
-Rcsharpsquid:S1135·"4Complete the task associated to this 'TODO' comment.(˜Ùú

@@ -41,8 +41,7 @@ public class RotationFaceIconPresenter : Presenter
     
     private void EnterRoom()
     {
-        Observable.EveryUpdate()
-            .ObserveEveryValueChanged(_ => Model.MatchingSceneModel.StartCount)
+        Model.MatchingSceneModel.StartCount
             .Subscribe(_ => SetCountDownText())
             .AddTo(_compositeDisposable);
         
@@ -53,7 +52,7 @@ public class RotationFaceIconPresenter : Presenter
     {
         Debug.Log(Model.MatchingSceneModel.StartCount);
         
-        if (Model.MatchingSceneModel.StartCount > 3)
+        if (Model.MatchingSceneModel.StartCount.Value > 3)
         {
             _rotationFaceIconView.CurrentServerStateText.text = "플레이어를 기다리는 중...";
         }
@@ -65,7 +64,7 @@ public class RotationFaceIconPresenter : Presenter
     
     private async UniTaskVoid StartGameCountDown()
     {
-        while (Model.MatchingSceneModel.StartCount > 0)
+        while (Model.MatchingSceneModel.StartCount.Value > 0)
         {
             await UniTask.Delay(TimeSpan.FromSeconds(1f));
 

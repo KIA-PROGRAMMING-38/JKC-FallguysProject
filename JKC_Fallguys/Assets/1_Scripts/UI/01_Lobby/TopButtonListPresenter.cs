@@ -35,15 +35,13 @@ public class TopButtonListPresenter : Presenter
     /// </summary>
     protected override void OnUpdatedModel()
     {
-        Observable.EveryUpdate()
-            .ObserveEveryValueChanged(_ => Model.LobbySceneModel.LobbyState)
-            .Where(_ => Model.LobbySceneModel.LobbyState == Model.LobbySceneModel.CurrentLobbyState.Home)
+        Model.LobbySceneModel.LobbyState
+            .Where(state => state == Model.LobbySceneModel.CurrentLobbyState.Home)
             .Subscribe(_ => Debug.Log("홈 UI가 실행됩니다."))
             .AddTo(_compositeDisposable);
         
-        Observable.EveryUpdate()
-            .ObserveEveryValueChanged(_ => Model.LobbySceneModel.LobbyState)
-            .Where(_ => Model.LobbySceneModel.LobbyState == Model.LobbySceneModel.CurrentLobbyState.Customization)
+        Model.LobbySceneModel.LobbyState
+            .Where(state => state == Model.LobbySceneModel.CurrentLobbyState.Customization)
             .Subscribe(_ => Debug.Log("커스터마이즈 UI가 실행됩니다."))
             .AddTo(_compositeDisposable);
     }
