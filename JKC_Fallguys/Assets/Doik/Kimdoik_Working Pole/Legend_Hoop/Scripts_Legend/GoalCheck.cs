@@ -1,20 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class GoalCheck : MonoBehaviour
 {
-    public bool GoalInPlayer;
+    public event Action OnPlayerEnter;
+    public event Action OnPlayerExit;
 
-    private void Start()
-    {
-        GoalInPlayer = false;    
-    }
+    private bool goalInPlayer;
+
+    public bool GoalInPlayer => goalInPlayer;
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
-            GoalInPlayer = true;
+            Debug.Log("TriggerEnter");
+            goalInPlayer = true;
+            OnPlayerEnter?.Invoke();
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            Debug.Log("TriggerExit");
+            goalInPlayer = false;
+            OnPlayerExit?.Invoke();
         }
     }
 }
