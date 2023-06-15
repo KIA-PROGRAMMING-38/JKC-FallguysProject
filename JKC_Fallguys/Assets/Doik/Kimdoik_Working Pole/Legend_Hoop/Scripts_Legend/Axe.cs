@@ -1,27 +1,3 @@
-//using System.Collections;
-//using System.Collections.Generic;
-//using UnityEngine;
-
-//public class Axe : MonoBehaviour
-//{
-//    [SerializeField] private float _axeRotationSpeed;  // 도끼의 회전 속도
-
-//    private Rigidbody _axeRigidbody;
-//    private Vector3 _axeRotation = Vector3.right;
-
-//    private void Awake()
-//    {
-//        _axeRigidbody = GetComponent<Rigidbody>();
-//    }
-
-//    private void Update()
-//    {
-//        // 도끼에 회전 토크를 적용
-//        _axeRigidbody.AddTorque(_axeRotation * _axeRotationSpeed * Time.deltaTime);
-//    }
-//}
-
-
 using Cysharp.Threading.Tasks;
 using System;
 using System.Collections;
@@ -68,10 +44,5 @@ public class Axe : MonoBehaviour
 
             collisionObjectRigid.AddForce(reflectionDirection * reflectForce * collisionImpulseForce, ForceMode.Impulse);
         }
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-       // collision.gameObject.GetComponent<PlayerController>().Immobilized = true;
     }
 }
