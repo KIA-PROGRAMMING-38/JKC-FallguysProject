@@ -8,7 +8,7 @@ public class SceneChanger : MonoBehaviour
 {
     private void Start()
     {
-        LoadGameLoadingScene();
+        LoadGameLoadingScene().Forget(); 
     }
 
     private async UniTaskVoid LoadGameLoadingScene()

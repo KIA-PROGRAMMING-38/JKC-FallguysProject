@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37323796ff7714296842054f9bcd9429, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _reapeatCooldown: 0.5
+  _reapeatCooldown: 0.3
 --- !u!1 &226818751751472625
 GameObject:
   m_ObjectHideFlags: 0
