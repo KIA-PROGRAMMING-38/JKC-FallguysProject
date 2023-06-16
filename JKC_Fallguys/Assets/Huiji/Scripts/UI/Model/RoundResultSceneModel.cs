@@ -7,10 +7,6 @@ namespace Model
 {
     public static class RoundResultSceneModel
     {
-        // private static readonly ReactiveProperty<bool> _time;
-        // public static ReadOnlyReactiveProperty<bool> Time
-        //     => _time.ToReadOnlyReactiveProperty();
-        
         // Stage에 입장했던 플레이어들을 List에 저장합니다.
         private static List<FallGuyData> fallGuy = new List<FallGuyData>()
         {
