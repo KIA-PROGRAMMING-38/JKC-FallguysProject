@@ -56,6 +56,7 @@ public class PhotonStageSceneEventManager : MonoBehaviourPunCallbacks
             string filePath = DataManager.SetDataPath(PathLiteral.Prefabs, "Player");
         
             Vector3 spawnPoint = _spawnPoints[index];
+            
             _playerPrefab = PhotonNetwork.Instantiate(filePath, spawnPoint, Quaternion.identity);
         }
         else
