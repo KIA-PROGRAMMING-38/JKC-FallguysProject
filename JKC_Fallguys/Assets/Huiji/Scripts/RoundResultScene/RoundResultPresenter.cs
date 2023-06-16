@@ -1,6 +1,8 @@
 using System;
 using Model;
+using Platinio.UI;
 using UniRx;
+using UnityEngine;
 
 public class RoundResultPresenter : Presenter
 {
@@ -17,17 +19,25 @@ public class RoundResultPresenter : Presenter
     {
         RoundResultSceneModel.PerformScoreRaise();
         
-        Observable.Interval(TimeSpan.FromSeconds(1.0))
-            .Take(3) // 원하는 횟수만큼 실행하도록 설정
-            .Subscribe(_ =>
-            {
-                TweenUIPosition();
-            });
+        Observable.Timer(TimeSpan.FromSeconds(0.5f))
+            .Subscribe(_ => MoveRankingUI(_roundResultView.FirstRankingText.rectTransform, _firstTextPos))
+            .AddTo(_compositeDisposable);
+        
+        Observable.Timer(TimeSpan.FromSeconds(0.6f))
+            .Subscribe(_ => MoveRankingUI(_roundResultView.SecondRankingText.rectTransform, _secondTextPos))
+            .AddTo(_compositeDisposable);
+        
+        Observable.Timer(TimeSpan.FromSeconds(0.7f))
+            .Subscribe(_ => MoveRankingUI(_roundResultView.ThirdRankingText.rectTransform, _thirdTextPos))
+            .AddTo(_compositeDisposable);
     }
 
-    private void TweenUIPosition()
+    private Vector2 _firstTextPos = new Vector2(0.07f, 0.7f);
+    private Vector2 _secondTextPos = new Vector2(0.07f, 0.45f);
+    private Vector2 _thirdTextPos = new Vector2(0.07f, 0.23f);
+    private void MoveRankingUI(RectTransform ui, Vector2 targetPos)
     {
-        
+        ui.MoveUIAtSpeed(targetPos, _roundResultView.RoundResultCanvasRect, 7000);
     }
 
     protected override void OnUpdatedModel()
