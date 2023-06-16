@@ -8,10 +8,24 @@ using UnityEngine;
 public static class FruitPrefabRegistry
 {
     public static List<Fruit> Repository = new List<Fruit>();
+    public static List<string> PathRepository = new List<string>();
 
     static FruitPrefabRegistry()
     {
         GetFruitsData();
+        GetFruitFilePath();
+    }
+
+    public static void GetFruitFilePath()
+    {
+        string[] fruits = new string[] { "Apple", "Banana", "Orange", "Strawberry", "Watermelon" };
+        
+        for (int i = 0; i < fruits.Length; i++)
+        {
+            string fruitPath = DataManager.SetDataPath(PathLiteral.Prefabs, "Stage", "FruitChute", "Fruits", fruits[i]);
+            
+            PathRepository.Add(fruitPath);
+        }
     }
     
     // 과일 데이터를 가져오는 메서드입니다.
@@ -21,7 +35,7 @@ public static class FruitPrefabRegistry
         
         for (int i = 0; i < fruits.Length; i++)
         {
-            string fruitPath = DataManager.SetDataPath(PathLiteral.Prefabs, "FruitChute", "Fruits", fruits[i]);
+            string fruitPath = DataManager.SetDataPath(PathLiteral.Prefabs, "Stage", "FruitChute", "Fruits", fruits[i]);
             Fruit fruit = Resources.Load<Fruit>(fruitPath);
             
             Repository.Add(fruit);

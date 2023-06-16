@@ -21,8 +21,6 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
     {
         await UniTask.Delay(TimeSpan.FromSeconds(2f), DelayType.UnscaledDeltaTime);
 
-        Debug.Log("Hi");
-        Debug.Log(SceneIndex.GameResult);
         PhotonNetwork.LoadLevel(SceneIndex.GameResult);
     }
 

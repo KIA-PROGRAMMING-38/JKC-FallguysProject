@@ -3,17 +3,18 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using Photon.Pun;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
-public class Canon : MonoBehaviour
+public class Canon : MonoBehaviourPunCallbacks
 {
-    private CanonController _canonController;
     private FruitPooler _fruitPooler;
+    private int _randomCreateFruitIndex;
     
     // 발사 위치와 각도를 설정하는 트랜스폼.
     private Transform _shootAngleTransform;
     // 오브젝트가 파괴될 경우 자원 정리를 위한 토큰.
     private CancellationTokenSource _cancellationTokenSource;
-    private Animator _canonAnimator;    
+    private Animator _canonAnimator;        
     
     // 발사하는 힘을 나타내는 float 값.
     [SerializeField]
@@ -40,8 +41,7 @@ public class Canon : MonoBehaviour
     {
         while (true)
         {
-            await UniTask.Delay(TimeSpan.FromSeconds(2f), cancellationToken: cancelToken);
-
+            await UniTask.Delay(TimeSpan.FromSeconds(1f), cancellationToken: cancelToken);
             PlayAnimation();
         }
     }
@@ -50,19 +50,61 @@ public class Canon : MonoBehaviour
     {
         _canonAnimator.Play("ShootMotion");
     }
+    
+    public void Shoot()
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            string fruitType = SetDefaultPoolUsedString();
+            Vector3 position = _shootAngleTransform.position;
+            Quaternion rotation = _shootAngleTransform.rotation;
+
+            photonView.RPC("ShootFruit", RpcTarget.All, fruitType, position, rotation);
+        }
+    }
 
     [PunRPC]
-    public void ShootFruit()
+    public void ShootFruit(string fruitType, Vector3 position, Quaternion rotation)
     {
-        Fruit fruitInstance = _fruitPooler.FruitPool.FruitPoolInstance.Get();
-        fruitInstance.transform.position = _shootAngleTransform.position;
-        fruitInstance.transform.rotation = _shootAngleTransform.rotation;
-        Rigidbody fruitRigidbody = fruitInstance.GetComponentInChildren<Rigidbody>();
-        fruitRigidbody.velocity = Vector3.zero;
+        Fruit fruit = _fruitPooler.defaultPrefabPool.Instantiate
+            (fruitType, position, rotation).GetComponent<Fruit>();
+        fruit.gameObject.SetActive(true);
+        fruit.DefaultPool = _fruitPooler.defaultPrefabPool;
 
+        fruit.transform.position = position;
+        fruit.transform.rotation = rotation;
+        Rigidbody fruitRigidbody = fruit.GetComponent<Rigidbody>();
+        fruitRigidbody.velocity = Vector3.zero;
         fruitRigidbody.AddForce(-_shootAngleTransform.forward * _rejectionForce, ForceMode.VelocityChange);
     }
 
+    private string SetDefaultPoolUsedString()
+    {
+        int randomIndex = Random.Range(0, FruitPrefabRegistry.Repository.Count);
+        string str = default;
+
+        switch (randomIndex)
+        {
+            case 0:
+                str = "Fruit_Orange";
+                break;
+            case 1:
+                str = "Fruit_Banana";
+                break;
+            case 2:
+                str = "Fruit_Orange";
+                break;
+            case 3:
+                str = "Fruit_Strawberry";
+                break;
+            case 4:
+                str = "Fruit_Watermelon";
+                break;
+        }
+
+        return str;
+    }
+    
     private void OnDestroy()
     {
         _cancellationTokenSource.Cancel();

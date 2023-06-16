@@ -23,7 +23,7 @@ public class PhotonStageSceneEventManager : MonoBehaviourPunCallbacks
     {
         SceneManager.sceneLoaded += OnInitializeLoadScene;
         
-        TestFun();
+        SetPlayerSpawnPoints();
         OnInstantiatePhotonRoomManager();
     }
 
@@ -45,7 +45,7 @@ public class PhotonStageSceneEventManager : MonoBehaviourPunCallbacks
         _roomManager = roomManager;
     }
 
-    private void TestFun()
+    private void SetPlayerSpawnPoints()
     {
         Player player = PhotonNetwork.LocalPlayer;
         object indexObject;

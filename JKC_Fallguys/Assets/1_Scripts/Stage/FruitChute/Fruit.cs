@@ -1,3 +1,4 @@
+using Photon.Pun;
 using UnityEngine;
     
 /// <summary>
@@ -5,21 +6,10 @@ using UnityEngine;
 /// </summary>
 public class Fruit : MonoBehaviour
 {
-    // 이 Fruit이 속한 풀의 소유자입니다.
-    public FruitPool PoolOwner { private get; set; }
-    
-    public void SetActive(bool activeState)
-    {
-        gameObject.SetActive(activeState);
-    }
+    public DefaultPool DefaultPool { private get; set; }
 
-    public void Release()
+    public void ReleaseToPool()
     {
-        PoolOwner.FruitPoolInstance.Release(this);
-    }
-
-    public void Destroy()
-    {
-        Destroy(gameObject);
+        DefaultPool.Destroy(gameObject);
     }
 }

@@ -1,15 +1,11 @@
-using UnityEngine;
+using Photon.Pun;
 
-public class FruitPooler : MonoBehaviour
+public class FruitPooler : MonoBehaviourPunCallbacks
 {
-    private FruitPool _fruitPool;
-    public FruitPool FruitPool
-    {
-        get { return _fruitPool; }
-    }
-    
+    public DefaultPool defaultPrefabPool { get; private set; } // 포톤에서 제공하는 오브젝트 풀
+
     private void Awake()
     {
-        _fruitPool = new FruitPool(gameObject);
+        defaultPrefabPool = PhotonNetwork.PrefabPool as DefaultPool;
     }
 }
