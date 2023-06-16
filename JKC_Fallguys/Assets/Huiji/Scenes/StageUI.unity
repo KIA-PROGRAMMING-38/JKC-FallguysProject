@@ -390,6 +390,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &819616125 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6777788424251628212, guid: ded787260ba8e443e9b8289c54affe4d,
+    type: 3}
+  m_PrefabInstance: {fileID: 3865012186279479905}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &819616130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 819616125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 748ce402bf7f144c087f6c17f4d6c0e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &682131908479826304
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -540,6 +558,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6777788424173159683, guid: ded787260ba8e443e9b8289c54affe4d,
+        type: 3}
+      propertyPath: m_Name
+      value: ExitButton
+      objectReference: {fileID: 0}
     - target: {fileID: 6777788424513832345, guid: ded787260ba8e443e9b8289c54affe4d,
         type: 3}
       propertyPath: m_RootOrder
@@ -599,6 +622,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: StageExitPanelViewController
+      objectReference: {fileID: 0}
+    - target: {fileID: 6777788424513832350, guid: ded787260ba8e443e9b8289c54affe4d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6777788424806403451, guid: ded787260ba8e443e9b8289c54affe4d,
+        type: 3}
+      propertyPath: m_Name
+      value: ResumeButton
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ded787260ba8e443e9b8289c54affe4d, type: 3}
