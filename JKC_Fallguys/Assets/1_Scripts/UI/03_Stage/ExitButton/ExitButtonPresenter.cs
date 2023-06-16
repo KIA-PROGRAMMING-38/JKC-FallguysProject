@@ -27,11 +27,24 @@ public class ExitButtonPresenter : Presenter
 
     protected override void OnUpdatedModel()
     {
-        Observable.EveryUpdate()
-            .ObserveEveryValueChanged(_ => StageSceneModel.IsExitPanelPopUp)
-            .Where(_ => StageSceneModel.IsExitPanelPopUp)
-            .Subscribe(_ => ActivateExitPanel())
-            .AddTo(_compositeDisposable);
+        StageSceneModel.IsExitPanelPopUp.DistinctUntilChanged()
+            .Subscribe(value =>
+            {
+                if (value == true)
+                {
+                    ActivateExitPanel();
+                }
+
+                else
+                {
+                    // 팝업 닫기
+                }
+            });
+        // Observable.EveryUpdate()
+        //     .ObserveEveryValueChanged(_ => StageSceneModel.IsExitPanelPopUp)
+        //     .Where(_ => StageSceneModel.IsExitPanelPopUp)
+        //     .Subscribe(_ => ActivateExitPanel())
+        //     .AddTo(_compositeDisposable);
     }
 
     private void ActivateExitPanel()

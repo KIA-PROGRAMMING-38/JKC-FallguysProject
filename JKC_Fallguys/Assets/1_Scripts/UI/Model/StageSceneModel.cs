@@ -4,8 +4,8 @@ namespace Model
 {
     public static class StageSceneModel
     {
-        private static bool _isExitPanelPopUp;
-        public static bool IsExitPanelPopUp => _isExitPanelPopUp;
+        private static readonly ReactiveProperty<bool> _isExitPanelPopUp = new ReactiveProperty<bool>(false);
+        public static ReadOnlyReactiveProperty<bool> IsExitPanelPopUp => _isExitPanelPopUp.ToReadOnlyReactiveProperty();
 
         private static bool _canClickButton;
         public static bool CanClickButton => _canClickButton;
@@ -16,7 +16,7 @@ namespace Model
         /// <param name="status"></param>
         public static void SetExitPanelActive(bool status)
         {
-            _isExitPanelPopUp = status;
+            _isExitPanelPopUp.Value = status;
         }
 
         /// <summary>
