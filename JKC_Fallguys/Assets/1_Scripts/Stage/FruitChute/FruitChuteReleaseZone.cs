@@ -8,7 +8,8 @@ public class FruitChuteReleaseZone : MonoBehaviour
         if (col.gameObject.CompareTag(TagLiteral.Fruit))
         {
             Fruit fruit = col.gameObject.GetComponent<Fruit>();
-            fruit.Release();
+            
+            fruit.ReleaseToPool();
         }
     }
 }

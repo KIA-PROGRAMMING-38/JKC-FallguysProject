@@ -47,6 +47,9 @@ MonoBehaviour:
   - WinTheStage
   - SendMessageWinTheStage
   - ShootFruit
+  - RpcShootFruit
+  - Shoot
+  - ApplyForce
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

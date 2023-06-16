@@ -31,7 +31,6 @@ public class WhiteScreenPresenter : Presenter
             .Where(isActive => !isActive)
             .Subscribe(_ => DecreaseCanvasAlpha().Forget())
             .AddTo(_compositeDisposable);
-
     }
 
     private async UniTaskVoid IncreaseCanvasAlpha()

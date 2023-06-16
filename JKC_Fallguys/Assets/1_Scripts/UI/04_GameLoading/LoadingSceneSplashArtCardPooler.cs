@@ -50,7 +50,7 @@ public class LoadingSceneSplashArtCardPooler : MonoBehaviour
         
         card.Release();
     }
-
+    
     private void OnDestroy()
     {
         _reapeatCancellationTokenSource.Cancel();
