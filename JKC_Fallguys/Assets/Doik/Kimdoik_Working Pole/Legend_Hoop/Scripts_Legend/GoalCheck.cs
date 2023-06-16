@@ -14,7 +14,6 @@ public class GoalCheck : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("TriggerEnter");
             goalInPlayer = true;
             OnPlayerEnter?.Invoke();
         }
@@ -24,9 +23,8 @@ public class GoalCheck : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("TriggerExit");
             goalInPlayer = false;
             OnPlayerExit?.Invoke();
         }
     }
-}
+} 
