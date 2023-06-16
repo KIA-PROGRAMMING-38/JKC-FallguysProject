@@ -306,6 +306,50 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
+--- !u!1 &428072284
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 428072286}
+  - component: {fileID: 428072287}
+  m_Layer: 0
+  m_Name: PhotonStageSceneEventManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &428072286
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 428072284}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 992.9126, y: 719.9624, z: -1.3840837}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &428072287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 428072284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a54f5ff7c7eae41f984c8d8509d6b9dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &701501657
 GameObject:
   m_ObjectHideFlags: 0
@@ -390,24 +434,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &819616125 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6777788424251628212, guid: ded787260ba8e443e9b8289c54affe4d,
-    type: 3}
-  m_PrefabInstance: {fileID: 3865012186279479905}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &819616130
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 819616125}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 748ce402bf7f144c087f6c17f4d6c0e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &682131908479826304
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -558,11 +584,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6777788424173159683, guid: ded787260ba8e443e9b8289c54affe4d,
-        type: 3}
-      propertyPath: m_Name
-      value: ExitButton
-      objectReference: {fileID: 0}
     - target: {fileID: 6777788424513832345, guid: ded787260ba8e443e9b8289c54affe4d,
         type: 3}
       propertyPath: m_RootOrder
@@ -622,16 +643,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: StageExitPanelViewController
-      objectReference: {fileID: 0}
-    - target: {fileID: 6777788424513832350, guid: ded787260ba8e443e9b8289c54affe4d,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6777788424806403451, guid: ded787260ba8e443e9b8289c54affe4d,
-        type: 3}
-      propertyPath: m_Name
-      value: ResumeButton
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ded787260ba8e443e9b8289c54affe4d, type: 3}
