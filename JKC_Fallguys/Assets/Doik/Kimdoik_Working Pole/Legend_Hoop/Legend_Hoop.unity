@@ -2771,6 +2771,111 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7367024869749030461, guid: 13019a87d879b2f4d8477385d7f9525a,
+        type: 3}
+      propertyPath: m_Mass
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7695904626632074829, guid: 13019a87d879b2f4d8477385d7f9525a,
+        type: 3}
+      propertyPath: m_Mass
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7695904627354506141, guid: 13019a87d879b2f4d8477385d7f9525a,
+        type: 3}
+      propertyPath: m_Mass
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7695904627547506655, guid: 13019a87d879b2f4d8477385d7f9525a,
+        type: 3}
+      propertyPath: m_Mass
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7695904627609364385, guid: 13019a87d879b2f4d8477385d7f9525a,
+        type: 3}
+      propertyPath: m_Mass
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7695904627749357698, guid: 13019a87d879b2f4d8477385d7f9525a,
+        type: 3}
+      propertyPath: m_Mass
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7849343436173635896, guid: 13019a87d879b2f4d8477385d7f9525a,
+        type: 3}
+      propertyPath: m_Mass
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7849343436221132380, guid: 13019a87d879b2f4d8477385d7f9525a,
+        type: 3}
+      propertyPath: m_Mass
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7849343436550297651, guid: 13019a87d879b2f4d8477385d7f9525a,
+        type: 3}
+      propertyPath: m_Mass
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7849343436998596109, guid: 13019a87d879b2f4d8477385d7f9525a,
+        type: 3}
+      propertyPath: m_Mass
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7849343437548990138, guid: 13019a87d879b2f4d8477385d7f9525a,
+        type: 3}
+      propertyPath: m_Mass
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7849343437790148742, guid: 13019a87d879b2f4d8477385d7f9525a,
+        type: 3}
+      propertyPath: m_Mass
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7849343438179461268, guid: 13019a87d879b2f4d8477385d7f9525a,
+        type: 3}
+      propertyPath: m_Mass
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8582887439789084474, guid: 13019a87d879b2f4d8477385d7f9525a,
+        type: 3}
+      propertyPath: m_Mass
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8582887439863537214, guid: 13019a87d879b2f4d8477385d7f9525a,
+        type: 3}
+      propertyPath: m_Mass
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8582887439944610324, guid: 13019a87d879b2f4d8477385d7f9525a,
+        type: 3}
+      propertyPath: m_Mass
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8582887440167916913, guid: 13019a87d879b2f4d8477385d7f9525a,
+        type: 3}
+      propertyPath: m_Mass
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8582887440399101417, guid: 13019a87d879b2f4d8477385d7f9525a,
+        type: 3}
+      propertyPath: m_Mass
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8582887440861486495, guid: 13019a87d879b2f4d8477385d7f9525a,
+        type: 3}
+      propertyPath: m_Mass
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8582887441129753721, guid: 13019a87d879b2f4d8477385d7f9525a,
+        type: 3}
+      propertyPath: m_Mass
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8582887441272694622, guid: 13019a87d879b2f4d8477385d7f9525a,
+        type: 3}
+      propertyPath: m_Mass
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13019a87d879b2f4d8477385d7f9525a, type: 3}
 --- !u!1 &8800842520078269040
