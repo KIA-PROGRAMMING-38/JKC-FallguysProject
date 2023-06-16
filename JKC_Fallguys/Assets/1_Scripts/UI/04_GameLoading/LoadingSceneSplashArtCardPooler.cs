@@ -34,9 +34,6 @@ public class LoadingSceneSplashArtCardPooler : MonoBehaviour
             CancellationTokenSource cardCancellationTokenSource = new CancellationTokenSource();
             
             LoadingSceneSplashArtCard card = _cardPool.CardPoolInstance.Get();
-            RectTransform cardRect = card.GetComponent<RectTransform>();
-            cardRect.offsetMin = new Vector2(2200, 320); // left, bottom
-            cardRect.offsetMax = new Vector2(880, -380); // -right, -top
 
             int randomSpriteIndex = Random.Range(0, SplashArtRegistry.SpriteArts.Count);
             card.SplashImage.sprite = SplashArtRegistry.SpriteArts[randomSpriteIndex];

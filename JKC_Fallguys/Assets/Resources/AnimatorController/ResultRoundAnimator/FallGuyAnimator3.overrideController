@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: FallGuyAnimator3
+  m_Controller: {fileID: 9100000, guid: a4c68963f833f477e94d86d906e82382, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7149610348155728239, guid: a67ce34e77af84b01a3bed1163906a51,
+      type: 3}
+    m_OverrideClip: {fileID: -4637230680114573308, guid: a67ce34e77af84b01a3bed1163906a51,
+      type: 3}
+  - m_OriginalClip: {fileID: 288105114831548546, guid: a67ce34e77af84b01a3bed1163906a51,
+      type: 3}
+    m_OverrideClip: {fileID: 2766259725044903429, guid: a67ce34e77af84b01a3bed1163906a51,
+      type: 3}
