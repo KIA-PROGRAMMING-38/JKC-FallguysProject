@@ -2,11 +2,11 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-public class MatchingSceneFallguyController : MonoBehaviour
+public class LobbySceneFallguyController : MonoBehaviour
 {
     private CancellationTokenSource _cancellationTokenSource;
     private Vector3 _startPosition;
-    private Vector3 _endPosition = new Vector3(0f, 0.6f, -1.3f);
+    private Vector3 _endPosition = new Vector3(-0.1f, -2.8f, 0f);
 
     [SerializeField] 
     private float _fallEffectDuration;
