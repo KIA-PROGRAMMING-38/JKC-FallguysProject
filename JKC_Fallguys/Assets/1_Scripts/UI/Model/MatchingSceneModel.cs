@@ -67,7 +67,7 @@ namespace Model
         /// 현재 조작이 가능한지 여부를 결정할 수 있는 함수입니다.
         /// </summary>
         /// <param name="status">true일 경우 UI와의 상호작용이 가능하며, false일 경우 불가능합니다.</param>
-        public static void PossibleToEnter(bool status)
+        public static void PossibleToExit(bool status)
         {
             _isActionPossible.Value = status;
         }

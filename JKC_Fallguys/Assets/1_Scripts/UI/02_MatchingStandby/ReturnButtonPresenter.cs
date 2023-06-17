@@ -9,7 +9,7 @@ public class ReturnButtonPresenter : Presenter
     {
         _returnButtonView = view as ReturnButtonView;
         // 룸에 입장할 경우의 변수 초기화.
-        Model.MatchingSceneModel.PossibleToEnter(true);
+        Model.MatchingSceneModel.PossibleToExit(true);
         
         InitializeRx();
     }
