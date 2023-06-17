@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/2_Scenes/06_GameResult.unity
     guid: 5d9eb69ddf6f345f39791ac99516fac9
+  - enabled: 1
+    path: Assets/Huiji/Scenes/StageUI.unity
+    guid: 1027bc7b0357c496f9130abc318c2b09
   m_configObjects: {}

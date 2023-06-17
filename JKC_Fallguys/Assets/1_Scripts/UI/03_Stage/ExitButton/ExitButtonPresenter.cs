@@ -27,16 +27,28 @@ public class ExitButtonPresenter : Presenter
 
     protected override void OnUpdatedModel()
     {
-        Observable.EveryUpdate()
-            .ObserveEveryValueChanged(_ => StageSceneModel.IsExitPanelPopUp)
-            .Where(_ => StageSceneModel.IsExitPanelPopUp)
-            .Subscribe(_ => ActivateExitPanel())
-            .AddTo(_compositeDisposable);
+        StageSceneModel.IsExitPanelPopUp.DistinctUntilChanged()
+            .Subscribe(value =>
+            {
+                if (value == true)
+                {
+                    SetExitPanelActive(true);
+                }
+
+                else
+                {
+                    SetExitPanelActive(false);
+                }
+            });
     }
 
-    private void ActivateExitPanel()
+    /// <summary>
+    /// Exit Stage Panel의 활성화 여부를 설정합니다.
+    /// </summary>
+    /// <param name="status"></param>
+    private void SetExitPanelActive(bool status)
     {
-        _exitButtonView.StageExitPanel.gameObject.SetActive(true);
+        _exitButtonView.StageExitPanel.gameObject.SetActive(status);
     }
     
     public override void OnRelease()
