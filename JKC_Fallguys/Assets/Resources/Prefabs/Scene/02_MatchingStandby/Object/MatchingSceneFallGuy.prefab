@@ -1165,7 +1165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85ba0965878bb4b63ac66c895d426ee6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fallEffectDuration: 2
+  _fallEffectDuration: 1
 --- !u!1 &4689825049893808790
 GameObject:
   m_ObjectHideFlags: 0

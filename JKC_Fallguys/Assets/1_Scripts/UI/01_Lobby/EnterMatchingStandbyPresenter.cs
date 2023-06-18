@@ -1,5 +1,6 @@
 using LiteralRepository;
 using UniRx;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class EnterMatchingStandbyPresenter : Presenter
@@ -29,7 +30,21 @@ public class EnterMatchingStandbyPresenter : Presenter
 
     protected override void OnUpdatedModel()
     {
+        Model.LobbySceneModel.LobbyState
+            .Where(state => state != Model.LobbySceneModel.CurrentLobbyState.Home)
+            .Subscribe(_ => SetActiveGameObject(false))
+            .AddTo(_compositeDisposable);
         
+        Model.LobbySceneModel.LobbyState
+            .Where(state => state == Model.LobbySceneModel.CurrentLobbyState.Home)
+            .Subscribe(_ => SetActiveGameObject(true))
+            .AddTo(_compositeDisposable);
+    }
+
+    private void SetActiveGameObject(bool status)
+    {
+        _enterMatchingStandbyView.Default.SetActive(status);
+        _enterMatchingStandbyView.EnterMatchingStandbyButton.gameObject.SetActive(status);
     }
     
     public override void OnRelease()

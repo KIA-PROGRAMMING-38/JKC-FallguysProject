@@ -1805,7 +1805,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd210fa02455f482ea5d25c75fa69d86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fallEffectDuration: 1
+  _homeStateMoveDuration: 1
+  _customizationStateMoveDurattion: 0.5
 --- !u!1 &8899447547207557915
 GameObject:
   m_ObjectHideFlags: 0

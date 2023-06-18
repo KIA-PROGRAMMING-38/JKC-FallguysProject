@@ -1,16 +1,15 @@
 using Photon.Pun;
+using UniRx;
 
 public class PlayerNamePlatePresenter : Presenter
 {
     private PlayerNamePlateView _playerNamePlateView;
-    
+    private CompositeDisposable _compositeDisposable = new CompositeDisposable();
+
     public override void OnInitialize(View view)
     {
         _playerNamePlateView = view as PlayerNamePlateView;
         
-        // 이 클래스는 UniRx를 사용하지 않으며, InitializeRx 메서드는 구현되지 않았습니다.
-        // 그러나 코드베이스 전반에 걸쳐 일관된 코드 스타일과 컨벤션을 유지하기 위해,
-        // 여기에 InitializeRx 메서드의 플레이스홀더를 유지하였습니다.
         InitializeRx();
     }
 
@@ -27,6 +26,22 @@ public class PlayerNamePlatePresenter : Presenter
     protected override void OnUpdatedModel()
     {
         UpdateNamePlate();
+        
+        Model.LobbySceneModel.LobbyState
+            .Where(state => state != Model.LobbySceneModel.CurrentLobbyState.Home)
+            .Subscribe(_ => SetActiveGameObject(false))
+            .AddTo(_compositeDisposable);
+        
+        Model.LobbySceneModel.LobbyState
+            .Where(state => state == Model.LobbySceneModel.CurrentLobbyState.Home)
+            .Subscribe(_ => SetActiveGameObject(true))
+            .AddTo(_compositeDisposable);
+    } 
+    
+    private void SetActiveGameObject(bool status)
+    {
+        _playerNamePlateView.Default.SetActive(status);
+        _playerNamePlateView.PlayerNameText.gameObject.SetActive(status);
     }
 
     private void UpdateNamePlate()
@@ -37,5 +52,6 @@ public class PlayerNamePlatePresenter : Presenter
     public override void OnRelease()
     {
         _playerNamePlateView = default;
+        _compositeDisposable.Dispose();
     }
 }
