@@ -14,6 +14,8 @@ public class StageSceneInitializer : SceneInitializer
         Instantiate
             (DataManager.GetGameObjectData
                 (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, "PhotonStageSceneEventManager"));
+        Instantiate
+            (DataManager.GetGameObjectData(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, "StageManager"));
 
         if (!PhotonNetwork.IsMasterClient)
             return;

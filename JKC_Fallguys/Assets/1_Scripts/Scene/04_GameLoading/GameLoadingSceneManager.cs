@@ -32,7 +32,7 @@ public class GameLoadingSceneManager : MonoBehaviour
         
         Model.GameLoadingSceneModel.SetActiveWhitePanel(false);
         
-        await UniTask.Delay(TimeSpan.FromSeconds(10f));
+        await UniTask.Delay(TimeSpan.FromSeconds(_deActiveDelayTime));
         
         Model.GameLoadingSceneModel.SetActiveWhitePanel(true);
         
