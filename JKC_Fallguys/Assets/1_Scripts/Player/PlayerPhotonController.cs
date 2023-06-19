@@ -1,8 +1,12 @@
 using Photon.Pun;
+using UnityEngine;
 
 public class PlayerPhotonController : MonoBehaviourPun
 {
     private PlayerReferenceManager _referenceManager;
+
+    [SerializeField]
+    public SkinnedMeshRenderer _bodyMeshRenderer;
 
     public void OnInitialize(PlayerReferenceManager referenceManager)
     {
