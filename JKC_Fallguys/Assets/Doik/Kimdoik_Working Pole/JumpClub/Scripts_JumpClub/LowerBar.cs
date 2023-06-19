@@ -28,11 +28,4 @@ public class LowerBar : MonoBehaviour
             rotationSpeed += acceleration;
         }
     }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            Debug.Log("Ãæµ¹");
-        }
-    }
 }
