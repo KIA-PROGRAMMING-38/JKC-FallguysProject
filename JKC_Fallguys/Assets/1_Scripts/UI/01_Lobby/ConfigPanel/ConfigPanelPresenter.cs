@@ -1,5 +1,4 @@
 using UniRx;
-using UnityEngine;
 
 public class ConfigPanelPresenter : Presenter
 {
@@ -14,7 +13,10 @@ public class ConfigPanelPresenter : Presenter
 
     protected override void OnOccuredUserEvent()
     {
-        
+        _configPanelView.ClosePanelButton
+            .OnClickAsObservable()
+            .Subscribe(_ => Model.LobbySceneModel.SetActiveConfigView(false))
+            .AddTo(_compositeDisposable);
     }
 
     protected override void OnUpdatedModel()
@@ -35,6 +37,7 @@ public class ConfigPanelPresenter : Presenter
     
     public override void OnRelease()
     {
-        
+        _configPanelView = default;
+        _compositeDisposable.Dispose();
     }
 }

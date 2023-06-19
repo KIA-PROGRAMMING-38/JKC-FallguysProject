@@ -30,10 +30,7 @@ public class EnterConfigPresenter : Presenter
     /// </summary>
     protected override void OnUpdatedModel()
     {
-        Model.LobbySceneModel.IsConfigurationRunning
-            .Where(isRunning => isRunning)
-            .Subscribe(_ => Debug.Log("환경설정창이 실행됩니다."))
-            .AddTo(_compositeDisposable);
+        
     }
     
     public override void OnRelease()
