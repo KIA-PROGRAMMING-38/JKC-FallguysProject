@@ -1,14 +1,16 @@
 using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class StageDataManager : SingletonMonoBehaviour<StageDataManager>
 {
     public int PlayerStageIndex;
-
+    
+    // 플레이어의 점수들이 계속해서 저장되는 딕셔너리입니다.
     public Dictionary<int, int> PlayerScoresByIndex;
+    // 스테이지에서 사용될 순위를 기록하는 리스트입니다.
+    // 스테이지가 넘어갈 때, 초기화됩니다.
     public List<int> StagePlayerRankings;
     
     protected override void Awake()

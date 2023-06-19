@@ -1,5 +1,4 @@
 using Photon.Pun;
-using UnityEngine;
 
 public class PlayerPhotonController : MonoBehaviourPun
 {
