@@ -1,3 +1,4 @@
+using Model;
 using UniRx;
 using UnityEngine;
 
@@ -9,8 +10,7 @@ public class EnterConfigPresenter : Presenter
     public override void OnInitialize(View view)
     {
         _enterConfigView = view as EnterConfigView;
-        Model.LobbySceneModel.SetActiveConfigView(false);
-        
+
         InitializeRx();
     }
 
@@ -21,7 +21,7 @@ public class EnterConfigPresenter : Presenter
     {
         _enterConfigView.EnterConfigButton
             .OnClickAsObservable()
-            .Subscribe(_ => Model.LobbySceneModel.SetActiveConfigView(true))
+            .Subscribe(_ => LobbySceneModel.SetLobbyState(LobbySceneModel.CurrentLobbyState.Settings))
             .AddTo(_compositeDisposable);
     }
 

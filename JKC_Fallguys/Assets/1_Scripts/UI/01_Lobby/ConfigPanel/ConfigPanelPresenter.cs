@@ -1,3 +1,4 @@
+using Model;
 using UniRx;
 
 public class ConfigPanelPresenter : Presenter
@@ -15,14 +16,20 @@ public class ConfigPanelPresenter : Presenter
     {
         _configPanelView.ClosePanelButton
             .OnClickAsObservable()
-            .Subscribe(_ => Model.LobbySceneModel.SetActiveConfigView(false))
+            .Subscribe(_ => LobbySceneModel.SetLobbyState(LobbySceneModel.CurrentLobbyState.Home))
             .AddTo(_compositeDisposable);
     }
 
     protected override void OnUpdatedModel()
     {
-        Model.LobbySceneModel.IsConfigurationRunning
-            .Subscribe(isRunning => SetActiveConfigPanel(isRunning))
+        LobbySceneModel.LobbyState
+            .Where(state => state == LobbySceneModel.CurrentLobbyState.Settings)
+            .Subscribe(_ => SetActiveConfigPanel(true))
+            .AddTo(_compositeDisposable);
+        
+        LobbySceneModel.LobbyState
+            .Where(state => state != LobbySceneModel.CurrentLobbyState.Settings)
+            .Subscribe(_ => SetActiveConfigPanel(false))
             .AddTo(_compositeDisposable);
     }
 
