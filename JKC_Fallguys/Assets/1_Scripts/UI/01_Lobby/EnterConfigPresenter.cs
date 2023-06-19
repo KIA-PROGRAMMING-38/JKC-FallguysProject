@@ -1,3 +1,4 @@
+using Model;
 using UniRx;
 using UnityEngine;
 
@@ -9,8 +10,7 @@ public class EnterConfigPresenter : Presenter
     public override void OnInitialize(View view)
     {
         _enterConfigView = view as EnterConfigView;
-        Model.LobbySceneModel.SetActiveConfigView(false);
-        
+
         InitializeRx();
     }
 
@@ -21,7 +21,7 @@ public class EnterConfigPresenter : Presenter
     {
         _enterConfigView.EnterConfigButton
             .OnClickAsObservable()
-            .Subscribe(_ => Model.LobbySceneModel.SetActiveConfigView(true))
+            .Subscribe(_ => LobbySceneModel.SetLobbyState(LobbySceneModel.CurrentLobbyState.Settings))
             .AddTo(_compositeDisposable);
     }
 
@@ -30,10 +30,7 @@ public class EnterConfigPresenter : Presenter
     /// </summary>
     protected override void OnUpdatedModel()
     {
-        Model.LobbySceneModel.IsConfigurationRunning
-            .Where(isRunning => isRunning)
-            .Subscribe(_ => Debug.Log("환경설정창이 실행됩니다."))
-            .AddTo(_compositeDisposable);
+        
     }
     
     public override void OnRelease()
