@@ -1,23 +1,28 @@
 using Model;
 using UniRx;
+using UnityEngine;
 
-public class ConfigPanelPresenter : Presenter
+public class SettingsPanelPresenter : Presenter
 {
-    private ConfigPanelView _configPanelView;
+    private SettingsPanelView _settingsPanelView;
     private CompositeDisposable _compositeDisposable = new CompositeDisposable();
     public override void OnInitialize(View view)
     {
-        _configPanelView = view as ConfigPanelView;
+        _settingsPanelView = view as SettingsPanelView;
         
         InitializeRx();
     }
 
     protected override void OnOccuredUserEvent()
     {
-        _configPanelView.ClosePanelButton
+        _settingsPanelView.ClosePanelButton
             .OnClickAsObservable()
             .Subscribe(_ => LobbySceneModel.SetLobbyState(LobbySceneModel.CurrentLobbyState.Home))
             .AddTo(_compositeDisposable);
+
+        _settingsPanelView.HowToPlayButton
+            .OnClickAsObservable()
+            .Subscribe(_ => Debug.Log("How To Play"));
     }
 
     protected override void OnUpdatedModel()
@@ -31,20 +36,26 @@ public class ConfigPanelPresenter : Presenter
             .Where(state => state != LobbySceneModel.CurrentLobbyState.Settings)
             .Subscribe(_ => SetActiveConfigPanel(false))
             .AddTo(_compositeDisposable);
+        
+        // Config Panel이 활성화 됐을때 선택될 버튼을 정합니다.
+        LobbySceneModel.LobbyState
+            .Where(state => state == LobbySceneModel.CurrentLobbyState.Settings)
+            .Subscribe(_ => _settingsPanelView.HowToPlayButton.Select())
+            .AddTo(_compositeDisposable);
     }
 
     private void SetActiveConfigPanel(bool status)
     {
-        _configPanelView.BackgroundImage.gameObject.SetActive(status);
-        _configPanelView.ConfigsButton.gameObject.SetActive(status);
-        _configPanelView.HowToPlayButton.gameObject.SetActive(status);
-        _configPanelView.GameExitButton.gameObject.SetActive(status);
-        _configPanelView.ClosePanelButton.gameObject.SetActive(status);
+        _settingsPanelView.BackgroundImage.gameObject.SetActive(status);
+        _settingsPanelView.ConfigsButton.gameObject.SetActive(status);
+        _settingsPanelView.HowToPlayButton.gameObject.SetActive(status);
+        _settingsPanelView.GameExitButton.gameObject.SetActive(status);
+        _settingsPanelView.ClosePanelButton.gameObject.SetActive(status);
     }
     
     public override void OnRelease()
     {
-        _configPanelView = default;
+        _settingsPanelView = default;
         _compositeDisposable.Dispose();
     }
 }

@@ -1,7 +1,6 @@
-using System;
 using UnityEngine.UI;
 
-public class ConfigPanelView : View
+public class SettingsPanelView : View
 {
     public Image BackgroundImage { get; private set; }
     public Button ConfigsButton { get; private set; }
