@@ -1,7 +1,9 @@
+using System;
 using Cysharp.Threading.Tasks;
 using Model;
 using UniRx;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HowToPlayPresenter : Presenter
 {
@@ -18,6 +20,7 @@ public class HowToPlayPresenter : Presenter
     {
         _howToPlayView.NextButton.OnClickAsObservable()
             .TakeWhile(_ => LobbySceneModel.HowToPlayImageIndex.Value < _howToPlayView.HowToPlayImage.Length)
+            .ThrottleFirst(TimeSpan.FromSeconds(1))
             .Subscribe(_ => LobbySceneModel.IncreaseImageIndex())
             .AddTo(_compositeDisposable);
     }
@@ -31,14 +34,28 @@ public class HowToPlayPresenter : Presenter
             .AddTo(_compositeDisposable);
 
         LobbySceneModel.HowToPlayImageIndex
-            .Skip(1)
+            .Where(_ => LobbySceneModel.CurrentLobbyState.Value == LobbySceneModel.LobbyState.HowToPlay)
+            .Where(index => index < _howToPlayView.HowToPlayImage.Length)
             .Subscribe(_ => _howToPlayView.HowToPlayImage[LobbySceneModel.HowToPlayImageIndex.Value - 1].FillAmountTween(0, 1))
             .AddTo(_compositeDisposable);
 
         LobbySceneModel.HowToPlayImageIndex
             .Where(index => index == _howToPlayView.HowToPlayImage.Length)
-            .Subscribe(_ => LobbySceneModel.SetLobbyState(LobbySceneModel.LobbyState.Settings))
+            .Subscribe(_ => ResetHowToPlayProgress())
             .AddTo(_compositeDisposable);
+
+        LobbySceneModel.HowToPlayImageIndex
+            .Subscribe(_ => Debug.Log(LobbySceneModel.HowToPlayImageIndex));
+    }
+
+    private void ResetHowToPlayProgress()
+    {
+        LobbySceneModel.SetLobbyState(LobbySceneModel.LobbyState.Settings);
+        LobbySceneModel.ResetImageIndex();
+        foreach (Image image in _howToPlayView.HowToPlayImage)
+        {
+            image.fillAmount = 1;
+        }
     }
 
     void SetActiveHowToPlayPanel(bool status)

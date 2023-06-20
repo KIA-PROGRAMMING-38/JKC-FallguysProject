@@ -30,6 +30,11 @@ namespace Model
         {
             ++_howToPlayImageIndex.Value;
         }
+
+        public static void ResetImageIndex()
+        {
+            _howToPlayImageIndex.Value = 0;
+        }
         
         public static void SetPlayerName(string playerName)
         {
