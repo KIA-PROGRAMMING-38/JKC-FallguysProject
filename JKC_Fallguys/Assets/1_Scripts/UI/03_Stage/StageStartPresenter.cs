@@ -56,13 +56,13 @@ public class StageStartPresenter : Presenter
             
             ScaleAnimation();
         }
-
         else
         {
             _spriteIndex = 0;
             _stageStartView.CountdownImage.gameObject.SetActive(false);
             AnimateTitleOut();
-            
+
+            StageDataManager.Instance.SetGameStatus(true);
             // 카운트다운 후에 Exit 버튼을 누를 수 있게 합니다.
             StageSceneModel.SetExitButtonActive(true);
         }

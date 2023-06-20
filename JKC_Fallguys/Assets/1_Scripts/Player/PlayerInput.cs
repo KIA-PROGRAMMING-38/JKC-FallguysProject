@@ -12,7 +12,10 @@ public class PlayerInput : MonoBehaviourPun
     
     private void Update()
     {
-        if (_isMoving && photonView.IsMine)
+        if (!photonView.IsMine || !StageDataManager.Instance.IsGameActive.Value)
+            return;
+        
+        if (_isMoving)
         {
             OnMovement?.Invoke();
         }
@@ -21,16 +24,17 @@ public class PlayerInput : MonoBehaviourPun
     public bool CannotMove { get; set; }
     private bool _isMoving;
     
+    private Vector3 _lastFrameInputVec;
+
     public void OnMove(InputAction.CallbackContext context)
     {
-        InputVec = context.ReadValue<Vector3>();
-        
-        if (context.started && photonView.IsMine)
+        if (context.started || context.performed) // 키를 누르고 있는 동안 호출
         {
             _isMoving = true;
+            InputVec = context.ReadValue<Vector3>();
         }
 
-        if (context.canceled && photonView.IsMine)
+        if (context.canceled)
         {
             _isMoving = false;
         }
@@ -39,13 +43,16 @@ public class PlayerInput : MonoBehaviourPun
     public bool IsJump { get; private set; }
     public void OnJump(InputAction.CallbackContext context)
     {
+        if (!photonView.IsMine || !StageDataManager.Instance.IsGameActive.Value)
+            return;
+        
         // Jump Button을 눌렀을때 JumpState를 실행한다.
-        if (context.started && photonView.IsMine)
+        if (context.started)
         {
             IsJump = true;
         }
 
-        if (context.canceled && photonView.IsMine)
+        if (context.canceled)
         {
             IsJump = false;
         }
@@ -71,12 +78,15 @@ public class PlayerInput : MonoBehaviourPun
 
     public void OnGrab(InputAction.CallbackContext context)
     {
-        if (context.started && photonView.IsMine)
+        if (!photonView.IsMine || !StageDataManager.Instance.IsGameActive.Value)
+            return;
+        
+        if (context.started)
         {
             IsAttemptingGrab = true;
         }
 
-        if (context.canceled && photonView.IsMine)
+        if (context.canceled)
         {
             IsAttemptingGrab = false;
         }
@@ -85,12 +95,15 @@ public class PlayerInput : MonoBehaviourPun
     public bool IsDive { get; private set; }
     public void OnDive(InputAction.CallbackContext context)
     {
-        if (context.started && photonView.IsMine)
+        if (!photonView.IsMine || !StageDataManager.Instance.IsGameActive.Value)
+            return;
+        
+        if (context.started)
         {
             IsDive = true;
         }
 
-        if (context.canceled && photonView.IsMine)
+        if (context.canceled)
         {
             IsDive = false;
         }

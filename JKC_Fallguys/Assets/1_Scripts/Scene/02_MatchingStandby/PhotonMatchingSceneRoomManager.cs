@@ -46,8 +46,8 @@ public class PhotonMatchingSceneRoomManager : MonoBehaviourPun
         int index = 1;
         foreach (KeyValuePair<int, Player> player in PhotonNetwork.CurrentRoom.Players)
         {
-            Hashtable _playerIndex = new Hashtable() { { "PersonalIndex", index } }; 
-            player.Value.SetCustomProperties(_playerIndex);
+            Hashtable playerIndex = new Hashtable() { { "PersonalIndex", index } }; 
+            player.Value.SetCustomProperties(playerIndex);
             ++index;
         }
     }

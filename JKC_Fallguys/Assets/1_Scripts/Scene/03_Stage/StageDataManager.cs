@@ -1,12 +1,18 @@
 using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
+using UniRx;
+using UnityEditor;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class StageDataManager : SingletonMonoBehaviour<StageDataManager>
 {
+    // 게임의 활성화 상태를 나타냅니다.
+    private ReactiveProperty<bool> _isGameActive = new ReactiveProperty<bool>(false);
+    public IReactiveProperty<bool> IsGameActive => _isGameActive;
+
+    // 로컬 플레이어가 자신의 인덱스를 기록하는 객체입니다.    
     public int PlayerStageIndex;
-    
     // 플레이어의 점수들이 계속해서 저장되는 딕셔너리입니다.
     public Dictionary<int, int> PlayerScoresByIndex;
     // 스테이지에서 사용될 순위를 기록하는 리스트입니다.
@@ -39,6 +45,15 @@ public class StageDataManager : SingletonMonoBehaviour<StageDataManager>
         {
             PlayerStageIndex = (int)personalIndexObj;
         }
+    }
+    
+    /// <summary>
+    /// 게임 상태를 변경하는 메소드입니다.
+    /// </summary>
+    /// <param name="status">status의 값에 따라 게임을 활성화하거나 비활성화합니다.</param>
+    public void SetGameStatus(bool status)
+    {
+        _isGameActive.Value = status;
     }
 
     /// <summary>

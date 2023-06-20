@@ -5,17 +5,24 @@ namespace Model
     public static class StageSceneModel
     {
         // 패널의 활성화 여부를 결정하는 불리언 값입니다.
-        private static readonly ReactiveProperty<bool> _isExitPanelPopUp = new ReactiveProperty<bool>(false);
-        public static ReadOnlyReactiveProperty<bool> IsExitPanelPopUp => _isExitPanelPopUp.ToReadOnlyReactiveProperty();
+        private static ReactiveProperty<bool> _isExitPanelPopUp = new ReactiveProperty<bool>(false);
+        public static IReadOnlyReactiveProperty<bool> IsExitPanelPopUp => _isExitPanelPopUp;
         
         // 포톤 룸에 입장했음을 알리는 불리언 값입니다.
         private static ReactiveProperty<bool> _isEnterPhotonRoom = new ReactiveProperty<bool>(true);
-        public static ReadOnlyReactiveProperty<bool> IsEnterPhotonRoom =>
-            _isEnterPhotonRoom.ToReadOnlyReactiveProperty();
+        public static IReadOnlyReactiveProperty<bool> IsEnterPhotonRoom => _isEnterPhotonRoom;
 
         // Exit Button을 누를 수 있는지를 결정하는 불리언 값입니다.
-        private static bool _canClickButton;
-        public static bool CanClickButton => _canClickButton;
+        private static ReactiveProperty<bool> _canClickButton = new ReactiveProperty<bool>(false);
+        public static IReadOnlyReactiveProperty<bool> CanClickButton => _canClickButton;
+        
+        // 현재 골에 들어간 플레이어의 수를 나타냅니다.
+        private static ReactiveProperty<int> _enteredGoalPlayerCount = new ReactiveProperty<int>(0);
+        public static IReadOnlyReactiveProperty<int> EnteredGoalPlayerCount => _enteredGoalPlayerCount;
+
+        // Stage에 입장한 플레이어의 수를 나타냅니다.
+        private static ReactiveProperty<int> _totalPlayerCount = new ReactiveProperty<int>(0);
+        public static IReadOnlyReactiveProperty<int> TotalPlayerCount => _totalPlayerCount;
         
         /// <summary>
         /// Exit 패널이 활성화 될 수 있는지 여부를 나타냅니다.
@@ -32,10 +39,8 @@ namespace Model
         /// <param name="status"></param>
         public static void SetExitButtonActive(bool status)
         {
-            _canClickButton = status;
+            _canClickButton.Value = status;
         }
-        
-        private static readonly ReactiveProperty<int> _enteredGoalPlayerCount = new IntReactiveProperty(0);
         
         /// <summary>
         /// 현재 포톤 룸에 입장했음을 알려줄 수 있는 함수입니다.
@@ -46,25 +51,11 @@ namespace Model
             _isEnterPhotonRoom.Value = status;
         }
         
-        /// <summary>
-        /// 현재 골에 들어간 플레이어의 수를 나타냅니다.
-        /// </summary>
-        public static ReadOnlyReactiveProperty<int> EnteredGoalPlayerCount
-            => _enteredGoalPlayerCount.ToReadOnlyReactiveProperty();
-
         public static void IncreaseEnteredPlayerCount()
         {
             ++_enteredGoalPlayerCount.Value;
         }
         
-        private static readonly ReactiveProperty<int> _totalPlayerCount = new IntReactiveProperty(0);
-        
-        /// <summary>
-        /// Stage에 입장한 플레이어의 수를 나타냅니다.
-        /// </summary>
-        public static ReadOnlyReactiveProperty<int> TotalPlayerCount
-            => _totalPlayerCount.ToReadOnlyReactiveProperty();
-
         public static void SetTotalPlayerCount(int value)
         {
             _totalPlayerCount.Value = value;
