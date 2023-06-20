@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using Model;
 using UniRx;
 using UnityEngine;
@@ -31,7 +32,13 @@ public class HowToPlayPresenter : Presenter
 
         LobbySceneModel.HowToPlayImageIndex
             .Skip(1)
-            .Subscribe(_ => _howToPlayView.HowToPlayImage[LobbySceneModel.HowToPlayImageIndex.Value - 1].FillAmountTween(0, 1));
+            .Subscribe(_ => _howToPlayView.HowToPlayImage[LobbySceneModel.HowToPlayImageIndex.Value - 1].FillAmountTween(0, 1))
+            .AddTo(_compositeDisposable);
+
+        LobbySceneModel.HowToPlayImageIndex
+            .Where(index => index == _howToPlayView.HowToPlayImage.Length)
+            .Subscribe(_ => LobbySceneModel.SetLobbyState(LobbySceneModel.LobbyState.Settings))
+            .AddTo(_compositeDisposable);
     }
 
     void SetActiveHowToPlayPanel(bool status)
