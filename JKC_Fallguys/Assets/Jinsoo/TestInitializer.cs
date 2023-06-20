@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using LiteralRepository;
 using Photon.Pun;
@@ -7,36 +6,12 @@ using UnityEngine;
 
 public class TestInitializer : SceneInitializer
 {
-    private List<Texture2D> _playerTexture;
-
     private PlayerPhotonController _player;
 
     private void Awake()
     {
-        _playerTexture = new List<Texture2D>(Resources.LoadAll<Texture2D>
-            (DataManager.SetDataPath("Textures", "PlayerTexture")));
+        Screen.SetResolution(1080, 600, FullScreenMode.Windowed);
     }
-
-    int index = 0;
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            Debug.Log(index);
-            
-            if (index < _playerTexture.Count)
-            {
-                _player._bodyMeshRenderer.material.mainTexture = _playerTexture[index];
-                ++index;    
-            }
-            else
-            {
-                index = 0;
-                _player._bodyMeshRenderer.material.mainTexture = _playerTexture[index];
-            }
-        }
-    }
-
 
     protected override void OnGetResources()
     {
@@ -45,10 +20,16 @@ public class TestInitializer : SceneInitializer
 
     private async UniTaskVoid TestTask()
     {
-        await UniTask.Delay(TimeSpan.FromSeconds(5f));
+        await UniTask.Delay(TimeSpan.FromSeconds(3f));
 
         string pathString = DataManager.SetDataPath(PathLiteral.Prefabs, "Test", "Player");
-        _player = PhotonNetwork.Instantiate(pathString, transform.position, transform.rotation)
-            .transform.Find("Character").GetComponent<PlayerPhotonController>();
+        GameObject player = PhotonNetwork.Instantiate(pathString, transform.position, transform.rotation);
+        Debug.Log("Player instantiated with PhotonView viewID: " + player.GetPhotonView().ViewID);
+        _player = player.GetComponentInChildren<PlayerPhotonController>();
+        if (_player == null) 
+        {
+            Debug.LogError("PlayerPhotonController component is missing in the instantiated object.");
+            return;
+        }
     }
 }

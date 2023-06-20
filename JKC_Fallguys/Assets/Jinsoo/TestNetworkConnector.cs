@@ -43,6 +43,8 @@ public class TestNetworkConnector : MonoBehaviourPunCallbacks
 
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
+        Debug.Log("Create Room");
+        
         PhotonNetwork.CreateRoom(null, new RoomOptions());
     }
 
