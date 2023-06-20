@@ -17,29 +17,30 @@ public class SettingsPanelPresenter : Presenter
     {
         _settingsPanelView.ClosePanelButton
             .OnClickAsObservable()
-            .Subscribe(_ => LobbySceneModel.SetLobbyState(LobbySceneModel.CurrentLobbyState.Home))
+            .Subscribe(_ => LobbySceneModel.SetLobbyState(LobbySceneModel.LobbyState.Home))
             .AddTo(_compositeDisposable);
 
         _settingsPanelView.HowToPlayButton
             .OnClickAsObservable()
-            .Subscribe(_ => Debug.Log("How To Play"));
+            .Subscribe(_ => LobbySceneModel.SetLobbyState(LobbySceneModel.LobbyState.HowToPlay))
+            .AddTo(_compositeDisposable);
     }
 
     protected override void OnUpdatedModel()
     {
-        LobbySceneModel.LobbyState
-            .Where(state => state == LobbySceneModel.CurrentLobbyState.Settings)
+        LobbySceneModel.CurrentLobbyState
+            .Where(state => state == LobbySceneModel.LobbyState.Settings)
             .Subscribe(_ => SetActiveConfigPanel(true))
             .AddTo(_compositeDisposable);
         
-        LobbySceneModel.LobbyState
-            .Where(state => state != LobbySceneModel.CurrentLobbyState.Settings)
+        LobbySceneModel.CurrentLobbyState
+            .Where(state => state != LobbySceneModel.LobbyState.Settings)
             .Subscribe(_ => SetActiveConfigPanel(false))
             .AddTo(_compositeDisposable);
         
         // Config Panel이 활성화 됐을때 선택될 버튼을 정합니다.
-        LobbySceneModel.LobbyState
-            .Where(state => state == LobbySceneModel.CurrentLobbyState.Settings)
+        LobbySceneModel.CurrentLobbyState
+            .Where(state => state == LobbySceneModel.LobbyState.Settings)
             .Subscribe(_ => _settingsPanelView.HowToPlayButton.Select())
             .AddTo(_compositeDisposable);
     }

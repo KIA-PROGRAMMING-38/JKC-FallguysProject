@@ -1,3 +1,4 @@
+using Model;
 using UniRx;
 
 public class HowToPlayPresenter : Presenter
@@ -11,11 +12,6 @@ public class HowToPlayPresenter : Presenter
         InitializeRx();
     }
 
-    public override void OnRelease()
-    {
-        
-    }
-
     protected override void OnOccuredUserEvent()
     {
         
@@ -23,6 +19,21 @@ public class HowToPlayPresenter : Presenter
 
     protected override void OnUpdatedModel()
     {
-        
+        var HowToPlayState = LobbySceneModel.LobbyState.HowToPlay;
+
+        LobbySceneModel.CurrentLobbyState
+            .Subscribe(state => SetActiveHowToPlayPanel(state == HowToPlayState))
+            .AddTo(_compositeDisposable);
+    }
+
+    void SetActiveHowToPlayPanel(bool status)
+    {
+        _howToPlayView.gameObject.SetActive(status);
+    }
+    
+    public override void OnRelease()
+    {
+        _howToPlayView = default;
+        _compositeDisposable.Dispose();
     }
 }

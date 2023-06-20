@@ -22,13 +22,13 @@ public class CustomizationPresenter : Presenter
 
     protected override void OnUpdatedModel()
     {
-        Model.LobbySceneModel.LobbyState
-            .Where(state => state == Model.LobbySceneModel.CurrentLobbyState.Customization)
+        Model.LobbySceneModel.CurrentLobbyState
+            .Where(state => state == Model.LobbySceneModel.LobbyState.Customization)
             .Subscribe(_ => SetActiveGameObject(true))
             .AddTo(_compositeDisposable);
         
-        Model.LobbySceneModel.LobbyState
-            .Where(state => state != Model.LobbySceneModel.CurrentLobbyState.Customization)
+        Model.LobbySceneModel.CurrentLobbyState
+            .Where(state => state != Model.LobbySceneModel.LobbyState.Customization)
             .Subscribe(_ => SetActiveGameObject(false))
             .AddTo(_compositeDisposable);
     }

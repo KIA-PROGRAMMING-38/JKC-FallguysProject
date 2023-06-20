@@ -21,7 +21,7 @@ public class EnterConfigPresenter : Presenter
     {
         _enterConfigView.EnterConfigButton
             .OnClickAsObservable()
-            .Subscribe(_ => LobbySceneModel.SetLobbyState(LobbySceneModel.CurrentLobbyState.Settings))
+            .Subscribe(_ => LobbySceneModel.SetLobbyState(LobbySceneModel.LobbyState.Settings))
             .AddTo(_compositeDisposable);
     }
 
