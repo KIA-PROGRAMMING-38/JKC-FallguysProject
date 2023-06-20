@@ -1,5 +1,6 @@
 using Model;
 using UniRx;
+using UnityEngine;
 
 public class ExitButtonPresenter : Presenter
 {
@@ -20,35 +21,14 @@ public class ExitButtonPresenter : Presenter
     {
         _exitButtonView.UIPopUpButton
             .OnClickAsObservable()
-            .Where(_ => StageSceneModel.CanClickButton)
+            .Where(_ => StageSceneModel.CanClickButton.Value)
             .Subscribe(_ => StageSceneModel.SetExitPanelActive(true))
             .AddTo(_compositeDisposable);
     }
 
     protected override void OnUpdatedModel()
     {
-        StageSceneModel.IsExitPanelPopUp.DistinctUntilChanged()
-            .Subscribe(value =>
-            {
-                if (value == true)
-                {
-                    SetExitPanelActive(true);
-                }
 
-                else
-                {
-                    SetExitPanelActive(false);
-                }
-            });
-    }
-
-    /// <summary>
-    /// Exit Stage Panel의 활성화 여부를 설정합니다.
-    /// </summary>
-    /// <param name="status"></param>
-    private void SetExitPanelActive(bool status)
-    {
-        _exitButtonView.StageExitPanel.gameObject.SetActive(status);
     }
     
     public override void OnRelease()

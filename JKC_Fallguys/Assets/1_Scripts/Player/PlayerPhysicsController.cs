@@ -45,9 +45,6 @@ public class PlayerPhysicsController : MonoBehaviourPun
     // moveDir를 이용하여 플레이어가 움직인다
     private void CurrentMoveDirection()
     {
-        if (!photonView.IsMine)
-            return;
-        
         _forwardAngleVec = new Vector3(_camera.transform.forward.x, 0f, _camera.transform.forward.z).normalized;
         _rightAngleVec = new Vector3(_camera.transform.right.x, 0f, _camera.transform.right.z).normalized;
         _moveDir = _forwardAngleVec * _playerInput.InputVec.z + _rightAngleVec * _playerInput.InputVec.x;
@@ -58,9 +55,6 @@ public class PlayerPhysicsController : MonoBehaviourPun
     /// </summary>
     public void Move()
     {
-        if (!photonView.IsMine)
-            return;
-        
         CheckGround();
         
         if (_playerInput.InputVec != _zeroVec && _playerInput.CannotMove == false)
