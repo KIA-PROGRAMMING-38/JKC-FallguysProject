@@ -16,7 +16,6 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
         // 나머지는 자동으로 패배가 기록되어, 다음 결과 창에서 승리 혹은 패배가 팝업됨.
         Debug.Log("승리!");
         Time.timeScale = 0f;
-        RankingSettlement();
         
         photonView.RPC("EnterNextScene", RpcTarget.MasterClient);
     }
@@ -31,6 +30,8 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
     [PunRPC]
     public void EnterNextScene()
     {
+        RankingSettlement();
+        
         StageEndProduction().Forget();
     }
 
@@ -52,5 +53,7 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
                 }
             }
         }
+        
+        StageDataManager.Instance.StagePlayerRankings.Clear();
     }
 }

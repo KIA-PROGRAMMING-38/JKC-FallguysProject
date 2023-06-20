@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Huiji/Scenes/StageUI.unity
     guid: 1027bc7b0357c496f9130abc318c2b09
+  - enabled: 0
+    path: Assets/Jinsoo/TestStage.unity
+    guid: c780a2c1e7a284bdba13dbfde013ac7f
   m_configObjects: {}
