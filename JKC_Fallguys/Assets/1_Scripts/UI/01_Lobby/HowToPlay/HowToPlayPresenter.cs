@@ -1,5 +1,6 @@
 using Model;
 using UniRx;
+using UnityEngine;
 
 public class HowToPlayPresenter : Presenter
 {
@@ -14,7 +15,10 @@ public class HowToPlayPresenter : Presenter
 
     protected override void OnOccuredUserEvent()
     {
-        
+        _howToPlayView.NextButton.OnClickAsObservable()
+            .TakeWhile(_ => LobbySceneModel.HowToPlayImageIndex.Value < _howToPlayView.HowToPlayImage.Length)
+            .Subscribe(_ => LobbySceneModel.IncreaseImageIndex())
+            .AddTo(_compositeDisposable);
     }
 
     protected override void OnUpdatedModel()
@@ -24,6 +28,10 @@ public class HowToPlayPresenter : Presenter
         LobbySceneModel.CurrentLobbyState
             .Subscribe(state => SetActiveHowToPlayPanel(state == HowToPlayState))
             .AddTo(_compositeDisposable);
+
+        LobbySceneModel.HowToPlayImageIndex
+            .Skip(1)
+            .Subscribe(_ => _howToPlayView.HowToPlayImage[LobbySceneModel.HowToPlayImageIndex.Value - 1].FillAmountTween(0, 1));
     }
 
     void SetActiveHowToPlayPanel(bool status)

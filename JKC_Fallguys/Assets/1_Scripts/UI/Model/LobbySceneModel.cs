@@ -21,7 +21,15 @@ namespace Model
         private static ReactiveProperty<LobbyState> _currentLobbyState = 
             new ReactiveProperty<LobbyState>(LobbyState.Default);
         public static IReadOnlyReactiveProperty<LobbyState> CurrentLobbyState => _currentLobbyState;
-        
+
+        // How To Play의 활성화를 나타낼 Image의 인덱스를 나타내는 변수입니다.
+        private static ReactiveProperty<int> _howToPlayImageIndex = new ReactiveProperty<int>(0);
+        public static IReadOnlyReactiveProperty<int> HowToPlayImageIndex => _howToPlayImageIndex;
+
+        public static void IncreaseImageIndex()
+        {
+            ++_howToPlayImageIndex.Value;
+        }
         
         public static void SetPlayerName(string playerName)
         {

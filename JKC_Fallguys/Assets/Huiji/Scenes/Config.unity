@@ -190,7 +190,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 2
 --- !u!222 &199437071
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -601,7 +601,7 @@ GameObject:
   - component: {fileID: 680912843}
   - component: {fileID: 680912845}
   m_Layer: 0
-  m_Name: Text (Legacy)
+  m_Name: NextButtonText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3333,6 +3333,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95bc28c05d29c40e4ab358a1556fbe19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HowToPlayImage:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &2126952210
 GameObject:
   m_ObjectHideFlags: 0
