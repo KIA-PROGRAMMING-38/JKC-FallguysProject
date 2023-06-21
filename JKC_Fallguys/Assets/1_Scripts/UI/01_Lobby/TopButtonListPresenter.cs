@@ -9,7 +9,7 @@ public class TopButtonListPresenter : Presenter
     public override void OnInitialize(View view)
     {
         _topButtonListView = view as TopButtonListView;
-        Model.LobbySceneModel.SetLobbyState(Model.LobbySceneModel.CurrentLobbyState.Home);
+        Model.LobbySceneModel.SetLobbyState(Model.LobbySceneModel.LobbyState.Home);
     
         InitializeRx();
     }
@@ -21,12 +21,12 @@ public class TopButtonListPresenter : Presenter
     {
         _topButtonListView.HomeButton
             .OnClickAsObservable()
-            .Subscribe(_ => Model.LobbySceneModel.SetLobbyState(Model.LobbySceneModel.CurrentLobbyState.Home))
+            .Subscribe(_ => Model.LobbySceneModel.SetLobbyState(Model.LobbySceneModel.LobbyState.Home))
             .AddTo(_compositeDisposable);
         
         _topButtonListView.CustomizeButton
             .OnClickAsObservable()
-            .Subscribe(_ => Model.LobbySceneModel.SetLobbyState(Model.LobbySceneModel.CurrentLobbyState.Customization))
+            .Subscribe(_ => Model.LobbySceneModel.SetLobbyState(Model.LobbySceneModel.LobbyState.Customization))
             .AddTo(_compositeDisposable);
     }
     
@@ -35,13 +35,13 @@ public class TopButtonListPresenter : Presenter
     /// </summary>
     protected override void OnUpdatedModel()
     {
-        Model.LobbySceneModel.LobbyState
-            .Where(state => state == Model.LobbySceneModel.CurrentLobbyState.Home)
+        Model.LobbySceneModel.CurrentLobbyState
+            .Where(state => state == Model.LobbySceneModel.LobbyState.Home)
             .Subscribe(_ => Debug.Log("홈 UI가 실행됩니다."))
             .AddTo(_compositeDisposable);
         
-        Model.LobbySceneModel.LobbyState
-            .Where(state => state == Model.LobbySceneModel.CurrentLobbyState.Customization)
+        Model.LobbySceneModel.CurrentLobbyState
+            .Where(state => state == Model.LobbySceneModel.LobbyState.Customization)
             .Subscribe(_ => Debug.Log("커스터마이즈 UI가 실행됩니다."))
             .AddTo(_compositeDisposable);
     }

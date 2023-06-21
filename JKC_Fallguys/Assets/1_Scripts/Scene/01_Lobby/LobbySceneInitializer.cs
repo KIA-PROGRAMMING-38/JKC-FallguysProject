@@ -6,7 +6,7 @@ public class LobbySceneInitializer : SceneInitializer
 {
     private void Awake()
     {
-        Model.LobbySceneModel.SetLobbyState(LobbySceneModel.CurrentLobbyState.Home);
+        Model.LobbySceneModel.SetLobbyState(LobbySceneModel.LobbyState.Home);
     }
 
     protected override void OnGetResources()

@@ -28,13 +28,13 @@ public class LobbySceneFallguyController : MonoBehaviour
 
     private void InitializeRx()
     {
-        Model.LobbySceneModel.LobbyState
-            .Where(state => state == Model.LobbySceneModel.CurrentLobbyState.Customization)
+        Model.LobbySceneModel.CurrentLobbyState
+            .Where(state => state == Model.LobbySceneModel.LobbyState.Customization)
             .Subscribe(_ => CustomizationState())
             .AddTo(_compositeDisposable);
         
-        Model.LobbySceneModel.LobbyState
-            .Where(state => state == Model.LobbySceneModel.CurrentLobbyState.Home)
+        Model.LobbySceneModel.CurrentLobbyState
+            .Where(state => state == Model.LobbySceneModel.LobbyState.Home)
             .Subscribe(_ => HomeState())
             .AddTo(_compositeDisposable);
     }

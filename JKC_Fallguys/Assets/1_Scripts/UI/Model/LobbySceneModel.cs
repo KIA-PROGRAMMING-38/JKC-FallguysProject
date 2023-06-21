@@ -1,15 +1,17 @@
 using UniRx;
+using UnityEngine;
 
 namespace Model
 {
     public static class LobbySceneModel
     {
-        public enum CurrentLobbyState
+        public enum LobbyState
         {
             Default,
             Home,
             Customization,
-            Settings
+            Settings,
+            HowToPlay
         }
         
         // PlayerNamePlate의 갱신을 담당할 문자열입니다.
@@ -17,19 +19,32 @@ namespace Model
         public static IReadOnlyReactiveProperty<string> PlayerName => _playerName;
 
         // 현재 로비 화면의 상태를 알려줄 데이터입니다.
-        private static ReactiveProperty<CurrentLobbyState> _lobbyState = 
-            new ReactiveProperty<CurrentLobbyState>(CurrentLobbyState.Default);
-        public static IReadOnlyReactiveProperty<CurrentLobbyState> LobbyState => _lobbyState;
-        
-        
+        private static ReactiveProperty<LobbyState> _currentLobbyState = 
+            new ReactiveProperty<LobbyState>(LobbyState.Default);
+        public static IReadOnlyReactiveProperty<LobbyState> CurrentLobbyState => _currentLobbyState;
+
+        // How To Play의 활성화를 나타낼 Image의 인덱스를 나타내는 변수입니다.
+        private static ReactiveProperty<int> _howToPlayImageIndex = new ReactiveProperty<int>(0);
+        public static IReadOnlyReactiveProperty<int> HowToPlayImageIndex => _howToPlayImageIndex;
+
+        public static void IncreaseImageIndex()
+        {
+            ++_howToPlayImageIndex.Value;
+        }
+
+        public static void ResetImageIndex()
+        {
+            _howToPlayImageIndex.Value = 0;
+        }
+
         public static void SetPlayerName(string playerName)
         {
             _playerName.Value = playerName;
         }
 
-        public static void SetLobbyState(CurrentLobbyState lobbyState)
+        public static void SetLobbyState(LobbyState lobbyState)
         {
-            _lobbyState.Value = lobbyState;
+            _currentLobbyState.Value = lobbyState;
         }
     }
 }

@@ -30,13 +30,13 @@ public class EnterMatchingStandbyPresenter : Presenter
 
     protected override void OnUpdatedModel()
     {
-        Model.LobbySceneModel.LobbyState
-            .Where(state => state != Model.LobbySceneModel.CurrentLobbyState.Home)
+        Model.LobbySceneModel.CurrentLobbyState
+            .Where(state => state != Model.LobbySceneModel.LobbyState.Home)
             .Subscribe(_ => SetActiveGameObject(false))
             .AddTo(_compositeDisposable);
         
-        Model.LobbySceneModel.LobbyState
-            .Where(state => state == Model.LobbySceneModel.CurrentLobbyState.Home)
+        Model.LobbySceneModel.CurrentLobbyState
+            .Where(state => state == Model.LobbySceneModel.LobbyState.Home)
             .Subscribe(_ => SetActiveGameObject(true))
             .AddTo(_compositeDisposable);
     }
