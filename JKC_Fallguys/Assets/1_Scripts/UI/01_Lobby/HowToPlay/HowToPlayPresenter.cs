@@ -17,6 +17,8 @@ public class HowToPlayPresenter : Presenter
 
     protected override void OnOccuredUserEvent()
     {
+        // 버튼을 클릭하면 이미지의 인덱스와 버튼 카운트를 증가합니다.
+        // 버튼을 3번 클릭했다면 작업을 초기화하고 Settings Panel로 돌아갑니다.
         _howToPlayView.NextButton.OnClickAsObservable()
             .ThrottleFirst(TimeSpan.FromSeconds(1))
             .Subscribe(_ =>
@@ -36,6 +38,7 @@ public class HowToPlayPresenter : Presenter
     {
         var HowToPlayState = LobbySceneModel.LobbyState.HowToPlay;
 
+        // HowToPlay Panel의 활성화 여부를 결정합니다.
         LobbySceneModel.CurrentLobbyState
             .Subscribe(state => SetActiveHowToPlayPanel(state == HowToPlayState))
             .AddTo(_compositeDisposable);
@@ -50,7 +53,7 @@ public class HowToPlayPresenter : Presenter
         // 텍스트를 Update 합니다.
         LobbySceneModel.HowToPlayImageIndex
             .DistinctUntilChanged()
-            .Where(_ => _buttonClickCount < 2)
+            .Where(_ => _buttonClickCount < 3)
             .Subscribe(_ => UpdateText())
             .AddTo(_compositeDisposable);
     }
@@ -67,6 +70,11 @@ public class HowToPlayPresenter : Presenter
     private int _textIndex;
     private void UpdateText()
     {
+        if (_textIndex >= 3)
+        {
+            _textIndex = 0;
+        }
+
         _howToPlayView.DescriptionText.text = _descriptionText[_textIndex];
         ++_textIndex;
     }
@@ -80,8 +88,7 @@ public class HowToPlayPresenter : Presenter
             image.fillAmount = 1;
         }
         
-        _buttonClickCount = 0; // 클릭 횟수 초기화
-        _textIndex = 0;
+        _buttonClickCount = 0;
     }
 
     void SetActiveHowToPlayPanel(bool status)
