@@ -27,9 +27,6 @@ namespace Model
         private static ReactiveProperty<int> _howToPlayImageIndex = new ReactiveProperty<int>(0);
         public static IReadOnlyReactiveProperty<int> HowToPlayImageIndex => _howToPlayImageIndex;
 
-        private static ReactiveProperty<bool> _isLastIndex = new ReactiveProperty<bool>(false);
-        public static IReadOnlyReactiveProperty<bool> IsLastIndex => _isLastIndex;
-
         public static void IncreaseImageIndex()
         {
             ++_howToPlayImageIndex.Value;
@@ -39,12 +36,6 @@ namespace Model
         {
             _howToPlayImageIndex.Value = 0;
         }
-
-        public static void SetIsLastIndex(bool status)
-        {
-            _isLastIndex.Value = status;
-        }
-        
 
         public static void SetPlayerName(string playerName)
         {

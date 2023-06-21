@@ -1,13 +1,13 @@
 using System;
 using Model;
 using UniRx;
-using UnityEngine;
 using UnityEngine.UI;
 
 public class HowToPlayPresenter : Presenter
 {
     private HowToPlayView _howToPlayView;
     private CompositeDisposable _compositeDisposable = new CompositeDisposable();
+    private int _buttonClickCount = 0;
     public override void OnInitialize(View view)
     {
         _howToPlayView = view as HowToPlayView;
@@ -18,14 +18,17 @@ public class HowToPlayPresenter : Presenter
     protected override void OnOccuredUserEvent()
     {
         _howToPlayView.NextButton.OnClickAsObservable()
-            .TakeWhile(_ => LobbySceneModel.HowToPlayImageIndex.Value < _howToPlayView.HowToPlayImage.Length -1) // 2
             .ThrottleFirst(TimeSpan.FromSeconds(1))
-            .Subscribe(_ => LobbySceneModel.IncreaseImageIndex())
-            .AddTo(_compositeDisposable);
-        
-        _howToPlayView.NextButton.OnClickAsObservable()
-            .Where(_ => LobbySceneModel.HowToPlayImageIndex.Value == _howToPlayView.HowToPlayImage.Length - 1)
-            .Subscribe(_ => LobbySceneModel.SetIsLastIndex(true))
+            .Subscribe(_ =>
+            {
+                LobbySceneModel.IncreaseImageIndex();
+                _buttonClickCount++;
+
+                if (_buttonClickCount >= 3)
+                {
+                    ResetHowToPlayProgress();
+                }
+            })
             .AddTo(_compositeDisposable);
     }
 
@@ -37,24 +40,18 @@ public class HowToPlayPresenter : Presenter
             .Subscribe(state => SetActiveHowToPlayPanel(state == HowToPlayState))
             .AddTo(_compositeDisposable);
 
+        // Image를 업데이트 합니다.
         LobbySceneModel.HowToPlayImageIndex
             .Where(_ => LobbySceneModel.CurrentLobbyState.Value == LobbySceneModel.LobbyState.HowToPlay)
             .Where(index => index < _howToPlayView.HowToPlayImage.Length)
             .Subscribe(_ => _howToPlayView.HowToPlayImage[LobbySceneModel.HowToPlayImageIndex.Value - 1].FillAmountTween(0, 1))
             .AddTo(_compositeDisposable);
 
+        // 텍스트를 Update 합니다.
         LobbySceneModel.HowToPlayImageIndex
+            .DistinctUntilChanged()
+            .Where(_ => _buttonClickCount < 2)
             .Subscribe(_ => UpdateText())
-            .AddTo(_compositeDisposable);
-        
-        // LobbySceneModel.HowToPlayImageIndex
-        //     .Where(index => index == _howToPlayView.HowToPlayImage.Length)
-        //     .Subscribe(_ => ResetHowToPlayProgress())
-        //     .AddTo(_compositeDisposable);
-
-        LobbySceneModel.IsLastIndex
-            .Where(islastIndex => islastIndex)
-            .Subscribe(_ => ResetHowToPlayProgress())
             .AddTo(_compositeDisposable);
     }
 
@@ -66,22 +63,25 @@ public class HowToPlayPresenter : Presenter
         "점프, 다이빙, 잡기는 물론, 키보드로 이동하고 마우스로 카메라를 조정할 수 있습니다.",
         "끝입니다.\"플레이\"버튼을 누르면 쇼가 시작됩니다. 크라운을 잡으세요!"
     };
+
+    private int _textIndex;
     private void UpdateText()
     {
-        _howToPlayView.DescriptionText.text = _descriptionText[LobbySceneModel.HowToPlayImageIndex.Value];
-        Debug.Log(LobbySceneModel.HowToPlayImageIndex.Value);
-        Debug.Log($"텍스트 카운트 : {_descriptionText.Length}");
+        _howToPlayView.DescriptionText.text = _descriptionText[_textIndex];
+        ++_textIndex;
     }
 
     private void ResetHowToPlayProgress()
     {
         LobbySceneModel.SetLobbyState(LobbySceneModel.LobbyState.Settings);
         LobbySceneModel.ResetImageIndex();
-        LobbySceneModel.SetIsLastIndex(false);
         foreach (Image image in _howToPlayView.HowToPlayImage)
         {
             image.fillAmount = 1;
         }
+        
+        _buttonClickCount = 0; // 클릭 횟수 초기화
+        _textIndex = 0;
     }
 
     void SetActiveHowToPlayPanel(bool status)
