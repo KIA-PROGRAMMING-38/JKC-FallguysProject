@@ -1,4 +1,5 @@
 using System;
+using LiteralRepository;
 using UnityEngine;
 
 public class GoalCheck : MonoBehaviour
@@ -6,24 +7,23 @@ public class GoalCheck : MonoBehaviour
     public event Action OnPlayerEnter;
     public event Action OnPlayerExit;
 
-    private bool goalInPlayer;
-
-    public bool GoalInPlayer => goalInPlayer;
+    private bool _goalInPlayer;
+    public bool GoalInPlayer => _goalInPlayer;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag(TagLiteral.Player))
         {
-            goalInPlayer = true;
+            _goalInPlayer = true;
             OnPlayerEnter?.Invoke();
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag(TagLiteral.Player))
         {
-            goalInPlayer = false;
+            _goalInPlayer = false;
             OnPlayerExit?.Invoke();
         }
     }

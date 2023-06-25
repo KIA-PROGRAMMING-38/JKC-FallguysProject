@@ -54,6 +54,7 @@ MonoBehaviour:
   - CompleteStageAndRankPlayers
   - UpdateTexture
   - SetTextureIndex
+  - UpdatePlayerRanking
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

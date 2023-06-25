@@ -33,12 +33,17 @@ public class PlayerPhotonController : MonoBehaviourPunCallbacks, IPunObservable
     [PunRPC]
     public void AddPlayerToRankingOnGoal(int playerIndex)
     {
-        if (PhotonNetwork.IsMasterClient)
-        {
-            StageDataManager.Instance.AddPlayerToRanking(playerIndex);
-        }
+        // 마스터 클라이언트는 모든 클라이언트에게 순위 업데이트를 요청합니다.
+        photonView.RPC("UpdatePlayerRanking", RpcTarget.All, playerIndex);
     }
 
+    [PunRPC]
+    public void UpdatePlayerRanking(int playerIndex)
+    {
+        // 각 클라이언트는 이 함수를 통해 자신의 순위 리스트를 최신 상태로 업데이트합니다.
+        StageDataManager.Instance.AddPlayerToRanking(playerIndex);
+    }
+    
     private int _textureIndex = 0;
 
     private void Update()
@@ -69,7 +74,6 @@ public class PlayerPhotonController : MonoBehaviourPunCallbacks, IPunObservable
         if (PlayerTextures == null || PlayerTextures.Count == 0 || index >= PlayerTextures.Count)
             return;
 
-        Debug.Log("SetTextureIndex called with index: " + index);
         _textureIndex = index;
         _bodyMeshRenderer.material.mainTexture = PlayerTextures[index];
     }
@@ -78,14 +82,11 @@ public class PlayerPhotonController : MonoBehaviourPunCallbacks, IPunObservable
     {
         if (stream.IsWriting)
         {
-            Debug.Log("Writing _textureIndex to stream: " + _textureIndex);
             stream.SendNext(_textureIndex);
         }
         else
         {
             _textureIndex = (int)stream.ReceiveNext();
-            Debug.Log("Received _textureIndex from stream: " + _textureIndex);
-            Debug.Log("PlayerTextures count: " + PlayerTextures.Count); // Add this line
             SetTextureIndex(_textureIndex);
         }
     }

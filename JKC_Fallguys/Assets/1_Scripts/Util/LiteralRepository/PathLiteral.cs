@@ -15,6 +15,8 @@ namespace LiteralRepository
         public static readonly string MatchingStandby = "02_MatchingStandby";
         public static readonly string Stage = "03_Stage";
         public static readonly string GameLoading = "04_GameLoading";
+
+        public static readonly string HoopLegend = "HoopLegend";
         
         public static readonly string LoseTextImage = "LoseText";
         public static readonly string VictoryTextImage = "VictoryText";
