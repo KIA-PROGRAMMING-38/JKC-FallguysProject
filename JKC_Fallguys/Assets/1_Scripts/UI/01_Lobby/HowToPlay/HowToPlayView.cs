@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class HowToPlayView : View
 {
-    public Image[] HowToPlayImage = new Image[3];
+    public Image[] HowToPlayImage { get; private set; } = new Image[3];
     public Text DescriptionText { get; private set; }
     
     public Button NextButton { get; private set; }
