@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
 using UniRx;
-using UnityEditor;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class StageDataManager : SingletonMonoBehaviour<StageDataManager>
@@ -22,7 +21,7 @@ public class StageDataManager : SingletonMonoBehaviour<StageDataManager>
     protected override void Awake()
     {
         base.Awake();
-
+        
         GetPlayerIndex();
     }
     
@@ -30,7 +29,7 @@ public class StageDataManager : SingletonMonoBehaviour<StageDataManager>
     {
         StagePlayerRankings.Add(playerIndex);
 
-        foreach (var elem in StagePlayerRankings)
+        foreach (int elem in StagePlayerRankings)
         {
             Debug.Log($"In PlayerIndexList, CurrentPlayer : {elem}");
         }

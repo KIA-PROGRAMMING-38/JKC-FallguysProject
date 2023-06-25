@@ -1,5 +1,7 @@
+using LiteralRepository;
 using Photon.Pun;
 using Photon.Realtime;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class TestNetworkConnector : MonoBehaviourPunCallbacks
@@ -10,6 +12,10 @@ public class TestNetworkConnector : MonoBehaviourPunCallbacks
         
         PhotonNetwork.AutomaticallySyncScene = true;
         PhotonNetwork.ConnectUsingSettings();
+        
+        Instantiate
+            (DataManager.GetGameObjectData(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, "StageManager"));
+        StageDataManager.Instance.IsGameActive.Value = true;
     }
     
     public override void OnConnectedToMaster()

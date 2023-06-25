@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 using Cysharp.Threading.Tasks;
@@ -8,39 +7,35 @@ using Random = UnityEngine.Random;
 public class LoadingSceneSplashArtCardPooler : MonoBehaviour
 {
     private LoadingSceneSplashArtCardPool _cardPool;
-    private HorizontalRendererView _horizontalRendererView;
-    private RectTransform _respawnZone;
     
     [SerializeField] 
-    private float _reapeatCooldown;
+    private float _repeatCooldown;
 
-    private CancellationTokenSource _reapeatCancellationTokenSource;
+    private CancellationTokenSource _repeatEffectCancellationTokenSource;
+    private CancellationTokenSource _releaseCardCancellationTokenSource;
     
     private void Awake()
     {
         _cardPool = new LoadingSceneSplashArtCardPool(gameObject);
-        _reapeatCancellationTokenSource = new CancellationTokenSource();
+        _repeatEffectCancellationTokenSource = new CancellationTokenSource();
+        _releaseCardCancellationTokenSource = new CancellationTokenSource();
         
-        ReapeatHorizontalEffect(_reapeatCancellationTokenSource.Token).Forget();
+        RepeatHorizontalEffect(_repeatEffectCancellationTokenSource.Token).Forget();
     }
 
-    private Stack<CancellationTokenSource> cardTokenStack = new Stack<CancellationTokenSource>();
-    private async UniTaskVoid ReapeatHorizontalEffect(CancellationToken cancelToken)
+    private async UniTaskVoid RepeatHorizontalEffect(CancellationToken cancelToken)
     {
         while (true)
         {
-            await UniTask.Delay(TimeSpan.FromSeconds(_reapeatCooldown), cancellationToken: cancelToken);
-            
-            CancellationTokenSource cardCancellationTokenSource = new CancellationTokenSource();
-            
+            await UniTask.Delay(TimeSpan.FromSeconds(_repeatCooldown), cancellationToken: cancelToken);
+        
             LoadingSceneSplashArtCard card = _cardPool.CardPoolInstance.Get();
-
             int randomSpriteIndex = Random.Range(0, SplashArtRegistry.SpriteArts.Count);
             card.SplashImage.sprite = SplashArtRegistry.SpriteArts[randomSpriteIndex];
-            
-            // 생성된 카드에 대해 ReleaseCard 작업을 시작하고 취소 토큰을 저장합니다.
-            ReleaseCard(card, cardCancellationTokenSource.Token).Forget();
-            cardTokenStack.Push(cardCancellationTokenSource);
+        
+            // 생성된 카드에 대해 ReleaseCard 작업을 시작합니다.
+            // 이 때 모든 작업은 동일한 취소 토큰을 공유합니다.
+            ReleaseCard(card, _releaseCardCancellationTokenSource.Token).Forget();
         }
     }
 
@@ -53,13 +48,7 @@ public class LoadingSceneSplashArtCardPooler : MonoBehaviour
     
     private void OnDestroy()
     {
-        _reapeatCancellationTokenSource.Cancel();
-        
-        // 모든 카드에 대한 작업을 취소합니다.
-        while (cardTokenStack.Count > 0)
-        {
-            CancellationTokenSource cardCancellationTokenSource = cardTokenStack.Pop();
-            cardCancellationTokenSource.Cancel();
-        }
+        _repeatEffectCancellationTokenSource.Cancel();
+        _releaseCardCancellationTokenSource.Cancel();
     }
 }

@@ -14,7 +14,8 @@ public class GoalCollider : MonoBehaviourPun
             
             Debug.Log(playerPhotonController.name);
             
-            playerPhotonController.photonView.RPC("AddPlayerToRankingOnGoal", RpcTarget.MasterClient, playerPersonalIndex);
+            playerPhotonController.photonView.RPC
+                ("AddPlayerToRankingOnGoal", RpcTarget.MasterClient, playerPersonalIndex);
         }
     }
 }

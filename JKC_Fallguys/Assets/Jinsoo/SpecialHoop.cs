@@ -1,22 +1,31 @@
 using System.Collections;
 using UnityEngine;
 
-public class HoopPropellerUpDuration : MonoBehaviour
+public class SpecialHoop : MonoBehaviour
 {
+    private HoopController _hoopController;
+    
     private GoalCheck _goalCheck;
     private Vector3 _originPosition;
     private bool _isMoving;
     private bool _playerEntered;
-    [SerializeField] private float _duration = 3f; // �⺻�� 5��, ���� 7��
-    [SerializeField] private float _heightOffset; // �⺻�� 20, ���� 30
-    [SerializeField] private float _moveSpeed; // �⺻, ��� 1
+    [SerializeField] private float _duration = 3f;
+    [SerializeField] private float _heightOffset;
+    [SerializeField] private float _moveSpeed;
     private float _currentHeight;
 
     private void Awake()
     {
-        _goalCheck = GetComponentInChildren<GoalCheck>();
+        _goalCheck = transform.Find("GoalCheck").GetComponent<GoalCheck>();
+        Debug.Assert(_goalCheck != null);
+        
         _originPosition = transform.position;
         _currentHeight = _originPosition.y;
+    }
+
+    public void Initialize(HoopController hoopController)
+    {
+        _hoopController = hoopController;
     }
 
     private void Start()
@@ -25,18 +34,14 @@ public class HoopPropellerUpDuration : MonoBehaviour
         _goalCheck.OnPlayerExit += HandlePlayerExit;
     }
 
-    private void OnDestroy()
-    {
-        _goalCheck.OnPlayerEnter -= HandlePlayerEnter;
-        _goalCheck.OnPlayerExit -= HandlePlayerExit;
-    }
-
     private void HandlePlayerEnter()
     {
         if (!_playerEntered && !_isMoving)
         {
             _playerEntered = true;
             StartCoroutine(PropellerAnimation());
+            
+            _hoopController.PlayerPassesHoop(2);
         }
     }
 
@@ -50,7 +55,7 @@ public class HoopPropellerUpDuration : MonoBehaviour
         _isMoving = true;
         float targetHeight = _originPosition.y + _heightOffset;
         float elapsedTime = 0f;
-        float moveSpeedMultiplier = _moveSpeed; // �̵� �ӵ��� ���� ������ ���� ���
+        float moveSpeedMultiplier = _moveSpeed;
         while (_currentHeight < targetHeight)
         {
             elapsedTime += Time.deltaTime * moveSpeedMultiplier;
@@ -71,5 +76,11 @@ public class HoopPropellerUpDuration : MonoBehaviour
         }
 
         _isMoving = false;
+    }
+    
+    private void OnDestroy()
+    {
+        _goalCheck.OnPlayerEnter -= HandlePlayerEnter;
+        _goalCheck.OnPlayerExit -= HandlePlayerExit;
     }
 }
