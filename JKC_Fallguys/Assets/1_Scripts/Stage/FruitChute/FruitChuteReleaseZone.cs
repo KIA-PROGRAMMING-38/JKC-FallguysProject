@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class FruitChuteReleaseZone : MonoBehaviour
 {
+    private Vector3 _fallGuyRespawnPos = new Vector3(0f, 0f, 4f);
+    private Quaternion _fallGuyRespawnEuler = Quaternion.identity;
+    
     public void OnTriggerEnter(Collider col)
     {
         if (col.gameObject.CompareTag(TagLiteral.Fruit))
@@ -10,6 +13,15 @@ public class FruitChuteReleaseZone : MonoBehaviour
             Fruit fruit = col.gameObject.GetComponent<Fruit>();
             
             fruit.ReleaseToPool();
+        }
+
+        if (col.gameObject.CompareTag(TagLiteral.Player))
+        {
+            col.transform.position = _fallGuyRespawnPos;
+            col.transform.rotation = _fallGuyRespawnEuler;
+
+            PlayerPhysicsController physicsController = col.gameObject.GetComponent<PlayerPhysicsController>();
+            physicsController.ResetCameraAngle();
         }
     }
 }

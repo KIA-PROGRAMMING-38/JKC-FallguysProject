@@ -1,5 +1,4 @@
 using UniRx;
-using UnityEngine;
 
 public class TopButtonListPresenter : Presenter
 {
@@ -30,20 +29,8 @@ public class TopButtonListPresenter : Presenter
             .AddTo(_compositeDisposable);
     }
     
-    /// <summary>
-    /// LobbyState가 변경될 때 마다 해당하는 이벤트를 실행하는 구독을 설정합니다.
-    /// </summary>
     protected override void OnUpdatedModel()
     {
-        Model.LobbySceneModel.CurrentLobbyState
-            .Where(state => state == Model.LobbySceneModel.LobbyState.Home)
-            .Subscribe(_ => Debug.Log("홈 UI가 실행됩니다."))
-            .AddTo(_compositeDisposable);
-        
-        Model.LobbySceneModel.CurrentLobbyState
-            .Where(state => state == Model.LobbySceneModel.LobbyState.Customization)
-            .Subscribe(_ => Debug.Log("커스터마이즈 UI가 실행됩니다."))
-            .AddTo(_compositeDisposable);
     }
     
     public override void OnRelease()
