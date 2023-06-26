@@ -60,14 +60,6 @@ public class PhotonMatchingSceneEventManager : MonoBehaviourPunCallbacks
         PhotonNetwork.CreateRoom(null);
     }
 
-    public override void OnPlayerPropertiesUpdate(Player targetPlayer, Hashtable changedProps)
-    {
-        if (changedProps.ContainsKey("PersonalIndex"))
-        {
-            int newIndex = (int)changedProps["PersonalIndex"];
-            Debug.Log($"Player {targetPlayer.NickName}'s PersonalIndex changed to {newIndex}");
-        }
-    }
     
     /// <summary>
     /// 로비에 성공적으로 접속하였을 때 호출되는 콜백 메서드

@@ -138,7 +138,7 @@ PrefabInstance:
     - target: {fileID: 5634015955707145442, guid: c7a754da359cb49759d8ee76bd50c19b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5634015955707145442, guid: c7a754da359cb49759d8ee76bd50c19b,
         type: 3}
@@ -202,6 +202,7 @@ GameObject:
   m_Component:
   - component: {fileID: 483822508}
   - component: {fileID: 483822509}
+  - component: {fileID: 483822510}
   m_Layer: 0
   m_Name: HoopController
   m_TagString: Untagged
@@ -216,13 +217,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 483822507}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_Father: {fileID: 1251660733252377209}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &483822509
 MonoBehaviour:
@@ -236,6 +237,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d283a9d557ad14ef3891e25fbce32d1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &483822510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 483822507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 4
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &548488184
 GameObject:
   m_ObjectHideFlags: 0
@@ -412,7 +435,7 @@ PrefabInstance:
     - target: {fileID: 122906925103003174, guid: 0365c497af6a1442bbb9c3b50f6b9ebd,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 122906925103003174, guid: 0365c497af6a1442bbb9c3b50f6b9ebd,
         type: 3}
@@ -6277,6 +6300,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1251660733252377209}
+  - component: {fileID: 1251660733252377210}
   m_Layer: 0
   m_Name: Legend_Hoop_Map
   m_TagString: Untagged
@@ -6304,9 +6328,32 @@ Transform:
   - {fileID: 5919623316694486380}
   - {fileID: 7989692318115412537}
   - {fileID: 550300277}
+  - {fileID: 483822508}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1251660733252377210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1251660733252377208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 3
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!65 &1251660733309936282
 BoxCollider:
   m_ObjectHideFlags: 0

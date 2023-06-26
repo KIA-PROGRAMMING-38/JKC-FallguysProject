@@ -55,6 +55,9 @@ MonoBehaviour:
   - UpdateTexture
   - SetTextureIndex
   - UpdatePlayerRanking
+  - SendHoopCount
+  - IncreaseCountAndBroadcast
+  - UpdateHoopCount
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
