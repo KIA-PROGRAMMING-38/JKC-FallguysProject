@@ -47,23 +47,12 @@ public class PhotonStageSceneEventManager : MonoBehaviourPunCallbacks
 
     private void SetPlayerSpawnPoints()
     {
-        Player player = PhotonNetwork.LocalPlayer;
-        object indexObject;
-
-        if (player.CustomProperties.TryGetValue("PersonalIndex", out indexObject))
-        {
-            int index = (int)indexObject;
-            string filePath = DataManager.SetDataPath(PathLiteral.Prefabs, "Player");
-        
-            Vector3 spawnPoint = _spawnPoints[index];
-            
-            _playerPrefab = PhotonNetwork.Instantiate(filePath, spawnPoint, Quaternion.identity);
-        }
-        else
-        {
-            Debug.LogWarning("Failed to get the player index from custom properties.");
-        }
+        string filePath = DataManager.SetDataPath(PathLiteral.Prefabs, "Player");
+        Vector3 spawnPoint = _spawnPoints[PhotonNetwork.LocalPlayer.ActorNumber];
+    
+        _playerPrefab = PhotonNetwork.Instantiate(filePath, spawnPoint, Quaternion.identity);
     }
+
     
     private void OnInitializeLoadScene(Scene scene, LoadSceneMode mode)
     {

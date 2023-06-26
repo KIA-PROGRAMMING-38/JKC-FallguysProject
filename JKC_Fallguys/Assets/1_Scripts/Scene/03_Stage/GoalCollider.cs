@@ -10,7 +10,7 @@ public class GoalCollider : MonoBehaviourPun
         {
             PlayerPhotonController playerPhotonController = col.GetComponent<PlayerPhotonController>();
             playerPhotonController.SendMessageWinTheStage();
-            int playerPersonalIndex = StageDataManager.Instance.PlayerStageIndex;
+            int playerPersonalIndex = PhotonNetwork.LocalPlayer.ActorNumber;
             
             Debug.Log(playerPhotonController.name);
             
