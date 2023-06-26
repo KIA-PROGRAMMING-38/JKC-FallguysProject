@@ -11,7 +11,7 @@ public class JumpClubDeadZone : MonoBehaviour
             playerPhotonController.PlayerIsGameOver();
 
             GameObject rootObject = playerPhotonController.transform.parent.gameObject;
-            gameObject.SetActive(false);
+            rootObject.SetActive(false);
         }
     }
 }

@@ -1,13 +1,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
-using UnityEngine.Serialization;
 
 public class StageDataManager : SingletonMonoBehaviour<StageDataManager>
 {
     // 게임의 활성화 상태를 나타냅니다.
     private ReactiveProperty<bool> _isGameActive = new ReactiveProperty<bool>(false);
     public IReactiveProperty<bool> IsGameActive => _isGameActive;
+    // 현재 클라이언트를 플레이하고 있는 플레이어의 생존 여부를 나타냅니다.
+    private ReactiveProperty<bool> _isPlayerAlive = new ReactiveProperty<bool>(true);
+    public IReactiveProperty<bool> IsPlayerAlive => _isPlayerAlive;
 
     // 플레이어의 점수들이 계속해서 저장되는 딕셔너리입니다.
     public Dictionary<int, PlayerData> PlayerScoresByIndex = new Dictionary<int, PlayerData>();
