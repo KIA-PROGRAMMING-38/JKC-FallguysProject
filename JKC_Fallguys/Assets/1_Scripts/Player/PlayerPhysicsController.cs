@@ -83,19 +83,19 @@ public class PlayerPhysicsController : MonoBehaviourPun
         bool cast = Physics.SphereCast
         (_groundCheckPoint.position, _castRadius, Vector3.down, out var hit, 
             _groundCheckDistance, layerMask);
-    
+            
         if (cast)
-        {   
+        {
             // 지면의 법선 벡터를 구하고, 그 벡터와 수직축과의 벡터를 구함.
             Vector3 groundNormal = hit.normal;
             // 지면 벡터와 수직축을 교차한 벡터를 구한다.
             // 슬로프의 방향을 얻을 수 있다.
             groundSlopeAngle = Vector3.Angle(groundNormal, Vector3.up);
         }
-
+        
         // 슬로프의 방향을 계산한다.
         Vector3 slopeDirection = Vector3.Cross(hit.normal, Vector3.Cross(Vector3.up, hit.normal));
-
+        
         // 슬로프 각도를 -1과 1사이의 값으로 변환한다.
         float slopeFactor = groundSlopeAngle / 90f;
         
@@ -104,10 +104,10 @@ public class PlayerPhysicsController : MonoBehaviourPun
         {
             slopeFactor *= -1;
         }
-
+        
         _moveDir.y = slopeFactor;
     }
-
+ 
     [SerializeField] private float _jumpMovementForce;
     /// <summary>
     /// Jumping State에서 호출.

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -4909773777905012927}
   m_Layer: 0
   m_Name: SpecialHoop_05
-  m_TagString: Ground
+  m_TagString: Hoop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
