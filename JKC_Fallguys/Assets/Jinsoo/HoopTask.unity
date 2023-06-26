@@ -504,6 +504,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Legend_Hoop_Map
       objectReference: {fileID: 0}
+    - target: {fileID: 3620831246751690401, guid: d64b8fd3d27ba4f05b5db44ca726ae4a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3620831246751690403, guid: d64b8fd3d27ba4f05b5db44ca726ae4a,
         type: 3}
       propertyPath: sceneViewId
@@ -1713,11 +1718,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MapFruitChute
       objectReference: {fileID: 0}
-    - target: {fileID: 3459175154550755174, guid: e8b6eaa6ad3b74de3a3545debff6b5f7,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3459175154550755175, guid: e8b6eaa6ad3b74de3a3545debff6b5f7,
         type: 3}
       propertyPath: m_RootOrder
@@ -1815,7 +1815,7 @@ PrefabInstance:
     - target: {fileID: 122906925103003174, guid: 0365c497af6a1442bbb9c3b50f6b9ebd,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.47
+      value: -10.7
       objectReference: {fileID: 0}
     - target: {fileID: 122906925103003174, guid: 0365c497af6a1442bbb9c3b50f6b9ebd,
         type: 3}

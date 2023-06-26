@@ -12,6 +12,11 @@ public class PlayerPhotonController : MonoBehaviourPunCallbacks, IPunObservable
 
     public new PhotonView photonView;
 
+    public void PlayerIsGameOver()
+    {
+        StageDataManager.Instance.IsPlayerAlive.Value = false;
+    }
+
     private void Awake()
     {
         photonView = GetComponent<PhotonView>();

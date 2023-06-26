@@ -69,7 +69,6 @@ public class PlayerAnimation : MonoBehaviourPun
     {
         int layerMask = 1 << LayerMask.NameToLayer(TagLiteral.Ground);
 
-        // 충돌 여부에 따라 기즈모 그리기
         bool hit = Physics.Raycast(_groundCheckPoint.position, Vector3.down, _groundCheckDistance, layerMask);
         if (hit)
         {
@@ -154,8 +153,8 @@ public class PlayerAnimation : MonoBehaviourPun
         if (other.gameObject.CompareTag(TagLiteral.Respawn))
         {
             _animator.SetBool(AnimLiteral.IsRespawning, true);
-            _playerPhysicsController.Respawn();
         }
+        
     }
 
     private void ReleaseGrab()
