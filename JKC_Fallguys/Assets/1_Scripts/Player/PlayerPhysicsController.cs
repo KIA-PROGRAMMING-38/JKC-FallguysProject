@@ -31,6 +31,11 @@ public class PlayerPhysicsController : MonoBehaviourPun
         _camera = cameraAngle;
     }
 
+    public void ResetCameraAngle()
+    {
+        _camera.transform.rotation = Quaternion.Euler(345, 0, 0);
+    }
+
     private void Start()
     {
         _playerInput.OnMovement -= CurrentMoveDirection;

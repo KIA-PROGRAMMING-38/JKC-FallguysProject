@@ -50,8 +50,6 @@ public class RotationFaceIconPresenter : Presenter
     
     private void SetCountDownText()
     {
-        Debug.Log(Model.MatchingSceneModel.StartCount);
-        
         if (Model.MatchingSceneModel.StartCount.Value > 3)
         {
             _rotationFaceIconView.CurrentServerStateText.text = "플레이어를 기다리는 중...";
