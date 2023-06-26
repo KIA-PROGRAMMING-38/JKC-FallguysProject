@@ -7,7 +7,8 @@ public class PlayerInput : MonoBehaviourPun
 {
     public Vector3 InputVec { get; private set; }
     public Vector2 ScreenToMousePos { get; private set; }
-    
+    public bool IsNothingUnderfoot { get; set; }
+
     public event Action OnMovement;
     
     private void Update()

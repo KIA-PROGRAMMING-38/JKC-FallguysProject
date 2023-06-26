@@ -33,5 +33,10 @@ public class MovementState : StateMachineBehaviour
         {
             animator.SetBool(AnimLiteral.IsDiving, true);
         }
+        
+        if (_playerInput.IsNothingUnderfoot)
+        {
+            animator.SetBool(AnimLiteral.IsFall, true);
+        }
     }
 }

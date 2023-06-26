@@ -306,7 +306,7 @@ GameObject:
   - component: {fileID: 765269435679306544}
   m_Layer: 0
   m_Name: CommonHoop_01
-  m_TagString: Ground
+  m_TagString: Hoop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
