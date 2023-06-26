@@ -276,16 +276,17 @@ public class PlayerPhysicsController : MonoBehaviourPun
         _playerInput.CannotMove = false;
     }
 
-    [SerializeField] private Transform _respawnPosition; 
     /// <summary>
     /// Fall 이후 다시 원위치 되는 함수. Respawn Boundary랑 충돌햇을때 호출. 
     /// </summary>
-    public void Respawn()
+    public void Respawn(Vector3 respawnPos, Quaternion respawnAngle)
     {
         if (!photonView.IsMine)
             return;
-        
-        transform.position = _respawnPosition.position;
+
+        transform.position = respawnPos;
+        transform.rotation = respawnAngle;
+        ResetCameraAngle();
         _playerRigidbody.constraints = RigidbodyConstraints.FreezeRotation;
     }
 }

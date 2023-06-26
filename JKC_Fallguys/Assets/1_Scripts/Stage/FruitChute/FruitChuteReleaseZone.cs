@@ -17,11 +17,8 @@ public class FruitChuteReleaseZone : MonoBehaviour
 
         if (col.gameObject.CompareTag(TagLiteral.Player))
         {
-            col.transform.position = _fallGuyRespawnPos;
-            col.transform.rotation = _fallGuyRespawnEuler;
-
             PlayerPhysicsController physicsController = col.gameObject.GetComponent<PlayerPhysicsController>();
-            physicsController.ResetCameraAngle();
+            physicsController.Respawn(_fallGuyRespawnPos, _fallGuyRespawnEuler);
         }
     }
 }

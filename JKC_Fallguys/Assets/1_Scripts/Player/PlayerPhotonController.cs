@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerPhotonController : MonoBehaviourPunCallbacks, IPunObservable
 {
+    private bool _isPlayerAlive = true;
+    public bool IsPlayerAlive => _isPlayerAlive;
+    
     private PlayerReferenceManager _referenceManager;
     public List<Texture2D> PlayerTextures = new List<Texture2D>();
 
@@ -11,6 +14,11 @@ public class PlayerPhotonController : MonoBehaviourPunCallbacks, IPunObservable
     public SkinnedMeshRenderer _bodyMeshRenderer;
 
     public new PhotonView photonView;
+
+    public void PlayerIsGameOver()
+    {
+        _isPlayerAlive = false;
+    }
 
     private void Awake()
     {
