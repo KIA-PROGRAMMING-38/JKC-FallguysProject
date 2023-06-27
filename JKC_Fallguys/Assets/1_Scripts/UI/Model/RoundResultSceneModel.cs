@@ -30,7 +30,7 @@ namespace Model
                 {
                     Debug.Log("Rankings List에 추가 안됨.");
                 }
-            }    
+            }
         }
 
         private static readonly ReactiveProperty<int> _firstScore = new IntReactiveProperty(0);

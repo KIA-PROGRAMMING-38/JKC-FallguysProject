@@ -17,6 +17,7 @@ public class RoundResultPresenter : Presenter
     protected override void OnOccuredUserEvent()
     {
         RoundResultSceneModel.PerformScoreRaise();
+        SetPlayerId();
         
         Observable.Timer(TimeSpan.FromSeconds(0.5f))
             .Subscribe(_ => MoveRankingUI(_roundResultView.FirstRankingText.rectTransform, _firstTextPos))
@@ -29,6 +30,15 @@ public class RoundResultPresenter : Presenter
         Observable.Timer(TimeSpan.FromSeconds(0.7f))
             .Subscribe(_ => MoveRankingUI(_roundResultView.ThirdRankingText.rectTransform, _thirdTextPos))
             .AddTo(_compositeDisposable);
+    }
+
+    private void SetPlayerId()
+    {
+        for (int playerIndex = 0; playerIndex < RoundResultSceneModel.FallguyRankings.Count; ++playerIndex)
+        {
+            _roundResultView.PlayerIDs[playerIndex].text =
+                RoundResultSceneModel.FallguyRankings[playerIndex].PlayerName;
+        }
     }
 
     private Vector2 _firstTextPos = new Vector2(0.07f, 0.7f);
