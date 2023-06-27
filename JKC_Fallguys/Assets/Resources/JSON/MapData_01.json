@@ -1,21 +1,25 @@
 {
-    "Type": "Hurt",
     "Info": {
+        "Type": "Hurt",
         "MapName": "후프의 전설",
         "SplashArtRegistryIndex": 1,
         "Description": "점프와 다이빙으로 후프를 통과하고, 점수를 획득하세요!",
         "Purpose": "후프를 통과하세요!"
     },
-    "PlayerSpawnPosition": [
-        {"x": 0, "y": 0, "z": 0},
-        {"x": -6.9, "y": 8.2, "z": -53},
-        {"x": -6.9, "y": 8.2, "z": -57},
-        {"x": -2.9, "y": 8.2, "z": -53},
-        {"x": -2.9, "y": 8.2, "z": -57},
-        {"x": 1.1, "y": 8.2, "z": -53},
-        {"x": 1.1, "y": 8.2, "z": -57},
-        {"x": 5.1, "y": 8.2, "z": -53},
-        {"x": 5.1, "y": 8.2, "z": -57}
-    ],
-    "PrefabFilePath": "Prefabs/Stage/HoopLegend/MapHoopLegend"
+    "Data": {
+        "PlayerSpawnPosition": [
+            {"x": 0, "y": 0, "z": 0},
+            {"x": -6.9, "y": 8.2, "z": -53},
+            {"x": -6.9, "y": 8.2, "z": -57},
+            {"x": -2.9, "y": 8.2, "z": -53},
+            {"x": -2.9, "y": 8.2, "z": -57},
+            {"x": 1.1, "y": 8.2, "z": -53},
+            {"x": 1.1, "y": 8.2, "z": -57},
+            {"x": 5.1, "y": 8.2, "z": -53},
+            {"x": 5.1, "y": 8.2, "z": -57}
+        ],
+        "MapPosition": {"x": 0, "y": 0, "z": 0}, 
+        "MapRotation": {"x": 0, "y": 0, "z": 0, "w": 1},
+        "PrefabFilePath": "Prefabs/Stage/HoopLegend/MapHoopLegend"
+    }
 }

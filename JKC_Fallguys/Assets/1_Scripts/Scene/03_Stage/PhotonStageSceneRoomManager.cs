@@ -8,6 +8,39 @@ using UnityEngine;
 
 public class PhotonStageSceneRoomManager : MonoBehaviourPun
 {
+    private void Awake()
+    {
+        InitializeMap();
+    }
+
+    private void InitializeMap()
+    {
+        MapData mapData = StageDataManager.Instance.MapDatas[StageDataManager.Instance.MapPickupIndex];
+
+        InstantiateMap(mapData);
+        InstantiatePlayer(mapData);
+    }
+
+    private void InstantiateMap(MapData mapData)
+    {
+        string filePath = mapData.Data.PrefabFilePath;
+        Vector3 mapPos = mapData.Data.MapPosition;
+        Quaternion mapRota = mapData.Data.MapRotation;
+        
+        PhotonNetwork.Instantiate(filePath, mapPos, mapRota);
+    }
+    
+    private void InstantiatePlayer(MapData mapData)
+    {
+        string filePath = DataManager.SetDataPath(PathLiteral.Prefabs, TagLiteral.Player);
+        Vector3 spawnPoint = mapData.Data.PlayerSpawnPosition[PhotonNetwork.LocalPlayer.ActorNumber];
+    
+        PlayerReferenceManager playerReferenceManager = 
+            PhotonNetwork.Instantiate(filePath, spawnPoint, Quaternion.identity).GetComponent<PlayerReferenceManager>();
+        
+        playerReferenceManager.OnInitialize(this);
+    }
+
     /// <summary>
     /// 스테이지를 정리하고 결산하는 역할의 함수입니다.
     /// </summary>
@@ -79,7 +112,6 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
             StageDataManager.Instance.CachedPlayerIndicesForResults.Add(pair.Key);
         }
     }
-
  
     [PunRPC]
     public void UpdateStageDataOnAllClients(Dictionary<int, PlayerData> playerScoresByIndex, List<int> playerRanking, List<int> stagePlayerRankings)
