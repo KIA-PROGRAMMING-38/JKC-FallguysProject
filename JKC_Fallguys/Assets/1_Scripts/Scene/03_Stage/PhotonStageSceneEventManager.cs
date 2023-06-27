@@ -13,11 +13,6 @@ public class PhotonStageSceneEventManager : MonoBehaviourPunCallbacks
         OnInstantiatePhotonRoomManager();
     }
 
-    private void Start()
-    {
-        
-    }
-
     private void OnInstantiatePhotonRoomManager()
     {
         string filePath = DataManager.SetDataPath
@@ -29,7 +24,6 @@ public class PhotonStageSceneEventManager : MonoBehaviourPunCallbacks
 
         _roomManager = roomManager;
     }
-
 
     /// <summary>
     /// 로비에 성공적으로 접속하였을 때 호출되는 콜백 메서드

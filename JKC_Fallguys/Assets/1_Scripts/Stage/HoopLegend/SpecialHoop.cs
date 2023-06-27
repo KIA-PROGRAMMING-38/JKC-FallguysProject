@@ -1,9 +1,12 @@
-using System.Collections;
+using System;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 public class SpecialHoop : MonoBehaviour
 {
     private HoopController _hoopController;
+    private ParticleSystem _passEffect;
+    private ParticleSystem _passEffectReverse;
     
     private GoalCheck _goalCheck;
     private Vector3 _originPosition;
@@ -18,6 +21,12 @@ public class SpecialHoop : MonoBehaviour
     {
         _goalCheck = transform.Find("GoalCheck").GetComponent<GoalCheck>();
         Debug.Assert(_goalCheck != null);
+        _passEffect = transform.Find("PassEffect").GetComponent<ParticleSystem>();
+        _passEffectReverse = transform.Find("PassEffectReverse").GetComponent<ParticleSystem>();
+        _passEffect.Stop();
+        _passEffectReverse.Stop();
+        Debug.Assert(_passEffect != null);
+        Debug.Assert(_passEffectReverse != null);
         
         _originPosition = transform.position;
         _currentHeight = _originPosition.y;
@@ -39,10 +48,22 @@ public class SpecialHoop : MonoBehaviour
         if (!_playerEntered && !_isMoving)
         {
             _playerEntered = true;
-            StartCoroutine(PropellerAnimation());
+            ParticlePlay().Forget();
+            PropellerAnimation().Forget();
             
             _hoopController.PlayerPassesHoop(2);
         }
+    }
+    
+    private async UniTaskVoid ParticlePlay()
+    {
+        _passEffect.Play();
+        _passEffectReverse.Play();
+
+        await UniTask.Delay(TimeSpan.FromSeconds(2f));
+        
+        _passEffect.Stop();
+        _passEffectReverse.Stop();
     }
 
     private void HandlePlayerExit()
@@ -50,7 +71,7 @@ public class SpecialHoop : MonoBehaviour
         _playerEntered = false;
     }
 
-    private IEnumerator PropellerAnimation()
+    private async UniTaskVoid PropellerAnimation()
     {
         _isMoving = true;
         float targetHeight = _originPosition.y + _heightOffset;
@@ -61,10 +82,11 @@ public class SpecialHoop : MonoBehaviour
             elapsedTime += Time.deltaTime * moveSpeedMultiplier;
             _currentHeight = Mathf.Lerp(_originPosition.y, targetHeight, elapsedTime / _duration);
             transform.position = new Vector3(_originPosition.x, _currentHeight, _originPosition.z);
-            yield return null;
+
+            await UniTask.Yield();
         }
 
-        yield return new WaitForSeconds(_duration);
+        await UniTask.Delay(TimeSpan.FromSeconds(_duration));
 
         elapsedTime = 0f;
         while (_currentHeight > _originPosition.y)
@@ -72,7 +94,8 @@ public class SpecialHoop : MonoBehaviour
             elapsedTime += Time.deltaTime * moveSpeedMultiplier;
             _currentHeight = Mathf.Lerp(targetHeight, _originPosition.y, elapsedTime / _duration);
             transform.position = new Vector3(_originPosition.x, _currentHeight, _originPosition.z);
-            yield return null;
+            
+            await UniTask.Yield();
         }
 
         _isMoving = false;
