@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class CostumeButton : MonoBehaviour, ISelectHandler
+public class CostumeButtonAction : MonoBehaviour, ISelectHandler, IPointerClickHandler, ISubmitHandler
 {
     private Image _highlight;
     private Vector2 _senterVec = new Vector2(0.5f, 0.5f);
@@ -20,5 +20,23 @@ public class CostumeButton : MonoBehaviour, ISelectHandler
         _highlight.rectTransform.anchorMax = _senterVec;
 
         _highlight.rectTransform.localPosition = _zeroVec; 
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        CommonClickHandler();
+    }
+
+    public void OnSubmit(BaseEventData eventData)
+    {
+        CommonClickHandler();
+    }
+
+    /// <summary>
+    /// OnPointerClick, OnSubmit에서 호출해주세요.
+    /// </summary>
+    private void CommonClickHandler()
+    {
+        Debug.Log("버튼 클릭!");
     }
 }
