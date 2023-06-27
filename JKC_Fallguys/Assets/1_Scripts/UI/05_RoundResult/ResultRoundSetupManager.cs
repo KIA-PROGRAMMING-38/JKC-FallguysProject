@@ -1,4 +1,6 @@
+using System;
 using LiteralRepository;
+using Model;
 using UnityEngine;
 
 public class ResultRoundSetupManager : MonoBehaviour
@@ -17,12 +19,23 @@ public class ResultRoundSetupManager : MonoBehaviour
     private RuntimeAnimatorController[] _runtimeAnimator;
 
     private Animator _animator;
+    private SkinnedMeshRenderer _meshRenderer;
     
     private void Awake()
     {
         _runtimeAnimator = Resources.LoadAll<RuntimeAnimatorController>(DataManager.SetDataPath(PathLiteral.AnimatorController, "ResultRoundAnimator"));
-        
-        // 반복문을 돌면서 프리팹 생성하기
+    }
+
+    private void Start()
+    {
+        SetPlayerPrefab();
+    }
+
+    /// <summary>
+    /// 1,2,3위에 해당하는 플레이어의 프리팹을 생성합니다.
+    /// </summary>
+    private void SetPlayerPrefab()
+    {
         for (int fallGuyIndex = 0; fallGuyIndex < _fallGuy.Length; ++fallGuyIndex)
         {
             _fallGuy[fallGuyIndex] = DataManager.GetGameObjectData(
@@ -32,10 +45,10 @@ public class ResultRoundSetupManager : MonoBehaviour
                 _fallGuy[fallGuyIndex].transform.rotation);
 
             _animator = fallGuy.GetComponent<Animator>();
+            _meshRenderer = fallGuy.GetComponentInChildren<SkinnedMeshRenderer>();
+            Texture texture = PlayerTextureRegistry.PlayerTextures[RoundResultSceneModel.FallguyRankings[fallGuyIndex].TextureIndex]; 
+            _meshRenderer.material.mainTexture = texture;
             _animator.runtimeAnimatorController = _runtimeAnimator[fallGuyIndex];
         }
     }
-
-    
-    // 생성할때 위치랑 애니메이터 할당하기
 }

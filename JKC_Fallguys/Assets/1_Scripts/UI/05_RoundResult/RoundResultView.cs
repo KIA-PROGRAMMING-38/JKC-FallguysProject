@@ -10,10 +10,11 @@ public class RoundResultView : View
     public Text FirstRankingText { get; private set; }
     public Text SecondRankingText { get; private set; }
     public Text ThirdRankingText { get; private set; }
-    
-    public Text FirstPlayerNameText { get; private set; }
-    public Text SecondPlayerNameText { get; private set; }
-    public Text ThirdPlayerNameText { get; private set; }
+
+    public Text[] PlayerIDs { get; private set; }
+    // public Text FirstPlayerNameText { get; private set; }
+    // public Text SecondPlayerNameText { get; private set; }
+    // public Text ThirdPlayerNameText { get; private set; }
     
     public RectTransform RoundResultCanvasRect { get; private set; }
 
@@ -27,9 +28,10 @@ public class RoundResultView : View
         SecondRankingText = transform.Find("SecondRankingText").GetComponent<Text>();
         ThirdRankingText = transform.Find("ThirdRankingText").GetComponent<Text>();
 
-        FirstPlayerNameText = transform.Find("FirstRankingText").transform.Find("FirstPlayerNameText").GetComponent<Text>();
-        SecondPlayerNameText = transform.Find("SecondRankingText").transform.Find("SecondPlayerNameText").GetComponent<Text>();
-        ThirdPlayerNameText = transform.Find("ThirdRankingText").transform.Find("ThirdPlayerNameText").GetComponent<Text>();
+        PlayerIDs = new Text[3];
+        PlayerIDs[0] = transform.Find("FirstRankingText").transform.Find("FirstPlayerNameText").GetComponent<Text>();
+        PlayerIDs[1] = transform.Find("SecondRankingText").transform.Find("SecondPlayerNameText").GetComponent<Text>();
+        PlayerIDs[2] = transform.Find("ThirdRankingText").transform.Find("ThirdPlayerNameText").GetComponent<Text>();
 
         RoundResultCanvasRect = GetComponent<RectTransform>();
     }
