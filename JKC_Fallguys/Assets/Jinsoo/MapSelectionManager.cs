@@ -1,9 +1,8 @@
 using Photon.Pun;
-using UnityEngine;
 
 public class MapSelectionManager : MonoBehaviourPun
 {
-    private void Start()
+    private void Awake()
     {
         // 마스터 클라이언트만 맵을 선택합니다.
         if (PhotonNetwork.IsMasterClient)
@@ -23,8 +22,6 @@ public class MapSelectionManager : MonoBehaviourPun
 
             // 마스터 클라이언트가 선택한 맵의 인덱스를 모든 클라이언트에게 보냅니다.
             photonView.RPC("SetSelectedMapIndex", RpcTarget.All, randomMapIndex);
-            
-            Debug.Log(randomMapIndex);
         }
         else
         {

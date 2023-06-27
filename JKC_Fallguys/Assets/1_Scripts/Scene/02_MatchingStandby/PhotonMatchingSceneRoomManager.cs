@@ -1,9 +1,12 @@
 using System.Collections.Generic;
+using System.IO;
+using System.Text;
 using Cysharp.Threading.Tasks;
 using Photon.Pun;
 using Photon.Realtime;
 using UniRx;
 using LiteralRepository;
+using Newtonsoft.Json;
 using UnityEngine;
 
 /// <summary>
@@ -64,16 +67,25 @@ public class PhotonMatchingSceneRoomManager : MonoBehaviourPun
 
     private async UniTask LoadMapDataAsync(string filePath, int mapId)
     {
-        TextAsset mapJson = Resources.Load<TextAsset>(filePath);
-        if (mapJson == null)
+        string absolutePath = Path.Combine(Application.dataPath, "Resources", filePath + ".json");
+
+        if (!File.Exists(absolutePath))
         {
-            Debug.LogError($"Failed to load map JSON file at path: {filePath}");
+            Debug.LogError($"Failed to load map JSON file at path: {absolutePath}");
             return;
         }
 
-        MapData mapData = JsonUtility.FromJson<MapData>(mapJson.text);
+        string jsonContent;
+        using (StreamReader reader = new StreamReader(absolutePath, Encoding.UTF8))
+        {
+            jsonContent = await reader.ReadToEndAsync();
+        }
+
+        MapData mapData = JsonConvert.DeserializeObject<MapData>(jsonContent);
+
         StageDataManager.Instance.MapDatas.Add(mapId, mapData);
     }
+
     #pragma warning restore CS1998
 
 
