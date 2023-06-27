@@ -24,6 +24,17 @@ public class StageDataManager : SingletonMonoBehaviour<StageDataManager>
     // 스테이지가 넘어갈 때, 초기화됩니다.
     public List<int> StagePlayerRankings;
     
+    public enum PlayerState
+    {
+        Default,
+        Success,
+        Defeat,
+        End
+    }
+
+    private ReactiveProperty<PlayerState> _currentState = new ReactiveProperty<PlayerState>();
+    public IReactiveProperty<PlayerState> CurrentState => _currentState;
+    
     public void AddPlayerToRanking(int playerIndex)
     {
         StagePlayerRankings.Add(playerIndex);
