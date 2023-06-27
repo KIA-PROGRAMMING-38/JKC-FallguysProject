@@ -1,21 +1,21 @@
 {
-    "Type": "Race",
+    "Type": "Survivor",
+    "Info": {
+        "MapName": "점프 클럽",
+        "SplashArtFilePath": "UI/04_GameLoading/SplashArts/02_Splash_JumpClub",
+        "Description": "회전하는 장애물을 피하면서 무대 밖으로 떨어지지 않도록 조심하세요!",
+        "Purpose": "떨어지지 마세요!"
+    },
     "PlayerSpawnPosition": [
         {"x": 0, "y": 0, "z": 0},
-        {"x": -11, "y": 0, "z": -10},
-        {"x": -5, "y": 0, "z": -10},
-        {"x": 5, "y": 0, "z": -10},
-        {"x": 11, "y": 0, "z": -10},
-        {"x": -11, "y": 0, "z": -13},
-        {"x": -5, "y": 0, "z": -13},
-        {"x": -11, "y": 0, "z": -13},
-        {"x": -5, "y": 0, "z": -13}
+        {"x": -18, "y": 0, "z": -7.2},
+        {"x": -24, "y": 0, "z": -7},
+        {"x": -19.5, "y": 0, "z": -5.1},
+        {"x": -22.8, "y": 0, "z": -9},
+        {"x": -21.5, "y": 0, "z": -11},
+        {"x": -16.8, "y": 0, "z": -9.4},
+        {"x": -15.4, "y": 0, "z": -11.5},
+        {"x": -20, "y": 0, "z": -13.4}
     ],
-    "SplashArt": "UI/04_GameLoading/SplashArts/00_Splash_FruitChute", 
-    "Info": {
-        "FilePath": "Prefabs/Stage/FruitChute/MapFruitChute",
-        "MapName": "과일 대포",
-        "Description": "날아오는 과일을 피하고 컨베이어 벨트를 돌파하여 결승선에 도달하세요!",
-        "Purpose": "결승선에 도달하세요!"
-    }
+    "PrefabFilePath": "Prefabs/Stage/JumpClub/MapJumpClub"
 }

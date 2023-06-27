@@ -1,21 +1,21 @@
 {
-    "Type": "Race",
+    "Type": "Hurt",
+    "Info": {
+        "MapName": "후프의 전설",
+        "SplashArtFilePath": "UI/04_GameLoading/SplashArts/01_Splash_HoopsLegends",
+        "Description": "점프와 다이빙으로 후프를 통과하고, 점수를 획득하세요!",
+        "Purpose": "후프를 통과하세요!"
+    },
     "PlayerSpawnPosition": [
         {"x": 0, "y": 0, "z": 0},
-        {"x": -11, "y": 0, "z": -10},
-        {"x": -5, "y": 0, "z": -10},
-        {"x": 5, "y": 0, "z": -10},
-        {"x": 11, "y": 0, "z": -10},
-        {"x": -11, "y": 0, "z": -13},
-        {"x": -5, "y": 0, "z": -13},
-        {"x": -11, "y": 0, "z": -13},
-        {"x": -5, "y": 0, "z": -13}
+        {"x": -6.9, "y": 8.2, "z": -53},
+        {"x": -6.9, "y": 8.2, "z": -57},
+        {"x": -2.9, "y": 8.2, "z": -53},
+        {"x": -2.9, "y": 8.2, "z": -57},
+        {"x": 1.1, "y": 8.2, "z": -53},
+        {"x": 1.1, "y": 8.2, "z": -57},
+        {"x": 5.1, "y": 8.2, "z": -53},
+        {"x": 5.1, "y": 8.2, "z": -57}
     ],
-    "SplashArt": "UI/04_GameLoading/SplashArts/00_Splash_FruitChute", 
-    "Info": {
-        "FilePath": "Prefabs/Stage/FruitChute/MapFruitChute",
-        "MapName": "과일 대포",
-        "Description": "날아오는 과일을 피하고 컨베이어 벨트를 돌파하여 결승선에 도달하세요!",
-        "Purpose": "결승선에 도달하세요!"
-    }
+    "PrefabFilePath": "Prefabs/Stage/HoopLegend/MapHoopLegend"
 }
