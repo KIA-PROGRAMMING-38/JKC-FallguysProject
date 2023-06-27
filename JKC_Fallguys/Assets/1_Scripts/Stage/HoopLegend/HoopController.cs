@@ -17,23 +17,30 @@ public class HoopController : MonoBehaviourPun
 
     private void InitializeObject()
     {
-        string filePath = DataManager.SetDataPath(PathLiteral.Prefabs, "Stage", PathLiteral.HoopLegend, "Hoop");
+        ObjectTransforms commonHoopData = DataManager.JsonLoader<ObjectTransforms>($"JSON/CommonHoopTransformData");
+        ObjectTransforms specialHoopData = DataManager.JsonLoader<ObjectTransforms>($"JSON/SpecialHoopTransformData");
+
+        for (int i = 0; i < commonHoopData.positions.Length; ++i)
+        {
+            GameObject prefab = Resources.Load<GameObject>
+                (DataManager.SetDataPath(PathLiteral.Prefabs, "Stage", PathLiteral.HoopLegend, "CommonHoop"));
+            
+            CommonHoop commonhoop = Instantiate(prefab, commonHoopData.positions[i], Quaternion.identity).GetComponent<CommonHoop>();
+            Vector3 eulerAngles = new Vector3(commonHoopData.rotations[i].x, commonHoopData.rotations[i].y, commonHoopData.rotations[i].z);
+            commonhoop.transform.rotation = Quaternion.Euler(eulerAngles);
+            commonhoop.Initialize(this);
+        }
         
-        Resources.LoadAll<CommonHoop>(filePath)
-            .ToList()
-            .ForEach(hoopPrefab => 
-            {
-                CommonHoop commonhoop = Instantiate(hoopPrefab, this.transform).GetComponent<CommonHoop>();
-                commonhoop.Initialize(this);
-            });
-        
-        Resources.LoadAll<SpecialHoop>(filePath)
-            .ToList()
-            .ForEach(hoopPrefab => 
-            {
-                SpecialHoop specialHoop = Instantiate(hoopPrefab, this.transform).GetComponent<SpecialHoop>();
-                specialHoop.Initialize(this);
-            });
+        for (int i = 0; i < specialHoopData.positions.Length; ++i)
+        {
+            GameObject prefab = Resources.Load<GameObject>
+                (DataManager.SetDataPath(PathLiteral.Prefabs, "Stage", PathLiteral.HoopLegend, "SpecialHoop"));
+            
+            SpecialHoop specialHoop = Instantiate(prefab, specialHoopData.positions[i], Quaternion.identity).GetComponent<SpecialHoop>();
+            Vector3 eulerAngles = new Vector3(specialHoopData.rotations[i].x, specialHoopData.rotations[i].y, specialHoopData.rotations[i].z);
+            specialHoop.transform.rotation = Quaternion.Euler(eulerAngles);
+            specialHoop.Initialize(this);
+        }
     }
 
     private void InitializeRx()
