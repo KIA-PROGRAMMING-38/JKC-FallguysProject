@@ -55,39 +55,16 @@ public class PhotonMatchingSceneRoomManager : MonoBehaviourPun
         }
     }
     
+    #pragma warning disable CS1998
     private async UniTaskVoid MapInstanceLoad()
     {
         for (int i = 0; i < DataManager.MaxPlayableMaps; ++i)
         {
-            await LoadMapDataAsync($"JSON/MapData_{i:D2}", i);
+            MapData mapData = DataManager.JsonLoader<MapData>($"JSON/MapData_{i:D2}");
+            StageDataManager.Instance.MapDatas.Add(i, mapData);
         }
     }
-
-    #pragma warning disable CS1998
-
-    private async UniTask LoadMapDataAsync(string filePath, int mapId)
-    {
-        string absolutePath = Path.Combine(Application.dataPath, "Resources", filePath + ".json");
-
-        if (!File.Exists(absolutePath))
-        {
-            Debug.LogError($"Failed to load map JSON file at path: {absolutePath}");
-            return;
-        }
-
-        string jsonContent;
-        using (StreamReader reader = new StreamReader(absolutePath, Encoding.UTF8))
-        {
-            jsonContent = await reader.ReadToEndAsync();
-        }
-
-        MapData mapData = JsonConvert.DeserializeObject<MapData>(jsonContent);
-
-        StageDataManager.Instance.MapDatas.Add(mapId, mapData);
-    }
-
     #pragma warning restore CS1998
-
 
     /// <summary>
     /// 플레이어가 방에 입장했을 때 호출됩니다.
