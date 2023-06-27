@@ -1,4 +1,7 @@
+using Microsoft.Unity.VisualStudio.Editor;
 using UniRx;
+using UniRx.Triggers;
+using UnityEngine;
 
 public class MapInformationPresenter : Presenter
 {
@@ -23,6 +26,21 @@ public class MapInformationPresenter : Presenter
             .Where(isActive => !isActive)
             .Subscribe(_ => SetActiveGameObject(true))
             .AddTo(_compositeDisposable);
+
+        _mapInformationView.MapNameText
+            .OnEnableAsObservable()
+            .Subscribe(_ => SetData())
+            .AddTo(_compositeDisposable);
+    }
+
+    private void SetData()
+    {
+        MapData mapData = StageDataManager.Instance.MapDatas[StageDataManager.Instance.MapPickupIndex];
+
+        _mapInformationView.MapNameText.text = mapData.Info.MapName;
+        _mapInformationView.MapSplashArtImage.sprite =
+            SplashArtRegistry.SpriteArts[mapData.Info.SplashArtRegistryIndex];
+        _mapInformationView.PlayExplanation.text = mapData.Info.Description;
     }
 
     private void SetActiveGameObject(bool status)

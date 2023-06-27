@@ -2,7 +2,7 @@
     "Type": "Hurt",
     "Info": {
         "MapName": "후프의 전설",
-        "SplashArtFilePath": "UI/04_GameLoading/SplashArts/01_Splash_HoopsLegends",
+        "SplashArtRegistryIndex": 1,
         "Description": "점프와 다이빙으로 후프를 통과하고, 점수를 획득하세요!",
         "Purpose": "후프를 통과하세요!"
     },

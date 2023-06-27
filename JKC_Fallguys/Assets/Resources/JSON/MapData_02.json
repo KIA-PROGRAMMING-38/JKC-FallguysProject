@@ -2,7 +2,7 @@
     "Type": "Survivor",
     "Info": {
         "MapName": "점프 클럽",
-        "SplashArtFilePath": "UI/04_GameLoading/SplashArts/02_Splash_JumpClub",
+        "SplashArtRegistryIndex": 2,
         "Description": "회전하는 장애물을 피하면서 무대 밖으로 떨어지지 않도록 조심하세요!",
         "Purpose": "떨어지지 마세요!"
     },
