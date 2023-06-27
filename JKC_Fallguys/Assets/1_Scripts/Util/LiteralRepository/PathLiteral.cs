@@ -9,6 +9,8 @@ namespace LiteralRepository
         public static readonly string Manager = "Manager";
         public static readonly string AnimatorController = "AnimatorController";
         public static readonly string GameResult = "GameResult";
+        public static readonly string Textures = "Textures";
+        public static readonly string PlayerTexture = "PlayerTexture";
 
         public static readonly string Login = "00_Login";
         public static readonly string Lobby = "01_Lobby";

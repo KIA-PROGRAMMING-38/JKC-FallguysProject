@@ -9,6 +9,7 @@ namespace Model
     {
         // Stage에 입장했던 플레이어들을 List에 저장합니다.
         private static List<PlayerData> _fallguyRankings = new List<PlayerData>();
+        public static List<PlayerData> FallguyRankings => _fallguyRankings;
 
         static RoundResultSceneModel()
         {
