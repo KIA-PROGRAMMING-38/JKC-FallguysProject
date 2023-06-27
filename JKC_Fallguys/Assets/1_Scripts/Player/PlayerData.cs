@@ -4,7 +4,7 @@ public class PlayerData
     public int TextureIndex;
     public int Score;
     
-    public PlayerData(string playerName, int textureIndex, int score, int rank)
+    public PlayerData(string playerName, int textureIndex, int score)
     {
         PlayerName = playerName;
         TextureIndex = textureIndex;

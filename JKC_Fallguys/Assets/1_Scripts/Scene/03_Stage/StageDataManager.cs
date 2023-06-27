@@ -11,6 +11,10 @@ public class StageDataManager : SingletonMonoBehaviour<StageDataManager>
     private ReactiveProperty<bool> _isPlayerAlive = new ReactiveProperty<bool>(true);
     public IReactiveProperty<bool> IsPlayerAlive => _isPlayerAlive;
 
+    // 맵에서 쓰일 데이타가 저장되는 딕셔너리입니다. 
+    public Dictionary<int, MapData> MapDatas = new Dictionary<int, MapData>();
+    // 선택할 맵 데이터를 판별하는 객체입니다.
+    public bool[] MapPickupFlags = new bool[3];
     // 플레이어의 점수들이 계속해서 저장되는 딕셔너리입니다.
     public Dictionary<int, PlayerData> PlayerScoresByIndex = new Dictionary<int, PlayerData>();
     // 결과 창에서 사용될 플레이어의 인덱스를 캐싱해놓는 리스트입니다.
