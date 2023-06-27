@@ -1,8 +1,10 @@
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using Photon.Pun;
 using Photon.Realtime;
 using UniRx;
 using LiteralRepository;
+using UnityEngine;
 
 /// <summary>
 /// 게임 시작을 관리하는 클래스입니다.
@@ -45,8 +47,29 @@ public class PhotonMatchingSceneRoomManager : MonoBehaviourPun
             int actorNumber = player.Value.ActorNumber;
             // 새로운 PlayerData 객체를 만들고, 이를 PlayerScoresByIndex 딕셔너리에 추가합니다.
             StageDataManager.Instance.PlayerScoresByIndex[actorNumber] =
-                new PlayerData(PhotonNetwork.LocalPlayer.NickName, 0, 0, 0);
+                new PlayerData(PhotonNetwork.LocalPlayer.NickName, 0, 0);
         }
+    }
+    
+    private async UniTaskVoid MapInstanceLoad()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            await LoadMapDataAsync($"MapData_{i:D2}", i);
+        }
+    }
+
+    private async UniTask LoadMapDataAsync(string filePath, int mapId)
+    {
+        TextAsset mapJson = Resources.Load<TextAsset>(filePath);
+        if (mapJson == null)
+        {
+            Debug.LogError($"Failed to load map JSON file at path: {filePath}");
+            return;
+        }
+
+        MapData mapData = JsonUtility.FromJson<MapData>(mapJson.text);
+        StageDataManager.Instance.MapDatas.Add(mapId, mapData);
     }
 
     /// <summary>

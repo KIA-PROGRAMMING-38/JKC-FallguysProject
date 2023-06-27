@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 public static class DataManager
@@ -21,7 +22,7 @@ public static class DataManager
     {
         return Resources.Load<RuntimeAnimatorController>(SetDataPath(filePath));
     }
-    
+
     /// <summary>
     /// 데이터 바인딩 위한 경로를 설정합니다.
     /// </summary>
