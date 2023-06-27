@@ -13,7 +13,7 @@ public class MapData
     public struct MapInfo
     {
         public string MapName;
-        public string SplashArtFilePath;
+        public int SplashArtRegistryIndex;
         public string Description;
         public string Purpose;
     }

@@ -1,8 +1,9 @@
-using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 public static class DataManager
 {
+    public static readonly int MaxPlayableMaps = 3;
+    
     public static GameObject GetGameObjectData(params string[] filePath)
     {
         return Resources.Load<GameObject>(SetDataPath(filePath));

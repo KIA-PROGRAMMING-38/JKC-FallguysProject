@@ -36,11 +36,13 @@ public class PhotonMatchingSceneRoomManager : MonoBehaviourPun
         PhotonNetwork.LoadLevel(SceneIndex.GameLoading);
     }
 
+    #pragma warning disable CS1998
     // LockUpEntrance 메서드는 현재 방의 입장을 막고, 각 플레이어에게 개인 ActorNumber를 부여합니다.
     private void LockUpEntrance()
     {
         PhotonNetwork.CurrentRoom.IsOpen = false;
         Model.MatchingSceneModel.PossibleToExit(false);
+        MapInstanceLoad().Forget();
 
         foreach (KeyValuePair<int, Player> player in PhotonNetwork.CurrentRoom.Players)
         {
@@ -50,12 +52,13 @@ public class PhotonMatchingSceneRoomManager : MonoBehaviourPun
                 new PlayerData(PhotonNetwork.LocalPlayer.NickName, 0, 0);
         }
     }
+    #pragma warning restore CS1998
     
     private async UniTaskVoid MapInstanceLoad()
     {
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < DataManager.MaxPlayableMaps; ++i)
         {
-            await LoadMapDataAsync($"MapData_{i:D2}", i);
+            await LoadMapDataAsync($"JSON/MapData_{i:D2}", i);
         }
     }
 
