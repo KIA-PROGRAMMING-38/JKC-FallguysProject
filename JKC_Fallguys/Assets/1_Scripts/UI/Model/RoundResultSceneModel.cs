@@ -8,55 +8,38 @@ namespace Model
     public static class RoundResultSceneModel
     {
         // Stage에 입장했던 플레이어들을 List에 저장합니다.
-        private static List<FallGuyData> fallGuy = new List<FallGuyData>()
-        {
-            new FallGuyData(100),
-            new FallGuyData(200),
-            new FallGuyData(300),
-            new FallGuyData(700),
-            new FallGuyData(1000)
-        };
+        private static List<PlayerData> _fallguyRankings = new List<PlayerData>();
 
         static RoundResultSceneModel()
         {
-            SortFallGuysByScore();
+            AddStageResultToList();
         }
-        
-        /// <summary>
-        /// Score 순으로 내림차순 정렬합니다.
-        /// </summary>
-        private static void SortFallGuysByScore()
-        {
-            fallGuy.Sort((x, y) =>
-            {
-                if (x.Score == y.Score)
-                {
-                    return 0;
-                }
-                
-                else if (x.Score > y.Score)
-                {
-                    return -1;
-                }
 
+        private static void AddStageResultToList()
+        {
+            // CachedPlayerIndicesForResults 리스트의 모든 요소에 대해 반복합니다.
+            foreach (int index in StageDataManager.Instance.CachedPlayerIndicesForResults)
+            {
+                // 딕셔너리에서 해당 인덱스의 플레이어 데이터를 가져옵니다.
+                if (StageDataManager.Instance.PlayerScoresByIndex.TryGetValue(index, out PlayerData playerData))
+                {
+                    _fallguyRankings.Add(playerData);
+                }
                 else
                 {
-                    return 1;
+                    Debug.Log("Rankings List에 추가 안됨.");
                 }
-            });
+            }    
         }
 
         private static readonly ReactiveProperty<int> _firstScore = new IntReactiveProperty(0);
-        public static ReadOnlyReactiveProperty<int> FirstScore
-            => _firstScore.ToReadOnlyReactiveProperty();
+        public static IReadOnlyReactiveProperty<int> FirstScore => _firstScore;
         
         private static readonly ReactiveProperty<int> _secondScore = new IntReactiveProperty(0);
-        public static ReadOnlyReactiveProperty<int> SecondScore
-            => _secondScore.ToReadOnlyReactiveProperty();
+        public static IReadOnlyReactiveProperty<int> SecondScore => _secondScore;
 
         private static readonly ReactiveProperty<int> _thirdScore = new IntReactiveProperty(0);
-        public static ReadOnlyReactiveProperty<int> ThirdScore
-            => _thirdScore.ToReadOnlyReactiveProperty();
+        public static IReadOnlyReactiveProperty<int> ThirdScore => _thirdScore;
 
         /// <summary>
         /// Score를 순차적으로 증가시키는 연출을 하는 함수입니다.
@@ -82,9 +65,9 @@ namespace Model
         /// </summary>
         public static void PerformScoreRaise()
         {
-            RaiseScore(_firstScore, fallGuy[0].Score).Forget();
-            RaiseScore(_secondScore, fallGuy[1].Score).Forget();
-            RaiseScore(_thirdScore, fallGuy[2].Score).Forget();
+            RaiseScore(_firstScore, _fallguyRankings[0].Score).Forget();
+            RaiseScore(_secondScore, _fallguyRankings[1].Score).Forget();
+            RaiseScore(_thirdScore, _fallguyRankings[2].Score).Forget();
         }
     }
 }

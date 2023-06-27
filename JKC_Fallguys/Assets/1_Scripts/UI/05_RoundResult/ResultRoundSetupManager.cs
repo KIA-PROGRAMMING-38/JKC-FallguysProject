@@ -35,7 +35,4 @@ public class ResultRoundSetupManager : MonoBehaviour
             _animator.runtimeAnimatorController = _runtimeAnimator[fallGuyIndex];
         }
     }
-
-    
-    // 생성할때 위치랑 애니메이터 할당하기
 }
