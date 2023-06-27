@@ -19,7 +19,7 @@ public class ResultRoundSetupManager : MonoBehaviour
     private RuntimeAnimatorController[] _runtimeAnimator;
 
     private Animator _animator;
-    private MeshRenderer _meshRenderer;
+    private SkinnedMeshRenderer _meshRenderer;
     
     private void Awake()
     {
@@ -45,7 +45,7 @@ public class ResultRoundSetupManager : MonoBehaviour
                 _fallGuy[fallGuyIndex].transform.rotation);
 
             _animator = fallGuy.GetComponent<Animator>();
-            _meshRenderer = fallGuy.GetComponent<MeshRenderer>();
+            _meshRenderer = fallGuy.GetComponentInChildren<SkinnedMeshRenderer>();
             Texture texture = PlayerTextureRegistry.PlayerTextures[RoundResultSceneModel.FallguyRankings[fallGuyIndex].TextureIndex]; 
             _meshRenderer.material.mainTexture = texture;
             _animator.runtimeAnimatorController = _runtimeAnimator[fallGuyIndex];
