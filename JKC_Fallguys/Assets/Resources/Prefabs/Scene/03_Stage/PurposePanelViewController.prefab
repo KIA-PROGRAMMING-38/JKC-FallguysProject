@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7721354718613209947}
   - component: {fileID: 7721354718613209941}
   m_Layer: 5
-  m_Name: GoalText
+  m_Name: PurposeText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -80,7 +80,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\uACB0\uC2B9\uC120\uC5D0 \uB3C4\uB2EC\uD558\uC138\uC694!"
+  m_Text: Map Purpose
 --- !u!114 &7721354718613209941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 7721354720114935432}
   - component: {fileID: 7721354720114935433}
   m_Layer: 5
-  m_Name: BackgroundImage
+  m_Name: Default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -186,7 +186,7 @@ GameObject:
   - component: {fileID: 7721354720156743311}
   - component: {fileID: 7721354720156743308}
   m_Layer: 5
-  m_Name: GoalPanelView
+  m_Name: PurposePanelView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -298,7 +298,7 @@ GameObject:
   - component: {fileID: 7721354720529363800}
   - component: {fileID: 7721354720529363801}
   m_Layer: 0
-  m_Name: GoalPanelViewController
+  m_Name: PurposePanelViewController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

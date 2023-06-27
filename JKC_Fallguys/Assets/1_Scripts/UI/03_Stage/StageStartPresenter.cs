@@ -7,6 +7,7 @@ public class StageStartPresenter : Presenter
 {
     private StageStartView _stageStartView;
     private CompositeDisposable _compositeDisposable = new CompositeDisposable();
+    
     public override void OnInitialize(View view)
     {
         _stageStartView = view as StageStartView;
@@ -85,7 +86,15 @@ public class StageStartPresenter : Presenter
 
     protected override void OnUpdatedModel()
     {
-        
+        SetData();
+    }
+
+    private void SetData()
+    {
+        MapData mapData = StageDataManager.Instance.MapDatas[StageDataManager.Instance.MapPickupIndex];
+
+        _stageStartView.TitleText.text = mapData.Info.MapName;
+        _stageStartView.SubTitleText.text = mapData.Info.Description;
     }
     
     public override void OnRelease()

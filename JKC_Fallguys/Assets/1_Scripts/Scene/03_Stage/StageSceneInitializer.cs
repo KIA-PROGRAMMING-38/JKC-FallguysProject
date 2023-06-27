@@ -18,7 +18,7 @@ public class StageSceneInitializer : SceneInitializer
         Instantiate
             (DataManager.GetGameObjectData(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, "ExitButtonViewController"));
         Instantiate
-            (DataManager.GetGameObjectData(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, "GoalPanelViewController"));
+            (DataManager.GetGameObjectData(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, "PurposePanelViewController"));
         Instantiate
             (DataManager.GetGameObjectData(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, "StageExitPanelViewController"));
         Instantiate

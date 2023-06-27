@@ -25,7 +25,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2135344747585271759}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -38,7 +38,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -815.78, y: -317.02002}
-  m_SizeDelta: {x: -1525.0518, y: -898.1117}
+  m_SizeDelta: {x: -1525.0518, y: -898.11176}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2135344747585271730
 CanvasRenderer:
@@ -504,8 +504,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 199.50003, y: 0}
-  m_SizeDelta: {x: -699.00006, y: -166}
+  m_AnchoredPosition: {x: 138, y: 5}
+  m_SizeDelta: {x: -576, y: -80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2135344749286466090
 CanvasRenderer:
@@ -537,19 +537,18 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: b2c70c104ed014454aa69972ab427816, type: 3}
-    m_FontSize: 30
+    m_FontSize: 29
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 2
     m_MaxSize: 40
     m_Alignment: 5
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 1
-    m_VerticalOverflow: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uB0A0\uC544\uC624\uB294 \uACFC\uC77C\uC744 \uD53C\uD558\uACE0 \uCEE8\uD14C\uC774\uB108
-    \uBCA8\uD2B8\uB97C \uB3CC\uD30C\uD558\uC5EC\n\uACB0\uC2B9\uC120\uC5D0 \uB3C4\uB2EC\uD558\uC138\uC694!"
+  m_Text: Description
 --- !u!1 &2135344749359117154
 GameObject:
   m_ObjectHideFlags: 0
@@ -630,7 +629,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\uACFC\uC77C \uB300\uD3EC"
+  m_Text: MapName
 --- !u!114 &2135344749359117152
 MonoBehaviour:
   m_ObjectHideFlags: 0
