@@ -1,21 +1,25 @@
 {
-    "Type": "Race",
     "Info": {
+        "Type": "Race",
         "MapName": "과일 대포",
         "SplashArtRegistryIndex": 0,
         "Description": "날아오는 과일을 피하고 컨베이어 벨트를 돌파하여 결승선에 도달하세요!",
         "Purpose": "결승선에 도달하세요!"
     },
-    "PlayerSpawnPosition": [
-        {"x": 0, "y": 0, "z": 0},
-        {"x": -11, "y": 0, "z": -10},
-        {"x": -5, "y": 0, "z": -10},
-        {"x": 5, "y": 0, "z": -10},
-        {"x": 11, "y": 0, "z": -10},
-        {"x": -11, "y": 0, "z": -13},
-        {"x": -5, "y": 0, "z": -13},
-        {"x": -11, "y": 0, "z": -13},
-        {"x": -5, "y": 0, "z": -13}
-    ],
-    "PrefabFilePath": "Prefabs/Stage/FruitChute/MapFruitChute"
+    "Data": {
+        "PlayerSpawnPosition": [
+            {"x": 0, "y": 0, "z": 0},
+            {"x": -11, "y": 0, "z": -10},
+            {"x": -5, "y": 0, "z": -10},
+            {"x": 5, "y": 0, "z": -10},
+            {"x": 11, "y": 0, "z": -10},
+            {"x": -11, "y": 0, "z": -13},
+            {"x": -5, "y": 0, "z": -13},
+            {"x": -11, "y": 0, "z": -13},
+            {"x": -5, "y": 0, "z": -13}
+        ],
+        "MapPosition": {"x": 0, "y": 0, "z": 0}, 
+        "MapRotation": {"x": 0, "y": 1, "z": 0, "w": 0},
+        "PrefabFilePath": "Prefabs/Stage/FruitChute/MapFruitChute"
+    }
 }
