@@ -12,14 +12,14 @@ public class MapData
 
     public struct MapInfo
     {
-        public string FilePath;
         public string MapName;
+        public string SplashArtFilePath;
         public string Description;
         public string Purpose;
     }
 
     public MapType Type;
-    public Vector3[] PlayerSpawnPosition;
-    public string SplashArt;
     public MapInfo Info;
+    public Vector3[] PlayerSpawnPosition;
+    public string PrefabFilePath;
 }

@@ -12344,7 +12344,7 @@ GameObject:
   - component: {fileID: 3620831246751690400}
   - component: {fileID: 3620831246751690403}
   m_Layer: 0
-  m_Name: Legend_Hoop_Map
+  m_Name: MapHoopLegend
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

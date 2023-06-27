@@ -921,7 +921,7 @@ MonoBehaviour:
   _deceleration: 3
   _topplingForce: 100
   _groundCheckPoint: {fileID: 2387829583882509454}
-  _groundCheckDistance: 0
+  _groundCheckDistance: 1
 --- !u!75 &5463251385608106258
 ConstantForce:
   m_ObjectHideFlags: 0
