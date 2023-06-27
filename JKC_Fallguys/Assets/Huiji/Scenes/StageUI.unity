@@ -319,7 +319,7 @@ GameObject:
   - component: {fileID: 682997019}
   - component: {fileID: 682997018}
   m_Layer: 0
-  m_Name: ResultView
+  m_Name: ResultInStageView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -733,7 +733,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1355038321}
   m_Layer: 0
-  m_Name: ResultViewController
+  m_Name: ResultInStageViewController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -769,7 +769,7 @@ GameObject:
   - component: {fileID: 1382851647}
   - component: {fileID: 1382851646}
   m_Layer: 0
-  m_Name: HowToPlayText
+  m_Name: ResultText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
