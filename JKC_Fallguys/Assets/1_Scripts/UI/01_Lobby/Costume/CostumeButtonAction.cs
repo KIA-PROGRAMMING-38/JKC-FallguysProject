@@ -7,6 +7,8 @@ public class CostumeButtonAction : MonoBehaviour, ISelectHandler, IPointerClickH
     private Image _highlight;
     private Vector2 _senterVec = new Vector2(0.5f, 0.5f);
     private Vector2 _zeroVec = Vector3.zero;
+
+    [SerializeField] private CostumeData _costumeData;
     private void Awake()
     {
         _highlight = transform.parent.Find("Highlight").GetComponent<Image>();
@@ -37,6 +39,6 @@ public class CostumeButtonAction : MonoBehaviour, ISelectHandler, IPointerClickH
     /// </summary>
     private void CommonClickHandler()
     {
-        Debug.Log("버튼 클릭!");
+        Debug.Log($"{_costumeData.costumeName}버튼 클릭!");
     }
 }

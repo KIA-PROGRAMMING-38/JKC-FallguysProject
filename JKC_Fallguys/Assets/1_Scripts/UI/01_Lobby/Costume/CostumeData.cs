@@ -1,18 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class CostumeData : MonoBehaviour
+[CreateAssetMenu(fileName = "new CostumeData", menuName = "Custome/CostumeData")]
+public class CostumeData : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public string costumeName;
 }
