@@ -1,4 +1,5 @@
 using LiteralRepository;
+using Photon.Pun;
 
 public class GameLoadingSceneInitializer : SceneInitializer
 {
@@ -16,5 +17,8 @@ public class GameLoadingSceneInitializer : SceneInitializer
             (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.GameLoading, PathLiteral.UI, "WhiteScreenViewController"));
         Instantiate(DataManager.GetGameObjectData
             (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.GameLoading, PathLiteral.UI, "MapInformationViewController"));
+        
+        string filePath = DataManager.SetDataPath(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.GameLoading, "MapSelectionManager");
+        PhotonNetwork.Instantiate(filePath, transform.position, transform.rotation);
     }
 }
