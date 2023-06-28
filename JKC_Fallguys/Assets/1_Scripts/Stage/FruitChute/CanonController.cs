@@ -1,19 +1,28 @@
+using System.Linq;
 using UnityEngine;
 
 public class CanonController : MonoBehaviour
 {
-    private Canon _canon;
-
     public FruitPooler FruitPooler;
+    private Canon[] _canons;
+
     private void Awake()
     {
-        _canon = transform.Find("CanonBody").GetComponent<Canon>();
-        Debug.Assert(_canon != null);
+        _canons = transform.Cast<Transform>()
+            .Select(t => t.GetComponent<Canon>())
+            .Where(c => c != null)
+            .ToArray();
+
+        Debug.Assert(_canons != null);
     }
+
 
     private void Start()
     {
-        _canon.Initialize(FruitPooler);
+        foreach (Canon elem in _canons)
+        {
+            elem.Initialize(FruitPooler);
+        }
     }
 
     public void Initialize(FruitPooler fruitPooler)

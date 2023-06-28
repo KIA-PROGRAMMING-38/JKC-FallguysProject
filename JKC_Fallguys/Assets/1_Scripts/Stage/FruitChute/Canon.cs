@@ -7,6 +7,7 @@ using Random = UnityEngine.Random;
 
 public class Canon : MonoBehaviourPunCallbacks
 {
+    private PhotonView _photonView;
     private FruitPooler _fruitPooler;
     private int _randomCreateFruitIndex;
     
@@ -22,6 +23,7 @@ public class Canon : MonoBehaviourPunCallbacks
 
     private void Awake()
     {
+        _photonView = GetComponent<PhotonView>();
         _shootAngleTransform = transform.Find("ShootingPoint").GetComponent<Transform>();
         _cancellationTokenSource = new CancellationTokenSource();
         _canonAnimator = GetComponent<Animator>();
@@ -58,16 +60,39 @@ public class Canon : MonoBehaviourPunCallbacks
             string fruitType = SetDefaultPoolUsedString();
             Vector3 position = _shootAngleTransform.position;
             Quaternion rotation = _shootAngleTransform.rotation;
-
-            photonView.RPC("ShootFruit", RpcTarget.All, fruitType, position, rotation);
+            
+            _photonView.RPC("ShootFruit", RpcTarget.All, fruitType, position, rotation);
         }
     }
 
     [PunRPC]
     public void ShootFruit(string fruitType, Vector3 position, Quaternion rotation)
     {
+        Debug.Log("ShootFruit");
+
+        if (_fruitPooler.defaultPrefabPool == null)
+        {
+            Debug.Log("defaultPool is null");
+            Debug.Break();
+        }
+
+        if (_fruitPooler == null)
+        {
+            Debug.Log("fruitpooler is null");
+            Debug.Break();
+        }
+        
+        
+        
         Fruit fruit = _fruitPooler.defaultPrefabPool.Instantiate
             (fruitType, position, rotation).GetComponent<Fruit>();
+
+        if (fruit == null)
+        {
+            Debug.Log("fruit is null");
+            Debug.Break();
+        }
+        
         fruit.gameObject.SetActive(true);
         fruit.DefaultPool = _fruitPooler.defaultPrefabPool;
 
