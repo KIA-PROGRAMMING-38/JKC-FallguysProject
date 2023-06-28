@@ -66,6 +66,7 @@ MonoBehaviour:
   - RpcAddPlayerToRankingOnGoal
   - RpcEndGameBroadCast
   - RpcUpdatePlayerRanking
+  - RpcSetMapdatas
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

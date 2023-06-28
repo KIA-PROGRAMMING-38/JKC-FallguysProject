@@ -1,5 +1,3 @@
-using System.IO;
-using System.Text;
 using Newtonsoft.Json;
 using UniRx;
 using UnityEngine;
@@ -48,22 +46,18 @@ public static class DataManager
 
     public static T JsonLoader<T>(string filePath)
     {
-        string absolutePath = Path.Combine(Application.dataPath, "Resources", filePath + ".json");
+        TextAsset textAsset = Resources.Load<TextAsset>(filePath);
 
-        if (!File.Exists(absolutePath))
+        if (textAsset == null)
         {
-            Debug.LogError($"Failed to load JSON file at path: {absolutePath}");
+            Debug.LogError($"Failed to load JSON file at path: {filePath}");
             return default(T);
         }
 
-        string jsonContent;
-        using (StreamReader reader = new StreamReader(absolutePath, Encoding.UTF8))
-        {
-            jsonContent = reader.ReadToEnd();
-        }
-
+        string jsonContent = textAsset.text;
         T data = JsonConvert.DeserializeObject<T>(jsonContent);
 
         return data;
     }
+
 }

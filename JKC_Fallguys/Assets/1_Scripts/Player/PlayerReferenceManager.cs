@@ -9,6 +9,7 @@ public class PlayerReferenceManager : MonoBehaviourPun
     private Transform _playerCharacter;
     private PlayerPhotonController _photonController;
 
+    public SkinnedMeshRenderer BodyRenderer;
     public PhotonStageSceneRoomManager PhotonStageSceneRoomManager { get; private set; }
 
     private void Awake()
@@ -31,10 +32,5 @@ public class PlayerReferenceManager : MonoBehaviourPun
         _cameraAngle.BindPlayerData(_playerInput, _playerCharacter);
         _playerPhysicsController.BindCameraAngle(_cameraAngle);
         _photonController.OnInitialize(this);
-    }
-
-    public void OnInitialize(PhotonStageSceneRoomManager photonStageSceneRoomManager)
-    {
-        PhotonStageSceneRoomManager = photonStageSceneRoomManager;
     }
 }

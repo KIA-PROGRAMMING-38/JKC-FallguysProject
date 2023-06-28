@@ -12464,6 +12464,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3620831246751690400}
   - component: {fileID: 3620831246751690403}
+  - component: {fileID: -8014835542216771188}
   m_Layer: 0
   m_Name: MapHoopLegend
   m_TagString: Untagged
@@ -12518,6 +12519,18 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &-8014835542216771188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3620831246751690401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ebfd9e2817a47a883bda4a95671b37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3620831246801627403
 GameObject:
   m_ObjectHideFlags: 0

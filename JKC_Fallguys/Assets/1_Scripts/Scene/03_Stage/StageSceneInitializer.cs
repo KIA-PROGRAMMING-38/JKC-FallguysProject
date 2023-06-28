@@ -1,13 +1,12 @@
 using LiteralRepository;
+using Photon.Pun;
 
 public class StageSceneInitializer : SceneInitializer
 {
-    
     protected override void OnGetResources()
     {
         Instantiate
-            (DataManager.GetGameObjectData
-                (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, "PhotonStageSceneEventManager"));
+            (DataManager.GetGameObjectData(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, "PhotonStageSceneEventManager"));
         Instantiate
             (DataManager.GetGameObjectData(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, "StageManager"));
         Instantiate
@@ -20,5 +19,12 @@ public class StageSceneInitializer : SceneInitializer
             (DataManager.GetGameObjectData(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, "StageStartViewController"));
         Instantiate
             (DataManager.GetGameObjectData(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, "EntryCounterViewController"));
+
+        if (PhotonNetwork.IsMasterClient)
+        {
+            string filePath = DataManager.SetDataPath(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, "StageInstantiateManager");
+            
+            PhotonNetwork.Instantiate(filePath, transform.position, transform.rotation);    
+        }
     }
 }

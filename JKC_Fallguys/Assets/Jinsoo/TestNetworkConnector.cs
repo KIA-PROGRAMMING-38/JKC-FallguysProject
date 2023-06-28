@@ -1,7 +1,6 @@
 using LiteralRepository;
 using Photon.Pun;
 using Photon.Realtime;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class TestNetworkConnector : MonoBehaviourPunCallbacks
@@ -52,13 +51,5 @@ public class TestNetworkConnector : MonoBehaviourPunCallbacks
         Debug.Log("Create Room");
         
         PhotonNetwork.CreateRoom(null, new RoomOptions());
-    }
-
-    public override void OnLeftRoom()
-    {
-        if (Model.StageSceneModel.IsEnterPhotonRoom.Value == false)
-        {
-            
-        }
     }
 }

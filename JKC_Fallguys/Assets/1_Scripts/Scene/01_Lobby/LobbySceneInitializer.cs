@@ -1,12 +1,11 @@
-using System;
 using LiteralRepository;
 using Model;
 
 public class LobbySceneInitializer : SceneInitializer
 {
-    private void Awake()
+    protected override void InitializeModel()
     {
-        Model.LobbySceneModel.SetLobbyState(LobbySceneModel.LobbyState.Home);
+        LobbySceneModel.SetLobbyState(LobbySceneModel.LobbyState.Home);
     }
 
     protected override void OnGetResources()

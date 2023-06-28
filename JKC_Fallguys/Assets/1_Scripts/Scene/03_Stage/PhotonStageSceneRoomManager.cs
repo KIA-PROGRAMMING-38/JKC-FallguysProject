@@ -4,6 +4,7 @@ using System.Linq;
 using Cysharp.Threading.Tasks;
 using LiteralRepository;
 using Photon.Pun;
+using Photon.Realtime;
 using UniRx;
 using UnityEngine;
 
@@ -16,37 +17,8 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
 
     private void Awake()
     {
-        InitializeMap();
-    }
-
-    private void InitializeMap()
-    {
-        MapData mapData = StageDataManager.Instance.MapDatas[StageDataManager.Instance.MapPickupIndex];
-
-        InstantiateMap(mapData);
-        InstantiatePlayer(mapData);
-        
         InitializeRx();
-    }
 
-    private void InstantiateMap(MapData mapData)
-    {
-        string filePath = mapData.Data.PrefabFilePath;
-        Vector3 mapPos = mapData.Data.MapPosition;
-        Quaternion mapRota = mapData.Data.MapRotation;
-        
-        PhotonNetwork.Instantiate(filePath, mapPos, mapRota);
-    }
-    
-    private void InstantiatePlayer(MapData mapData)
-    {
-        string filePath = DataManager.SetDataPath(PathLiteral.Prefabs, TagLiteral.Player);
-        Vector3 spawnPoint = mapData.Data.PlayerSpawnPosition[PhotonNetwork.LocalPlayer.ActorNumber];
-    
-        PlayerReferenceManager playerReferenceManager =  
-            PhotonNetwork.Instantiate(filePath, spawnPoint, Quaternion.identity).GetComponent<PlayerReferenceManager>();
-        
-        playerReferenceManager.OnInitialize(this);
     }
 
     private void InitializeRx()

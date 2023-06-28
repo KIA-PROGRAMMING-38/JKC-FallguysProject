@@ -1,7 +1,5 @@
-using Microsoft.Unity.VisualStudio.Editor;
 using UniRx;
 using UniRx.Triggers;
-using UnityEngine;
 
 public class MapInformationPresenter : Presenter
 {

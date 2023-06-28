@@ -40,7 +40,8 @@ public class PhotonMatchingSceneRoomManager : MonoBehaviourPun
     {
         PhotonNetwork.CurrentRoom.IsOpen = false;
         Model.MatchingSceneModel.PossibleToExit(false);
-        MapInstanceLoad().Forget();
+        
+        photonView.RPC("RpcSetMapdatas", RpcTarget.All);
 
         foreach (KeyValuePair<int, Player> player in PhotonNetwork.CurrentRoom.Players)
         {
@@ -49,6 +50,12 @@ public class PhotonMatchingSceneRoomManager : MonoBehaviourPun
             StageDataManager.Instance.PlayerDataByIndex[actorNumber] =
                 new PlayerData(PhotonNetwork.LocalPlayer.NickName, 0, 0);
         }
+    }
+
+    [PunRPC]
+    public void RpcSetMapdatas()
+    {
+        MapInstanceLoad().Forget();
     }
     
     #pragma warning disable CS1998

@@ -373,11 +373,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2549332176491675511, guid: d64b8fd3d27ba4f05b5db44ca726ae4a,
-        type: 3}
-      propertyPath: sceneViewId
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 3620831246751690400, guid: d64b8fd3d27ba4f05b5db44ca726ae4a,
         type: 3}
       propertyPath: m_RootOrder
@@ -438,11 +433,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MapHoopLegend
       objectReference: {fileID: 0}
-    - target: {fileID: 3620831246751690403, guid: d64b8fd3d27ba4f05b5db44ca726ae4a,
-        type: 3}
-      propertyPath: sceneViewId
-      value: 8
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d64b8fd3d27ba4f05b5db44ca726ae4a, type: 3}
 --- !u!1 &653724547
@@ -476,7 +466,7 @@ Transform:
   - {fileID: 335492218}
   - {fileID: 2081056729}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &663035270
 PrefabInstance:
