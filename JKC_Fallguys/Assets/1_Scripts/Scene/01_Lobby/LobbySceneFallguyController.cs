@@ -1,4 +1,3 @@
-using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using UniRx;
@@ -6,6 +5,7 @@ using UnityEngine;
 
 public class LobbySceneFallguyController : MonoBehaviour
 {
+    private SkinnedMeshRenderer _fallGuyBody; 
     private CancellationTokenSource _cancellationTokenSource;
     private Vector3 _startPosition;
     private Vector3 _centerPosition = new Vector3(-0.1f, -2.8f, 0f);
@@ -20,6 +20,8 @@ public class LobbySceneFallguyController : MonoBehaviour
     
     private void Awake()
     {
+        _fallGuyBody = GetComponentInChildren<SkinnedMeshRenderer>();
+        
         _cancellationTokenSource = new CancellationTokenSource();
         _startPosition = transform.position;
 
@@ -37,6 +39,10 @@ public class LobbySceneFallguyController : MonoBehaviour
             .Where(state => state == Model.LobbySceneModel.LobbyState.Home)
             .Subscribe(_ => HomeState())
             .AddTo(_compositeDisposable);
+
+        DataManager.PlayerTextureIndex
+            .Subscribe(_ => _fallGuyBody.material.mainTexture = PlayerTextureRegistry.PlayerTextures[DataManager.PlayerTextureIndex.Value])
+            .AddTo(this);
     }
 
     private void CustomizationState()

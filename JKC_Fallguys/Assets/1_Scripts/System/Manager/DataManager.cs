@@ -1,11 +1,20 @@
 using System.IO;
 using System.Text;
 using Newtonsoft.Json;
+using UniRx;
 using UnityEngine;
 
 public static class DataManager
 {
     public static readonly int MaxPlayableMaps = 3;
+
+    private static ReactiveProperty<int> _playerTextureIndex = new ReactiveProperty<int>();
+    public static IReactiveProperty<int> PlayerTextureIndex = _playerTextureIndex;
+
+    public static void SetPlayerTexture(int index)
+    {
+        _playerTextureIndex.Value = index;
+    }
     
     public static GameObject GetGameObjectData(params string[] filePath)
     {

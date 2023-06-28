@@ -1,3 +1,4 @@
+using Model;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -6,12 +7,13 @@ public class CostumeButtonAction : MonoBehaviour, ISelectHandler, IPointerClickH
 {
     private Image _highlight;
     private Vector2 _senterVec = new Vector2(0.5f, 0.5f);
-    private Vector2 _zeroVec = Vector3.zero;
+    private Vector2 _zeroVec = Vector2.zero;
 
     [SerializeField] private CostumeData _costumeData;
     private void Awake()
     {
         _highlight = transform.parent.Find("Highlight").GetComponent<Image>();
+        Debug.Assert(_highlight != null);
     }
 
     public void OnSelect(BaseEventData eventData)
@@ -39,6 +41,7 @@ public class CostumeButtonAction : MonoBehaviour, ISelectHandler, IPointerClickH
     /// </summary>
     private void CommonClickHandler()
     {
-        Debug.Log($"{_costumeData.costumeName}버튼 클릭!");
+        LobbySceneModel.SetColorName(_costumeData.CostumeName);
+        DataManager.SetPlayerTexture(_costumeData.TextureIndex);
     }
 }
