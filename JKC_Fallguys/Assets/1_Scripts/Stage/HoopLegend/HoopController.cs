@@ -12,7 +12,7 @@ public class HoopController : MonoBehaviourPun
     
     private void Awake()
     {
-        _hoopLegendController = transform.parent.GetComponent<HoopLegendController>();
+        _hoopLegendController = GetComponentInParent<HoopLegendController>();
         Debug.Assert(_hoopLegendController != null);
         
         InitializeObject();

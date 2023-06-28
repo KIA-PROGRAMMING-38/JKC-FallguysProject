@@ -23,10 +23,10 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
     {
         MapData mapData = StageDataManager.Instance.MapDatas[StageDataManager.Instance.MapPickupIndex];
 
-        InitializeRx();
-        
         InstantiateMap(mapData);
         InstantiatePlayer(mapData);
+        
+        InitializeRx();
     }
 
     private void InstantiateMap(MapData mapData)
@@ -43,7 +43,7 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
         string filePath = DataManager.SetDataPath(PathLiteral.Prefabs, TagLiteral.Player);
         Vector3 spawnPoint = mapData.Data.PlayerSpawnPosition[PhotonNetwork.LocalPlayer.ActorNumber];
     
-        PlayerReferenceManager playerReferenceManager = 
+        PlayerReferenceManager playerReferenceManager =  
             PhotonNetwork.Instantiate(filePath, spawnPoint, Quaternion.identity).GetComponent<PlayerReferenceManager>();
         
         playerReferenceManager.OnInitialize(this);
@@ -53,6 +53,7 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
     {
         StageDataManager.Instance.IsGameActive
             .DistinctUntilChanged()
+            .Skip(1)
             .Where(state => !state)
             .Subscribe(_ => CompleteStageAndRankPlayers())
             .AddTo(this);
