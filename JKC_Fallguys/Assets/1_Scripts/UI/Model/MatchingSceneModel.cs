@@ -5,8 +5,8 @@ namespace Model
     public static class MatchingSceneModel
     {
         // 패널 활성화 여부를 결정하는 불리언 값입니다
-        private static ReactiveProperty<bool> _isEnterLobbyFromMatchingScene = new ReactiveProperty<bool>();
-        public static IReadOnlyReactiveProperty<bool> IsEnterLobbyFromMatchingScene => _isEnterLobbyFromMatchingScene;
+        private static ReactiveProperty<bool> _isExitMatching = new ReactiveProperty<bool>();
+        public static IReadOnlyReactiveProperty<bool> IsExitMatching => _isExitMatching;
 
         // 포톤 룸에 입장했음을 알리는 불리언 값입니다.
         private static ReactiveProperty<bool> _isEnterPhotonRoom = new ReactiveProperty<bool>();
@@ -21,23 +21,13 @@ namespace Model
         public static IReadOnlyReactiveProperty<int> StartCount => _startCount;
 
         /// <summary>
-        /// IsEnterLobbyFromMatching 값을 true로 설정합니다.
-        /// 이 때, 패널이 활성화됩니다.
+        /// IsEnterLobbyFromMatching 값을 status로 설정합니다.
         /// </summary>
-        public static void ActiveEnterLobbyPanel()
+        public static void SetActiveEnterLobbyPanel(bool status)
         {
-            _isEnterLobbyFromMatchingScene.Value = true;
+            _isExitMatching.Value = status;
         }
 
-        /// <summary>
-        /// IsEnterLobbyFromMatching 값을 false로 설정합니다.
-        /// 이 때, 패널이 비활성화됩니다.
-        /// </summary>
-        public static void DeActiveEnterLobbyPanel()
-        {
-            _isEnterLobbyFromMatchingScene.Value = false;
-        }
-        
         /// <summary>
         /// StartCount를 10으로 재설정합니다.
         /// </summary>
