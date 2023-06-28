@@ -866,11 +866,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ResultInStageViewController
       objectReference: {fileID: 0}
-    - target: {fileID: 7491974796541456367, guid: a9bfb5654196242b785c30a01a71b5f9,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9bfb5654196242b785c30a01a71b5f9, type: 3}
 --- !u!1001 &7721354719132726541
