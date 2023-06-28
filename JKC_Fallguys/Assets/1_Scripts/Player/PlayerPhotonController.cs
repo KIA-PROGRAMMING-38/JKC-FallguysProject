@@ -24,19 +24,6 @@ public class PlayerPhotonController : MonoBehaviourPunCallbacks, IPunObservable
         _referenceManager = referenceManager;
     }
 
-    [PunRPC]
-    public void AddPlayerToRankingOnGoal(int playerIndex)
-    {
-        // 마스터 클라이언트는 모든 클라이언트에게 순위 업데이트를 요청합니다.
-        photonView.RPC("UpdatePlayerRanking", RpcTarget.All, playerIndex);
-    }
-
-    [PunRPC]
-    public void UpdatePlayerRanking(int playerIndex)
-    {
-        // 각 클라이언트는 이 함수를 통해 자신의 순위 리스트를 최신 상태로 업데이트합니다.
-        StageDataManager.Instance.AddPlayerToRanking(playerIndex);
-    }
     
     private int _textureIndex = 0;
 
