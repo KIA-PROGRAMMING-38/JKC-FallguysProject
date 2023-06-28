@@ -7,6 +7,21 @@ using UnityEngine;
 
 public class FruitChuteController : StageController
 {
+    private FruitPooler _fruitPooler;
+    private CanonController _canonController;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        
+        _fruitPooler = transform.Find("FruitPooler").GetComponent<FruitPooler>();
+        Debug.Assert(_fruitPooler != null);
+        _canonController = transform.Find("CanonController").GetComponent<CanonController>();
+        Debug.Assert(_canonController != null);
+
+        _canonController.Initialize(_fruitPooler);
+    }
+    
     protected override void SetGameTime()
     {
         remainingGameTime.Value = 60;
