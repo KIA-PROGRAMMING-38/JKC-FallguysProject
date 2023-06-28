@@ -7,9 +7,10 @@ public class JumpClubDeadZone : MonoBehaviour
     {
         if (col.CompareTag(TagLiteral.Player))
         {
+            StageDataManager.Instance.IsPlayerAlive.Value = false;
+            StageDataManager.Instance.CurrentState.Value = StageDataManager.PlayerState.Defeat;
+            
             PlayerPhotonController playerPhotonController = col.GetComponent<PlayerPhotonController>();
-            playerPhotonController.PlayerIsGameOver();
-
             GameObject rootObject = playerPhotonController.transform.parent.gameObject;
             rootObject.SetActive(false);
         }

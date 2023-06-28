@@ -60,6 +60,9 @@ MonoBehaviour:
   - UpdateHoopCount
   - UpdateStageDataOnAllClients
   - SetSelectedMapIndex
+  - EndGame
+  - RpcCountDown
+  - RpcDeclarationOfVictory
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

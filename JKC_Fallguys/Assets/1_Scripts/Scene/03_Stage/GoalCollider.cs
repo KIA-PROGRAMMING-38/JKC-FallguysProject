@@ -9,7 +9,6 @@ public class GoalCollider : MonoBehaviourPun
         if (col.CompareTag(TagLiteral.Player))
         {
             PlayerPhotonController playerPhotonController = col.GetComponent<PlayerPhotonController>();
-            playerPhotonController.SendMessageWinTheStage();
             int playerPersonalIndex = PhotonNetwork.LocalPlayer.ActorNumber;
             
             Debug.Log(playerPhotonController.name);

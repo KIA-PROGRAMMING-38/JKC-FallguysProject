@@ -12,11 +12,6 @@ public class PlayerPhotonController : MonoBehaviourPunCallbacks, IPunObservable
 
     public new PhotonView photonView;
 
-    public void PlayerIsGameOver()
-    {
-        StageDataManager.Instance.IsPlayerAlive.Value = false;
-    }
-
     private void Awake()
     {
         photonView = GetComponent<PhotonView>();
@@ -27,12 +22,6 @@ public class PlayerPhotonController : MonoBehaviourPunCallbacks, IPunObservable
     public void OnInitialize(PlayerReferenceManager referenceManager)
     {
         _referenceManager = referenceManager;
-    }
-
-    [PunRPC]
-    public void SendMessageWinTheStage()
-    {
-        _referenceManager.PhotonStageSceneRoomManager.CompleteStageAndRankPlayers();
     }
 
     [PunRPC]

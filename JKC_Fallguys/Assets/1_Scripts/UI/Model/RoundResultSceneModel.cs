@@ -22,7 +22,7 @@ namespace Model
             foreach (int index in StageDataManager.Instance.CachedPlayerIndicesForResults)
             {
                 // 딕셔너리에서 해당 인덱스의 플레이어 데이터를 가져옵니다.
-                if (StageDataManager.Instance.PlayerScoresByIndex.TryGetValue(index, out PlayerData playerData))
+                if (StageDataManager.Instance.PlayerDataByIndex.TryGetValue(index, out PlayerData playerData))
                 {
                     _fallguyRankings.Add(playerData);
                 }

@@ -48,20 +48,22 @@ public class HoopController : MonoBehaviourPun
         // 게임이 비활성화 되면, 후프 카운트를 기반으로 플레이어 순위를 계산합니다.
         StageDataManager.Instance.IsGameActive
             .Where(isGameActive => !isGameActive && PhotonNetwork.IsMasterClient)
-            .Subscribe(_ =>
-            {
-                // 후프 카운트가 높은 플레이어부터 정렬하여 ActorNumber를 리스트로 변환합니다.
-                // 이 리스트는 플레이어의 순위를 나타냅니다.
-                List<int> rankings = _playerHoopCounts
-                    // 후프 카운트(Value)가 높은 플레이어부터 정렬합니다.
-                    .OrderByDescending(x => x.Value)
-                    // Select문으로 ActorNumber인 Key값만 선택하여 리스트로 변환합니다.
-                    .Select(x => x.Key)
-                    .ToList();
-
-                StageDataManager.Instance.StagePlayerRankings = rankings;
-            })
+            .Subscribe(_ => CalculatePlayerRanking())
             .AddTo(this);
+    }
+
+    private void CalculatePlayerRanking()
+    {
+        // 후프 카운트가 높은 플레이어부터 정렬하여 ActorNumber를 리스트로 변환합니다.
+        // 이 리스트는 플레이어의 순위를 나타냅니다.
+        List<int> rankings = _playerHoopCounts
+            // 후프 카운트(Value)가 높은 플레이어부터 정렬합니다.
+            .OrderByDescending(x => x.Value)
+            // Select문으로 ActorNumber인 Key값만 선택하여 리스트로 변환합니다.
+            .Select(x => x.Key)
+            .ToList();
+
+        StageDataManager.Instance.StagePlayerRankings = rankings;
     }
 
     /// <summary>

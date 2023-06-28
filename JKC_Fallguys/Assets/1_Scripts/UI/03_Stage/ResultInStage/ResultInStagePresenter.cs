@@ -26,13 +26,13 @@ public class ResultInStagePresenter : Presenter
             {
                 switch (currentState)
                 {
-                    case StageDataManager.PlayerState.Success:
+                    case StageDataManager.PlayerState.Victory:
                         _resultInStageView.ResultText.text = "성공!";
                         break;
                     case StageDataManager.PlayerState.Defeat:
                         _resultInStageView.ResultText.text = "실패!";
                         break;
-                    case StageDataManager.PlayerState.End:
+                    case StageDataManager.PlayerState.GameTerminated:
                         _resultInStageView.ResultText.text = "종료!";
                         break;
                     default:
