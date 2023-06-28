@@ -7,7 +7,7 @@ public class CostumeView : View
     public GameObject ColorGroup { get; private set; }
     public Text ColorName { get; private set; }
     public Button ReturnButton { get; private set; }
-    
+
     private void Awake()
     {
         Default = transform.Find("Default").gameObject;

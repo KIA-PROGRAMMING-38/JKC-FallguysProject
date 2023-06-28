@@ -1,5 +1,8 @@
 using UniRx;
 using Model;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class CostumePresenter : Presenter
 {
@@ -50,6 +53,18 @@ public class CostumePresenter : Presenter
         _costumeView.ColorGroup.gameObject.SetActive(status);
         _costumeView.ColorName.gameObject.SetActive(status);
         _costumeView.ReturnButton.gameObject.SetActive(status);
+
+        foreach (Transform child in _costumeView.ColorGroup.transform)
+        {
+            child.gameObject.SetActive(status);
+        }
+
+        if (status)
+        {
+            // 버튼을 키보드로 Navigation하기 위해 Event System의 FirstSelected에 할당된 버튼을 선택해줍니다.
+            Button firstSelectButton = EventSystem.current.firstSelectedGameObject.GetComponent<Button>();
+            firstSelectButton.Select();    
+        }
     }
     
     public override void OnRelease()
