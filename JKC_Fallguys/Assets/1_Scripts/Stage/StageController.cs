@@ -1,4 +1,5 @@
 using Photon.Pun;
+using UniRx;
 
 /// <summary>
 /// 맵의 게임 시간을 설정하고 게임 진행에 관련된 일을 처리합니다.
@@ -7,6 +8,9 @@ using Photon.Pun;
 /// </summary>
 public abstract class StageController : MonoBehaviourPun
 {
+    // 스테이지의 플레이 시간을 체크하는 ReactiveProperty입니다.
+    protected ReactiveProperty<int> remainingGameTime = new ReactiveProperty<int>();
+    
     protected virtual void Awake()
     {
         SetGameTime();
