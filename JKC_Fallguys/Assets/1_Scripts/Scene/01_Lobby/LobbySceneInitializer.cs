@@ -25,5 +25,7 @@ public class LobbySceneInitializer : SceneInitializer
             (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Lobby, "LobbySceneFallGuy"));
         Instantiate(DataManager.GetGameObjectData
             (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Lobby, "Customization", "CustomizationViewController"));
+        Instantiate(DataManager.GetGameObjectData
+            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Lobby, "Customization", "CostumeViewController"));
     }
 }

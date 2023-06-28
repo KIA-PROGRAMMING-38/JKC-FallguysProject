@@ -1,4 +1,6 @@
+using System;
 using Model;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -8,12 +10,22 @@ public class CostumeButtonAction : MonoBehaviour, ISelectHandler, IPointerClickH
     private Image _highlight;
     private Vector2 _senterVec = new Vector2(0.5f, 0.5f);
     private Vector2 _zeroVec = Vector2.zero;
+    private Button _button;
 
     [SerializeField] private CostumeData _costumeData;
     private void Awake()
     {
         _highlight = transform.parent.Find("Highlight").GetComponent<Image>();
+        _button = GetComponent<Button>();
         Debug.Assert(_highlight != null);
+    }
+
+    private void OnEnable()
+    {
+        if (DataManager.PlayerTextureIndex.Value == _costumeData.TextureIndex)
+        {
+            EventSystem.current.firstSelectedGameObject = gameObject;
+        }
     }
 
     public void OnSelect(BaseEventData eventData)
@@ -29,11 +41,13 @@ public class CostumeButtonAction : MonoBehaviour, ISelectHandler, IPointerClickH
     public void OnPointerClick(PointerEventData eventData)
     {
         CommonClickHandler();
+        Debug.Log("PointerClick");
     }
 
     public void OnSubmit(BaseEventData eventData)
     {
         CommonClickHandler();
+        Debug.Log("SubmitClick");
     }
 
     /// <summary>

@@ -1,7 +1,8 @@
 using LiteralRepository;
+using Photon.Pun;
 using UnityEngine;
 
-public class JumpClubDeadZone : MonoBehaviour
+public class JumpClubDeadZone : MonoBehaviourPun
 {
     private void OnTriggerEnter(Collider col)
     {
@@ -9,10 +10,18 @@ public class JumpClubDeadZone : MonoBehaviour
         {
             StageDataManager.Instance.IsPlayerAlive.Value = false;
             StageDataManager.Instance.CurrentState.Value = StageDataManager.PlayerState.Defeat;
+            col.gameObject.transform.root.gameObject.SetActive(false);
             
-            PlayerPhotonController playerPhotonController = col.GetComponent<PlayerPhotonController>();
-            GameObject rootObject = playerPhotonController.transform.parent.gameObject;
-            rootObject.SetActive(false);
+            if (PhotonNetwork.CurrentRoom.PlayerCount >= StageDataManager.Instance.StagePlayerRankings.Count)
+            {
+                photonView.RPC("RpcEndGameBroadCast", RpcTarget.All);
+            }
         }
+    }
+    
+    [PunRPC]
+    public void RpcEndGameBroadCast()
+    {
+        StageDataManager.Instance.SetGameStatus(false);
     }
 }

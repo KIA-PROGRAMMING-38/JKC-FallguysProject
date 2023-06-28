@@ -2,7 +2,7 @@ using LiteralRepository;
 using Photon.Pun;
 using UnityEngine;
 
-public class GoalCollider : MonoBehaviourPun
+public class FruitChuteGoalCollider : MonoBehaviourPun
 {
     private void OnTriggerEnter(Collider col)
     {
@@ -28,7 +28,8 @@ public class GoalCollider : MonoBehaviourPun
         // 각 클라이언트는 이 함수를 통해 자신의 순위 리스트를 최신 상태로 업데이트합니다.
         StageDataManager.Instance.AddPlayerToRanking(playerIndex);
 
-        if (StageDataManager.Instance.StagePlayerRankings.Count == 3)
+        if (StageDataManager.Instance.StagePlayerRankings.Count == 3 ||
+            PhotonNetwork.CurrentRoom.PlayerCount >= StageDataManager.Instance.StagePlayerRankings.Count)
         {
             photonView.RPC("RpcEndGameBroadCast", RpcTarget.All);
         }

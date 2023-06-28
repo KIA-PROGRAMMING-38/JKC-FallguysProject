@@ -1,41 +1,41 @@
 using LiteralRepository;
-using UnityEngine;
+using Model;
 
 public class MatchingStandbySceneInitializer : SceneInitializer
 {
-    [Header("Object")]
     private LineEffectPooler _lineEffectPooler;
     private RespawnZone _respawnZone;
-    
-    [Header("Controller")]
-    private ReturnButtonViewController _returnButtonViewController;
-    private EnterLobbyFromMatchingViewController _enterLobbyFromMatchingViewController;
 
     protected override void Start()
     {
         base.Start();
         
         _lineEffectPooler.OnInitialize(_respawnZone);
-        _returnButtonViewController.OnInitialize(_enterLobbyFromMatchingViewController);
     }
-    
+
+    protected override void InitializeModel()
+    {
+        MatchingSceneModel.SetActiveEnterLobbyPanel(false);
+        MatchingSceneModel.RoomAdmissionStatus(false);
+        MatchingSceneModel.PossibleToExit(true);
+    }
+
     protected override void OnGetResources()
     {
+        Instantiate(DataManager.GetGameObjectData
+            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.MatchingStandby, PathLiteral.Object, "PhotonMatchingSceneEventManager"));
+        
         _respawnZone = Instantiate(DataManager.GetGameObjectData
             (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.MatchingStandby, PathLiteral.Object, "RespawnZone"))
             .GetComponent<RespawnZone>();
         _lineEffectPooler = Instantiate(DataManager.GetGameObjectData
             (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.MatchingStandby, PathLiteral.Object, "LineEffectPooler"))
             .GetComponent<LineEffectPooler>();
-        _returnButtonViewController = Instantiate(DataManager.GetGameObjectData
-            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.MatchingStandby, PathLiteral.UI, "ReturnButtonViewController"))
-            .GetComponent<ReturnButtonViewController>();
-        _enterLobbyFromMatchingViewController = Instantiate(DataManager.GetGameObjectData
-            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.MatchingStandby, PathLiteral.UI, "EnterLobbyFromMatchingViewController"))
-            .GetComponent<EnterLobbyFromMatchingViewController>();
 
         Instantiate(DataManager.GetGameObjectData
-            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.MatchingStandby, PathLiteral.Object, "PhotonMatchingSceneEventManager"));
+            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.MatchingStandby, PathLiteral.UI, "ReturnButtonViewController"));
+        Instantiate(DataManager.GetGameObjectData
+            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.MatchingStandby, PathLiteral.UI, "ExitMatchingPanelViewController"));
         Instantiate(DataManager.GetGameObjectData
             (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.MatchingStandby, PathLiteral.Object, "ReleaseZone"));
         Instantiate(DataManager.GetGameObjectData

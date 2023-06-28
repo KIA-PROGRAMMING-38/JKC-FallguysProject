@@ -23,7 +23,6 @@ public class StageDataManager : SingletonMonoBehaviour<StageDataManager>
     // 스테이지에서 사용될 순위를 기록하는 리스트입니다.
     // 스테이지가 넘어갈 때, 초기화됩니다.
     public List<int> StagePlayerRankings;
-    
     // Round Result Panel의 성공, 실패, 종료 여부를 설정하기 위한 변수입니다.
     public enum PlayerState
     {
