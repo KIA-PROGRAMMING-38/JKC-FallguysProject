@@ -826,8 +826,8 @@ GameObject:
   - component: {fileID: 7082175767991608424}
   - component: {fileID: 6916337384426825303}
   - component: {fileID: 8310932015461178466}
-  - component: {fileID: 4231617488334469504}
   - component: {fileID: 9027429783437804086}
+  - component: {fileID: 307390375674137429}
   m_Layer: 0
   m_Name: Character
   m_TagString: Player
@@ -1027,10 +1027,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7655eb5e15af2498ea2786bc503753c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerTextures: []
-  _bodyMeshRenderer: {fileID: 1611152703687638251}
-  photonView: {fileID: 0}
---- !u!114 &4231617488334469504
+  BodyMeshRenderer: {fileID: 1611152703687638251}
+--- !u!114 &9027429783437804086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1619785448565600724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64179f3720bbfe947b7724caa67b7c1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizeVelocity: 1
+  m_SynchronizeAngularVelocity: 0
+  m_TeleportEnabled: 0
+  m_TeleportIfDistanceGreaterThan: 3
+--- !u!114 &307390375674137429
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1051,27 +1065,10 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 7082175767991608424}
   - {fileID: 6916337384426825303}
-  - {fileID: 8310932015461178466}
   - {fileID: 9027429783437804086}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &9027429783437804086
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1619785448565600724}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64179f3720bbfe947b7724caa67b7c1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizeVelocity: 1
-  m_SynchronizeAngularVelocity: 0
-  m_TeleportEnabled: 0
-  m_TeleportIfDistanceGreaterThan: 3
 --- !u!1 &2391585823698486539
 GameObject:
   m_ObjectHideFlags: 0
