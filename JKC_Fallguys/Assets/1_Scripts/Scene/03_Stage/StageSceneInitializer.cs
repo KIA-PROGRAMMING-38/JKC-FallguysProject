@@ -1,13 +1,10 @@
 using LiteralRepository;
-using Photon.Pun;
-using UnityEngine;
 
 public class StageSceneInitializer : SceneInitializer
 {
     
     protected override void OnGetResources()
     {
-                
         Instantiate
             (DataManager.GetGameObjectData
                 (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, "PhotonStageSceneEventManager"));
