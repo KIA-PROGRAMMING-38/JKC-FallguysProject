@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using UniRx;
 using UnityEngine;
 
@@ -16,8 +17,7 @@ public class ResultInStagePresenter : Presenter
     {
         
     }
-
-    private Vector2 _center = new Vector2(0.5f, 0.5f);
+    
     protected override void OnUpdatedModel()
     {
         StageDataManager.Instance.CurrentState
@@ -40,10 +40,21 @@ public class ResultInStagePresenter : Presenter
                         break;
                 }
 
-                _resultInStageView.ResultPanel.MoveUI(_center, _resultInStageView.CanvasRect, 0.5f);
+                UIAnimation().Forget();
                 
             })
             .AddTo(_compositeDisposable);
+    }
+    
+    private Vector2 _center = new Vector2(0.5f, 0.5f);
+    private Vector2 _outPosition = new Vector2(-1, 0.5f);
+    private async UniTaskVoid UIAnimation()
+    {
+        _resultInStageView.ResultPanel.MoveUI(_center, _resultInStageView.CanvasRect, 0.5f)
+            .SetEase(Ease.EaseOutElastic);
+
+        await UniTask.Delay(3000);
+        _resultInStageView.ResultPanel.MoveUI(_outPosition, _resultInStageView.CanvasRect, 0.5f);
     }
 
     
