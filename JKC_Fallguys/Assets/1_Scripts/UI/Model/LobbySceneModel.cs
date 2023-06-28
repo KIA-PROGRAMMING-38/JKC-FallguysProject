@@ -1,5 +1,4 @@
 using UniRx;
-using UnityEngine;
 
 namespace Model
 {
@@ -10,6 +9,7 @@ namespace Model
             Default,
             Home,
             Customization,
+            Costume,
             Settings,
             HowToPlay
         }
@@ -26,6 +26,9 @@ namespace Model
         // How To Play의 활성화를 나타낼 Image의 인덱스를 나타내는 변수입니다.
         private static ReactiveProperty<int> _howToPlayImageIndex = new ReactiveProperty<int>(0);
         public static IReadOnlyReactiveProperty<int> HowToPlayImageIndex => _howToPlayImageIndex;
+
+        private static ReactiveProperty<string> _costumeColorName = new ReactiveProperty<string>();
+        public static IReactiveProperty<string> CostumeColorName => _costumeColorName;
 
         public static void IncreaseImageIndex()
         {
@@ -45,6 +48,11 @@ namespace Model
         public static void SetLobbyState(LobbyState lobbyState)
         {
             _currentLobbyState.Value = lobbyState;
+        }
+
+        public static void SetColorName(string colorName)
+        {
+            _costumeColorName.Value = colorName;
         }
     }
 }
