@@ -1,4 +1,3 @@
-using ExitGames.Client.Photon;
 using LiteralRepository;
 using Photon.Pun;
 using Photon.Realtime;

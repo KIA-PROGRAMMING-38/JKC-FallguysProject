@@ -3,8 +3,10 @@ using LiteralRepository;
 
 public class LoginSceneInitializer : SceneInitializer
 {
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+        
         Screen.SetResolution(1920, 1080, FullScreenMode.Windowed);
     }
 

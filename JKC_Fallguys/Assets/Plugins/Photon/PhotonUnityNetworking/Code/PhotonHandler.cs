@@ -140,19 +140,19 @@ namespace Photon.Pun
 
 
         /// <summary>Called in intervals by UnityEngine. Affected by Time.timeScale.</summary>
-        protected void FixedUpdate()
-        {
-            #if PUN_DISPATCH_IN_FIXEDUPDATE
-            this.Dispatch();
-            #elif PUN_DISPATCH_IN_LATEUPDATE
-            // do not dispatch here
-            #else
-            if (Time.timeScale > PhotonNetwork.MinimalTimeScaleToDispatchInFixedUpdate)
+            protected void FixedUpdate()
             {
+                #if PUN_DISPATCH_IN_FIXEDUPDATE
                 this.Dispatch();
+                #elif PUN_DISPATCH_IN_LATEUPDATE
+                // do not dispatch here
+                #else
+                if (Time.timeScale > PhotonNetwork.MinimalTimeScaleToDispatchInFixedUpdate)
+                {
+                    this.Dispatch();
+                }
+                #endif
             }
-            #endif
-        }
 
         /// <summary>Called in intervals by UnityEngine, after running the normal game code and physics.</summary>
         protected void LateUpdate()

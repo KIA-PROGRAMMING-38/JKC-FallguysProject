@@ -8,13 +8,20 @@ public class JumpClubDeadZone : MonoBehaviourPun
     {
         if (col.CompareTag(TagLiteral.Player))
         {
-            StageDataManager.Instance.IsPlayerAlive.Value = false;
-            StageDataManager.Instance.CurrentState.Value = StageDataManager.PlayerState.Defeat;
-            col.gameObject.transform.root.gameObject.SetActive(false);
-            
-            if (PhotonNetwork.CurrentRoom.PlayerCount >= StageDataManager.Instance.StagePlayerRankings.Count)
+            PhotonView photonView = col.gameObject.transform.root.GetComponent<PhotonView>();
+
+            if (photonView.IsMine)
             {
-                photonView.RPC("RpcEndGameBroadCast", RpcTarget.All);
+                StageDataManager.Instance.IsPlayerAlive.Value = false;
+                StageDataManager.Instance.CurrentState.Value = StageDataManager.PlayerState.Defeat;
+                col.gameObject.transform.root.gameObject.SetActive(false);
+                
+                Debug.Log(PhotonNetwork.CurrentRoom.PlayerCount);
+                Debug.Log(StageDataManager.Instance.StagePlayerRankings.Count);
+                if (PhotonNetwork.CurrentRoom.PlayerCount <= StageDataManager.Instance.StagePlayerRankings.Count)
+                {
+                    photonView.RPC("RpcEndGameBroadCast", RpcTarget.All);
+                }
             }
         }
     }

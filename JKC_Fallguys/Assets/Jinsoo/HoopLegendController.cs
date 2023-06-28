@@ -16,6 +16,7 @@ public class HoopLegendController : StageController
             .AddTo(this);
 
         remainingGameTime
+            .ObserveEveryValueChanged(_ => remainingGameTime)
             .Subscribe(_ => GameStartBroadCast())
             .AddTo(this);
 
