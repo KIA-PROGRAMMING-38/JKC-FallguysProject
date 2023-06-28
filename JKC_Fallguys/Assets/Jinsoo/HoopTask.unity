@@ -366,7 +366,7 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1369875602}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &425066545
+--- !u!1001 &362266371
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -436,7 +436,7 @@ PrefabInstance:
     - target: {fileID: 3620831246751690401, guid: d64b8fd3d27ba4f05b5db44ca726ae4a,
         type: 3}
       propertyPath: m_Name
-      value: Legend_Hoop_Map
+      value: MapHoopLegend
       objectReference: {fileID: 0}
     - target: {fileID: 3620831246751690403, guid: d64b8fd3d27ba4f05b5db44ca726ae4a,
         type: 3}
@@ -964,7 +964,7 @@ PrefabInstance:
     - target: {fileID: 122906925103003174, guid: 0365c497af6a1442bbb9c3b50f6b9ebd,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 122906925103003174, guid: 0365c497af6a1442bbb9c3b50f6b9ebd,
         type: 3}

@@ -6,8 +6,6 @@ public class JumpClubController : StageController
 {
     private Camera _observeCamera;
 
-    private ReactiveProperty<int> _remainingGameTime = new ReactiveProperty<int>();
-
     protected override void Awake()
     {
         base.Awake();
@@ -18,7 +16,7 @@ public class JumpClubController : StageController
     
     protected override void SetGameTime()
     {
-        _remainingGameTime.Value = 60;
+        remainingGameTime.Value = 60;
     }
 
     protected override void InitializeRx()
@@ -31,15 +29,15 @@ public class JumpClubController : StageController
 
         StageDataManager.Instance.IsGameActive
             .Where(state => state)
-            .Subscribe(_ => --_remainingGameTime.Value)
+            .Subscribe(_ => --remainingGameTime.Value)
             .AddTo(this);
 
-        _remainingGameTime
+        remainingGameTime
             .Subscribe(_ => GameStartBroadCast())
             .AddTo(this);
 
-        _remainingGameTime
-            .Where(count => _remainingGameTime.Value == 0)
+        remainingGameTime
+            .Where(count => remainingGameTime.Value == 0)
             .Subscribe(_ => RpcEndGame())
             .AddTo(this);
     }
@@ -55,7 +53,7 @@ public class JumpClubController : StageController
     [PunRPC]
     public void RpcCountDown()
     {
-        --_remainingGameTime.Value;
+        --remainingGameTime.Value;
     }
 
     private void RpcEndGame()
@@ -69,6 +67,8 @@ public class JumpClubController : StageController
     [PunRPC]
     public void EndGame()
     {
+        StageDataManager.Instance.IsGameActive.Value = false;
+        
         if (StageDataManager.Instance.IsPlayerAlive.Value)
         {
             StageDataManager.Instance.CurrentState.Value = StageDataManager.PlayerState.Victory;

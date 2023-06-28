@@ -8,9 +8,13 @@ using UnityEngine;
 public class HoopController : MonoBehaviourPun
 {
     private Dictionary<int, int> _playerHoopCounts = new Dictionary<int, int>();
+    private HoopLegendController _hoopLegendController;
     
     private void Awake()
     {
+        _hoopLegendController = transform.parent.GetComponent<HoopLegendController>();
+        Debug.Assert(_hoopLegendController != null);
+        
         InitializeObject();
         InitializeRx();
     }
