@@ -4,10 +4,16 @@ using System.Linq;
 using Cysharp.Threading.Tasks;
 using LiteralRepository;
 using Photon.Pun;
+using UniRx;
 using UnityEngine;
 
+/// <summary>
+/// 맵과 플레이어를 생성하고, 점수를 결산한 뒤 다음 씬을 실행시키는 클래스입니다.
+/// </summary>
 public class PhotonStageSceneRoomManager : MonoBehaviourPun
 {
+    #region 스테이지가 시작될 때 수행될 작업.
+
     private void Awake()
     {
         InitializeMap();
@@ -17,6 +23,8 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
     {
         MapData mapData = StageDataManager.Instance.MapDatas[StageDataManager.Instance.MapPickupIndex];
 
+        InitializeRx();
+        
         InstantiateMap(mapData);
         InstantiatePlayer(mapData);
     }
@@ -41,69 +49,118 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
         playerReferenceManager.OnInitialize(this);
     }
 
-    /// <summary>
-    /// 스테이지를 정리하고 결산하는 역할의 함수입니다.
-    /// </summary>
-    [PunRPC]
-    public void CompleteStageAndRankPlayers()
+    private void InitializeRx()
     {
-        // 승리한 클라이언트의 정보에만 승리 기록해주기.
-        // 나머지는 자동으로 패배가 기록되어, 다음 결과 창에서 승리 혹은 패배가 팝업됨.
-        Debug.Log("승리!");
+        StageDataManager.Instance.IsGameActive
+            .DistinctUntilChanged()
+            .Where(state => !state)
+            .Subscribe(_ => CompleteStageAndRankPlayers())
+            .AddTo(this);
+    }
+
+    #endregion
+
+    #region 스테이지를 결산할 때 수행될 작업.
+
+    // 스테이지를 정리하고 결산하는 역할의 함수입니다.
+    // StageDataManager의 IsGameActive가 true => false일 때 호출됩니다.
+    private void CompleteStageAndRankPlayers()
+    {
         Time.timeScale = 0f;
+        
+        // 타 컴포넌트에서 게임 결과를 정리하는 로직이 실행되기를 기다립니다.
+        PrevEndProduction().Forget();
         
         photonView.RPC("EnterNextScene", RpcTarget.MasterClient);
     }
 
-    private async UniTaskVoid StageEndProduction()
+    private async UniTaskVoid PrevEndProduction()
     {
-        await UniTask.Delay(TimeSpan.FromSeconds(2f), DelayType.UnscaledDeltaTime);
-
-        PhotonNetwork.LoadLevel(SceneIndex.GameResult);
+        await UniTask.Delay(TimeSpan.FromSeconds(3f), DelayType.UnscaledDeltaTime);
     }
 
     [PunRPC]
     public void EnterNextScene()
     {
-        RankingSettlement();
+        if (StageDataManager.Instance.MapDatas[StageDataManager.Instance.MapPickupIndex].Info.Type !=
+            MapData.MapType.Survivor)
+        {
+            RankingSettlement();
+        }
+        else
+        {
+            GiveScore();
+        }
+        
+        EndLogic();
         
         StageEndProduction().Forget();
     }
-
-    private void RankingSettlement()
+    
+    private async UniTaskVoid StageEndProduction()
     {
-        int[] rewards = { 1000, 500, 300 }; // 1등에게 1000점, 2등에게 500점, 3등에게 300점 부여.
+        await UniTask.Delay(TimeSpan.FromSeconds(3f), DelayType.UnscaledDeltaTime);
 
-        for (int i = 0; i < rewards.Length; i++)
+        PhotonNetwork.LoadLevel(SceneIndex.GameResult);
+    }
+
+    private void GiveScore()
+    {
+        for (int i = 0; i < StageDataManager.Instance.StagePlayerRankings.Count; i++)
         {
             // 해당 순위의 플레이어가 존재하는지 확인.
             if (i < StageDataManager.Instance.StagePlayerRankings.Count)
             {
                 int playerIndex = StageDataManager.Instance.StagePlayerRankings[i];
-                if (StageDataManager.Instance.PlayerScoresByIndex.ContainsKey(playerIndex))
+                if (StageDataManager.Instance.PlayerDataByIndex.ContainsKey(playerIndex))
                 {
-                    PlayerData playerData = StageDataManager.Instance.PlayerScoresByIndex[playerIndex];
+                    PlayerData playerData = StageDataManager.Instance.PlayerDataByIndex[playerIndex];
                     int oldScore = playerData.Score;
-                    int newScore = oldScore + rewards[i];
+                    int newScore = oldScore + 500;
                     playerData.Score = newScore;
-                    StageDataManager.Instance.PlayerScoresByIndex[playerIndex] = playerData; // Updated PlayerData back to dictionary
+                    StageDataManager.Instance.PlayerDataByIndex[playerIndex] = playerData; // Updated PlayerData back to dictionary
                 }
             }
         }
+    }
 
+    private void RankingSettlement()
+    {
+        int[] rankRewards = { 1000, 500, 300 }; // 1등에게 1000점, 2등에게 500점, 3등에게 300점 부여.
+
+        for (int i = 0; i < rankRewards.Length; i++)
+        {
+            // 해당 순위의 플레이어가 존재하는지 확인.
+            if (i < StageDataManager.Instance.StagePlayerRankings.Count)
+            {
+                int playerIndex = StageDataManager.Instance.StagePlayerRankings[i];
+                if (StageDataManager.Instance.PlayerDataByIndex.ContainsKey(playerIndex))
+                {
+                    PlayerData playerData = StageDataManager.Instance.PlayerDataByIndex[playerIndex];
+                    int prevScore = playerData.Score;
+                    int updatedScore = prevScore + rankRewards[i];
+                    playerData.Score = updatedScore;
+                    StageDataManager.Instance.PlayerDataByIndex[playerIndex] = playerData; // Updated PlayerData back to dictionary
+                }
+            }
+        }
+    }
+
+    private void EndLogic()
+    {
         UpdatePlayerRanking(); 
         StageDataManager.Instance.StagePlayerRankings.Clear();
 
         // RPC를 호출하여 모든 클라이언트에게 StageDataManager를 업데이트하도록 요청
         photonView.RPC
-            ("UpdateStageDataOnAllClients", RpcTarget.All, StageDataManager.Instance.PlayerScoresByIndex, StageDataManager.Instance.CachedPlayerIndicesForResults, StageDataManager.Instance.StagePlayerRankings);
+            ("UpdateStageDataOnAllClients", RpcTarget.All, StageDataManager.Instance.PlayerDataByIndex, StageDataManager.Instance.CachedPlayerIndicesForResults, StageDataManager.Instance.StagePlayerRankings);
     }
 
     private void UpdatePlayerRanking()
     {
         // PlayerData에 저장된 점수를 기준으로 플레이어를 정렬하고 그 순서대로 인덱스를 CachedPlayerIndicesForResults에 저장
-        var sortedPlayers = 
-            StageDataManager.Instance.PlayerScoresByIndex.OrderByDescending(pair => pair.Value.Score).ToList();
+        List<KeyValuePair<int, PlayerData>> sortedPlayers = 
+            StageDataManager.Instance.PlayerDataByIndex.OrderByDescending(pair => pair.Value.Score).ToList();
 
         StageDataManager.Instance.CachedPlayerIndicesForResults.Clear();
 
@@ -116,8 +173,10 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
     [PunRPC]
     public void UpdateStageDataOnAllClients(Dictionary<int, PlayerData> playerScoresByIndex, List<int> playerRanking, List<int> stagePlayerRankings)
     {
-        StageDataManager.Instance.PlayerScoresByIndex = playerScoresByIndex;
+        StageDataManager.Instance.PlayerDataByIndex = playerScoresByIndex;
         StageDataManager.Instance.CachedPlayerIndicesForResults = playerRanking;
         StageDataManager.Instance.StagePlayerRankings = stagePlayerRankings;
     }
+
+    #endregion
 }

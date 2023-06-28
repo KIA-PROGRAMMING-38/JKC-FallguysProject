@@ -17,7 +17,7 @@ public class StageDataManager : SingletonMonoBehaviour<StageDataManager>
     public bool[] MapPickupFlags = new bool[DataManager.MaxPlayableMaps];
     public int MapPickupIndex;
     // 플레이어의 점수들이 계속해서 저장되는 딕셔너리입니다.
-    public Dictionary<int, PlayerData> PlayerScoresByIndex = new Dictionary<int, PlayerData>();
+    public Dictionary<int, PlayerData> PlayerDataByIndex = new Dictionary<int, PlayerData>();
     // 결과 창에서 사용될 플레이어의 인덱스를 캐싱해놓는 리스트입니다.
     public List<int> CachedPlayerIndicesForResults = new List<int>();
     // 스테이지에서 사용될 순위를 기록하는 리스트입니다.
@@ -27,9 +27,9 @@ public class StageDataManager : SingletonMonoBehaviour<StageDataManager>
     public enum PlayerState
     {
         Default,
-        Success,
+        Victory,
         Defeat,
-        End
+        GameTerminated
     }
 
     private ReactiveProperty<PlayerState> _currentState = new ReactiveProperty<PlayerState>();

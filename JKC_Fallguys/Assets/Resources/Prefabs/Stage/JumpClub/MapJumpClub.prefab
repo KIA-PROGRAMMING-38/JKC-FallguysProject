@@ -899,7 +899,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5274685099397049990}
   - component: {fileID: 5274685099397049991}
-  - component: {fileID: 5274685099397049984}
+  - component: {fileID: 2049648872}
   m_Layer: 0
   m_Name: MapJumpClub
   m_TagString: Untagged
@@ -946,10 +946,10 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents: []
-  sceneViewId: 0
+  sceneViewId: 3
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &5274685099397049984
+--- !u!114 &2049648872
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -958,7 +958,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2709053413863995355}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b4cf1067aca0413592d4829f8d0a7c7, type: 3}
+  m_Script: {fileID: 11500000, guid: a6d3d0145fdee496f9a198f01542515b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2727931175221209797
