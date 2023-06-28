@@ -18,27 +18,14 @@ public class ReturnButtonPresenter : Presenter
     {
         _returnButtonView.UIPopUpButton
             .OnClickAsObservable()
-            .Subscribe(_ => Model.MatchingSceneModel.ActiveEnterLobbyPanel())
+            .Subscribe(_ => Model.MatchingSceneModel.SetActiveEnterLobbyPanel(true))
             .AddTo(_compositeDisposable);
     }
 
     protected override void OnUpdatedModel()
     {
-        Model.MatchingSceneModel.IsEnterLobbyFromMatchingScene
-            .Where(isActive => isActive)
-            .CombineLatest
-                (Model.MatchingSceneModel.IsActionPossible, (enterLobby, actionPossible) => enterLobby && actionPossible)
-            .Where(canEnterLobby => canEnterLobby)
-            .Subscribe(_ => OnActiveEnterLobbyPanel())
-            .AddTo(_compositeDisposable);
     }
 
-
-    private void OnActiveEnterLobbyPanel()
-    {
-        _returnButtonView.EnterLobbyFromMatchingViewController.gameObject.SetActive(true);
-    }
-    
     public override void OnRelease()
     {
         _returnButtonView = default;

@@ -325,12 +325,12 @@ GameObject:
   - component: {fileID: 7758790328902907266}
   - component: {fileID: 7758790328902907267}
   m_Layer: 0
-  m_Name: BackgroundPanelImage
+  m_Name: Default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7758790328902907276
 RectTransform:
   m_ObjectHideFlags: 0
@@ -658,7 +658,7 @@ GameObject:
   - component: {fileID: 7758790329328186808}
   - component: {fileID: 4780920579334889054}
   m_Layer: 0
-  m_Name: EnterLobbyFromMatchingView
+  m_Name: ExitMatchingPanelView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -854,7 +854,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7758790329381874188
 RectTransform:
   m_ObjectHideFlags: 0
@@ -970,12 +970,12 @@ GameObject:
   - component: {fileID: 7758790329590131351}
   - component: {fileID: 6991449612125822953}
   m_Layer: 0
-  m_Name: EnterLobbyFromMatchingViewController
+  m_Name: ExitMatchingPanelViewController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7758790329590131351
 Transform:
   m_ObjectHideFlags: 0
@@ -1266,7 +1266,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7758790329880633972
 RectTransform:
   m_ObjectHideFlags: 0
