@@ -792,6 +792,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: RoundEndViewController
       objectReference: {fileID: 0}
+    - target: {fileID: 6835410661281430871, guid: ab8ab438240634b65a7cbc38acd7bed4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab8ab438240634b65a7cbc38acd7bed4, type: 3}
 --- !u!1001 &7491974797359600031
@@ -860,6 +865,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ResultInStageViewController
+      objectReference: {fileID: 0}
+    - target: {fileID: 7491974796541456367, guid: a9bfb5654196242b785c30a01a71b5f9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9bfb5654196242b785c30a01a71b5f9, type: 3}
