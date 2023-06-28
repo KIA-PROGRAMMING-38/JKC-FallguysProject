@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Model;
 using UniRx;
 using UnityEngine;
 
@@ -17,7 +18,9 @@ public class CustomizationPresenter : Presenter
 
     protected override void OnOccuredUserEvent()
     {
-        
+        _customizationView.Costume
+            .OnClickAsObservable()
+            .Subscribe(_ => Model.LobbySceneModel.SetLobbyState(LobbySceneModel.LobbyState.Costume));
     }
 
     protected override void OnUpdatedModel()
