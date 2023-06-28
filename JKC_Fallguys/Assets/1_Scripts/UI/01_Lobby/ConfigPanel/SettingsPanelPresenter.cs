@@ -30,12 +30,12 @@ public class SettingsPanelPresenter : Presenter
     {
         LobbySceneModel.CurrentLobbyState
             .Where(state => state == LobbySceneModel.LobbyState.Settings)
-            .Subscribe(_ => SetActiveConfigPanel(true))
+            .Subscribe(_ => SetActiveSettingsPanel(true))
             .AddTo(_compositeDisposable);
         
         LobbySceneModel.CurrentLobbyState
             .Where(state => state != LobbySceneModel.LobbyState.Settings)
-            .Subscribe(_ => SetActiveConfigPanel(false))
+            .Subscribe(_ => SetActiveSettingsPanel(false))
             .AddTo(_compositeDisposable);
         
         // Config Panel이 활성화 됐을때 선택될 버튼을 정합니다.
@@ -45,7 +45,7 @@ public class SettingsPanelPresenter : Presenter
             .AddTo(_compositeDisposable);
     }
 
-    private void SetActiveConfigPanel(bool status)
+    private void SetActiveSettingsPanel(bool status)
     {
         _settingsPanelView.BackgroundImage.gameObject.SetActive(status);
         _settingsPanelView.ConfigsButton.gameObject.SetActive(status);
