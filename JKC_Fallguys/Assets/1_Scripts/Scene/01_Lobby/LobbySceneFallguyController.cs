@@ -1,3 +1,4 @@
+using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using UniRx;
@@ -10,8 +11,6 @@ public class LobbySceneFallguyController : MonoBehaviour
     private Vector3 _startPosition;
     private Vector3 _centerPosition = new Vector3(-0.1f, -2.8f, 0f);
     private Vector3 _customizationPosition = new Vector3(-5.6f, -2.8f, 0f);
-
-    private CompositeDisposable _compositeDisposable = new CompositeDisposable();
 
     [SerializeField] 
     private float _homeStateMoveDuration;
@@ -33,12 +32,12 @@ public class LobbySceneFallguyController : MonoBehaviour
         Model.LobbySceneModel.CurrentLobbyState
             .Where(state => state == Model.LobbySceneModel.LobbyState.Customization)
             .Subscribe(_ => CustomizationState())
-            .AddTo(_compositeDisposable);
+            .AddTo(this);
         
         Model.LobbySceneModel.CurrentLobbyState
             .Where(state => state == Model.LobbySceneModel.LobbyState.Home)
             .Subscribe(_ => HomeState())
-            .AddTo(_compositeDisposable);
+            .AddTo(this);
 
         DataManager.PlayerTextureIndex
             .Subscribe(_ => _fallGuyBody.material.mainTexture = PlayerTextureRegistry.PlayerTextures[DataManager.PlayerTextureIndex.Value])
@@ -57,12 +56,6 @@ public class LobbySceneFallguyController : MonoBehaviour
         _cancellationTokenSource = new CancellationTokenSource();
         MoveToPosition
             (transform.position, _centerPosition, _customizationStateMoveDurattion,_cancellationTokenSource.Token).Forget();
-    }
-
-    private void OnEnable()
-    {
-        MoveToPosition
-            (transform.position, _centerPosition, _homeStateMoveDuration,_cancellationTokenSource.Token).Forget();
     }
     
     private async UniTaskVoid MoveToPosition(Vector3 startPos, Vector3 endPos, float duration, CancellationToken cancellationToken)

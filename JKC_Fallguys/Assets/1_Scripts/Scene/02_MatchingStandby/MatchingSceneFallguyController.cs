@@ -10,12 +10,16 @@ public class MatchingSceneFallguyController : MonoBehaviour
 
     [SerializeField] 
     private float _fallEffectDuration;
+    [SerializeField] 
+    private SkinnedMeshRenderer _bodyRenderer;
     
     private void Awake()
     {
         _cancellationTokenSource = new CancellationTokenSource();
         _startPosition = transform.position;
         MoveToStartPosition(_cancellationTokenSource.Token).Forget();
+
+        _bodyRenderer.material.mainTexture = PlayerTextureRegistry.PlayerTextures[DataManager.PlayerTextureIndex.Value];
     }
 
     private async UniTaskVoid MoveToStartPosition(CancellationToken cancellationToken)
