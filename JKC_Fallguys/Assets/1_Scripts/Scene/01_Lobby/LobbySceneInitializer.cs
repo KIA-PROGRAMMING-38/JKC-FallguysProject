@@ -12,20 +12,20 @@ public class LobbySceneInitializer : SceneInitializer
     protected override void OnGetResources()
     {
         Instantiate(DataManager.GetGameObjectData
-            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Lobby, "LobbyBackgroundImage"));
+            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Lobby, PathLiteral.UI, "LobbyBackgroundImage"));
         Instantiate(DataManager.GetGameObjectData
-            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Lobby, "PlayerNamePlateViewController"));
+            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Lobby, PathLiteral.UI, "PlayerNamePlateViewController"));
         Instantiate(DataManager.GetGameObjectData
-            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Lobby, "TopButtonListViewController"));
+            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Lobby, PathLiteral.UI, "TopButtonListViewController"));
         Instantiate(DataManager.GetGameObjectData
-            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Lobby, "EnterConfigViewController"));
+            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Lobby, PathLiteral.UI, "EnterConfigViewController"));
         Instantiate(DataManager.GetGameObjectData
-            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Lobby, "EnterMatchingStandbyViewController"));
+            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Lobby, PathLiteral.UI, "EnterMatchingStandbyViewController"));
         Instantiate(DataManager.GetGameObjectData
             (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Lobby, "LobbySceneFallGuy"));
         Instantiate(DataManager.GetGameObjectData
-            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Lobby, "Customization", "CustomizationViewController"));
+            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Lobby, PathLiteral.UI, "Customization", "CustomizationViewController"));
         Instantiate(DataManager.GetGameObjectData
-            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Lobby, "Customization", "CostumeViewController"));
+            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Lobby, PathLiteral.UI, "Customization", "CostumeViewController"));
     }
 }

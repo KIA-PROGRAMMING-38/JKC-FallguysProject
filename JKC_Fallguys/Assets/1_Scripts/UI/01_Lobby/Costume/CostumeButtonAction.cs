@@ -15,6 +15,7 @@ public class CostumeButtonAction : MonoBehaviour, ISelectHandler, IPointerClickH
     [SerializeField] private CostumeData _costumeData;
     private void Awake()
     {
+        Debug.Log($"{_costumeData.CostumeName}버튼 Awake");
         _highlight = transform.parent.Find("Highlight").GetComponent<Image>();
         _button = GetComponent<Button>();
         Debug.Assert(_highlight != null);
@@ -22,6 +23,7 @@ public class CostumeButtonAction : MonoBehaviour, ISelectHandler, IPointerClickH
 
     private void OnEnable()
     {
+        Debug.Log($"{_costumeData.CostumeName}버튼 OnEnable");
         if (DataManager.PlayerTextureIndex.Value == _costumeData.TextureIndex)
         {
             EventSystem.current.firstSelectedGameObject = gameObject;
@@ -41,13 +43,11 @@ public class CostumeButtonAction : MonoBehaviour, ISelectHandler, IPointerClickH
     public void OnPointerClick(PointerEventData eventData)
     {
         CommonClickHandler();
-        Debug.Log("PointerClick");
     }
 
     public void OnSubmit(BaseEventData eventData)
     {
         CommonClickHandler();
-        Debug.Log("SubmitClick");
     }
 
     /// <summary>
