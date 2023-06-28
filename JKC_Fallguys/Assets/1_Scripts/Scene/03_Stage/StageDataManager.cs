@@ -24,6 +24,7 @@ public class StageDataManager : SingletonMonoBehaviour<StageDataManager>
     // 스테이지가 넘어갈 때, 초기화됩니다.
     public List<int> StagePlayerRankings;
     
+    // Round Result Panel의 성공, 실패, 종료 여부를 설정하기 위한 변수입니다.
     public enum PlayerState
     {
         Default,
@@ -34,6 +35,10 @@ public class StageDataManager : SingletonMonoBehaviour<StageDataManager>
 
     private ReactiveProperty<PlayerState> _currentState = new ReactiveProperty<PlayerState>();
     public IReactiveProperty<PlayerState> CurrentState => _currentState;
+    
+    // 라운드가 끝났는지 확인하기 위한 변수입니다.
+    private ReactiveProperty<bool> _isRoundCompleted = new ReactiveProperty<bool>();
+    public IReactiveProperty<bool> IsRoundCompleted => _isRoundCompleted;
     
     public void AddPlayerToRanking(int playerIndex)
     {
