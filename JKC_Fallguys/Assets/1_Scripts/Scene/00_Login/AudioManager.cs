@@ -25,9 +25,4 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
 
         gameObject.AddComponent<AudioReverbZone>().reverbPreset = AudioReverbPreset.Alley;
     }
-
-    public void DestroySelf()
-    {
-        Destroy(gameObject);
-    }
 }
