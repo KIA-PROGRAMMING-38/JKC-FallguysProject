@@ -8,10 +8,15 @@ public class FruitChuteGoalCollider : MonoBehaviourPun
     {
         if (col.CompareTag(TagLiteral.Player))
         {
-            col.gameObject.transform.root.gameObject.SetActive(false);
-            StageDataManager.Instance.CurrentState.Value = StageDataManager.PlayerState.Victory;
+            PhotonView photonView = col.gameObject.transform.root.GetComponent<PhotonView>();
+
+            if (photonView.IsMine)
+            {
+                col.gameObject.transform.root.gameObject.SetActive(false);
+                StageDataManager.Instance.CurrentState.Value = StageDataManager.PlayerState.Victory;
             
-            photonView.RPC("RpcAddPlayerToRankingOnGoal", RpcTarget.MasterClient, PhotonNetwork.LocalPlayer.ActorNumber);
+                photonView.RPC("RpcAddPlayerToRankingOnGoal", RpcTarget.MasterClient, PhotonNetwork.LocalPlayer.ActorNumber);    
+            }
         }
     }
     

@@ -16,12 +16,16 @@ public class StageDataManager : SingletonMonoBehaviour<StageDataManager>
     // 선택할 맵 데이터를 판별하는 객체입니다.
     public bool[] MapPickupFlags = new bool[DataManager.MaxPlayableMaps];
     public int MapPickupIndex;
+    
     // 플레이어의 점수들이 계속해서 저장되는 딕셔너리입니다.
     public Dictionary<int, PlayerData> PlayerDataByIndex = new Dictionary<int, PlayerData>();
     // 결과 창에서 사용될 플레이어의 인덱스를 캐싱해놓는 리스트입니다.
     public List<int> CachedPlayerIndicesForResults = new List<int>();
+    
+    // 두 리스트는 스테이지가 넘어갈 때, 초기화됩니다.
+    // 클리어에 실패한 사용자를 기록하는 리스트입니다
+    public List<int> FailedClearStagePlayers = new List<int>();
     // 스테이지에서 사용될 순위를 기록하는 리스트입니다.
-    // 스테이지가 넘어갈 때, 초기화됩니다.
     public List<int> StagePlayerRankings = new List<int>();
     // Round Result Panel의 성공, 실패, 종료 여부를 설정하기 위한 변수입니다.
     public enum PlayerState
@@ -42,11 +46,6 @@ public class StageDataManager : SingletonMonoBehaviour<StageDataManager>
     public void AddPlayerToRanking(int playerIndex)
     {
         StagePlayerRankings.Add(playerIndex);
-
-        foreach (int elem in StagePlayerRankings)
-        {
-            Debug.Log($"In PlayerIndexList, CurrentPlayer : {elem}");
-        }
     }
 
     /// <summary>
@@ -58,6 +57,11 @@ public class StageDataManager : SingletonMonoBehaviour<StageDataManager>
         _isGameActive.Value = status;
     }
 
+    public void SetRoundState(bool status)
+    {
+        _isRoundCompleted.Value = true;
+    }
+
     /// <summary>
     /// StateDataManager는 Singleton으로 구성되어 있습니다.
     /// 이 클래스는, Loading이 시작될 때 생성되고 Lobby로 돌아갈 경우 파괴되어야 합니다.
@@ -66,5 +70,10 @@ public class StageDataManager : SingletonMonoBehaviour<StageDataManager>
     public void DestorySelf()
     {
         Destroy(gameObject);
+    }
+    
+    public void AddPlayerToFailedClearStagePlayers(int actorNumber)
+    {
+        FailedClearStagePlayers.Add(actorNumber);
     }
 }
