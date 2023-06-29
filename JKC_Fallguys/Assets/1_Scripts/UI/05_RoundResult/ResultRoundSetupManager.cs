@@ -1,4 +1,3 @@
-using System;
 using LiteralRepository;
 using Model;
 using UnityEngine;
@@ -38,6 +37,9 @@ public class ResultRoundSetupManager : MonoBehaviour
     {
         for (int fallGuyIndex = 0; fallGuyIndex < _fallGuy.Length; ++fallGuyIndex)
         {
+            if (fallGuyIndex >= RoundResultSceneModel.FallguyRankings.Count)
+                break;
+            
             _fallGuy[fallGuyIndex] = DataManager.GetGameObjectData(
                 DataManager.SetDataPath(PathLiteral.Prefabs, PathLiteral.Scene, "05_RoundResult", "RoundResultFallGuy"));
 

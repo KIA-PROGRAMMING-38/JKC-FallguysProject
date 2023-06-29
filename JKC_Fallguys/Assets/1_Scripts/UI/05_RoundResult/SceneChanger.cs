@@ -1,11 +1,13 @@
 using System;
 using Cysharp.Threading.Tasks;
 using LiteralRepository;
+using Photon.Pun;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class SceneChanger : MonoBehaviour
 {
+    private const int LOAD_SCENE_DELAY = 10;
+    
     private void Start()
     {
         LoadGameLoadingScene().Forget(); 
@@ -13,8 +15,8 @@ public class SceneChanger : MonoBehaviour
 
     private async UniTaskVoid LoadGameLoadingScene()
     {
-        await UniTask.Delay(TimeSpan.FromSeconds(10));
+        await UniTask.Delay(TimeSpan.FromSeconds(LOAD_SCENE_DELAY));
 
-        SceneManager.LoadScene(PathLiteral.GameLoading);
+        PhotonNetwork.LoadLevel(SceneIndex.GameLoading);
     } 
 }

@@ -12,9 +12,6 @@ public class RoundResultView : View
     public Text ThirdRankingText { get; private set; }
 
     public Text[] PlayerIDs { get; private set; }
-    // public Text FirstPlayerNameText { get; private set; }
-    // public Text SecondPlayerNameText { get; private set; }
-    // public Text ThirdPlayerNameText { get; private set; }
     
     public RectTransform RoundResultCanvasRect { get; private set; }
 

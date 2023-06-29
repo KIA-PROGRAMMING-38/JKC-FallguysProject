@@ -11,6 +11,7 @@ public class RoundResultPresenter : Presenter
     public override void OnInitialize(View view)
     {
         _roundResultView = view as RoundResultView;
+        
         InitializeRx();
     }
 
@@ -32,10 +33,29 @@ public class RoundResultPresenter : Presenter
             .AddTo(_compositeDisposable);
     }
 
+    private void SetActiveUI()
+    {
+        if (RoundResultSceneModel.FallguyRankings.Count == 1)
+        {
+            _roundResultView.SecondScore.gameObject.SetActive(false);
+            _roundResultView.SecondRankingText.gameObject.SetActive(false);
+            _roundResultView.ThirdScore.gameObject.SetActive(false);
+            _roundResultView.ThirdRankingText.gameObject.SetActive(false);
+        }
+        else if (RoundResultSceneModel.FallguyRankings.Count == 2)
+        {
+            _roundResultView.ThirdScore.gameObject.SetActive(false);
+            _roundResultView.ThirdRankingText.gameObject.SetActive(false);
+        }
+    }
+
     private void SetPlayerId()
     {
         for (int playerIndex = 0; playerIndex < RoundResultSceneModel.FallguyRankings.Count; ++playerIndex)
         {
+            if (playerIndex >= RoundResultSceneModel.FallguyRankings.Count)
+                break;
+            
             _roundResultView.PlayerIDs[playerIndex].text =
                 RoundResultSceneModel.FallguyRankings[playerIndex].PlayerName;
         }
@@ -51,6 +71,8 @@ public class RoundResultPresenter : Presenter
 
     protected override void OnUpdatedModel()
     {
+        SetActiveUI();
+        
         RoundResultSceneModel.FirstScore.SubscribeToText(_roundResultView.FirstScore).AddTo(_compositeDisposable);
         RoundResultSceneModel.SecondScore.SubscribeToText(_roundResultView.SecondScore).AddTo(_compositeDisposable);
         RoundResultSceneModel.ThirdScore.SubscribeToText(_roundResultView.ThirdScore).AddTo(_compositeDisposable);

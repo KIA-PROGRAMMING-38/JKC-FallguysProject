@@ -26,8 +26,19 @@ public class PhotonMatchingSceneEventManager : MonoBehaviourPunCallbacks
     {
         OnInstantiatePhotonRoomManager();
         OnInitializeJoinRoom();
+        SetMyTextureProperty();
 
         Debug.Log("Joined to a room successfully");
+    }
+
+    private void SetMyTextureProperty()
+    {
+        Player localPlayer = PhotonNetwork.LocalPlayer;
+        ExitGames.Client.Photon.Hashtable playerProperties = new ExitGames.Client.Photon.Hashtable();
+
+        playerProperties["PlayerTextureIndex"] = DataManager.PlayerTextureIndex.Value;
+
+        localPlayer.SetCustomProperties(playerProperties);
     }
 
     private void OnInitializeJoinRoom()
