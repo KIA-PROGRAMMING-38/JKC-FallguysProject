@@ -21,7 +21,8 @@ public class ResultInStagePresenter : Presenter
     protected override void OnUpdatedModel()
     {
         StageDataManager.Instance.CurrentState
-            // .Skip(1) // 초기 Default로 설정된것은 Skip.
+            .Skip(1) // 초기 Default로 설정된것은 Skip.
+            .DistinctUntilChanged()
             .Subscribe(currentState =>
             {
                 switch (currentState)
