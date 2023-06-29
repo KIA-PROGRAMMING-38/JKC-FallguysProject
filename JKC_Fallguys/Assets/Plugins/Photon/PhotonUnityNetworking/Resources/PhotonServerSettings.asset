@@ -71,6 +71,7 @@ MonoBehaviour:
   - InitiateFiring
   - RpcAxeRotation
   - RpcAddPlayerToFailedList
+  - RpcEndGame
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

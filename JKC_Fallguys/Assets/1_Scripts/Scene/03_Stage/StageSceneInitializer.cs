@@ -3,6 +3,14 @@ using Photon.Pun;
 
 public class StageSceneInitializer : SceneInitializer
 {
+    protected override void InitializeModel()
+    {
+        StageDataManager.Instance.SetGameStatus(false);
+        StageDataManager.Instance.SetRoundState(false);
+        StageDataManager.Instance.SetPlayerState(StageDataManager.PlayerState.Default);
+        StageDataManager.Instance.SetPlayerAlive(true);
+    }
+
     protected override void OnGetResources()
     {
         Instantiate

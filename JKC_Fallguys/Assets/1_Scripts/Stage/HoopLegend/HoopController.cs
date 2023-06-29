@@ -1,8 +1,6 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
-using Cysharp.Threading.Tasks;
 using LiteralRepository;
 using Photon.Pun;
 using UniRx;
@@ -20,16 +18,8 @@ public class HoopController : MonoBehaviourPun
         Debug.Assert(_hoopLegendController != null);
         _cancellationToken = new CancellationTokenSource();
         
-        Test().Forget();
-        
-        InitializeRx();
-    }
-    
-    private async UniTask Test()
-    {
-        await UniTask.Delay(TimeSpan.FromSeconds(4f));
-        
         InitializeObject();
+        InitializeRx();
     }
 
     private void InitializeObject()

@@ -65,7 +65,7 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
             }
         }
 
-        return index == 2;
+        return index == 3;
     }
 
 
@@ -148,8 +148,8 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
     {
         UpdatePlayerRanking();
         StageDataManager.Instance.StagePlayerRankings.Clear();
+        StageDataManager.Instance.FailedClearStagePlayers.Clear();
 
-        // Serialize PlayerDataByIndex into JSON
         string playerScoresByIndexJson = JsonConvert.SerializeObject(StageDataManager.Instance.PlayerDataByIndex);
 
         photonView.RPC("UpdateStageDataOnAllClients", RpcTarget.All, playerScoresByIndexJson, StageDataManager.Instance.CachedPlayerIndicesForResults.ToArray(), StageDataManager.Instance.StagePlayerRankings.ToArray());
@@ -173,7 +173,6 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
     [PunRPC]
     public void UpdateStageDataOnAllClients(string playerScoresByIndexJson, int[] playerRanking, int[] stagePlayerRankings)
     {
-        // Deserialize PlayerDataByIndex from JSON
         StageDataManager.Instance.PlayerDataByIndex = JsonConvert.DeserializeObject<Dictionary<int, PlayerData>>(playerScoresByIndexJson);
         StageDataManager.Instance.CachedPlayerIndicesForResults = playerRanking.ToList();
         StageDataManager.Instance.StagePlayerRankings = stagePlayerRankings.ToList();

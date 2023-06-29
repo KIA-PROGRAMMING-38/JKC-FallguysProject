@@ -1,3 +1,6 @@
+using System;
+using System.Threading;
+using Cysharp.Threading.Tasks;
 using Photon.Pun;
 using UniRx;
 using UnityEngine;
@@ -5,10 +8,13 @@ using UnityEngine;
 public class JumpClubController : StageController
 {
     private Camera _observeCamera;
+    private CancellationTokenSource _cancellationTokenSource;
 
     protected override void Awake()
     {
         base.Awake();
+
+        _cancellationTokenSource = new CancellationTokenSource();
         
         _observeCamera = transform.Find("ObserveCamera").GetComponent<Camera>();
         Debug.Assert(_observeCamera != null);
@@ -29,18 +35,24 @@ public class JumpClubController : StageController
 
         StageDataManager.Instance.IsGameActive
             .Where(state => state)
-            .Subscribe(_ => --remainingGameTime.Value)
-            .AddTo(this);
-
-        remainingGameTime
-            .ObserveEveryValueChanged(_ => remainingGameTime)
             .Subscribe(_ => GameStartBroadCast())
             .AddTo(this);
 
         remainingGameTime
             .Where(count => remainingGameTime.Value == 0)
-            .Subscribe(_ => RpcEndGame())
+            .Subscribe(_ => EndGame())
             .AddTo(this);
+    }
+
+    private async UniTaskVoid CountDown(CancellationToken cancelToken)
+    {
+        while (true)
+        {
+            await UniTask.Delay(TimeSpan.FromSeconds(1), cancellationToken: cancelToken);
+            
+            --remainingGameTime.Value;
+            Debug.Log(remainingGameTime.Value);
+        }
     }
 
     private void GameStartBroadCast()
@@ -54,10 +66,10 @@ public class JumpClubController : StageController
     [PunRPC]
     public void RpcCountDown()
     {
-        --remainingGameTime.Value;
+        CountDown(_cancellationTokenSource.Token).Forget();
     }
 
-    private void RpcEndGame()
+    private void EndGame()
     {
         if (PhotonNetwork.IsMasterClient)
         {
@@ -66,7 +78,7 @@ public class JumpClubController : StageController
     }
 
     [PunRPC]
-    public void EndGame()
+    public void RpcEndGame()
     {
         StageDataManager.Instance.IsGameActive.Value = false;
         
@@ -86,5 +98,10 @@ public class JumpClubController : StageController
     public void RpcDeclarationOfVictory(int actorNumber)
     {
         StageDataManager.Instance.StagePlayerRankings.Add(actorNumber);
+    }
+
+    private void OnDestroy()
+    {
+        _cancellationTokenSource.Cancel();
     }
 }

@@ -8,8 +8,6 @@ public class FruitChuteGoalCollider : MonoBehaviourPun
     {
         if (col.CompareTag(TagLiteral.Player))
         {
-            PhotonView photonView = col.gameObject.transform.root.GetComponent<PhotonView>();
-
             if (photonView.IsMine)
             {
                 col.gameObject.transform.root.gameObject.SetActive(false);

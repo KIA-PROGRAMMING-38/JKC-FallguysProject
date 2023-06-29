@@ -8,7 +8,6 @@ namespace LiteralRepository
         public static readonly string Prefabs = "Prefabs";
         public static readonly string Manager = "Manager";
         public static readonly string AnimatorController = "AnimatorController";
-        public static readonly string GameResult = "GameResult";
         public static readonly string Textures = "Textures";
         public static readonly string PlayerTexture = "PlayerTexture";
 
@@ -17,15 +16,16 @@ namespace LiteralRepository
         public static readonly string MatchingStandby = "02_MatchingStandby";
         public static readonly string Stage = "03_Stage";
         public static readonly string GameLoading = "04_GameLoading";
+        public static readonly string GameResult = "06_GameResult";
 
         public static readonly string HoopLegend = "HoopLegend";
-        public static readonly string JumpClub = "JumpClub";
         
         public static readonly string LoseTextImage = "LoseText";
         public static readonly string VictoryTextImage = "VictoryText";
         public static readonly string LoseAnimatorController = "LosePlayer";
         public static readonly string VictoryAnimatorController = "VictoryPlayer";
-        
+        public static readonly string GameResultAnimator = "GameResultAnimator";
+        public static readonly string ResultRoundAnimator = "ResultRoundAnimator";
         public static readonly string Countdown = "Countdown";
     }
 }

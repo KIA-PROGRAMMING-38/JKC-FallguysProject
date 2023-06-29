@@ -13,8 +13,7 @@ public class MapSelectionManager : MonoBehaviourPun
 
     private void SelectRandomMap()
     {
-        // int randomMapIndex = UnityEngine.Random.Range(0, DataManager.MaxPlayableMaps);
-        int randomMapIndex = 2;
+        int randomMapIndex = UnityEngine.Random.Range(0, DataManager.MaxPlayableMaps);
 
         if (!StageDataManager.Instance.MapPickupFlags[randomMapIndex])
         {

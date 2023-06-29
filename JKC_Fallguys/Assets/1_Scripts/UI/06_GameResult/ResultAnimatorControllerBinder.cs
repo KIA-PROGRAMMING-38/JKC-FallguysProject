@@ -11,9 +11,6 @@ public class ResultAnimatorControllerBinder : MonoBehaviour
     private void Awake()
     {
         _animator = GetComponent<Animator>();
-        
-        _victoryController = DataManager.GetRuntimeAnimatorController(PathLiteral.AnimatorController, PathLiteral.VictoryAnimatorController);
-        _loseController = DataManager.GetRuntimeAnimatorController(PathLiteral.AnimatorController, PathLiteral.LoseAnimatorController);
     }
 
     /// <summary>
@@ -23,12 +20,12 @@ public class ResultAnimatorControllerBinder : MonoBehaviour
     {
         if (ResultSceneModel.IsVictorious.Value)
         {
-            _animator.runtimeAnimatorController = _victoryController;
+            _animator.runtimeAnimatorController = DataManager.GetRuntimeAnimatorController(PathLiteral.AnimatorController, PathLiteral.GameResultAnimator, PathLiteral.VictoryAnimatorController);
         }
 
         else
         {
-            _animator.runtimeAnimatorController = _loseController;
+            _animator.runtimeAnimatorController = DataManager.GetRuntimeAnimatorController(PathLiteral.AnimatorController, PathLiteral.GameResultAnimator, PathLiteral.LoseAnimatorController);
         }
     }
 }

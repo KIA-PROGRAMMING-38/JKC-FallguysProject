@@ -68,7 +68,17 @@ public class StageDataManager : SingletonMonoBehaviour<StageDataManager>
     /// <param name="status">status의 값에 따라 라운드를 활성화하거나 비활성화합니다.</param>
     public void SetRoundState(bool status)
     {
-        _isRoundCompleted.Value = true;
+        _isRoundCompleted.Value = status;
+    }
+
+    public void SetPlayerState(PlayerState state)
+    {
+        _currentState.Value = state;
+    }
+
+    public void SetPlayerAlive(bool status)
+    {
+        _isPlayerAlive.Value = status;
     }
 
     /// <summary>
