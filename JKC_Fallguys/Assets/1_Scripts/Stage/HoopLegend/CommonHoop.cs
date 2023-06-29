@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -16,6 +17,7 @@ public class CommonHoop : MonoBehaviour
     [SerializeField] private float _heightOffset;
     [SerializeField] private float _moveSpeed;
     private float _currentHeight;
+    private CancellationTokenSource _cancelToken;
 
     private void Awake()
     {
@@ -32,9 +34,12 @@ public class CommonHoop : MonoBehaviour
         _currentHeight = _originPosition.y;
     }
 
-    public void Initialize(HoopController hoopController)
+    public void Initialize(HoopController hoopController, CancellationTokenSource cancelToken)
     {
         _hoopController = hoopController;
+        transform.SetParent(_hoopController.transform);
+
+        _cancelToken = cancelToken;
     }
 
     private void Start()
@@ -49,7 +54,7 @@ public class CommonHoop : MonoBehaviour
         {
             _playerEntered = true;
             ParticlePlay().Forget();
-            PropellerAnimation().Forget();
+            PropellerAnimation(_cancelToken).Forget();
             
             _hoopController.PlayerPassesHoop(1);
         }
@@ -71,7 +76,7 @@ public class CommonHoop : MonoBehaviour
         _playerEntered = false;
     }
 
-    private async UniTaskVoid PropellerAnimation()
+    private async UniTaskVoid PropellerAnimation(CancellationTokenSource cancelToken)
     {
         _isMoving = true;
         float targetHeight = _originPosition.y + _heightOffset;
@@ -83,7 +88,7 @@ public class CommonHoop : MonoBehaviour
             _currentHeight = Mathf.Lerp(_originPosition.y, targetHeight, elapsedTime / _duration);
             transform.position = new Vector3(_originPosition.x, _currentHeight, _originPosition.z);
 
-            await UniTask.Yield();
+            await UniTask.Yield(PlayerLoopTiming.Update, cancelToken.Token);
         }
 
         await UniTask.Delay(TimeSpan.FromSeconds(_duration));
@@ -95,7 +100,7 @@ public class CommonHoop : MonoBehaviour
             _currentHeight = Mathf.Lerp(targetHeight, _originPosition.y, elapsedTime / _duration);
             transform.position = new Vector3(_originPosition.x, _currentHeight, _originPosition.z);
             
-            await UniTask.Yield();
+            await UniTask.Yield(PlayerLoopTiming.Update, cancelToken.Token);
         }
 
         _isMoving = false;

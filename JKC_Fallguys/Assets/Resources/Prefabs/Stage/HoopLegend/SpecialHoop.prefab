@@ -4883,9 +4883,11 @@ GameObject:
   - component: {fileID: 8301062110800983362}
   - component: {fileID: 4910557303893438042}
   - component: {fileID: 4187426158710262102}
+  - component: {fileID: 1142444196239351064}
+  - component: {fileID: -386831045037437429}
   m_Layer: 0
   m_Name: SpecialHoop
-  m_TagString: Hoop
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4990,6 +4992,45 @@ MonoBehaviour:
   _duration: 7
   _heightOffset: 30
   _moveSpeed: 1
+--- !u!114 &1142444196239351064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 852866592317982501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
+--- !u!114 &-386831045037437429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 852866592317982501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 1142444196239351064}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &2454277622015711239
 GameObject:
   m_ObjectHideFlags: 0
@@ -5061,7 +5102,7 @@ GameObject:
   - component: {fileID: 7556708541649922866}
   m_Layer: 0
   m_Name: HoopPropeller_Axes
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5145,7 +5186,7 @@ GameObject:
   - component: {fileID: 7746301197557888190}
   m_Layer: 0
   m_Name: HoopPropeller_Joint
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10113,7 +10154,7 @@ GameObject:
   - component: {fileID: 6231309030638696217}
   m_Layer: 0
   m_Name: HoopPropeller_Propeller
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

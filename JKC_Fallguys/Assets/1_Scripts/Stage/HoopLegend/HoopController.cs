@@ -1,5 +1,8 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
+using Cysharp.Threading.Tasks;
 using LiteralRepository;
 using Photon.Pun;
 using UniRx;
@@ -9,14 +12,24 @@ public class HoopController : MonoBehaviourPun
 {
     private Dictionary<int, int> _playerHoopCounts = new Dictionary<int, int>();
     private HoopLegendController _hoopLegendController;
+    private CancellationTokenSource _cancellationToken;
     
     private void Awake()
     {
         _hoopLegendController = GetComponentInParent<HoopLegendController>();
         Debug.Assert(_hoopLegendController != null);
+        _cancellationToken = new CancellationTokenSource();
+        
+        Test().Forget();
+        
+        InitializeRx();
+    }
+    
+    private async UniTask Test()
+    {
+        await UniTask.Delay(TimeSpan.FromSeconds(4f));
         
         InitializeObject();
-        InitializeRx();
     }
 
     private void InitializeObject()
@@ -26,24 +39,20 @@ public class HoopController : MonoBehaviourPun
 
         for (int i = 0; i < commonHoopData.positions.Length; ++i)
         {
-            GameObject prefab = Resources.Load<GameObject>
-                (DataManager.SetDataPath(PathLiteral.Prefabs, "Stage", PathLiteral.HoopLegend, "CommonHoop"));
+            string filePath = DataManager.SetDataPath(PathLiteral.Prefabs, "Stage", PathLiteral.HoopLegend, "CommonHoop");
             
-            CommonHoop commonhoop = Instantiate(prefab, commonHoopData.positions[i], Quaternion.identity).GetComponent<CommonHoop>();
-            Vector3 eulerAngles = new Vector3(commonHoopData.rotations[i].x, commonHoopData.rotations[i].y, commonHoopData.rotations[i].z);
-            commonhoop.transform.rotation = Quaternion.Euler(eulerAngles);
-            commonhoop.Initialize(this);
+            CommonHoop commonHoop = 
+                PhotonNetwork.Instantiate(filePath, commonHoopData.positions[i], Quaternion.Euler(commonHoopData.rotations[i])).GetComponent<CommonHoop>();
+            commonHoop.Initialize(this, _cancellationToken);
         }
         
         for (int i = 0; i < specialHoopData.positions.Length; ++i)
         {
-            GameObject prefab = Resources.Load<GameObject>
-                (DataManager.SetDataPath(PathLiteral.Prefabs, "Stage", PathLiteral.HoopLegend, "SpecialHoop"));
+            string filePath = DataManager.SetDataPath(PathLiteral.Prefabs, "Stage", PathLiteral.HoopLegend, "SpecialHoop");
             
-            SpecialHoop specialHoop = Instantiate(prefab, specialHoopData.positions[i], Quaternion.identity).GetComponent<SpecialHoop>();
-            Vector3 eulerAngles = new Vector3(specialHoopData.rotations[i].x, specialHoopData.rotations[i].y, specialHoopData.rotations[i].z);
-            specialHoop.transform.rotation = Quaternion.Euler(eulerAngles);
-            specialHoop.Initialize(this);
+            SpecialHoop specialHoop = 
+                PhotonNetwork.Instantiate(filePath, specialHoopData.positions[i], Quaternion.Euler(specialHoopData.rotations[i])).GetComponent<SpecialHoop>();
+            specialHoop.Initialize(this, _cancellationToken);
         }
     }
 
@@ -110,5 +119,10 @@ public class HoopController : MonoBehaviourPun
     public void PlayerPassesHoop(int value)
     {
         photonView.RPC("IncreaseCountAndBroadcast", RpcTarget.MasterClient, PhotonNetwork.LocalPlayer.ActorNumber, value);
+    }
+
+    private void OnDestroy()
+    {
+        _cancellationToken.Cancel();
     }
 }
