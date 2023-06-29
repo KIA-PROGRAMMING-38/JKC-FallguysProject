@@ -6510,6 +6510,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d3d9bb81a27443888269562f8d55e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _minFiringDelay: 5
+  _maxFiringDelay: 17
   _rejectionForce: 43
 --- !u!114 &6875068431532996639
 MonoBehaviour:
@@ -6751,6 +6753,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d3d9bb81a27443888269562f8d55e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _minFiringDelay: 5
+  _maxFiringDelay: 17
   _rejectionForce: 43
 --- !u!114 &6875068431608898779
 MonoBehaviour:
@@ -7268,6 +7272,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d3d9bb81a27443888269562f8d55e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _minFiringDelay: 5
+  _maxFiringDelay: 17
   _rejectionForce: 43
 --- !u!114 &6875068431932077215
 MonoBehaviour:
@@ -7926,6 +7932,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d3d9bb81a27443888269562f8d55e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _minFiringDelay: 5
+  _maxFiringDelay: 17
   _rejectionForce: 43
 --- !u!114 &6875068432222619824
 MonoBehaviour:
@@ -8353,6 +8361,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d3d9bb81a27443888269562f8d55e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _minFiringDelay: 5
+  _maxFiringDelay: 17
   _rejectionForce: 43
 --- !u!114 &6875068432337452240
 MonoBehaviour:
@@ -8465,6 +8475,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d3d9bb81a27443888269562f8d55e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _minFiringDelay: 5
+  _maxFiringDelay: 17
   _rejectionForce: 43
 --- !u!114 &6875068432340784275
 MonoBehaviour:
@@ -8986,6 +8998,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d3d9bb81a27443888269562f8d55e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _minFiringDelay: 5
+  _maxFiringDelay: 17
   _rejectionForce: 43
 --- !u!114 &6875068432513033696
 MonoBehaviour:
@@ -10772,6 +10786,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d3d9bb81a27443888269562f8d55e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _minFiringDelay: 5
+  _maxFiringDelay: 17
   _rejectionForce: 30
 --- !u!114 &3853910619446466252
 MonoBehaviour:
@@ -11206,6 +11222,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d3d9bb81a27443888269562f8d55e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _minFiringDelay: 5
+  _maxFiringDelay: 17
   _rejectionForce: 30
 --- !u!114 &7165375588984219332
 MonoBehaviour:

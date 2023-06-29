@@ -61,7 +61,7 @@ public class Canon : MonoBehaviourPunCallbacks
         _firingDelay = Random.Range(_minFiringDelay, _maxFiringDelay);
         photonView.RPC("UpdateDelayTime", RpcTarget.All, _firingDelay);
 
-        RepeatShootAnimation(_cancellationTokenSource.Token);
+        RepeatShootAnimation(_cancellationTokenSource.Token).Forget();
     }
 
     private void PlayAnimation()
@@ -79,9 +79,8 @@ public class Canon : MonoBehaviourPunCallbacks
     {
         while (true)
         {
-            Debug.Log("hi");
             await UniTask.Delay(TimeSpan.FromSeconds(_firingDelay), cancellationToken: cancelToken);
-            Debug.Log("hi2");
+            
             PlayAnimation();
         }
     }
@@ -92,7 +91,7 @@ public class Canon : MonoBehaviourPunCallbacks
         {
             string fruitType = SetDefaultPoolUsedString();
             Vector3 position = _shootAngleTransform.position;
-            Quaternion rotation = _shootAngleTransform.rotation;
+            Quaternion rotation = Random.rotation;
             
             float delayTime = Random.Range(_minFiringDelay, _maxFiringDelay);
     

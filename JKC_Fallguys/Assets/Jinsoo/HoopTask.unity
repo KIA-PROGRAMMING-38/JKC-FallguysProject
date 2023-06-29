@@ -1176,12 +1176,12 @@ PrefabInstance:
     - target: {fileID: 6875068431532996632, guid: bc29f7e4e724c47f28236e0b92a00718,
         type: 3}
       propertyPath: _maxFiringDelay
-      value: 10
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 6875068431532996632, guid: bc29f7e4e724c47f28236e0b92a00718,
         type: 3}
       propertyPath: _minFiringDelay
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6875068431532996633, guid: bc29f7e4e724c47f28236e0b92a00718,
         type: 3}
@@ -1191,12 +1191,12 @@ PrefabInstance:
     - target: {fileID: 6875068431608898772, guid: bc29f7e4e724c47f28236e0b92a00718,
         type: 3}
       propertyPath: _maxFiringDelay
-      value: 10
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 6875068431608898772, guid: bc29f7e4e724c47f28236e0b92a00718,
         type: 3}
       propertyPath: _minFiringDelay
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6875068431608898773, guid: bc29f7e4e724c47f28236e0b92a00718,
         type: 3}
@@ -1206,12 +1206,12 @@ PrefabInstance:
     - target: {fileID: 6875068431932077208, guid: bc29f7e4e724c47f28236e0b92a00718,
         type: 3}
       propertyPath: _maxFiringDelay
-      value: 10
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 6875068431932077208, guid: bc29f7e4e724c47f28236e0b92a00718,
         type: 3}
       propertyPath: _minFiringDelay
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6875068431932077209, guid: bc29f7e4e724c47f28236e0b92a00718,
         type: 3}
@@ -1221,12 +1221,12 @@ PrefabInstance:
     - target: {fileID: 6875068432222619825, guid: bc29f7e4e724c47f28236e0b92a00718,
         type: 3}
       propertyPath: _maxFiringDelay
-      value: 10
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 6875068432222619825, guid: bc29f7e4e724c47f28236e0b92a00718,
         type: 3}
       propertyPath: _minFiringDelay
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6875068432222619826, guid: bc29f7e4e724c47f28236e0b92a00718,
         type: 3}
@@ -1236,12 +1236,12 @@ PrefabInstance:
     - target: {fileID: 6875068432337452241, guid: bc29f7e4e724c47f28236e0b92a00718,
         type: 3}
       propertyPath: _maxFiringDelay
-      value: 10
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 6875068432337452241, guid: bc29f7e4e724c47f28236e0b92a00718,
         type: 3}
       propertyPath: _minFiringDelay
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6875068432337452242, guid: bc29f7e4e724c47f28236e0b92a00718,
         type: 3}
@@ -1251,12 +1251,12 @@ PrefabInstance:
     - target: {fileID: 6875068432340784268, guid: bc29f7e4e724c47f28236e0b92a00718,
         type: 3}
       propertyPath: _maxFiringDelay
-      value: 10
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 6875068432340784268, guid: bc29f7e4e724c47f28236e0b92a00718,
         type: 3}
       propertyPath: _minFiringDelay
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6875068432340784269, guid: bc29f7e4e724c47f28236e0b92a00718,
         type: 3}
@@ -1266,12 +1266,12 @@ PrefabInstance:
     - target: {fileID: 6875068432513033697, guid: bc29f7e4e724c47f28236e0b92a00718,
         type: 3}
       propertyPath: _maxFiringDelay
-      value: 10
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 6875068432513033697, guid: bc29f7e4e724c47f28236e0b92a00718,
         type: 3}
       propertyPath: _minFiringDelay
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6875068432513033698, guid: bc29f7e4e724c47f28236e0b92a00718,
         type: 3}
@@ -1286,12 +1286,12 @@ PrefabInstance:
     - target: {fileID: 8027757773608905370, guid: bc29f7e4e724c47f28236e0b92a00718,
         type: 3}
       propertyPath: _maxFiringDelay
-      value: 10
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 8027757773608905370, guid: bc29f7e4e724c47f28236e0b92a00718,
         type: 3}
       propertyPath: _minFiringDelay
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8027757774545001674, guid: bc29f7e4e724c47f28236e0b92a00718,
         type: 3}
@@ -1356,12 +1356,12 @@ PrefabInstance:
     - target: {fileID: 8027757774877598789, guid: bc29f7e4e724c47f28236e0b92a00718,
         type: 3}
       propertyPath: _maxFiringDelay
-      value: 10
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 8027757774877598789, guid: bc29f7e4e724c47f28236e0b92a00718,
         type: 3}
       propertyPath: _minFiringDelay
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8798834240294195208, guid: bc29f7e4e724c47f28236e0b92a00718,
         type: 3}
