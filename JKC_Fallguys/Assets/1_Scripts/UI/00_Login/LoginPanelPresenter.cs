@@ -45,7 +45,7 @@ public class LoginPanelPresenter : Presenter
             
             // 로그인 사운드 플레이
             AudioSource loginButtonAudioSource = _loginPanelView.StartGameButton.gameObject.GetComponent<AudioSource>();
-            loginButtonAudioSource.PlayOneShot(AudioRegistry.LoginSound);
+            loginButtonAudioSource.PlayOneShot(AudioRegistry.LoginSFX);
             
             SceneManager.LoadScene(SceneIndex.Lobby); // Lobby
         }

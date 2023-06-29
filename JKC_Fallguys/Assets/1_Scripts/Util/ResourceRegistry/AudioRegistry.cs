@@ -8,17 +8,16 @@ namespace ResourceRegistry
         static AudioRegistry()
         {
             SetAudioClips();
-            
-            // AudioManager 접근
-            AudioManager.Instance.lobbyMusic = Resources.LoadAll<AudioClip>(
-                DataManager.SetDataPath(PathLiteral.Sounds, PathLiteral.Music, PathLiteral.Lobby));
         }
 
         private static void SetAudioClips()
         {
-            LoginSound = DataManager.GetAudioClip(PathLiteral.Sounds, PathLiteral.Music, PathLiteral.LoginSound);
+            LoginSFX = DataManager.GetAudioClip(PathLiteral.Sounds, PathLiteral.Music, PathLiteral.LoginSound);
+            LobbyMusic = DataManager.GetAudioClip(PathLiteral.Sounds, PathLiteral.Music, PathLiteral.Lobby,
+                "Mus_MainMenu_Loop");
         }
         
-        public static AudioClip LoginSound { get; private set; }
+        public static AudioClip LoginSFX { get; private set; }
+        public static AudioClip LobbyMusic { get; private set; }
     }
 }
