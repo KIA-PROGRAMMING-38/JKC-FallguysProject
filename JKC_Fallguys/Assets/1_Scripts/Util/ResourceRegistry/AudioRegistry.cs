@@ -8,6 +8,10 @@ namespace ResourceRegistry
         static AudioRegistry()
         {
             SetAudioClips();
+            
+            // AudioManager 접근
+            AudioManager.Instance.lobbyMusic = Resources.LoadAll<AudioClip>(
+                DataManager.SetDataPath(PathLiteral.Sounds, PathLiteral.Music, PathLiteral.Lobby));
         }
 
         private static void SetAudioClips()
