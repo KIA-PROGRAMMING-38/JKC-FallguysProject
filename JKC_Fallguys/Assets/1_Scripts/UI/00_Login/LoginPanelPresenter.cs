@@ -1,3 +1,4 @@
+using LiteralRepository;
 using Photon.Pun;
 using UniRx;
 using UnityEngine.SceneManagement;
@@ -38,8 +39,7 @@ public class LoginPanelPresenter : Presenter
         {
             SetPlayerNickName();
             Model.LoginSceneModel.ConditionEstablished();
-            PhotonNetwork.NickName = _loginPanelView.PlayerNameInputField.text;
-            SceneManager.LoadScene(1); // Lobby
+            SceneManager.LoadScene(SceneIndex.Lobby); // Lobby
         }
         // 사용자가 닉네임을 올바르게 입력하지 않은 경우, 상태를 NotConditionEstablished로 변경합니다.
         else
