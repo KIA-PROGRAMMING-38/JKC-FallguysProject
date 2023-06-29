@@ -11,6 +11,8 @@ namespace LiteralRepository
         public static readonly string GameResult = "GameResult";
         public static readonly string Textures = "Textures";
         public static readonly string PlayerTexture = "PlayerTexture";
+        public static readonly string Sounds = "Sounds";
+        public static readonly string Music = "Music";
 
         public static readonly string Login = "00_Login";
         public static readonly string Lobby = "01_Lobby";
@@ -27,5 +29,8 @@ namespace LiteralRepository
         public static readonly string VictoryAnimatorController = "VictoryPlayer";
         
         public static readonly string Countdown = "Countdown";
+        
+        public static readonly string LoginSound = "UI_MainMenu_Login";
+        
     }
 }
