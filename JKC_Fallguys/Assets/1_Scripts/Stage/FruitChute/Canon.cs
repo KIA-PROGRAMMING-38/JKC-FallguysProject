@@ -7,7 +7,6 @@ using Random = UnityEngine.Random;
 
 public class Canon : MonoBehaviourPunCallbacks
 {
-    private PhotonView _photonView;
     private FruitPooler _fruitPooler;
     private int _randomCreateFruitIndex;
     
@@ -15,7 +14,14 @@ public class Canon : MonoBehaviourPunCallbacks
     private Transform _shootAngleTransform;
     // 오브젝트가 파괴될 경우 자원 정리를 위한 토큰.
     private CancellationTokenSource _cancellationTokenSource;
-    private Animator _canonAnimator;        
+    private Animator _canonAnimator;
+
+    [SerializeField]
+    private float _minFiringDelay;
+    [SerializeField]
+    private float _maxFiringDelay;
+    
+    private float _firingDelay;
     
     // 발사하는 힘을 나타내는 float 값.
     [SerializeField]
@@ -23,7 +29,6 @@ public class Canon : MonoBehaviourPunCallbacks
 
     private void Awake()
     {
-        _photonView = GetComponent<PhotonView>();
         _shootAngleTransform = transform.Find("ShootingPoint").GetComponent<Transform>();
         _cancellationTokenSource = new CancellationTokenSource();
         _canonAnimator = GetComponent<Animator>();
@@ -34,18 +39,29 @@ public class Canon : MonoBehaviourPunCallbacks
         _fruitPooler = fruitPooler;
     }
 
+    
     private void Start()
     {
-        ReapeatShootAnimation(_cancellationTokenSource.Token).Forget();
+        TestAsync().Forget();
     }
-    
-    private async UniTaskVoid ReapeatShootAnimation(CancellationToken cancelToken)
+
+    private async UniTaskVoid TestAsync()
     {
-        while (true)
+        await UniTask.Delay(TimeSpan.FromSeconds(2f));
+
+        if (PhotonNetwork.IsMasterClient)
         {
-            await UniTask.Delay(TimeSpan.FromSeconds(1f), cancellationToken: cancelToken);
-            PlayAnimation();
+            photonView.RPC("InitiateFiring", RpcTarget.All);
         }
+    }
+
+    [PunRPC]
+    public void InitiateFiring()
+    {
+        _firingDelay = Random.Range(_minFiringDelay, _maxFiringDelay);
+        photonView.RPC("UpdateDelayTime", RpcTarget.All, _firingDelay);
+
+        RepeatShootAnimation(_cancellationTokenSource.Token);
     }
 
     private void PlayAnimation()
@@ -53,6 +69,23 @@ public class Canon : MonoBehaviourPunCallbacks
         _canonAnimator.Play("ShootMotion");
     }
     
+    [PunRPC]
+    public void UpdateDelayTime(float newDelayTime)
+    {
+        _firingDelay = newDelayTime;
+    }
+
+    private async UniTaskVoid RepeatShootAnimation(CancellationToken cancelToken)
+    {
+        while (true)
+        {
+            Debug.Log("hi");
+            await UniTask.Delay(TimeSpan.FromSeconds(_firingDelay), cancellationToken: cancelToken);
+            Debug.Log("hi2");
+            PlayAnimation();
+        }
+    }
+
     public void Shoot()
     {
         if (PhotonNetwork.IsMasterClient)
@@ -61,38 +94,19 @@ public class Canon : MonoBehaviourPunCallbacks
             Vector3 position = _shootAngleTransform.position;
             Quaternion rotation = _shootAngleTransform.rotation;
             
-            _photonView.RPC("ShootFruit", RpcTarget.All, fruitType, position, rotation);
+            float delayTime = Random.Range(_minFiringDelay, _maxFiringDelay);
+    
+            photonView.RPC("UpdateDelayTime", RpcTarget.All, delayTime);
+            photonView.RPC("ShootFruit", RpcTarget.All, fruitType, position, rotation);
         }
     }
 
     [PunRPC]
     public void ShootFruit(string fruitType, Vector3 position, Quaternion rotation)
     {
-        Debug.Log("ShootFruit");
-
-        if (_fruitPooler.defaultPrefabPool == null)
-        {
-            Debug.Log("defaultPool is null");
-            Debug.Break();
-        }
-
-        if (_fruitPooler == null)
-        {
-            Debug.Log("fruitpooler is null");
-            Debug.Break();
-        }
-        
-        
-        
         Fruit fruit = _fruitPooler.defaultPrefabPool.Instantiate
             (fruitType, position, rotation).GetComponent<Fruit>();
-
-        if (fruit == null)
-        {
-            Debug.Log("fruit is null");
-            Debug.Break();
-        }
-        
+       
         fruit.gameObject.SetActive(true);
         fruit.DefaultPool = _fruitPooler.defaultPrefabPool;
 
@@ -103,31 +117,13 @@ public class Canon : MonoBehaviourPunCallbacks
         fruitRigidbody.AddForce(-_shootAngleTransform.forward * _rejectionForce, ForceMode.VelocityChange);
     }
 
+    private string[] randomFruitName =
+        { "Fruit_Orange", "Fruit_Banana", "Fruit_Orange", "Fruit_Strawberry", "Fruit_Watermelon" };
     private string SetDefaultPoolUsedString()
     {
         int randomIndex = Random.Range(0, FruitPrefabRegistry.Repository.Count);
-        string str = default;
-
-        switch (randomIndex)
-        {
-            case 0:
-                str = "Fruit_Orange";
-                break;
-            case 1:
-                str = "Fruit_Banana";
-                break;
-            case 2:
-                str = "Fruit_Orange";
-                break;
-            case 3:
-                str = "Fruit_Strawberry";
-                break;
-            case 4:
-                str = "Fruit_Watermelon";
-                break;
-        }
-
-        return str;
+        
+        return randomFruitName[randomIndex];
     }
     
     private void OnDestroy()
