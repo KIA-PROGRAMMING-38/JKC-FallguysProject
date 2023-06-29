@@ -46,11 +46,28 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
 
     private async UniTaskVoid PrevEndProduction()
     {
-        await UniTask.Delay(TimeSpan.FromSeconds(3f), DelayType.UnscaledDeltaTime);
+        await UniTask.Delay(TimeSpan.FromSeconds(4f), DelayType.UnscaledDeltaTime);
         
         // 게임을 정리하는 로직이 실행 된 뒤, 다음 씬으로 가는 작업을 수행합니다.
         photonView.RPC("EnterNextScene", RpcTarget.MasterClient);
+        StageDataManager.Instance.SetRoundState(true);
     }
+
+    private bool IsAllRoundsPlayed()
+    {
+        int index = 0;
+
+        for (int i = 0; i < DataManager.MaxPlayableMaps; ++i)
+        {
+            if (StageDataManager.Instance.MapPickupFlags[i])
+            {
+                ++index;
+            }
+        }
+
+        return index == 2;
+    }
+
 
     [PunRPC]
     public void EnterNextScene()
@@ -67,7 +84,6 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
         
         EndLogic();
 
-        StageDataManager.Instance.SetRoundState(true);
         
         StageEndProduction().Forget();
     }
@@ -76,7 +92,14 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
     {
         await UniTask.Delay(TimeSpan.FromSeconds(5f), DelayType.UnscaledDeltaTime);
 
-        PhotonNetwork.LoadLevel(SceneIndex.GameResult);
+        if (IsAllRoundsPlayed())
+        {
+            PhotonNetwork.LoadLevel(SceneIndex.GameResult);
+        }
+        else if (!IsAllRoundsPlayed())
+        {
+            PhotonNetwork.LoadLevel(SceneIndex.RoundResult);
+        }
     }
 
     private void GiveScore()
