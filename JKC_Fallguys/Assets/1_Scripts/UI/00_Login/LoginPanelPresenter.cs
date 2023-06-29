@@ -1,6 +1,8 @@
 using LiteralRepository;
 using Photon.Pun;
+using ResourceRegistry;
 using UniRx;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
@@ -40,6 +42,11 @@ public class LoginPanelPresenter : Presenter
         {
             SetPlayerNickName();
             Model.LoginSceneModel.ConditionEstablished();
+            
+            // 로그인 사운드 플레이
+            AudioSource loginButtonAudioSource = _loginPanelView.StartGameButton.gameObject.GetComponent<AudioSource>();
+            loginButtonAudioSource.PlayOneShot(AudioRegistry.LoginSFX);
+            
             SceneManager.LoadScene(SceneIndex.Lobby); // Lobby
         }
         // 사용자가 닉네임을 올바르게 입력하지 않은 경우, 상태를 NotConditionEstablished로 변경합니다.
