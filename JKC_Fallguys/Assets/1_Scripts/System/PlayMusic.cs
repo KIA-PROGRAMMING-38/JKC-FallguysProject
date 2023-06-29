@@ -17,7 +17,7 @@ public class PlayMusic : MonoBehaviour
     {
         _introStartTime = AudioSettings.dspTime;
 
-        _loopStartTime = _introStartTime + AudioManager.Instance.MusicAudioSource[0].clip.length + 0.08f;
+        _loopStartTime = _introStartTime + AudioManager.Instance.MusicAudioSource[0].clip.length + 0.05f;
 
     }
     

@@ -22,6 +22,8 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
 
             _audioSources[index].clip = AudioRegistry.LobbyMusic[index];
         }
+
+        gameObject.AddComponent<AudioReverbZone>().reverbPreset = AudioReverbPreset.Alley;
     }
 
     public void DestroySelf()
