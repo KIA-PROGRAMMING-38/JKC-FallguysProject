@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using Cysharp.Threading.Tasks;
 using LiteralRepository;
+using Newtonsoft.Json;
 using Photon.Pun;
-using Photon.Realtime;
 using UniRx;
 using UnityEngine;
 
 /// <summary>
-/// 맵과 플레이어를 생성하고, 점수를 결산한 뒤 다음 씬을 실행시키는 클래스입니다.
+/// 점수를 결산한 뒤 다음 씬을 실행시키는 클래스입니다.
 /// </summary>
 public class PhotonStageSceneRoomManager : MonoBehaviourPun
 {
@@ -18,7 +18,6 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
     private void Awake()
     {
         InitializeRx();
-
     }
 
     private void InitializeRx()
@@ -39,17 +38,18 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
     // StageDataManager의 IsGameActive가 true => false일 때 호출됩니다.
     private void CompleteStageAndRankPlayers()
     {
-        Time.timeScale = 0f;
+        // Time.timeScale = 0f;
         
         // 타 컴포넌트에서 게임 결과를 정리하는 로직이 실행되기를 기다립니다.
         PrevEndProduction().Forget();
-        
-        photonView.RPC("EnterNextScene", RpcTarget.MasterClient);
     }
 
     private async UniTaskVoid PrevEndProduction()
     {
         await UniTask.Delay(TimeSpan.FromSeconds(3f), DelayType.UnscaledDeltaTime);
+        
+        // 게임을 정리하는 로직이 실행 된 뒤, 다음 씬으로 가는 작업을 수행합니다.
+        photonView.RPC("EnterNextScene", RpcTarget.MasterClient);
     }
 
     [PunRPC]
@@ -66,13 +66,15 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
         }
         
         EndLogic();
+
+        StageDataManager.Instance.SetRoundState(true);
         
         StageEndProduction().Forget();
     }
     
     private async UniTaskVoid StageEndProduction()
     {
-        await UniTask.Delay(TimeSpan.FromSeconds(3f), DelayType.UnscaledDeltaTime);
+        await UniTask.Delay(TimeSpan.FromSeconds(5f), DelayType.UnscaledDeltaTime);
 
         PhotonNetwork.LoadLevel(SceneIndex.GameResult);
     }
@@ -121,17 +123,19 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
 
     private void EndLogic()
     {
-        UpdatePlayerRanking(); 
+        UpdatePlayerRanking();
         StageDataManager.Instance.StagePlayerRankings.Clear();
 
-        // RPC를 호출하여 모든 클라이언트에게 StageDataManager를 업데이트하도록 요청
-        photonView.RPC
-            ("UpdateStageDataOnAllClients", RpcTarget.All, StageDataManager.Instance.PlayerDataByIndex, StageDataManager.Instance.CachedPlayerIndicesForResults, StageDataManager.Instance.StagePlayerRankings);
+        // Serialize PlayerDataByIndex into JSON
+        string playerScoresByIndexJson = JsonConvert.SerializeObject(StageDataManager.Instance.PlayerDataByIndex);
+
+        photonView.RPC("UpdateStageDataOnAllClients", RpcTarget.All, playerScoresByIndexJson, StageDataManager.Instance.CachedPlayerIndicesForResults.ToArray(), StageDataManager.Instance.StagePlayerRankings.ToArray());
     }
+
 
     private void UpdatePlayerRanking()
     {
-        // PlayerData에 저장된 점수를 기준으로 플레이어를 정렬하고 그 순서대로 인덱스를 CachedPlayerIndicesForResults에 저장
+        // PlayerData에 저장된 점수를 기준으로 플레이어를 정렬하고 그 순서대로 인덱스를 CachedPlayerIndicesForResults에 저장합니다.
         List<KeyValuePair<int, PlayerData>> sortedPlayers = 
             StageDataManager.Instance.PlayerDataByIndex.OrderByDescending(pair => pair.Value.Score).ToList();
 
@@ -144,11 +148,12 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
     }
  
     [PunRPC]
-    public void UpdateStageDataOnAllClients(Dictionary<int, PlayerData> playerScoresByIndex, List<int> playerRanking, List<int> stagePlayerRankings)
+    public void UpdateStageDataOnAllClients(string playerScoresByIndexJson, int[] playerRanking, int[] stagePlayerRankings)
     {
-        StageDataManager.Instance.PlayerDataByIndex = playerScoresByIndex;
-        StageDataManager.Instance.CachedPlayerIndicesForResults = playerRanking;
-        StageDataManager.Instance.StagePlayerRankings = stagePlayerRankings;
+        // Deserialize PlayerDataByIndex from JSON
+        StageDataManager.Instance.PlayerDataByIndex = JsonConvert.DeserializeObject<Dictionary<int, PlayerData>>(playerScoresByIndexJson);
+        StageDataManager.Instance.CachedPlayerIndicesForResults = playerRanking.ToList();
+        StageDataManager.Instance.StagePlayerRankings = stagePlayerRankings.ToList();
     }
 
     #endregion
