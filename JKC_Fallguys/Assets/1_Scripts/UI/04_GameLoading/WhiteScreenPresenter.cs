@@ -10,7 +10,7 @@ public class WhiteScreenPresenter : Presenter
     public override void OnInitialize(View view)
     {
         _whiteScreenView = view as WhiteScreenView;
-        // 씬이 시작될 떄, Canvas Alpha가 줄어들어 자연스러운 연출이 되도록 실행합니다.
+        _whiteScreenView.ViewCanvasGroup.alpha = 1f;
         
         InitializeRx();
     }

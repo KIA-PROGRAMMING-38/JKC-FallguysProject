@@ -40,15 +40,16 @@ public class PhotonMatchingSceneRoomManager : MonoBehaviourPun
     {
         PhotonNetwork.CurrentRoom.IsOpen = false;
         Model.MatchingSceneModel.PossibleToExit(false);
-        
+    
         photonView.RPC("RpcSetMapdatas", RpcTarget.All);
 
         foreach (KeyValuePair<int, Player> player in PhotonNetwork.CurrentRoom.Players)
         {
             int actorNumber = player.Value.ActorNumber;
             // 새로운 PlayerData 객체를 만들고, 이를 PlayerScoresByIndex 딕셔너리에 추가합니다.
+            int playerTextureIndex = (int)player.Value.CustomProperties["PlayerTextureIndex"];
             StageDataManager.Instance.PlayerDataByIndex[actorNumber] =
-                new PlayerData(PhotonNetwork.LocalPlayer.NickName, 0, 0);
+                new PlayerData(PhotonNetwork.LocalPlayer.NickName, playerTextureIndex, 0);
         }
     }
 

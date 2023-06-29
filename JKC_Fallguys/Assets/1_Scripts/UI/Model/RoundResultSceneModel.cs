@@ -66,9 +66,20 @@ namespace Model
         /// </summary>
         public static void PerformScoreRaise()
         {
-            RaiseScore(_firstScore, _fallguyRankings[0].Score).Forget();
-            RaiseScore(_secondScore, _fallguyRankings[1].Score).Forget();
-            RaiseScore(_thirdScore, _fallguyRankings[2].Score).Forget();
+            if (_fallguyRankings.Count > 0 && _fallguyRankings[0] != null)
+            {
+                RaiseScore(_firstScore, _fallguyRankings[0].Score).Forget();
+            }
+    
+            if (_fallguyRankings.Count > 1 && _fallguyRankings[1] != null)
+            {
+                RaiseScore(_secondScore, _fallguyRankings[1].Score).Forget();
+            }
+
+            if (_fallguyRankings.Count > 2 && _fallguyRankings[2] != null)
+            {
+                RaiseScore(_thirdScore, _fallguyRankings[2].Score).Forget();
+            }
         }
     }
 }

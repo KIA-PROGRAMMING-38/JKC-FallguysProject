@@ -1,18 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+using System;
+using System.Threading;
+using Cysharp.Threading.Tasks;
 using Photon.Pun;
 using UniRx;
 using UnityEngine;
 
 public class FruitChuteController : StageController
 {
+    private Camera _observeCamera;
     private FruitPooler _fruitPooler;
     private CanonController _canonController;
+    private CancellationTokenSource _cancellationTokenSource;
 
     protected override void Awake()
     {
         base.Awake();
+                        
+        _observeCamera = transform.Find("ObserveCamera").GetComponent<Camera>();
+        Debug.Assert(_observeCamera != null);
+        
+        _cancellationTokenSource = new CancellationTokenSource();
         
         _fruitPooler = transform.Find("FruitPooler").GetComponent<FruitPooler>();
         Debug.Assert(_fruitPooler != null);
@@ -29,21 +36,21 @@ public class FruitChuteController : StageController
 
     protected override void InitializeRx()
     {
+        StageDataManager.Instance.IsPlayerAlive
+            .DistinctUntilChanged()
+            .Where(alive => !alive)
+            .Subscribe(_ => _observeCamera.gameObject.SetActive(true))
+            .AddTo(this);
+        
         StageDataManager.Instance.IsGameActive
             .Where(state => state)
-            .Subscribe(_ => --remainingGameTime.Value)
-            .AddTo(this);
-
-        remainingGameTime
-            .ObserveEveryValueChanged(_ => remainingGameTime)
             .Subscribe(_ => GameStartBroadCast())
             .AddTo(this);
 
         remainingGameTime
             .Where(count => remainingGameTime.Value == 0)
-            .Subscribe(_ => RpcEndGame())
+            .Subscribe(_ => EndGame())
             .AddTo(this);
-        
     }
     
     private void GameStartBroadCast()
@@ -53,14 +60,25 @@ public class FruitChuteController : StageController
             photonView.RPC("RpcCountDown", RpcTarget.All);
         }
     }
+    
+    private async UniTaskVoid CountDown(CancellationToken cancelToken)
+    {
+        while (true)
+        {
+            await UniTask.Delay(TimeSpan.FromSeconds(1), cancellationToken: cancelToken);
+            
+            --remainingGameTime.Value;
+            Debug.Log(remainingGameTime.Value);
+        }
+    }
 
     [PunRPC]
     public void RpcCountDown()
     {
-        --remainingGameTime.Value;
+        CountDown(_cancellationTokenSource.Token).Forget();
     }
 
-    private void RpcEndGame()
+    private void EndGame()
     {
         if (PhotonNetwork.IsMasterClient)
         {
@@ -69,7 +87,7 @@ public class FruitChuteController : StageController
     }
 
     [PunRPC]
-    public void EndGame()
+    public void RpcEndGame()
     {
         StageDataManager.Instance.IsGameActive.Value = false;
 
@@ -77,5 +95,10 @@ public class FruitChuteController : StageController
         {
             StageDataManager.Instance.CurrentState.Value = StageDataManager.PlayerState.Defeat;
         }
+    }
+    
+    private void OnDestroy()
+    {
+        _cancellationTokenSource.Cancel();
     }
 }

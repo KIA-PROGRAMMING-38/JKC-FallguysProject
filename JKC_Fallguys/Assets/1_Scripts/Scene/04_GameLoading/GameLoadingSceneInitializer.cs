@@ -21,4 +21,9 @@ public class GameLoadingSceneInitializer : SceneInitializer
         Instantiate(DataManager.GetGameObjectData
             (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.GameLoading, PathLiteral.UI, "MapInformationViewController"));
     }
+
+    protected override void InitializeModel()
+    {
+        Model.GameLoadingSceneModel.SetStatusLoadingSceneUI(true);
+    }
 }

@@ -48,6 +48,11 @@ public class StageDataManager : SingletonMonoBehaviour<StageDataManager>
         StagePlayerRankings.Add(playerIndex);
     }
 
+    public void AddPlayerToFailedClearStagePlayers(int actorNumber)
+    {
+        FailedClearStagePlayers.Add(actorNumber);
+    }
+
     /// <summary>
     /// 게임 상태를 변경하는 메소드입니다.
     /// </summary>
@@ -57,9 +62,23 @@ public class StageDataManager : SingletonMonoBehaviour<StageDataManager>
         _isGameActive.Value = status;
     }
 
+    /// <summary>
+    /// 라운드의 상태를 변경하는 메소드입니다.
+    /// </summary>
+    /// <param name="status">status의 값에 따라 라운드를 활성화하거나 비활성화합니다.</param>
     public void SetRoundState(bool status)
     {
-        _isRoundCompleted.Value = true;
+        _isRoundCompleted.Value = status;
+    }
+
+    public void SetPlayerState(PlayerState state)
+    {
+        _currentState.Value = state;
+    }
+
+    public void SetPlayerAlive(bool status)
+    {
+        _isPlayerAlive.Value = status;
     }
 
     /// <summary>
@@ -70,10 +89,5 @@ public class StageDataManager : SingletonMonoBehaviour<StageDataManager>
     public void DestorySelf()
     {
         Destroy(gameObject);
-    }
-    
-    public void AddPlayerToFailedClearStagePlayers(int actorNumber)
-    {
-        FailedClearStagePlayers.Add(actorNumber);
     }
 }

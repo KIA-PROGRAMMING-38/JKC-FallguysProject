@@ -1,8 +1,21 @@
+using System;
+using System.Threading;
+using Cysharp.Threading.Tasks;
 using Photon.Pun;
 using UniRx;
+using UnityEngine;
 
 public class HoopLegendController : StageController
 {
+    private CancellationTokenSource _cancellationTokenSource;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        
+        _cancellationTokenSource = new CancellationTokenSource();
+    }
+
     protected override void SetGameTime()
     {
         remainingGameTime.Value = 60;
@@ -12,11 +25,6 @@ public class HoopLegendController : StageController
     {
         StageDataManager.Instance.IsGameActive
             .Where(state => state)
-            .Subscribe(_ => --remainingGameTime.Value)
-            .AddTo(this);
-
-        remainingGameTime
-            .ObserveEveryValueChanged(_ => remainingGameTime)
             .Subscribe(_ => GameStartBroadCast())
             .AddTo(this);
 
@@ -24,6 +32,17 @@ public class HoopLegendController : StageController
             .Where(count => remainingGameTime.Value == 0)
             .Subscribe(_ => RpcEndGame())
             .AddTo(this);
+    }
+    
+    private async UniTaskVoid CountDown(CancellationToken cancelToken)
+    {
+        while (true)
+        {
+            await UniTask.Delay(TimeSpan.FromSeconds(1), cancellationToken: cancelToken);
+            
+            --remainingGameTime.Value;
+            Debug.Log(remainingGameTime.Value);
+        }
     }
     
     private void GameStartBroadCast()
@@ -37,10 +56,10 @@ public class HoopLegendController : StageController
     [PunRPC]
     public void RpcCountDown()
     {
-        --remainingGameTime.Value;
+        CountDown(_cancellationTokenSource.Token).Forget();
     }
 
-    private void RpcEndGame()
+    private void EndGame()
     {
         if (PhotonNetwork.IsMasterClient)
         {
@@ -49,9 +68,14 @@ public class HoopLegendController : StageController
     }
 
     [PunRPC]
-    public void EndGame()
+    public void RpcEndGame()
     {
         StageDataManager.Instance.IsGameActive.Value = false;
         StageDataManager.Instance.CurrentState.Value = StageDataManager.PlayerState.GameTerminated;
+    }
+    
+    private void OnDestroy()
+    {
+        _cancellationTokenSource.Cancel();
     }
 }

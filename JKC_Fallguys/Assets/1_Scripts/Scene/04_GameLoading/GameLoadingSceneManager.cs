@@ -16,7 +16,7 @@ public class GameLoadingSceneManager : MonoBehaviour
 
     private async UniTaskVoid DeActiveRandomPickUIDelayTime()
     {
-        await UniTask.Delay(TimeSpan.FromSeconds(1f));
+        await UniTask.Delay(TimeSpan.FromSeconds(0.5f));
         
         Model.GameLoadingSceneModel.SetActiveWhitePanel(false);
         

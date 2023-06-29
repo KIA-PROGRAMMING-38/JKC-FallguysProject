@@ -5,11 +5,11 @@ namespace Model
     public static class ResultSceneModel
     {
         private static readonly ReactiveProperty<bool> _isVictorious = new ReactiveProperty<bool>();
+        public static ReactiveProperty<bool> IsVictorious => _isVictorious;
 
-        public static ReactiveProperty<bool> IsVictorious
+        public static void CheckVictory(bool status)
         {
-            get => _isVictorious;
-            set => _isVictorious.Value = value.Value;
+            _isVictorious.Value = status;
         }
     }
 }

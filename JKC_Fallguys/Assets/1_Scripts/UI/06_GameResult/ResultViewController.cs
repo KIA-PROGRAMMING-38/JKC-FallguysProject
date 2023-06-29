@@ -1,4 +1,3 @@
-using Model;
 using UnityEngine;
 
 public class ResultViewController : ViewController

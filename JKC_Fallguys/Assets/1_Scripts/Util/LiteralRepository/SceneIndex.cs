@@ -7,6 +7,7 @@ namespace LiteralRepository
         public static readonly int MatchingStandby = 2;
         public static readonly int Stage = 3;
         public static readonly int GameLoading = 4;
-        public static readonly int GameResult = 5;
+        public static readonly int RoundResult = 5;
+        public static readonly int GameResult = 6;
     }
 }
