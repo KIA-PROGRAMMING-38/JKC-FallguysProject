@@ -13,6 +13,9 @@ namespace ResourceRegistry
         private static void SetAudioClips()
         {
             LoginSFX = DataManager.GetAudioClip(PathLiteral.Sounds, PathLiteral.Music, PathLiteral.LoginSound);
+            LobbyMusic =
+                Resources.LoadAll<AudioClip>(DataManager.SetDataPath(PathLiteral.Sounds, PathLiteral.Music,
+                    PathLiteral.Lobby));
         }
         
         public static AudioClip LoginSFX { get; private set; }
