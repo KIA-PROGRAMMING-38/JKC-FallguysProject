@@ -29,6 +29,11 @@ public static class DataManager
         return Resources.Load<Sprite>(SetDataPath(filePath));
     }
 
+    public static AudioClip GetAudioClip(params string[] filePath)
+    {
+        return Resources.Load<AudioClip>(SetDataPath(filePath));
+    }
+
     public static RuntimeAnimatorController GetRuntimeAnimatorController(params string[] filePath)
     {
         return Resources.Load<RuntimeAnimatorController>(SetDataPath(filePath));

@@ -1,6 +1,7 @@
 using LiteralRepository;
 using Photon.Pun;
 using UniRx;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class LoginPanelPresenter : Presenter
@@ -14,7 +15,7 @@ public class LoginPanelPresenter : Presenter
         
         // InputField의 입력값에 대한 초기화 진행
         Model.LoginSceneModel.NotConditionEstablished();
-        
+
         InitializeRx();
     }
 
