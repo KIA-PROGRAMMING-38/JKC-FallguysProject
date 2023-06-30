@@ -16,15 +16,18 @@ public class AxeController : MonoBehaviourPun
 
     private void InitializeObject()
     {
-        ObjectTransforms axeData = DataManager.JsonLoader<ObjectTransforms>("JSON/AxeTransformData");
-
-        for (int i = 0; i < axeData.positions.Length; ++i)
+        if (PhotonNetwork.IsMasterClient)
         {
-            string filePath = DataManager.SetDataPath(PathLiteral.Prefabs, "Stage", PathLiteral.HoopLegend, "Axe");
+            ObjectTransforms axeData = DataManager.JsonLoader<ObjectTransforms>("JSON/AxeTransformData");
+
+            for (int i = 0; i < axeData.positions.Length; ++i)
+            {
+                string filePath = DataManager.SetDataPath(PathLiteral.Prefabs, "Stage", PathLiteral.HoopLegend, "Axe");
             
-            HoopLegendAxe axe = 
-                PhotonNetwork.Instantiate(filePath, axeData.positions[i], Quaternion.Euler(axeData.rotations[i])).GetComponent<HoopLegendAxe>();
-            axe.Initialize(this, _cancellationToken);
+                HoopLegendAxe axe = 
+                    PhotonNetwork.Instantiate(filePath, axeData.positions[i], Quaternion.Euler(axeData.rotations[i])).GetComponent<HoopLegendAxe>();
+                axe.Initialize(this, _cancellationToken);
+            }
         }
     }
 

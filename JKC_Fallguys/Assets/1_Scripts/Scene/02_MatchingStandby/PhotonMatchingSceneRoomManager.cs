@@ -4,6 +4,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using UniRx;
 using LiteralRepository;
+using UnityEngine;
 
 /// <summary>
 /// 게임 시작을 관리하는 클래스입니다.
@@ -41,7 +42,7 @@ public class PhotonMatchingSceneRoomManager : MonoBehaviourPun
         PhotonNetwork.CurrentRoom.IsOpen = false;
         Model.MatchingSceneModel.PossibleToExit(false);
     
-        photonView.RPC("RpcSetMapdatas", RpcTarget.All);
+        photonView.RPC("RpcSetMapData", RpcTarget.All);
 
         foreach (KeyValuePair<int, Player> player in PhotonNetwork.CurrentRoom.Players)
         {
@@ -54,7 +55,7 @@ public class PhotonMatchingSceneRoomManager : MonoBehaviourPun
     }
 
     [PunRPC]
-    public void RpcSetMapdatas()
+    public void RpcSetMapData()
     {
         MapInstanceLoad().Forget();
     }

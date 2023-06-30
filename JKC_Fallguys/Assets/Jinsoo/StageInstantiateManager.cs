@@ -7,15 +7,17 @@ public class StageInstantiateManager : MonoBehaviourPun
     private void Awake()
     {
         InitializeMap();
+        Debug.Log("ㄴㅓ왜 두번호출되?");
     }
 
     private void InitializeMap()
     {
-        MapData mapData = StageDataManager.Instance.MapDatas[StageDataManager.Instance.MapPickupIndex];
+        MapData mapData = StageDataManager.Instance.MapDatas[StageDataManager.Instance.MapPickupIndex.Value];
     
         if (PhotonNetwork.IsMasterClient)
         {
             InstantiateMap(mapData);
+            Debug.Log($"Map : {PhotonNetwork.LocalPlayer.ActorNumber}");
         }
         
         InstantiatePlayer(mapData);
@@ -41,6 +43,7 @@ public class StageInstantiateManager : MonoBehaviourPun
         PlayerPhotonController photonController = newPlayer.GetComponentInChildren<PlayerPhotonController>();
     
         _textureIndex = DataManager.PlayerTextureIndex.Value;
+        Debug.Log($"Player : {PhotonNetwork.LocalPlayer.ActorNumber}");
 
         photonController.photonView.RPC("SetTextureIndex", RpcTarget.AllBuffered, _textureIndex);
     }

@@ -38,6 +38,6 @@ public class GameLoadingSceneManager : MonoBehaviour
         
         await UniTask.Delay(TimeSpan.FromSeconds(2f));
         
-        PhotonNetwork.LoadLevel(SceneIndex.Stage);    
+        PhotonNetwork.LoadLevel(SceneIndex.Stage);
     }
 }

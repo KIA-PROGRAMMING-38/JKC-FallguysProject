@@ -36,11 +36,11 @@ public class FruitChuteController : StageController
 
     protected override void InitializeRx()
     {
-        StageDataManager.Instance.IsPlayerAlive
-            .DistinctUntilChanged()
-            .Where(alive => !alive)
-            .Subscribe(_ => _observeCamera.gameObject.SetActive(true))
-            .AddTo(this);
+        // StageDataManager.Instance.IsPlayerAlive(PhotonNetwork.LocalPlayer.ActorNumber)
+        //     .DistinctUntilChanged()
+        //     .Where(alive => !alive)
+        //     .Subscribe(_ => _observeCamera.gameObject.SetActive(true))
+        //     .AddTo(this);
         
         StageDataManager.Instance.IsGameActive
             .Where(state => state)
@@ -68,7 +68,6 @@ public class FruitChuteController : StageController
             await UniTask.Delay(TimeSpan.FromSeconds(1), cancellationToken: cancelToken);
             
             --remainingGameTime.Value;
-            Debug.Log(remainingGameTime.Value);
         }
     }
 
@@ -91,9 +90,11 @@ public class FruitChuteController : StageController
     {
         StageDataManager.Instance.IsGameActive.Value = false;
 
-        if (StageDataManager.Instance.CurrentState.Value != StageDataManager.PlayerState.Victory)
+        int actorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
+
+        if (StageDataManager.Instance.GetCurrentState(actorNumber).Value != StageDataManager.PlayerState.Victory)
         {
-            StageDataManager.Instance.CurrentState.Value = StageDataManager.PlayerState.Defeat;
+            StageDataManager.Instance.SetPlayerState(actorNumber, StageDataManager.PlayerState.Defeat);
         }
     }
     

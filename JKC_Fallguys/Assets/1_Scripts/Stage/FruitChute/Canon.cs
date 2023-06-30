@@ -38,17 +38,9 @@ public class Canon : MonoBehaviourPunCallbacks
     {
         _fruitPooler = fruitPooler;
     }
-
     
     private void Start()
     {
-        TestAsync().Forget();
-    }
-
-    private async UniTaskVoid TestAsync()
-    {
-        await UniTask.Delay(TimeSpan.FromSeconds(2f));
-
         if (PhotonNetwork.IsMasterClient)
         {
             photonView.RPC("InitiateFiring", RpcTarget.All);
