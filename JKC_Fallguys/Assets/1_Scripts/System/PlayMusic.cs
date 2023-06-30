@@ -8,7 +8,6 @@ public class PlayMusic : MonoBehaviour
     {
         SetMusicScheduleTime();
         
-        // 여기서 스케줄링 해줘야하는데ㅣ..
         ScheduleAudioSouce(AudioManager.Instance.MusicAudioSource[0], _introStartTime, false);
         ScheduleAudioSouce(AudioManager.Instance.MusicAudioSource[1], _loopStartTime, true);
     }
