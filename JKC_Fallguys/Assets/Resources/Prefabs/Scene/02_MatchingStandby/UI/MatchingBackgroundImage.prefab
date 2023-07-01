@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3027757002383735657}
   m_Layer: 0
-  m_Name: MatchingStandbyBackgroundImage
+  m_Name: MatchingBackgroundImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

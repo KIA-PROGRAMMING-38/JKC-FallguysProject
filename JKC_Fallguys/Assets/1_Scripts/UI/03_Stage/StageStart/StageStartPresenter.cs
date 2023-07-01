@@ -91,7 +91,7 @@ public class StageStartPresenter : Presenter
 
     private void SetData()
     {
-        MapData mapData = StageDataManager.Instance.MapDatas[StageDataManager.Instance.MapPickupIndex];
+        MapData mapData = StageDataManager.Instance.MapDatas[StageDataManager.Instance.MapPickupIndex.Value];
 
         _stageStartView.TitleText.text = mapData.Info.MapName;
         _stageStartView.SubTitleText.text = mapData.Info.Description;

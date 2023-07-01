@@ -1,4 +1,3 @@
-using System;
 using Model;
 using UniRx;
 
@@ -16,13 +15,13 @@ public class EntryCounterPresenter : Presenter
 
     protected override void OnOccuredUserEvent()
     {
-        // EntryCounter 업데이트. 아래는 임시 코드다.
-        Observable.Timer(TimeSpan.FromSeconds(1))
-            .Subscribe(_ => StageSceneModel.IncreaseEnteredPlayerCount())
-            .AddTo(_compositeDisposable);
-        
-        // TotalPlayerCounter 업데이트.
-        StageSceneModel.SetTotalPlayerCount(1);
+        // // EntryCounter 업데이트. 아래는 임시 코드다.
+        // Observable.Timer(TimeSpan.FromSeconds(1))
+        //     .Subscribe(_ => StageSceneModel.IncreaseEnteredPlayerCount())
+        //     .AddTo(_compositeDisposable);
+        //
+        // // TotalPlayerCounter 업데이트.
+        // StageSceneModel.SetTotalPlayerCount(1);
     }
 
     protected override void OnUpdatedModel()

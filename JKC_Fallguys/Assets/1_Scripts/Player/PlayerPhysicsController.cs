@@ -60,6 +60,9 @@ public class PlayerPhysicsController : MonoBehaviourPun
     /// </summary>
     public void Move()
     {
+        if (!photonView.IsMine || !StageDataManager.Instance.IsGameActive.Value)
+            return;
+        
         CheckGround();
         
         if (_playerInput.InputVec != _zeroVec && _playerInput.CannotMove == false)
@@ -114,7 +117,7 @@ public class PlayerPhysicsController : MonoBehaviourPun
     /// </summary>
     public void OnJumping()
     {
-        if (!photonView.IsMine)
+        if (!photonView.IsMine || !StageDataManager.Instance.IsGameActive.Value)
             return;
         
         if (_playerInput.InputVec != _zeroVec && _playerInput.CannotMove == false)
@@ -147,7 +150,7 @@ public class PlayerPhysicsController : MonoBehaviourPun
     /// </summary>
     public void ActivateDiveAction()
     {
-        if (!photonView.IsMine)
+        if (!photonView.IsMine || !StageDataManager.Instance.IsGameActive.Value)
             return;
         
         DiveRotation().Forget();
@@ -202,7 +205,7 @@ public class PlayerPhysicsController : MonoBehaviourPun
     /// </summary>
     public void ActivateGetUp()
     {
-        if (!photonView.IsMine)
+        if (!photonView.IsMine || !StageDataManager.Instance.IsGameActive.Value)
             return;
         
         GetUp().Forget();
@@ -281,7 +284,7 @@ public class PlayerPhysicsController : MonoBehaviourPun
     /// </summary>
     public void Respawn(Vector3 respawnPos, Quaternion respawnAngle)
     {
-        if (!photonView.IsMine)
+        if (!photonView.IsMine || !StageDataManager.Instance.IsGameActive.Value)
             return;
 
         transform.position = respawnPos;

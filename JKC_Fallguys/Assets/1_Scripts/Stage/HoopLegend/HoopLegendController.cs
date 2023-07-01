@@ -3,7 +3,6 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using Photon.Pun;
 using UniRx;
-using UnityEngine;
 
 public class HoopLegendController : StageController
 {
@@ -41,7 +40,6 @@ public class HoopLegendController : StageController
             await UniTask.Delay(TimeSpan.FromSeconds(1), cancellationToken: cancelToken);
             
             --remainingGameTime.Value;
-            Debug.Log(remainingGameTime.Value);
         }
     }
     
@@ -71,7 +69,9 @@ public class HoopLegendController : StageController
     public void RpcEndGame()
     {
         StageDataManager.Instance.IsGameActive.Value = false;
-        StageDataManager.Instance.CurrentState.Value = StageDataManager.PlayerState.GameTerminated;
+        
+        int actorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
+        StageDataManager.Instance.SetPlayerState(actorNumber, StageDataManager.PlayerState.GameTerminated);
     }
     
     private void OnDestroy()

@@ -1,7 +1,7 @@
 using LiteralRepository;
 using Model;
 
-public class MatchingStandbySceneInitializer : SceneInitializer
+public class MatchingSceneInitializer : SceneInitializer
 {
     private LineEffectPooler _lineEffectPooler;
     private RespawnZone _respawnZone;
@@ -31,19 +31,9 @@ public class MatchingStandbySceneInitializer : SceneInitializer
         _lineEffectPooler = Instantiate(DataManager.GetGameObjectData
             (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.MatchingStandby, PathLiteral.Object, "LineEffectPooler"))
             .GetComponent<LineEffectPooler>();
-
-        Instantiate(DataManager.GetGameObjectData
-            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.MatchingStandby, PathLiteral.UI, "ReturnButtonViewController"));
-        Instantiate(DataManager.GetGameObjectData
-            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.MatchingStandby, PathLiteral.UI, "ExitMatchingPanelViewController"));
+        
         Instantiate(DataManager.GetGameObjectData
             (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.MatchingStandby, PathLiteral.Object, "ReleaseZone"));
-        Instantiate(DataManager.GetGameObjectData
-            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.MatchingStandby, PathLiteral.UI, "MatchingStandbyBackgroundImage"));
-        Instantiate(DataManager.GetGameObjectData
-            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.MatchingStandby, PathLiteral.UI, "RotationFaceIconViewController"));
-        Instantiate(DataManager.GetGameObjectData
-            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.MatchingStandby, PathLiteral.UI, "CurrentParticipantsViewController"));
         Instantiate(DataManager.GetGameObjectData
             (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.MatchingStandby, PathLiteral.Object, "MatchingSceneFallGuy"));
     }

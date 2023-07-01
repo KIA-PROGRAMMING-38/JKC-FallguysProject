@@ -9,16 +9,15 @@ public class StageSceneInitializer : SceneInitializer
     {
         StageDataManager.Instance.SetGameStatus(false);
         StageDataManager.Instance.SetRoundState(false);
-        StageDataManager.Instance.SetPlayerState(StageDataManager.PlayerState.Default);
-        StageDataManager.Instance.SetPlayerAlive(true);
+    
+        int actorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
+        StageDataManager.Instance.SetPlayerState(actorNumber, StageDataManager.PlayerState.Default);
+    
+        StageDataManager.Instance.SetPlayerAlive(PhotonNetwork.LocalPlayer.ActorNumber, true);
     }
 
     protected override void OnGetResources()
     {
-        Instantiate
-            (DataManager.GetGameObjectData(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, "PhotonStageSceneEventManager"));
-        Instantiate
-            (DataManager.GetGameObjectData(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, "StageManager"));
         Instantiate
             (DataManager.GetGameObjectData(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, PathLiteral.UI, "ExitButtonViewController"));
         Instantiate
@@ -48,9 +47,13 @@ public class StageSceneInitializer : SceneInitializer
 
         if (PhotonNetwork.IsMasterClient)
         {
-            string filePath = DataManager.SetDataPath(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, "StageInstantiateManager");
+            string filePathInstantiateManager = DataManager.SetDataPath(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, "StageInstantiateManager");
+            string filePathPhotonEventManager = DataManager.SetDataPath(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, "PhotonStageSceneEventManager");
+            string filePathPhotonRoomManager = DataManager.SetDataPath(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, "PhotonStageSceneRoomManager");
             
-            PhotonNetwork.Instantiate(filePath, transform.position, transform.rotation);    
+            PhotonNetwork.Instantiate(filePathInstantiateManager, transform.position, transform.rotation);
+            PhotonNetwork.Instantiate(filePathPhotonEventManager, transform.position, transform.rotation);
+            PhotonNetwork.Instantiate(filePathPhotonRoomManager, transform.position, transform.rotation);
         }
     }
 }

@@ -56,7 +56,10 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
     [PunRPC]
     public void EnterNextScene()
     {
-        if (StageDataManager.Instance.MapDatas[StageDataManager.Instance.MapPickupIndex].Info.Type !=
+        if (!photonView.IsMine)
+            return;
+        
+        if (StageDataManager.Instance.MapDatas[StageDataManager.Instance.MapPickupIndex.Value].Info.Type !=
             MapData.MapType.Survivor)
         {
             RankingSettlement();
@@ -130,6 +133,8 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
 
     private void EndLogic()
     {
+        Debug.Log($"EndLogic Action : {PhotonNetwork.LocalPlayer.ActorNumber}");
+        
         UpdatePlayerRanking();
         StageDataManager.Instance.StagePlayerRankings.Clear();
         StageDataManager.Instance.FailedClearStagePlayers.Clear();
@@ -142,6 +147,8 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
 
     private void UpdatePlayerRanking()
     {
+        Debug.Log($"UpdatePlayerRanking : {PhotonNetwork.LocalPlayer.ActorNumber}");
+        
         // PlayerData에 저장된 점수를 기준으로 플레이어를 정렬하고 그 순서대로 인덱스를 CachedPlayerIndicesForResults에 저장합니다.
         List<KeyValuePair<int, PlayerData>> sortedPlayers = 
             StageDataManager.Instance.PlayerDataByIndex.OrderByDescending(pair => pair.Value.Score).ToList();
@@ -157,9 +164,16 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
     [PunRPC]
     public void UpdateStageDataOnAllClients(string playerScoresByIndexJson, int[] playerRanking, int[] stagePlayerRankings)
     {
+        Debug.Log($"UpdateData : {PhotonNetwork.LocalPlayer.ActorNumber}");
+        
         StageDataManager.Instance.PlayerDataByIndex = JsonConvert.DeserializeObject<Dictionary<int, PlayerData>>(playerScoresByIndexJson);
         StageDataManager.Instance.CachedPlayerIndicesForResults = playerRanking.ToList();
         StageDataManager.Instance.StagePlayerRankings = stagePlayerRankings.ToList();
+    }
+    
+    private void OnDestroy()
+    {
+        
     }
 
     #endregion

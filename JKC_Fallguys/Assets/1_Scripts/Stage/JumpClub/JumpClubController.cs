@@ -27,11 +27,11 @@ public class JumpClubController : StageController
 
     protected override void InitializeRx()
     {
-        StageDataManager.Instance.IsPlayerAlive
-            .DistinctUntilChanged()
-            .Where(alive => !alive)
-            .Subscribe(_ => _observeCamera.gameObject.SetActive(true))
-            .AddTo(this);
+        // StageDataManager.Instance.IsPlayerAlive(PhotonNetwork.LocalPlayer.ActorNumber)
+        //     .DistinctUntilChanged()
+        //     .Where(alive => !alive)
+        //     .Subscribe(_ => _observeCamera.gameObject.SetActive(true))
+        //     .AddTo(this);
 
         StageDataManager.Instance.IsGameActive
             .Where(state => state)
@@ -51,7 +51,6 @@ public class JumpClubController : StageController
             await UniTask.Delay(TimeSpan.FromSeconds(1), cancellationToken: cancelToken);
             
             --remainingGameTime.Value;
-            Debug.Log(remainingGameTime.Value);
         }
     }
 
@@ -80,17 +79,19 @@ public class JumpClubController : StageController
     [PunRPC]
     public void RpcEndGame()
     {
-        StageDataManager.Instance.IsGameActive.Value = false;
+        StageDataManager.Instance.SetGameStatus(false);
         
-        if (StageDataManager.Instance.IsPlayerAlive.Value)
+        int actorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
+
+        if (StageDataManager.Instance.IsPlayerAlive(actorNumber).Value)
         {
-            StageDataManager.Instance.CurrentState.Value = StageDataManager.PlayerState.Victory;
+            StageDataManager.Instance.SetPlayerState(actorNumber, StageDataManager.PlayerState.Victory);
             
-            photonView.RPC("RpcDeclarationOfVictory", RpcTarget.All, PhotonNetwork.LocalPlayer.ActorNumber);
+            photonView.RPC("RpcDeclarationOfVictory", RpcTarget.All, actorNumber);
         }
         else
         {
-            StageDataManager.Instance.CurrentState.Value = StageDataManager.PlayerState.Defeat;
+            StageDataManager.Instance.SetPlayerState(actorNumber, StageDataManager.PlayerState.Defeat);
         }
     }
 

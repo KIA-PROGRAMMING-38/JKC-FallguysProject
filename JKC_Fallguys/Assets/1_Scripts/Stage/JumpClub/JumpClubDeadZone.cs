@@ -6,17 +6,13 @@ public class JumpClubDeadZone : MonoBehaviourPun
 {
     private void OnTriggerEnter(Collider col)
     {
-        if (col.CompareTag(TagLiteral.Player))
+        if (col.CompareTag(TagLiteral.Player) && photonView.IsMine)
         {
-            if (photonView.IsMine)
-            {
-                StageDataManager.Instance.IsPlayerAlive.Value = false;
-                StageDataManager.Instance.CurrentState.Value = StageDataManager.PlayerState.Defeat;
-                col.gameObject.transform.root.gameObject.SetActive(false);
+            int actorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
+            StageDataManager.Instance.SetPlayerAlive(actorNumber, false);
+            StageDataManager.Instance.SetPlayerState(actorNumber, StageDataManager.PlayerState.Defeat);
 
-                int actorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
-                photonView.RPC("RpcAddPlayerToFailedList", RpcTarget.MasterClient, actorNumber);
-            }
+            photonView.RPC("RpcAddPlayerToFailedList", RpcTarget.All, actorNumber);
         }
     }
 
@@ -24,6 +20,10 @@ public class JumpClubDeadZone : MonoBehaviourPun
     public void RpcAddPlayerToFailedList(int actorNumber)
     {
         StageDataManager.Instance.AddPlayerToFailedClearStagePlayers(actorNumber);
+        
+        Debug.Log($"CurrentRoomPlayerCount : {PhotonNetwork.CurrentRoom.PlayerCount}");
+        Debug.Log($"StagePlayerRankingsCount : {StageDataManager.Instance.StagePlayerRankings.Count}");
+        Debug.Log($"FailedClearStagePlayersCount : {StageDataManager.Instance.FailedClearStagePlayers.Count}");
 
         if (PhotonNetwork.CurrentRoom.PlayerCount <= 
             StageDataManager.Instance.StagePlayerRankings.Count + StageDataManager.Instance.FailedClearStagePlayers.Count)
