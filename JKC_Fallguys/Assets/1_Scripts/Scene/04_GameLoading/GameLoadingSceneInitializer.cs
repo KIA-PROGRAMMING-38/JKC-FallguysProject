@@ -3,6 +3,16 @@ using Photon.Pun;
 
 public class GameLoadingSceneInitializer : SceneInitializer
 {
+    protected override void Awake()
+    {
+        base.Awake();
+        
+        if (AudioManager.Instance != null)
+        {
+            Destroy(AudioManager.Instance.gameObject);
+        }
+    }
+    
     protected override void OnGetResources()
     {
         Instantiate(DataManager.GetGameObjectData

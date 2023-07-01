@@ -13,7 +13,7 @@ public class SingletonMonoBehaviour<T> : MonoBehaviour where T : MonoBehaviour
                 _instance = FindObjectOfType<T>();
                 if ( _instance == null )
                 {
-                    GameObject obj = new GameObject( $"@{nameof( T )}" );
+                    GameObject obj = new GameObject(typeof(T).Name);
                     _instance = obj.AddComponent<T>();
                     DontDestroyOnLoad( obj );
                 }

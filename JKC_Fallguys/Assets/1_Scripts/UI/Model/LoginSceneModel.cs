@@ -6,7 +6,6 @@ namespace Model
     {
         // LoginPanel의 InputField가 올바르게 입력되었는지 검사합니다.
         private static bool _isCorrectInput = false;
-        public static event Action OnLoginSuccess;
 
         public static bool IsLoginInputFieldFilled
         {
@@ -16,7 +15,6 @@ namespace Model
         public static void ConditionEstablished()
         {
             _isCorrectInput = true;
-            OnLoginSuccess.Invoke();
         }
 
         public static void NotConditionEstablished()

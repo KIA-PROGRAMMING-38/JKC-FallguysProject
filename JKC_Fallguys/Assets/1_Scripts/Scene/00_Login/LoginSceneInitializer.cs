@@ -15,4 +15,6 @@ public class LoginSceneInitializer : SceneInitializer
         Instantiate(DataManager.GetGameObjectData
             (PathLiteral.Prefabs, PathLiteral.Manager, "PhotonLoginManager"));
     }
+    
+    //private void OnSceneLoaded()
 }

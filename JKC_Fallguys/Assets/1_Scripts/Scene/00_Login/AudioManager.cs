@@ -1,32 +1,28 @@
-using System;
-using LiteralRepository;
-using Model;
+using ResourceRegistry;
 using UnityEngine;
 
-public class AudioManager : MonoBehaviour
+public class AudioManager : SingletonMonoBehaviour<AudioManager>
 {
-    private AudioSource _audioSource;
+    // Intro와 LoopMusic을 담당할 Audio Sources
+    private AudioSource[] _audioSources = new AudioSource[2];
+    
+    // 외부에서 사용할 AudioSource
+    public AudioSource[] MusicAudioSource => _audioSources;
+    
     private AudioClip _loginSound;
 
-    private void Awake()
+    protected override void Awake()
     {
-        _audioSource = GetComponent<AudioSource>();
-        _loginSound = DataManager.GetAudioClip(PathLiteral.Sounds, PathLiteral.Music, PathLiteral.LoginSound);
-    }
+        base.Awake();
 
-    private void Start()
-    {
-        LoginSceneModel.OnLoginSuccess -= LoginSoundPlay;
-        LoginSceneModel.OnLoginSuccess += LoginSoundPlay;
-    }
+        for (int index = 0; index < _audioSources.Length; ++index)
+        {
+            _audioSources[index] = gameObject.AddComponent<AudioSource>();
+            _audioSources[index].playOnAwake = false;
 
-    private void LoginSoundPlay()
-    {
-        _audioSource.PlayOneShot(_loginSound);
-    }
+            _audioSources[index].clip = AudioRegistry.LobbyMusic[index];
+        }
 
-    private void OnDestroy()
-    {
-        LoginSceneModel.OnLoginSuccess -= LoginSoundPlay;
+        gameObject.AddComponent<AudioReverbZone>().reverbPreset = AudioReverbPreset.Alley;
     }
 }
