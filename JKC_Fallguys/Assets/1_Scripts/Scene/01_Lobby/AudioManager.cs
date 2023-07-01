@@ -8,8 +8,6 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
     
     // 외부에서 사용할 AudioSource
     public AudioSource[] MusicAudioSource => _audioSources;
-    
-    private AudioClip _loginSound;
 
     protected override void Awake()
     {
@@ -18,9 +16,6 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
         for (int index = 0; index < _audioSources.Length; ++index)
         {
             _audioSources[index] = gameObject.AddComponent<AudioSource>();
-            _audioSources[index].playOnAwake = false;
-
-            _audioSources[index].clip = AudioRegistry.LobbyMusic[index];
         }
 
         gameObject.AddComponent<AudioReverbZone>().reverbPreset = AudioReverbPreset.Alley;
