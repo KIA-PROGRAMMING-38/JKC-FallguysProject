@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using Photon.Pun;
 using UniRx;
 using UnityEngine;
 
@@ -20,7 +21,9 @@ public class ResultInStagePresenter : Presenter
     
     protected override void OnUpdatedModel()
     {
-        StageDataManager.Instance.CurrentState
+        int actorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
+        Debug.Log($"ResultInActorNumber : {PhotonNetwork.LocalPlayer.ActorNumber}");
+        StageDataManager.Instance.GetCurrentState(actorNumber)
             .Skip(1) // 초기 Default로 설정된것은 Skip.
             .DistinctUntilChanged()
             .Subscribe(currentState =>
@@ -42,7 +45,7 @@ public class ResultInStagePresenter : Presenter
                 }
 
                 UIAnimation().Forget();
-                
+            
             })
             .AddTo(_compositeDisposable);
     }
@@ -55,6 +58,7 @@ public class ResultInStagePresenter : Presenter
             .SetEase(Ease.EaseOutElastic);
 
         await UniTask.Delay(3000);
+        
         _resultInStageView.ResultPanel.MoveUI(_outPosition, _resultInStageView.CanvasRect, 0.5f);
     }
 

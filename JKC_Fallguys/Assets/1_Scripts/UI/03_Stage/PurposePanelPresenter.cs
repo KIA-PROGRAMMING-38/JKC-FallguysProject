@@ -21,7 +21,7 @@ public class PurposePanelPresenter : Presenter
 
     private void SetData()
     {
-        MapData mapData = StageDataManager.Instance.MapDatas[StageDataManager.Instance.MapPickupIndex];
+        MapData mapData = StageDataManager.Instance.MapDatas[StageDataManager.Instance.MapPickupIndex.Value];
 
         _purposePanelView.PurposeText.text = mapData.Info.Purpose;
     }

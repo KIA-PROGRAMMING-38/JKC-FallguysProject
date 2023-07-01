@@ -1,6 +1,5 @@
 using Model;
 using UniRx;
-using UnityEngine;
 
 public class ExitButtonPresenter : Presenter
 {

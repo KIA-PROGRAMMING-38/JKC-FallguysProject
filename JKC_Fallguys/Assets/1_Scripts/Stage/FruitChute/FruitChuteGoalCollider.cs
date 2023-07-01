@@ -6,18 +6,22 @@ public class FruitChuteGoalCollider : MonoBehaviourPun
 {
     private void OnTriggerEnter(Collider col)
     {
-        if (col.CompareTag(TagLiteral.Player))
+        if (col.CompareTag(TagLiteral.Player) && photonView.IsMine)
         {
-            if (photonView.IsMine)
-            {
-                col.gameObject.transform.root.gameObject.SetActive(false);
-                StageDataManager.Instance.CurrentState.Value = StageDataManager.PlayerState.Victory;
+            int actorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
+            Debug.Log($"FruitChuteColliderActNum : {PhotonNetwork.LocalPlayer.ActorNumber}");
+
+            // 플레이어가 목표에 도달했으므로, Victory 상태로 설정.
+            StageDataManager.Instance.SetPlayerState(actorNumber, StageDataManager.PlayerState.Victory);
+            StageDataManager.Instance.SetPlayerAlive(actorNumber, false);
             
-                photonView.RPC("RpcAddPlayerToRankingOnGoal", RpcTarget.MasterClient, PhotonNetwork.LocalPlayer.ActorNumber);    
-            }
+            // 이 플레이어의 순위를 업데이트하는 RPC를 마스터 클라이언트에게 호출
+            photonView.RPC("RpcAddPlayerToRankingOnGoal", RpcTarget.MasterClient, actorNumber);
         }
     }
-    
+
+
+
     [PunRPC]
     public void RpcAddPlayerToRankingOnGoal(int playerIndex)
     {
@@ -32,7 +36,7 @@ public class FruitChuteGoalCollider : MonoBehaviourPun
         StageDataManager.Instance.AddPlayerToRanking(playerIndex);
 
         if (StageDataManager.Instance.StagePlayerRankings.Count == 3 ||
-            PhotonNetwork.CurrentRoom.PlayerCount >= StageDataManager.Instance.StagePlayerRankings.Count)
+            PhotonNetwork.CurrentRoom.PlayerCount <= StageDataManager.Instance.StagePlayerRankings.Count)
         {
             photonView.RPC("RpcEndGameBroadCast", RpcTarget.All);
         }

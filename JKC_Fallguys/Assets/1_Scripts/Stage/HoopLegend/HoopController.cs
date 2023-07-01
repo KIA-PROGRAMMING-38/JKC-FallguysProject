@@ -17,9 +17,12 @@ public class HoopController : MonoBehaviourPun
         _hoopLegendController = GetComponentInParent<HoopLegendController>();
         Debug.Assert(_hoopLegendController != null);
         _cancellationToken = new CancellationTokenSource();
-        
-        InitializeObject();
-        InitializeRx();
+
+        if (PhotonNetwork.IsMasterClient)
+        {
+            InitializeObject();
+            InitializeRx();
+        }
     }
 
     private void InitializeObject()

@@ -72,6 +72,9 @@ MonoBehaviour:
   - RpcAxeRotation
   - RpcAddPlayerToFailedList
   - RpcEndGame
+  - RpcSetPlayerDefeat
+  - RpcSetPlayerVictory
+  - RpcSetMapData
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

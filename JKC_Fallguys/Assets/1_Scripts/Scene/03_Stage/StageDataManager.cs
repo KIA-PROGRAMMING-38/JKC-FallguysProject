@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEngine;
 using UniRx;
 
 public class StageDataManager : SingletonMonoBehaviour<StageDataManager>
@@ -7,16 +6,25 @@ public class StageDataManager : SingletonMonoBehaviour<StageDataManager>
     // 게임의 활성화 상태를 나타냅니다.
     private ReactiveProperty<bool> _isGameActive = new ReactiveProperty<bool>(false);
     public IReactiveProperty<bool> IsGameActive => _isGameActive;
-    // 현재 클라이언트를 플레이하고 있는 플레이어의 생존 여부를 나타냅니다.
-    private ReactiveProperty<bool> _isPlayerAlive = new ReactiveProperty<bool>(true);
-    public IReactiveProperty<bool> IsPlayerAlive => _isPlayerAlive;
+    // // 현재 클라이언트를 플레이하고 있는 플레이어의 생존 여부를 나타냅니다.
+    private Dictionary<int, ReactiveProperty<bool>> _isPlayerAliveDict = new Dictionary<int, ReactiveProperty<bool>>();
+    public IReactiveProperty<bool> IsPlayerAlive(int actorNumber)
+    {
+        if (!_isPlayerAliveDict.ContainsKey(actorNumber))
+        {
+            _isPlayerAliveDict[actorNumber] = new ReactiveProperty<bool>(true);
+        }
+
+        return _isPlayerAliveDict[actorNumber];
+    }
 
     // 맵에서 쓰일 데이타가 저장되는 딕셔너리입니다. 
     public Dictionary<int, MapData> MapDatas = new Dictionary<int, MapData>();
     // 선택할 맵 데이터를 판별하는 객체입니다.
     public bool[] MapPickupFlags = new bool[DataManager.MaxPlayableMaps];
-    public int MapPickupIndex;
-    
+    private ReactiveProperty<int> _mapPickupIndex = new ReactiveProperty<int>();
+    public IReactiveProperty<int> MapPickupIndex => _mapPickupIndex;
+
     // 플레이어의 점수들이 계속해서 저장되는 딕셔너리입니다.
     public Dictionary<int, PlayerData> PlayerDataByIndex = new Dictionary<int, PlayerData>();
     // 결과 창에서 사용될 플레이어의 인덱스를 캐싱해놓는 리스트입니다.
@@ -35,9 +43,21 @@ public class StageDataManager : SingletonMonoBehaviour<StageDataManager>
         Defeat,
         GameTerminated
     }
+    
+    // 클라이언트 별 PlayerState를 관리하는 Dictionary입니다.
+    private Dictionary<int, ReactiveProperty<PlayerState>> _clientStates = new Dictionary<int, ReactiveProperty<PlayerState>>();
+    public IReactiveProperty<PlayerState> GetCurrentState(int actorNumber)
+    {
+        if (!_clientStates.ContainsKey(actorNumber))
+        {
+            _clientStates[actorNumber] = new ReactiveProperty<PlayerState>();
+        }
 
-    private ReactiveProperty<PlayerState> _currentState = new ReactiveProperty<PlayerState>();
-    public IReactiveProperty<PlayerState> CurrentState => _currentState;
+        return _clientStates[actorNumber];
+    }
+
+    // private ReactiveProperty<PlayerState> _currentState = new ReactiveProperty<PlayerState>();
+    // public IReactiveProperty<PlayerState> CurrentState => _currentState;
     
     // 라운드가 끝났는지 확인하기 위한 변수입니다.
     private ReactiveProperty<bool> _isRoundCompleted = new ReactiveProperty<bool>();
@@ -71,14 +91,14 @@ public class StageDataManager : SingletonMonoBehaviour<StageDataManager>
         _isRoundCompleted.Value = status;
     }
 
-    public void SetPlayerState(PlayerState state)
+    public void SetPlayerState(int actorNumber, PlayerState state)
     {
-        _currentState.Value = state;
+        GetCurrentState(actorNumber).Value = state;
     }
 
-    public void SetPlayerAlive(bool status)
+    public void SetPlayerAlive(int actorNumber, bool status)
     {
-        _isPlayerAlive.Value = status;
+        IsPlayerAlive(actorNumber).Value = status;
     }
 
     /// <summary>
@@ -89,5 +109,10 @@ public class StageDataManager : SingletonMonoBehaviour<StageDataManager>
     public void DestorySelf()
     {
         Destroy(gameObject);
+    }
+
+    public void SetMapPickupFlag(int index)
+    {
+        _mapPickupIndex.Value = index;
     }
 }

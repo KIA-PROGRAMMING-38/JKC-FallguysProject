@@ -43,8 +43,8 @@ public class ResultRoundSetupManager : MonoBehaviour
             _fallGuy[fallGuyIndex] = DataManager.GetGameObjectData(
                 DataManager.SetDataPath(PathLiteral.Prefabs, PathLiteral.Scene, "05_RoundResult", "RoundResultFallGuy"));
 
-            GameObject fallGuy = Instantiate(_fallGuy[fallGuyIndex], _fallGuyPositions[fallGuyIndex],
-                _fallGuy[fallGuyIndex].transform.rotation);
+            GameObject fallGuy = 
+                Instantiate(_fallGuy[fallGuyIndex], _fallGuyPositions[fallGuyIndex], _fallGuy[fallGuyIndex].transform.rotation);
 
             _animator = fallGuy.GetComponent<Animator>();
             _meshRenderer = fallGuy.GetComponentInChildren<SkinnedMeshRenderer>();
