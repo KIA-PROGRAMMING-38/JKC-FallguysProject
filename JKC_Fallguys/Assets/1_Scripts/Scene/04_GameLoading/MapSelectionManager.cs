@@ -21,8 +21,6 @@ public class MapSelectionManager : MonoBehaviourPun
                 StageDataManager.Instance.MapPickupFlags[index] = true;
                 StageDataManager.Instance.SetMapPickupFlag(index);
                 
-                Debug.Log($"SelectMapObjectname : {gameObject.name}");
-                Debug.Log($"Manager's MapPickupIndex : {StageDataManager.Instance.MapPickupIndex.Value}");
                 Debug.Log($"MapIndex : {index}");
                 
                 // 마스터 클라이언트가 선택한 맵의 인덱스를 모든 클라이언트에게 보냅니다.
@@ -42,18 +40,5 @@ public class MapSelectionManager : MonoBehaviourPun
     {
         // 마스터 클라이언트가 선택한 맵의 인덱스를 설정합니다.
         StageDataManager.Instance.SetMapPickupFlag(mapIndex);
-    }
-
-    private void OnDestroy()
-    {
-        foreach (PhotonView photonView in PhotonNetwork.PhotonViewCollection)
-        {
-            if(photonView != null)
-            {
-                Debug.Log($"OnDestroy : {photonView.gameObject.name}");
-     
-                PhotonNetwork.Destroy(photonView);
-            }
-        }
     }
 }

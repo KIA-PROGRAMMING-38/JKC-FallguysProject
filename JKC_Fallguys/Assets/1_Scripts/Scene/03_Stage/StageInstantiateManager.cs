@@ -7,7 +7,6 @@ public class StageInstantiateManager : MonoBehaviourPun
     private void Awake()
     {
         InitializeMap();
-        Debug.Log("ㄴㅓ왜 두번호출되?");
     }
 
     private void InitializeMap()

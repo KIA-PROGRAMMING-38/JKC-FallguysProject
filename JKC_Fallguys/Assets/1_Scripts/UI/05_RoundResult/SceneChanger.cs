@@ -18,15 +18,4 @@ public class SceneChanger : MonoBehaviourPun
 
         PhotonNetwork.LoadLevel(SceneIndex.GameLoading);
     }
-
-    private void OnDestroy()
-    {
-        foreach (PhotonView photonView in PhotonNetwork.PhotonViewCollection)
-        {
-            if (photonView.IsMine)
-            {
-                PhotonNetwork.Destroy(photonView);
-            }
-        }
-    }
 }
