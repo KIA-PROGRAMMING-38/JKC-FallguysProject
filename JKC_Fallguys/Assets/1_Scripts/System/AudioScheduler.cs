@@ -4,10 +4,17 @@ public abstract class AudioScheduler : MonoBehaviour
 {
     protected virtual void Start()
     {
+        SetAudioClip();
+        
         SetMusicScheduleTime();
         
         PlayAudio();
     }
+
+    /// <summary>
+    /// 오디오 클립을 할당합니다.
+    /// </summary>
+    public abstract void SetAudioClip();
     
     /// <summary>
     /// 음악이 시작되는 시간을 설정합니다. 
