@@ -1,8 +1,10 @@
 using LiteralRepository;
 using Photon.Pun;
+using UnityEngine;
 
 public class StageSceneInitializer : SceneInitializer
 {
+    private GameObject _stageAudioManager;
     protected override void InitializeModel()
     {
         StageDataManager.Instance.SetGameStatus(false);
@@ -30,6 +32,18 @@ public class StageSceneInitializer : SceneInitializer
             (DataManager.GetGameObjectData(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, PathLiteral.UI, "ResultInStageViewController"));
         Instantiate
             (DataManager.GetGameObjectData(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, PathLiteral.UI, "RoundEndViewController"));
+        _stageAudioManager = Instantiate
+            (DataManager.GetGameObjectData(PathLiteral.Prefabs, PathLiteral.Manager, "StageAudioManager"));
+        
+        if (StageDataManager.Instance.IsFinalRound() == false)
+        {
+            _stageAudioManager.AddComponent<RoundAudioScheduler>();
+        }
+
+        else
+        {
+            _stageAudioManager.AddComponent<FinalRoundAudioScheduler>();
+        }
 
         if (PhotonNetwork.IsMasterClient)
         {

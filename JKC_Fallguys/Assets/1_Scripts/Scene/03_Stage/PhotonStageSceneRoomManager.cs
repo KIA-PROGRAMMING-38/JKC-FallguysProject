@@ -52,22 +52,6 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
         photonView.RPC("EnterNextScene", RpcTarget.MasterClient);
         StageDataManager.Instance.SetRoundState(true);
     }
- 
-    private bool IsAllRoundsPlayed()
-    {
-        int index = 0;
-
-        for (int i = 0; i < DataManager.MaxPlayableMaps; ++i)
-        {
-            if (StageDataManager.Instance.MapPickupFlags[i])
-            {
-                ++index;
-            }
-        }
-
-        return index == 3;
-    }
-
 
     [PunRPC]
     public void EnterNextScene()
@@ -95,11 +79,11 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
     {
         await UniTask.Delay(TimeSpan.FromSeconds(5f), DelayType.UnscaledDeltaTime);
 
-        if (IsAllRoundsPlayed())
+        if (StageDataManager.Instance.IsAllRoundsPlayed())
         {
             PhotonNetwork.LoadLevel(SceneIndex.GameResult);
         }
-        else if (!IsAllRoundsPlayed())
+        else if (!StageDataManager.Instance.IsAllRoundsPlayed())
         {
             PhotonNetwork.LoadLevel(SceneIndex.RoundResult);
         }
