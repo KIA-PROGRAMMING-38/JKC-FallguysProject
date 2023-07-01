@@ -93,29 +93,27 @@ public class StageDataManager : SingletonMonoBehaviour<StageDataManager>
 
     public bool IsAllRoundsPlayed()
     {
-        int index = 0;
-        for (int i = 0; i < DataManager.MaxPlayableMaps; ++i)
-        {
-            if (MapPickupFlags[i])
-            {
-                ++index;
-            }
-        }
-
-        return index == 3;
+        int playedRounds = GetPlayedRoundCount();
+        return playedRounds == DataManager.MaxPlayableMaps;
     }
 
     public bool IsFinalRound()
     {
-        int index = 0;
-        for (int i = 0; i < DataManager.MaxPlayableMaps - 1; ++i)
+        int playedRounds = GetPlayedRoundCount();
+        return playedRounds == DataManager.MaxPlayableMaps - 1;
+    }
+
+    private int GetPlayedRoundCount()
+    {
+        int count = 0;
+        for (int i = 0; i < DataManager.MaxPlayableMaps; ++i)
         {
             if (MapPickupFlags[i])
             {
-                ++index;
+                ++count;
             }
         }
-
-        return index == 2;
+        return count;
     }
+
 }
