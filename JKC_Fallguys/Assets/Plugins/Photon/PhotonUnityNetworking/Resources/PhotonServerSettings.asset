@@ -75,6 +75,7 @@ MonoBehaviour:
   - RpcSetPlayerDefeat
   - RpcSetPlayerVictory
   - RpcSetMapData
+  - RequestOwnershipTransfer
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
