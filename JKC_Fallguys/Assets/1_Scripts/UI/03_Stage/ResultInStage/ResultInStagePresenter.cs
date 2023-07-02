@@ -22,7 +22,6 @@ public class ResultInStagePresenter : Presenter
     protected override void OnUpdatedModel()
     {
         int actorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
-        Debug.Log($"ResultInActorNumber : {PhotonNetwork.LocalPlayer.ActorNumber}");
         StageDataManager.Instance.GetCurrentState(actorNumber)
             .Skip(1) // 초기 Default로 설정된것은 Skip.
             .DistinctUntilChanged()

@@ -43,18 +43,19 @@ public class Canon : MonoBehaviourPunCallbacks
     {
         if (PhotonNetwork.IsMasterClient)
         {
-            photonView.RPC("InitiateFiring", RpcTarget.All);
+            _firingDelay = Random.Range(_minFiringDelay, _maxFiringDelay);
+            photonView.RPC("RpcInitiateFiring", RpcTarget.All, _firingDelay);
         }
     }
 
     [PunRPC]
-    public void InitiateFiring()
+    public void RpcInitiateFiring(float firingDelay)
     {
-        _firingDelay = Random.Range(_minFiringDelay, _maxFiringDelay);
-        photonView.RPC("UpdateDelayTime", RpcTarget.All, _firingDelay);
+        _firingDelay = firingDelay;
 
         RepeatShootAnimation(_cancellationTokenSource.Token).Forget();
     }
+
 
     private void PlayAnimation()
     {

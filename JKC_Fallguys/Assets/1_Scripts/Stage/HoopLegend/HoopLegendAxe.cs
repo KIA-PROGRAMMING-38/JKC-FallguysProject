@@ -1,4 +1,3 @@
-using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using Photon.Pun;
@@ -18,46 +17,40 @@ public class HoopLegendAxe : MonoBehaviourPunCallbacks
     private AxeController _axeController;
     private CancellationTokenSource _cancellationToken;
 
+    private PhotonView _bodyPhotonView;
+
     private void Awake()
     {
         _axeTransform = transform.Find("AxeBody").GetComponent<Transform>();
         Debug.Assert(_axeTransform != null);
-    }
-
-    private void SetRotationForce()
-    {
-        if (PhotonNetwork.IsMasterClient)
-        {
-            TestAsync().Forget();
-        }
+        _bodyPhotonView = _axeTransform.GetComponent<PhotonView>();
+        Debug.Assert(_bodyPhotonView != null);
     }
     
-    private async UniTaskVoid TestAsync()
-    {
-        await UniTask.Delay(TimeSpan.FromSeconds(5f));
-        
-        float rotationForce = Random.Range(_minRotationSpeed, _maxRotationSpeed);
-        photonView.RPC("RpcAxeRotation", RpcTarget.All, rotationForce);
-    }
-
-    [PunRPC]
-    public void RpcAxeRotation(float rotationForce)
-    {
-        _axeRotationSpeed = rotationForce;
-        AxeRotation(_cancellationToken).Forget();
-    }
-
     public void Initialize(AxeController axeController, CancellationTokenSource cancelToken)
     {
         _axeController = axeController;
         transform.SetParent(_axeController.transform);
         _cancellationToken = cancelToken;
-        
-        TestAsync().Forget();
-
-        SetRotationForce();
     }
-    
+
+    private void Start()
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            _axeRotationSpeed = Random.Range(_minRotationSpeed, _maxRotationSpeed);
+            photonView.RPC("RpcInitiateRotation", RpcTarget.All, _axeRotationSpeed);
+        }
+    }
+
+    [PunRPC]
+    public void RpcInitiateRotation(float axeRotationSpeed)
+    {
+        _axeRotationSpeed = axeRotationSpeed;
+        
+        AxeRotation(_cancellationToken).Forget();
+    }
+
     private async UniTask AxeRotation(CancellationTokenSource cancelToken)
     {
         while (true)
@@ -67,5 +60,4 @@ public class HoopLegendAxe : MonoBehaviourPunCallbacks
             await UniTask.Yield(PlayerLoopTiming.Update, cancelToken.Token);
         }
     }
-
 }
