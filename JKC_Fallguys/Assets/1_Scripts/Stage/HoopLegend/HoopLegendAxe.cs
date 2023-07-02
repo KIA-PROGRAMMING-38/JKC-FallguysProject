@@ -23,41 +23,37 @@ public class HoopLegendAxe : MonoBehaviourPunCallbacks
         _axeTransform = transform.Find("AxeBody").GetComponent<Transform>();
         Debug.Assert(_axeTransform != null);
     }
-
-    private void SetRotationForce()
-    {
-        if (PhotonNetwork.IsMasterClient)
-        {
-            TestAsync().Forget();
-        }
-    }
     
-    private async UniTaskVoid TestAsync()
-    {
-        await UniTask.Delay(TimeSpan.FromSeconds(5f));
-        
-        float rotationForce = Random.Range(_minRotationSpeed, _maxRotationSpeed);
-        photonView.RPC("RpcAxeRotation", RpcTarget.All, rotationForce);
-    }
-
-    [PunRPC]
-    public void RpcAxeRotation(float rotationForce)
-    {
-        _axeRotationSpeed = rotationForce;
-        AxeRotation(_cancellationToken).Forget();
-    }
-
     public void Initialize(AxeController axeController, CancellationTokenSource cancelToken)
     {
         _axeController = axeController;
         transform.SetParent(_axeController.transform);
         _cancellationToken = cancelToken;
-        
-        TestAsync().Forget();
-
-        SetRotationForce();
     }
-    
+
+    private void Start()
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            photonView.RPC("RpcInitiateRotation", RpcTarget.All);
+        }
+    }
+
+    [PunRPC]
+    public void RpcInitiateRotation()
+    {
+        float rotationForce = Random.Range(_minRotationSpeed, _maxRotationSpeed);
+        photonView.RPC("RpcSetAxeRotationForce", RpcTarget.All, rotationForce);
+        
+        AxeRotation(_cancellationToken).Forget();
+    }
+
+    [PunRPC]
+    public void RpcSetAxeRotationForce(float rotationForce)
+    {
+        _axeRotationSpeed = rotationForce;
+    }
+
     private async UniTask AxeRotation(CancellationTokenSource cancelToken)
     {
         while (true)
@@ -67,5 +63,4 @@ public class HoopLegendAxe : MonoBehaviourPunCallbacks
             await UniTask.Yield(PlayerLoopTiming.Update, cancelToken.Token);
         }
     }
-
 }
