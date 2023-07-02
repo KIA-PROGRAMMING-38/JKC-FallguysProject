@@ -1,6 +1,5 @@
 using UniRx;
 using UniRx.Triggers;
-using UnityEngine;
 
 public class MapInformationPresenter : Presenter
 {
@@ -36,8 +35,6 @@ public class MapInformationPresenter : Presenter
     {
         MapData mapData = StageDataManager.Instance.MapDatas[StageDataManager.Instance.MapPickupIndex.Value];
         
-        Debug.Log($"MapPickupIndex : {StageDataManager.Instance.MapPickupIndex}");
-
         _mapInformationView.MapNameText.text = mapData.Info.MapName;
         _mapInformationView.MapSplashArtImage.sprite =
             SplashArtRegistry.SpriteArts[mapData.Info.SplashArtRegistryIndex];

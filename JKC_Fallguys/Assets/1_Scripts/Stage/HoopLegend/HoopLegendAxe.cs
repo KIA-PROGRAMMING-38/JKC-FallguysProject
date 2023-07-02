@@ -28,14 +28,16 @@ public class HoopLegendAxe : MonoBehaviourPunCallbacks
     {
         if (PhotonNetwork.IsMasterClient)
         {
-            float rotationForce = Random.Range(_minRotationSpeed, _maxRotationSpeed);
-            photonView.RPC("RpcAxeRotation", RpcTarget.All, rotationForce);
+            TestAsync().Forget();
         }
     }
     
     private async UniTaskVoid TestAsync()
     {
         await UniTask.Delay(TimeSpan.FromSeconds(5f));
+        
+        float rotationForce = Random.Range(_minRotationSpeed, _maxRotationSpeed);
+        photonView.RPC("RpcAxeRotation", RpcTarget.All, rotationForce);
     }
 
     [PunRPC]
