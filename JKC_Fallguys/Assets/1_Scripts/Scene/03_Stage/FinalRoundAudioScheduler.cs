@@ -6,6 +6,8 @@ public class FinalRoundAudioScheduler : AudioScheduler
     private AudioSource _introAudioSource;
 
     private AudioSource _loopAudioSource;
+
+    private float _musicVolume = 0.3f;
     
     // Final Round일때
     private double _introStartTime;
@@ -15,6 +17,8 @@ public class FinalRoundAudioScheduler : AudioScheduler
     {
         _introAudioSource = gameObject.AddComponent<AudioSource>();
         _loopAudioSource = gameObject.AddComponent<AudioSource>();
+        _introAudioSource.volume = _musicVolume;
+        _loopAudioSource.volume = _musicVolume;
     }
 
     public override void SetAudioClip()

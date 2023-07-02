@@ -10,6 +10,7 @@ public class RoundAudioScheduler : AudioScheduler
     private void Awake()
     {
         _loopAudioSource = gameObject.AddComponent<AudioSource>();
+        _loopAudioSource.volume = 0.3f;
     }
 
     public override void SetAudioClip()
