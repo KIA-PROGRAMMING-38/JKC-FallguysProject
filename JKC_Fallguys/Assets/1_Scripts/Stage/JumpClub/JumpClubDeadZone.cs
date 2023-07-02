@@ -6,13 +6,19 @@ public class JumpClubDeadZone : MonoBehaviourPun
 {
     private void OnTriggerEnter(Collider col)
     {
-        if (col.CompareTag(TagLiteral.Player) && photonView.IsMine)
+        if (col.CompareTag(TagLiteral.Player))
         {
-            int actorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
-            StageDataManager.Instance.SetPlayerAlive(actorNumber, false);
-            StageDataManager.Instance.SetPlayerState(actorNumber, StageDataManager.PlayerState.Defeat);
+            PhotonView playerPhotonView = col.GetComponent<PhotonView>();
 
-            photonView.RPC("RpcAddPlayerToFailedList", RpcTarget.All, actorNumber);
+            if (playerPhotonView != null && playerPhotonView.IsMine)
+            {
+                int actorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
+                
+                StageDataManager.Instance.SetPlayerAlive(actorNumber, false);
+                StageDataManager.Instance.SetPlayerState(actorNumber, StageDataManager.PlayerState.Defeat);
+
+                photonView.RPC("RpcAddPlayerToFailedList", RpcTarget.All, actorNumber);
+            }
         }
     }
 

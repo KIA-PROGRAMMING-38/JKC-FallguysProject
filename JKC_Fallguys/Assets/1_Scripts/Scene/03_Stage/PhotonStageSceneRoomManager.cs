@@ -39,6 +39,9 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
     private void CompleteStageAndRankPlayers()
     {
         // Time.timeScale = 0f;
+
+        if (!PhotonNetwork.IsMasterClient)
+            return;
         
         // 타 컴포넌트에서 게임 결과를 정리하는 로직이 실행되기를 기다립니다.
         PrevEndProduction().Forget();
@@ -169,11 +172,6 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
         StageDataManager.Instance.PlayerDataByIndex = JsonConvert.DeserializeObject<Dictionary<int, PlayerData>>(playerScoresByIndexJson);
         StageDataManager.Instance.CachedPlayerIndicesForResults = playerRanking.ToList();
         StageDataManager.Instance.StagePlayerRankings = stagePlayerRankings.ToList();
-    }
-    
-    private void OnDestroy()
-    {
-        
     }
 
     #endregion

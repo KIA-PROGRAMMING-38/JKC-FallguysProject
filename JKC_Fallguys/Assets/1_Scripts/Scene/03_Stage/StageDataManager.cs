@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UniRx;
+using UnityEngine;
 
 public class StageDataManager : SingletonMonoBehaviour<StageDataManager>
 {
@@ -121,7 +122,7 @@ public class StageDataManager : SingletonMonoBehaviour<StageDataManager>
                 ++index;
             }
         }
-
+        
         return index == 3;
     }
 
