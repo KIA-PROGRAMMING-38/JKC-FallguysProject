@@ -82,11 +82,11 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
     {
         await UniTask.Delay(TimeSpan.FromSeconds(5f), DelayType.UnscaledDeltaTime);
 
-        if (StageDataManager.Instance.IsAllRoundsPlayed())
+        if (StageDataManager.Instance.IsFinalRound())
         {
             PhotonNetwork.LoadLevel(SceneIndex.GameResult);
         }
-        else if (!StageDataManager.Instance.IsAllRoundsPlayed())
+        else if (!StageDataManager.Instance.IsFinalRound())
         {
             PhotonNetwork.LoadLevel(SceneIndex.RoundResult);
         }

@@ -16,8 +16,9 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
         for (int index = 0; index < _audioSources.Length; ++index)
         {
             _audioSources[index] = gameObject.AddComponent<AudioSource>();
+            _audioSources[index].volume = 0.3f;
         }
 
-        gameObject.AddComponent<AudioReverbZone>().reverbPreset = AudioReverbPreset.Alley;
+        gameObject.AddComponent<AudioReverbZone>().reverbPreset = AudioReverbPreset.Room;
     }
 }

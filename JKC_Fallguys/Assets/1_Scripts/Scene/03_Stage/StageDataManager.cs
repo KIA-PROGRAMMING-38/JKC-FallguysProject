@@ -112,7 +112,7 @@ public class StageDataManager : SingletonMonoBehaviour<StageDataManager>
         Destroy(gameObject);
     }
 
-    public bool IsAllRoundsPlayed()
+    public bool IsFinalRound()
     {
         int index = 0;
         for (int i = 0; i < DataManager.MaxPlayableMaps; ++i)
@@ -125,20 +125,7 @@ public class StageDataManager : SingletonMonoBehaviour<StageDataManager>
         
         return index == 3;
     }
-
-    public bool IsFinalRound()
-    {
-        int index = 0;
-        for (int i = 0; i < DataManager.MaxPlayableMaps - 1; ++i)
-        {
-            if (MapPickupFlags[i])
-            {
-                ++index;
-            }
-        }
-
-        return index == 2;
-    }
+    
     public void SetMapPickupFlag(int index)
     {
         _mapPickupIndex.Value = index;

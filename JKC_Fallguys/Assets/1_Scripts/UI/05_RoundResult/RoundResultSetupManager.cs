@@ -1,8 +1,9 @@
 using LiteralRepository;
 using Model;
+using ResourceRegistry;
 using UnityEngine;
 
-public class ResultRoundSetupManager : MonoBehaviour
+public class RoundResultSetupManager : MonoBehaviour
 {
     // 프리팹 불러오기
     private GameObject[] _fallGuy = new GameObject[3];
@@ -46,11 +47,31 @@ public class ResultRoundSetupManager : MonoBehaviour
             GameObject fallGuy = 
                 Instantiate(_fallGuy[fallGuyIndex], _fallGuyPositions[fallGuyIndex], _fallGuy[fallGuyIndex].transform.rotation);
 
-            _animator = fallGuy.GetComponent<Animator>();
-            _meshRenderer = fallGuy.GetComponentInChildren<SkinnedMeshRenderer>();
-            Texture texture = PlayerTextureRegistry.PlayerTextures[RoundResultSceneModel.FallguyRankings[fallGuyIndex].TextureIndex]; 
-            _meshRenderer.material.mainTexture = texture;
-            _animator.runtimeAnimatorController = _runtimeAnimator[fallGuyIndex];
+            SetFallGuysAnimation(fallGuy, fallGuyIndex);
+
+            SetFallGuysTexture(fallGuy, fallGuyIndex);
+
+            SetFallGuysAudio(fallGuy, fallGuyIndex);
         }
+    }
+
+    private void SetFallGuysAnimation(GameObject fallGuy, int fallGuyIndex)
+    {
+        _animator = fallGuy.GetComponent<Animator>();
+        _animator.runtimeAnimatorController = _runtimeAnimator[fallGuyIndex];
+    }
+
+    private void SetFallGuysTexture(GameObject fallGuy, int fallGuyIndex)
+    {
+        _meshRenderer = fallGuy.GetComponentInChildren<SkinnedMeshRenderer>();
+        Texture texture = PlayerTextureRegistry.PlayerTextures[RoundResultSceneModel.FallguyRankings[fallGuyIndex].TextureIndex]; 
+        _meshRenderer.material.mainTexture = texture;
+    }
+
+    private void SetFallGuysAudio(GameObject fallGuy, int fallGuyIndex)
+    {
+        AudioSource fallGuyAudioSource = fallGuy.AddComponent<AudioSource>();
+        fallGuyAudioSource.clip = AudioRegistry.FallGuySFXOnRoundResult[fallGuyIndex];
+        fallGuyAudioSource.playOnAwake = false;
     }
 }

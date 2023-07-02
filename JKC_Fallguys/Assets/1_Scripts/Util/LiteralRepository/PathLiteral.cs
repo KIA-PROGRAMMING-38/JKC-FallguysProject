@@ -12,6 +12,7 @@ namespace LiteralRepository
         public static readonly string PlayerTexture = "PlayerTexture";
         public static readonly string Sounds = "Sounds";
         public static readonly string Music = "Music";
+        public static readonly string SFX = "SFX";
 
         public static readonly string RoundMusic = "Round";
         public static readonly string FinalRoundMusic = "FinalRound";
@@ -35,6 +36,6 @@ namespace LiteralRepository
         public static readonly string Countdown = "Countdown";
         
         public static readonly string LoginSound = "UI_MainMenu_Login";
-        
+
     }
 }
