@@ -17,7 +17,7 @@ public class FruitChuteGoalCollider : MonoBehaviourPun
                 // 플레이어가 목표에 도달했으므로, Victory 상태로 설정.
                 StageDataManager.Instance.SetPlayerState(actorNumber, StageDataManager.PlayerState.Victory);
                 StageDataManager.Instance.SetPlayerAlive(actorNumber, false);
-            
+        
                 // 이 플레이어의 순위를 업데이트하는 RPC를 마스터 클라이언트에게 호출
                 photonView.RPC("RpcAddPlayerToRankingOnGoal", RpcTarget.MasterClient, actorNumber);
             }
