@@ -1,4 +1,3 @@
-using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using Photon.Pun;
@@ -18,10 +17,14 @@ public class HoopLegendAxe : MonoBehaviourPunCallbacks
     private AxeController _axeController;
     private CancellationTokenSource _cancellationToken;
 
+    private PhotonView _bodyPhotonView;
+
     private void Awake()
     {
         _axeTransform = transform.Find("AxeBody").GetComponent<Transform>();
         Debug.Assert(_axeTransform != null);
+        _bodyPhotonView = _axeTransform.GetComponent<PhotonView>();
+        Debug.Assert(_bodyPhotonView != null);
     }
     
     public void Initialize(AxeController axeController, CancellationTokenSource cancelToken)
@@ -35,23 +38,17 @@ public class HoopLegendAxe : MonoBehaviourPunCallbacks
     {
         if (PhotonNetwork.IsMasterClient)
         {
-            photonView.RPC("RpcInitiateRotation", RpcTarget.All);
+            _axeRotationSpeed = Random.Range(_minRotationSpeed, _maxRotationSpeed);
+            photonView.RPC("RpcInitiateRotation", RpcTarget.All, _axeRotationSpeed);
         }
     }
 
     [PunRPC]
-    public void RpcInitiateRotation()
+    public void RpcInitiateRotation(float axeRotationSpeed)
     {
-        float rotationForce = Random.Range(_minRotationSpeed, _maxRotationSpeed);
-        photonView.RPC("RpcSetAxeRotationForce", RpcTarget.All, rotationForce);
+        _axeRotationSpeed = axeRotationSpeed;
         
         AxeRotation(_cancellationToken).Forget();
-    }
-
-    [PunRPC]
-    public void RpcSetAxeRotationForce(float rotationForce)
-    {
-        _axeRotationSpeed = rotationForce;
     }
 
     private async UniTask AxeRotation(CancellationTokenSource cancelToken)
