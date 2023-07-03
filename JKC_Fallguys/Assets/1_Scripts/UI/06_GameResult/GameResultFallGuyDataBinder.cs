@@ -1,8 +1,9 @@
 using LiteralRepository;
 using Model;
+using ResourceRegistry;
 using UnityEngine;
 
-public class ResultAnimatorControllerBinder : MonoBehaviour
+public class GameResultFallGuyDataBinder : MonoBehaviour
 {
     private Animator _animator;
     private RuntimeAnimatorController _victoryController;
@@ -21,11 +22,15 @@ public class ResultAnimatorControllerBinder : MonoBehaviour
         if (ResultSceneModel.IsVictorious.Value)
         {
             _animator.runtimeAnimatorController = DataManager.GetRuntimeAnimatorController(PathLiteral.AnimatorController, PathLiteral.GameResultAnimator, PathLiteral.VictoryAnimatorController);
+            FallGuyAudioClips = AudioRegistry.VictoryFallGuySFX;
         }
 
         else
         {
             _animator.runtimeAnimatorController = DataManager.GetRuntimeAnimatorController(PathLiteral.AnimatorController, PathLiteral.GameResultAnimator, PathLiteral.LoseAnimatorController);
+            FallGuyAudioClips = AudioRegistry.LoseFallGuySFX;
         }
     }
+
+    public AudioClip[] FallGuyAudioClips { get; private set; }
 }
