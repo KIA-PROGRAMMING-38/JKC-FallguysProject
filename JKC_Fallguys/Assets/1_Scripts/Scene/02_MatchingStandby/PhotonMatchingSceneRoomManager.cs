@@ -4,7 +4,6 @@ using Photon.Pun;
 using Photon.Realtime;
 using UniRx;
 using LiteralRepository;
-using UnityEngine;
 
 /// <summary>
 /// 게임 시작을 관리하는 클래스입니다.
@@ -50,7 +49,7 @@ public class PhotonMatchingSceneRoomManager : MonoBehaviourPun
             // 새로운 PlayerData 객체를 만들고, 이를 PlayerScoresByIndex 딕셔너리에 추가합니다.
             int playerTextureIndex = (int)player.Value.CustomProperties["PlayerTextureIndex"];
             StageDataManager.Instance.PlayerDataByIndex[actorNumber] =
-                new PlayerData(PhotonNetwork.LocalPlayer.NickName, playerTextureIndex, 0);
+                new PlayerData(player.Value.NickName, playerTextureIndex, 0);
         }
     }
 
