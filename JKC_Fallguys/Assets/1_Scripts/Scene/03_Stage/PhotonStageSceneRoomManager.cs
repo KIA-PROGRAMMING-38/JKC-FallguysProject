@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using Cysharp.Threading.Tasks;
 using LiteralRepository;
+using Model;
 using Newtonsoft.Json;
 using Photon.Pun;
 using UniRx;
+using UnityEditor.Rendering;
 using UnityEngine;
 
 /// <summary>
@@ -18,6 +20,29 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
     private void Awake()
     {
         InitializeRx();
+        
+        if (!PhotonNetwork.IsMasterClient)
+            return;
+        
+        StartGameCountDown().Forget();
+    }
+    
+    private async UniTaskVoid StartGameCountDown()
+    {
+        await UniTask.Delay(TimeSpan.FromSeconds(1f));
+
+        while (StageSceneModel.SpriteIndex.Value <= 4)
+        {
+            await UniTask.Delay(TimeSpan.FromSeconds(1.5f));
+            
+            photonView.RPC("TriggerOperation", RpcTarget.All);
+        }
+    }
+
+    [PunRPC]
+    public void TriggerOperation()
+    {
+        StageSceneModel.IncreaseCountDownIndex();
     }
 
     private void InitializeRx()

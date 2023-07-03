@@ -1,4 +1,5 @@
 using LiteralRepository;
+using Model;
 using Photon.Pun;
 using UnityEngine;
 
@@ -7,14 +8,17 @@ public class StageSceneInitializer : SceneInitializer
     private GameObject _stageAudioManager;
     protected override void InitializeModel()
     {
+        StageSceneModel.InitializeCountDown();
+        
         StageDataManager.Instance.SetGameStatus(false);
         StageDataManager.Instance.SetRoundState(false);
-    
+        StageDataManager.Instance.SetGameStart(false);
+        StageDataManager.Instance.SetPlayerAlive(PhotonNetwork.LocalPlayer.ActorNumber, true);
+        
         int actorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
         StageDataManager.Instance.SetPlayerState(actorNumber, StageDataManager.PlayerState.Default);
-    
-        StageDataManager.Instance.SetPlayerAlive(PhotonNetwork.LocalPlayer.ActorNumber, true);
     }
+
 
     protected override void OnGetResources()
     {

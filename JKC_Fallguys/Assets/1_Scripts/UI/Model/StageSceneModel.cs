@@ -23,7 +23,10 @@ namespace Model
         // Stage에 입장한 플레이어의 수를 나타냅니다.
         private static ReactiveProperty<int> _totalPlayerCount = new ReactiveProperty<int>(0);
         public static IReadOnlyReactiveProperty<int> TotalPlayerCount => _totalPlayerCount;
-        
+
+        private static ReactiveProperty<int> _spriteIndex = new ReactiveProperty<int>();
+        public static IReactiveProperty<int> SpriteIndex => _spriteIndex;
+
         /// <summary>
         /// Exit 패널이 활성화 될 수 있는지 여부를 나타냅니다.
         /// </summary>
@@ -59,6 +62,16 @@ namespace Model
         public static void SetTotalPlayerCount(int value)
         {
             _totalPlayerCount.Value = value;
+        }
+
+        public static void IncreaseCountDownIndex()
+        {
+            ++_spriteIndex.Value;
+        }
+
+        public static void InitializeCountDown()
+        {
+            _spriteIndex.Value = 0;
         }
     }
 }
