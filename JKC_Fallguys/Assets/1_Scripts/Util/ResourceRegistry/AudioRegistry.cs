@@ -31,5 +31,6 @@ namespace ResourceRegistry
         public static AudioClip[] FinalRoundMusic { get; private set; }
         public static AudioClip[] FallGuySFXOnRoundResult { get; private set; }
         public static AudioClip[] GameResultMusic { get; private set; }
+        public static AudioClip[] GameResultFallGuySFX { get; private set; }
     }
 }
