@@ -26,10 +26,6 @@ public class JumpClubDeadZone : MonoBehaviourPun
     public void RpcAddPlayerToFailedList(int actorNumber)
     {
         StageDataManager.Instance.AddPlayerToFailedClearStagePlayers(actorNumber);
-        
-        Debug.Log($"CurrentRoomPlayerCount : {PhotonNetwork.CurrentRoom.PlayerCount}");
-        Debug.Log($"StagePlayerRankingsCount : {StageDataManager.Instance.StagePlayerRankings.Count}");
-        Debug.Log($"FailedClearStagePlayersCount : {StageDataManager.Instance.FailedClearStagePlayers.Count}");
 
         if (PhotonNetwork.CurrentRoom.PlayerCount <= 
             StageDataManager.Instance.StagePlayerRankings.Count + StageDataManager.Instance.FailedClearStagePlayers.Count)

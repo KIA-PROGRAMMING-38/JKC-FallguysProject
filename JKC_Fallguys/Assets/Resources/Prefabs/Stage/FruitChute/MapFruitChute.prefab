@@ -13583,6 +13583,7 @@ GameObject:
   - component: {fileID: 8027757774545001674}
   - component: {fileID: 8798834240294195208}
   - component: {fileID: 3459175153702499576}
+  - component: {fileID: -3712426198605658758}
   m_Layer: 0
   m_Name: MapFruitChute
   m_TagString: Untagged
@@ -13645,6 +13646,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 94b72f108a6264377b78f955561a4d3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-3712426198605658758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8027757774545001675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e4a9d4b0af0b468b911d2f28904ca1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8027757774637644467
