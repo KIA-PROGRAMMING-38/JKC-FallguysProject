@@ -162,4 +162,13 @@ public class PlayerAnimation : MonoBehaviourPun
         _animator.SetBool(AnimLiteral.IsGrab, false);
         _animator.SetBool(AnimLiteral.IsGrabSuccess, false);
     }
+
+    #region AnimationEvent
+    public void WalkFootStep()
+    {
+        
+    }
+    
+
+    #endregion
 }
