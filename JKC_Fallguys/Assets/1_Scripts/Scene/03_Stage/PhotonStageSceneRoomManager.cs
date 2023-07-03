@@ -7,8 +7,6 @@ using Model;
 using Newtonsoft.Json;
 using Photon.Pun;
 using UniRx;
-using UnityEditor.Rendering;
-using UnityEngine;
 
 /// <summary>
 /// 점수를 결산한 뒤 다음 씬을 실행시키는 클래스입니다.
@@ -181,7 +179,7 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
 
         StageDataManager.Instance.CachedPlayerIndicesForResults.Clear();
 
-        foreach (var pair in sortedPlayers)
+        foreach (KeyValuePair<int, PlayerData> pair in sortedPlayers)
         {
             StageDataManager.Instance.CachedPlayerIndicesForResults.Add(pair.Key);
         }
