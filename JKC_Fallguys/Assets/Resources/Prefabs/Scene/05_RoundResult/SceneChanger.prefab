@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3216656047106437459}
   - component: {fileID: 3216656047106437458}
   - component: {fileID: 2166984840490520650}
+  - component: {fileID: 3045685776713775370}
   m_Layer: 0
   m_Name: SceneChanger
   m_TagString: Untagged
@@ -67,3 +68,15 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &3045685776713775370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3216656047106437457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e4a9d4b0af0b468b911d2f28904ca1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

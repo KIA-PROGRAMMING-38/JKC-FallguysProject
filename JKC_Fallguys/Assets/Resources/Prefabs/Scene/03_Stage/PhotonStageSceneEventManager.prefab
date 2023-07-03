@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6120291207474668463}
   - component: {fileID: 6120291207474668462}
   - component: {fileID: -4467498050837419443}
+  - component: {fileID: 137556415692735134}
   m_Layer: 0
   m_Name: PhotonStageSceneEventManager
   m_TagString: Untagged
@@ -67,3 +68,15 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &137556415692735134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6120291207474668497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e4a9d4b0af0b468b911d2f28904ca1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
