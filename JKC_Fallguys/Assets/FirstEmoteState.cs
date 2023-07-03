@@ -11,5 +11,6 @@ public class FirstEmoteState : StateMachineBehaviour
         _audiosource = animator.GetComponent<AudioSource>();
         _gameresultFallGuyDataBinder = animator.GetComponent<GameResultFallGuyDataBinder>();
         _audiosource.clip = _gameresultFallGuyDataBinder.FallGuyAudioClips[0];
+        _audiosource.Play();
     }
 }
