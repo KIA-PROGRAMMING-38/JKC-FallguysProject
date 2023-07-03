@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using Cysharp.Threading.Tasks;
 using LiteralRepository;
+using Model;
 using Newtonsoft.Json;
 using Photon.Pun;
 using UniRx;
-using UnityEngine;
 
 /// <summary>
 /// 점수를 결산한 뒤 다음 씬을 실행시키는 클래스입니다.
@@ -18,6 +18,29 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
     private void Awake()
     {
         InitializeRx();
+        
+        if (!PhotonNetwork.IsMasterClient)
+            return;
+        
+        StartGameCountDown().Forget();
+    }
+    
+    private async UniTaskVoid StartGameCountDown()
+    {
+        await UniTask.Delay(TimeSpan.FromSeconds(1f));
+
+        while (StageSceneModel.SpriteIndex.Value <= 4)
+        {
+            await UniTask.Delay(TimeSpan.FromSeconds(1.5f));
+            
+            photonView.RPC("TriggerOperation", RpcTarget.All);
+        }
+    }
+
+    [PunRPC]
+    public void TriggerOperation()
+    {
+        StageSceneModel.IncreaseCountDownIndex();
     }
 
     private void InitializeRx()
@@ -38,8 +61,6 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
     // StageDataManager의 IsGameActive가 true => false일 때 호출됩니다.
     private void CompleteStageAndRankPlayers()
     {
-        // Time.timeScale = 0f;
-
         if (!PhotonNetwork.IsMasterClient)
             return;
         
@@ -50,14 +71,18 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
     private async UniTaskVoid PrevEndProduction()
     {
         await UniTask.Delay(TimeSpan.FromSeconds(4f), DelayType.UnscaledDeltaTime);
-        
-        // 게임을 정리하는 로직이 실행 된 뒤, 다음 씬으로 가는 작업을 수행합니다.
-        photonView.RPC("EnterNextScene", RpcTarget.MasterClient);
-        StageDataManager.Instance.SetRoundState(true);
+
+        EnterNextScene();
+        photonView.RPC("SetRoundState", RpcTarget.All);
     }
 
     [PunRPC]
-    public void EnterNextScene()
+    public void SetRoundState()
+    {
+        StageDataManager.Instance.SetRoundState(true);
+    }
+
+    private void EnterNextScene()
     {
         if (!photonView.IsMine)
             return;
@@ -136,8 +161,6 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
 
     private void EndLogic()
     {
-        Debug.Log($"EndLogic Action : {PhotonNetwork.LocalPlayer.ActorNumber}");
-        
         UpdatePlayerRanking();
         StageDataManager.Instance.StagePlayerRankings.Clear();
         StageDataManager.Instance.FailedClearStagePlayers.Clear();
@@ -150,15 +173,13 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
 
     private void UpdatePlayerRanking()
     {
-        Debug.Log($"UpdatePlayerRanking : {PhotonNetwork.LocalPlayer.ActorNumber}");
-        
         // PlayerData에 저장된 점수를 기준으로 플레이어를 정렬하고 그 순서대로 인덱스를 CachedPlayerIndicesForResults에 저장합니다.
         List<KeyValuePair<int, PlayerData>> sortedPlayers = 
             StageDataManager.Instance.PlayerDataByIndex.OrderByDescending(pair => pair.Value.Score).ToList();
 
         StageDataManager.Instance.CachedPlayerIndicesForResults.Clear();
 
-        foreach (var pair in sortedPlayers)
+        foreach (KeyValuePair<int, PlayerData> pair in sortedPlayers)
         {
             StageDataManager.Instance.CachedPlayerIndicesForResults.Add(pair.Key);
         }
@@ -167,8 +188,6 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
     [PunRPC]
     public void UpdateStageDataOnAllClients(string playerScoresByIndexJson, int[] playerRanking, int[] stagePlayerRankings)
     {
-        Debug.Log($"UpdateData : {PhotonNetwork.LocalPlayer.ActorNumber}");
-        
         StageDataManager.Instance.PlayerDataByIndex = JsonConvert.DeserializeObject<Dictionary<int, PlayerData>>(playerScoresByIndexJson);
         StageDataManager.Instance.CachedPlayerIndicesForResults = playerRanking.ToList();
         StageDataManager.Instance.StagePlayerRankings = stagePlayerRankings.ToList();

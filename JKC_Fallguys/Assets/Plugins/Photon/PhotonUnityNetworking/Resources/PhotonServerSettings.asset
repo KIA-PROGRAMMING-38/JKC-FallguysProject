@@ -75,6 +75,12 @@ MonoBehaviour:
   - RpcSetPlayerDefeat
   - RpcSetPlayerVictory
   - RpcSetMapData
+  - RpcInitiateFiring
+  - RpcInitiateRotation
+  - RpcSetAxeRotationForce
+  - RpcStartOrder
+  - TriggerOperation
+  - SetRoundState
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
