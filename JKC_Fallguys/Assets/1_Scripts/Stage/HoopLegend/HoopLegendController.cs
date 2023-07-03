@@ -33,6 +33,20 @@ public class HoopLegendController : StageController
             .AddTo(this);
     }
     
+    private void GameStartBroadCast()
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            photonView.RPC("RpcCountDown", RpcTarget.All);
+        }
+    }
+    
+    [PunRPC]
+    public void RpcCountDown()
+    {
+        CountDown(_cancellationTokenSource.Token).Forget();
+    }
+       
     private async UniTaskVoid CountDown(CancellationToken cancelToken)
     {
         while (true)
@@ -41,20 +55,6 @@ public class HoopLegendController : StageController
             
             --remainingGameTime.Value;
         }
-    }
-    
-    private void GameStartBroadCast()
-    {
-        if (PhotonNetwork.IsMasterClient)
-        {
-            photonView.RPC("RpcCountDown", RpcTarget.All);
-        }
-    }
-
-    [PunRPC]
-    public void RpcCountDown()
-    {
-        CountDown(_cancellationTokenSource.Token).Forget();
     }
 
     private void EndGame()

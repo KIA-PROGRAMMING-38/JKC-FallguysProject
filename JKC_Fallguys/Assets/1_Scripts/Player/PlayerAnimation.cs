@@ -2,6 +2,7 @@ using System;
 using Cysharp.Threading.Tasks;
 using LiteralRepository;
 using Photon.Pun;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviourPun
