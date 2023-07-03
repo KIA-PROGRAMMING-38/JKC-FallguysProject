@@ -16,7 +16,7 @@ public class ResultPresenter : Presenter
 
     protected override void OnOccuredUserEvent()
     {
-        // 유저 이벤트 없음.
+        
     }
 
     /// <summary>
