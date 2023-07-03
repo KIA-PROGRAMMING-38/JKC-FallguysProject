@@ -14,6 +14,8 @@ namespace LiteralRepository
         public static readonly string Music = "Music";
         public static readonly string SFX = "SFX";
         public static readonly string Result = "Result";
+        public static readonly string Victory = "Victory";
+        public static readonly string Lose = "Lose";
 
         public static readonly string RoundMusic = "Round";
         public static readonly string FinalRoundMusic = "FinalRound";

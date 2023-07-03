@@ -13,7 +13,7 @@ public class GameResultAudioScheduler : AudioScheduler
     private void Awake()
     {
         _audioSource = gameObject.AddComponent<AudioSource>();
-        _audioSource.volume = 0.3f;
+        _audioSource.volume = 0.1f;
     }
     public override void PlayAudio()
     {
