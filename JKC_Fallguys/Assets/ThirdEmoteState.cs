@@ -11,5 +11,6 @@ public class ThirdEmoteState : StateMachineBehaviour
         _audiosource = animator.GetComponent<AudioSource>();
         _gameresultFallGuyDataBinder = animator.GetComponent<GameResultFallGuyDataBinder>();
         _audiosource.clip = _gameresultFallGuyDataBinder.FallGuyAudioClips[2];
+        _audiosource.Play();
     }
 }
