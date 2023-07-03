@@ -2,14 +2,16 @@ using System;
 using Cysharp.Threading.Tasks;
 using LiteralRepository;
 using Photon.Pun;
+using ResourceRegistry;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class PlayerAnimation : MonoBehaviourPun
 {
     private Animator _animator;
     private PlayerInput _playerInput;
-    private PlayerPhysicsController _playerPhysicsController;
-    
+    private AudioSource _audioSource;
+
     // 플레이어 데이터로 변환 필요.
     [SerializeField] private float _acceleration = 0.5f;
     [SerializeField] private float _deceleration = 0.5f;
@@ -24,7 +26,7 @@ public class PlayerAnimation : MonoBehaviourPun
         
         _animator = GetComponent<Animator>();
         _playerInput = GetComponentInParent<PlayerInput>();
-        _playerPhysicsController = GetComponent<PlayerPhysicsController>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -164,11 +166,19 @@ public class PlayerAnimation : MonoBehaviourPun
     }
 
     #region AnimationEvent
+
+    private int _randomAudioClipIndex;
     public void WalkFootStep()
     {
-        
+        _randomAudioClipIndex = Random.Range(0, AudioRegistry.WalkFootStepSFX.Length);
+        _audioSource.PlayOneShot(AudioRegistry.WalkFootStepSFX[_randomAudioClipIndex]);
     }
-    
+
+    public void RunFootStep()
+    {
+        _randomAudioClipIndex = Random.Range(0, AudioRegistry.RunFootStepSFX.Length);
+        _audioSource.PlayOneShot(AudioRegistry.RunFootStepSFX[_randomAudioClipIndex]);
+    }
 
     #endregion
 }
