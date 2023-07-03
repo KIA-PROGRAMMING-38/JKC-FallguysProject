@@ -63,8 +63,6 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
     // StageDataManager의 IsGameActive가 true => false일 때 호출됩니다.
     private void CompleteStageAndRankPlayers()
     {
-        // Time.timeScale = 0f;
-
         if (!PhotonNetwork.IsMasterClient)
             return;
         
@@ -75,14 +73,18 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
     private async UniTaskVoid PrevEndProduction()
     {
         await UniTask.Delay(TimeSpan.FromSeconds(4f), DelayType.UnscaledDeltaTime);
-        
-        // 게임을 정리하는 로직이 실행 된 뒤, 다음 씬으로 가는 작업을 수행합니다.
-        photonView.RPC("EnterNextScene", RpcTarget.MasterClient);
-        StageDataManager.Instance.SetRoundState(true);
+
+        EnterNextScene();
+        photonView.RPC("SetRoundState", RpcTarget.All);
     }
 
     [PunRPC]
-    public void EnterNextScene()
+    public void SetRoundState()
+    {
+        StageDataManager.Instance.SetRoundState(true);
+    }
+
+    private void EnterNextScene()
     {
         if (!photonView.IsMine)
             return;
