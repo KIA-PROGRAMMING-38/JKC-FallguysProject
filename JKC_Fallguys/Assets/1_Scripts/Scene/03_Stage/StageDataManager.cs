@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class StageDataManager : SingletonMonoBehaviour<StageDataManager>
 {
+    // 게임 시작의 카운트다운을 관장합니다.
+    private ReactiveProperty<bool> _isGameStart = new ReactiveProperty<bool>(false);
+    public ReactiveProperty<bool> IsGameStart => _isGameStart;
+
     // 게임의 활성화 상태를 나타냅니다.
     private ReactiveProperty<bool> _isGameActive = new ReactiveProperty<bool>(false);
     public IReactiveProperty<bool> IsGameActive => _isGameActive;
@@ -129,5 +133,10 @@ public class StageDataManager : SingletonMonoBehaviour<StageDataManager>
     public void SetMapPickupFlag(int index)
     {
         _mapPickupIndex.Value = index;
+    }
+
+    public void SetGameStart(bool status)
+    {
+        _isGameStart.Value = status;
     }
 }

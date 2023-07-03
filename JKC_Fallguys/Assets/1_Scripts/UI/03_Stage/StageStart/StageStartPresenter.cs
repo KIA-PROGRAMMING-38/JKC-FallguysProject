@@ -18,10 +18,11 @@ public class StageStartPresenter : Presenter
     protected override void OnOccuredUserEvent()
     {
         SubTitlePopUpAnimation();
-        
-        // Game Start가 되면 실행되야 한다.
-        Observable.Interval(TimeSpan.FromSeconds(1.5f))
-            .Subscribe(_ => CountdownUIAnimation())
+
+        StageSceneModel.SpriteIndex
+            .DistinctUntilChanged()
+            .Skip(1)
+            .Subscribe(__ => CountdownUIAnimation())
             .AddTo(_compositeDisposable);
     }
 
@@ -47,24 +48,20 @@ public class StageStartPresenter : Presenter
     /// </summary>
     private void CountdownUIAnimation()
     {
-        if (_spriteIndex < CountdownSpritesRegistry.Sprites.Count)
+        if (StageSceneModel.SpriteIndex.Value < CountdownSpritesRegistry.Sprites.Count + 1)
         {
-            Sprite sprite = CountdownSpritesRegistry.Sprites[_spriteIndex];
+            Sprite sprite = CountdownSpritesRegistry.Sprites[StageSceneModel.SpriteIndex.Value - 1];
 
             _stageStartView.CountdownImage.sprite = sprite;
 
-            ++_spriteIndex;
-            
             ScaleAnimation();
         }
         else
         {
-            _spriteIndex = 0;
             _stageStartView.CountdownImage.gameObject.SetActive(false);
             AnimateTitleOut();
 
             StageDataManager.Instance.SetGameStatus(true);
-            // 카운트다운 후에 Exit 버튼을 누를 수 있게 합니다.
             StageSceneModel.SetExitButtonActive(true);
         }
     }
