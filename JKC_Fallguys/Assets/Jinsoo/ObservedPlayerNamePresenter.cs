@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
+using Photon.Pun;
 using UniRx;
-using UnityEngine;
 
 public class ObservedPlayerNamePresenter : Presenter
 {
@@ -17,12 +15,30 @@ public class ObservedPlayerNamePresenter : Presenter
 
     protected override void OnOccuredUserEvent()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     protected override void OnUpdatedModel()
     {
-        throw new System.NotImplementedException();
+        StageDataManager.Instance.IsGameActive
+            .Skip(1)
+            .DistinctUntilChanged()
+            .Subscribe(_ => SetActiveGameObject(false))
+            .AddTo(_compositeDisposable);
+
+        int actorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
+        StageDataManager.Instance.PlayerContainer.GetCurrentState(actorNumber)
+            .Skip(1)
+            .DistinctUntilChanged()
+            .Subscribe(_ => SetActiveGameObject(true))
+            .AddTo(_compositeDisposable);
+
+    }
+
+    private void SetActiveGameObject(bool status)
+    {
+        _observedPlayerNameView.Default.SetActive(status);
+        _observedPlayerNameView.PlayerNameText.gameObject.SetActive(status);
     }
     
     public override void OnRelease()

@@ -13,10 +13,10 @@ public class StageSceneInitializer : SceneInitializer
         StageDataManager.Instance.SetGameStatus(false);
         StageDataManager.Instance.SetRoundState(false);
         StageDataManager.Instance.SetGameStart(false);
-        StageDataManager.Instance.SetPlayerAlive(PhotonNetwork.LocalPlayer.ActorNumber, true);
+        StageDataManager.Instance.PlayerContainer.SetPlayerAlive(PhotonNetwork.LocalPlayer.ActorNumber, true);
         
         int actorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
-        StageDataManager.Instance.SetPlayerState(actorNumber, StageDataManager.PlayerState.Default);
+        StageDataManager.Instance.PlayerContainer.SetPlayerState(actorNumber, PlayerContainer.PlayerState.Default);
     }
 
 
@@ -36,6 +36,8 @@ public class StageSceneInitializer : SceneInitializer
             (DataManager.GetGameObjectData(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, PathLiteral.UI, "ResultInStageViewController"));
         Instantiate
             (DataManager.GetGameObjectData(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, PathLiteral.UI, "RoundEndViewController"));
+        Instantiate
+            (DataManager.GetGameObjectData(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, PathLiteral.UI, "ObservedPlayerNameViewController"));
         _stageAudioManager = Instantiate
             (DataManager.GetGameObjectData(PathLiteral.Prefabs, PathLiteral.Manager, "StageAudioManager"));
         

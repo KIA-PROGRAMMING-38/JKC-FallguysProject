@@ -27,6 +27,10 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
     
     private async UniTaskVoid StartGameCountDown()
     {
+        await UniTask.Delay(TimeSpan.FromSeconds(2f));
+
+        photonView.RPC("SetGameStart", RpcTarget.All);
+        
         await UniTask.Delay(TimeSpan.FromSeconds(1f));
 
         while (StageSceneModel.SpriteIndex.Value <= 4)
@@ -35,6 +39,12 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
             
             photonView.RPC("TriggerOperation", RpcTarget.All);
         }
+    }
+
+    [PunRPC]
+    public void SetGameStart()
+    {
+        StageDataManager.Instance.SetGameStart(true);
     }
 
     [PunRPC]
