@@ -16,7 +16,7 @@ public class JumpClubController : StageController
 
         _cancellationTokenSource = new CancellationTokenSource();
         
-        _observeCamera = transform.Find("ObserveCamera").GetComponent<Camera>();
+        _observeCamera = transform.Find("ObserverCamera").GetComponent<Camera>();
         Debug.Assert(_observeCamera != null);
     }
     
@@ -30,7 +30,7 @@ public class JumpClubController : StageController
         // StageDataManager.Instance.IsPlayerAlive(PhotonNetwork.LocalPlayer.ActorNumber)
         //     .DistinctUntilChanged()
         //     .Where(alive => !alive)
-        //     .Subscribe(_ => _observeCamera.gameObject.SetActive(true))
+        //     .Subscribe(_ => _observerCamera.gameObject.SetActive(true))
         //     .AddTo(this);
 
         StageDataManager.Instance.IsGameActive
