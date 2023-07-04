@@ -1,26 +1,38 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using Photon.Pun;
+using UniRx;
 using UnityEngine;
 
 public class PlayerObserverCamera : MonoBehaviour
 {
-    private Transform _observerTransform;
+    private ObserverCamera _observerCamera;
 
     private void Awake()
     {
-        _observerTransform = transform.Find("ObserverView").GetComponent<Transform>();
-        Debug.Assert(_observerTransform != null);
+        _observerCamera = transform.Find("ObserverCamera").GetComponent<ObserverCamera>();
+        Debug.Assert(_observerCamera != null);
+
+        InitializeRx();
     }
 
-    void Start()
+    private void InitializeRx()
     {
-            
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+        int actorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
+        StageDataManager.Instance.GetCurrentState(actorNumber)
+            .Skip(1)
+            .DistinctUntilChanged()
+            .Subscribe(_ => _observerCamera.gameObject.SetActive(true))
+            .AddTo(this);
         
+        StageDataManager.Instance.GetCurrentState(actorNumber)
+            .Where(state => state == StageDataManager.PlayerState.Default)
+            .Subscribe(_ => _observerCamera.gameObject.SetActive(false))
+            .AddTo(this);
     }
+
+    public void BindObservedCharacter(Transform followPlayerCharacter)
+    {
+        _observerCamera.UpdatePlayerTarget(followPlayerCharacter);
+    }
+
+    
 }

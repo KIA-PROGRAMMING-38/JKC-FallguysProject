@@ -3,6 +3,15 @@ using UniRx;
 
 public class StageDataManager : SingletonMonoBehaviour<StageDataManager>
 {
+    protected override void Awake()
+    {
+        base.Awake();
+        
+        PlayerContainer.Initialize(gameObject);
+    }
+
+    public PlayerContainer PlayerContainer = new PlayerContainer();
+    
     // 게임 시작의 카운트다운을 관장합니다.
     private ReactiveProperty<bool> _isGameStart = new ReactiveProperty<bool>(false);
     public ReactiveProperty<bool> IsGameStart => _isGameStart;

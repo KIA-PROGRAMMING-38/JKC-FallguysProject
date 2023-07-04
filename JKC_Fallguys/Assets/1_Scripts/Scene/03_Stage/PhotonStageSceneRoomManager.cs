@@ -45,6 +45,7 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
     public void SetGameStart()
     {
         StageDataManager.Instance.SetGameStart(true);
+        StageDataManager.Instance.PlayerContainer.Clear();
     }
 
     [PunRPC]
