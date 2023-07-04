@@ -22,20 +22,20 @@ public class ResultInStagePresenter : Presenter
     protected override void OnUpdatedModel()
     {
         int actorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
-        StageDataManager.Instance.PlayerContainer.GetCurrentState(actorNumber)
+        StageDataManager.Instance.GetCurrentState(actorNumber)
             .Skip(1) // 초기 Default로 설정된것은 Skip.
             .DistinctUntilChanged()
             .Subscribe(currentState =>
             {
                 switch (currentState)
                 {
-                    case PlayerContainer.PlayerState.Victory:
+                    case StageDataManager.PlayerState.Victory:
                         _resultInStageView.ResultText.text = "성공!";
                         break;
-                    case PlayerContainer.PlayerState.Defeat:
+                    case StageDataManager.PlayerState.Defeat:
                         _resultInStageView.ResultText.text = "실패!";
                         break;
-                    case PlayerContainer.PlayerState.GameTerminated:
+                    case StageDataManager.PlayerState.GameTerminated:
                         _resultInStageView.ResultText.text = "종료!";
                         break;
                     default:

@@ -83,9 +83,9 @@ public class FruitChuteController : StageController
 
         int actorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
 
-        if (StageDataManager.Instance.PlayerContainer.GetCurrentState(actorNumber).Value != PlayerContainer.PlayerState.Victory)
+        if (StageDataManager.Instance.GetCurrentState(actorNumber).Value != StageDataManager.PlayerState.Victory)
         {
-            StageDataManager.Instance.PlayerContainer.SetPlayerState(actorNumber, PlayerContainer.PlayerState.Defeat);
+            StageDataManager.Instance.SetPlayerState(actorNumber, StageDataManager.PlayerState.Defeat);
         }
     }
     
