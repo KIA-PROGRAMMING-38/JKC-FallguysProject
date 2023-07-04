@@ -2040,7 +2040,7 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.03446691
+      - time: 0.032474816
         functionName: RunFootStep
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 4e26c87a466124f39aae8dcbef22b8df,
