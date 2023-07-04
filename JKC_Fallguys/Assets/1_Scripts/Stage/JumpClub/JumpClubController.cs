@@ -7,7 +7,6 @@ using UnityEngine;
 
 public class JumpClubController : StageController
 {
-    private Camera _observeCamera;
     private CancellationTokenSource _cancellationTokenSource;
 
     protected override void Awake()
@@ -15,9 +14,6 @@ public class JumpClubController : StageController
         base.Awake();
 
         _cancellationTokenSource = new CancellationTokenSource();
-        
-        _observeCamera = transform.Find("ObserverCamera").GetComponent<Camera>();
-        Debug.Assert(_observeCamera != null);
     }
     
     protected override void SetGameTime()
@@ -27,12 +23,6 @@ public class JumpClubController : StageController
 
     protected override void InitializeRx()
     {
-        // StageDataManager.Instance.IsPlayerAlive(PhotonNetwork.LocalPlayer.ActorNumber)
-        //     .DistinctUntilChanged()
-        //     .Where(alive => !alive)
-        //     .Subscribe(_ => _observerCamera.gameObject.SetActive(true))
-        //     .AddTo(this);
-
         StageDataManager.Instance.IsGameActive
             .Where(state => state)
             .Subscribe(_ => GameStartBroadCast())
