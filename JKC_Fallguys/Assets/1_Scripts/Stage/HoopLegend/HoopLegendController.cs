@@ -71,7 +71,7 @@ public class HoopLegendController : StageController
         StageDataManager.Instance.IsGameActive.Value = false;
         
         int actorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
-        StageDataManager.Instance.PlayerContainer.SetPlayerState(actorNumber, PlayerContainer.PlayerState.GameTerminated);
+        StageDataManager.Instance.SetPlayerState(actorNumber, StageDataManager.PlayerState.GameTerminated);
     }
     
     private void OnDestroy()

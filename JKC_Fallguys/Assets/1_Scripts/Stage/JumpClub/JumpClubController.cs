@@ -72,15 +72,15 @@ public class JumpClubController : StageController
         
         int actorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
 
-        if (StageDataManager.Instance.PlayerContainer.IsPlayerActive(actorNumber).Value)
+        if (StageDataManager.Instance.IsPlayerActive(actorNumber).Value)
         {
-            StageDataManager.Instance.PlayerContainer.SetPlayerState(actorNumber, PlayerContainer.PlayerState.Victory);
+            StageDataManager.Instance.SetPlayerState(actorNumber, StageDataManager.PlayerState.Victory);
             
             photonView.RPC("RpcDeclarationOfVictory", RpcTarget.All, actorNumber);
         }
         else
         {
-            StageDataManager.Instance.PlayerContainer.SetPlayerState(actorNumber, PlayerContainer.PlayerState.Defeat);
+            StageDataManager.Instance.SetPlayerState(actorNumber, StageDataManager.PlayerState.Defeat);
         }
     }
 

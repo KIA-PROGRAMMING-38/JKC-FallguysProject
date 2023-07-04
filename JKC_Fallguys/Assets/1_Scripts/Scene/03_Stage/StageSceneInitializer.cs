@@ -13,10 +13,10 @@ public class StageSceneInitializer : SceneInitializer
         StageDataManager.Instance.SetGameStatus(false);
         StageDataManager.Instance.SetRoundState(false);
         StageDataManager.Instance.SetGameStart(false);
-        StageDataManager.Instance.PlayerContainer.SetPlayerAlive(PhotonNetwork.LocalPlayer.ActorNumber, true);
+        StageDataManager.Instance.SetPlayerActive(PhotonNetwork.LocalPlayer.ActorNumber, true);
         
         int actorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
-        StageDataManager.Instance.PlayerContainer.SetPlayerState(actorNumber, PlayerContainer.PlayerState.Default);
+        StageDataManager.Instance.SetPlayerState(actorNumber, StageDataManager.PlayerState.Default);
     }
 
 

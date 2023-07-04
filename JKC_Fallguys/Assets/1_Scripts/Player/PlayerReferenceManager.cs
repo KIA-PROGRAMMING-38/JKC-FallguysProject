@@ -1,3 +1,4 @@
+using LiteralRepository;
 using Photon.Pun;
 using UnityEngine;
 
@@ -18,7 +19,7 @@ public class PlayerReferenceManager : MonoBehaviourPun
         _playerPhysicsController = GetComponentInChildren<PlayerPhysicsController>();
         _playerCharacter = transform.Find("Character");
     }
-
+    
     private void Start()
     {
         if (!photonView.IsMine)
