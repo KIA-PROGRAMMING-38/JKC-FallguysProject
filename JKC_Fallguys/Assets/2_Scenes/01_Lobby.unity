@@ -1029,6 +1029,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7435661452947326761, guid: 185d3ec827432459289a62eb74e40538,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.7019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 7435661452947326761, guid: 185d3ec827432459289a62eb74e40538,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7435661452947326763, guid: 185d3ec827432459289a62eb74e40538,
         type: 3}
       propertyPath: m_StaticEditorFlags
