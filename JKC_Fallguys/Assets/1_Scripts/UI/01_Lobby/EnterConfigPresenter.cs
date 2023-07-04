@@ -30,7 +30,7 @@ public class EnterConfigPresenter : Presenter
     /// </summary>
     protected override void OnUpdatedModel()
     {
-        // HowToPlay Panel의 활성화 여부를 결정합니다.
+        // EnterSettginsView의 활성화 여부를 설정합니다.
         LobbySceneModel.CurrentLobbyState
             .Subscribe( state => SetActiveEnterSettingsView( state == LobbySceneModel.LobbyState.Home ) )
             .AddTo( _compositeDisposable );
