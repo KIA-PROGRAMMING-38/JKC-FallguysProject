@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using LiteralRepository;
 using Photon.Pun;
@@ -112,18 +113,38 @@ public class PlayerPhysicsController : MonoBehaviourPun
     }
  
     [SerializeField] private float _jumpMovementForce;
+    public CancellationTokenSource jumpCancellationTokenSource;
+    CancellationToken _jumpCancellationToken => jumpCancellationTokenSource.Token;
+    
+    public void ActivateOnJumpingAction()
+    {
+        jumpCancellationTokenSource = new CancellationTokenSource();
+        OnJumpingAction().Forget();
+    }
+
     /// <summary>
-    /// Jumping State에서 호출.
+    /// 점프상태중에 인풋 방향대로 움직이기 위한 함수입니다.
     /// </summary>
-    public void OnJumping()
+    /// <returns></returns>
+    private async UniTaskVoid OnJumpingAction()
     {
         if (!photonView.IsMine || !StageDataManager.Instance.IsGameActive.Value)
             return;
-        
-        if (_playerInput.InputVec != _zeroVec && _playerInput.CannotMove == false)
+
+        while ( !_jumpCancellationToken.IsCancellationRequested )
         {
-            _playerRigidbody.AddForce(_moveDir * _jumpMovementForce, ForceMode.Force);
-            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(_moveDir), _rotSpeed * Time.deltaTime);    
+            if ( _playerInput.InputVec != _zeroVec && _playerInput.CannotMove == false )
+            {
+                _playerRigidbody.AddForce( _moveDir * _jumpMovementForce, ForceMode.Force );
+                transform.rotation = Quaternion.Lerp( transform.rotation, Quaternion.LookRotation( _moveDir ), _rotSpeed * Time.deltaTime );
+            }
+
+            if ( _jumpCancellationToken.IsCancellationRequested )
+            {
+                break;
+            }
+
+            await UniTask.Yield( PlayerLoopTiming.FixedUpdate );
         }
     }
 
@@ -142,7 +163,7 @@ public class PlayerPhysicsController : MonoBehaviourPun
     private async UniTaskVoid JumpAction()
     {
         _playerRigidbody.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
-        await UniTask.Yield();
+        await UniTask.Yield( PlayerLoopTiming.FixedUpdate );
     }
 
     /// <summary>
