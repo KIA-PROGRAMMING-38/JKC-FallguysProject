@@ -1,0 +1,91 @@
+{
+    "name": "ObservingCameraAction",
+    "maps": [
+        {
+            "name": "PC",
+            "id": "82d460d1-2a3b-4c97-8f5d-8db8a6026171",
+            "actions": [
+                {
+                    "name": "UpdateNextTarget",
+                    "type": "Button",
+                    "id": "935b7745-d00c-49bd-9791-6a704b47b2a0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "UpdatePrevTarget",
+                    "type": "Button",
+                    "id": "4c113b17-1c9e-4867-afc3-4ee33aa63eb4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "UpdateMousePos",
+                    "type": "Value",
+                    "id": "2d3623b5-e878-4c2b-82a4-bc6d9869c033",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "f0505ce6-1efd-4f44-b3db-64db5aff3769",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "UpdateNextTarget",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "263a8175-c241-4dc1-833f-8f8e35a5978c",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "UpdatePrevTarget",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "89546456-67e3-4104-9a21-4d459a5c2a01",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "UpdateMousePos",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "PC",
+            "bindingGroup": "PC",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Mouse>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}

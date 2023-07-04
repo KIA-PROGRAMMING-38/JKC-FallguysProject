@@ -79,9 +79,6 @@ public class StageDataManager : SingletonMonoBehaviour<StageDataManager>
         return _clientStates[actorNumber];
     }
 
-    // private ReactiveProperty<PlayerState> _currentState = new ReactiveProperty<PlayerState>();
-    // public IReactiveProperty<PlayerState> CurrentState => _currentState;
-
     // 라운드가 끝났는지 확인하기 위한 변수입니다.
     private ReactiveProperty<bool> _isRoundCompleted = new ReactiveProperty<bool>();
     public IReactiveProperty<bool> IsRoundCompleted => _isRoundCompleted;

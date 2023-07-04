@@ -33,6 +33,4 @@ public class PlayerObserverCamera : MonoBehaviour
     {
         _observerCamera.UpdatePlayerTarget(followPlayerCharacter);
     }
-
-    
 }

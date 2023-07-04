@@ -15,28 +15,60 @@ public class PlayerContainer
     
     public void ObservedNextPlayer()
     {
-        ++_observingIndex;
-
-        if (_observingIndex == _observingList.Count)
+        int startIndex = _observingIndex;
+        while (true)
         {
-            _observingIndex = 0;
-        }
+            _observingIndex = (_observingIndex + 1) % _observingList.Count;
 
-        _observer.BindObservedCharacter
-            (_observingList[_observingIndex].transform.Find("Character").GetComponent<Transform>());
+            GameObject current = _observingList[_observingIndex];
+            if (current == null)
+                continue;
+
+            if (!current.activeSelf)
+                continue;
+
+            Transform character = current.transform.Find("Character");
+            if (character == null)
+                continue;
+
+            _observer.BindObservedCharacter(character);
+            return;
+
+            if (_observingIndex == startIndex)
+            {
+                Debug.Log("No valid GameObject found");
+                return;
+            }
+        }
     }
 
     public void ObservedPrevPlayer()
     {
-        --_observingIndex;
-
-        if (_observingIndex < 0)
+        int startIndex = _observingIndex;
+        while (true)
         {
-            _observingIndex = _observingList.Count - 1;
+            _observingIndex = (_observingIndex - 1 + _observingList.Count) % _observingList.Count;
+
+            GameObject current = _observingList[_observingIndex];
+            if (current == null)
+                continue;
+
+            if (!current.activeSelf)
+                continue;
+
+            Transform character = current.transform.Find("Character");
+            if (character == null)
+                continue;
+
+            _observer.BindObservedCharacter(character);
+            return;
+
+            if (_observingIndex == startIndex)
+            {
+                Debug.Log("No valid GameObject found");
+                return;
+            }
         }
-        
-        _observer.BindObservedCharacter
-            (_observingList[_observingIndex].transform.Find("Character").GetComponent<Transform>());
     }
 
     public void BindObservingCamera(PlayerObserverCamera observer)
