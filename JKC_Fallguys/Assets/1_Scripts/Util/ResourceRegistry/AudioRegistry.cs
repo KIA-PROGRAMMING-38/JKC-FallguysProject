@@ -27,6 +27,10 @@ namespace ResourceRegistry
                 DataManager.SetDataPath( PathLiteral.Sounds, PathLiteral.SFX, PathLiteral.GameResult, PathLiteral.Victory ) );
             LoseFallGuySFX = Resources.LoadAll<AudioClip>(
                 DataManager.SetDataPath( PathLiteral.Sounds, PathLiteral.SFX, PathLiteral.GameResult, PathLiteral.Lose ) );
+            WalkFootStepSFX = Resources.LoadAll<AudioClip>(
+                DataManager.SetDataPath(PathLiteral.Sounds, PathLiteral.SFX, PathLiteral.Player, PathLiteral.Walk));
+            RunFootStepSFX = Resources.LoadAll<AudioClip>(
+                DataManager.SetDataPath(PathLiteral.Sounds, PathLiteral.SFX, PathLiteral.Player, PathLiteral.Run));
         }
         
         public static AudioClip LoginSFX { get; private set; }
@@ -37,5 +41,7 @@ namespace ResourceRegistry
         public static AudioClip[] GameResultMusic { get; private set; }
         public static AudioClip[] VictoryFallGuySFX { get; private set; }
         public static AudioClip[] LoseFallGuySFX { get; private set; }
+        public static AudioClip[] WalkFootStepSFX { get; private set; }
+        public static AudioClip[] RunFootStepSFX { get; private set; }
     }
 }
