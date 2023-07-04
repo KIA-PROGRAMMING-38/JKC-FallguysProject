@@ -16,9 +16,6 @@ public class FruitChuteController : StageController
     {
         base.Awake();
                         
-        _observeCamera = transform.Find("ObserveCamera").GetComponent<Camera>();
-        Debug.Assert(_observeCamera != null);
-        
         _cancellationTokenSource = new CancellationTokenSource();
         
         _fruitPooler = transform.Find("FruitPooler").GetComponent<FruitPooler>();
@@ -36,12 +33,6 @@ public class FruitChuteController : StageController
 
     protected override void InitializeRx()
     {
-        // StageDataManager.Instance.IsPlayerAlive(PhotonNetwork.LocalPlayer.ActorNumber)
-        //     .DistinctUntilChanged()
-        //     .Where(alive => !alive)
-        //     .Subscribe(_ => _observeCamera.gameObject.SetActive(true))
-        //     .AddTo(this);
-        
         StageDataManager.Instance.IsGameActive
             .Where(state => state)
             .Subscribe(_ => GameStartBroadCast())
@@ -92,9 +83,9 @@ public class FruitChuteController : StageController
 
         int actorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
 
-        if (StageDataManager.Instance.GetCurrentState(actorNumber).Value != StageDataManager.PlayerState.Victory)
+        if (StageDataManager.Instance.PlayerContainer.GetCurrentState(actorNumber).Value != PlayerContainer.PlayerState.Victory)
         {
-            StageDataManager.Instance.SetPlayerState(actorNumber, StageDataManager.PlayerState.Defeat);
+            StageDataManager.Instance.PlayerContainer.SetPlayerState(actorNumber, PlayerContainer.PlayerState.Defeat);
         }
     }
     

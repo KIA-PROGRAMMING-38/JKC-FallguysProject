@@ -16,6 +16,7 @@ public class StageInstantiateManager : MonoBehaviourPun
         if (PhotonNetwork.IsMasterClient)
         {
             InstantiateMap(mapData);
+            StageDataManager.Instance.PlayerContainer.Clear();
         }
         
         InstantiatePlayer(mapData);
@@ -31,7 +32,6 @@ public class StageInstantiateManager : MonoBehaviourPun
     }
 
     private SkinnedMeshRenderer _bodyRenderer;
-    private int _textureIndex;
 
     private void InstantiatePlayer(MapData mapData)
     {
@@ -40,8 +40,9 @@ public class StageInstantiateManager : MonoBehaviourPun
         GameObject newPlayer = PhotonNetwork.Instantiate(filePath, spawnPoint, Quaternion.identity);
         PlayerPhotonController photonController = newPlayer.GetComponentInChildren<PlayerPhotonController>();
     
-        _textureIndex = DataManager.PlayerTextureIndex.Value;
+        StageDataManager.Instance.PlayerContainer.AddPlayer(PhotonNetwork.LocalPlayer.ActorNumber, newPlayer);
 
-        photonController.photonView.RPC("SetTextureIndex", RpcTarget.AllBuffered, _textureIndex);
+        photonController.photonView.RPC
+            ("SetTextureIndex", RpcTarget.AllBuffered, DataManager.PlayerTextureIndex.Value);
     }
 }

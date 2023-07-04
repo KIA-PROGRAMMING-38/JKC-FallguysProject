@@ -13,8 +13,8 @@ public class FruitChuteGoalCollider : MonoBehaviourPun
             {
                 int actorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
 
-                StageDataManager.Instance.SetPlayerState(actorNumber, StageDataManager.PlayerState.Victory);
-                StageDataManager.Instance.SetPlayerAlive(actorNumber, false);
+                StageDataManager.Instance.PlayerContainer.SetPlayerState(actorNumber, PlayerContainer.PlayerState.Victory);
+                StageDataManager.Instance.PlayerContainer.SetPlayerAlive(actorNumber, false);
         
                 photonView.RPC("RpcAddPlayerToRankingOnGoal", RpcTarget.MasterClient, actorNumber);
             }

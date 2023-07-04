@@ -27,7 +27,8 @@ public class ObservedPlayerNamePresenter : Presenter
             .AddTo(_compositeDisposable);
 
         int actorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
-        StageDataManager.Instance.GetCurrentState(actorNumber)
+        StageDataManager.Instance.PlayerContainer.GetCurrentState(actorNumber)
+            .Skip(1)
             .DistinctUntilChanged()
             .Subscribe(_ => SetActiveGameObject(true))
             .AddTo(_compositeDisposable);

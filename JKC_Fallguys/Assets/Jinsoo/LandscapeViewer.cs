@@ -19,14 +19,14 @@ public class LandscapeViewer : MonoBehaviour
     {
         StageDataManager.Instance.IsGameActive
             .DistinctUntilChanged()
-            .Where(status => !StageDataManager.Instance.IsGameActive.Value)
-            .Subscribe(_ => gameObject.SetActive(true))
+            .Where(isGameActive => !isGameActive)
+            .Subscribe(_ => _camera.gameObject.SetActive(true))
             .AddTo(this);
         
-        StageDataManager.Instance.IsGameActive
+        StageDataManager.Instance.IsGameStart
             .DistinctUntilChanged()
-            .Where(status => StageDataManager.Instance.IsGameActive.Value)
-            .Subscribe(_ => gameObject.SetActive(false))
+            .Where(isGameStarted => isGameStarted)
+            .Subscribe(_ => _camera.gameObject.SetActive(false))
             .AddTo(this);
     }
 }

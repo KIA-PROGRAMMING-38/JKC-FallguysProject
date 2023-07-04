@@ -3,7 +3,6 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using Photon.Pun;
 using UniRx;
-using UnityEngine;
 
 public class JumpClubController : StageController
 {
@@ -73,15 +72,15 @@ public class JumpClubController : StageController
         
         int actorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
 
-        if (StageDataManager.Instance.IsPlayerAlive(actorNumber).Value)
+        if (StageDataManager.Instance.PlayerContainer.IsPlayerActive(actorNumber).Value)
         {
-            StageDataManager.Instance.SetPlayerState(actorNumber, StageDataManager.PlayerState.Victory);
+            StageDataManager.Instance.PlayerContainer.SetPlayerState(actorNumber, PlayerContainer.PlayerState.Victory);
             
             photonView.RPC("RpcDeclarationOfVictory", RpcTarget.All, actorNumber);
         }
         else
         {
-            StageDataManager.Instance.SetPlayerState(actorNumber, StageDataManager.PlayerState.Defeat);
+            StageDataManager.Instance.PlayerContainer.SetPlayerState(actorNumber, PlayerContainer.PlayerState.Defeat);
         }
     }
 
