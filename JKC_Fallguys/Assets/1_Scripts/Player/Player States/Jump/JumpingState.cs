@@ -7,11 +7,11 @@ public class JumpingState : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         _playerPhysicsController = animator.GetComponent<PlayerPhysicsController>();
+        _playerPhysicsController.ActivateOnJumpingAction();
     }
     
-    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    override public void OnStateExit( Animator animator, AnimatorStateInfo stateInfo, int layerIndex )
     {
-        // 공중에서 인풋에 따라 움직일 수 있게 한다.
-        _playerPhysicsController.OnJumping();
+        _playerPhysicsController.jumpCancellationTokenSource.Cancel();
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using LiteralRepository;
 using Photon.Pun;
@@ -112,23 +113,46 @@ public class PlayerPhysicsController : MonoBehaviourPun
     }
  
     [SerializeField] private float _jumpMovementForce;
+    public CancellationTokenSource jumpCancellationTokenSource;
+    CancellationToken _jumpCancellationToken => jumpCancellationTokenSource.Token;
+    
     /// <summary>
-    /// Jumping State에서 호출.
+    /// UniTask함수인 OnJumpingAction을 호출하는 함수입니다. JumpingState에서 호출해주세요.
     /// </summary>
-    public void OnJumping()
+    public void ActivateOnJumpingAction()
+    {
+        jumpCancellationTokenSource = new CancellationTokenSource();
+        OnJumpingAction().Forget();
+    }
+
+    /// <summary>
+    /// 점프상태중에 인풋 방향대로 움직이기 위한 함수입니다.
+    /// </summary>
+    /// <returns></returns>
+    private async UniTaskVoid OnJumpingAction()
     {
         if (!photonView.IsMine || !StageDataManager.Instance.IsGameActive.Value)
             return;
-        
-        if (_playerInput.InputVec != _zeroVec && _playerInput.CannotMove == false)
+
+        while ( !_jumpCancellationToken.IsCancellationRequested )
         {
-            _playerRigidbody.AddForce(_moveDir * _jumpMovementForce, ForceMode.Force);
-            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(_moveDir), _rotSpeed * Time.deltaTime);    
+            if ( _playerInput.InputVec != _zeroVec && _playerInput.CannotMove == false )
+            {
+                _playerRigidbody.AddForce( _moveDir * _jumpMovementForce, ForceMode.Force );
+                transform.rotation = Quaternion.Lerp( transform.rotation, Quaternion.LookRotation( _moveDir ), _rotSpeed * Time.deltaTime );
+            }
+
+            if ( _jumpCancellationToken.IsCancellationRequested )
+            {
+                break;
+            }
+
+            await UniTask.Yield( PlayerLoopTiming.FixedUpdate );
         }
     }
 
     /// <summary>
-    /// Jump Start State에서 호출.
+    /// UniTask함수인 JumpAction을 호출하는 함수입니다. Jump Start State에서 호출해주세요.
     /// </summary>
     public void ActivateJumpAction()
     {
@@ -142,11 +166,11 @@ public class PlayerPhysicsController : MonoBehaviourPun
     private async UniTaskVoid JumpAction()
     {
         _playerRigidbody.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
-        await UniTask.Yield();
+        await UniTask.Yield( PlayerLoopTiming.FixedUpdate );
     }
 
     /// <summary>
-    /// DiveStartState에서 호출.
+    /// UniTask로 구현된 Dive관련 함수들을 호출하는 함수입니다. DiveStartState에서 호출해주세요.
     /// </summary>
     public void ActivateDiveAction()
     {
@@ -163,7 +187,7 @@ public class PlayerPhysicsController : MonoBehaviourPun
     private float _diveRotationX = 90;
     [SerializeField] private float _diveRotationSpeed;
     
-    // 캐릭터가 Dive할때 회전하는 함수.
+    // 캐릭터가 Dive할때 회전하는 함수입니다.
     private async UniTaskVoid DiveRotation()
     {
         _playerInput.CannotMove = true;
@@ -173,7 +197,6 @@ public class PlayerPhysicsController : MonoBehaviourPun
         
         while (Quaternion.Angle(transform.rotation, _targetRotation) > 0.1f)
         {
-            // 캐릭터의 원래 방향으로 rotation한다.
             float step = _diveRotationSpeed * Time.deltaTime;
             transform.rotation = Quaternion.RotateTowards(transform.rotation, _targetRotation, step);
             
@@ -187,21 +210,21 @@ public class PlayerPhysicsController : MonoBehaviourPun
     private Vector3 _diveDirection;
     [SerializeField] private float _diveHeightDirection;
     
-    // Dive시 앞으로 힘을 주어 점프하는 함수.
+    // Dive시 앞으로 힘을 주어 움직이게 하는 함수 입니다.
     private async UniTaskVoid DiveAction()
     {
         await UniTask.DelayFrame(3);
         
-        // Player가 바라보고 있는 방향을 구한뒤 Dive Direction을 구한다.
+        // Player가 바라보고 있는 방향을 구한뒤 Dive Direction을 구합니다.
         _playerDirection = transform.forward;
         _diveDirection = new Vector3(_playerDirection.x, _diveHeightDirection, _playerDirection.z);
 
-        // Dive Direction으로 힘을 준다.
+        // Dive Direction으로 힘을 줍니다.
         _playerRigidbody.AddForce(_diveDirection * _diveForce, ForceMode.Impulse);
     }
 
     /// <summary>
-    /// GetUpState에서 호출.
+    /// GetUpState에서 호출해주세요.
     /// </summary>
     public void ActivateGetUp()
     {
@@ -213,7 +236,7 @@ public class PlayerPhysicsController : MonoBehaviourPun
     
     [SerializeField] private float _getUpRotationSpeed;
 
-    // 캐릭터가 Dive이후 일어나게 하는 함수.
+    // 캐릭터가 Dive이후 일어나게 하는 함수입니다.
     private async UniTaskVoid GetUp()
     {
         _playerInput.CannotMove = true;
@@ -223,7 +246,6 @@ public class PlayerPhysicsController : MonoBehaviourPun
         
         while (Quaternion.Angle(transform.rotation, _targetRotation) > 0.1f)
         {
-            // 캐릭터의 원래 방향으로 rotation한다.
             float step = _getUpRotationSpeed * Time.deltaTime;
             transform.rotation = Quaternion.RotateTowards(transform.rotation, _targetRotation, step);
             
@@ -234,7 +256,7 @@ public class PlayerPhysicsController : MonoBehaviourPun
     }
 
     /// <summary>
-    /// 넘어지면서 회전축을 푸는 함수. Fall State에서 호출.
+    /// 넘어지면서 회전축을 푸는 함수입니다. Fall State에서 호출해주세요.
     /// </summary>
     public void UnfreezeRotationAxis()
     {
@@ -245,7 +267,7 @@ public class PlayerPhysicsController : MonoBehaviourPun
     }
 
     /// <summary>
-    /// Recovery State에서 호출.
+    /// Recovery State에서 호출해주세요.
     /// </summary>
     public void ActivateRecovery()
     {
@@ -255,7 +277,7 @@ public class PlayerPhysicsController : MonoBehaviourPun
         Recovery().Forget();
     }
     
-    // 평지에서 Fall 이후 다시 일어나게 하는 함수.
+    // 평지에서 Fall 이후 다시 일어나게 하는 함수입니다.
     private async UniTaskVoid Recovery()
     {
         _playerInput.CannotMove = true;
@@ -269,7 +291,6 @@ public class PlayerPhysicsController : MonoBehaviourPun
 
         while (Quaternion.Angle(transform.rotation, _targetRotation) > 0.1f)
         {
-            // 캐릭터의 원래 방향으로 rotation한다.
             float step = _getUpRotationSpeed * Time.deltaTime;
             transform.rotation = Quaternion.RotateTowards(transform.rotation, _targetRotation, step);
             
@@ -280,7 +301,7 @@ public class PlayerPhysicsController : MonoBehaviourPun
     }
 
     /// <summary>
-    /// Fall 이후 다시 원위치 되는 함수. Respawn Boundary랑 충돌햇을때 호출. 
+    /// Fall 이후 다시 Respawn 되는 함수입니다.. Respawn Boundary랑 충돌햇을때 호출해주세요. 
     /// </summary>
     public void Respawn(Vector3 respawnPos, Quaternion respawnAngle)
     {
