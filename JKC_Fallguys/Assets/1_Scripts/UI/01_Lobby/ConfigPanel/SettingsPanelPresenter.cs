@@ -24,6 +24,17 @@ public class SettingsPanelPresenter : Presenter
             .OnClickAsObservable()
             .Subscribe(_ => LobbySceneModel.SetLobbyState(LobbySceneModel.LobbyState.HowToPlay))
             .AddTo(_compositeDisposable);
+
+        _settingsPanelView.GameExitButton.onClick.AddListener(GameExit);
+    }
+
+    private void GameExit()
+    {
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #else
+            Application.Quit();
+        #endif
     }
 
     protected override void OnUpdatedModel()
