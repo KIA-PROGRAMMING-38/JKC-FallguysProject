@@ -1,3 +1,4 @@
+using Model;
 using UniRx;
 
 public class TopButtonListPresenter : Presenter
@@ -31,8 +32,28 @@ public class TopButtonListPresenter : Presenter
     
     protected override void OnUpdatedModel()
     {
+        // TopButtonListView의 활성화 여부를 결정합니다.
+        LobbySceneModel.CurrentLobbyState
+        .Subscribe( state =>
+        {
+            if ( state == LobbySceneModel.LobbyState.Home || state == LobbySceneModel.LobbyState.Customization )
+            {
+                SetActiveTopButtonListView( true );
+            }
+            else
+            {
+                SetActiveTopButtonListView( false );
+            }
+        } )
+        .AddTo( _compositeDisposable );
+
     }
-    
+
+    void SetActiveTopButtonListView( bool status )
+    {
+        _topButtonListView.gameObject.SetActive( status );
+    }
+
     public override void OnRelease()
     {
         _topButtonListView = default;
