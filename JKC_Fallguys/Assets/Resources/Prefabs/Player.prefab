@@ -954,7 +954,7 @@ MonoBehaviour:
   _groundCheckPoint: {fileID: 2387829583882509454}
   _castRadius: 0.2
   _groundCheckDistance: 3
-  _jumpMovementForce: 40
+  _jumpMovementForce: 300
   _diveRotationSpeed: 300
   _diveHeightDirection: 2
   _getUpRotationSpeed: 300
