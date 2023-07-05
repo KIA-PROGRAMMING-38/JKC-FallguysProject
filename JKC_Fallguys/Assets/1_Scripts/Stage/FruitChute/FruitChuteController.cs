@@ -1,6 +1,7 @@
 using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using Model;
 using Photon.Pun;
 using UniRx;
 using UnityEngine;
@@ -28,7 +29,7 @@ public class FruitChuteController : StageController
     
     protected override void SetGameTime()
     {
-        remainingGameTime.Value = 60;
+        StageSceneModel.SetRemainingTime(60);
     }
 
     protected override void InitializeRx()
@@ -38,9 +39,9 @@ public class FruitChuteController : StageController
             .Subscribe(_ => GameStartBroadCast())
             .AddTo(this);
 
-        remainingGameTime
-            .Where(count => remainingGameTime.Value == 0)
-            .Subscribe(_ => EndGame())
+        StageSceneModel.RemainingTime
+            .Where(RemainingTime => RemainingTime == 0)
+            .Subscribe(_ => RpcEndGame())
             .AddTo(this);
     }
     
@@ -58,7 +59,10 @@ public class FruitChuteController : StageController
         {
             await UniTask.Delay(TimeSpan.FromSeconds(1), cancellationToken: cancelToken);
             
-            --remainingGameTime.Value;
+            StageSceneModel.DecreaseRemainingTime();
+
+            if (StageSceneModel.RemainingTime.Value == 0)
+                break;
         }
     }
 

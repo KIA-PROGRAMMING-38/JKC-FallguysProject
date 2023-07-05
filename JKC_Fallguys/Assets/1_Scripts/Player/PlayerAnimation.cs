@@ -167,26 +167,26 @@ public class PlayerAnimation : MonoBehaviourPun
     private int _randomAudioClipIndex;
     public void WalkFootStep()
     {
-        photonView.RPC( "RpcWalkFootStep", RpcTarget.AllBuffered );
+        photonView.RPC("RpcWalkFootStep", RpcTarget.AllBuffered);
     }
 
     [PunRPC]
     public void RpcWalkFootStep()
     {
-        _randomAudioClipIndex = Random.Range( 0, AudioRegistry.WalkFootStepSFX.Length );
-        _audioSource.PlayOneShot( AudioRegistry.WalkFootStepSFX[_randomAudioClipIndex] );
+        _randomAudioClipIndex = Random.Range(0, AudioRegistry.WalkFootStepSFX.Length);
+        _audioSource.PlayOneShot(AudioRegistry.WalkFootStepSFX[_randomAudioClipIndex]);
     }
 
     public void RunFootStep()
     {
-        photonView.RPC( "RpcRunFootStep", RpcTarget.AllBuffered );
+        photonView.RPC("RpcRunFootStep", RpcTarget.AllBuffered);
     }
 
     [PunRPC]
     public void RpcRunFootStep()
     {
-        _randomAudioClipIndex = Random.Range( 0, AudioRegistry.RunFootStepSFX.Length );
-        _audioSource.PlayOneShot( AudioRegistry.RunFootStepSFX[_randomAudioClipIndex] );
+        _randomAudioClipIndex = Random.Range(0, AudioRegistry.RunFootStepSFX.Length);
+        _audioSource.PlayOneShot(AudioRegistry.RunFootStepSFX[_randomAudioClipIndex]);
     }
 
     #endregion
