@@ -1,13 +1,33 @@
+using System;
 using Photon.Pun;
+using UnityEngine;
 
 public class PhotonCleaner : MonoBehaviourPun
 {
+    private void Awake()
+    {
+        StageRepository.Instance.OnPlayerDispose -= TransferPhotonViewOwnership;
+        StageRepository.Instance.OnPlayerDispose += TransferPhotonViewOwnership;
+    }
+
+    private void TransferPhotonViewOwnership()
+    {
+        if (!photonView.IsMine)
+            return;
+        
+        photonView.TransferOwnership(PhotonNetwork.MasterClient.ActorNumber);
+        Debug.Log($"MasterNumber: {PhotonNetwork.MasterClient.ActorNumber}");
+        Debug.Log($"PhotonOwnerAct: {photonView.OwnerActorNr}");
+    }
+
     private void OnDestroy()
     {
         if (photonView.IsMine && gameObject != null)
         {
             photonView.RPC("RpcDestroyOnNetwork", RpcTarget.MasterClient);
         }
+        
+        StageRepository.Instance.OnPlayerDispose -= TransferPhotonViewOwnership;
     }
 
     [PunRPC]

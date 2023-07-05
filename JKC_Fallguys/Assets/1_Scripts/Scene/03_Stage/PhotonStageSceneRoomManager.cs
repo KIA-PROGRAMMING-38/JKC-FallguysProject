@@ -123,16 +123,24 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
         }
         
         EndLogic();
-
+        
+        photonView.RPC("RpcEveryClientPhotonViewTransferOwnerShip", RpcTarget.AllBuffered);
         
         StageEndProduction().Forget();
     }
+
+    [PunRPC]
+    public void RpcEveryClientPhotonViewTransferOwnerShip()
+    {
+        StageRepository.Instance.PlayerDispose();
+    }
+    
     
     private async UniTaskVoid StageEndProduction()
     {
         await UniTask.Delay(TimeSpan.FromSeconds(5f), DelayType.UnscaledDeltaTime);
 
-        ClearPlayerObject();
+        photonView.RPC("RpcClearPlayerObject", RpcTarget.MasterClient);
         
         if (StageDataManager.Instance.IsFinalRound())
         {
@@ -144,8 +152,10 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
         }
     }
 
-    private void ClearPlayerObject()
+    [PunRPC]
+    public void RpcClearPlayerObject()
     {
+        
         List<GameObject> children = new List<GameObject>();
 
         foreach (Transform child in StageDataManager.Instance.gameObject.transform)
@@ -164,11 +174,6 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
         
             if (childPhotonView == null || childPhotonView.ViewID < 0)
                 continue;
-        
-            if (!ReferenceEquals(childPhotonView.Owner, PhotonNetwork.MasterClient))
-            {
-                childPhotonView.TransferOwnership(PhotonNetwork.MasterClient.ActorNumber);
-            }
 
             PhotonNetwork.Destroy(childPhotonView);
         }

@@ -15,8 +15,6 @@ public class PlayerContainer
     
     public void ObservedNextPlayer()
     {
-        Debug.Log($"InitNextPlayer: {_observingList.Count}");
-        
         if (_observingList.Count == 0)
         {
             return;
@@ -25,16 +23,12 @@ public class PlayerContainer
         int startIndex = _observingIndex;
         do
         {
-            Debug.Log($"PrevObservingIndex: {_observingIndex}");
             _observingIndex = (_observingIndex + 1) % _observingList.Count;
-            Debug.Log($"NextObservingIndex: {_observingIndex}");
             
             GameObject current = _observingList[_observingIndex];
-            Debug.Log($"First: {current.name}");
             if (current == null || !current.activeSelf)
                 continue;
 
-            Debug.Log($"Second: {_observingList[_observingIndex].name}");
             Transform character = current.transform.Find("Character");
             if (character == null)
                 continue;
@@ -91,7 +85,6 @@ public class PlayerContainer
             GameObject childObject = childTransform.gameObject;
         
             _observingList.Add(childObject);
-            Debug.Log(childObject.name);
         }
     }
 }
