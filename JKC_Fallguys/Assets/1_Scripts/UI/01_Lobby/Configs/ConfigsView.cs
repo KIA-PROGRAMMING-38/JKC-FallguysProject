@@ -6,11 +6,8 @@ using UnityEngine.UI;
 public class ConfigsView : View
 {
     public Slider MasterSlider { get; private set; }
-    public Text MasterVolumeValue { get; private set; }
     public Slider MusicSlider { get; private set; }
-    public Text MusicVolumeValue { get; private set;  }
     public Slider SFXSlider { get; private set; }
-    public Text SFXVolumeValue { get; private set; }
     public Text ResolutionSettings { get; private set; }
     public Button ResolutionRightButton { get; private set; }
     public Button ResolutionLeftButton { get; private set;  }
@@ -18,15 +15,10 @@ public class ConfigsView : View
     {
         MasterSlider = transform.Find( "MasterVolume" ).Find( "Slider" ).GetComponent<Slider>();
         Debug.Assert( MasterSlider != null );
-        MasterVolumeValue = transform.Find( "MasterVolume" ).Find( "VolumeValue" ).GetComponent<Text>();
         MusicSlider = transform.Find( "MasterVolume" ).Find( "Slider" ).GetComponent<Slider>();
         Debug.Assert( MusicSlider != null );
-        MusicVolumeValue = transform.Find( "MasterVolume" ).Find( "VolumeValue" ).GetComponent<Text>();
-        Debug.Assert( MusicVolumeValue != null );
         SFXSlider = transform.Find( "SFXVolume" ).Find( "Slider" ).GetComponent<Slider>();
         Debug.Assert( SFXSlider != null );
-        SFXVolumeValue = transform.Find( "SFXVolume" ).Find( "VolumeValue" ).GetComponent<Text>();
-        Debug.Assert( SFXVolumeValue != null );
         ResolutionSettings = transform.Find( "Resolution" ).Find( "ResolutionSettings" ).GetComponent<Text>();
         Debug.Assert( ResolutionSettings != null );
         ResolutionRightButton = transform.Find( "Resolution" ).Find( "RightButton" ).GetComponent<Button>();
