@@ -17,6 +17,16 @@ public class GameLoadingSceneInitializer : SceneInitializer
     {
         Instantiate(DataManager.GetGameObjectData
             (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.GameLoading, "GameLoadingSceneManager"));
+        Instantiate(DataManager.GetGameObjectData
+            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.GameLoading, PathLiteral.UI, "GameLoadingBackgroundImage"));
+        Instantiate(DataManager.GetGameObjectData
+            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.GameLoading, PathLiteral.UI, "HorizontalRendererViewController"));
+        Instantiate(DataManager.GetGameObjectData
+            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.GameLoading, PathLiteral.UI, "MapInformationViewController"));
+        Instantiate(DataManager.GetGameObjectData
+            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.GameLoading, PathLiteral.UI, "WhiteScreenViewController"));
+        Instantiate(DataManager.GetGameObjectData
+            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.GameLoading, PathLiteral.UI, "GameLoadingMainPanelViewController"));
 
         if (PhotonNetwork.IsMasterClient)
         {
