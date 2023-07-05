@@ -11,7 +11,8 @@ namespace Model
             Customization,
             Costume,
             Settings,
-            HowToPlay
+            HowToPlay,
+            Configs
         }
         
         // PlayerNamePlate의 갱신을 담당할 문자열입니다.
