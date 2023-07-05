@@ -10,14 +10,12 @@ public class HoopController : MonoBehaviourPun
 {
     private Dictionary<int, int> _playerHoopCounts = new Dictionary<int, int>();
     private HoopLegendController _hoopLegendController;
-    private CancellationTokenSource _cancellationToken;
     
     private void Awake()
     {
         StageRepository.Instance.SetHoopControllerReference(this);
         _hoopLegendController = GetComponentInParent<HoopLegendController>();
         Debug.Assert(_hoopLegendController != null);
-        _cancellationToken = new CancellationTokenSource();
 
         if (PhotonNetwork.IsMasterClient)
         {
@@ -112,10 +110,5 @@ public class HoopController : MonoBehaviourPun
     public void PlayerPassesHoop(int value)
     {
         photonView.RPC("IncreaseCountAndBroadcast", RpcTarget.MasterClient, PhotonNetwork.LocalPlayer.ActorNumber, value);
-    }
-
-    private void OnDestroy()
-    {
-        _cancellationToken.Cancel();
     }
 }
