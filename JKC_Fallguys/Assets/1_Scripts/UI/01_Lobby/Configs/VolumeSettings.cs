@@ -1,6 +1,5 @@
+using System;
 using LiteralRepository;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
@@ -23,6 +22,8 @@ public class VolumeSettings : MonoBehaviour
     private void Start()
     {
         _volumeSlider.onValueChanged.AddListener(SetVolume);
+        _volumeSlider.value = PlayerPrefs.GetFloat(_audioMixerParameterName, 1f);
+        _audioMixer.SetFloat(_audioMixerParameterName, Mathf.Log10(_volumeSlider.value) * 20);
     }
 
     private void SetVolume(float volume)
@@ -30,4 +31,8 @@ public class VolumeSettings : MonoBehaviour
         _audioMixer.SetFloat( _audioMixerParameterName, Mathf.Log10( volume ) * 20 );
     }
 
+    private void OnDisable()
+    {
+        PlayerPrefs.SetFloat(_audioMixerParameterName, _volumeSlider.value);
+    }
 }
