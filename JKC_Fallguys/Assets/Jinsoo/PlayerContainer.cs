@@ -78,6 +78,7 @@ public class PlayerContainer
     public void Clear()
     {
         _observingList.Clear();
+        Debug.Log($"옵저빙리스트 클리어됨?: {_observingList}");
         _observingIndex = 0;
         _observer = default;
     }

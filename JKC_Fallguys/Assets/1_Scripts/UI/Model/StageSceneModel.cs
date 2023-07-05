@@ -16,16 +16,11 @@ namespace Model
         private static ReactiveProperty<bool> _canClickButton = new ReactiveProperty<bool>(false);
         public static IReadOnlyReactiveProperty<bool> CanClickButton => _canClickButton;
         
-        // 현재 골에 들어간 플레이어의 수를 나타냅니다.
-        private static ReactiveProperty<int> _enteredGoalPlayerCount = new ReactiveProperty<int>(0);
-        public static IReadOnlyReactiveProperty<int> EnteredGoalPlayerCount => _enteredGoalPlayerCount;
-
-        // Stage에 입장한 플레이어의 수를 나타냅니다.
-        private static ReactiveProperty<int> _totalPlayerCount = new ReactiveProperty<int>(0);
-        public static IReadOnlyReactiveProperty<int> TotalPlayerCount => _totalPlayerCount;
-
         private static ReactiveProperty<int> _spriteIndex = new ReactiveProperty<int>();
         public static IReactiveProperty<int> SpriteIndex => _spriteIndex;
+
+        private static ReactiveProperty<int> _remainingTime = new ReactiveProperty<int>();
+        public static IReactiveProperty<int> RemainingTime => _remainingTime;
 
         /// <summary>
         /// Exit 패널이 활성화 될 수 있는지 여부를 나타냅니다.
@@ -53,17 +48,17 @@ namespace Model
         {
             _isEnterPhotonRoom.Value = status;
         }
-        
-        public static void IncreaseEnteredPlayerCount()
+
+        public static void SetRemainingTime(int remainingTime)
         {
-            ++_enteredGoalPlayerCount.Value;
-        }
-        
-        public static void SetTotalPlayerCount(int value)
-        {
-            _totalPlayerCount.Value = value;
+            _remainingTime.Value = remainingTime;
         }
 
+        public static void DecreaseRemainingTime()
+        {
+            --_remainingTime.Value;
+        }
+        
         public static void IncreaseCountDownIndex()
         {
             ++_spriteIndex.Value;
