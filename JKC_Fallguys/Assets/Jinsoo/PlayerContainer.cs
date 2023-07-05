@@ -40,7 +40,6 @@ public class PlayerContainer
                 continue;
 
             _observer.BindObservedCharacter(character);
-            Debug.Log($"DoWhile: {character}");
             return;
         }
         while (_observingIndex != startIndex);
@@ -78,7 +77,7 @@ public class PlayerContainer
     public void Clear()
     {
         _observingList.Clear();
-        Debug.Log($"옵저빙리스트 클리어됨?: {_observingList}");
+        Debug.Log($"옵저빙리스트 클리어됨?: {_observingList.Count}");
         _observingIndex = 0;
         _observer = default;
     }

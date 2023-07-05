@@ -20,7 +20,15 @@ public class RemainingTimePresenter : Presenter
 
     protected override void OnUpdatedModel()
     {
-        StageSceneModel.RemainingTime.SubscribeToText(_remainingTimeView.RemainingTime);
+        StageSceneModel.RemainingTime
+            .DistinctUntilChanged()
+            .Subscribe(_ => SetReaminingTimeText())
+            .AddTo(_compositeDisposable);
+    }
+
+    private void SetReaminingTimeText()
+    {
+        _remainingTimeView.RemainingTime.text = $"{StageSceneModel.RemainingTime.Value:D2}";
     }
 
     public override void OnRelease()
