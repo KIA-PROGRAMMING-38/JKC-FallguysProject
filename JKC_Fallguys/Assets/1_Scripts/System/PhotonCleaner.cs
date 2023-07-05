@@ -1,6 +1,4 @@
-using System;
 using Photon.Pun;
-using UnityEngine;
 
 public class PhotonCleaner : MonoBehaviourPun
 {
@@ -16,8 +14,6 @@ public class PhotonCleaner : MonoBehaviourPun
             return;
         
         photonView.TransferOwnership(PhotonNetwork.MasterClient.ActorNumber);
-        Debug.Log($"MasterNumber: {PhotonNetwork.MasterClient.ActorNumber}");
-        Debug.Log($"PhotonOwnerAct: {photonView.OwnerActorNr}");
     }
 
     private void OnDestroy()

@@ -13,9 +13,7 @@ public class PhotonStageSceneEventManager : MonoBehaviourPunCallbacks
     
     public override void OnDisconnected(DisconnectCause cause)
     {
-        base.OnDisconnected(cause);
-
-        Debug.Log("호출");
+        Debug.Log($"Disconnected Issue : {cause}");
     }
 
     private void OnDestroy()
