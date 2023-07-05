@@ -1,3 +1,4 @@
+using System;
 using Photon.Pun;
 using UniRx;
 using UnityEngine;
@@ -12,6 +13,11 @@ public class PlayerObserverCamera : MonoBehaviour
         Debug.Assert(_observerCamera != null);
 
         InitializeRx();
+    }
+
+    private void Start()
+    {
+        StageDataManager.Instance.PlayerContainer.BindObservingCamera(this);
     }
 
     private void InitializeRx()
@@ -31,6 +37,7 @@ public class PlayerObserverCamera : MonoBehaviour
 
     public void BindObservedCharacter(Transform followPlayerCharacter)
     {
+        Debug.Log($"BindObservedCharacter: {followPlayerCharacter.name}");
         _observerCamera.UpdatePlayerTarget(followPlayerCharacter);
     }
 }

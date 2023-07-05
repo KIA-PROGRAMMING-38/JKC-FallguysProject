@@ -83,6 +83,7 @@ MonoBehaviour:
   - SetRoundState
   - SetGameStart
   - RpcSetTextureIndex
+  - RpcSetParentStageDataManager
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

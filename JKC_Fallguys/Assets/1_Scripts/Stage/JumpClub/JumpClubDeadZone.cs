@@ -12,11 +12,11 @@ public class JumpClubDeadZone : MonoBehaviourPun
 
             if (playerPhotonView != null && playerPhotonView.IsMine)
             {
-                int actorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
+                playerPhotonView.transform.parent.gameObject.SetActive(false);
                 
+                int actorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
                 StageDataManager.Instance.SetPlayerActive(actorNumber, false);
                 StageDataManager.Instance.SetPlayerState(actorNumber, StageDataManager.PlayerState.Defeat);
-                playerPhotonView.transform.root.gameObject.SetActive(false);
 
                 photonView.RPC("RpcAddPlayerToFailedList", RpcTarget.All, actorNumber);
             }

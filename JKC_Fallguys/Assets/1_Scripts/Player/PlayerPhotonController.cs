@@ -10,5 +10,11 @@ public class PlayerPhotonController : MonoBehaviourPunCallbacks
     {
         BodyMeshRenderer.material.mainTexture = PlayerTextureRegistry.PlayerTextures[index];
     }
+
+    [PunRPC]
+    public void RpcSetParentStageDataManager()
+    {
+        transform.parent.SetParent(StageDataManager.Instance.gameObject.transform);
+    }
 }
 

@@ -15,32 +15,37 @@ public class PlayerContainer
     
     public void ObservedNextPlayer()
     {
-        int startIndex = _observingIndex;
-        while (true)
+        Debug.Log($"InitNextPlayer: {_observingList.Count}");
+        
+        if (_observingList.Count == 0)
         {
+            return;
+        }
+
+        int startIndex = _observingIndex;
+        do
+        {
+            Debug.Log($"PrevObservingIndex: {_observingIndex}");
             _observingIndex = (_observingIndex + 1) % _observingList.Count;
-
+            Debug.Log($"NextObservingIndex: {_observingIndex}");
+            
             GameObject current = _observingList[_observingIndex];
-            if (current == null)
+            Debug.Log($"First: {current.name}");
+            if (current == null || !current.activeSelf)
                 continue;
 
-            if (!current.activeSelf)
-                continue;
-
+            Debug.Log($"Second: {_observingList[_observingIndex].name}");
             Transform character = current.transform.Find("Character");
             if (character == null)
                 continue;
 
             _observer.BindObservedCharacter(character);
+            Debug.Log($"DoWhile: {character}");
             return;
-
-            if (_observingIndex == startIndex)
-            {
-                Debug.Log("No valid GameObject found");
-                return;
-            }
         }
+        while (_observingIndex != startIndex);
     }
+
 
     public void ObservedPrevPlayer()
     {
@@ -62,12 +67,6 @@ public class PlayerContainer
 
             _observer.BindObservedCharacter(character);
             return;
-
-            if (_observingIndex == startIndex)
-            {
-                Debug.Log("No valid GameObject found");
-                return;
-            }
         }
     }
 
@@ -81,13 +80,11 @@ public class PlayerContainer
         _observingList.Clear();
         _observingIndex = 0;
         _observer = default;
-
-        FindAllObservedObjects(_stageDataManager);
     }
     
-    private void FindAllObservedObjects(GameObject parent)
+    public void FindAllObservedObjects()
     {
-        Transform parentTransform = parent.transform;
+        Transform parentTransform = _stageDataManager.transform;
     
         for (int i = 0; i < parentTransform.childCount; i++)
         {
@@ -95,6 +92,7 @@ public class PlayerContainer
             GameObject childObject = childTransform.gameObject;
         
             _observingList.Add(childObject);
+            Debug.Log(childObject.name);
         }
     }
 }

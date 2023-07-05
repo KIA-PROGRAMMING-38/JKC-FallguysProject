@@ -40,6 +40,8 @@ public class StageInstantiateManager : MonoBehaviourPun
 
         playerPhotonController.photonView.RPC
             ("RpcSetTextureIndex", RpcTarget.AllBuffered, DataManager.PlayerTextureIndex.Value);
+        playerPhotonController.photonView.RPC
+            ("RpcSetParentStageDataManager", RpcTarget.AllBuffered);
 
         playerPhotonController.transform.root.gameObject.transform
             .SetParent(StageDataManager.Instance.gameObject.transform);

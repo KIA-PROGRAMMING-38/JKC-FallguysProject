@@ -14,6 +14,7 @@ public class ObserverCamera : MonoBehaviour
     public void OnUpdateMousePos(InputAction.CallbackContext context)
     {
         _observingMouseVec = context.ReadValue<Vector2>();
+        Debug.Log(_observingMouseVec);
         
         SetCameraAngle();
     }
