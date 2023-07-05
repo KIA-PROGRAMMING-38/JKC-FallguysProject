@@ -30,6 +30,7 @@ public class CommonHoop : MonoBehaviourPun
         _passEffectReverse = transform.Find("PassEffectReverse").GetComponent<ParticleSystem>();
         _passEffect.Stop();
         _passEffectReverse.Stop();
+        _cancelToken = new CancellationTokenSource();
         Debug.Assert(_passEffect != null);
         Debug.Assert(_passEffectReverse != null);
         
@@ -49,17 +50,20 @@ public class CommonHoop : MonoBehaviourPun
         transform.SetParent(StageRepository.Instance.gameObject.transform);
     }
 
-    public void Initialize(CancellationTokenSource cancelToken)
-    {
-        _cancelToken = cancelToken;
-    }
-
     private void Start()
     {
         _goalCheck.OnPlayerEnter += HandlePlayerEnter;
         _goalCheck.OnPlayerExit += HandlePlayerExit;
+        
+        photonView.RPC("RpcSetHoopControllerReference", RpcTarget.AllBuffered);
     }
 
+    [PunRPC]
+    public void RpcSetHoopControllerReference()
+    {
+        _hoopController = StageRepository.Instance.HoopController;
+    }
+    
     private void HandlePlayerEnter()
     {
         if (!_playerEntered && !_isMoving)

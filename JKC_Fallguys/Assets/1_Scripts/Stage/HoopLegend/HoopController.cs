@@ -14,6 +14,7 @@ public class HoopController : MonoBehaviourPun
     
     private void Awake()
     {
+        StageRepository.Instance.SetHoopControllerReference(this);
         _hoopLegendController = GetComponentInParent<HoopLegendController>();
         Debug.Assert(_hoopLegendController != null);
         _cancellationToken = new CancellationTokenSource();
@@ -25,6 +26,9 @@ public class HoopController : MonoBehaviourPun
         }
     }
 
+
+    private CommonHoop _commonHoop;
+    private SpecialHoop _specialHoop;
     private void InitializeObject()
     {
         ObjectTransforms commonHoopData = DataManager.JsonLoader<ObjectTransforms>($"JSON/CommonHoopTransformData");
@@ -34,18 +38,14 @@ public class HoopController : MonoBehaviourPun
         {
             string filePath = DataManager.SetDataPath(PathLiteral.Prefabs, "Stage", PathLiteral.HoopLegend, "CommonHoop");
             
-            CommonHoop commonHoop = 
-                PhotonNetwork.Instantiate(filePath, commonHoopData.positions[i], Quaternion.Euler(commonHoopData.rotations[i])).GetComponent<CommonHoop>();
-            commonHoop.Initialize(_cancellationToken);
+            PhotonNetwork.Instantiate(filePath, commonHoopData.positions[i], Quaternion.Euler(commonHoopData.rotations[i]));
         }
         
         for (int i = 0; i < specialHoopData.positions.Length; ++i)
         {
             string filePath = DataManager.SetDataPath(PathLiteral.Prefabs, "Stage", PathLiteral.HoopLegend, "SpecialHoop");
             
-            SpecialHoop specialHoop = 
-                PhotonNetwork.Instantiate(filePath, specialHoopData.positions[i], Quaternion.Euler(specialHoopData.rotations[i])).GetComponent<SpecialHoop>();
-            specialHoop.Initialize(_cancellationToken);
+            PhotonNetwork.Instantiate(filePath, specialHoopData.positions[i], Quaternion.Euler(specialHoopData.rotations[i]));
         }
     }
 

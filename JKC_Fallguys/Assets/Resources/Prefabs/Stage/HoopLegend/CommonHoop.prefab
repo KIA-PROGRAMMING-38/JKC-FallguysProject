@@ -10046,6 +10046,7 @@ GameObject:
   - component: {fileID: 765269435679306544}
   - component: {fileID: 6277925092908225822}
   - component: {fileID: 1455013710875674228}
+  - component: {fileID: 7718912420483890264}
   m_Layer: 0
   m_Name: CommonHoop
   m_TagString: Ground
@@ -10192,6 +10193,18 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &7718912420483890264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5206796351229063879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e4a9d4b0af0b468b911d2f28904ca1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7032621962178883045
 GameObject:
   m_ObjectHideFlags: 0
