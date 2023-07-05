@@ -8,9 +8,6 @@ using UniRx;
 /// </summary>
 public abstract class StageController : MonoBehaviourPun
 {
-    // 스테이지의 플레이 시간을 체크하는 ReactiveProperty입니다.
-    protected ReactiveProperty<int> remainingGameTime = new ReactiveProperty<int>();
-    
     protected virtual void Awake()
     {
         SetGameTime();

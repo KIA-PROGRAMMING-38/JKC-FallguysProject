@@ -1,6 +1,7 @@
 using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using Model;
 using Photon.Pun;
 using UniRx;
 
@@ -17,7 +18,7 @@ public class HoopLegendController : StageController
 
     protected override void SetGameTime()
     {
-        remainingGameTime.Value = 60;
+        StageSceneModel.SetRemainingTime(60);
     }
 
     protected override void InitializeRx()
@@ -27,8 +28,8 @@ public class HoopLegendController : StageController
             .Subscribe(_ => GameStartBroadCast())
             .AddTo(this);
 
-        remainingGameTime
-            .Where(count => remainingGameTime.Value == 0)
+        StageSceneModel.RemainingTime
+            .Where(RemainingTime => RemainingTime == 0)
             .Subscribe(_ => RpcEndGame())
             .AddTo(this);
     }
@@ -52,8 +53,11 @@ public class HoopLegendController : StageController
         while (true)
         {
             await UniTask.Delay(TimeSpan.FromSeconds(1), cancellationToken: cancelToken);
+
+            StageSceneModel.DecreaseRemainingTime();
             
-            --remainingGameTime.Value;
+            if (StageSceneModel.RemainingTime.Value == 0)
+                break;
         }
     }
 

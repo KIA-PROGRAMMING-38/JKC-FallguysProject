@@ -17,4 +17,3 @@ public class PlayerPhotonController : MonoBehaviourPunCallbacks
         transform.parent.SetParent(StageDataManager.Instance.gameObject.transform);
     }
 }
-
