@@ -15,7 +15,6 @@ public class StageInstantiateManager : MonoBehaviourPun
 
         if (PhotonNetwork.IsMasterClient)
         {
-            Debug.Log("너냐?");
             InstantiateMap(mapData);
         }
 

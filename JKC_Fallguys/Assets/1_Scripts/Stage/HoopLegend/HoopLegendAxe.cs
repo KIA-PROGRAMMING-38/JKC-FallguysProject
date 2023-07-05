@@ -17,14 +17,10 @@ public class HoopLegendAxe : MonoBehaviourPunCallbacks
     private AxeController _axeController;
     private CancellationTokenSource _cancellationToken;
 
-    private PhotonView _bodyPhotonView;
-
     private void Awake()
     {
         _axeTransform = transform.Find("AxeBody").GetComponent<Transform>();
         Debug.Assert(_axeTransform != null);
-        _bodyPhotonView = _axeTransform.GetComponent<PhotonView>();
-        Debug.Assert(_bodyPhotonView != null);
     }
     
     public void Initialize(AxeController axeController, CancellationTokenSource cancelToken)

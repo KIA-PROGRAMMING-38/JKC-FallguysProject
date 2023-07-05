@@ -4,16 +4,19 @@ public class PhotonCleaner : MonoBehaviourPun
 {
     private void OnDestroy()
     {
-        if (photonView.IsMine)
+        if (photonView.IsMine && gameObject != null)
         {
-            photonView.RPC("DestroyOnNetwork", RpcTarget.MasterClient);
+            photonView.RPC("RpcDestroyOnNetwork", RpcTarget.MasterClient);
         }
     }
 
     [PunRPC]
-    private void DestroyOnNetwork()
+    private void RpcDestroyOnNetwork()
     {
-        if (photonView.Owner != PhotonNetwork.MasterClient)
+        if (photonView == null || photonView.ViewID < 0)
+            return;
+        
+        if (!ReferenceEquals(photonView.Owner, PhotonNetwork.MasterClient))
         {
             photonView.TransferOwnership(PhotonNetwork.MasterClient.ActorNumber);
         }
