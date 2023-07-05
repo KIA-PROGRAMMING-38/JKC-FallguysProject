@@ -9,6 +9,7 @@ public class StageSceneInitializer : SceneInitializer
     protected override void InitializeModel()
     {
         StageSceneModel.InitializeCountDown();
+        StageDataManager.Instance.PlayerContainer.Clear();
         
         StageDataManager.Instance.SetGameStatus(false);
         StageDataManager.Instance.SetRoundState(false);
@@ -38,6 +39,8 @@ public class StageSceneInitializer : SceneInitializer
             (DataManager.GetGameObjectData(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, PathLiteral.UI, "RoundEndViewController"));
         Instantiate
             (DataManager.GetGameObjectData(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, PathLiteral.UI, "ObservedPlayerNameViewController"));
+        Instantiate
+            (DataManager.GetGameObjectData(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, "PlayerObserverCamera"));
         _stageAudioManager = Instantiate
             (DataManager.GetGameObjectData(PathLiteral.Prefabs, PathLiteral.Manager, "StageAudioManager"));
         

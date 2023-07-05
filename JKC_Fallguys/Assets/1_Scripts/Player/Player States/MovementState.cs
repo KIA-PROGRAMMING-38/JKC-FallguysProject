@@ -1,6 +1,6 @@
 using LiteralRepository;
-using Photon.Pun;
 using UnityEngine;
+using Photon.Pun;
 
 public class MovementState : StateMachineBehaviour
 {

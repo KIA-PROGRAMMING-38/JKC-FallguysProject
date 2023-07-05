@@ -20,18 +20,18 @@ public class ObservedPlayerNamePresenter : Presenter
 
     protected override void OnUpdatedModel()
     {
-        StageDataManager.Instance.IsGameActive
-            .Skip(1)
-            .DistinctUntilChanged()
-            .Subscribe(_ => SetActiveGameObject(false))
-            .AddTo(_compositeDisposable);
-
-        int actorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
-        StageDataManager.Instance.GetCurrentState(actorNumber)
-            .Skip(1)
-            .DistinctUntilChanged()
-            .Subscribe(_ => SetActiveGameObject(true))
-            .AddTo(_compositeDisposable);
+        // StageDataManager.Instance.IsGameActive
+        //     .Skip(1)
+        //     .DistinctUntilChanged()
+        //     .Subscribe(_ => SetActiveGameObject(false))
+        //     .AddTo(_compositeDisposable);
+        //
+        // int actorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
+        // StageDataManager.Instance.GetCurrentState(actorNumber)
+        //     .Skip(1)
+        //     .DistinctUntilChanged()
+        //     .Subscribe(_ => SetActiveGameObject(true))
+        //     .AddTo(_compositeDisposable);
 
     }
 

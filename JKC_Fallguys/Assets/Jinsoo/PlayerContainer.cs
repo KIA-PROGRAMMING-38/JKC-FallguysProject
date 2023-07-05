@@ -3,54 +3,96 @@ using UnityEngine;
 
 public class PlayerContainer
 {
-    private Transform _observerTransform;
-    private readonly Dictionary<int, GameObject> _playerContainter = new Dictionary<int, GameObject>();
-    private readonly List<int> _observingList = new List<int>();
+    private GameObject _stageDataManager;
+    private PlayerObserverCamera _observer;
+    private readonly List<GameObject> _observingList = new List<GameObject>();
     private int _observingIndex = 0;
 
+    public void Initialize(GameObject stageDataManager)
+    {
+        _stageDataManager = stageDataManager;
+    }
     
     public void ObservedNextPlayer()
     {
-        ++_observingIndex;
-
-        if (_observingIndex == _playerContainter.Count)
+        Debug.Log($"InitNextPlayer: {_observingList.Count}");
+        
+        if (_observingList.Count == 0)
         {
-            _observingIndex = 0;
+            return;
         }
+
+        int startIndex = _observingIndex;
+        do
+        {
+            Debug.Log($"PrevObservingIndex: {_observingIndex}");
+            _observingIndex = (_observingIndex + 1) % _observingList.Count;
+            Debug.Log($"NextObservingIndex: {_observingIndex}");
+            
+            GameObject current = _observingList[_observingIndex];
+            Debug.Log($"First: {current.name}");
+            if (current == null || !current.activeSelf)
+                continue;
+
+            Debug.Log($"Second: {_observingList[_observingIndex].name}");
+            Transform character = current.transform.Find("Character");
+            if (character == null)
+                continue;
+
+            _observer.BindObservedCharacter(character);
+            Debug.Log($"DoWhile: {character}");
+            return;
+        }
+        while (_observingIndex != startIndex);
     }
+
 
     public void ObservedPrevPlayer()
     {
-        --_observingIndex;
-
-        if (_observingIndex < 0)
+        int startIndex = _observingIndex;
+        while (true)
         {
-            _observingIndex = _playerContainter.Count - 1;
+            _observingIndex = (_observingIndex - 1 + _observingList.Count) % _observingList.Count;
+
+            GameObject current = _observingList[_observingIndex];
+            if (current == null)
+                continue;
+
+            if (!current.activeSelf)
+                continue;
+
+            Transform character = current.transform.Find("Character");
+            if (character == null)
+                continue;
+
+            _observer.BindObservedCharacter(character);
+            return;
         }
-        
-        _observerTransform.SetParent(_playerContainter[_observingIndex].transform);
     }
 
-    public void AddPlayer(int actorNumber, GameObject player)
+    public void BindObservingCamera(PlayerObserverCamera observer)
     {
-        _playerContainter.Add(actorNumber, player);
-    }
-
-    public void BindObservingCamera(Transform observerTransform)
-    {
-        _observerTransform = observerTransform;
+        _observer = observer;
     }
     
     public void Clear()
     {
-        _playerContainter.Clear();
         _observingList.Clear();
         _observingIndex = 0;
-        _observerTransform = default;
-        
-        foreach (int key in _playerContainter.Keys)
+        _observer = default;
+    }
+    
+    public void FindAllObservedObjects()
+    {
+        Transform parentTransform = _stageDataManager.transform;
+    
+        for (int i = 0; i < parentTransform.childCount; i++)
         {
-            _observingList.Add(key);
+            Transform childTransform = parentTransform.GetChild(i);
+            GameObject childObject = childTransform.gameObject;
+        
+            _observingList.Add(childObject);
+            Debug.Log(childObject.name);
         }
     }
 }

@@ -3,6 +3,15 @@ using UniRx;
 
 public class StageDataManager : SingletonMonoBehaviour<StageDataManager>
 {
+    protected override void Awake()
+    {
+        base.Awake();
+        
+        PlayerContainer.Initialize(gameObject);
+    }
+
+    public PlayerContainer PlayerContainer = new PlayerContainer();
+    
     // 게임 시작의 카운트다운을 관장합니다.
     private ReactiveProperty<bool> _isGameStart = new ReactiveProperty<bool>(false);
     public ReactiveProperty<bool> IsGameStart => _isGameStart;
@@ -69,9 +78,6 @@ public class StageDataManager : SingletonMonoBehaviour<StageDataManager>
 
         return _clientStates[actorNumber];
     }
-
-    // private ReactiveProperty<PlayerState> _currentState = new ReactiveProperty<PlayerState>();
-    // public IReactiveProperty<PlayerState> CurrentState => _currentState;
 
     // 라운드가 끝났는지 확인하기 위한 변수입니다.
     private ReactiveProperty<bool> _isRoundCompleted = new ReactiveProperty<bool>();
