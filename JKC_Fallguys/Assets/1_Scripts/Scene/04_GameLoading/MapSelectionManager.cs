@@ -10,7 +10,7 @@ public class MapSelectionManager : MonoBehaviourPun
         }
     }
 
-    private int index = 0;
+    private int index = 1;
     private void SelectRandomMap()
     {
         if (PhotonNetwork.IsMasterClient)

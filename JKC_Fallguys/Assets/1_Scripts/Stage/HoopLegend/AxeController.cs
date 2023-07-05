@@ -1,16 +1,11 @@
-using System.Threading;
 using LiteralRepository;
 using Photon.Pun;
 using UnityEngine;
 
 public class AxeController : MonoBehaviourPun
 {
-    private CancellationTokenSource _cancellationToken;
-    
     private void Awake()
     {
-        _cancellationToken = new CancellationTokenSource();
-        
         InitializeObject();
     }
 
@@ -24,15 +19,9 @@ public class AxeController : MonoBehaviourPun
             {
                 string filePath = DataManager.SetDataPath(PathLiteral.Prefabs, "Stage", PathLiteral.HoopLegend, "Axe");
             
-                HoopLegendAxe axe = 
-                    PhotonNetwork.Instantiate(filePath, axeData.positions[i], Quaternion.Euler(axeData.rotations[i])).GetComponent<HoopLegendAxe>();
-                axe.Initialize(this, _cancellationToken);
+                PhotonNetwork.Instantiate
+                    (filePath, axeData.positions[i], Quaternion.Euler(axeData.rotations[i]));
             }
         }
-    }
-
-    private void OnDestroy()
-    {
-        _cancellationToken.Cancel();
     }
 }

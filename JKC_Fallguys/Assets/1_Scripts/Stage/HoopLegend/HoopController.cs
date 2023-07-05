@@ -36,7 +36,7 @@ public class HoopController : MonoBehaviourPun
             
             CommonHoop commonHoop = 
                 PhotonNetwork.Instantiate(filePath, commonHoopData.positions[i], Quaternion.Euler(commonHoopData.rotations[i])).GetComponent<CommonHoop>();
-            commonHoop.Initialize(this, _cancellationToken);
+            commonHoop.Initialize(_cancellationToken);
         }
         
         for (int i = 0; i < specialHoopData.positions.Length; ++i)
@@ -45,7 +45,7 @@ public class HoopController : MonoBehaviourPun
             
             SpecialHoop specialHoop = 
                 PhotonNetwork.Instantiate(filePath, specialHoopData.positions[i], Quaternion.Euler(specialHoopData.rotations[i])).GetComponent<SpecialHoop>();
-            specialHoop.Initialize(this, _cancellationToken);
+            specialHoop.Initialize(_cancellationToken);
         }
     }
 

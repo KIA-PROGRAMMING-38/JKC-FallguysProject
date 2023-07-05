@@ -22,7 +22,7 @@ public class PlayerObserverCamera : MonoBehaviour
     private void InitializeRx()
     {
         int actorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
-        StageDataManager.Instance.GetCurrentState(actorNumber)
+        StageDataManager.Instance.IsPlayerActive(actorNumber)
             .Skip(1)
             .DistinctUntilChanged()
             .Subscribe(_ => _observerCamera.gameObject.SetActive(true))
@@ -30,6 +30,11 @@ public class PlayerObserverCamera : MonoBehaviour
         
         StageDataManager.Instance.IsGameActive
             .Where(state => !state)
+            .Subscribe(_ => _observerCamera.gameObject.SetActive(false))
+            .AddTo(this);
+        
+        StageDataManager.Instance.IsRoundCompleted
+            .Where(state => state)
             .Subscribe(_ => _observerCamera.gameObject.SetActive(false))
             .AddTo(this);
     }

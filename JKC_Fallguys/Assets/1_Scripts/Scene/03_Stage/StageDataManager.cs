@@ -23,7 +23,6 @@ public class StageDataManager : SingletonMonoBehaviour<StageDataManager>
 
     // // 현재 클라이언트를 플레이하고 있는 플레이어의 생존 여부를 나타냅니다.
     private Dictionary<int, ReactiveProperty<bool>> _isPlayerActiveDict = new Dictionary<int, ReactiveProperty<bool>>();
-
     public IReactiveProperty<bool> IsPlayerActive(int actorNumber)
     {
         if (!_isPlayerActiveDict.ContainsKey(actorNumber))
@@ -80,7 +79,7 @@ public class StageDataManager : SingletonMonoBehaviour<StageDataManager>
     }
 
     // 라운드가 끝났는지 확인하기 위한 변수입니다.
-    private ReactiveProperty<bool> _isRoundCompleted = new ReactiveProperty<bool>();
+    private ReactiveProperty<bool> _isRoundCompleted = new ReactiveProperty<bool>(false);
     public IReactiveProperty<bool> IsRoundCompleted => _isRoundCompleted;
 
     public void AddPlayerToRanking(int playerIndex)

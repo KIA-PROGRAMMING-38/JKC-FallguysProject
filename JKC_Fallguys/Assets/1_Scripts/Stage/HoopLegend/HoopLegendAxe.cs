@@ -4,7 +4,7 @@ using Photon.Pun;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class HoopLegendAxe : MonoBehaviourPunCallbacks
+public class HoopLegendAxe : MonoBehaviourPun
 {
     [SerializeField] 
     private float _minRotationSpeed;
@@ -14,20 +14,27 @@ public class HoopLegendAxe : MonoBehaviourPunCallbacks
     private float _axeRotationSpeed;
 
     private Transform _axeTransform;
-    private AxeController _axeController;
     private CancellationTokenSource _cancellationToken;
 
     private void Awake()
     {
+        StageDontDestroyOnLoadSet();
+        
         _axeTransform = transform.Find("AxeBody").GetComponent<Transform>();
+        _cancellationToken = new CancellationTokenSource();
         Debug.Assert(_axeTransform != null);
     }
-    
-    public void Initialize(AxeController axeController, CancellationTokenSource cancelToken)
+
+    private void StageDontDestroyOnLoadSet()
     {
-        _axeController = axeController;
-        transform.SetParent(_axeController.transform);
-        _cancellationToken = cancelToken;
+        DontDestroyOnLoad(gameObject);
+        photonView.RPC("RpcSetParentStageRepository", RpcTarget.AllBuffered);
+    }
+
+    [PunRPC]
+    public void RpcSetParentStageRepository()
+    {
+        transform.SetParent(StageRepository.Instance.gameObject.transform);
     }
 
     private void Start()
@@ -55,5 +62,10 @@ public class HoopLegendAxe : MonoBehaviourPunCallbacks
 
             await UniTask.Yield(PlayerLoopTiming.Update, cancelToken.Token);
         }
+    }
+
+    private void OnDestroy()
+    {
+        _cancellationToken.Cancel();
     }
 }
