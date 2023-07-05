@@ -16,14 +16,11 @@ public class PlayerAnimation : MonoBehaviourPun
     [SerializeField] private float _acceleration = 0.5f;
     [SerializeField] private float _deceleration = 0.5f;
     [SerializeField] private float _topplingForce;
-    
+
     private float _velocity;
 
     private void Awake()
     {
-        if (!photonView.IsMine)
-            return;
-        
         _animator = GetComponent<Animator>();
         _playerInput = GetComponentInParent<PlayerInput>();
         _audioSource = GetComponent<AudioSource>();
@@ -31,48 +28,48 @@ public class PlayerAnimation : MonoBehaviourPun
 
     private void Start()
     {
-        if (!photonView.IsMine)
+        if ( !photonView.IsMine )
             return;
-        
+
         _playerInput.OnReleaseGrab -= ReleaseGrab;
         _playerInput.OnReleaseGrab += ReleaseGrab;
     }
 
     private void Update()
     {
-        if (!photonView.IsMine || !StageDataManager.Instance.IsGameActive.Value)
+        if ( !photonView.IsMine || !StageDataManager.Instance.IsGameActive.Value )
             return;
-        
+
         // Grab시 max값의 변수를 0.5로 변환하게 하는 로직 필요. 평소에는 max값이 1.
         // 위의 로직 함수를 Grab State에서 호출한다.
-        
-        if (_playerInput.InputVec.x != 0 || _playerInput.InputVec.z != 0)
+
+        if ( _playerInput.InputVec.x != 0 || _playerInput.InputVec.z != 0 )
         {
             _velocity += Time.deltaTime * _acceleration;
-            _velocity = Mathf.Clamp(_velocity, 0, 1);
+            _velocity = Mathf.Clamp( _velocity, 0, 1 );
         }
 
         else
         {
             _velocity -= Time.deltaTime * _deceleration;
-            _velocity = Mathf.Clamp(_velocity, 0, 1);
+            _velocity = Mathf.Clamp( _velocity, 0, 1 );
         }
-        
-        _animator.SetFloat(AnimLiteral.MoveSpeed, _velocity);
-        
+
+        _animator.SetFloat( AnimLiteral.MoveSpeed, _velocity );
+
         CheckPlatform();
     }
-    
-    
+
+
     [SerializeField] private Transform _groundCheckPoint;
     [SerializeField] private float _groundCheckDistance;
-   
+
     private void CheckPlatform()
     {
-        int layerMask = 1 << LayerMask.NameToLayer(TagLiteral.Ground);
+        int layerMask = 1 << LayerMask.NameToLayer( TagLiteral.Ground );
 
-        bool hit = Physics.Raycast(_groundCheckPoint.position, Vector3.down, _groundCheckDistance, layerMask);
-        if (hit)
+        bool hit = Physics.Raycast( _groundCheckPoint.position, Vector3.down, _groundCheckDistance, layerMask );
+        if ( hit )
         {
             _playerInput.IsNothingUnderfoot = false;
         }
@@ -81,88 +78,88 @@ public class PlayerAnimation : MonoBehaviourPun
             _playerInput.IsNothingUnderfoot = true;
         }
     }
-    
+
     private bool _isGround;
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter( Collision collision )
     {
-        if (!photonView.IsMine)
+        if ( !photonView.IsMine )
             return;
-        
+
         // AttempingGrab중 GrabBox랑 닿으면 Grab로 전이
-        if (collision.gameObject.CompareTag(TagLiteral.Box) && _animator.GetBool(AnimLiteral.IsGrab))
+        if ( collision.gameObject.CompareTag( TagLiteral.Box ) && _animator.GetBool( AnimLiteral.IsGrab ) )
         {
-            _animator.SetBool(AnimLiteral.IsGrabSuccess, true);
+            _animator.SetBool( AnimLiteral.IsGrabSuccess, true );
         }
 
         // Jump후 땅이랑 닿으면 Movement로 Exit.
-        if (collision.gameObject.CompareTag(TagLiteral.Ground) && _animator.GetBool(AnimLiteral.IsJumping))
+        if ( collision.gameObject.CompareTag( TagLiteral.Ground ) && _animator.GetBool( AnimLiteral.IsJumping ) )
         {
-            _animator.SetBool(AnimLiteral.IsJumping, false);
+            _animator.SetBool( AnimLiteral.IsJumping, false );
         }
 
-        if (collision.gameObject.CompareTag(TagLiteral.Ground) && _animator.GetBool(AnimLiteral.IsDiving))
+        if ( collision.gameObject.CompareTag( TagLiteral.Ground ) && _animator.GetBool( AnimLiteral.IsDiving ) )
         {
-            _animator.SetBool(AnimLiteral.IsDiving, false);
+            _animator.SetBool( AnimLiteral.IsDiving, false );
         }
 
-        if (collision.gameObject.CompareTag(TagLiteral.Ground))
+        if ( collision.gameObject.CompareTag( TagLiteral.Ground ) )
         {
-            _animator.SetBool(AnimLiteral.IsFall, false);
+            _animator.SetBool( AnimLiteral.IsFall, false );
 
             _isGround = true;
         }
-        
-        if (collision.impulse.magnitude > _topplingForce && !collision.gameObject.CompareTag(TagLiteral.Ground))
+
+        if ( collision.impulse.magnitude > _topplingForce && !collision.gameObject.CompareTag( TagLiteral.Ground ) )
         {
-            _animator.SetBool(AnimLiteral.IsFall, true);
-            CheckFallStateAfterDelay(delay: 0.5f).Forget();
+            _animator.SetBool( AnimLiteral.IsFall, true );
+            CheckFallStateAfterDelay( delay: 0.5f ).Forget();
         }
     }
 
-    private void OnCollisionExit(Collision other)
+    private void OnCollisionExit( Collision other )
     {
-        if (!photonView.IsMine)
+        if ( !photonView.IsMine )
             return;
-        
-        if (other.gameObject.CompareTag(TagLiteral.Ground))
+
+        if ( other.gameObject.CompareTag( TagLiteral.Ground ) )
         {
             _isGround = false;
         }
     }
 
     // Ground에 닿았는데도 여전히 Fall상태일때 IsFall을 false로 만들어주는 함수.
-    private async UniTaskVoid CheckFallStateAfterDelay(float delay)
+    private async UniTaskVoid CheckFallStateAfterDelay( float delay )
     {
-        await UniTask.Delay(TimeSpan.FromSeconds(delay));
+        await UniTask.Delay( TimeSpan.FromSeconds( delay ) );
 
-        if (_animator.GetBool(AnimLiteral.IsFall) && _isGround)
+        if ( _animator.GetBool( AnimLiteral.IsFall ) && _isGround )
         {
-            _animator.SetBool(AnimLiteral.IsFall, false);
+            _animator.SetBool( AnimLiteral.IsFall, false );
         }
     }
 
-    
-    private void OnTriggerEnter(Collider other)
+
+    private void OnTriggerEnter( Collider other )
     {
-        if (!photonView.IsMine)
+        if ( !photonView.IsMine )
             return;
-        
-        if (other.gameObject.CompareTag(TagLiteral.Boundary))
+
+        if ( other.gameObject.CompareTag( TagLiteral.Boundary ) )
         {
-            _animator.SetBool(AnimLiteral.IsFall, true);
+            _animator.SetBool( AnimLiteral.IsFall, true );
         }
 
-        if (other.gameObject.CompareTag(TagLiteral.Respawn))
+        if ( other.gameObject.CompareTag( TagLiteral.Respawn ) )
         {
-            _animator.SetBool(AnimLiteral.IsRespawning, true);
+            _animator.SetBool( AnimLiteral.IsRespawning, true );
         }
-        
+
     }
 
     private void ReleaseGrab()
     {
-        _animator.SetBool(AnimLiteral.IsGrab, false);
-        _animator.SetBool(AnimLiteral.IsGrabSuccess, false);
+        _animator.SetBool( AnimLiteral.IsGrab, false );
+        _animator.SetBool( AnimLiteral.IsGrabSuccess, false );
     }
 
     #region AnimationEvent
@@ -170,14 +167,26 @@ public class PlayerAnimation : MonoBehaviourPun
     private int _randomAudioClipIndex;
     public void WalkFootStep()
     {
-        _randomAudioClipIndex = Random.Range(0, AudioRegistry.WalkFootStepSFX.Length);
-        _audioSource.PlayOneShot(AudioRegistry.WalkFootStepSFX[_randomAudioClipIndex]);
+        photonView.RPC( "RpcWalkFootStep", RpcTarget.AllBuffered );
+    }
+
+    [PunRPC]
+    public void RpcWalkFootStep()
+    {
+        _randomAudioClipIndex = Random.Range( 0, AudioRegistry.WalkFootStepSFX.Length );
+        _audioSource.PlayOneShot( AudioRegistry.WalkFootStepSFX[_randomAudioClipIndex] );
     }
 
     public void RunFootStep()
     {
-        _randomAudioClipIndex = Random.Range(0, AudioRegistry.RunFootStepSFX.Length);
-        _audioSource.PlayOneShot(AudioRegistry.RunFootStepSFX[_randomAudioClipIndex]);
+        photonView.RPC( "RpcRunFootStep", RpcTarget.AllBuffered );
+    }
+
+    [PunRPC]
+    public void RpcRunFootStep()
+    {
+        _randomAudioClipIndex = Random.Range( 0, AudioRegistry.RunFootStepSFX.Length );
+        _audioSource.PlayOneShot( AudioRegistry.RunFootStepSFX[_randomAudioClipIndex] );
     }
 
     #endregion
