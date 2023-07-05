@@ -91,6 +91,9 @@ MonoBehaviour:
   - RpcSetParentStageRepository
   - RpcClearPlayerObject
   - RpcEveryClientPhotonViewTransferOwnerShip
+  - RpcSetCommonReference
+  - RpcSetSpecialReference
+  - RpcSetHoopControllerReference
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
