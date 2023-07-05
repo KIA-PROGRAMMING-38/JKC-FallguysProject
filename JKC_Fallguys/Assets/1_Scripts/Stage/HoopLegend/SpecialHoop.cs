@@ -126,5 +126,7 @@ public class SpecialHoop : MonoBehaviourPun
     {
         _goalCheck.OnPlayerEnter -= HandlePlayerEnter;
         _goalCheck.OnPlayerExit -= HandlePlayerExit;
+        
+        _cancelToken.Cancel();
     }
 }
