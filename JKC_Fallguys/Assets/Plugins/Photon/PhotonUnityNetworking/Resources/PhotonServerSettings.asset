@@ -87,6 +87,8 @@ MonoBehaviour:
   - RpcWalkFootStep
   - RpcRunFootStep
   - DestroyOnNetwork
+  - RpcDestroyOnNetwork
+  - RpcSetParentStageRepository
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

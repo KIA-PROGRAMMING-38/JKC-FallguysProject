@@ -1,3 +1,5 @@
+using System;
+using Cysharp.Threading.Tasks;
 using LiteralRepository;
 using Model;
 using Photon.Pun;
@@ -19,7 +21,6 @@ public class StageSceneInitializer : SceneInitializer
         int actorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
         StageDataManager.Instance.SetPlayerState(actorNumber, StageDataManager.PlayerState.Default);
     }
-
 
     protected override void OnGetResources()
     {
@@ -43,8 +44,20 @@ public class StageSceneInitializer : SceneInitializer
             (DataManager.GetGameObjectData(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, "PlayerObserverCamera"));
         _stageAudioManager = Instantiate
             (DataManager.GetGameObjectData(PathLiteral.Prefabs, PathLiteral.Manager, "StageAudioManager"));
+
+
+        SetStageAudioComponent();
         
-        if (StageDataManager.Instance.IsFinalRound() == false)
+
+        if (PhotonNetwork.IsMasterClient)
+        {
+            AsyncPhotonNetworkInstantiate().Forget();
+        }
+    }
+
+    private void SetStageAudioComponent()
+    {
+        if (!StageDataManager.Instance.IsFinalRound())
         {
             _stageAudioManager.AddComponent<RoundAudioScheduler>();
         }
@@ -53,16 +66,16 @@ public class StageSceneInitializer : SceneInitializer
         {
             _stageAudioManager.AddComponent<FinalRoundAudioScheduler>();
         }
+    }
 
-        if (PhotonNetwork.IsMasterClient)
-        {
-            string filePathInstantiateManager = DataManager.SetDataPath(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, "StageInstantiateManager");
-            string filePathPhotonEventManager = DataManager.SetDataPath(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, "PhotonStageSceneEventManager");
-            string filePathPhotonRoomManager = DataManager.SetDataPath(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, "PhotonStageSceneRoomManager");
-            
-            PhotonNetwork.Instantiate(filePathInstantiateManager, transform.position, transform.rotation);
-            PhotonNetwork.Instantiate(filePathPhotonEventManager, transform.position, transform.rotation);
-            PhotonNetwork.Instantiate(filePathPhotonRoomManager, transform.position, transform.rotation);
-        }
+    private async UniTaskVoid AsyncPhotonNetworkInstantiate()
+    {
+        string filePathInstantiateManager = DataManager.SetDataPath(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, "StageInstantiateManager");
+        PhotonNetwork.Instantiate(filePathInstantiateManager, transform.position, transform.rotation);
+        
+        await UniTask.Delay(TimeSpan.FromSeconds(0.4f));
+        
+        string filePathPhotonRoomManager = DataManager.SetDataPath(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, "PhotonStageSceneRoomManager");
+        PhotonNetwork.Instantiate(filePathPhotonRoomManager, transform.position, transform.rotation);
     }
 }

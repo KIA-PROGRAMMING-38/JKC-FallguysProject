@@ -7,6 +7,8 @@ public class GameLoadingSceneInitializer : SceneInitializer
     {
         base.Awake();
         
+        StageRepository.Instance.Initialize();
+        
         if (AudioManager.Instance != null)
         {
             Destroy(AudioManager.Instance.gameObject);
@@ -27,6 +29,7 @@ public class GameLoadingSceneInitializer : SceneInitializer
             (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.GameLoading, PathLiteral.UI, "WhiteScreenViewController"));
         Instantiate(DataManager.GetGameObjectData
             (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.GameLoading, PathLiteral.UI, "GameLoadingMainPanelViewController"));
+        
 
         if (PhotonNetwork.IsMasterClient)
         {

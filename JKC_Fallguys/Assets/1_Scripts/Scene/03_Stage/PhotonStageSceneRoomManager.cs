@@ -7,6 +7,7 @@ using Model;
 using Newtonsoft.Json;
 using Photon.Pun;
 using UniRx;
+using UnityEngine;
 
 /// <summary>
 /// 점수를 결산한 뒤 다음 씬을 실행시키는 클래스입니다.
@@ -18,11 +19,24 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
     private void Awake()
     {
         InitializeRx();
+        StageDontDestroyOnLoadSet();
         
         if (!PhotonNetwork.IsMasterClient)
             return;
-        
+
         StartGameCountDown().Forget();
+    }
+    
+    private void StageDontDestroyOnLoadSet()
+    {
+        DontDestroyOnLoad(gameObject);
+        photonView.RPC("RpcSetParentStageRepository", RpcTarget.AllBuffered);
+    }
+
+    [PunRPC]
+    public void RpcSetParentStageRepository()
+    {
+        transform.SetParent(StageRepository.Instance.gameObject.transform);
     }
     
     private async UniTaskVoid StartGameCountDown()
@@ -118,6 +132,8 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
     {
         await UniTask.Delay(TimeSpan.FromSeconds(5f), DelayType.UnscaledDeltaTime);
 
+        ClearPlayerObject();
+        
         if (StageDataManager.Instance.IsFinalRound())
         {
             PhotonNetwork.LoadLevel(SceneIndex.GameResult);
@@ -125,6 +141,36 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
         else if (!StageDataManager.Instance.IsFinalRound())
         {
             PhotonNetwork.LoadLevel(SceneIndex.RoundResult);
+        }
+    }
+
+    private void ClearPlayerObject()
+    {
+        List<GameObject> children = new List<GameObject>();
+
+        foreach (Transform child in StageDataManager.Instance.gameObject.transform)
+        {
+            children.Add(child.gameObject);
+        }
+        
+        foreach (Transform child in StageRepository.Instance.gameObject.transform)
+        {
+            children.Add(child.gameObject);
+        }
+
+        foreach (GameObject child in children)
+        {
+            PhotonView childPhotonView = child.GetComponent<PhotonView>();
+        
+            if (childPhotonView == null || childPhotonView.ViewID < 0)
+                continue;
+        
+            if (!ReferenceEquals(childPhotonView.Owner, PhotonNetwork.MasterClient))
+            {
+                childPhotonView.TransferOwnership(PhotonNetwork.MasterClient.ActorNumber);
+            }
+
+            PhotonNetwork.Destroy(childPhotonView);
         }
     }
 
