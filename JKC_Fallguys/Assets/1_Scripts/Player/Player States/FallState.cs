@@ -11,6 +11,7 @@ public class FallState : StateMachineBehaviour
         {
             _playerPhysicsController.jumpCancellationTokenSource.Cancel();
         }
+        
         _playerPhysicsController.UnfreezeRotationAxis();
     }
 }

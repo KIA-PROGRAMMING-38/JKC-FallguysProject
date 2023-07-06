@@ -19,6 +19,9 @@ public class PhotonLoginManager : MonoBehaviourPunCallbacks
         if (!PhotonNetwork.InLobby)
         {
             PhotonNetwork.JoinLobby();
+
+            PhotonNetwork.SendRate = 40;
+            PhotonNetwork.SerializationRate = 20;
         }
     }
     

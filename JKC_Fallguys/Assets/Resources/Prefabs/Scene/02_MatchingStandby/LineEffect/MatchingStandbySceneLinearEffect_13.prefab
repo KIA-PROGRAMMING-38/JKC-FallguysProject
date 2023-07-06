@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6515686794646455943}
   - component: {fileID: -7350219465041645936}
   - component: {fileID: 3681858655723451767}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: MatchingStandbySceneLinearEffect_13
   m_TagString: LineEffect
   m_Icon: {fileID: 0}
@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce441a3a42ff64b3dbfc97625f2d9b68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _moveSpeed: 23
 --- !u!65 &3681858655723451767
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -12,6 +12,8 @@ public class ObstacleBumper : MonoBehaviour
     {
         if (col.gameObject.CompareTag(TagLiteral.Player))
         {
+            Debug.Log(col.gameObject.name);
+            
             Rigidbody collisionObjectRigid = col.gameObject.GetComponent<Rigidbody>();
             Vector3 collisionVector = collisionObjectRigid.velocity.normalized;
             Vector3 normalVector = col.contacts[0].normal.normalized;

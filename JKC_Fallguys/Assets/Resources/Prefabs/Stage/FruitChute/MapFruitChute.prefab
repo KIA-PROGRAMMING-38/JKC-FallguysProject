@@ -13476,7 +13476,7 @@ GameObject:
   - component: {fileID: 8027757774281015339}
   - component: {fileID: 8027757774281015338}
   - component: {fileID: 7274488830445820364}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: FruitChuteReleaseZone
   m_TagString: Respawn
   m_Icon: {fileID: 0}

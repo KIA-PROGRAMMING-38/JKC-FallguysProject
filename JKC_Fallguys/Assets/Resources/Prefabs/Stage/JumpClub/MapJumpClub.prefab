@@ -273,7 +273,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6456009393585441601}
   - component: {fileID: 1456263283764060704}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GreenBar_Top_Tag_Ground
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -322,9 +322,9 @@ GameObject:
   - component: {fileID: 1565250567612566424}
   - component: {fileID: 1565250567612566430}
   - component: {fileID: 1565250567612566431}
-  - component: {fileID: 2011380350354337916}
-  - component: {fileID: 6967260615431564699}
-  m_Layer: 0
+  - component: {fileID: 2152998246933389269}
+  - component: {fileID: 4152110803633896106}
+  m_Layer: 7
   m_Name: PinkLowerBar
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -411,8 +411,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f8bce2970254f84982d19e80afba7cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 300000
-  acceleration: 16250
+  rotationSpeed: 1200000
+  acceleration: 20000
 --- !u!54 &1565250567612566430
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -442,7 +442,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.383195, y: 2.3203192, z: 43.059475}
   m_Center: {x: 0.16327219, y: 4.0887218, z: 0.000030518546}
---- !u!114 &2011380350354337916
+--- !u!114 &2152998246933389269
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -457,15 +457,15 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  Synchronization: 1
+  Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
-  - {fileID: 6967260615431564699}
+  - {fileID: 4152110803633896106}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &6967260615431564699
+--- !u!114 &4152110803633896106
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -492,7 +492,7 @@ GameObject:
   - component: {fileID: 2838411304323663808}
   - component: {fileID: 1157336750598051121}
   - component: {fileID: 1302752939070595337}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LowerBar_Thick - 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -576,7 +576,7 @@ GameObject:
   - component: {fileID: 2838411302719740630}
   - component: {fileID: 1157336752216393767}
   - component: {fileID: 1302752938524687391}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LowerBar_Thick - 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1302,7 +1302,7 @@ GameObject:
   - component: {fileID: 2961933841195981881}
   - component: {fileID: 2961933841195981880}
   - component: {fileID: 3677155160237496642}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: JumpClubDeadZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1335,7 +1335,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 200, y: 3, z: 200}
+  m_Size: {x: 1200, y: 3, z: 1200}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &2961933841195981881
 Rigidbody:
@@ -1398,7 +1398,7 @@ GameObject:
   - component: {fileID: 2961933841231217547}
   - component: {fileID: 2961933841231216757}
   - component: {fileID: 2961933841231216756}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LowerBarAxes_Thick - 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1484,10 +1484,10 @@ GameObject:
   - component: {fileID: 2961933841275920582}
   - component: {fileID: 2961933841275920602}
   - component: {fileID: 2961933841275920601}
-  - component: {fileID: 7133914299609102962}
-  - component: {fileID: 3005757138944592568}
   - component: {fileID: 8189602132135633869}
-  m_Layer: 0
+  - component: {fileID: 3844634136345621691}
+  - component: {fileID: 4274259152408101665}
+  m_Layer: 7
   m_Name: GreenLowerBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1575,7 +1575,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f8bce2970254f84982d19e80afba7cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 300000
+  rotationSpeed: 1800000
   acceleration: 32500
 --- !u!54 &2961933841275920602
 Rigidbody:
@@ -1606,7 +1606,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.024587, y: 1.0165333, z: 43.059475}
   m_Center: {x: 0.05140702, y: 3.8638437, z: 0.00003051717}
---- !u!114 &7133914299609102962
+--- !u!114 &8189602132135633869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2961933841275920607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e16ae47c3b59140fca95e532537d1bf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reflectForce: 4
+--- !u!114 &3844634136345621691
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1621,15 +1634,15 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  Synchronization: 1
+  Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
-  - {fileID: 3005757138944592568}
+  - {fileID: 4274259152408101665}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &3005757138944592568
+--- !u!114 &4274259152408101665
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1645,19 +1658,6 @@ MonoBehaviour:
   m_SynchronizeAngularVelocity: 1
   m_TeleportEnabled: 0
   m_TeleportIfDistanceGreaterThan: 3
---- !u!114 &8189602132135633869
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2961933841275920607}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e16ae47c3b59140fca95e532537d1bf4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  reflectForce: 0.5
 --- !u!1 &2961933841289513549
 GameObject:
   m_ObjectHideFlags: 0
@@ -1800,7 +1800,7 @@ GameObject:
   - component: {fileID: 2961933841518373010}
   - component: {fileID: 2961933841518373020}
   - component: {fileID: 2961933841518373011}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LowerBarAxes_Thick - 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1926,7 +1926,7 @@ GameObject:
   - component: {fileID: 2961933841693179526}
   - component: {fileID: 2961933841693179520}
   - component: {fileID: 2961933841693179527}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Allow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2173,7 +2173,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2961933842395746512}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2208,7 +2208,7 @@ GameObject:
   - component: {fileID: 2930576377553595790}
   - component: {fileID: 6909233783981319478}
   - component: {fileID: 2334112613435902242}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LowerBarAxes_Thick - 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2291,7 +2291,7 @@ GameObject:
   - component: {fileID: 2930576377168814779}
   - component: {fileID: 6909233785706015235}
   - component: {fileID: 2334112614062016023}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Allow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2374,7 +2374,7 @@ GameObject:
   - component: {fileID: 2930576377004535960}
   - component: {fileID: 6909233785618806816}
   - component: {fileID: 2334112613948003380}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LowerBarAxes_Thick - 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
