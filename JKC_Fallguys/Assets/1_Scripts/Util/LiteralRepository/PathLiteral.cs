@@ -20,6 +20,7 @@ namespace LiteralRepository
         public static readonly string Walk = "Walk";
         public static readonly string Run = "Run";
         public static readonly string Jump = "Jump";
+        public static readonly string Dive = "Dive";
 
         public static readonly string RoundMusic = "Round";
         public static readonly string FinalRoundMusic = "FinalRound";

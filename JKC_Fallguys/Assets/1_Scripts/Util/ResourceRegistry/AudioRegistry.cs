@@ -60,6 +60,8 @@ namespace ResourceRegistry
 
             JumpSFX = Resources.Load<AudioClip>(
                 DataManager.SetDataPath( PathLiteral.Sounds, PathLiteral.SFX, PathLiteral.Player, PathLiteral.Jump, "F_Footsteps_Jump_Soft_01" ) );
+            DiveSFX = Resources.Load<AudioClip>(
+                DataManager.SetDataPath(PathLiteral.Sounds, PathLiteral.SFX, PathLiteral.Player, PathLiteral.Dive, "F_Footsteps_Dive_01"));
         }
 
         public static AudioClip LoginSFX { get; private set; }
@@ -73,5 +75,6 @@ namespace ResourceRegistry
         public static AudioClip[] WalkFootStepSFX { get; private set; }
         public static AudioClip[] RunFootStepSFX { get; private set; }
         public static AudioClip JumpSFX { get; private set; }
+        public static AudioClip DiveSFX { get; private set; }
     }
 }

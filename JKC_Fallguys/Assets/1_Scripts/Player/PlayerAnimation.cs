@@ -200,5 +200,16 @@ public class PlayerAnimation : MonoBehaviourPun
         _audioSource.PlayOneShot( AudioRegistry.JumpSFX );
     }
 
+    public void PlayDiveSound()
+    {
+        photonView.RPC("RpcPlayDiveSound", RpcTarget.AllBuffered);
+    }
+
+    [PunRPC]
+    public void RpcPlayDiveSound()
+    {
+        _audioSource.PlayOneShot(AudioRegistry.DiveSFX);
+    }
+
     #endregion
 }
