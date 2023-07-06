@@ -1,5 +1,7 @@
+using Model;
 using Photon.Pun;
 using UniRx;
+using UnityEngine;
 
 public class ObservedPlayerNamePresenter : Presenter
 {
@@ -9,7 +11,8 @@ public class ObservedPlayerNamePresenter : Presenter
     public override void OnInitialize(View view)
     {
         _observedPlayerNameView = view as ObservedPlayerNameView;
-        
+
+        SetObservedPlayerName();
         InitializeRx();
     }
 
@@ -33,6 +36,15 @@ public class ObservedPlayerNamePresenter : Presenter
             .Subscribe(_ => SetActiveGameObject(true))
             .AddTo(_compositeDisposable);
 
+        StageSceneModel.ObservedPlayerActorName
+            .DistinctUntilChanged()
+            .Subscribe(_ => SetObservedPlayerName())
+            .AddTo(_compositeDisposable);
+    }
+
+    private void SetObservedPlayerName()
+    {
+        _observedPlayerNameView.PlayerNameText.text = StageSceneModel.ObservedPlayerActorName.Value;
     }
 
     private void SetActiveGameObject(bool status)
