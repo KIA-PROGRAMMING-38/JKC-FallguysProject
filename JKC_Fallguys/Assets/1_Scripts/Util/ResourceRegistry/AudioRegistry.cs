@@ -64,6 +64,8 @@ namespace ResourceRegistry
                 DataManager.SetDataPath(PathLiteral.Sounds, PathLiteral.SFX, PathLiteral.Player, PathLiteral.Dive, "F_Footsteps_Dive_01"));
             FallSFX = Resources.Load<AudioClip>(
                 DataManager.SetDataPath(PathLiteral.Sounds, PathLiteral.SFX, PathLiteral.Player, PathLiteral.Fall, "SFX_ElimBoard_CartoonHit"));
+            RespawnSFX = Resources.Load<AudioClip>(
+                DataManager.SetDataPath(PathLiteral.Sounds, PathLiteral.SFX, PathLiteral.Player, "SFX_Respawn_3D"));
         }
 
         public static AudioClip LoginSFX { get; private set; }
@@ -79,5 +81,6 @@ namespace ResourceRegistry
         public static AudioClip JumpSFX { get; private set; }
         public static AudioClip DiveSFX { get; private set; }
         public static AudioClip FallSFX { get; private set; }
+        public static AudioClip RespawnSFX { get; private set; }
     }
 }

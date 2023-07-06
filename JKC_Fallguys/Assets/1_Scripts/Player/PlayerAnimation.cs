@@ -113,6 +113,7 @@ public class PlayerAnimation : MonoBehaviourPun
             _animator.SetBool( AnimLiteral.IsFall, true );
 
             PlayFallSound();
+            Debug.Log("Fall");
 
             CheckFallStateAfterDelay( delay: 0.5f ).Forget();
         }
@@ -213,9 +214,20 @@ public class PlayerAnimation : MonoBehaviourPun
         _audioSource.PlayOneShot(AudioRegistry.DiveSFX);
     }
 
+    public void PlayRespawnSound()
+    {
+        photonView.RPC("RpcPlayRespawnSound", RpcTarget.AllBuffered);
+    }
+
+    [PunRPC]
+    public void RpcPlayRespawnSound()
+    {
+        _audioSource.PlayOneShot(AudioRegistry.RespawnSFX);
+    }
+
     #endregion
 
-    public void PlayFallSound()
+    private void PlayFallSound()
     {
         photonView.RPC("RpcPlayFallSound", RpcTarget.AllBuffered);
     }
