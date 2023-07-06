@@ -24,7 +24,6 @@ public class ObservedPlayerNamePresenter : Presenter
     protected override void OnUpdatedModel()
     {
         StageDataManager.Instance.IsGameActive
-            .Skip(1)
             .DistinctUntilChanged()
             .Subscribe(_ => SetActiveGameObject(false))
             .AddTo(_compositeDisposable);
