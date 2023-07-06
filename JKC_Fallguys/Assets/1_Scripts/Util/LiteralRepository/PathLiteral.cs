@@ -19,6 +19,7 @@ namespace LiteralRepository
         public static readonly string Player = "Player";
         public static readonly string Walk = "Walk";
         public static readonly string Run = "Run";
+        public static readonly string Jump = "Jump";
 
         public static readonly string RoundMusic = "Round";
         public static readonly string FinalRoundMusic = "FinalRound";
@@ -43,6 +44,5 @@ namespace LiteralRepository
         public static readonly string Countdown = "Countdown";
         
         public static readonly string LoginSound = "UI_MainMenu_Login";
-
     }
 }

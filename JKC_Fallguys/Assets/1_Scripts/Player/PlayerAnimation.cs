@@ -189,5 +189,16 @@ public class PlayerAnimation : MonoBehaviourPun
         _audioSource.PlayOneShot(AudioRegistry.RunFootStepSFX[_randomAudioClipIndex]);
     }
 
+    public void PlayJumpSound()
+    {
+        photonView.RPC("RpcPlayJumpSound", RpcTarget.AllBuffered );
+    }
+
+    [PunRPC]
+    public void RpcPlayJumpSound()
+    {
+        _audioSource.PlayOneShot( AudioRegistry.JumpSFX );
+    }
+
     #endregion
 }

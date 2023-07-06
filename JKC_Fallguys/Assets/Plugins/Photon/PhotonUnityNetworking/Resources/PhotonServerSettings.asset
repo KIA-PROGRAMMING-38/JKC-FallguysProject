@@ -96,6 +96,7 @@ MonoBehaviour:
   - RpcSetHoopControllerReference
   - RpcSetDeActivePlayerObject
   - RpcSetInitialize
+  - RpcPlayJumpSound
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
