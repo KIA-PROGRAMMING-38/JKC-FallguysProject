@@ -1,5 +1,4 @@
 using LiteralRepository;
-using ResourceRegistry;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -25,7 +24,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
             _audioSources[index].volume = 0.3f;
 
             _audioSources[index].outputAudioMixerGroup = _audioMixer.FindMatchingGroups( "Music" )[0];
-        }       
+        }
 
         gameObject.AddComponent<AudioReverbZone>().reverbPreset = AudioReverbPreset.Room;
     }
