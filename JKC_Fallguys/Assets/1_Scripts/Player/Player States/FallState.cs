@@ -7,6 +7,11 @@ public class FallState : StateMachineBehaviour
     {
         _playerPhysicsController = animator.GetComponent<PlayerPhysicsController>();
 
+        if ( _playerPhysicsController.jumpCancellationTokenSource != null )
+        {
+            _playerPhysicsController.jumpCancellationTokenSource.Cancel();
+        }
+        
         _playerPhysicsController.UnfreezeRotationAxis();
     }
 }

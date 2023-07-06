@@ -111,6 +111,10 @@ public class PlayerAnimation : MonoBehaviourPun
         if ( collision.impulse.magnitude > _topplingForce && !collision.gameObject.CompareTag( TagLiteral.Ground ) )
         {
             _animator.SetBool( AnimLiteral.IsFall, true );
+
+            PlayFallSound();
+            Debug.Log("Fall");
+
             CheckFallStateAfterDelay( delay: 0.5f ).Forget();
         }
     }
@@ -188,5 +192,49 @@ public class PlayerAnimation : MonoBehaviourPun
         _audioSource.PlayOneShot(AudioRegistry.RunFootStepSFX[_randomAudioClipIndex]);
     }
 
+    public void PlayJumpSound()
+    {
+        photonView.RPC("RpcPlayJumpSound", RpcTarget.AllBuffered );
+    }
+
+    [PunRPC]
+    public void RpcPlayJumpSound()
+    {
+        _audioSource.PlayOneShot( AudioRegistry.JumpSFX );
+    }
+
+    public void PlayDiveSound()
+    {
+        photonView.RPC("RpcPlayDiveSound", RpcTarget.AllBuffered);
+    }
+
+    [PunRPC]
+    public void RpcPlayDiveSound()
+    {
+        _audioSource.PlayOneShot(AudioRegistry.DiveSFX);
+    }
+
+    public void PlayRespawnSound()
+    {
+        photonView.RPC("RpcPlayRespawnSound", RpcTarget.AllBuffered);
+    }
+
+    [PunRPC]
+    public void RpcPlayRespawnSound()
+    {
+        _audioSource.PlayOneShot(AudioRegistry.RespawnSFX);
+    }
+
     #endregion
+
+    private void PlayFallSound()
+    {
+        photonView.RPC("RpcPlayFallSound", RpcTarget.AllBuffered);
+    }
+
+    [PunRPC]
+    public void RpcPlayFallSound()
+    {
+        _audioSource.PlayOneShot(AudioRegistry.FallSFX);
+    }
 }

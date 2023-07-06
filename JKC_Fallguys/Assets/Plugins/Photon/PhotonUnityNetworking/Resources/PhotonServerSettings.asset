@@ -97,6 +97,10 @@ MonoBehaviour:
   - RpcSetDeActivePlayerObject
   - RpcSetInitialize
   - RpcAddPlayerToFailedClearStagePlayers
+  - RpcPlayJumpSound
+  - RpcPlayDiveSound
+  - RpcPlayFallSound
+  - RpcPlayRespawnSound
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
