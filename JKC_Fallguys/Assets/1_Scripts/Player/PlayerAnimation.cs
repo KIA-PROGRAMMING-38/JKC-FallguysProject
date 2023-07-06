@@ -63,7 +63,6 @@ public class PlayerAnimation : MonoBehaviourPun
 
     [SerializeField] private Transform _groundCheckPoint;
     [SerializeField] private float _groundCheckDistance;
-
     private void CheckPlatform()
     {
         int layerMask = 1 << LayerMask.NameToLayer( TagLiteral.Ground );
@@ -111,6 +110,7 @@ public class PlayerAnimation : MonoBehaviourPun
 
         if ( collision.impulse.magnitude > _topplingForce && !collision.gameObject.CompareTag( TagLiteral.Ground ) )
         {
+            Debug.Log("너 호출되는거니?");
             _animator.SetBool( AnimLiteral.IsFall, true );
             CheckFallStateAfterDelay( delay: 0.5f ).Forget();
         }

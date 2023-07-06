@@ -146,7 +146,7 @@ public class PlayerPhysicsController : MonoBehaviourPun
             {
                 break;
             }
-
+            
             await UniTask.Yield( PlayerLoopTiming.FixedUpdate );
         }
     }
