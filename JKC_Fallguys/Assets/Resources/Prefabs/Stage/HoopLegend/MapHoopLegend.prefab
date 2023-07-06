@@ -3185,7 +3185,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &252411281268346437
 Transform:
@@ -3707,7 +3707,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1775032099077322327
 Transform:
@@ -3739,7 +3739,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1775032100573599685
 Transform:
@@ -3771,7 +3771,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1775032100498162567
 Transform:
@@ -3803,7 +3803,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1775032100371749016
 Transform:
@@ -3835,7 +3835,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1775032100180408251
 Transform:
@@ -3868,7 +3868,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &697263417342011154
 Transform:
@@ -4576,7 +4576,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2198053989470406167
 Transform:
@@ -4610,7 +4610,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1626961433165962595
 Transform:
@@ -4725,7 +4725,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1626961433545008751
 Transform:
@@ -8538,7 +8538,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2642458597500477678
 Transform:
@@ -8702,7 +8702,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2642458597894713239
 Transform:
@@ -8742,7 +8742,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2642458597974061113
 Transform:
@@ -12780,7 +12780,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3533339860028072424
 Transform:
@@ -12813,7 +12813,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4234032091632762536
 Transform:
@@ -12845,7 +12845,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4234032093097516858
 Transform:
@@ -12877,7 +12877,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4234032092887862136
 Transform:
@@ -12909,7 +12909,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4234032092761444455
 Transform:
@@ -12941,7 +12941,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4234032092668739396
 Transform:
@@ -15579,7 +15579,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3888063151038341612
 Transform:
@@ -15644,7 +15644,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3888063151911419957
 Transform:
@@ -15696,7 +15696,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3975501849773666362
 Transform:
@@ -15729,7 +15729,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3975501849832449144
 Transform:
@@ -15762,7 +15762,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3975501849974472551
 Transform:
@@ -15795,7 +15795,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3975501850049450052
 Transform:
@@ -15828,7 +15828,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3975501851228066216
 Transform:
@@ -15895,7 +15895,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4386908450273562344
 Transform:
@@ -16924,7 +16924,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &9181939304486805792
 Transform:
@@ -17018,11 +17018,11 @@ GameObject:
   - component: {fileID: 2642458597446406515}
   - component: {fileID: 2642458597446406514}
   m_Layer: 3
-  m_Name: Box
+  m_Name: Box7
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8780626474209459844
 Transform:
@@ -17032,7 +17032,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5165372334201179679}
   m_LocalRotation: {x: -0.00009267252, y: -0.58510494, z: 0.00047938823, w: 0.8109575}
-  m_LocalPosition: {x: -43.169697, y: -5.6000004, z: 62.009598}
+  m_LocalPosition: {x: -33.36, y: -5.6000004, z: 62.009598}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -17102,7 +17102,7 @@ Rigidbody:
   m_Drag: 0.5
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
@@ -17136,7 +17136,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8741466093869822194
 Transform:
@@ -17233,7 +17233,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8741466093676815536
 Transform:
@@ -17330,7 +17330,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8741466093533757359
 Transform:
@@ -17427,7 +17427,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8741466093422022796
 Transform:
@@ -17524,7 +17524,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8741466094533529952
 Transform:
@@ -21602,11 +21602,11 @@ GameObject:
   - component: {fileID: 2907724976609249519}
   - component: {fileID: 2907724976609249518}
   m_Layer: 3
-  m_Name: Box
+  m_Name: Box17
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8442766250749077272
 Transform:
@@ -21616,7 +21616,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5430954846311815043}
   m_LocalRotation: {x: 0.00039967318, y: 0.50108165, z: 0.00028046922, w: 0.86539996}
-  m_LocalPosition: {x: 66.22157, y: -2.7299995, z: 29.004349}
+  m_LocalPosition: {x: 63.01, y: -2.73, z: 27.16}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -21686,7 +21686,7 @@ Rigidbody:
   m_Drag: 0.5
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
@@ -21721,7 +21721,7 @@ GameObject:
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8442766250894411835
 Transform:
@@ -21731,7 +21731,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5430954846455068832}
   m_LocalRotation: {x: -0.00028046913, y: -0.86539984, z: 0.00039967324, w: 0.5010818}
-  m_LocalPosition: {x: -67.32158, y: -2.7299995, z: -32.104355}
+  m_LocalPosition: {x: -64.36, y: -2.73, z: -30.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -21801,7 +21801,7 @@ Rigidbody:
   m_Drag: 0.5
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
@@ -21832,11 +21832,11 @@ GameObject:
   - component: {fileID: 2907724976291560659}
   - component: {fileID: 2907724976291560658}
   m_Layer: 3
-  m_Name: Box
+  m_Name: Box16
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8442766251037479716
 Transform:
@@ -21846,7 +21846,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5430954846598128575}
   m_LocalRotation: {x: 0.00048636174, y: 0.8666494, z: 0.00004305689, w: 0.49891752}
-  m_LocalPosition: {x: 60.235645, y: -2.7299995, z: -42.73831}
+  m_LocalPosition: {x: 57.27, y: -2.68, z: -40.68}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -21916,7 +21916,7 @@ Rigidbody:
   m_Drag: 0.5
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
@@ -21951,7 +21951,7 @@ GameObject:
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8442766251230480230
 Transform:
@@ -21961,7 +21961,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5430954846656919549}
   m_LocalRotation: {x: -0.00004305874, y: -0.49892083, z: 0.0004863616, w: 0.8666475}
-  m_LocalPosition: {x: -62.035645, y: -2.7299995, z: 39.53842}
+  m_LocalPosition: {x: -59.48, y: -2.73, z: 38.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -22031,7 +22031,7 @@ Rigidbody:
   m_Drag: 0.5
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
@@ -22062,11 +22062,11 @@ GameObject:
   - component: {fileID: 2907724975430633731}
   - component: {fileID: 2907724975430633730}
   m_Layer: 3
-  m_Name: Box
+  m_Name: Box18
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8442766249780209396
 Transform:
@@ -22076,7 +22076,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5430954847356212847}
   m_LocalRotation: {x: 0.00044187324, y: 0.99998534, z: -0.00020772492, w: -0.0053923554}
-  m_LocalPosition: {x: -7.578347, y: -2.7299995, z: -73.889366}
+  m_LocalPosition: {x: -7.54, y: -2.73, z: -70.36}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -22146,7 +22146,7 @@ Rigidbody:
   m_Drag: 0.5
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
@@ -22177,11 +22177,11 @@ GameObject:
   - component: {fileID: 3348831264648546266}
   - component: {fileID: 3348831264648546267}
   m_Layer: 3
-  m_Name: Box
+  m_Name: Box2
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8289327096816478253
 Transform:
@@ -22190,15 +22190,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5583760501400148150}
-  m_LocalRotation: {x: 0.000105135725, y: -0.21532576, z: 0.00047680995, w: 0.9765422}
-  m_LocalPosition: {x: -32.3, y: -5.6000004, z: -42.2}
+  m_LocalRotation: {x: 0.000108685126, y: -0.21533196, z: 0.00047975968, w: 0.97654086}
+  m_LocalPosition: {x: -53.13, y: -5.4, z: -39.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5985779495867980536}
   m_Father: {fileID: 3888063151911419957}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0.024, y: -24.87, z: 0.051}
 --- !u!33 &7449553047274845620
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -22261,7 +22261,7 @@ Rigidbody:
   m_Drag: 0.5
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
@@ -22292,11 +22292,11 @@ GameObject:
   - component: {fileID: 3348831264531929032}
   - component: {fileID: 3348831264531929033}
   m_Layer: 3
-  m_Name: Box
+  m_Name: Box6
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8289327096970917951
 Transform:
@@ -22305,15 +22305,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5583760501553006756}
-  m_LocalRotation: {x: 0.000105135725, y: -0.21532576, z: 0.00047680995, w: 0.9765422}
-  m_LocalPosition: {x: -49, y: -5.6000004, z: -11.2}
+  m_LocalRotation: {x: 0.000108685126, y: -0.21533196, z: 0.00047975968, w: 0.97654086}
+  m_LocalPosition: {x: -59.08, y: -5.41, z: 24}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5985779495988857578}
   m_Father: {fileID: 3888063151911419957}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0.024, y: -24.87, z: 0.051}
 --- !u!33 &7449553047421871526
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -22376,7 +22376,7 @@ Rigidbody:
   m_Drag: 0.5
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
@@ -22407,11 +22407,11 @@ GameObject:
   - component: {fileID: 3348831265309917684}
   - component: {fileID: 3348831265309917685}
   m_Layer: 3
-  m_Name: Box
+  m_Name: Box5
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8289327096188661251
 Transform:
@@ -22420,15 +22420,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5583760501844500120}
-  m_LocalRotation: {x: 0.000105135725, y: -0.21532576, z: 0.00047680995, w: 0.9765422}
-  m_LocalPosition: {x: 40.7, y: -5.6000004, z: -27.3}
+  m_LocalRotation: {x: 0.000108685126, y: -0.21533196, z: 0.00047975968, w: 0.97654086}
+  m_LocalPosition: {x: 58.31, y: -5.4, z: -26.57}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5985779496230018262}
   m_Father: {fileID: 3888063151911419957}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0.024, y: -24.87, z: 0.051}
 --- !u!33 &7449553046593516442
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -22491,7 +22491,7 @@ Rigidbody:
   m_Drag: 0.5
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
@@ -22526,7 +22526,7 @@ GameObject:
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8289327095631746740
 Transform:
@@ -22536,7 +22536,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5583760502362908207}
   m_LocalRotation: {x: 0.00020462443, y: -0.0016128633, z: 0.00044331758, w: 0.9999986}
-  m_LocalPosition: {x: 5.56, y: -2.7299995, z: 71.42}
+  m_LocalPosition: {x: 5.57, y: -2.73, z: 67.88}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -22606,7 +22606,7 @@ Rigidbody:
   m_Drag: 0.5
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
@@ -22637,11 +22637,11 @@ GameObject:
   - component: {fileID: 3348831264164312957}
   - component: {fileID: 3348831264164312956}
   m_Layer: 3
-  m_Name: Box
+  m_Name: Box3
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8289327095190984842
 Transform:
@@ -22650,15 +22650,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5583760502862194705}
-  m_LocalRotation: {x: 0.000105135725, y: -0.21532576, z: 0.00047680995, w: 0.9765422}
-  m_LocalPosition: {x: 48.2, y: -5.6000004, z: 15.5}
+  m_LocalRotation: {x: 0.000108685126, y: -0.21533196, z: 0.00047975968, w: 0.97654086}
+  m_LocalPosition: {x: 53.81, y: -5.42, z: 29.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5985779495215442527}
   m_Father: {fileID: 3888063151911419957}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0.024, y: -24.87, z: 0.051}
 --- !u!33 &7449553045443822867
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -22721,7 +22721,7 @@ Rigidbody:
   m_Drag: 0.5
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
@@ -22752,11 +22752,11 @@ GameObject:
   - component: {fileID: 3348831263919341842}
   - component: {fileID: 3348831263919341843}
   m_Layer: 3
-  m_Name: Box
+  m_Name: Box1
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8289327095402720997
 Transform:
@@ -22836,7 +22836,7 @@ Rigidbody:
   m_Drag: 0.5
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
@@ -22867,11 +22867,11 @@ GameObject:
   - component: {fileID: 3348831264002006646}
   - component: {fileID: 3348831264002006647}
   m_Layer: 3
-  m_Name: Box
+  m_Name: Box4
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8289327095349424513
 Transform:
@@ -22880,15 +22880,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5583760503152738586}
-  m_LocalRotation: {x: 0.000105135725, y: -0.21532576, z: 0.00047680995, w: 0.9765422}
-  m_LocalPosition: {x: -43.6, y: -5.6000004, z: 41.5}
+  m_LocalRotation: {x: 0.000108685126, y: -0.21533196, z: 0.00047975968, w: 0.97654086}
+  m_LocalPosition: {x: -31.76, y: -5.42, z: 20.49}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5985779495457620820}
   m_Father: {fileID: 3888063151911419957}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0.024, y: -24.87, z: 0.051}
 --- !u!33 &7449553045822139416
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -22951,7 +22951,7 @@ Rigidbody:
   m_Drag: 0.5
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
@@ -23764,11 +23764,11 @@ GameObject:
   - component: {fileID: 3858321170232304439}
   - component: {fileID: 3858321170232304438}
   m_Layer: 3
-  m_Name: Box
+  m_Name: Box13
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7564756481896975552
 Transform:
@@ -23778,7 +23778,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6237329852141780059}
   m_LocalRotation: {x: -0.00024205755, y: -0.8150127, z: 0.00042403938, w: 0.5794429}
-  m_LocalPosition: {x: -23.978502, y: -5.6000004, z: -27.324837}
+  m_LocalPosition: {x: -16.22, y: -5.4, z: -25.34}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -23848,7 +23848,7 @@ Rigidbody:
   m_Drag: 0.5
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
@@ -23879,11 +23879,11 @@ GameObject:
   - component: {fileID: 3858321170056857616}
   - component: {fileID: 3858321170056857617}
   m_Layer: 3
-  m_Name: Box
+  m_Name: Box10
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7564756482039130087
 Transform:
@@ -23893,7 +23893,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6237329852149700476}
   m_LocalRotation: {x: -0.0004860401, y: -0.9432263, z: 0.00004654288, w: -0.3321505}
-  m_LocalPosition: {x: -73.41163, y: -5.6000004, z: -1.719912}
+  m_LocalPosition: {x: -80.32, y: -5.4, z: 0.96}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -23963,7 +23963,7 @@ Rigidbody:
   m_Drag: 0.5
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
@@ -23994,11 +23994,11 @@ GameObject:
   - component: {fileID: 3858321169964233425}
   - component: {fileID: 3858321169964233424}
   m_Layer: 3
-  m_Name: Box
+  m_Name: Box15
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7564756482165251366
 Transform:
@@ -24008,7 +24008,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6237329852410572221}
   m_LocalRotation: {x: -0.00017177404, y: -0.7128478, z: 0.00045705028, w: 0.7013187}
-  m_LocalPosition: {x: 32.78222, y: -5.6000004, z: 60.197617}
+  m_LocalPosition: {x: 40.87, y: -5.42, z: 65.54}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -24078,7 +24078,7 @@ Rigidbody:
   m_Drag: 0.5
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
@@ -24109,11 +24109,11 @@ GameObject:
   - component: {fileID: 3858321168243475111}
   - component: {fileID: 3858321168243475110}
   m_Layer: 3
-  m_Name: Box
+  m_Name: Box14
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7564756481704766800
 Transform:
@@ -24123,7 +24123,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6237329853021724107}
   m_LocalRotation: {x: -0.00047409316, y: -0.981521, z: 0.00011677722, w: -0.19135405}
-  m_LocalPosition: {x: 27.766253, y: -5.6000004, z: -4.758514}
+  m_LocalPosition: {x: 23.535, y: -5.4, z: -0.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -24193,7 +24193,7 @@ Rigidbody:
   m_Drag: 0.5
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
@@ -24224,11 +24224,11 @@ GameObject:
   - component: {fileID: 3858321169023072831}
   - component: {fileID: 3858321169023072830}
   m_Layer: 3
-  m_Name: Box
+  m_Name: Box12
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7564756480929306056
 Transform:
@@ -24238,7 +24238,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6237329853322110291}
   m_LocalRotation: {x: -0.00035115672, y: -0.944705, z: 0.00033924947, w: 0.32792124}
-  m_LocalPosition: {x: 33.293808, y: -5.6000004, z: -68.51764}
+  m_LocalPosition: {x: 38.3, y: -5.4, z: -64.42}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -24308,7 +24308,7 @@ Rigidbody:
   m_Drag: 0.5
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
@@ -24339,11 +24339,11 @@ GameObject:
   - component: {fileID: 3858321168895959156}
   - component: {fileID: 3858321168895959157}
   m_Layer: 3
-  m_Name: Box
+  m_Name: Box9
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7564756481090031491
 Transform:
@@ -24353,7 +24353,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6237329853480222488}
   m_LocalRotation: {x: -0.00041188308, y: -0.9911878, z: 0.000262209, w: 0.13246343}
-  m_LocalPosition: {x: 67.569595, y: -5.6000004, z: -6.3983364}
+  m_LocalPosition: {x: 69.71, y: -5.4, z: -0.26}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -24423,7 +24423,7 @@ Rigidbody:
   m_Drag: 0.5
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
@@ -24454,11 +24454,11 @@ GameObject:
   - component: {fileID: 3858321168732577114}
   - component: {fileID: 3858321168732577115}
   m_Layer: 3
-  m_Name: Box
+  m_Name: Box8
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7564756481253421741
 Transform:
@@ -24467,15 +24467,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6237329853509894710}
-  m_LocalRotation: {x: 0.00013476484, y: -0.15379927, z: 0.000469297, w: 0.988102}
-  m_LocalPosition: {x: -15.771491, y: -5.6000004, z: 42.870346}
+  m_LocalRotation: {x: 0.00013849202, y: -0.15380514, z: 0.0004720188, w: 0.9881011}
+  m_LocalPosition: {x: -11.38, y: -5.42, z: 37.87}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5252094776076042360}
   m_Father: {fileID: 3888063151911419957}
   m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0.024, y: -17.695, z: 0.051}
 --- !u!33 &8975907038312492852
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -24538,7 +24538,7 @@ Rigidbody:
   m_Drag: 0.5
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
@@ -24569,11 +24569,11 @@ GameObject:
   - component: {fileID: 3858321168781668720}
   - component: {fileID: 3858321168781668721}
   m_Layer: 3
-  m_Name: Box
+  m_Name: Box11
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7564756481166581383
 Transform:
@@ -24583,7 +24583,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6237329853558861340}
   m_LocalRotation: {x: -0.00035115672, y: -0.944705, z: 0.00033924947, w: 0.32792124}
-  m_LocalPosition: {x: -38.10619, y: -5.6000004, z: -68.51764}
+  m_LocalPosition: {x: -34.67, y: -5.4, z: -64.264}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -24653,7 +24653,7 @@ Rigidbody:
   m_Drag: 0.5
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
@@ -25986,7 +25986,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6673916275061324979
 Transform:
@@ -26018,7 +26018,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6673916276203005156
 Transform:
@@ -26050,7 +26050,7 @@ GameObject:
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6562934342028628089
 Transform:
@@ -26086,7 +26086,7 @@ GameObject:
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7658067503125414564
 Transform:
@@ -26267,7 +26267,7 @@ GameObject:
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6139218297587832269
 Transform:
@@ -26364,7 +26364,7 @@ GameObject:
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6139218297716275950
 Transform:
@@ -26461,7 +26461,7 @@ GameObject:
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6139218297842688497
 Transform:
@@ -26558,7 +26558,7 @@ GameObject:
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6139218298052343219
 Transform:
@@ -26655,7 +26655,7 @@ GameObject:
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6139218296543466529
 Transform:
@@ -26752,7 +26752,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6704926004476291551
 Transform:
@@ -26849,7 +26849,7 @@ GameObject:
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5985779495867980536
 Transform:
@@ -26946,7 +26946,7 @@ GameObject:
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5985779495988857578
 Transform:
@@ -27043,7 +27043,7 @@ GameObject:
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5985779496230018262
 Transform:
@@ -27140,7 +27140,7 @@ GameObject:
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5985779494641050721
 Transform:
@@ -27237,7 +27237,7 @@ GameObject:
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5985779495215442527
 Transform:
@@ -27334,7 +27334,7 @@ GameObject:
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5985779495457620820
 Transform:
@@ -27431,7 +27431,7 @@ GameObject:
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5985779495544347696
 Transform:
@@ -27528,7 +27528,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6570627139510466573
 Transform:
@@ -27625,7 +27625,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6570627139451677775
 Transform:
@@ -27722,7 +27722,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6570627139308615504
 Transform:
@@ -27819,7 +27819,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6570627139169556595
 Transform:
@@ -27916,7 +27916,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6570627140213954975
 Transform:
@@ -28053,7 +28053,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7481489281991917478
 Transform:
@@ -28821,7 +28821,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7481489284059618566
 Transform:
@@ -31744,7 +31744,7 @@ GameObject:
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6468106871271459921
 Transform:
@@ -35659,7 +35659,7 @@ GameObject:
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4018556365097035859
 Transform:
@@ -36587,7 +36587,7 @@ GameObject:
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5252094776635735573
 Transform:
@@ -36684,7 +36684,7 @@ GameObject:
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5252094776895182130
 Transform:
@@ -36781,7 +36781,7 @@ GameObject:
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5252094776903741427
 Transform:
@@ -36878,7 +36878,7 @@ GameObject:
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5252094775487340421
 Transform:
@@ -36975,7 +36975,7 @@ GameObject:
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5252094775726909213
 Transform:
@@ -37072,7 +37072,7 @@ GameObject:
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5252094775837310294
 Transform:
@@ -37169,7 +37169,7 @@ GameObject:
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5252094776022903890
 Transform:
@@ -37266,7 +37266,7 @@ GameObject:
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5252094776076042360
 Transform:
