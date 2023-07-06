@@ -66,6 +66,9 @@ public class CameraAngle : MonoBehaviourPun
     // 카메라가 플레이어의 좌표를 따라가는 함수
     private void FollowPlayerBody()
     {
+        if (_playerChracter == null)
+            return;
+        
         Vector3 targetPos = new Vector3
             (_playerChracter.position.x, _playerChracter.position.y - 1, _playerChracter.position.z);
         transform.position = targetPos;

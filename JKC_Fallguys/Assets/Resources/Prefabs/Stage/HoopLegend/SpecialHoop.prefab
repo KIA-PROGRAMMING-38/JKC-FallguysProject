@@ -4886,7 +4886,7 @@ GameObject:
   - component: {fileID: 1142444196239351064}
   - component: {fileID: -386831045037437429}
   - component: {fileID: -9093707566938452470}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SpecialHoop
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -5055,7 +5055,7 @@ GameObject:
   - component: {fileID: 2454277622015711238}
   - component: {fileID: 2454277622015711256}
   - component: {fileID: 2454277622015711236}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GoalCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5113,7 +5113,7 @@ GameObject:
   - component: {fileID: 8973863230923488681}
   - component: {fileID: 6389909191403750107}
   - component: {fileID: 7556708541649922866}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: HoopPropeller_Axes
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -5197,7 +5197,7 @@ GameObject:
   - component: {fileID: 2209442197590252919}
   - component: {fileID: 3359345280324498166}
   - component: {fileID: 7746301197557888190}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: HoopPropeller_Joint
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -10165,7 +10165,7 @@ GameObject:
   - component: {fileID: 6231309030638696216}
   - component: {fileID: 6231309030638696218}
   - component: {fileID: 6231309030638696217}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: HoopPropeller_Propeller
   m_TagString: Ground
   m_Icon: {fileID: 0}

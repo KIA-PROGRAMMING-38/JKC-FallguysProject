@@ -16,7 +16,7 @@ public class FruitChuteController : StageController
     protected override void Awake()
     {
         base.Awake();
-                        
+
         _cancellationTokenSource = new CancellationTokenSource();
         
         _fruitPooler = transform.Find("FruitPooler").GetComponent<FruitPooler>();
@@ -41,7 +41,7 @@ public class FruitChuteController : StageController
 
         StageSceneModel.RemainingTime
             .Where(RemainingTime => RemainingTime == 0)
-            .Subscribe(_ => RpcEndGame())
+            .Subscribe(_ => EndGame())
             .AddTo(this);
     }
     
@@ -90,7 +90,19 @@ public class FruitChuteController : StageController
         if (StageDataManager.Instance.GetCurrentState(actorNumber).Value != StageDataManager.PlayerState.Victory)
         {
             StageDataManager.Instance.SetPlayerState(actorNumber, StageDataManager.PlayerState.Defeat);
+            photonView.RPC
+                ("RpcAddPlayerToFailedClearStagePlayers", RpcTarget.MasterClient, PhotonNetwork.LocalPlayer.ActorNumber);
         }
+        else if (StageDataManager.Instance.GetCurrentState(actorNumber).Value == StageDataManager.PlayerState.Victory)
+        {
+            StageDataManager.Instance.SetPlayerState(actorNumber, StageDataManager.PlayerState.GameTerminated);
+        }
+    }
+
+    [PunRPC]
+    public void RpcAddPlayerToFailedClearStagePlayers(int actorNumber)
+    {
+        StageDataManager.Instance.AddPlayerToFailedClearStagePlayers(actorNumber);
     }
     
     private void OnDestroy()

@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 using LiteralRepository;
 using Photon.Pun;
 using UniRx;
@@ -23,7 +22,6 @@ public class HoopController : MonoBehaviourPun
             InitializeRx();
         }
     }
-
 
     private CommonHoop _commonHoop;
     private SpecialHoop _specialHoop;
@@ -61,14 +59,23 @@ public class HoopController : MonoBehaviourPun
         // 후프 카운트가 높은 플레이어부터 정렬하여 ActorNumber를 리스트로 변환합니다.
         // 이 리스트는 플레이어의 순위를 나타냅니다.
         List<int> rankings = _playerHoopCounts
-            // 후프 카운트(Value)가 높은 플레이어부터 정렬합니다.
             .OrderByDescending(x => x.Value)
-            // Select문으로 ActorNumber인 Key값만 선택하여 리스트로 변환합니다.
             .Select(x => x.Key)
             .ToList();
 
-        StageDataManager.Instance.StagePlayerRankings = rankings;
+        for (int i = 0; i < rankings.Count; i++)
+        {
+            if (i < 3) 
+            {
+                StageDataManager.Instance.AddPlayerToRanking(rankings[i]);
+            }
+            else
+            {
+                StageDataManager.Instance.AddPlayerToFailedClearStagePlayers(rankings[i]);
+            }
+        }
     }
+
 
     /// <summary>
     /// 마스터 클라이언트에서만 후프 카운트를 증가시키고, 새로운 카운트를 모든 클라이언트에게 전송합니다.
