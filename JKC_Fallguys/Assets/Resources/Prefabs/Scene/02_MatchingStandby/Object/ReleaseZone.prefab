@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9033008644227845319}
   - component: {fileID: 754462472942925354}
   - component: {fileID: 2119737647756431224}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ReleaseZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
