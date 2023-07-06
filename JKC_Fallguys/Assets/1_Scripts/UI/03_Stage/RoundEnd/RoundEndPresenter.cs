@@ -22,11 +22,11 @@ public class RoundEndPresenter : Presenter
     {
         StageDataManager.Instance.IsRoundCompleted
             .Where(isRoundCompleted => isRoundCompleted)
-            .Subscribe(_ => Test())
+            .Subscribe(_ => UIAction())
             .AddTo(_compositeDisposable);
     }
 
-    private void Test()
+    private void UIAction()
     {
         _roundEndView.RoundEndPanel.MoveUI(_center, _roundEndView.CanvasRect, 0.5f);
     }

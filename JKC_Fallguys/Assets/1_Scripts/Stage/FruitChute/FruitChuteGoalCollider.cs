@@ -15,6 +15,8 @@ public class FruitChuteGoalCollider : MonoBehaviourPun
 
                 StageDataManager.Instance.SetPlayerState(actorNumber, StageDataManager.PlayerState.Victory);
                 StageDataManager.Instance.SetPlayerActive(actorNumber, false);
+                
+                playerPhotonView.RPC("RpcSetDeActivePlayerObject", RpcTarget.AllBuffered);
         
                 photonView.RPC("RpcAddPlayerToRankingOnGoal", RpcTarget.MasterClient, actorNumber);
             }

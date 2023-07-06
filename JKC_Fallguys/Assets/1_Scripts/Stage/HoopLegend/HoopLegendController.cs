@@ -18,7 +18,7 @@ public class HoopLegendController : StageController
     
     protected override void SetGameTime()
     {
-        StageSceneModel.SetRemainingTime(30);
+        StageSceneModel.SetRemainingTime(60);
     }
 
     protected override void InitializeRx()
