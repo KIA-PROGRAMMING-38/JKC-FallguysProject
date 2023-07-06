@@ -42,7 +42,6 @@ public class StageDataManager : SingletonMonoBehaviour<StageDataManager>
 
     public IReactiveProperty<int> MapPickupIndex => _mapPickupIndex;
 
-    // 플레이어의 점수들이 계속해서 저장되는 딕셔너리입니다.
     public Dictionary<int, PlayerData> PlayerDataByIndex = new Dictionary<int, PlayerData>();
 
     // 결과 창에서 사용될 플레이어의 인덱스를 캐싱해놓는 리스트입니다.

@@ -1,3 +1,4 @@
+using Photon.Pun;
 using UniRx;
 
 namespace Model
@@ -8,11 +9,9 @@ namespace Model
         private static ReactiveProperty<bool> _isExitPanelPopUp = new ReactiveProperty<bool>(false);
         public static IReadOnlyReactiveProperty<bool> IsExitPanelPopUp => _isExitPanelPopUp;
         
-        // 포톤 룸에 입장했음을 알리는 불리언 값입니다.
         private static ReactiveProperty<bool> _isEnterPhotonRoom = new ReactiveProperty<bool>(true);
         public static IReadOnlyReactiveProperty<bool> IsEnterPhotonRoom => _isEnterPhotonRoom;
 
-        // Exit Button을 누를 수 있는지를 결정하는 불리언 값입니다.
         private static ReactiveProperty<bool> _canClickButton = new ReactiveProperty<bool>(false);
         public static IReadOnlyReactiveProperty<bool> CanClickButton => _canClickButton;
         
@@ -21,6 +20,9 @@ namespace Model
 
         private static ReactiveProperty<int> _remainingTime = new ReactiveProperty<int>();
         public static IReactiveProperty<int> RemainingTime => _remainingTime;
+
+        private static ReactiveProperty<string> _observedPlayerActorName = new ReactiveProperty<string>();
+        public static IReactiveProperty<string> ObservedPlayerActorName => _observedPlayerActorName; 
 
         /// <summary>
         /// Exit 패널이 활성화 될 수 있는지 여부를 나타냅니다.
@@ -67,6 +69,11 @@ namespace Model
         public static void InitializeCountDown()
         {
             _spriteIndex.Value = 0;
+        }
+
+        public static void SetObservedPlayerActorName(string actorName)
+        {
+            _observedPlayerActorName.Value = actorName;
         }
     }
 }
