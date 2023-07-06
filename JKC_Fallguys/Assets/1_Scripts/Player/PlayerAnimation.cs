@@ -113,7 +113,6 @@ public class PlayerAnimation : MonoBehaviourPun
             _animator.SetBool( AnimLiteral.IsFall, true );
 
             PlayFallSound();
-            Debug.Log("Fall");
 
             CheckFallStateAfterDelay( delay: 0.5f ).Forget();
         }
