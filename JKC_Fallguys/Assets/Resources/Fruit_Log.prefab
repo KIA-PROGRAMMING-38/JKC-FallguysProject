@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -7919603156914957753}
   - component: {fileID: 843338110075022253}
   - component: {fileID: 5547299572748664236}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Fruit_Log
   m_TagString: Fruit
   m_Icon: {fileID: 0}

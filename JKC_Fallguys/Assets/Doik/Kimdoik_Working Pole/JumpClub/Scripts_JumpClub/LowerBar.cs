@@ -3,6 +3,7 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using Photon.Pun;
 using UniRx;
+using UnityEditor.Rendering;
 using UnityEngine;
 
 public class LowerBar : MonoBehaviourPun
@@ -46,20 +47,6 @@ public class LowerBar : MonoBehaviourPun
         _LowerBar.angularVelocity = Vector3.zero;
     }
 
-    private async UniTaskVoid TriggerStart()
-    {
-        await UniTask.Delay(TimeSpan.FromSeconds(2f));
-
-        photonView.RPC("RpcInitiateRotation", RpcTarget.All);
-    }
-
-    [PunRPC]
-    public void RpcInitiateRotation()
-    {
-        IncreaseRotationSpeed(_cancellationTokenSource.Token).Forget();
-        ObstacleRotation(_cancellationTokenSource.Token).Forget();
-    }
-    
     private async UniTaskVoid ObstacleRotation(CancellationToken cancelToken)
     {
         while (true)
@@ -69,6 +56,35 @@ public class LowerBar : MonoBehaviourPun
             _LowerBar.AddTorque(Vector3.up * rotationSpeed);
         }
     }
+    
+    [PunRPC]
+    public void RpcInitiateRotation(long startUnixTimestamp)
+    {
+        StartRotationAtTimestamp(startUnixTimestamp).Forget();
+    }
+
+    private async UniTaskVoid StartRotationAtTimestamp(long startUnixTimestamp)
+    {
+        int waitTimeSeconds = (int)(startUnixTimestamp - DateTimeOffset.Now.ToUnixTimeSeconds());
+        if (waitTimeSeconds > 0)
+        {
+            await UniTask.Delay(TimeSpan.FromSeconds(waitTimeSeconds));
+        }
+        
+        IncreaseRotationSpeed(_cancellationTokenSource.Token).Forget();
+        ObstacleRotation(_cancellationTokenSource.Token).Forget();
+    }
+
+
+    #pragma warning disable CS1998
+    private async UniTaskVoid TriggerStart()
+    #pragma warning restore CS1998
+    {
+        long startUnixTimestamp = DateTimeOffset.Now.ToUnixTimeSeconds() + 5;
+
+        photonView.RPC("RpcInitiateRotation", RpcTarget.AllBuffered, startUnixTimestamp);
+    }
+
 
     private async UniTaskVoid IncreaseRotationSpeed(CancellationToken cancelToken)
     {

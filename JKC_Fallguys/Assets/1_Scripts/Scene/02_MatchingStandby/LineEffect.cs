@@ -5,6 +5,7 @@ public class LineEffect : MonoBehaviour
     // 이 LineEffect가 속한 풀의 소유자입니다.
     public LineEffectPool PoolOwner { private get; set; }
 
+    [SerializeField]
     private float _moveSpeed = 12f;  
 
     /// <summary>
