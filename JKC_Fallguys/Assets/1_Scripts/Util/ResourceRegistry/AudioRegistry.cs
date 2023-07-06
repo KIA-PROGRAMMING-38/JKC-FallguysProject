@@ -2,6 +2,7 @@ using System;
 using Cysharp.Threading.Tasks;
 using LiteralRepository;
 using UnityEngine;
+using UnityEngine.Audio;
 
 namespace ResourceRegistry
 {
@@ -14,6 +15,8 @@ namespace ResourceRegistry
 
         private static async UniTaskVoid SetAudioClips()
         {
+            GameAudioMixer = Resources.Load<AudioMixer>(DataManager.SetDataPath(
+                PathLiteral.Sounds, "AudioMixer"));
             LoginSFX = DataManager.GetAudioClip(PathLiteral.Sounds, PathLiteral.Music, PathLiteral.LoginSound);
             LobbyMusic = Resources.LoadAll<AudioClip>(DataManager.SetDataPath(
                 PathLiteral.Sounds, PathLiteral.Music, PathLiteral.Lobby));
@@ -67,6 +70,7 @@ namespace ResourceRegistry
                 DataManager.SetDataPath(PathLiteral.Sounds, PathLiteral.SFX, PathLiteral.Player, "SFX_Respawn_3D"));
         }
 
+        public static AudioMixer GameAudioMixer { get; private set; }
         public static AudioClip LoginSFX { get; private set; }
         public static AudioClip[] LobbyMusic { get; private set; }
         public static AudioClip[] RoundMusic { get; private set; } = new AudioClip[3];

@@ -71,6 +71,7 @@ public class RoundResultSetupManager : MonoBehaviour
     private void SetFallGuysAudio(GameObject fallGuy, int fallGuyIndex)
     {
         AudioSource fallGuyAudioSource = fallGuy.AddComponent<AudioSource>();
+        fallGuyAudioSource.outputAudioMixerGroup = AudioRegistry.GameAudioMixer.FindMatchingGroups("SFX")[0];
         fallGuyAudioSource.clip = AudioRegistry.FallGuySFXOnRoundResult[fallGuyIndex];
         fallGuyAudioSource.playOnAwake = false;
     }
