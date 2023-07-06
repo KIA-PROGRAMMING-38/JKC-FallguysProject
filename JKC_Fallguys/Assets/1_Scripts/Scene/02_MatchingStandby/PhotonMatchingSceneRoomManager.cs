@@ -40,6 +40,7 @@ public class PhotonMatchingSceneRoomManager : MonoBehaviourPun
     {
         PhotonNetwork.CurrentRoom.IsOpen = false;
         Model.MatchingSceneModel.PossibleToExit(false);
+        Model.StageSceneModel.SetObservedPlayerActorName(PhotonNetwork.MasterClient.NickName);
     
         photonView.RPC("RpcSetMapData", RpcTarget.All);
 

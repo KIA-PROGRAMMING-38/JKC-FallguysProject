@@ -1,9 +1,10 @@
 using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using Photon.Pun;
 using UnityEngine;
 
-public class SpecialHoop : MonoBehaviour
+public class SpecialHoop : MonoBehaviourPun
 {
     private HoopController _hoopController;
     private ParticleSystem _passEffect;
@@ -21,31 +22,46 @@ public class SpecialHoop : MonoBehaviour
 
     private void Awake()
     {
+        StageDontDestroyOnLoadSet();
+        
         _goalCheck = transform.Find("GoalCheck").GetComponent<GoalCheck>();
         Debug.Assert(_goalCheck != null);
         _passEffect = transform.Find("PassEffect").GetComponent<ParticleSystem>();
         _passEffectReverse = transform.Find("PassEffectReverse").GetComponent<ParticleSystem>();
         _passEffect.Stop();
         _passEffectReverse.Stop();
+        _cancelToken = new CancellationTokenSource();
         Debug.Assert(_passEffect != null);
         Debug.Assert(_passEffectReverse != null);
         
         _originPosition = transform.position;
         _currentHeight = _originPosition.y;
     }
-
-    public void Initialize(HoopController hoopController, CancellationTokenSource cancelToken)
+    
+    private void StageDontDestroyOnLoadSet()
     {
-        _hoopController = hoopController;
-        transform.SetParent(_hoopController.transform);
-        
-        _cancelToken = cancelToken;
+        DontDestroyOnLoad(gameObject);
+        photonView.RPC("RpcSetParentStageRepository", RpcTarget.AllBuffered);
+    }
+
+    [PunRPC]
+    public void RpcSetParentStageRepository()
+    {
+        transform.SetParent(StageRepository.Instance.gameObject.transform);
     }
 
     private void Start()
     {
         _goalCheck.OnPlayerEnter += HandlePlayerEnter;
         _goalCheck.OnPlayerExit += HandlePlayerExit;
+        
+        photonView.RPC("RpcSetHoopControllerReference", RpcTarget.AllBuffered);
+    }
+    
+    [PunRPC]
+    public void RpcSetHoopControllerReference()
+    {
+        _hoopController = StageRepository.Instance.HoopController;
     }
 
     private void HandlePlayerEnter()
@@ -110,5 +126,7 @@ public class SpecialHoop : MonoBehaviour
     {
         _goalCheck.OnPlayerEnter -= HandlePlayerEnter;
         _goalCheck.OnPlayerExit -= HandlePlayerExit;
+        
+        _cancelToken.Cancel();
     }
 }

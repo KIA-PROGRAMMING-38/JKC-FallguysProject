@@ -12,8 +12,17 @@ public class PlayerPhotonController : MonoBehaviourPunCallbacks
     }
 
     [PunRPC]
-    public void RpcSetParentStageDataManager()
+    public void RpcSetInitialize(int actorNum, string nickName)
     {
         transform.parent.SetParent(StageDataManager.Instance.gameObject.transform);
+        
+        PlayerReferenceManager refManager = transform.parent.GetComponent<PlayerReferenceManager>();
+        refManager.SetPlayerInformation(actorNum, nickName);
+    }
+
+    [PunRPC]
+    public void RpcSetDeActivePlayerObject()
+    {
+        transform.parent.gameObject.SetActive(false);
     }
 }

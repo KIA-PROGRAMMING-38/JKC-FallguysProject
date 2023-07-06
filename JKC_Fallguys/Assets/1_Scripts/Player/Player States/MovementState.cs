@@ -15,16 +15,20 @@ public class MovementState : StateMachineBehaviour
     
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        
+        if (_playerInput.IsNothingUnderfoot)
+        {
+            animator.SetBool(AnimLiteral.IsFall, true);
+            return;
+        }
+        
         _playerPhysicsController.Move();
 
-        // Jump키를 눌렀을때
         if (_playerInput.IsJump)
         {
-            //Jump State로 전이
             animator.SetBool(AnimLiteral.IsJumping, true);
         }
 
-        // Grab키를 눌렀을때
         if (_playerInput.IsAttemptingGrab)
         {
             animator.SetBool(AnimLiteral.IsGrab, true);
@@ -33,11 +37,6 @@ public class MovementState : StateMachineBehaviour
         if (_playerInput.IsDive)
         {
             animator.SetBool(AnimLiteral.IsDiving, true);
-        }
-        
-        if (_playerInput.IsNothingUnderfoot)
-        {
-            animator.SetBool(AnimLiteral.IsFall, true);
         }
     }
 }

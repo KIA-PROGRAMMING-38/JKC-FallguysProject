@@ -24,7 +24,6 @@ namespace LiteralRepository
         public static readonly string FinalRoundMusic = "FinalRound";
         public static readonly string AudioMixer = "AudioMixer";
 
-
         public static readonly string Login = "00_Login";
         public static readonly string Lobby = "01_Lobby";
         public static readonly string MatchingStandby = "02_MatchingStandby";

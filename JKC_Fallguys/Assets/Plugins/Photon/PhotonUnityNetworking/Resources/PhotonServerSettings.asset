@@ -87,6 +87,15 @@ MonoBehaviour:
   - RpcWalkFootStep
   - RpcRunFootStep
   - DestroyOnNetwork
+  - RpcDestroyOnNetwork
+  - RpcSetParentStageRepository
+  - RpcClearPlayerObject
+  - RpcEveryClientPhotonViewTransferOwnerShip
+  - RpcSetCommonReference
+  - RpcSetSpecialReference
+  - RpcSetHoopControllerReference
+  - RpcSetDeActivePlayerObject
+  - RpcSetInitialize
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

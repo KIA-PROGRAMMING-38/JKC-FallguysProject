@@ -1,5 +1,4 @@
 using Photon.Pun;
-using UniRx;
 
 /// <summary>
 /// 맵의 게임 시간을 설정하고 게임 진행에 관련된 일을 처리합니다.
@@ -12,6 +11,19 @@ public abstract class StageController : MonoBehaviourPun
     {
         SetGameTime();
         InitializeRx();
+        StageDontDestroyOnLoadSet();
+    }
+
+    private void StageDontDestroyOnLoadSet()
+    {
+        DontDestroyOnLoad(gameObject);
+        photonView.RPC("RpcSetParentStageRepository", RpcTarget.AllBuffered);
+    }
+
+    [PunRPC]
+    public void RpcSetParentStageRepository()
+    {
+        transform.SetParent(StageRepository.Instance.gameObject.transform);
     }
 
     /// <summary>

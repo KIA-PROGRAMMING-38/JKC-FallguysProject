@@ -15,7 +15,7 @@ public class HoopLegendController : StageController
         
         _cancellationTokenSource = new CancellationTokenSource();
     }
-
+    
     protected override void SetGameTime()
     {
         StageSceneModel.SetRemainingTime(60);

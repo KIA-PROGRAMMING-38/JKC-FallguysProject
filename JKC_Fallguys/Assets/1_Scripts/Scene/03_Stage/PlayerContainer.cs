@@ -1,11 +1,13 @@
 using System.Collections.Generic;
+using Model;
 using UnityEngine;
 
 public class PlayerContainer
 {
     private GameObject _stageDataManager;
     private PlayerObserverCamera _observer;
-    private readonly List<GameObject> _observingList = new List<GameObject>();
+    private readonly Dictionary<int, GameObject> _playerGameObjects = new Dictionary<int, GameObject>();
+    private readonly List<int> _observedIndexList = new List<int>();
     private int _observingIndex = 0;
 
     public void Initialize(GameObject stageDataManager)
@@ -15,9 +17,7 @@ public class PlayerContainer
     
     public void ObservedNextPlayer()
     {
-        Debug.Log($"InitNextPlayer: {_observingList.Count}");
-        
-        if (_observingList.Count == 0)
+        if (_playerGameObjects.Count == 0)
         {
             return;
         }
@@ -25,21 +25,19 @@ public class PlayerContainer
         int startIndex = _observingIndex;
         do
         {
-            Debug.Log($"PrevObservingIndex: {_observingIndex}");
-            _observingIndex = (_observingIndex + 1) % _observingList.Count;
-            Debug.Log($"NextObservingIndex: {_observingIndex}");
+            _observingIndex = (_observingIndex + 1) % _observedIndexList.Count;
             
-            GameObject current = _observingList[_observingIndex];
-            Debug.Log($"First: {current.name}");
+            GameObject current = _playerGameObjects[_observedIndexList[_observingIndex]];
             if (current == null || !current.activeSelf)
                 continue;
 
-            Debug.Log($"Second: {_observingList[_observingIndex].name}");
             Transform character = current.transform.Find("Character");
             if (character == null)
                 continue;
 
             _observer.BindObservedCharacter(character);
+            PlayerReferenceManager refManager = current.GetComponent<PlayerReferenceManager>();
+            StageSceneModel.SetObservedPlayerActorName(refManager.ArchievePlayerNickName); 
             return;
         }
         while (_observingIndex != startIndex);
@@ -48,16 +46,18 @@ public class PlayerContainer
 
     public void ObservedPrevPlayer()
     {
-        int startIndex = _observingIndex;
-        while (true)
+        if (_playerGameObjects.Count == 0)
         {
-            _observingIndex = (_observingIndex - 1 + _observingList.Count) % _observingList.Count;
+            return;
+        }
 
-            GameObject current = _observingList[_observingIndex];
-            if (current == null)
-                continue;
+        int startIndex = _observingIndex;
+        do
+        {
+            _observingIndex = (_observingIndex - 1 + _observedIndexList.Count) % _observedIndexList.Count;
 
-            if (!current.activeSelf)
+            GameObject current = _playerGameObjects[_observedIndexList[_observingIndex]];
+            if (current == null || !current.activeSelf)
                 continue;
 
             Transform character = current.transform.Find("Character");
@@ -65,9 +65,13 @@ public class PlayerContainer
                 continue;
 
             _observer.BindObservedCharacter(character);
+            PlayerReferenceManager refManager = current.GetComponent<PlayerReferenceManager>();
+            StageSceneModel.SetObservedPlayerActorName(refManager.ArchievePlayerNickName); 
             return;
         }
+        while (_observingIndex != startIndex);
     }
+
 
     public void BindObservingCamera(PlayerObserverCamera observer)
     {
@@ -76,8 +80,7 @@ public class PlayerContainer
     
     public void Clear()
     {
-        _observingList.Clear();
-        Debug.Log($"옵저빙리스트 클리어됨?: {_observingList.Count}");
+        _playerGameObjects.Clear();
         _observingIndex = 0;
         _observer = default;
     }
@@ -90,9 +93,10 @@ public class PlayerContainer
         {
             Transform childTransform = parentTransform.GetChild(i);
             GameObject childObject = childTransform.gameObject;
-        
-            _observingList.Add(childObject);
-            Debug.Log(childObject.name);
+            PlayerReferenceManager playerReferenceManager = childObject.GetComponent<PlayerReferenceManager>();
+
+            _playerGameObjects[playerReferenceManager.ArchievePlayerActorNumber] = childObject;
+            _observedIndexList.Add(playerReferenceManager.ArchievePlayerActorNumber);
         }
     }
 }
