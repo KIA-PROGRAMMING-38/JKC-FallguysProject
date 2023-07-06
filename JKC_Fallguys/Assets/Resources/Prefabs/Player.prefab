@@ -961,13 +961,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _diveForce: 100
-  _jumpForce: 300
+  _jumpForce: 290
   _rotSpeed: 4
-  _moveSpeed: 7
+  _moveSpeed: 6
   _groundCheckPoint: {fileID: 2387829583882509454}
   _castRadius: 0.2
   _groundCheckDistance: 3
-  _jumpMovementForce: 300
+  _jumpMovementForce: 250
   _diveRotationSpeed: 300
   _diveHeightDirection: 2
   _getUpRotationSpeed: 300
