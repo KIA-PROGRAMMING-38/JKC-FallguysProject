@@ -110,7 +110,6 @@ public class PlayerAnimation : MonoBehaviourPun
 
         if ( collision.impulse.magnitude > _topplingForce && !collision.gameObject.CompareTag( TagLiteral.Ground ) )
         {
-            Debug.Log("너 호출되는거니?");
             _animator.SetBool( AnimLiteral.IsFall, true );
             CheckFallStateAfterDelay( delay: 0.5f ).Forget();
         }
