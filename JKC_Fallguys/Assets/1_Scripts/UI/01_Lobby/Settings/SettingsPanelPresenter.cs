@@ -15,14 +15,19 @@ public class SettingsPanelPresenter : Presenter
 
     protected override void OnOccuredUserEvent()
     {
-        _settingsPanelView.ClosePanelButton
+        _settingsPanelView.ConfigsButton
             .OnClickAsObservable()
-            .Subscribe(_ => LobbySceneModel.SetLobbyState(LobbySceneModel.LobbyState.Home))
+            .Subscribe(_ => LobbySceneModel.SetLobbyState(LobbySceneModel.LobbyState.Configs))
             .AddTo(_compositeDisposable);
 
         _settingsPanelView.HowToPlayButton
             .OnClickAsObservable()
             .Subscribe(_ => LobbySceneModel.SetLobbyState(LobbySceneModel.LobbyState.HowToPlay))
+            .AddTo(_compositeDisposable);
+
+        _settingsPanelView.ClosePanelButton
+            .OnClickAsObservable()
+            .Subscribe(_ => LobbySceneModel.SetLobbyState(LobbySceneModel.LobbyState.Home))
             .AddTo(_compositeDisposable);
 
         _settingsPanelView.GameExitButton.onClick.AddListener(GameExit);
