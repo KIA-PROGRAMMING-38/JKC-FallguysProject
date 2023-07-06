@@ -4,6 +4,7 @@ using Cysharp.Threading.Tasks;
 using Model;
 using Photon.Pun;
 using UniRx;
+using UnityEngine;
 
 public class HoopLegendController : StageController
 {
@@ -18,7 +19,7 @@ public class HoopLegendController : StageController
     
     protected override void SetGameTime()
     {
-        StageSceneModel.SetRemainingTime(60);
+        StageSceneModel.SetRemainingTime(20);
     }
 
     protected override void InitializeRx()
@@ -30,7 +31,7 @@ public class HoopLegendController : StageController
 
         StageSceneModel.RemainingTime
             .Where(RemainingTime => RemainingTime == 0)
-            .Subscribe(_ => RpcEndGame())
+            .Subscribe(_ => EndGame())
             .AddTo(this);
     }
     

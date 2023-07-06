@@ -96,6 +96,7 @@ MonoBehaviour:
   - RpcSetHoopControllerReference
   - RpcSetDeActivePlayerObject
   - RpcSetInitialize
+  - RpcAddPlayerToFailedClearStagePlayers
   - RpcPlayJumpSound
   - RpcPlayDiveSound
   - RpcPlayFallSound

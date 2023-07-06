@@ -97,8 +97,8 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
     {
         await UniTask.Delay(TimeSpan.FromSeconds(4f), DelayType.UnscaledDeltaTime);
 
-        EnterNextScene();
         photonView.RPC("SetRoundState", RpcTarget.All);
+        EnterNextScene();
     }
 
     [PunRPC]
@@ -109,9 +109,6 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
 
     private void EnterNextScene()
     {
-        if (!photonView.IsMine)
-            return;
-        
         if (StageDataManager.Instance.MapDatas[StageDataManager.Instance.MapPickupIndex.Value].Info.Type !=
             MapData.MapType.Survivor)
         {
@@ -121,7 +118,8 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
         {
             GiveScore();
         }
-        
+
+        CalculateLosersScore();
         EndLogic();
         
         photonView.RPC("RpcEveryClientPhotonViewTransferOwnerShip", RpcTarget.AllBuffered);
@@ -155,7 +153,6 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
     [PunRPC]
     public void RpcClearPlayerObject()
     {
-        
         List<GameObject> children = new List<GameObject>();
 
         foreach (Transform child in StageDataManager.Instance.gameObject.transform)
@@ -191,7 +188,7 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
                 {
                     PlayerData playerData = StageDataManager.Instance.PlayerDataByIndex[playerIndex];
                     int oldScore = playerData.Score;
-                    int newScore = oldScore + 500;
+                    int newScore = oldScore + 2500;
                     playerData.Score = newScore;
                     StageDataManager.Instance.PlayerDataByIndex[playerIndex] = playerData; // Updated PlayerData back to dictionary
                 }
@@ -201,7 +198,7 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
 
     private void RankingSettlement()
     {
-        int[] rankRewards = { 1000, 500, 300 }; // 1등에게 1000점, 2등에게 500점, 3등에게 300점 부여.
+        int[] rankRewards = { 5000, 2000, 500 };
 
         for (int i = 0; i < rankRewards.Length; i++)
         {
@@ -217,6 +214,23 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
                     playerData.Score = updatedScore;
                     StageDataManager.Instance.PlayerDataByIndex[playerIndex] = playerData; // Updated PlayerData back to dictionary
                 }
+            }
+        }
+    }
+
+    private void CalculateLosersScore()
+    {
+        foreach (int elem in StageDataManager.Instance.FailedClearStagePlayers)
+        {
+            if (StageDataManager.Instance.PlayerDataByIndex.ContainsKey(elem))
+            {
+                PlayerData playerData = StageDataManager.Instance.PlayerDataByIndex[elem];
+                int prevScore = playerData.Score;
+                
+                Debug.Log(playerData.Score);
+                int updatedScore = prevScore + 100;
+                playerData.Score = updatedScore;
+                StageDataManager.Instance.PlayerDataByIndex[elem] = playerData;
             }
         }
     }
