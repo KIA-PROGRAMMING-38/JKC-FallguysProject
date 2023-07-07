@@ -7,13 +7,13 @@ public class RoundResultSceneInitializer : SceneInitializer
     protected override void OnGetResources()
     {
         ResourceManager.Instantiate
-            (Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.RoundResult, "BackgroundImage"));
+            (Path.Combine(PathLiteral.RoundResult, "BackgroundImage"));
         ResourceManager.Instantiate
-            (Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.RoundResult, "Platform"));
+            (Path.Combine(PathLiteral.RoundResult, "Platform"));
         ResourceManager.Instantiate
-            (Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.RoundResult, "RoundResultViewController"));
+            (Path.Combine(PathLiteral.RoundResult, "RoundResultViewController"));
         ResourceManager.Instantiate
-            (Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.RoundResult, "ResultRoundSetupManager"));
+            (Path.Combine(PathLiteral.RoundResult, "ResultRoundSetupManager"));
         
         if (PhotonNetwork.IsMasterClient)
         {

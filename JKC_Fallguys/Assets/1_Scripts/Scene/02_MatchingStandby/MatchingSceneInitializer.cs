@@ -25,18 +25,18 @@ public class MatchingSceneInitializer : SceneInitializer
     protected override void OnGetResources()
     {
         ResourceManager.Instantiate
-            (Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.MatchingStandby, PathLiteral.Object, "PhotonMatchingSceneEventManager"));
+            (Path.Combine(PathLiteral.MatchingStandby, PathLiteral.Object, "PhotonMatchingSceneEventManager"));
         
         _respawnZone = ResourceManager.Instantiate
-            (Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.MatchingStandby, PathLiteral.Object, "RespawnZone"))
+            (Path.Combine(PathLiteral.MatchingStandby, PathLiteral.Object, "RespawnZone"))
             .GetComponent<RespawnZone>();
         _lineEffectPooler = ResourceManager.Instantiate
-            (Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.MatchingStandby, PathLiteral.Object, "LineEffectPooler"))
+            (Path.Combine(PathLiteral.MatchingStandby, PathLiteral.Object, "LineEffectPooler"))
             .GetComponent<LineEffectPooler>();
         
         ResourceManager.Instantiate
-            (Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.MatchingStandby, PathLiteral.Object, "ReleaseZone"));
+            (Path.Combine(PathLiteral.MatchingStandby, PathLiteral.Object, "ReleaseZone"));
         ResourceManager.Instantiate
-            (Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.MatchingStandby, PathLiteral.Object, "MatchingSceneFallGuy"));
+            (Path.Combine(PathLiteral.MatchingStandby, PathLiteral.Object, "MatchingSceneFallGuy"));
     }
 }

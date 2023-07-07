@@ -58,6 +58,8 @@ public class PlayerContainer
             return;
         }
         while (_observingIndex != startIndex);
+        
+        _observer.gameObject.SetActive(false);
     }
 
     private void SetCharacter(Transform character)
@@ -90,11 +92,8 @@ public class PlayerContainer
             return;
         }
         while (_observingIndex != startIndex);
-    }
-
-    private void SetBindObject()
-    {
         
+        _observer.gameObject.SetActive(false);
     }
 
     public void BindObservingCamera(PlayerObserverCamera observer)
