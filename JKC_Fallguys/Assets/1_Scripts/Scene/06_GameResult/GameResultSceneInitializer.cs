@@ -1,3 +1,4 @@
+using System.IO;
 using LiteralRepository;
 using Model;
 using Photon.Pun;
@@ -16,17 +17,17 @@ public class GameResultSceneInitializer : SceneInitializer
     {
         GameResultSceneFallGuyController fallGuyController = 
             Instantiate
-                (ResourceManager.Load<GameObject>(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.GameResult, "GameResultSceneFallGuy"))
+            (Resources.Load<GameObject>(Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.GameResult, "GameResultSceneFallGuy")))
                 .GetComponent<GameResultSceneFallGuyController>();
         fallGuyController.BodyRenderer.material.mainTexture = PlayerTextureRegistry.PlayerTextures[ResourceManager.PlayerTextureIndex.Value];
         
         Instantiate
-            (ResourceManager.Load<GameObject>(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.GameResult, "GameResultPlatform"));
+            (Resources.Load<GameObject>(Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.GameResult, "GameResultPlatform")));
         Instantiate
-            (ResourceManager.Load<GameObject>(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.GameResult, PathLiteral.UI, "GameResultBackgroundImage"));
+            (Resources.Load<GameObject>(Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.GameResult, PathLiteral.UI, "GameResultBackgroundImage")));
         Instantiate
-            (ResourceManager.Load<GameObject>(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.GameResult, PathLiteral.UI, "ResultViewController"));
+            (Resources.Load<GameObject>(Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.GameResult, PathLiteral.UI, "ResultViewController")));
         Instantiate
-            (ResourceManager.Load<GameObject>(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.GameResult, "GameResultScenePhotonController"));
+            (Resources.Load<GameObject>(Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.GameResult, "GameResultScenePhotonController")));
     }
 }

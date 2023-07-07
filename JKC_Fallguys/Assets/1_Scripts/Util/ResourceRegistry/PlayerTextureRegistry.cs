@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.IO;
 using LiteralRepository;
 using UnityEngine;
 
@@ -15,6 +16,6 @@ public static class PlayerTextureRegistry
     {
         PlayerTextures = new List<Texture>(
             Resources.LoadAll<Texture>(
-                ResourceManager.SetDataPath(PathLiteral.Textures, PathLiteral.PlayerTexture)));
+                Path.Combine(PathLiteral.Textures, PathLiteral.PlayerTexture)));
     }
 }

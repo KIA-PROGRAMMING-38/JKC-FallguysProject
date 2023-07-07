@@ -1,3 +1,4 @@
+using System.IO;
 using LiteralRepository;
 using UnityEngine;
 using UnityEngine.Pool;
@@ -28,7 +29,7 @@ public class LoadingSceneSplashArtCardPool
     private LoadingSceneSplashArtCard GetPrefab()
     {
         return Resources.Load<LoadingSceneSplashArtCard>
-        (ResourceManager.SetDataPath(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.GameLoading, "LoadingSceneSplashArtCard"));
+        (Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.GameLoading, "LoadingSceneSplashArtCard"));
     }
     
     private void ActionOnGet(LoadingSceneSplashArtCard card)

@@ -14,38 +14,28 @@ public static class ResourceManager
         _playerTextureIndex.Value = index;
     }
 
-    public static T Load<T>(params string[] filePath) where T : Object
+    public static T Load<T>(string filePath) where T : Object
     {
-        T resource = Resources.Load<T>(SetDataPath(filePath));
+        T resource = Resources.Load<T>(filePath);
 
         if (resource == null)
         {
-            Debug.LogError("Resource not found at path: " + SetDataPath(filePath));
+            Debug.LogError("Resource not found at path: " + filePath);
         }
 
         return resource;
     }
 
-    public static T[] LoadAll<T>(params string[] filePath) where T : Object
+    public static T[] LoadAll<T>(string filePath) where T : Object
     {
-        T[] resources = Resources.LoadAll<T>(SetDataPath(filePath));
+        T[] resources = Resources.LoadAll<T>(filePath);
         
         if (resources == null)
         {
-            Debug.LogError("Resource not found at path: " + SetDataPath(filePath));
+            Debug.LogError("Resource not found at path: " + filePath);
         }
 
         return resources;
-    }
-    
-    /// <summary>
-    /// 데이터 바인딩 위한 경로를 설정합니다.
-    /// </summary>
-    /// <param name="filePath">파일 경로 세그먼트를 나타내는 문자열 배열입니다.</param>
-    /// <returns>조합된 파일 경로를 나타내는 문자열을 반환합니다.</returns>
-    public static string SetDataPath(params string[] filePath)
-    {
-        return string.Join("/", filePath);
     }
 
     public static T JsonLoader<T>(string filePath)
@@ -63,5 +53,4 @@ public static class ResourceManager
 
         return data;
     }
-
 }

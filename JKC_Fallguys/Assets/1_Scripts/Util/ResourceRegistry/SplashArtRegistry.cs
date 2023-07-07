@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.IO;
 using LiteralRepository;
 using UnityEngine;
 
@@ -14,6 +15,6 @@ public static class SplashArtRegistry
     public static void GetSplashArtData()
     {
         SpriteArts = new List<Sprite>
-            (Resources.LoadAll<Sprite>(ResourceManager.SetDataPath(PathLiteral.UI, PathLiteral.GameLoading)));
+            (Resources.LoadAll<Sprite>(Path.Combine(PathLiteral.UI, PathLiteral.GameLoading)));
     }
 }

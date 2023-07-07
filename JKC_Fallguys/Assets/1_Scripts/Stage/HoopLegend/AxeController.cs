@@ -1,3 +1,4 @@
+using System.IO;
 using LiteralRepository;
 using Photon.Pun;
 using UnityEngine;
@@ -17,7 +18,7 @@ public class AxeController : MonoBehaviourPun
 
             for (int i = 0; i < axeData.positions.Length; ++i)
             {
-                string filePath = ResourceManager.SetDataPath(PathLiteral.Prefabs, "Stage", PathLiteral.HoopLegend, "Axe");
+                string filePath = Path.Combine(PathLiteral.Prefabs, "Stage", PathLiteral.HoopLegend, "Axe");
             
                 PhotonNetwork.Instantiate
                     (filePath, axeData.positions[i], Quaternion.Euler(axeData.rotations[i]));

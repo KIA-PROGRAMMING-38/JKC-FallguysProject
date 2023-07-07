@@ -1,3 +1,4 @@
+using System.IO;
 using LiteralRepository;
 using Model;
 using ResourceRegistry;
@@ -23,7 +24,7 @@ public class RoundResultSetupManager : MonoBehaviour
     
     private void Awake()
     {
-        _runtimeAnimator = Resources.LoadAll<RuntimeAnimatorController>(ResourceManager.SetDataPath(PathLiteral.AnimatorController, "ResultRoundAnimator"));
+        _runtimeAnimator = Resources.LoadAll<RuntimeAnimatorController>(Path.Combine(PathLiteral.AnimatorController, "ResultRoundAnimator"));
     }
 
     private void Start()
@@ -42,7 +43,7 @@ public class RoundResultSetupManager : MonoBehaviour
                 break;
             
             _fallGuy[fallGuyIndex] = ResourceManager.Load<GameObject>(
-                ResourceManager.SetDataPath(PathLiteral.Prefabs, PathLiteral.Scene, "05_RoundResult", "RoundResultFallGuy"));
+                Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, "05_RoundResult", "RoundResultFallGuy"));
 
             GameObject fallGuy = 
                 Instantiate(_fallGuy[fallGuyIndex], _fallGuyPositions[fallGuyIndex], _fallGuy[fallGuyIndex].transform.rotation);

@@ -1,3 +1,4 @@
+using System.IO;
 using UnityEngine;
 using LiteralRepository;
 using ResourceRegistry;
@@ -6,12 +7,12 @@ public class LoginSceneInitializer : SceneInitializer
 {
     protected override void OnGetResources()
     {
-        Instantiate(ResourceManager.Load<GameObject>
-            (PathLiteral.Prefabs, PathLiteral.Manager, "PhotonLoginManager"));
-        Instantiate(ResourceManager.Load<GameObject>
-            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Login, "LoginBackgroundViewController"));
-        Instantiate(ResourceManager.Load<GameObject>
-            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Login, "LoginPanelViewController"));
+        Instantiate(Resources.Load<GameObject>(Path.Combine
+            (PathLiteral.Prefabs, PathLiteral.Manager, "PhotonLoginManager")));
+        Instantiate(Resources.Load<GameObject>(Path.Combine
+            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Login, "LoginBackgroundViewController")));
+        Instantiate(Resources.Load<GameObject>(Path.Combine
+            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Login, "LoginPanelViewController")));
 
         SetAudioMixerVolume();
 

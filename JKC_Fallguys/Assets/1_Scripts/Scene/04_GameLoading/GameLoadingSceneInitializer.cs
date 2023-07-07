@@ -1,3 +1,4 @@
+using System.IO;
 using LiteralRepository;
 using Photon.Pun;
 using UnityEngine;
@@ -18,23 +19,23 @@ public class GameLoadingSceneInitializer : SceneInitializer
     
     protected override void OnGetResources()
     {
-        Instantiate(ResourceManager.Load<GameObject>
-            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.GameLoading, "GameLoadingSceneManager"));
-        Instantiate(ResourceManager.Load<GameObject>
-            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.GameLoading, PathLiteral.UI, "GameLoadingBackgroundImage"));
-        Instantiate(ResourceManager.Load<GameObject>
-            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.GameLoading, PathLiteral.UI, "HorizontalRendererViewController"));
-        Instantiate(ResourceManager.Load<GameObject>
-            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.GameLoading, PathLiteral.UI, "MapInformationViewController"));
-        Instantiate(ResourceManager.Load<GameObject>
-            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.GameLoading, PathLiteral.UI, "WhiteScreenViewController"));
-        Instantiate(ResourceManager.Load<GameObject>
-            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.GameLoading, PathLiteral.UI, "GameLoadingMainPanelViewController"));
+        Instantiate(Resources.Load<GameObject>(Path.Combine
+            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.GameLoading, "GameLoadingSceneManager")));
+        Instantiate(Resources.Load<GameObject>(Path.Combine
+            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.GameLoading, PathLiteral.UI, "GameLoadingBackgroundImage")));
+        Instantiate(Resources.Load<GameObject>(Path.Combine
+            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.GameLoading, PathLiteral.UI, "HorizontalRendererViewController")));
+        Instantiate(Resources.Load<GameObject>(Path.Combine
+            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.GameLoading, PathLiteral.UI, "MapInformationViewController")));
+        Instantiate(Resources.Load<GameObject>(Path.Combine
+            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.GameLoading, PathLiteral.UI, "WhiteScreenViewController")));
+        Instantiate(Resources.Load<GameObject>(Path.Combine
+            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.GameLoading, PathLiteral.UI, "GameLoadingMainPanelViewController")));
         
 
         if (PhotonNetwork.IsMasterClient)
         {
-            string filePath = ResourceManager.SetDataPath(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.GameLoading, "MapSelectionManager");
+            string filePath = Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.GameLoading, "MapSelectionManager");
             PhotonNetwork.Instantiate(filePath, transform.position, transform.rotation);
         }
     }

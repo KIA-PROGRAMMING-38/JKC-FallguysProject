@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using Cysharp.Threading.Tasks;
 using LiteralRepository;
 using Model;
@@ -25,25 +26,25 @@ public class StageSceneInitializer : SceneInitializer
     protected override void OnGetResources()
     {
         Instantiate
-            (ResourceManager.Load<GameObject>(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, PathLiteral.UI, "ExitButtonViewController"));
+            (Resources.Load<GameObject>(Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, PathLiteral.UI, "ExitButtonViewController")));
         Instantiate
-            (ResourceManager.Load<GameObject>(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, PathLiteral.UI, "PurposePanelViewController"));
+            (Resources.Load<GameObject>(Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, PathLiteral.UI, "PurposePanelViewController")));
         Instantiate
-            (ResourceManager.Load<GameObject>(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, PathLiteral.UI, "StageExitPanelViewController"));
+            (Resources.Load<GameObject>(Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, PathLiteral.UI, "StageExitPanelViewController")));
         Instantiate
-            (ResourceManager.Load<GameObject>(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, PathLiteral.UI, "StageStartViewController"));
+            (Resources.Load<GameObject>(Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, PathLiteral.UI, "StageStartViewController")));
         Instantiate
-            (ResourceManager.Load<GameObject>(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, PathLiteral.UI, "RemainingTimeViewController"));
+            (Resources.Load<GameObject>(Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, PathLiteral.UI, "RemainingTimeViewController")));
         Instantiate
-            (ResourceManager.Load<GameObject>(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, PathLiteral.UI, "ResultInStageViewController"));
+            (Resources.Load<GameObject>(Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, PathLiteral.UI, "ResultInStageViewController")));
         Instantiate
-            (ResourceManager.Load<GameObject>(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, PathLiteral.UI, "RoundEndViewController"));
+            (Resources.Load<GameObject>(Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, PathLiteral.UI, "RoundEndViewController")));
         Instantiate
-            (ResourceManager.Load<GameObject>(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, PathLiteral.UI, "ObservedPlayerNameViewController"));
+            (Resources.Load<GameObject>(Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, PathLiteral.UI, "ObservedPlayerNameViewController")));
         Instantiate
-            (ResourceManager.Load<GameObject>(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, "PlayerObserverCamera"));
+            (Resources.Load<GameObject>(Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, "PlayerObserverCamera")));
         _stageAudioManager = Instantiate
-            (ResourceManager.Load<GameObject>(PathLiteral.Prefabs, PathLiteral.Manager, "StageAudioManager"));
+            (Resources.Load<GameObject>(Path.Combine(PathLiteral.Prefabs, PathLiteral.Manager, "StageAudioManager")));
 
 
         SetStageAudioComponent();
@@ -70,12 +71,12 @@ public class StageSceneInitializer : SceneInitializer
 
     private async UniTaskVoid AsyncPhotonNetworkInstantiate()
     {
-        string filePathInstantiateManager = ResourceManager.SetDataPath(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, "StageInstantiateManager");
+        string filePathInstantiateManager = Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, "StageInstantiateManager");
         PhotonNetwork.Instantiate(filePathInstantiateManager, transform.position, transform.rotation);
         
         await UniTask.Delay(TimeSpan.FromSeconds(0.4f));
         
-        string filePathPhotonRoomManager = ResourceManager.SetDataPath(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, "PhotonStageSceneRoomManager");
+        string filePathPhotonRoomManager = Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, "PhotonStageSceneRoomManager");
         PhotonNetwork.Instantiate(filePathPhotonRoomManager, transform.position, transform.rotation);
     }
 }
