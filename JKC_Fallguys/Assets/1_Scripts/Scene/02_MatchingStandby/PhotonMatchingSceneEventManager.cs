@@ -1,3 +1,4 @@
+using System.IO;
 using LiteralRepository;
 using Photon.Pun;
 using Photon.Realtime;
@@ -53,7 +54,7 @@ public class PhotonMatchingSceneEventManager : MonoBehaviourPunCallbacks
 
     private void OnInstantiatePhotonRoomManager()
     {
-        string filePath = ResourceManager.SetDataPath
+        string filePath = Path.Combine
             (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.MatchingStandby, PathLiteral.Object, "PhotonMatchingSceneRoomManager");
         
         PhotonMatchingSceneRoomManager roomManager = 

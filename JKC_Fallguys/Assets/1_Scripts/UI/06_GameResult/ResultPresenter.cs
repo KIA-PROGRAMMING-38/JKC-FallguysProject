@@ -1,3 +1,4 @@
+using System.IO;
 using LiteralRepository;
 using Model;
 using UniRx;
@@ -26,12 +27,10 @@ public class ResultPresenter : Presenter
     protected override void OnUpdatedModel()
     {
         ResultSceneModel.IsVictorious.Where(isVictorious => isVictorious == true)
-            // .First()
             .Subscribe(_ => LoadVictorySprite())
             .AddTo(_compositeDisposable);
         
         ResultSceneModel.IsVictorious.Where(isVictorious => isVictorious == false)
-            // .First()
             .Subscribe(_ => LoadLoseSprite())
             .AddTo(_compositeDisposable);
     }
@@ -39,13 +38,13 @@ public class ResultPresenter : Presenter
     private void LoadVictorySprite()
     {
         _resultView.ResultTextImage.sprite = 
-            ResourceManager.Load<Sprite>(PathLiteral.UI, PathLiteral.GameResult, PathLiteral.VictoryTextImage);
+            Resources.Load<Sprite>(Path.Combine(PathLiteral.UI, PathLiteral.GameResult, PathLiteral.VictoryTextImage));
     }
     
     private void LoadLoseSprite()
     {
         _resultView.ResultTextImage.sprite = 
-            ResourceManager.Load<Sprite>(PathLiteral.UI, PathLiteral.GameResult, PathLiteral.LoseTextImage);
+            Resources.Load<Sprite>(Path.Combine(PathLiteral.UI, PathLiteral.GameResult, PathLiteral.LoseTextImage));
     }
     
     public override void OnRelease()

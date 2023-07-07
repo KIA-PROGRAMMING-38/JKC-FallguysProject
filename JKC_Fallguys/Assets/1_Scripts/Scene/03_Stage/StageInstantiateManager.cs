@@ -1,3 +1,4 @@
+using System.IO;
 using LiteralRepository;
 using Photon.Pun;
 using UnityEngine;
@@ -32,7 +33,7 @@ public class StageInstantiateManager : MonoBehaviourPun
 
     private void InstantiatePlayer(MapData mapData)
     {
-        string filePath = ResourceManager.SetDataPath(PathLiteral.Prefabs, TagLiteral.Player);
+        string filePath = Path.Combine(PathLiteral.Prefabs, TagLiteral.Player);
         Vector3 spawnPoint = mapData.Data.PlayerSpawnPosition[PhotonNetwork.LocalPlayer.ActorNumber];
         PlayerPhotonController playerPhotonController =
             PhotonNetwork.Instantiate(filePath, spawnPoint, Quaternion.identity)

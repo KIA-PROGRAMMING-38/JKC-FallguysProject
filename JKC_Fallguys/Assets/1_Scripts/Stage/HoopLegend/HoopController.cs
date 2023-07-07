@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using LiteralRepository;
 using Photon.Pun;
@@ -32,14 +33,14 @@ public class HoopController : MonoBehaviourPun
 
         for (int i = 0; i < commonHoopData.positions.Length; ++i)
         {
-            string filePath = ResourceManager.SetDataPath(PathLiteral.Prefabs, "Stage", PathLiteral.HoopLegend, "CommonHoop");
+            string filePath = Path.Combine(PathLiteral.Prefabs, "Stage", PathLiteral.HoopLegend, "CommonHoop");
             
             PhotonNetwork.Instantiate(filePath, commonHoopData.positions[i], Quaternion.Euler(commonHoopData.rotations[i]));
         }
         
         for (int i = 0; i < specialHoopData.positions.Length; ++i)
         {
-            string filePath = ResourceManager.SetDataPath(PathLiteral.Prefabs, "Stage", PathLiteral.HoopLegend, "SpecialHoop");
+            string filePath = Path.Combine(PathLiteral.Prefabs, "Stage", PathLiteral.HoopLegend, "SpecialHoop");
             
             PhotonNetwork.Instantiate(filePath, specialHoopData.positions[i], Quaternion.Euler(specialHoopData.rotations[i]));
         }

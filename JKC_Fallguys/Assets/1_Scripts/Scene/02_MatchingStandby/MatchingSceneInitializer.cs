@@ -1,3 +1,4 @@
+using System.IO;
 using LiteralRepository;
 using Model;
 using UnityEngine;
@@ -23,19 +24,19 @@ public class MatchingSceneInitializer : SceneInitializer
 
     protected override void OnGetResources()
     {
-        Instantiate(ResourceManager.Load<GameObject>
-            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.MatchingStandby, PathLiteral.Object, "PhotonMatchingSceneEventManager"));
+        ResourceManager.Instantiate
+            (Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.MatchingStandby, PathLiteral.Object, "PhotonMatchingSceneEventManager"));
         
-        _respawnZone = Instantiate(ResourceManager.Load<GameObject>
-            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.MatchingStandby, PathLiteral.Object, "RespawnZone"))
+        _respawnZone = ResourceManager.Instantiate
+            (Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.MatchingStandby, PathLiteral.Object, "RespawnZone"))
             .GetComponent<RespawnZone>();
-        _lineEffectPooler = Instantiate(ResourceManager.Load<GameObject>
-            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.MatchingStandby, PathLiteral.Object, "LineEffectPooler"))
+        _lineEffectPooler = ResourceManager.Instantiate
+            (Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.MatchingStandby, PathLiteral.Object, "LineEffectPooler"))
             .GetComponent<LineEffectPooler>();
         
-        Instantiate(ResourceManager.Load<GameObject>
-            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.MatchingStandby, PathLiteral.Object, "ReleaseZone"));
-        Instantiate(ResourceManager.Load<GameObject>
-            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.MatchingStandby, PathLiteral.Object, "MatchingSceneFallGuy"));
+        ResourceManager.Instantiate
+            (Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.MatchingStandby, PathLiteral.Object, "ReleaseZone"));
+        ResourceManager.Instantiate
+            (Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.MatchingStandby, PathLiteral.Object, "MatchingSceneFallGuy"));
     }
 }
