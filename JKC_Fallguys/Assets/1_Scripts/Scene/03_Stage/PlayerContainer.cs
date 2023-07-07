@@ -1,20 +1,41 @@
 using System.Collections.Generic;
 using Model;
+using UniRx;
 using UnityEngine;
 
 public class PlayerContainer
 {
+    private CompositeDisposable _compositeDisposable = new CompositeDisposable();
     private GameObject _stageDataManager;
     private PlayerObserverCamera _observer;
     private readonly Dictionary<int, GameObject> _playerGameObjects = new Dictionary<int, GameObject>();
     private readonly List<int> _observedIndexList = new List<int>();
     private int _observingIndex = 0;
+    
+    private ReactiveProperty<GameObject> _targetObject = new ReactiveProperty<GameObject>();
 
     public void Initialize(GameObject stageDataManager)
     {
         _stageDataManager = stageDataManager;
+
+        InitializeRx();
+    }
+
+    private void InitializeRx()
+    {
+        _targetObject
+            .Where(obj => obj != null)
+            .Select(obj => obj.ObserveEveryValueChanged(obj => obj.activeSelf))
+            .Switch()
+            .Subscribe(_ => ObservedNextPlayer())
+            .AddTo(_compositeDisposable);
     }
     
+    private void SetObservationTarget(GameObject gameObject)
+    {
+        _targetObject.Value = gameObject;
+    }
+
     public void ObservedNextPlayer()
     {
         if (_playerGameObjects.Count == 0)
@@ -35,14 +56,17 @@ public class PlayerContainer
             if (character == null)
                 continue;
 
-            _observer.BindObservedCharacter(character);
-            PlayerReferenceManager refManager = current.GetComponent<PlayerReferenceManager>();
-            StageSceneModel.SetObservedPlayerActorName(refManager.ArchievePlayerNickName); 
+            SetCharacter(character);
             return;
         }
         while (_observingIndex != startIndex);
     }
 
+    private void SetCharacter(Transform character)
+    {
+        _observer.BindObservedCharacter(character);
+        SetObservationTarget(character.parent.gameObject);
+    }
 
     public void ObservedPrevPlayer()
     {
@@ -64,14 +88,16 @@ public class PlayerContainer
             if (character == null)
                 continue;
 
-            _observer.BindObservedCharacter(character);
-            PlayerReferenceManager refManager = current.GetComponent<PlayerReferenceManager>();
-            StageSceneModel.SetObservedPlayerActorName(refManager.ArchievePlayerNickName); 
+            SetCharacter(character);
             return;
         }
         while (_observingIndex != startIndex);
     }
 
+    private void SetBindObject()
+    {
+        
+    }
 
     public void BindObservingCamera(PlayerObserverCamera observer)
     {
@@ -83,6 +109,7 @@ public class PlayerContainer
         _playerGameObjects.Clear();
         _observingIndex = 0;
         _observer = default;
+        SetObservationTarget(null);
     }
     
     public void FindAllObservedObjects()
@@ -98,5 +125,10 @@ public class PlayerContainer
             _playerGameObjects[playerReferenceManager.ArchievePlayerActorNumber] = childObject;
             _observedIndexList.Add(playerReferenceManager.ArchievePlayerActorNumber);
         }
+    }
+
+    public void OnRelease()
+    {
+        _compositeDisposable.Dispose();
     }
 }

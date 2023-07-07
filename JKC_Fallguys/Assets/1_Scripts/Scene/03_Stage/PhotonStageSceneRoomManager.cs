@@ -226,8 +226,6 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
             {
                 PlayerData playerData = StageDataManager.Instance.PlayerDataByIndex[elem];
                 int prevScore = playerData.Score;
-                
-                Debug.Log(playerData.Score);
                 int updatedScore = prevScore + 100;
                 playerData.Score = updatedScore;
                 StageDataManager.Instance.PlayerDataByIndex[elem] = playerData;

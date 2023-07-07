@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UniRx;
 
@@ -151,5 +152,11 @@ public class StageDataManager : SingletonMonoBehaviour<StageDataManager>
     public void SetGameStart(bool status)
     {
         _isGameStart.Value = status;
+    }
+
+    private void OnDestroy()
+    {
+        PlayerContainer.OnRelease();
+        PlayerContainer = default;
     }
 }

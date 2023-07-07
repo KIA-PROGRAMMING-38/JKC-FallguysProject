@@ -1,3 +1,4 @@
+using Model;
 using Photon.Pun;
 using UniRx;
 using UnityEngine;
@@ -42,5 +43,7 @@ public class PlayerObserverCamera : MonoBehaviour
     public void BindObservedCharacter(Transform followPlayerCharacter)
     {
         _observerCamera.UpdatePlayerTarget(followPlayerCharacter);
+        PlayerReferenceManager refManager = followPlayerCharacter.parent.GetComponent<PlayerReferenceManager>();
+        StageSceneModel.SetObservedPlayerActorName(refManager.ArchievePlayerNickName);
     }
 }
