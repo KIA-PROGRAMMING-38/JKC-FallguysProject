@@ -21,31 +21,31 @@ public class LobbySceneInitializer : SceneInitializer
     protected override void OnGetResources()
     {
         ResourceManager.Instantiate
-            (Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Lobby, "LobbySceneFallGuy"));
+            (Path.Combine(PathLiteral.Lobby, "LobbySceneFallGuy"));
         ResourceManager.Instantiate
-            (Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Lobby, PathLiteral.UI,"LobbyBackgroundImage"));
+            (Path.Combine(PathLiteral.Lobby, PathLiteral.UI,"LobbyBackgroundImage"));
         ResourceManager.Instantiate
-            (Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Lobby, PathLiteral.UI,"PlayerNamePlateViewController"));
+            (Path.Combine(PathLiteral.Lobby, PathLiteral.UI,"PlayerNamePlateViewController"));
         ResourceManager.Instantiate
-            (Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Lobby, PathLiteral.UI,"TopButtonListViewController"));
+            (Path.Combine(PathLiteral.Lobby, PathLiteral.UI,"TopButtonListViewController"));
         ResourceManager.Instantiate
-            (Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Lobby, PathLiteral.UI,"EnterConfigViewController"));
+            (Path.Combine(PathLiteral.Lobby, PathLiteral.UI,"EnterConfigViewController"));
         ResourceManager.Instantiate
-            (Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Lobby, PathLiteral.UI,"EnterMatchingStandbyViewController"));
+            (Path.Combine(PathLiteral.Lobby, PathLiteral.UI,"EnterMatchingStandbyViewController"));
         
         ResourceManager.Instantiate
-            (Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Lobby, PathLiteral.UI,"HowToPlayViewController"));
+            (Path.Combine(PathLiteral.Lobby, PathLiteral.UI,"HowToPlayViewController"));
         ResourceManager.Instantiate
-            (Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Lobby, PathLiteral.UI,"SettingsPanelViewController"));
+            (Path.Combine(PathLiteral.Lobby, PathLiteral.UI,"SettingsPanelViewController"));
         ResourceManager.Instantiate
-            (Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Lobby, PathLiteral.UI,"ConfigsViewController"));
+            (Path.Combine(PathLiteral.Lobby, PathLiteral.UI,"ConfigsViewController"));
         ResourceManager.Instantiate
-            (Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Lobby, PathLiteral.UI,"ConfigReturnButtonViewController"));
+            (Path.Combine(PathLiteral.Lobby, PathLiteral.UI,"ConfigReturnButtonViewController"));
         
         ResourceManager.Instantiate
-            (Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Lobby, PathLiteral.UI, "Customization", "CostumeViewController"));
+            (Path.Combine(PathLiteral.Lobby, PathLiteral.UI, "Customization", "CostumeViewController"));
         ResourceManager.Instantiate
-            (Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Lobby, PathLiteral.UI, "Customization", "CustomizationViewController"));
+            (Path.Combine(PathLiteral.Lobby, PathLiteral.UI, "Customization", "CustomizationViewController"));
     }
     
     private void OnDestroy()
