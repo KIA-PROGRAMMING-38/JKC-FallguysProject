@@ -11,6 +11,7 @@ public class GameResultAudioScheduler : AudioScheduler
     {
         _audioSource = gameObject.AddComponent<AudioSource>();
         _audioSource.volume = 0.1f;
+        _audioSource.outputAudioMixerGroup = AudioRegistry.GameAudioMixer.FindMatchingGroups("Music")[0];
     }
     public override void PlayAudio()
     {

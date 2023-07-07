@@ -1,5 +1,6 @@
 using System;
 using LiteralRepository;
+using ResourceRegistry;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
@@ -8,14 +9,12 @@ public class VolumeSettings : MonoBehaviour
 {
     private Slider _volumeSlider;
     private Text _volumeValue;
-    private AudioMixer _audioMixer;
     private string _audioMixerParameterName;
 
     private void Awake()
     {
         _volumeSlider = GetComponent<Slider>();
         _volumeValue = transform.Find( "VolumeValue" ).GetComponent<Text>();
-        _audioMixer = Resources.Load<AudioMixer>( DataManager.SetDataPath( PathLiteral.Sounds, PathLiteral.AudioMixer ) );
         _audioMixerParameterName = transform.parent.name;
     }
     
@@ -26,7 +25,8 @@ public class VolumeSettings : MonoBehaviour
         LoadConfigsValue();
         
         // Login Scene에서 작성해야 함.
-        _audioMixer.SetFloat(_audioMixerParameterName, Mathf.Log10(_volumeSlider.value) * 20);
+        //AudioRegistry.GameAudioMixer.SetFloat(_audioMixerParameterName, Mathf.Log10(_volumeSlider.value) * 20);
+        //Debug.Log($"{gameObject.name}: {_volumeSlider.value}");
     }
 
     private void LoadConfigsValue()
@@ -37,7 +37,7 @@ public class VolumeSettings : MonoBehaviour
 
     private void SetVolume(float volume)
     {
-        _audioMixer.SetFloat( _audioMixerParameterName, Mathf.Log10( volume ) * 20 );
+        AudioRegistry.GameAudioMixer.SetFloat( _audioMixerParameterName, Mathf.Log10( volume ) * 20 );
         
         DisplayVolumeValueText(volume);
     }
