@@ -7,11 +7,11 @@ public class SettingsPanelView : View
     public Button ConfigsButton { get; private set; }
     public Button HowToPlayButton { get; private set; }
     public Button GameExitButton { get; private set; }
-    
     public Button ClosePanelButton { get; private set; }
+    
     private void Awake()
     {
-        BackgroundImage = transform.Find("BackgroundImage").GetComponent<Image>();
+        BackgroundImage = transform.Find("Default").GetComponent<Image>();
         Debug.Assert(BackgroundImage != null);
         ConfigsButton = transform.Find("ConfigsButton").GetComponent<Button>();
         Debug.Assert(ConfigsButton != null);

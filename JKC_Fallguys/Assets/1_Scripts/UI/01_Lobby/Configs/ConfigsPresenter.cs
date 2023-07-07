@@ -24,7 +24,7 @@ public class ConfigsPresenter : Presenter
         _configsView.ResolutionLeftButton
             .OnClickAsObservable()
             .Subscribe(_ => {
-                _resolutionIndex = (_resolutionIndex - 1 + _resolutions.Length) % _resolutions.Length;
+                _resolutionIndex = (_resolutionIndex + 1) % _resolutions.Length;
                 SetResolution(_resolutionIndex);
             })
             .AddTo(_compositeDisposable);
@@ -32,7 +32,7 @@ public class ConfigsPresenter : Presenter
         _configsView.ResolutionRightButton
             .OnClickAsObservable()
             .Subscribe(_ => {
-                _resolutionIndex = (_resolutionIndex + 1) % _resolutions.Length;
+                _resolutionIndex = (_resolutionIndex - 1 + _resolutions.Length) % _resolutions.Length;
                 SetResolution(_resolutionIndex);
             })
             .AddTo(_compositeDisposable);
