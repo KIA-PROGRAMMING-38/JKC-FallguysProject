@@ -1,7 +1,6 @@
 using Model;
 using Photon.Pun;
 using UniRx;
-using UnityEngine;
 
 public class ObservedPlayerNamePresenter : Presenter
 {
