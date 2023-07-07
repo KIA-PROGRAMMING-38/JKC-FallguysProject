@@ -24,8 +24,7 @@ public class PlayerContainer
     {
         _targetObject
             .Where(obj => obj != null)
-            .Select(obj => obj.ObserveEveryValueChanged(obj => obj.activeSelf))
-            .Switch()
+            .DistinctUntilChanged()
             .Subscribe(_ => ObservedNextPlayer())
             .AddTo(_compositeDisposable);
     }

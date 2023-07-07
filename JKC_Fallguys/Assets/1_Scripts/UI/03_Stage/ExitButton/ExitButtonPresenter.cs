@@ -1,6 +1,5 @@
 using Model;
 using UniRx;
-using UnityEngine;
 
 public class ExitButtonPresenter : Presenter
 {
@@ -22,14 +21,8 @@ public class ExitButtonPresenter : Presenter
         _exitButtonView.UIPopUpButton
             .OnClickAsObservable()
             .Where(_ => StageSceneModel.CanClickButton.Value)
-            .Subscribe(_ => Test())
+            .Subscribe(_ => StageSceneModel.SetExitPanelActive(true))
             .AddTo(_compositeDisposable);
-    }
-
-    private void Test()
-    {
-        Debug.Log("눌림!");
-        StageSceneModel.SetExitPanelActive(true);
     }
 
     protected override void OnUpdatedModel()
