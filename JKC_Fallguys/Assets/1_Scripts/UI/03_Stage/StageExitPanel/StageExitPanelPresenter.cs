@@ -70,6 +70,7 @@ public class StageExitPanelPresenter : Presenter
     
     public override void OnRelease()
     {
-        
+        _stageExitPanelView = default;
+        _compositeDisposable.Dispose();
     }
 }
