@@ -33,7 +33,7 @@ namespace ResourceRegistry
             GameResultMusic = Resources.LoadAll<AudioClip>(
                 DataManager.SetDataPath( PathLiteral.Sounds, PathLiteral.Music, PathLiteral.Result ) );
             
-
+            
             VictoryFallGuySFX = Resources.LoadAll<AudioClip>(
                 DataManager.SetDataPath( PathLiteral.Sounds, PathLiteral.SFX, PathLiteral.GameResult, PathLiteral.Victory ) );
 

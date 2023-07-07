@@ -1,4 +1,5 @@
 using LiteralRepository;
+using ResourceRegistry;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -10,20 +11,17 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
     // 외부에서 사용할 AudioSource
     public AudioSource[] MusicAudioSource => _audioSources;
 
-    private AudioMixer _audioMixer;
 
     protected override void Awake()
     {
         base.Awake();
-
-        _audioMixer = Resources.Load<AudioMixer>( DataManager.SetDataPath( PathLiteral.Sounds, PathLiteral.AudioMixer ) );
 
         for (int index = 0; index < _audioSources.Length; ++index)
         {
             _audioSources[index] = gameObject.AddComponent<AudioSource>();
             _audioSources[index].volume = 0.3f;
 
-            _audioSources[index].outputAudioMixerGroup = _audioMixer.FindMatchingGroups( "Music" )[0];
+            _audioSources[index].outputAudioMixerGroup = AudioRegistry.GameAudioMixer.FindMatchingGroups( "Music" )[0];
         }
 
         gameObject.AddComponent<AudioReverbZone>().reverbPreset = AudioReverbPreset.Room;
