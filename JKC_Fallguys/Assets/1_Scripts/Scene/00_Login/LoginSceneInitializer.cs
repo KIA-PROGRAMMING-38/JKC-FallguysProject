@@ -8,10 +8,25 @@ public class LoginSceneInitializer : SceneInitializer
     {
         base.Awake();
 
-        float volume = PlayerPrefs.GetFloat("MusicVolume");
-        AudioRegistry.GameAudioMixer.SetFloat("MusicVolume", Mathf.Log10(volume) * 20);
+        SetAudioMixerVolume();
+
+        float currentMusicVolume;
+        AudioRegistry.GameAudioMixer.GetFloat("MusicVolume", out currentMusicVolume);
+        Debug.Log($"AudioMixer Music Volume : {currentMusicVolume}");
 
         Screen.SetResolution(1920, 1080, FullScreenMode.Windowed);
+    }
+
+    private void SetAudioMixerVolume()
+    {
+        float MasterVolume = PlayerPrefs.GetFloat("MasterVolume", 1f);
+        AudioRegistry.GameAudioMixer.SetFloat("MasterVolume", Mathf.Log10(MasterVolume) * 20);
+
+        float MusicVolume = PlayerPrefs.GetFloat("MusicVolume", 1f);
+        AudioRegistry.GameAudioMixer.SetFloat("MusicVolume", Mathf.Log10(MusicVolume) * 20);
+
+        float SFXVolume = PlayerPrefs.GetFloat("SFXVolume", 1f);
+        AudioRegistry.GameAudioMixer.SetFloat("SFXVolume", Mathf.Log10(SFXVolume) * 20);
     }
 
     protected override void OnGetResources()

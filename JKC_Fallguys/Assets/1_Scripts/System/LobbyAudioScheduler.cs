@@ -18,8 +18,7 @@ public class LobbyAudioScheduler : AudioScheduler
     {
         _introStartTime = AudioSettings.dspTime;
 
-        _loopStartTime = _introStartTime + AudioManager.Instance.MusicAudioSource[0].clip.length + 0.05f;
-
+        _loopStartTime = _introStartTime + AudioManager.Instance.MusicAudioSource[0].clip.length;
     }
 
     public override void PlayAudio()
