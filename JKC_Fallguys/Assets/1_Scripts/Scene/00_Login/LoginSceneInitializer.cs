@@ -3,11 +3,15 @@ using LiteralRepository;
 
 public class LoginSceneInitializer : SceneInitializer
 {
+    [SerializeField]
+    private Texture2D _mouseCursor;
+    
     protected override void Awake()
     {
         base.Awake();
         
         Screen.SetResolution(1920, 1080, FullScreenMode.Windowed);
+        
     }
 
     protected override void OnGetResources()
