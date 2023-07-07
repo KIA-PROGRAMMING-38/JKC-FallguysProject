@@ -21,13 +21,15 @@ public class GameResultFallGuyDataBinder : MonoBehaviour
     {
         if (ResultSceneModel.IsVictorious.Value)
         {
-            _animator.runtimeAnimatorController = DataManager.GetRuntimeAnimatorController(PathLiteral.AnimatorController, PathLiteral.GameResultAnimator, PathLiteral.VictoryAnimatorController);
+            _animator.runtimeAnimatorController = 
+                ResourceManager.Load<RuntimeAnimatorController>(PathLiteral.AnimatorController, PathLiteral.GameResultAnimator, PathLiteral.VictoryAnimatorController);
             FallGuyAudioClips = AudioRegistry.VictoryFallGuySFX;
         }
 
         else
         {
-            _animator.runtimeAnimatorController = DataManager.GetRuntimeAnimatorController(PathLiteral.AnimatorController, PathLiteral.GameResultAnimator, PathLiteral.LoseAnimatorController);
+            _animator.runtimeAnimatorController = 
+                ResourceManager.Load<RuntimeAnimatorController>(PathLiteral.AnimatorController, PathLiteral.GameResultAnimator, PathLiteral.LoseAnimatorController);
             FallGuyAudioClips = AudioRegistry.LoseFallGuySFX;
         }
     }

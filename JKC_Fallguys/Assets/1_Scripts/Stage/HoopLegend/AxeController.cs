@@ -13,11 +13,11 @@ public class AxeController : MonoBehaviourPun
     {
         if (PhotonNetwork.IsMasterClient)
         {
-            ObjectTransforms axeData = DataManager.JsonLoader<ObjectTransforms>("JSON/AxeTransformData");
+            ObjectTransforms axeData = ResourceManager.JsonLoader<ObjectTransforms>("JSON/AxeTransformData");
 
             for (int i = 0; i < axeData.positions.Length; ++i)
             {
-                string filePath = DataManager.SetDataPath(PathLiteral.Prefabs, "Stage", PathLiteral.HoopLegend, "Axe");
+                string filePath = ResourceManager.SetDataPath(PathLiteral.Prefabs, "Stage", PathLiteral.HoopLegend, "Axe");
             
                 PhotonNetwork.Instantiate
                     (filePath, axeData.positions[i], Quaternion.Euler(axeData.rotations[i]));

@@ -1,6 +1,7 @@
 using LiteralRepository;
 using Model;
 using UniRx;
+using UnityEngine;
 
 public class ResultPresenter : Presenter
 {
@@ -38,13 +39,13 @@ public class ResultPresenter : Presenter
     private void LoadVictorySprite()
     {
         _resultView.ResultTextImage.sprite = 
-            DataManager.GetSpriteData(PathLiteral.UI, PathLiteral.GameResult, PathLiteral.VictoryTextImage);
+            ResourceManager.Load<Sprite>(PathLiteral.UI, PathLiteral.GameResult, PathLiteral.VictoryTextImage);
     }
     
     private void LoadLoseSprite()
     {
         _resultView.ResultTextImage.sprite = 
-            DataManager.GetSpriteData(PathLiteral.UI, PathLiteral.GameResult, PathLiteral.LoseTextImage);
+            ResourceManager.Load<Sprite>(PathLiteral.UI, PathLiteral.GameResult, PathLiteral.LoseTextImage);
     }
     
     public override void OnRelease()

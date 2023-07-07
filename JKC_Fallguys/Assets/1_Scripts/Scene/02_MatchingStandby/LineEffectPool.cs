@@ -28,7 +28,7 @@ public class LineEffectPool
     // LineEffect 프리팹을 불러와 큐에 저장합니다
     private Queue<LineEffect> SetLineEffectPrefabs()
     {
-        string filePath = DataManager.SetDataPath(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.MatchingStandby, "LineEffect");
+        string filePath = ResourceManager.SetDataPath(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.MatchingStandby, "LineEffect");
 
         LineEffect[] lineEffects = Resources.LoadAll<LineEffect>(filePath);
         Queue<LineEffect> lineEffectsList = new Queue<LineEffect>();

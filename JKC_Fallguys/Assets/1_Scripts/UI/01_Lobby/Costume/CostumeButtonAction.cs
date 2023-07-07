@@ -19,7 +19,7 @@ public class CostumeButtonAction : MonoBehaviour, ISelectHandler, IPointerClickH
 
     private void OnEnable()
     {
-        if (DataManager.PlayerTextureIndex.Value == _costumeData.TextureIndex)
+        if (ResourceManager.PlayerTextureIndex.Value == _costumeData.TextureIndex)
         {
             EventSystem.current.firstSelectedGameObject = gameObject;
         }
@@ -51,6 +51,6 @@ public class CostumeButtonAction : MonoBehaviour, ISelectHandler, IPointerClickH
     private void CommonClickHandler()
     {
         LobbySceneModel.SetColorName(_costumeData.CostumeName);
-        DataManager.SetPlayerTexture(_costumeData.TextureIndex);
+        ResourceManager.SetPlayerTexture(_costumeData.TextureIndex);
     }
 }

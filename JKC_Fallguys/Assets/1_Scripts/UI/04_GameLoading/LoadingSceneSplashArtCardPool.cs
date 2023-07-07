@@ -28,7 +28,7 @@ public class LoadingSceneSplashArtCardPool
     private LoadingSceneSplashArtCard GetPrefab()
     {
         return Resources.Load<LoadingSceneSplashArtCard>
-        (DataManager.SetDataPath(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.GameLoading, "LoadingSceneSplashArtCard"));
+        (ResourceManager.SetDataPath(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.GameLoading, "LoadingSceneSplashArtCard"));
     }
     
     private void ActionOnGet(LoadingSceneSplashArtCard card)

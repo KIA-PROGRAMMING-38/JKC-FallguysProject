@@ -1,5 +1,6 @@
 using LiteralRepository;
 using Model;
+using UnityEngine;
 
 public class MatchingSceneInitializer : SceneInitializer
 {
@@ -22,19 +23,19 @@ public class MatchingSceneInitializer : SceneInitializer
 
     protected override void OnGetResources()
     {
-        Instantiate(DataManager.GetGameObjectData
+        Instantiate(ResourceManager.Load<GameObject>
             (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.MatchingStandby, PathLiteral.Object, "PhotonMatchingSceneEventManager"));
         
-        _respawnZone = Instantiate(DataManager.GetGameObjectData
+        _respawnZone = Instantiate(ResourceManager.Load<GameObject>
             (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.MatchingStandby, PathLiteral.Object, "RespawnZone"))
             .GetComponent<RespawnZone>();
-        _lineEffectPooler = Instantiate(DataManager.GetGameObjectData
+        _lineEffectPooler = Instantiate(ResourceManager.Load<GameObject>
             (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.MatchingStandby, PathLiteral.Object, "LineEffectPooler"))
             .GetComponent<LineEffectPooler>();
         
-        Instantiate(DataManager.GetGameObjectData
+        Instantiate(ResourceManager.Load<GameObject>
             (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.MatchingStandby, PathLiteral.Object, "ReleaseZone"));
-        Instantiate(DataManager.GetGameObjectData
+        Instantiate(ResourceManager.Load<GameObject>
             (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.MatchingStandby, PathLiteral.Object, "MatchingSceneFallGuy"));
     }
 }

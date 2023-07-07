@@ -37,8 +37,8 @@ public class LobbySceneFallguyController : MonoBehaviour
             .Subscribe(_ => HomeState())
             .AddTo(this);
 
-        DataManager.PlayerTextureIndex
-            .Subscribe(_ => _fallGuyBody.material.mainTexture = PlayerTextureRegistry.PlayerTextures[DataManager.PlayerTextureIndex.Value])
+        ResourceManager.PlayerTextureIndex
+            .Subscribe(_ => _fallGuyBody.material.mainTexture = PlayerTextureRegistry.PlayerTextures[ResourceManager.PlayerTextureIndex.Value])
             .AddTo(this);
     }
 

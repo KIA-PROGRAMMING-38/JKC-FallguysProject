@@ -16,19 +16,19 @@ public static class CountdownSpritesRegistry
     {
         _sprites = new List<Sprite>();
 
-        Sprite sprite = DataManager.GetSpriteData(DataManager.SetDataPath(PathLiteral.UI, PathLiteral.Stage,
+        Sprite sprite = ResourceManager.Load<Sprite>(ResourceManager.SetDataPath(PathLiteral.UI, PathLiteral.Stage,
             PathLiteral.Countdown, "Texture2D_UI_InGame_StartCountDown3"));
         _sprites.Add(sprite);
         
-        sprite = DataManager.GetSpriteData(DataManager.SetDataPath(PathLiteral.UI, PathLiteral.Stage,
+        sprite = ResourceManager.Load<Sprite>(ResourceManager.SetDataPath(PathLiteral.UI, PathLiteral.Stage,
             PathLiteral.Countdown, "Texture2D_UI_InGame_StartCountDown2"));
         _sprites.Add(sprite);
         
-        sprite = DataManager.GetSpriteData(DataManager.SetDataPath(PathLiteral.UI, PathLiteral.Stage,
+        sprite = ResourceManager.Load<Sprite>(ResourceManager.SetDataPath(PathLiteral.UI, PathLiteral.Stage,
             PathLiteral.Countdown, "Texture2D_UI_InGame_StartCountDown1"));
         _sprites.Add(sprite);
         
-        sprite = DataManager.GetSpriteData(DataManager.SetDataPath(PathLiteral.UI, PathLiteral.Stage,
+        sprite = ResourceManager.Load<Sprite>(ResourceManager.SetDataPath(PathLiteral.UI, PathLiteral.Stage,
             PathLiteral.Countdown, "Texture2D_UI_InGame_StartCountDownGO!"));
         _sprites.Add(sprite);
     }

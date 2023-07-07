@@ -36,7 +36,7 @@ public class PhotonMatchingSceneEventManager : MonoBehaviourPunCallbacks
         Player localPlayer = PhotonNetwork.LocalPlayer;
         ExitGames.Client.Photon.Hashtable playerProperties = new ExitGames.Client.Photon.Hashtable();
 
-        playerProperties["PlayerTextureIndex"] = DataManager.PlayerTextureIndex.Value;
+        playerProperties["PlayerTextureIndex"] = ResourceManager.PlayerTextureIndex.Value;
 
         localPlayer.SetCustomProperties(playerProperties);
     }
@@ -53,7 +53,7 @@ public class PhotonMatchingSceneEventManager : MonoBehaviourPunCallbacks
 
     private void OnInstantiatePhotonRoomManager()
     {
-        string filePath = DataManager.SetDataPath
+        string filePath = ResourceManager.SetDataPath
             (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.MatchingStandby, PathLiteral.Object, "PhotonMatchingSceneRoomManager");
         
         PhotonMatchingSceneRoomManager roomManager = 
