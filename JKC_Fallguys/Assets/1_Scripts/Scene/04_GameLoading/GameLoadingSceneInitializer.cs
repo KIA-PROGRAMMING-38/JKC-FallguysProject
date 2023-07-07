@@ -1,5 +1,6 @@
 using LiteralRepository;
 using Photon.Pun;
+using UnityEngine;
 
 public class GameLoadingSceneInitializer : SceneInitializer
 {
@@ -17,23 +18,23 @@ public class GameLoadingSceneInitializer : SceneInitializer
     
     protected override void OnGetResources()
     {
-        Instantiate(DataManager.GetGameObjectData
+        Instantiate(ResourceManager.Load<GameObject>
             (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.GameLoading, "GameLoadingSceneManager"));
-        Instantiate(DataManager.GetGameObjectData
+        Instantiate(ResourceManager.Load<GameObject>
             (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.GameLoading, PathLiteral.UI, "GameLoadingBackgroundImage"));
-        Instantiate(DataManager.GetGameObjectData
+        Instantiate(ResourceManager.Load<GameObject>
             (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.GameLoading, PathLiteral.UI, "HorizontalRendererViewController"));
-        Instantiate(DataManager.GetGameObjectData
+        Instantiate(ResourceManager.Load<GameObject>
             (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.GameLoading, PathLiteral.UI, "MapInformationViewController"));
-        Instantiate(DataManager.GetGameObjectData
+        Instantiate(ResourceManager.Load<GameObject>
             (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.GameLoading, PathLiteral.UI, "WhiteScreenViewController"));
-        Instantiate(DataManager.GetGameObjectData
+        Instantiate(ResourceManager.Load<GameObject>
             (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.GameLoading, PathLiteral.UI, "GameLoadingMainPanelViewController"));
         
 
         if (PhotonNetwork.IsMasterClient)
         {
-            string filePath = DataManager.SetDataPath(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.GameLoading, "MapSelectionManager");
+            string filePath = ResourceManager.SetDataPath(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.GameLoading, "MapSelectionManager");
             PhotonNetwork.Instantiate(filePath, transform.position, transform.rotation);
         }
     }

@@ -2,7 +2,7 @@ using Newtonsoft.Json;
 using UniRx;
 using UnityEngine;
 
-public static class DataManager
+public static class ResourceManager
 {
     public static readonly int MaxPlayableMaps = 3;
 
@@ -13,32 +13,31 @@ public static class DataManager
     {
         _playerTextureIndex.Value = index;
     }
+
+    public static T Load<T>(params string[] filePath) where T : Object
+    {
+        T resource = Resources.Load<T>(SetDataPath(filePath));
+
+        if (resource == null)
+        {
+            Debug.LogError("Resource not found at path: " + SetDataPath(filePath));
+        }
+
+        return resource;
+    }
+
+    public static T[] LoadAll<T>(params string[] filePath) where T : Object
+    {
+        T[] resources = Resources.LoadAll<T>(SetDataPath(filePath));
+        
+        if (resources == null)
+        {
+            Debug.LogError("Resource not found at path: " + SetDataPath(filePath));
+        }
+
+        return resources;
+    }
     
-    public static GameObject GetGameObjectData(params string[] filePath)
-    {
-        return Resources.Load<GameObject>(SetDataPath(filePath));
-    }
-
-    public static Texture2D GetTextureData(params string[] filePath)
-    {
-        return Resources.Load<Texture2D>(SetDataPath(filePath));
-    }
-
-    public static Sprite GetSpriteData(params string[] filePath)
-    {
-        return Resources.Load<Sprite>(SetDataPath(filePath));
-    }
-
-    public static AudioClip GetAudioClip(params string[] filePath)
-    {
-        return Resources.Load<AudioClip>(SetDataPath(filePath));
-    }
-
-    public static RuntimeAnimatorController GetRuntimeAnimatorController(params string[] filePath)
-    {
-        return Resources.Load<RuntimeAnimatorController>(SetDataPath(filePath));
-    }
-
     /// <summary>
     /// 데이터 바인딩 위한 경로를 설정합니다.
     /// </summary>

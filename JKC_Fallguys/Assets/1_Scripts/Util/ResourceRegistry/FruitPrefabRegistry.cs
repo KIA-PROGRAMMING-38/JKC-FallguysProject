@@ -22,7 +22,7 @@ public static class FruitPrefabRegistry
         
         for (int i = 0; i < fruits.Length; i++)
         {
-            string fruitPath = DataManager.SetDataPath(PathLiteral.Prefabs, "Stage", "FruitChute", "Fruits", fruits[i]);
+            string fruitPath = ResourceManager.SetDataPath(PathLiteral.Prefabs, "Stage", "FruitChute", "Fruits", fruits[i]);
             
             PathRepository.Add(fruitPath);
         }
@@ -35,7 +35,7 @@ public static class FruitPrefabRegistry
         
         for (int i = 0; i < fruits.Length; i++)
         {
-            string fruitPath = DataManager.SetDataPath(PathLiteral.Prefabs, "Stage", "FruitChute", "Fruits", fruits[i]);
+            string fruitPath = ResourceManager.SetDataPath(PathLiteral.Prefabs, "Stage", "FruitChute", "Fruits", fruits[i]);
             Fruit fruit = Resources.Load<Fruit>(fruitPath);
             
             Repository.Add(fruit);

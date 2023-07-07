@@ -19,7 +19,7 @@ public class MatchingSceneFallguyController : MonoBehaviour
         _startPosition = transform.position;
         MoveToStartPosition(_cancellationTokenSource.Token).Forget();
 
-        _bodyRenderer.material.mainTexture = PlayerTextureRegistry.PlayerTextures[DataManager.PlayerTextureIndex.Value];
+        _bodyRenderer.material.mainTexture = PlayerTextureRegistry.PlayerTextures[ResourceManager.PlayerTextureIndex.Value];
     }
 
     private async UniTaskVoid MoveToStartPosition(CancellationToken cancellationToken)

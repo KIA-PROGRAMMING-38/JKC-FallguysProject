@@ -15,6 +15,6 @@ public static class PlayerTextureRegistry
     {
         PlayerTextures = new List<Texture>(
             Resources.LoadAll<Texture>(
-                DataManager.SetDataPath(PathLiteral.Textures, PathLiteral.PlayerTexture)));
+                ResourceManager.SetDataPath(PathLiteral.Textures, PathLiteral.PlayerTexture)));
     }
 }

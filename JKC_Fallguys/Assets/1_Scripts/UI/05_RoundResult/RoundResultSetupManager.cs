@@ -23,7 +23,7 @@ public class RoundResultSetupManager : MonoBehaviour
     
     private void Awake()
     {
-        _runtimeAnimator = Resources.LoadAll<RuntimeAnimatorController>(DataManager.SetDataPath(PathLiteral.AnimatorController, "ResultRoundAnimator"));
+        _runtimeAnimator = Resources.LoadAll<RuntimeAnimatorController>(ResourceManager.SetDataPath(PathLiteral.AnimatorController, "ResultRoundAnimator"));
     }
 
     private void Start()
@@ -41,8 +41,8 @@ public class RoundResultSetupManager : MonoBehaviour
             if (fallGuyIndex >= RoundResultSceneModel.FallguyRankings.Count)
                 break;
             
-            _fallGuy[fallGuyIndex] = DataManager.GetGameObjectData(
-                DataManager.SetDataPath(PathLiteral.Prefabs, PathLiteral.Scene, "05_RoundResult", "RoundResultFallGuy"));
+            _fallGuy[fallGuyIndex] = ResourceManager.Load<GameObject>(
+                ResourceManager.SetDataPath(PathLiteral.Prefabs, PathLiteral.Scene, "05_RoundResult", "RoundResultFallGuy"));
 
             GameObject fallGuy = 
                 Instantiate(_fallGuy[fallGuyIndex], _fallGuyPositions[fallGuyIndex], _fallGuy[fallGuyIndex].transform.rotation);

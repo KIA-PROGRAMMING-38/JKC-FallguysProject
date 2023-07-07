@@ -38,7 +38,7 @@ public class StageDataManager : SingletonMonoBehaviour<StageDataManager>
     public Dictionary<int, MapData> MapDatas = new Dictionary<int, MapData>();
 
     // 선택할 맵 데이터를 판별하는 객체입니다.
-    public bool[] MapPickupFlags = new bool[DataManager.MaxPlayableMaps];
+    public bool[] MapPickupFlags = new bool[ResourceManager.MaxPlayableMaps];
     private ReactiveProperty<int> _mapPickupIndex = new ReactiveProperty<int>();
 
     public IReactiveProperty<int> MapPickupIndex => _mapPickupIndex;
@@ -133,7 +133,7 @@ public class StageDataManager : SingletonMonoBehaviour<StageDataManager>
     public bool IsFinalRound()
     {
         int index = 0;
-        for (int i = 0; i < DataManager.MaxPlayableMaps; ++i)
+        for (int i = 0; i < ResourceManager.MaxPlayableMaps; ++i)
         {
             if (MapPickupFlags[i])
             {

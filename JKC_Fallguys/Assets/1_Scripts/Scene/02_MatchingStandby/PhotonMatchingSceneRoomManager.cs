@@ -63,9 +63,9 @@ public class PhotonMatchingSceneRoomManager : MonoBehaviourPun
     #pragma warning disable CS1998
     private async UniTaskVoid MapInstanceLoad()
     {
-        for (int i = 0; i < DataManager.MaxPlayableMaps; ++i)
+        for (int i = 0; i < ResourceManager.MaxPlayableMaps; ++i)
         {
-            MapData mapData = DataManager.JsonLoader<MapData>($"JSON/MapData_{i:D2}");
+            MapData mapData = ResourceManager.JsonLoader<MapData>($"JSON/MapData_{i:D2}");
             StageDataManager.Instance.MapDatas.Add(i, mapData);
         }
     }

@@ -6,11 +6,11 @@ public class LoginSceneInitializer : SceneInitializer
 {
     protected override void OnGetResources()
     {
-        Instantiate(DataManager.GetGameObjectData
+        Instantiate(ResourceManager.Load<GameObject>
             (PathLiteral.Prefabs, PathLiteral.Manager, "PhotonLoginManager"));
-        Instantiate(DataManager.GetGameObjectData
+        Instantiate(ResourceManager.Load<GameObject>
             (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Login, "LoginBackgroundViewController"));
-        Instantiate(DataManager.GetGameObjectData
+        Instantiate(ResourceManager.Load<GameObject>
             (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Login, "LoginPanelViewController"));
 
         SetAudioMixerVolume();
