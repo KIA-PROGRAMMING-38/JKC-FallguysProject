@@ -25,26 +25,26 @@ public class StageSceneInitializer : SceneInitializer
 
     protected override void OnGetResources()
     {
-        Instantiate
-            (Resources.Load<GameObject>(Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, PathLiteral.UI, "ExitButtonViewController")));
-        Instantiate
-            (Resources.Load<GameObject>(Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, PathLiteral.UI, "PurposePanelViewController")));
-        Instantiate
-            (Resources.Load<GameObject>(Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, PathLiteral.UI, "StageExitPanelViewController")));
-        Instantiate
-            (Resources.Load<GameObject>(Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, PathLiteral.UI, "StageStartViewController")));
-        Instantiate
-            (Resources.Load<GameObject>(Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, PathLiteral.UI, "RemainingTimeViewController")));
-        Instantiate
-            (Resources.Load<GameObject>(Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, PathLiteral.UI, "ResultInStageViewController")));
-        Instantiate
-            (Resources.Load<GameObject>(Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, PathLiteral.UI, "RoundEndViewController")));
-        Instantiate
-            (Resources.Load<GameObject>(Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, PathLiteral.UI, "ObservedPlayerNameViewController")));
-        Instantiate
-            (Resources.Load<GameObject>(Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, "PlayerObserverCamera")));
-        _stageAudioManager = Instantiate
-            (Resources.Load<GameObject>(Path.Combine(PathLiteral.Prefabs, PathLiteral.Manager, "StageAudioManager")));
+        ResourceManager.Instantiate
+            (Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, PathLiteral.UI, "ExitButtonViewController"));
+        ResourceManager.Instantiate
+            (Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, PathLiteral.UI, "PurposePanelViewController"));
+        ResourceManager.Instantiate
+            (Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, PathLiteral.UI, "StageExitPanelViewController"));
+        ResourceManager.Instantiate
+            (Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, PathLiteral.UI, "StageStartViewController"));
+        ResourceManager.Instantiate
+            (Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, PathLiteral.UI, "RemainingTimeViewController"));
+        ResourceManager.Instantiate
+            (Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, PathLiteral.UI, "ResultInStageViewController"));
+        ResourceManager.Instantiate
+            (Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, PathLiteral.UI, "RoundEndViewController"));
+        ResourceManager.Instantiate
+            (Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, PathLiteral.UI, "ObservedPlayerNameViewController"));
+        ResourceManager.Instantiate
+            (Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, "PlayerObserverCamera"));
+        _stageAudioManager = ResourceManager.Instantiate
+            (Path.Combine(PathLiteral.Prefabs, PathLiteral.Manager, "StageAudioManager"));
 
 
         SetStageAudioComponent();

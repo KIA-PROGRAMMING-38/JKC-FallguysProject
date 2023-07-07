@@ -24,19 +24,19 @@ public class MatchingSceneInitializer : SceneInitializer
 
     protected override void OnGetResources()
     {
-        Instantiate(Resources.Load<GameObject>(Path.Combine
-            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.MatchingStandby, PathLiteral.Object, "PhotonMatchingSceneEventManager")));
+        ResourceManager.Instantiate
+            (Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.MatchingStandby, PathLiteral.Object, "PhotonMatchingSceneEventManager"));
         
-        _respawnZone = Instantiate(Resources.Load<GameObject>(Path.Combine
-            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.MatchingStandby, PathLiteral.Object, "RespawnZone")))
+        _respawnZone = ResourceManager.Instantiate
+            (Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.MatchingStandby, PathLiteral.Object, "RespawnZone"))
             .GetComponent<RespawnZone>();
-        _lineEffectPooler = Instantiate(Resources.Load<GameObject>(Path.Combine
-            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.MatchingStandby, PathLiteral.Object, "LineEffectPooler")))
+        _lineEffectPooler = ResourceManager.Instantiate
+            (Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.MatchingStandby, PathLiteral.Object, "LineEffectPooler"))
             .GetComponent<LineEffectPooler>();
         
-        Instantiate(Resources.Load<GameObject>(Path.Combine
-            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.MatchingStandby, PathLiteral.Object, "ReleaseZone")));
-        Instantiate(Resources.Load<GameObject>(Path.Combine
-            (PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.MatchingStandby, PathLiteral.Object, "MatchingSceneFallGuy")));
+        ResourceManager.Instantiate
+            (Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.MatchingStandby, PathLiteral.Object, "ReleaseZone"));
+        ResourceManager.Instantiate
+            (Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.MatchingStandby, PathLiteral.Object, "MatchingSceneFallGuy"));
     }
 }

@@ -16,18 +16,18 @@ public class GameResultSceneInitializer : SceneInitializer
     protected override void OnGetResources()
     {
         GameResultSceneFallGuyController fallGuyController = 
-            Instantiate
-            (Resources.Load<GameObject>(Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.GameResult, "GameResultSceneFallGuy")))
+            ResourceManager.Instantiate
+            (Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.GameResult, "GameResultSceneFallGuy"))
                 .GetComponent<GameResultSceneFallGuyController>();
         fallGuyController.BodyRenderer.material.mainTexture = PlayerTextureRegistry.PlayerTextures[ResourceManager.PlayerTextureIndex.Value];
         
-        Instantiate
-            (Resources.Load<GameObject>(Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.GameResult, "GameResultPlatform")));
-        Instantiate
-            (Resources.Load<GameObject>(Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.GameResult, PathLiteral.UI, "GameResultBackgroundImage")));
-        Instantiate
-            (Resources.Load<GameObject>(Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.GameResult, PathLiteral.UI, "ResultViewController")));
-        Instantiate
-            (Resources.Load<GameObject>(Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.GameResult, "GameResultScenePhotonController")));
+        ResourceManager.Instantiate
+            (Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.GameResult, "GameResultPlatform"));
+        ResourceManager.Instantiate
+            (Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.GameResult, PathLiteral.UI, "GameResultBackgroundImage"));
+        ResourceManager.Instantiate
+            (Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.GameResult, PathLiteral.UI, "ResultViewController"));
+        ResourceManager.Instantiate
+            (Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.GameResult, "GameResultScenePhotonController"));
     }
 }
