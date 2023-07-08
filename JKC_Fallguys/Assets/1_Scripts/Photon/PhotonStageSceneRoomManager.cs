@@ -31,6 +31,8 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
         InitializeRx();
         StageDontDestroyOnLoadSet();
 
+        _cts = new CancellationTokenSource();
+        
         if (!PhotonNetwork.IsMasterClient)
         {
             photonView.RPC("IsClientReady", RpcTarget.MasterClient);
