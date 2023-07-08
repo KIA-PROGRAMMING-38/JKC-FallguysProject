@@ -8,11 +8,11 @@ public class LoginSceneInitializer : SceneInitializer
     protected override void OnGetResources()
     {
         ResourceManager.Instantiate
-            (Path.Combine(PathLiteral.Login, "PhotonLoginManager"));
+            (Path.Combine(PathLiteral.Object, PathLiteral.Login, "PhotonLoginManager"));
         ResourceManager.Instantiate
-            (Path.Combine(PathLiteral.Login, "LoginBackgroundViewController"));
+            (Path.Combine(PathLiteral.UI, PathLiteral.Login, "LoginBackgroundViewController"));
         ResourceManager.Instantiate
-            (Path.Combine(PathLiteral.Login, "LoginPanelViewController"));
+            (Path.Combine(PathLiteral.UI, PathLiteral.Login, "LoginPanelViewController"));
 
         SetAudioMixerVolume();
 
