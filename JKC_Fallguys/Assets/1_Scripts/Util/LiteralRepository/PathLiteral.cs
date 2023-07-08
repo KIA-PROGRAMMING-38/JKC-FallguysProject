@@ -8,7 +8,7 @@ namespace LiteralRepository
         public static readonly string Prefabs = "Prefabs";
         public static readonly string Manager = "Manager";
         public static readonly string AnimatorController = "AnimatorController";
-        public static readonly string Textures = "Textures";
+        public static readonly string Sprites = "Sprites";
         public static readonly string PlayerTexture = "PlayerTexture";
         public static readonly string Sounds = "Sounds";
         public static readonly string Music = "Music";
