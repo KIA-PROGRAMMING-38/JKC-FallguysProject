@@ -40,7 +40,7 @@ public class LowerBar : MonoBehaviourPun
 
     private void TriggerStart()
     {
-        photonView.RPC("RpcInitiateRotation", RpcTarget.AllBuffered, UnixTimeHelper.GetFutureUnixTime(5));
+        photonView.RPC("RpcInitiateRotation", RpcTarget.AllBuffered, UnixTimeHelper.GetFutureUnixTime(3));
     }
 
     [PunRPC]

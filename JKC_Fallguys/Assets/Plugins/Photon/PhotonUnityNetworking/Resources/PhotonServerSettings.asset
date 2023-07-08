@@ -101,6 +101,10 @@ MonoBehaviour:
   - RpcPlayDiveSound
   - RpcPlayFallSound
   - RpcPlayRespawnSound
+  - RpcSetGameStart
+  - RpcStartTriggerOperationCountDown
+  - IsClientReady
+  - RpcSyncServerTime
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
