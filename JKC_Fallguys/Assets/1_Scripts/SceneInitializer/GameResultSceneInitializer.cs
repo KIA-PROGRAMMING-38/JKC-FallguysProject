@@ -16,17 +16,19 @@ public class GameResultSceneInitializer : SceneInitializer
     {
         GameResultSceneFallGuyController fallGuyController = 
             ResourceManager.Instantiate
-            (Path.Combine(PathLiteral.GameResult, "GameResultSceneFallGuy"))
+                (Path.Combine(PathLiteral.Object, PathLiteral.GameResult, "GameResultSceneFallGuy"))
                 .GetComponent<GameResultSceneFallGuyController>();
+        
         fallGuyController.BodyRenderer.material.mainTexture = PlayerTextureRegistry.PlayerTextures[ResourceManager.PlayerTextureIndex.Value];
         
         ResourceManager.Instantiate
-            (Path.Combine(PathLiteral.GameResult, "GameResultPlatform"));
+            (Path.Combine(PathLiteral.Object, PathLiteral.GameResult, "GameResultPlatform"));
         ResourceManager.Instantiate
-            (Path.Combine(PathLiteral.GameResult, PathLiteral.UI, "GameResultBackgroundImage"));
+            (Path.Combine(PathLiteral.Object, PathLiteral.GameResult, "GameResultScenePhotonController"));
+        
         ResourceManager.Instantiate
-            (Path.Combine(PathLiteral.GameResult, PathLiteral.UI, "ResultViewController"));
+            (Path.Combine(PathLiteral.UI, PathLiteral.GameResult, "GameResultBackgroundImage"));
         ResourceManager.Instantiate
-            (Path.Combine(PathLiteral.GameResult, "GameResultScenePhotonController"));
+            (Path.Combine(PathLiteral.UI, PathLiteral.GameResult, "ResultViewController"));
     }
 }
