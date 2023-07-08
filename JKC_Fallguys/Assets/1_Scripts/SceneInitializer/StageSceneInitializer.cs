@@ -12,15 +12,8 @@ public class StageSceneInitializer : SceneInitializer
     protected override void InitializeModel()
     {
         StageSceneModel.InitializeCountDown();
-        StageDataManager.Instance.PlayerContainer.Clear();
         
-        StageDataManager.Instance.SetGameStatus(false);
-        StageDataManager.Instance.SetRoundState(false);
-        StageDataManager.Instance.SetGameStart(false);
-        StageDataManager.Instance.SetPlayerActive(PhotonNetwork.LocalPlayer.ActorNumber, true);
-        
-        int actorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
-        StageDataManager.Instance.SetPlayerState(actorNumber, StageDataManager.PlayerState.Default);
+        StageDataManager.Instance.Clear();
     }
 
     protected override void OnGetResources()

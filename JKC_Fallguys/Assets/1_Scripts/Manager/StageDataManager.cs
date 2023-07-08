@@ -1,5 +1,5 @@
-using System;
 using System.Collections.Generic;
+using Photon.Pun;
 using UniRx;
 
 public class StageDataManager : SingletonMonoBehaviour<StageDataManager>
@@ -9,6 +9,19 @@ public class StageDataManager : SingletonMonoBehaviour<StageDataManager>
         base.Awake();
         
         PlayerContainer.Initialize(gameObject);
+    }
+
+    public void Clear()
+    {
+        PlayerContainer.Clear();
+        
+        SetGameStatus(false);
+        SetRoundState(false);
+        SetGameStart(false);
+        SetPlayerActive(PhotonNetwork.LocalPlayer.ActorNumber, true);
+        
+        int actorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
+        SetPlayerState(actorNumber, StageDataManager.PlayerState.Default);
     }
 
     public PlayerContainer PlayerContainer = new PlayerContainer();
