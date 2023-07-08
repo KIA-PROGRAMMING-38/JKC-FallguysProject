@@ -38,5 +38,16 @@ public class MatchingSceneInitializer : SceneInitializer
             (Path.Combine(PathLiteral.Object, PathLiteral.MatchingStandby, "ReleaseZone"));
         ResourceManager.Instantiate
             (Path.Combine(PathLiteral.Object, PathLiteral.MatchingStandby, "MatchingSceneFallGuy"));
+        
+        ResourceManager.Instantiate
+            (Path.Combine(PathLiteral.UI, PathLiteral.MatchingStandby, "MatchingBackgroundImage"));
+        ResourceManager.Instantiate
+            (Path.Combine(PathLiteral.UI, PathLiteral.MatchingStandby, "ExitMatchingPanelViewController"));
+        ResourceManager.Instantiate
+            (Path.Combine(PathLiteral.UI, PathLiteral.MatchingStandby, "ReturnButtonViewController"));
+        ResourceManager.Instantiate
+            (Path.Combine(PathLiteral.UI, PathLiteral.MatchingStandby, "CurrentParticipantsViewController"));
+        ResourceManager.Instantiate
+            (Path.Combine(PathLiteral.UI, PathLiteral.MatchingStandby, "RotationFaceIconViewController"));
     }
 }
