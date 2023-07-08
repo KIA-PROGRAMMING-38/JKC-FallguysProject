@@ -80,4 +80,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
         AudioSource introAudioSource = _audioSources[(int)SoundType.MusicIntro];
         loopAudioSource.PlayDelayed(introAudioSource.clip.length);
     }
+    
+    public void Clear() => Array.ForEach(_audioSources, source => source.Stop());
+
 }
