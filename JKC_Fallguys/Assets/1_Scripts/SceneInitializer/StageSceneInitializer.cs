@@ -26,33 +26,31 @@ public class StageSceneInitializer : SceneInitializer
     protected override void OnGetResources()
     {
         ResourceManager.Instantiate
-            (Path.Combine(PathLiteral.Stage, PathLiteral.UI, "ExitButtonViewController"));
+            (Path.Combine(PathLiteral.UI, PathLiteral.Stage, "ExitButtonViewController"));
         ResourceManager.Instantiate
-            (Path.Combine(PathLiteral.Stage, PathLiteral.UI, "PurposePanelViewController"));
+            (Path.Combine(PathLiteral.UI, PathLiteral.Stage, "PurposePanelViewController"));
         ResourceManager.Instantiate
-            (Path.Combine(PathLiteral.Stage, PathLiteral.UI, "StageExitPanelViewController"));
+            (Path.Combine(PathLiteral.UI, PathLiteral.Stage, "StageExitPanelViewController"));
         ResourceManager.Instantiate
-            (Path.Combine(PathLiteral.Stage, PathLiteral.UI, "StageStartViewController"));
+            (Path.Combine(PathLiteral.UI, PathLiteral.Stage, "StageStartViewController"));
         ResourceManager.Instantiate
-            (Path.Combine(PathLiteral.Stage, PathLiteral.UI, "RemainingTimeViewController"));
+            (Path.Combine(PathLiteral.UI, PathLiteral.Stage, "RemainingTimeViewController"));
         ResourceManager.Instantiate
-            (Path.Combine(PathLiteral.Stage, PathLiteral.UI, "ResultInStageViewController"));
+            (Path.Combine(PathLiteral.UI, PathLiteral.Stage, "ResultInStageViewController"));
         ResourceManager.Instantiate
-            (Path.Combine(PathLiteral.Stage, PathLiteral.UI, "RoundEndViewController"));
+            (Path.Combine(PathLiteral.UI, PathLiteral.Stage, "RoundEndViewController"));
         ResourceManager.Instantiate
-            (Path.Combine(PathLiteral.Stage, PathLiteral.UI, "ObservedPlayerNameViewController"));
+            (Path.Combine(PathLiteral.UI, PathLiteral.Stage, "ObservedPlayerNameViewController"));
         ResourceManager.Instantiate
-            (Path.Combine(PathLiteral.Stage, "PlayerObserverCamera"));
+            (Path.Combine(PathLiteral.Object, PathLiteral.Stage, "PlayerObserverCamera"));
         _stageAudioManager = ResourceManager.Instantiate
-            (Path.Combine(PathLiteral.Stage, "StageAudioManager"));
-
+            (Path.Combine(PathLiteral.Object, PathLiteral.Stage, "StageAudioManager"));
 
         SetStageAudioComponent();
-        
 
         if (PhotonNetwork.IsMasterClient)
         {
-            AsyncPhotonNetworkInstantiate().Forget();
+            AsyncPhotonNetworkInstantiate();
         }
     }
 
@@ -69,14 +67,12 @@ public class StageSceneInitializer : SceneInitializer
         }
     }
 
-    private async UniTaskVoid AsyncPhotonNetworkInstantiate()
+    private void AsyncPhotonNetworkInstantiate()
     {
-        string filePathInstantiateManager = Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, "StageInstantiateManager");
+        string filePathInstantiateManager = Path.Combine(PathLiteral.Prefabs, PathLiteral.Object, PathLiteral.Stage, "StageInstantiateManager");
         PhotonNetwork.Instantiate(filePathInstantiateManager, transform.position, transform.rotation);
         
-        await UniTask.Delay(TimeSpan.FromSeconds(0.4f));
-        
-        string filePathPhotonRoomManager = Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.Stage, "PhotonStageSceneRoomManager");
+        string filePathPhotonRoomManager = Path.Combine(PathLiteral.Prefabs, PathLiteral.Object, PathLiteral.Stage, "PhotonStageSceneRoomManager");
         PhotonNetwork.Instantiate(filePathPhotonRoomManager, transform.position, transform.rotation);
     }
 }
