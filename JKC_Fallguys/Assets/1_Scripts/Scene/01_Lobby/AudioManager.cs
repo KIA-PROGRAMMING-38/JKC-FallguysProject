@@ -1,8 +1,6 @@
 using System;
-using LiteralRepository;
-using ResourceRegistry;
+using JetBrains.Annotations;
 using UnityEngine;
-using UnityEngine.Audio;
 
 public enum SoundType
 {
@@ -35,5 +33,51 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
 
         AudioSource musicLoop = _audioSources[(int)SoundType.MusicLoop];
         musicLoop.loop = true;
+    }
+
+    public void Play(SoundType soundType, [NotNull] AudioClip audioClip, float volume)
+    {
+        AudioSource audioSource = _audioSources[(int)soundType];
+        audioSource.volume = volume;
+        
+        switch(soundType)
+        {
+            case SoundType.MusicIntro:
+                if (audioSource.isPlaying)
+                {
+                    audioSource.Stop();
+                }
+
+                audioSource.clip = audioClip;
+                audioSource.Play();
+                break;
+            
+            case SoundType.MusicLoop:
+                if (audioSource.isPlaying)
+                {
+                    audioSource.Stop();
+                }
+
+                audioSource.clip = audioClip;
+                audioSource.Play();
+                break;
+            
+            case SoundType.SFX:
+                audioSource.PlayOneShot(audioClip);
+                break;
+            
+            default:
+                Debug.LogError($"AudioManager : You are not implemented at {nameof(Play)}");
+                break;
+        }
+    }
+
+    public void ScheduleLoopPlayback(AudioClip audioClip, float volume)
+    {
+        AudioSource loopAudioSource = _audioSources[(int)SoundType.MusicLoop];
+        loopAudioSource.volume = volume;
+
+        AudioSource introAudioSource = _audioSources[(int)SoundType.MusicIntro];
+        loopAudioSource.PlayDelayed(introAudioSource.clip.length);
     }
 }
