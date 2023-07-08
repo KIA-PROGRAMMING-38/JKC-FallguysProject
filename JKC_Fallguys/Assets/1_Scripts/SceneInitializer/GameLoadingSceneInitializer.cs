@@ -10,32 +10,27 @@ public class GameLoadingSceneInitializer : SceneInitializer
         base.Awake();
         
         StageRepository.Instance.Initialize();
-        
-        if (AudioManager.Instance != null)
-        {
-            Destroy(AudioManager.Instance.gameObject);
-        }
     }
     
     protected override void OnGetResources()
     {
         ResourceManager.Instantiate
-            (Path.Combine(PathLiteral.GameLoading, "GameLoadingSceneManager"));
+            (Path.Combine(PathLiteral.Object, PathLiteral.GameLoading, "GameLoadingSceneManager"));
         ResourceManager.Instantiate
-            (Path.Combine(PathLiteral.GameLoading, PathLiteral.UI, "GameLoadingBackgroundImage"));
+            (Path.Combine(PathLiteral.UI, PathLiteral.GameLoading, "GameLoadingBackgroundImage"));
         ResourceManager.Instantiate
-            (Path.Combine(PathLiteral.GameLoading, PathLiteral.UI, "HorizontalRendererViewController"));
+            (Path.Combine(PathLiteral.UI, PathLiteral.GameLoading, "HorizontalRendererViewController"));
         ResourceManager.Instantiate
-            (Path.Combine(PathLiteral.GameLoading, PathLiteral.UI, "MapInformationViewController"));
+            (Path.Combine(PathLiteral.UI, PathLiteral.GameLoading, "MapInformationViewController"));
         ResourceManager.Instantiate
-            (Path.Combine(PathLiteral.GameLoading, PathLiteral.UI, "WhiteScreenViewController"));
+            (Path.Combine(PathLiteral.UI, PathLiteral.GameLoading, "WhiteScreenViewController"));
         ResourceManager.Instantiate
-            (Path.Combine(PathLiteral.GameLoading, PathLiteral.UI, "GameLoadingMainPanelViewController"));
+            (Path.Combine(PathLiteral.UI, PathLiteral.GameLoading, "GameLoadingMainPanelViewController"));
         
 
         if (PhotonNetwork.IsMasterClient)
         {
-            string filePath = Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, PathLiteral.GameLoading, "MapSelectionManager");
+            string filePath = Path.Combine(PathLiteral.Prefabs, PathLiteral.Object, PathLiteral.GameLoading, "MapSelectionManager");
             PhotonNetwork.Instantiate(filePath, transform.position, transform.rotation);
         }
     }
