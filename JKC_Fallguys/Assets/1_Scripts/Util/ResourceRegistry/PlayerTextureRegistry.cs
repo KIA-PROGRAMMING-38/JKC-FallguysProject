@@ -15,7 +15,6 @@ public static class PlayerTextureRegistry
     private static void GetPlayerTextures()
     {
         PlayerTextures = new List<Texture>(
-            Resources.LoadAll<Texture>(
-                Path.Combine(PathLiteral.Textures, PathLiteral.PlayerTexture)));
+            Resources.LoadAll<Texture>(Path.Combine(PathLiteral.Sprites, PathLiteral.PlayerTexture)));
     }
 }
