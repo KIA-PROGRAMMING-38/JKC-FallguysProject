@@ -1,6 +1,8 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using LiteralRepository;
 using Model;
@@ -16,56 +18,119 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
 {
     #region 스테이지가 시작될 때 수행될 작업.
 
+    private int _readyClientsCount = 0;
+    private double _serverTime;
+    private const int SyncIntervalMs = 100;
+    private const int GameStartDelaySeconds = 2;
+    private const int OperationCountdownDelaySeconds = 3;
+    
+    private CancellationTokenSource _cts;
+
     private void Awake()
     {
         InitializeRx();
         StageDontDestroyOnLoadSet();
-        
+
         if (!PhotonNetwork.IsMasterClient)
-            return;
-
-        StartGameCountDown().Forget();
-    }
-    
-    private void StageDontDestroyOnLoadSet()
-    {
-        DontDestroyOnLoad(gameObject);
-        photonView.RPC("RpcSetParentStageRepository", RpcTarget.AllBuffered);
-    }
-
-    [PunRPC]
-    public void RpcSetParentStageRepository()
-    {
-        transform.SetParent(StageRepository.Instance.gameObject.transform);
-    }
-    
-    private async UniTaskVoid StartGameCountDown()
-    {
-        await UniTask.Delay(TimeSpan.FromSeconds(2f));
-
-        photonView.RPC("SetGameStart", RpcTarget.All);
-        
-        await UniTask.Delay(TimeSpan.FromSeconds(1f));
-
-        while (StageSceneModel.SpriteIndex.Value <= 4)
         {
-            await UniTask.Delay(TimeSpan.FromSeconds(1.5f));
-            
-            photonView.RPC("TriggerOperation", RpcTarget.All);
+            photonView.RPC("IsClientReady", RpcTarget.MasterClient);
+        }
+        else
+        {
+            ++_readyClientsCount;
+            _serverTime = PhotonNetwork.Time;
+            SyncServerTime().Forget();
+            WaitForAllClientsLoaded().Forget();
         }
     }
 
+    private async UniTask SyncServerTime()
+    {
+        while (true)
+        {
+            _serverTime = PhotonNetwork.Time;
+            photonView.RPC("RpcSyncServerTime", RpcTarget.Others, _serverTime);
+            await UniTask.Delay(TimeSpan.FromMilliseconds(SyncIntervalMs), cancellationToken: _cts.Token);
+        }
+    }
+
+    private async UniTask WaitForAllClientsLoaded()
+    {
+        while (_readyClientsCount < PhotonNetwork.CountOfPlayersOnMaster)
+        {
+            await UniTask.Delay(TimeSpan.FromMilliseconds(SyncIntervalMs), cancellationToken: _cts.Token);
+        }
+
+        ScheduleGameStart(_serverTime + GameStartDelaySeconds);
+        ScheduleOperationCountdown(_serverTime + OperationCountdownDelaySeconds);
+    }
+
+    private void ScheduleGameStart(double startTime)
+    {
+        photonView.RPC("RpcSetGameStart", RpcTarget.All, startTime);
+    }
+
+    private void ScheduleOperationCountdown(double startTime)
+    {
+        photonView.RPC("RpcStartTriggerOperationCountDown", RpcTarget.All, startTime);
+    }
+
     [PunRPC]
-    public void SetGameStart()
+    public void IsClientReady()
+    {
+        ++_readyClientsCount;
+    }
+
+    [PunRPC]
+    public void RpcSetGameStart(double startPhotonNetworkTime)
+    {
+        ScheduleDelayedAction(startPhotonNetworkTime, SetGameStart);
+    }
+
+    [PunRPC]
+    public void RpcStartTriggerOperationCountDown(double startPhotonNetworkTime)
+    {
+        ScheduleDelayedAction(startPhotonNetworkTime, StartOperationCountdown);
+    }
+
+    private void SetGameStart()
     {
         StageDataManager.Instance.SetGameStart(true);
         StageDataManager.Instance.PlayerContainer.FindAllObservedObjects();
     }
 
-    [PunRPC]
-    public void TriggerOperation()
+    private void StartOperationCountdown()
     {
-        StageSceneModel.IncreaseCountDownIndex();
+        Observable.Interval(TimeSpan.FromSeconds(1.5))
+            .TakeWhile(_ => StageSceneModel.SpriteIndex.Value <= 4)
+            .Subscribe(_ => StageSceneModel.IncreaseCountDownIndex())
+            .AddTo(this);
+    }
+
+    [PunRPC]
+    public void RpcSyncServerTime(double serverTime)
+    {
+        _serverTime = serverTime;
+    }
+
+    private void ScheduleDelayedAction(double scheduledTime, Action action)
+    {
+        DelayedActionAsync(scheduledTime, action).Forget();
+    }
+
+    private async UniTask DelayedActionAsync(double scheduledTime, Action action)
+    {
+        while (PhotonNetwork.Time < scheduledTime)
+        {
+            await UniTask.Yield(PlayerLoopTiming.Update, cancellationToken: _cts.Token);
+        }
+
+        action?.Invoke();
+    }
+    
+    private void OnDestroy()
+    {
+        _cts.Cancel();
     }
 
     private void InitializeRx()
@@ -78,6 +143,19 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
             .AddTo(this);
     }
 
+
+    private void StageDontDestroyOnLoadSet()
+    {
+        DontDestroyOnLoad(gameObject);
+        photonView.RPC("RpcSetParentStageRepository", RpcTarget.AllBuffered);
+    }
+
+    [PunRPC]
+    public void RpcSetParentStageRepository()
+    {
+        transform.SetParent(StageRepository.Instance.gameObject.transform);
+    }
+
     #endregion
 
     #region 스테이지를 결산할 때 수행될 작업.
@@ -88,7 +166,7 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
     {
         if (!PhotonNetwork.IsMasterClient)
             return;
-        
+
         // 타 컴포넌트에서 게임 결과를 정리하는 로직이 실행되기를 기다립니다.
         PrevEndProduction().Forget();
     }
@@ -121,9 +199,9 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
 
         CalculateLosersScore();
         EndLogic();
-        
+
         photonView.RPC("RpcEveryClientPhotonViewTransferOwnerShip", RpcTarget.AllBuffered);
-        
+
         StageEndProduction().Forget();
     }
 
@@ -132,14 +210,14 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
     {
         StageRepository.Instance.PlayerDispose();
     }
-    
-    
+
+
     private async UniTaskVoid StageEndProduction()
     {
         await UniTask.Delay(TimeSpan.FromSeconds(5f), DelayType.UnscaledDeltaTime);
 
         photonView.RPC("RpcClearPlayerObject", RpcTarget.MasterClient);
-        
+
         if (StageDataManager.Instance.IsFinalRound())
         {
             PhotonNetwork.LoadLevel(SceneIndex.GameResult);
@@ -159,7 +237,7 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
         {
             children.Add(child.gameObject);
         }
-        
+
         foreach (Transform child in StageRepository.Instance.gameObject.transform)
         {
             children.Add(child.gameObject);
@@ -168,7 +246,7 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
         foreach (GameObject child in children)
         {
             PhotonView childPhotonView = child.GetComponent<PhotonView>();
-        
+
             if (childPhotonView == null || childPhotonView.ViewID < 0)
                 continue;
 
@@ -190,7 +268,8 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
                     int oldScore = playerData.Score;
                     int newScore = oldScore + 2500;
                     playerData.Score = newScore;
-                    StageDataManager.Instance.PlayerDataByIndex[playerIndex] = playerData; // Updated PlayerData back to dictionary
+                    StageDataManager.Instance.PlayerDataByIndex[playerIndex] =
+                        playerData; // Updated PlayerData back to dictionary
                 }
             }
         }
@@ -212,7 +291,8 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
                     int prevScore = playerData.Score;
                     int updatedScore = prevScore + rankRewards[i];
                     playerData.Score = updatedScore;
-                    StageDataManager.Instance.PlayerDataByIndex[playerIndex] = playerData; // Updated PlayerData back to dictionary
+                    StageDataManager.Instance.PlayerDataByIndex[playerIndex] =
+                        playerData; // Updated PlayerData back to dictionary
                 }
             }
         }
@@ -241,14 +321,16 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
 
         string playerScoresByIndexJson = JsonConvert.SerializeObject(StageDataManager.Instance.PlayerDataByIndex);
 
-        photonView.RPC("UpdateStageDataOnAllClients", RpcTarget.All, playerScoresByIndexJson, StageDataManager.Instance.CachedPlayerIndicesForResults.ToArray(), StageDataManager.Instance.StagePlayerRankings.ToArray());
+        photonView.RPC("UpdateStageDataOnAllClients", RpcTarget.All, playerScoresByIndexJson,
+            StageDataManager.Instance.CachedPlayerIndicesForResults.ToArray(),
+            StageDataManager.Instance.StagePlayerRankings.ToArray());
     }
 
 
     private void UpdatePlayerRanking()
     {
         // PlayerData에 저장된 점수를 기준으로 플레이어를 정렬하고 그 순서대로 인덱스를 CachedPlayerIndicesForResults에 저장합니다.
-        List<KeyValuePair<int, PlayerData>> sortedPlayers = 
+        List<KeyValuePair<int, PlayerData>> sortedPlayers =
             StageDataManager.Instance.PlayerDataByIndex.OrderByDescending(pair => pair.Value.Score).ToList();
 
         StageDataManager.Instance.CachedPlayerIndicesForResults.Clear();
@@ -258,11 +340,13 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
             StageDataManager.Instance.CachedPlayerIndicesForResults.Add(pair.Key);
         }
     }
- 
+
     [PunRPC]
-    public void UpdateStageDataOnAllClients(string playerScoresByIndexJson, int[] playerRanking, int[] stagePlayerRankings)
+    public void UpdateStageDataOnAllClients(string playerScoresByIndexJson, int[] playerRanking,
+        int[] stagePlayerRankings)
     {
-        StageDataManager.Instance.PlayerDataByIndex = JsonConvert.DeserializeObject<Dictionary<int, PlayerData>>(playerScoresByIndexJson);
+        StageDataManager.Instance.PlayerDataByIndex =
+            JsonConvert.DeserializeObject<Dictionary<int, PlayerData>>(playerScoresByIndexJson);
         StageDataManager.Instance.CachedPlayerIndicesForResults = playerRanking.ToList();
         StageDataManager.Instance.StagePlayerRankings = stagePlayerRankings.ToList();
     }
