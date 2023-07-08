@@ -25,18 +25,18 @@ public class MatchingSceneInitializer : SceneInitializer
     protected override void OnGetResources()
     {
         ResourceManager.Instantiate
-            (Path.Combine(PathLiteral.MatchingStandby, PathLiteral.Object, "PhotonMatchingSceneEventManager"));
-        
+            (Path.Combine(PathLiteral.Object, PathLiteral.MatchingStandby, "PhotonMatchingSceneEventManager"));
+
         _respawnZone = ResourceManager.Instantiate
-            (Path.Combine(PathLiteral.MatchingStandby, PathLiteral.Object, "RespawnZone"))
+                (Path.Combine(PathLiteral.Object, PathLiteral.MatchingStandby, "RespawnZone"))
             .GetComponent<RespawnZone>();
         _lineEffectPooler = ResourceManager.Instantiate
-            (Path.Combine(PathLiteral.MatchingStandby, PathLiteral.Object, "LineEffectPooler"))
+                (Path.Combine(PathLiteral.Object, PathLiteral.MatchingStandby, "LineEffectPooler"))
             .GetComponent<LineEffectPooler>();
-        
+
         ResourceManager.Instantiate
-            (Path.Combine(PathLiteral.MatchingStandby, PathLiteral.Object, "ReleaseZone"));
+            (Path.Combine(PathLiteral.Object, PathLiteral.MatchingStandby, "ReleaseZone"));
         ResourceManager.Instantiate
-            (Path.Combine(PathLiteral.MatchingStandby, PathLiteral.Object, "MatchingSceneFallGuy"));
+            (Path.Combine(PathLiteral.Object, PathLiteral.MatchingStandby, "MatchingSceneFallGuy"));
     }
 }

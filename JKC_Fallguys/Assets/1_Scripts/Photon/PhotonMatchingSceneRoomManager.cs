@@ -65,7 +65,7 @@ public class PhotonMatchingSceneRoomManager : MonoBehaviourPun
     {
         for (int i = 0; i < ResourceManager.MaxPlayableMaps; ++i)
         {
-            MapData mapData = ResourceManager.JsonLoader<MapData>($"JSON/MapData_{i:D2}");
+            MapData mapData = ResourceManager.JsonLoader<MapData>($"Data/MapData_{i:D2}");
             StageDataManager.Instance.MapDatas.Add(i, mapData);
         }
     }
