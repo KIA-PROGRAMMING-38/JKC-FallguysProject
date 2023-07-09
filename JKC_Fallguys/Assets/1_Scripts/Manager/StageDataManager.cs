@@ -1,14 +1,23 @@
+using System;
 using System.Collections.Generic;
 using Photon.Pun;
 using UniRx;
 
 public class StageDataManager : SingletonMonoBehaviour<StageDataManager>
 {
+    public PlayerContainer PlayerContainer = new PlayerContainer();
+    public PhotonTimeHelper PhotonTimeHelper;
+    
     protected override void Awake()
     {
         base.Awake();
         
         PlayerContainer.Initialize(gameObject);
+    }
+
+    private void Start()
+    {
+        PhotonTimeHelper = FindObjectOfType<PhotonTimeHelper>();
     }
 
     public void Clear()
@@ -24,7 +33,6 @@ public class StageDataManager : SingletonMonoBehaviour<StageDataManager>
         SetPlayerState(actorNumber, StageDataManager.PlayerState.Default);
     }
 
-    public PlayerContainer PlayerContainer = new PlayerContainer();
     
     // 게임 시작의 카운트다운을 관장합니다.
     private ReactiveProperty<bool> _isGameStart = new ReactiveProperty<bool>(false);

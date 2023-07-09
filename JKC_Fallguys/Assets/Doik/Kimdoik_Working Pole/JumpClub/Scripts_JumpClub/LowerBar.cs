@@ -40,13 +40,14 @@ public class LowerBar : MonoBehaviourPun
 
     private void TriggerStart()
     {
-        photonView.RPC("RpcInitiateRotation", RpcTarget.AllBuffered, UnixTimeHelper.GetFutureUnixTime(3));
+        double futureNetworkTime = StageDataManager.Instance.PhotonTimeHelper.GetFutureNetworkTime(3);
+        photonView.RPC("RpcInitiateRotation", RpcTarget.AllBuffered, futureNetworkTime);
     }
 
     [PunRPC]
-    public void RpcInitiateRotation(long startUnixTimestamp)
+    public void RpcInitiateRotation(double startNetworkTime)
     {
-        UnixTimeHelper.ScheduleDelayedAction(startUnixTimestamp, () => SetRotaition());
+        StageDataManager.Instance.PhotonTimeHelper.ScheduleDelayedAction(startNetworkTime, () => SetRotaition(), _cancellationTokenSource.Token);
     }
 
     private void SetRotaition()

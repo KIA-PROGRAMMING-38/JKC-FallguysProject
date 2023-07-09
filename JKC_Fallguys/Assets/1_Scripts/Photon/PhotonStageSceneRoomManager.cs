@@ -20,10 +20,10 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
 
     private int _readyClientsCount = 0;
     private double _serverTime;
-    private const int SyncIntervalMs = 100;
     private const int GameStartDelaySeconds = 2;
     private const int OperationCountdownDelaySeconds = 3;
-    
+    private const int SyncIntervalMs = 100;
+
     private CancellationTokenSource _cts;
 
     private void Awake()
