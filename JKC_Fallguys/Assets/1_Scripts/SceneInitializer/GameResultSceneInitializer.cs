@@ -2,18 +2,22 @@ using System.IO;
 using LiteralRepository;
 using Model;
 using Photon.Pun;
+using ResourceRegistry;
 
 public class GameResultSceneInitializer : SceneInitializer
 {
+    private bool _isVictory;
     protected override void InitializeModel()
     {
-        bool isVictory = StageDataManager.Instance.CachedPlayerIndicesForResults[0] == PhotonNetwork.LocalPlayer.ActorNumber;
+        _isVictory = StageDataManager.Instance.CachedPlayerIndicesForResults[0] == PhotonNetwork.LocalPlayer.ActorNumber;
 
-        ResultSceneModel.CheckVictory(isVictory);
+        ResultSceneModel.CheckVictory(_isVictory);
     }
 
     protected override void OnGetResources()
     {
+        SetAudio();
+        
         GameResultSceneFallGuyController fallGuyController = 
             ResourceManager.Instantiate
                 (Path.Combine(PathLiteral.Object, PathLiteral.GameResult, "GameResultSceneFallGuy"))
@@ -30,5 +34,18 @@ public class GameResultSceneInitializer : SceneInitializer
             (Path.Combine(PathLiteral.UI, PathLiteral.GameResult, "GameResultBackgroundImage"));
         ResourceManager.Instantiate
             (Path.Combine(PathLiteral.UI, PathLiteral.GameResult, "ResultViewController"));
+    }
+
+    private void SetAudio()
+    {
+        AudioManager.Instance.Clear();
+        if (_isVictory)
+        {
+            AudioManager.Instance.Play(SoundType.MusicIntro, AudioRegistry.GameResultMusic[0], 0.3f);    
+        }
+        else
+        {
+            AudioManager.Instance.Play(SoundType.MusicIntro, AudioRegistry.GameResultMusic[1], 0.3f);
+        }
     }
 }
