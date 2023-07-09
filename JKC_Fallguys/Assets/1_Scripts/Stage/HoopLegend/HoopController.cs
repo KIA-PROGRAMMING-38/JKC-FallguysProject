@@ -68,11 +68,11 @@ public class HoopController : MonoBehaviourPun
         {
             if (i < 3) 
             {
-                StageDataManager.Instance.AddPlayerToRanking(rankings[i]);
+                StageDataManager.Instance.PlayerContainer.AddPlayerToRanking(rankings[i]);
             }
             else
             {
-                StageDataManager.Instance.AddPlayerToFailedClearStagePlayers(rankings[i]);
+                StageDataManager.Instance.PlayerContainer.AddFailedPlayer(rankings[i]);
             }
         }
     }

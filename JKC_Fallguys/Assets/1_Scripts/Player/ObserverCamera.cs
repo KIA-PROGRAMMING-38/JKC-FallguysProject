@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,9 +7,16 @@ public class ObserverCamera : MonoBehaviour
     private Transform _followPlayerCharacter;
     private Vector2 _observingMouseVec;
 
-    public void OnEnable()
+    private PlayerObserverCamera _playerObserverCamera;
+
+    public void Initialize(PlayerObserverCamera playerObserverCamera)
     {
-        StageDataManager.Instance.PlayerContainer.ObservedNextPlayer();
+        _playerObserverCamera = playerObserverCamera;
+    }
+
+    private void OnEnable()
+    {
+        _playerObserverCamera.ObservedNextPlayer();
     }
 
     public void OnUpdateMousePos(InputAction.CallbackContext context)
@@ -22,7 +30,7 @@ public class ObserverCamera : MonoBehaviour
     {
         if (context.started)
         {
-            StageDataManager.Instance.PlayerContainer.ObservedNextPlayer();
+            _playerObserverCamera.ObservedNextPlayer();
         }
     }
 
@@ -30,7 +38,7 @@ public class ObserverCamera : MonoBehaviour
     {
         if (context.started)
         {
-            StageDataManager.Instance.PlayerContainer.ObservedPrevPlayer();
+            _playerObserverCamera.ObservedPrevPlayer();
         }
     }
     

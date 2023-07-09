@@ -83,26 +83,26 @@ public class FruitChuteController : StageController
     [PunRPC]
     public void RpcEndGame()
     {
-        StageDataManager.Instance.IsGameActive.Value = false;
+        StageDataManager.Instance.SetGameStatus(false);
 
         int actorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
 
-        if (StageDataManager.Instance.GetCurrentState(actorNumber).Value != StageDataManager.PlayerState.Victory)
+        if (StageDataManager.Instance.PlayerContainer.GetCurrentState(actorNumber).Value != PlayerContainer.PlayerState.Victory)
         {
-            StageDataManager.Instance.SetPlayerState(actorNumber, StageDataManager.PlayerState.Defeat);
+            StageDataManager.Instance.PlayerContainer.SetPlayerState(actorNumber, PlayerContainer.PlayerState.Defeat);
             photonView.RPC
-                ("RpcAddPlayerToFailedClearStagePlayers", RpcTarget.MasterClient, PhotonNetwork.LocalPlayer.ActorNumber);
+                ("RpcAddFailedPlayer", RpcTarget.MasterClient, PhotonNetwork.LocalPlayer.ActorNumber);
         }
-        else if (StageDataManager.Instance.GetCurrentState(actorNumber).Value == StageDataManager.PlayerState.Victory)
+        else if (StageDataManager.Instance.PlayerContainer.GetCurrentState(actorNumber).Value == PlayerContainer.PlayerState.Victory)
         {
-            StageDataManager.Instance.SetPlayerState(actorNumber, StageDataManager.PlayerState.GameTerminated);
+            StageDataManager.Instance.PlayerContainer.SetPlayerState(actorNumber, PlayerContainer.PlayerState.GameTerminated);
         }
     }
 
     [PunRPC]
-    public void RpcAddPlayerToFailedClearStagePlayers(int actorNumber)
+    public void RpcAddFailedPlayer(int actorNumber)
     {
-        StageDataManager.Instance.AddPlayerToFailedClearStagePlayers(actorNumber);
+        StageDataManager.Instance.PlayerContainer.AddFailedPlayer(actorNumber);
     }
     
     private void OnDestroy()

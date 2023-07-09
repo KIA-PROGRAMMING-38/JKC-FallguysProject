@@ -51,7 +51,7 @@ public class PhotonMatchingSceneRoomManager : MonoBehaviourPun
             int actorNumber = player.Value.ActorNumber;
             // 새로운 PlayerData 객체를 만들고, 이를 PlayerScoresByIndex 딕셔너리에 추가합니다.
             int playerTextureIndex = (int)player.Value.CustomProperties["PlayerTextureIndex"];
-            StageDataManager.Instance.PlayerDataByIndex[actorNumber] =
+            StageDataManager.Instance.PlayerContainer.PlayerDataByIndex[actorNumber] =
                 new PlayerData(player.Value.NickName, playerTextureIndex, 0);
             
         }

@@ -7,7 +7,7 @@ public class GameResultSceneInitializer : SceneInitializer
 {
     protected override void InitializeModel()
     {
-        bool isVictory = StageDataManager.Instance.CachedPlayerIndicesForResults[0] == PhotonNetwork.LocalPlayer.ActorNumber;
+        bool isVictory = StageDataManager.Instance.PlayerContainer.CachedPlayerIndicesForResults[0] == PhotonNetwork.LocalPlayer.ActorNumber;
 
         ResultSceneModel.CheckVictory(isVictory);
     }

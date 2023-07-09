@@ -98,7 +98,6 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
     private void SetGameStart()
     {
         StageDataManager.Instance.SetGameStart(true);
-        StageDataManager.Instance.PlayerContainer.FindAllObservedObjects();
     }
 
     private void StartOperationCountdown()
@@ -258,19 +257,19 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
 
     private void GiveScore()
     {
-        for (int i = 0; i < StageDataManager.Instance.StagePlayerRankings.Count; i++)
+        for (int i = 0; i < StageDataManager.Instance.PlayerContainer.StagePlayerRankings.Count; i++)
         {
             // 해당 순위의 플레이어가 존재하는지 확인.
-            if (i < StageDataManager.Instance.StagePlayerRankings.Count)
+            if (i < StageDataManager.Instance.PlayerContainer.StagePlayerRankings.Count)
             {
-                int playerIndex = StageDataManager.Instance.StagePlayerRankings[i];
-                if (StageDataManager.Instance.PlayerDataByIndex.ContainsKey(playerIndex))
+                int playerIndex = StageDataManager.Instance.PlayerContainer.StagePlayerRankings[i];
+                if (StageDataManager.Instance.PlayerContainer.PlayerDataByIndex.ContainsKey(playerIndex))
                 {
-                    PlayerData playerData = StageDataManager.Instance.PlayerDataByIndex[playerIndex];
+                    PlayerData playerData = StageDataManager.Instance.PlayerContainer.PlayerDataByIndex[playerIndex];
                     int oldScore = playerData.Score;
                     int newScore = oldScore + 2500;
                     playerData.Score = newScore;
-                    StageDataManager.Instance.PlayerDataByIndex[playerIndex] =
+                    StageDataManager.Instance.PlayerContainer.PlayerDataByIndex[playerIndex] =
                         playerData; // Updated PlayerData back to dictionary
                 }
             }
@@ -284,16 +283,16 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
         for (int i = 0; i < rankRewards.Length; i++)
         {
             // 해당 순위의 플레이어가 존재하는지 확인.
-            if (i < StageDataManager.Instance.StagePlayerRankings.Count)
+            if (i < StageDataManager.Instance.PlayerContainer.StagePlayerRankings.Count)
             {
-                int playerIndex = StageDataManager.Instance.StagePlayerRankings[i];
-                if (StageDataManager.Instance.PlayerDataByIndex.ContainsKey(playerIndex))
+                int playerIndex = StageDataManager.Instance.PlayerContainer.StagePlayerRankings[i];
+                if (StageDataManager.Instance.PlayerContainer.PlayerDataByIndex.ContainsKey(playerIndex))
                 {
-                    PlayerData playerData = StageDataManager.Instance.PlayerDataByIndex[playerIndex];
+                    PlayerData playerData = StageDataManager.Instance.PlayerContainer.PlayerDataByIndex[playerIndex];
                     int prevScore = playerData.Score;
                     int updatedScore = prevScore + rankRewards[i];
                     playerData.Score = updatedScore;
-                    StageDataManager.Instance.PlayerDataByIndex[playerIndex] =
+                    StageDataManager.Instance.PlayerContainer.PlayerDataByIndex[playerIndex] =
                         playerData; // Updated PlayerData back to dictionary
                 }
             }
@@ -302,15 +301,15 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
 
     private void CalculateLosersScore()
     {
-        foreach (int elem in StageDataManager.Instance.FailedClearStagePlayers)
+        foreach (int elem in StageDataManager.Instance.PlayerContainer.FailedClearStagePlayers)
         {
-            if (StageDataManager.Instance.PlayerDataByIndex.ContainsKey(elem))
+            if (StageDataManager.Instance.PlayerContainer.PlayerDataByIndex.ContainsKey(elem))
             {
-                PlayerData playerData = StageDataManager.Instance.PlayerDataByIndex[elem];
+                PlayerData playerData = StageDataManager.Instance.PlayerContainer.PlayerDataByIndex[elem];
                 int prevScore = playerData.Score;
                 int updatedScore = prevScore + 100;
                 playerData.Score = updatedScore;
-                StageDataManager.Instance.PlayerDataByIndex[elem] = playerData;
+                StageDataManager.Instance.PlayerContainer.PlayerDataByIndex[elem] = playerData;
             }
         }
     }
@@ -318,14 +317,14 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
     private void EndLogic()
     {
         UpdatePlayerRanking();
-        StageDataManager.Instance.StagePlayerRankings.Clear();
-        StageDataManager.Instance.FailedClearStagePlayers.Clear();
+        StageDataManager.Instance.PlayerContainer.StagePlayerRankings.Clear();
+        StageDataManager.Instance.PlayerContainer.FailedClearStagePlayers.Clear();
 
-        string playerScoresByIndexJson = JsonConvert.SerializeObject(StageDataManager.Instance.PlayerDataByIndex);
+        string playerScoresByIndexJson = JsonConvert.SerializeObject(StageDataManager.Instance.PlayerContainer.PlayerDataByIndex);
 
         photonView.RPC("UpdateStageDataOnAllClients", RpcTarget.All, playerScoresByIndexJson,
-            StageDataManager.Instance.CachedPlayerIndicesForResults.ToArray(),
-            StageDataManager.Instance.StagePlayerRankings.ToArray());
+            StageDataManager.Instance.PlayerContainer.CachedPlayerIndicesForResults.ToArray(),
+            StageDataManager.Instance.PlayerContainer.StagePlayerRankings.ToArray());
     }
 
 
@@ -333,13 +332,13 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
     {
         // PlayerData에 저장된 점수를 기준으로 플레이어를 정렬하고 그 순서대로 인덱스를 CachedPlayerIndicesForResults에 저장합니다.
         List<KeyValuePair<int, PlayerData>> sortedPlayers =
-            StageDataManager.Instance.PlayerDataByIndex.OrderByDescending(pair => pair.Value.Score).ToList();
+            StageDataManager.Instance.PlayerContainer.PlayerDataByIndex.OrderByDescending(pair => pair.Value.Score).ToList();
 
-        StageDataManager.Instance.CachedPlayerIndicesForResults.Clear();
+        StageDataManager.Instance.PlayerContainer.CachedPlayerIndicesForResults.Clear();
 
         foreach (KeyValuePair<int, PlayerData> pair in sortedPlayers)
         {
-            StageDataManager.Instance.CachedPlayerIndicesForResults.Add(pair.Key);
+            StageDataManager.Instance.PlayerContainer.CachedPlayerIndicesForResults.Add(pair.Key);
         }
     }
 
@@ -347,10 +346,10 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
     public void UpdateStageDataOnAllClients(string playerScoresByIndexJson, int[] playerRanking,
         int[] stagePlayerRankings)
     {
-        StageDataManager.Instance.PlayerDataByIndex =
+        StageDataManager.Instance.PlayerContainer.PlayerDataByIndex =
             JsonConvert.DeserializeObject<Dictionary<int, PlayerData>>(playerScoresByIndexJson);
-        StageDataManager.Instance.CachedPlayerIndicesForResults = playerRanking.ToList();
-        StageDataManager.Instance.StagePlayerRankings = stagePlayerRankings.ToList();
+        StageDataManager.Instance.PlayerContainer.CachedPlayerIndicesForResults = playerRanking.ToList();
+        StageDataManager.Instance.PlayerContainer.StagePlayerRankings = stagePlayerRankings.ToList();
     }
 
     #endregion

@@ -1,122 +1,72 @@
 using System.Collections.Generic;
 using UniRx;
-using UnityEngine;
 
 public class PlayerContainer
 {
-    private CompositeDisposable _compositeDisposable = new CompositeDisposable();
-    private GameObject _stageDataManager;
-    private PlayerObserverCamera _observer;
-    private readonly Dictionary<int, GameObject> _playersByActorNumber = new Dictionary<int, GameObject>();
-    private readonly List<int> _actorNumbersOfPlayers = new List<int>();
-    private int _currentPlayerIndexInActorNumbers = 0;
-    private bool _isObservationInProgress = false;
-
-    private ReactiveProperty<GameObject> _targetObject = new ReactiveProperty<GameObject>();
-
-    public void Initialize(GameObject stageDataManager)
+    // // 현재 클라이언트를 플레이하고 있는 플레이어의 생존 여부를 나타냅니다.
+    private Dictionary<int, ReactiveProperty<bool>> _isPlayerActiveDict = new Dictionary<int, ReactiveProperty<bool>>();
+    public IReactiveProperty<bool> IsPlayerActive(int actorNumber)
     {
-        _stageDataManager = stageDataManager;
-
-        InitializeRx();
-    }
-
-    private void InitializeRx()
-    {
-        _targetObject
-            .Where(obj => obj != null)
-            .DistinctUntilChanged()
-            .Subscribe(_ => ObservedNextPlayer())
-            .AddTo(_compositeDisposable);
-    }
-    
-    private void ChangeObservingPlayer(GameObject gameObject)
-    {
-        _targetObject.Value = gameObject;
-    }
-
-
-    private void SetCharacter(Transform character)
-    {
-        _observer.BindObservedCharacter(character);
-        ChangeObservingPlayer(character.parent.gameObject);
-    }
-
-    public void ObservedNextPlayer()
-    {
-        int startIndex = (_currentPlayerIndexInActorNumbers + 1) % _actorNumbersOfPlayers.Count;
-        SetObservingPlayer(startIndex);
-    }
-
-    public void ObservedPrevPlayer()
-    {
-
-        int startIndex = (_currentPlayerIndexInActorNumbers - 1 + _actorNumbersOfPlayers.Count) % _actorNumbersOfPlayers.Count;
-        SetObservingPlayer(startIndex);
-    }
-
-    private void SetObservingPlayer(int startIndex)
-    {
-        if (_playersByActorNumber.Count == 0 || _isObservationInProgress)
+        if (!_isPlayerActiveDict.ContainsKey(actorNumber))
         {
-            return;
+            _isPlayerActiveDict[actorNumber] = new ReactiveProperty<bool>(true);
         }
-        
-        _isObservationInProgress = true;
-        _currentPlayerIndexInActorNumbers = startIndex;
 
-        do
+        return _isPlayerActiveDict[actorNumber];
+    }
+    
+    public Dictionary<int, PlayerData> PlayerDataByIndex = new Dictionary<int, PlayerData>();
+
+    // 결과 창에서 사용될 플레이어의 인덱스를 캐싱해놓는 리스트입니다.
+    public List<int> CachedPlayerIndicesForResults = new List<int>();
+
+    // 두 리스트는 스테이지가 넘어갈 때, 초기화됩니다.
+    // 클리어에 실패한 사용자를 기록하는 리스트입니다
+    public List<int> FailedClearStagePlayers = new List<int>();
+
+    // 스테이지에서 사용될 순위를 기록하는 리스트입니다.
+    public List<int> StagePlayerRankings = new List<int>();
+
+    // Round Result Panel의 성공, 실패, 종료 여부를 설정하기 위한 변수입니다.
+    public enum PlayerState
+    {
+        Default,
+        Victory,
+        Defeat,
+        GameTerminated
+    }
+    
+    // 클라이언트 별 PlayerState를 관리하는 Dictionary입니다.
+    private Dictionary<int, ReactiveProperty<PlayerState>> _clientStates =
+        new Dictionary<int, ReactiveProperty<PlayerState>>();
+
+    public IReactiveProperty<PlayerState> GetCurrentState(int actorNumber)
+    {
+        if (!_clientStates.ContainsKey(actorNumber))
         {
-            GameObject current = _playersByActorNumber[_actorNumbersOfPlayers[_currentPlayerIndexInActorNumbers]];
-            if (current == null || !current.activeSelf)
-                continue;
-
-            Transform character = current.transform.Find("Character");
-            if (character == null)
-                continue;
-
-            SetCharacter(character);
-            _isObservationInProgress = false;
-            return;
+            _clientStates[actorNumber] = new ReactiveProperty<PlayerState>();
         }
-        while ((_currentPlayerIndexInActorNumbers = (_currentPlayerIndexInActorNumbers + 1) % _actorNumbersOfPlayers.Count) != startIndex);
 
-        _observer.gameObject.SetActive(false);
-        _isObservationInProgress = false;
-    }
-
-
-
-    public void BindObservingCamera(PlayerObserverCamera observer)
-    {
-        _observer = observer;
+        return _clientStates[actorNumber];
     }
     
-    public void Clear()
+    public void AddPlayerToRanking(int playerIndex)
     {
-        _playersByActorNumber.Clear();
-        _currentPlayerIndexInActorNumbers = 0;
-        _observer = default;
-        ChangeObservingPlayer(null);
-    }
-    
-    public void FindAllObservedObjects()
-    {
-        Transform parentTransform = _stageDataManager.transform;
-    
-        for (int i = 0; i < parentTransform.childCount; i++)
-        {
-            Transform childTransform = parentTransform.GetChild(i);
-            GameObject childObject = childTransform.gameObject;
-            PlayerReferenceManager playerReferenceManager = childObject.GetComponent<PlayerReferenceManager>();
-
-            _playersByActorNumber[playerReferenceManager.ArchievePlayerActorNumber] = childObject;
-            _actorNumbersOfPlayers.Add(playerReferenceManager.ArchievePlayerActorNumber);
-        }
+        StagePlayerRankings.Add(playerIndex);
     }
 
-    public void OnRelease()
+    public void AddFailedPlayer(int actorNumber)
     {
-        _compositeDisposable.Dispose();
+        FailedClearStagePlayers.Add(actorNumber);
+    }
+    
+    public void SetPlayerState(int actorNumber, PlayerState state)
+    {
+        GetCurrentState(actorNumber).Value = state;
+    }
+
+    public void SetPlayerActive(int actorNumber, bool status)
+    {
+        IsPlayerActive(actorNumber).Value = status;
     }
 }
