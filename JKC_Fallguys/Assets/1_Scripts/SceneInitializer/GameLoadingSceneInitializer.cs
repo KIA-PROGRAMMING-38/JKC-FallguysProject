@@ -1,6 +1,7 @@
 using System.IO;
 using LiteralRepository;
 using Photon.Pun;
+using ResourceRegistry;
 using UnityEngine;
 
 public class GameLoadingSceneInitializer : SceneInitializer
@@ -14,6 +15,9 @@ public class GameLoadingSceneInitializer : SceneInitializer
     
     protected override void OnGetResources()
     {
+        AudioManager.Instance.Clear();
+        AudioManager.Instance.Play(SoundType.MusicLoop, AudioRegistry.GameLoadingMusic, 0.3f);
+        
         ResourceManager.Instantiate
             (Path.Combine(PathLiteral.Object, PathLiteral.GameLoading, "GameLoadingSceneManager"));
         ResourceManager.Instantiate

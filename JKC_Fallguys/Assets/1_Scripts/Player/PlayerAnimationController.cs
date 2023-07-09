@@ -6,7 +6,7 @@ using ResourceRegistry;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class PlayerAnimation : MonoBehaviourPun
+public class PlayerAnimationController : MonoBehaviourPun
 {
     private Animator _animator;
     private PlayerInput _playerInput;

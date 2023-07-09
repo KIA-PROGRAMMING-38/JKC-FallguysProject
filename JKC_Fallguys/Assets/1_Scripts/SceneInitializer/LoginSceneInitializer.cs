@@ -15,6 +15,8 @@ public class LoginSceneInitializer : SceneInitializer
             (Path.Combine(PathLiteral.UI, PathLiteral.Login, "LoginPanelViewController"));
 
         SetAudioMixerVolume();
+        
+        AudioManager.Instance.Play(SoundType.MusicIntro, AudioRegistry.LoginMusic, 0.3f);
 
         Screen.SetResolution(1920, 1080, FullScreenMode.Windowed);
     }
