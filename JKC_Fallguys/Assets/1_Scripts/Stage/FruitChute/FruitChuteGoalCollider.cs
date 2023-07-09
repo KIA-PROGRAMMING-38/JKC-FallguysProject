@@ -13,8 +13,8 @@ public class FruitChuteGoalCollider : MonoBehaviourPun
             {
                 int actorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
 
-                StageDataManager.Instance.SetPlayerState(actorNumber, StageDataManager.PlayerState.Victory);
-                StageDataManager.Instance.SetPlayerActive(actorNumber, false);
+                StageDataManager.Instance.PlayerContainer.SetPlayerState(actorNumber, PlayerContainer.PlayerState.Victory);
+                StageDataManager.Instance.PlayerContainer.SetPlayerActive(actorNumber, false);
                 
                 playerPhotonView.RPC("RpcSetDeActivePlayerObject", RpcTarget.AllBuffered);
         
@@ -33,15 +33,19 @@ public class FruitChuteGoalCollider : MonoBehaviourPun
     [PunRPC]
     public void RpcUpdatePlayerRanking(int playerIndex)
     {
-        // 각 클라이언트는 이 함수를 통해 자신의 순위 리스트를 최신 상태로 업데이트합니다.
-        StageDataManager.Instance.AddPlayerToRanking(playerIndex);
+        // Each client updates their own ranking list through this function.
+        PlayerContainer playerContainer = StageDataManager.Instance.PlayerContainer;
 
-        if (StageDataManager.Instance.StagePlayerRankings.Count == 3 ||
-            PhotonNetwork.CurrentRoom.PlayerCount <= StageDataManager.Instance.StagePlayerRankings.Count)
+        playerContainer.AddPlayerToRanking(playerIndex);
+
+        int rankingCount = playerContainer.StagePlayerRankings.Count;
+
+        if (rankingCount == 3 || PhotonNetwork.CurrentRoom.PlayerCount <= rankingCount)
         {
             photonView.RPC("RpcEndGameBroadCast", RpcTarget.All);
         }
     }
+
 
     [PunRPC]
     public void RpcEndGameBroadCast()
