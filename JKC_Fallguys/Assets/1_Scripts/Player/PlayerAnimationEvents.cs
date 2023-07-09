@@ -24,4 +24,14 @@ public class PlayerAnimationEvents : MonoBehaviour
     {
         _audioSource.PlayOneShot(AudioRegistry.FallGuySFXOnRoundResult[2]);
     }
+
+    public void PlayMaxWaveSFX()
+    {
+        _audioSource.PlayOneShot(AudioRegistry.VictoryFallGuySFX[0]);
+    }
+
+    public void PlayDanceSFX()
+    {
+        _audioSource.PlayOneShot(AudioRegistry.VictoryFallGuySFX[2]);
+    }
 }
