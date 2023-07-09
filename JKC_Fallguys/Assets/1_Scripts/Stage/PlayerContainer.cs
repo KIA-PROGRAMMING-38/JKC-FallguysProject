@@ -34,18 +34,22 @@ public class PlayerContainer
         _targetObject.Value = gameObject;
     }
 
+    private bool _isObservationInProgress = false;
+
     public void ObservedNextPlayer()
     {
-        if (_playerGameObjects.Count == 0)
+        if (_playerGameObjects.Count == 0 || _isObservationInProgress)
         {
             return;
         }
+
+        _isObservationInProgress = true;
 
         int startIndex = _observingIndex;
         do
         {
             _observingIndex = (_observingIndex + 1) % _observedIndexList.Count;
-            
+
             GameObject current = _playerGameObjects[_observedIndexList[_observingIndex]];
             if (current == null || !current.activeSelf)
                 continue;
@@ -55,12 +59,15 @@ public class PlayerContainer
                 continue;
 
             SetCharacter(character);
+            _isObservationInProgress = false;
             return;
         }
         while (_observingIndex != startIndex);
-        
+
         _observer.gameObject.SetActive(false);
+        _isObservationInProgress = false;
     }
+
 
     private void SetCharacter(Transform character)
     {
