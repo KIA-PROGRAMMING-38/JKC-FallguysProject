@@ -34,4 +34,19 @@ public class PlayerAnimationEvents : MonoBehaviour
     {
         _audioSource.PlayOneShot(AudioRegistry.VictoryFallGuySFX[2]);
     }
+    
+    public void PlayArmThrowSFX()
+    {
+        _audioSource.PlayOneShot(AudioRegistry.LoseFallGuySFX[0]);
+    }
+
+    public void PlayChestBumpSFX()
+    {
+        _audioSource.PlayOneShot(AudioRegistry.LoseFallGuySFX[1]);
+    }
+    
+    public void PlaySlowClapSFX()
+    {
+        _audioSource.PlayOneShot(AudioRegistry.LoseFallGuySFX[2]);
+    }
 }

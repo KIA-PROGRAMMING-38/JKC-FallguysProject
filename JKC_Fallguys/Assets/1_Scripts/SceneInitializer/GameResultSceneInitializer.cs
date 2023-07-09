@@ -9,8 +9,7 @@ public class GameResultSceneInitializer : SceneInitializer
     private bool _isVictory;
     protected override void InitializeModel()
     {
-        _isVictory = false;
-        //_isVictory = StageDataManager.Instance.CachedPlayerIndicesForResults[0] == PhotonNetwork.LocalPlayer.ActorNumber;
+        _isVictory = StageDataManager.Instance.CachedPlayerIndicesForResults[0] == PhotonNetwork.LocalPlayer.ActorNumber;
 
         ResultSceneModel.CheckVictory(_isVictory);
     }
