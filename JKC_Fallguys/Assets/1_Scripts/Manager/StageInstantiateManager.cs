@@ -1,5 +1,6 @@
 using System.IO;
 using LiteralRepository;
+using Model;
 using Photon.Pun;
 using UnityEngine;
 
@@ -41,10 +42,14 @@ public class StageInstantiateManager : MonoBehaviourPun
             PhotonNetwork.Instantiate(filePath, spawnPoint, Quaternion.identity)
                 .GetComponentInChildren<PlayerPhotonController>();
 
-        playerPhotonController.photonView.RPC
-            ("RpcSetInitialize", RpcTarget.AllBuffered, PhotonNetwork.LocalPlayer.ActorNumber, PhotonNetwork.LocalPlayer.NickName, ResourceManager.PlayerTextureIndex.Value);
+        int actorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
+        string playerName = PhotonNetwork.LocalPlayer.NickName;
+        int playerTextureIndex = LobbySceneModel.PlayerTextureIndex.Value;
 
-        playerPhotonController.transform.root.gameObject.transform
-            .SetParent(StageDataManager.Instance.gameObject.transform);
+        playerPhotonController.photonView.RPC
+            ("RpcSetInitialize", RpcTarget.AllBuffered, actorNumber, playerName, playerTextureIndex);
+
+        playerPhotonController.transform.root.gameObject.transform.SetParent(StageDataManager.Instance.gameObject.transform);
     }
+
 }

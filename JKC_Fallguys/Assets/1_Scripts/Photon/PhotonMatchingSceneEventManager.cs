@@ -1,5 +1,6 @@
 using System.IO;
 using LiteralRepository;
+using Model;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
@@ -37,7 +38,7 @@ public class PhotonMatchingSceneEventManager : MonoBehaviourPunCallbacks
         Player localPlayer = PhotonNetwork.LocalPlayer;
         ExitGames.Client.Photon.Hashtable playerProperties = new ExitGames.Client.Photon.Hashtable();
 
-        playerProperties["PlayerTextureIndex"] = ResourceManager.PlayerTextureIndex.Value;
+        playerProperties["PlayerTextureIndex"] = LobbySceneModel.PlayerTextureIndex.Value;
 
         localPlayer.SetCustomProperties(playerProperties);
     }

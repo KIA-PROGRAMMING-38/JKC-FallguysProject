@@ -23,7 +23,7 @@ public class GameResultSceneInitializer : SceneInitializer
                 (Path.Combine(PathLiteral.Object, PathLiteral.GameResult, "GameResultSceneFallGuy"))
                 .GetComponent<GameResultSceneFallGuyController>();
         
-        fallGuyController.BodyRenderer.material.mainTexture = PlayerTextureRegistry.PlayerTextures[ResourceManager.PlayerTextureIndex.Value];
+        fallGuyController.BodyRenderer.material.mainTexture = PlayerTextureRegistry.PlayerTextures[LobbySceneModel.PlayerTextureIndex.Value];
         
         ResourceManager.Instantiate
             (Path.Combine(PathLiteral.Object, PathLiteral.GameResult, "GameResultPlatform"));

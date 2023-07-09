@@ -1,46 +1,11 @@
 using Newtonsoft.Json;
-using UniRx;
 using UnityEngine;
 
 public static class ResourceManager
 {
-    public static readonly int MaxPlayableMaps = 3;
-
-    private static ReactiveProperty<int> _playerTextureIndex = new ReactiveProperty<int>();
-    public static IReactiveProperty<int> PlayerTextureIndex = _playerTextureIndex;
-
-    public static void SetPlayerTexture(int index)
+   public static GameObject Instantiate(string path, Transform parent = null)
     {
-        _playerTextureIndex.Value = index;
-    }
-
-    public static T Load<T>(string filePath) where T : Object
-    {
-        T resource = Resources.Load<T>(filePath);
-
-        if (resource == null)
-        {
-            Debug.LogError("Resource not found at path: " + filePath);
-        }
-
-        return resource;
-    }
-
-    public static T[] LoadAll<T>(string filePath) where T : Object
-    {
-        T[] resources = Resources.LoadAll<T>(filePath);
-        
-        if (resources == null)
-        {
-            Debug.LogError("Resource not found at path: " + filePath);
-        }
-
-        return resources;
-    }
-    
-    public static GameObject Instantiate(string path, Transform parent = null)
-    {
-        GameObject prefab = Load<GameObject>($"Prefabs/{path}");
+        GameObject prefab = Resources.Load<GameObject>($"Prefabs/{path}");
         if (prefab == null)
         {
             Debug.Log($"Failed to load prefab : {path}");
@@ -49,7 +14,7 @@ public static class ResourceManager
         return Instantiate(prefab, parent);
     }
     
-    public static GameObject Instantiate(GameObject prefab, Transform parent = null)
+    private static GameObject Instantiate(GameObject prefab, Transform parent = null)
     {
         GameObject go = Object.Instantiate(prefab, parent);
         go.name = prefab.name;
