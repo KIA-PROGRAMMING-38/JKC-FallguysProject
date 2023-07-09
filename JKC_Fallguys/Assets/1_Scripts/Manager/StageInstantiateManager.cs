@@ -29,6 +29,8 @@ public class StageInstantiateManager : MonoBehaviourPun
         Quaternion mapRota = mapData.Data.MapRotation;
 
         PhotonNetwork.Instantiate(filePath, mapPos, mapRota);
+
+
     }
 
     private void InstantiatePlayer(MapData mapData)
@@ -40,9 +42,7 @@ public class StageInstantiateManager : MonoBehaviourPun
                 .GetComponentInChildren<PlayerPhotonController>();
 
         playerPhotonController.photonView.RPC
-            ("RpcSetTextureIndex", RpcTarget.AllBuffered, ResourceManager.PlayerTextureIndex.Value);
-        playerPhotonController.photonView.RPC
-            ("RpcSetInitialize", RpcTarget.AllBuffered, PhotonNetwork.LocalPlayer.ActorNumber, PhotonNetwork.LocalPlayer.NickName);
+            ("RpcSetInitialize", RpcTarget.AllBuffered, PhotonNetwork.LocalPlayer.ActorNumber, PhotonNetwork.LocalPlayer.NickName, ResourceManager.PlayerTextureIndex.Value);
 
         playerPhotonController.transform.root.gameObject.transform
             .SetParent(StageDataManager.Instance.gameObject.transform);

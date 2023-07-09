@@ -1,9 +1,11 @@
 using System.Collections.Generic;
+using System.IO;
 using Cysharp.Threading.Tasks;
 using Photon.Pun;
 using Photon.Realtime;
 using UniRx;
 using LiteralRepository;
+using UnityEngine;
 
 /// <summary>
 /// 게임 시작을 관리하는 클래스입니다.
@@ -51,7 +53,13 @@ public class PhotonMatchingSceneRoomManager : MonoBehaviourPun
             int playerTextureIndex = (int)player.Value.CustomProperties["PlayerTextureIndex"];
             StageDataManager.Instance.PlayerDataByIndex[actorNumber] =
                 new PlayerData(player.Value.NickName, playerTextureIndex, 0);
+            
         }
+        
+        string path = Path.Combine(PathLiteral.Prefabs, PathLiteral.Object, PathLiteral.Stage, "PhotonTimeHelper");
+        GameObject obj = PhotonNetwork.Instantiate(path, transform.position, transform.rotation);
+        obj.transform.SetParent(StageRepository.Instance.gameObject.transform);
+        DontDestroyOnLoad(obj);
     }
 
     [PunRPC]
