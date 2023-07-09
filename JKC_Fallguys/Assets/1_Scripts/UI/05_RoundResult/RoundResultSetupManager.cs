@@ -52,8 +52,6 @@ public class RoundResultSetupManager : MonoBehaviour
             SetFallGuysAnimation(fallGuy, fallGuyIndex);
 
             SetFallGuysTexture(fallGuy, fallGuyIndex);
-
-            SetFallGuysAudio(fallGuy, fallGuyIndex);
         }
     }
 
@@ -68,13 +66,5 @@ public class RoundResultSetupManager : MonoBehaviour
         _meshRenderer = fallGuy.GetComponentInChildren<SkinnedMeshRenderer>();
         Texture texture = PlayerTextureRegistry.PlayerTextures[RoundResultSceneModel.FallguyRankings[fallGuyIndex].TextureIndex]; 
         _meshRenderer.material.mainTexture = texture;
-    }
-
-    private void SetFallGuysAudio(GameObject fallGuy, int fallGuyIndex)
-    {
-        AudioSource fallGuyAudioSource = fallGuy.AddComponent<AudioSource>();
-        fallGuyAudioSource.outputAudioMixerGroup = AudioRegistry.GameAudioMixer.FindMatchingGroups("SFX")[0];
-        fallGuyAudioSource.clip = AudioRegistry.FallGuySFXOnRoundResult[fallGuyIndex];
-        fallGuyAudioSource.playOnAwake = false;
     }
 }
