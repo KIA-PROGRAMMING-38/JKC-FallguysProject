@@ -22,6 +22,8 @@ namespace ResourceRegistry
                 (Path.Combine(PathLiteral.Sounds, PathLiteral.SFX, PathLiteral.Login, "UI_MainMenu_Login"));
             LobbyMusic = Resources.LoadAll<AudioClip>
                 (Path.Combine(PathLiteral.Sounds, PathLiteral.Music, PathLiteral.Lobby));
+            GameLoadingMusic = Resources.Load<AudioClip>
+                (Path.Combine(PathLiteral.Sounds, PathLiteral.Music, PathLiteral.GameLoading, "MUS_InGame_Loading"));
             RoundMusic = Resources.LoadAll<AudioClip>
                 (Path.Combine(PathLiteral.Sounds, PathLiteral.Music, PathLiteral.Stage, PathLiteral.RoundMusic));
             FinalRoundMusic = Resources.LoadAll<AudioClip>
@@ -52,6 +54,7 @@ namespace ResourceRegistry
         public static AudioClip LoginMusic { get; private set; }
         public static AudioClip LoginSFX { get; private set; }
         public static AudioClip[] LobbyMusic { get; private set; }
+        public static AudioClip GameLoadingMusic { get; private set; }
         public static AudioClip[] RoundMusic { get; private set; }
         public static AudioClip[] FinalRoundMusic { get; private set; }
         public static AudioClip[] FallGuySFXOnRoundResult { get; private set; }

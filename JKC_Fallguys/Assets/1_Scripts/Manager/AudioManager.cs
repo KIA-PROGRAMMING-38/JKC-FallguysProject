@@ -83,6 +83,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
     public void ScheduleLoopPlayback(AudioClip audioClip, float volume)
     {
         AudioSource loopAudioSource = _audioSources[(int)SoundType.MusicLoop];
+        loopAudioSource.clip = audioClip;
         loopAudioSource.volume = volume;
 
         AudioSource introAudioSource = _audioSources[(int)SoundType.MusicIntro];
@@ -92,5 +93,4 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
     public void Stop(SoundType soundType) => _audioSources[(int)soundType].Stop();
     
     public void Clear() => Array.ForEach(_audioSources, source => source.Stop());
-
 }
