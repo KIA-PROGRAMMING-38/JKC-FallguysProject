@@ -1,6 +1,7 @@
 using System.IO;
 using LiteralRepository;
 using Model;
+using ResourceRegistry;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -20,6 +21,9 @@ public class LobbySceneInitializer : SceneInitializer
 
     protected override void OnGetResources()
     {
+        AudioManager.Instance.Play(SoundType.MusicIntro, AudioRegistry.LobbyMusic[0], 0.3f);
+        AudioManager.Instance.ScheduleLoopPlayback(AudioRegistry.LobbyMusic[1], 0.3f);
+        
         ResourceManager.Instantiate
             (Path.Combine(PathLiteral.Object, PathLiteral.Lobby, "LobbySceneFallGuy"));
         ResourceManager.Instantiate

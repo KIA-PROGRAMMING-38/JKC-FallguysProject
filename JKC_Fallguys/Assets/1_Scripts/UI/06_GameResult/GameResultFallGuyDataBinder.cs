@@ -24,16 +24,12 @@ public class GameResultFallGuyDataBinder : MonoBehaviour
         {
             _animator.runtimeAnimatorController = 
                 Resources.Load<RuntimeAnimatorController>(Path.Combine("Animation", "Controller", PathLiteral.GameResultAnimator, PathLiteral.VictoryAnimatorController));
-            FallGuyAudioClips = AudioRegistry.VictoryFallGuySFX;
         }
 
         else
         {
             _animator.runtimeAnimatorController = 
                 Resources.Load<RuntimeAnimatorController>(Path.Combine("Animation", "Controller", PathLiteral.GameResultAnimator, PathLiteral.LoseAnimatorController));
-            FallGuyAudioClips = AudioRegistry.LoseFallGuySFX;
         }
     }
-
-    public AudioClip[] FallGuyAudioClips { get; private set; }
 }

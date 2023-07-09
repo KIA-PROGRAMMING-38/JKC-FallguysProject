@@ -2,11 +2,11 @@ using System.IO;
 using LiteralRepository;
 using Model;
 using Photon.Pun;
+using ResourceRegistry;
 using UnityEngine;
 
 public class StageSceneInitializer : SceneInitializer
 {
-    private GameObject _stageAudioManager;
     protected override void InitializeModel()
     {
         StageSceneModel.InitializeCountDown();
@@ -16,6 +16,8 @@ public class StageSceneInitializer : SceneInitializer
 
     protected override void OnGetResources()
     {
+        SetStageSound();
+        
         ResourceManager.Instantiate
             (Path.Combine(PathLiteral.UI, PathLiteral.Stage, "ExitButtonViewController"));
         ResourceManager.Instantiate
@@ -34,10 +36,6 @@ public class StageSceneInitializer : SceneInitializer
             (Path.Combine(PathLiteral.UI, PathLiteral.Stage, "ObservedPlayerNameViewController"));
         ResourceManager.Instantiate
             (Path.Combine(PathLiteral.Object, PathLiteral.Stage, "PlayerObserverCamera"));
-        _stageAudioManager = ResourceManager.Instantiate
-            (Path.Combine(PathLiteral.Object, PathLiteral.Stage, "StageAudioManager"));
-
-        SetStageAudioComponent();
 
         if (PhotonNetwork.IsMasterClient)
         {
@@ -45,16 +43,20 @@ public class StageSceneInitializer : SceneInitializer
         }
     }
 
-    private void SetStageAudioComponent()
+    private void SetStageSound()
     {
+        AudioManager.Instance.Clear();
+        
         if (!StageDataManager.Instance.IsFinalRound())
         {
-            _stageAudioManager.AddComponent<RoundAudioScheduler>();
+            int randomIndex = Random.Range(0, AudioRegistry.RoundMusic.Length);
+            AudioManager.Instance.Play(SoundType.MusicLoop, AudioRegistry.RoundMusic[randomIndex], 0.3f);
         }
 
         else
         {
-            _stageAudioManager.AddComponent<FinalRoundAudioScheduler>();
+            AudioManager.Instance.Play(SoundType.MusicIntro, AudioRegistry.FinalRoundMusic[0], 0.3f);
+            AudioManager.Instance.ScheduleLoopPlayback(AudioRegistry.FinalRoundMusic[1], 0.3f);
         }
     }
 
