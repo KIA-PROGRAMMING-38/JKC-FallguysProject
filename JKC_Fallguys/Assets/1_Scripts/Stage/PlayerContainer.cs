@@ -7,10 +7,11 @@ public class PlayerContainer
     private CompositeDisposable _compositeDisposable = new CompositeDisposable();
     private GameObject _stageDataManager;
     private PlayerObserverCamera _observer;
-    private readonly Dictionary<int, GameObject> _playerGameObjects = new Dictionary<int, GameObject>();
-    private readonly List<int> _observedIndexList = new List<int>();
-    private int _observingIndex = 0;
-    
+    private readonly Dictionary<int, GameObject> _playersByActorNumber = new Dictionary<int, GameObject>();
+    private readonly List<int> _actorNumbersOfPlayers = new List<int>();
+    private int _currentPlayerIndexInActorNumbers = 0;
+    private bool _isObservationInProgress = false;
+
     private ReactiveProperty<GameObject> _targetObject = new ReactiveProperty<GameObject>();
 
     public void Initialize(GameObject stageDataManager)
@@ -29,58 +30,44 @@ public class PlayerContainer
             .AddTo(_compositeDisposable);
     }
     
-    private void SetObservationTarget(GameObject gameObject)
+    private void ChangeObservingPlayer(GameObject gameObject)
     {
         _targetObject.Value = gameObject;
     }
 
-    public void ObservedNextPlayer()
-    {
-        if (_playerGameObjects.Count == 0)
-        {
-            return;
-        }
-
-        int startIndex = _observingIndex;
-        do
-        {
-            _observingIndex = (_observingIndex + 1) % _observedIndexList.Count;
-            
-            GameObject current = _playerGameObjects[_observedIndexList[_observingIndex]];
-            if (current == null || !current.activeSelf)
-                continue;
-
-            Transform character = current.transform.Find("Character");
-            if (character == null)
-                continue;
-
-            SetCharacter(character);
-            return;
-        }
-        while (_observingIndex != startIndex);
-        
-        _observer.gameObject.SetActive(false);
-    }
 
     private void SetCharacter(Transform character)
     {
         _observer.BindObservedCharacter(character);
-        SetObservationTarget(character.parent.gameObject);
+        ChangeObservingPlayer(character.parent.gameObject);
+    }
+
+    public void ObservedNextPlayer()
+    {
+        int startIndex = (_currentPlayerIndexInActorNumbers + 1) % _actorNumbersOfPlayers.Count;
+        SetObservingPlayer(startIndex);
     }
 
     public void ObservedPrevPlayer()
     {
-        if (_playerGameObjects.Count == 0)
+
+        int startIndex = (_currentPlayerIndexInActorNumbers - 1 + _actorNumbersOfPlayers.Count) % _actorNumbersOfPlayers.Count;
+        SetObservingPlayer(startIndex);
+    }
+
+    private void SetObservingPlayer(int startIndex)
+    {
+        if (_playersByActorNumber.Count == 0 || _isObservationInProgress)
         {
             return;
         }
+        
+        _isObservationInProgress = true;
+        _currentPlayerIndexInActorNumbers = startIndex;
 
-        int startIndex = _observingIndex;
         do
         {
-            _observingIndex = (_observingIndex - 1 + _observedIndexList.Count) % _observedIndexList.Count;
-
-            GameObject current = _playerGameObjects[_observedIndexList[_observingIndex]];
+            GameObject current = _playersByActorNumber[_actorNumbersOfPlayers[_currentPlayerIndexInActorNumbers]];
             if (current == null || !current.activeSelf)
                 continue;
 
@@ -89,12 +76,16 @@ public class PlayerContainer
                 continue;
 
             SetCharacter(character);
+            _isObservationInProgress = false;
             return;
         }
-        while (_observingIndex != startIndex);
-        
+        while ((_currentPlayerIndexInActorNumbers = (_currentPlayerIndexInActorNumbers + 1) % _actorNumbersOfPlayers.Count) != startIndex);
+
         _observer.gameObject.SetActive(false);
+        _isObservationInProgress = false;
     }
+
+
 
     public void BindObservingCamera(PlayerObserverCamera observer)
     {
@@ -103,10 +94,10 @@ public class PlayerContainer
     
     public void Clear()
     {
-        _playerGameObjects.Clear();
-        _observingIndex = 0;
+        _playersByActorNumber.Clear();
+        _currentPlayerIndexInActorNumbers = 0;
         _observer = default;
-        SetObservationTarget(null);
+        ChangeObservingPlayer(null);
     }
     
     public void FindAllObservedObjects()
@@ -119,8 +110,8 @@ public class PlayerContainer
             GameObject childObject = childTransform.gameObject;
             PlayerReferenceManager playerReferenceManager = childObject.GetComponent<PlayerReferenceManager>();
 
-            _playerGameObjects[playerReferenceManager.ArchievePlayerActorNumber] = childObject;
-            _observedIndexList.Add(playerReferenceManager.ArchievePlayerActorNumber);
+            _playersByActorNumber[playerReferenceManager.ArchievePlayerActorNumber] = childObject;
+            _actorNumbersOfPlayers.Add(playerReferenceManager.ArchievePlayerActorNumber);
         }
     }
 

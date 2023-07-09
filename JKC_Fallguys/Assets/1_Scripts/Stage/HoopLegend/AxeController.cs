@@ -18,7 +18,7 @@ public class AxeController : MonoBehaviourPun
 
             for (int i = 0; i < axeData.positions.Length; ++i)
             {
-                string filePath = Path.Combine(PathLiteral.Prefabs, "Stage", PathLiteral.HoopLegend, "Axe");
+                string filePath = Path.Combine(PathLiteral.Prefabs, PathLiteral.Object, PathLiteral.Stage, PathLiteral.HoopLegend, "Axe");
             
                 PhotonNetwork.Instantiate
                     (filePath, axeData.positions[i], Quaternion.Euler(axeData.rotations[i]));
