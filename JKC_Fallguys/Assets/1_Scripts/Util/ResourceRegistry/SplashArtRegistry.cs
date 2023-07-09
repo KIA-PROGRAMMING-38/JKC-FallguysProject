@@ -15,6 +15,6 @@ public static class SplashArtRegistry
     public static void GetSplashArtData()
     {
         SpriteArts = new List<Sprite>
-            (Resources.LoadAll<Sprite>(Path.Combine(PathLiteral.UI, PathLiteral.GameLoading)));
+            (Resources.LoadAll<Sprite>(Path.Combine(PathLiteral.Sprites, PathLiteral.UI, PathLiteral.GameLoading, "SplashArts")));
     }
 }
