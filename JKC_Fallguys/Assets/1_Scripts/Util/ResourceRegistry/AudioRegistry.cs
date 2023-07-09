@@ -16,8 +16,10 @@ namespace ResourceRegistry
         {
             GameAudioMixer = Resources.Load<AudioMixer>
                 (Path.Combine(PathLiteral.Sounds, "AudioMixer"));
+            LoginMusic = Resources.Load<AudioClip>
+                (Path.Combine(PathLiteral.Sounds, PathLiteral.Music, PathLiteral.Login, "MUS_InGame_Jingle"));
             LoginSFX = Resources.Load<AudioClip>
-                (Path.Combine(PathLiteral.Sounds, PathLiteral.Music, PathLiteral.LoginSound));
+                (Path.Combine(PathLiteral.Sounds, PathLiteral.SFX, PathLiteral.Login, "UI_MainMenu_Login"));
             LobbyMusic = Resources.LoadAll<AudioClip>
                 (Path.Combine(PathLiteral.Sounds, PathLiteral.Music, PathLiteral.Lobby));
             RoundMusic = Resources.LoadAll<AudioClip>
@@ -45,11 +47,12 @@ namespace ResourceRegistry
             RespawnSFX = Resources.Load<AudioClip>
                 (Path.Combine(PathLiteral.Sounds, PathLiteral.SFX, PathLiteral.Player, "SFX_Respawn_3D"));
         }
-
+        
         public static AudioMixer GameAudioMixer { get; private set; }
+        public static AudioClip LoginMusic { get; private set; }
         public static AudioClip LoginSFX { get; private set; }
         public static AudioClip[] LobbyMusic { get; private set; }
-        public static AudioClip[] RoundMusic { get; private set; } = new AudioClip[3];
+        public static AudioClip[] RoundMusic { get; private set; }
         public static AudioClip[] FinalRoundMusic { get; private set; }
         public static AudioClip[] FallGuySFXOnRoundResult { get; private set; }
         public static AudioClip[] GameResultMusic { get; private set; }

@@ -44,7 +44,5 @@ namespace LiteralRepository
         public static readonly string GameResultAnimator = "GameResultAnimator";
         public static readonly string ResultRoundAnimator = "ResultRoundAnimator";
         public static readonly string Countdown = "Countdown";
-        
-        public static readonly string LoginSound = "UI_MainMenu_Login";
     }
 }
