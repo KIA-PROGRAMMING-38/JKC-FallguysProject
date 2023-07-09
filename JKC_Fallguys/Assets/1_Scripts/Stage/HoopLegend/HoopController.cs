@@ -28,19 +28,19 @@ public class HoopController : MonoBehaviourPun
     private SpecialHoop _specialHoop;
     private void InitializeObject()
     {
-        ObjectTransforms commonHoopData = ResourceManager.JsonLoader<ObjectTransforms>($"JSON/CommonHoopTransformData");
-        ObjectTransforms specialHoopData = ResourceManager.JsonLoader<ObjectTransforms>($"JSON/SpecialHoopTransformData");
+        ObjectTransforms commonHoopData = ResourceManager.JsonLoader<ObjectTransforms>($"Data/CommonHoopTransformData");
+        ObjectTransforms specialHoopData = ResourceManager.JsonLoader<ObjectTransforms>($"Data/SpecialHoopTransformData");
 
         for (int i = 0; i < commonHoopData.positions.Length; ++i)
         {
-            string filePath = Path.Combine(PathLiteral.Prefabs, "Stage", PathLiteral.HoopLegend, "CommonHoop");
+            string filePath = Path.Combine(PathLiteral.Prefabs, PathLiteral.Stage, PathLiteral.HoopLegend, "CommonHoop");
             
             PhotonNetwork.Instantiate(filePath, commonHoopData.positions[i], Quaternion.Euler(commonHoopData.rotations[i]));
         }
         
         for (int i = 0; i < specialHoopData.positions.Length; ++i)
         {
-            string filePath = Path.Combine(PathLiteral.Prefabs, "Stage", PathLiteral.HoopLegend, "SpecialHoop");
+            string filePath = Path.Combine(PathLiteral.Prefabs, PathLiteral.Stage, PathLiteral.HoopLegend, "SpecialHoop");
             
             PhotonNetwork.Instantiate(filePath, specialHoopData.positions[i], Quaternion.Euler(specialHoopData.rotations[i]));
         }

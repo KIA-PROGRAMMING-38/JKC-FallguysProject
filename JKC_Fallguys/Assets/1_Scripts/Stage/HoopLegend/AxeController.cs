@@ -14,7 +14,7 @@ public class AxeController : MonoBehaviourPun
     {
         if (PhotonNetwork.IsMasterClient)
         {
-            ObjectTransforms axeData = ResourceManager.JsonLoader<ObjectTransforms>("JSON/AxeTransformData");
+            ObjectTransforms axeData = ResourceManager.JsonLoader<ObjectTransforms>("Data/AxeTransformData");
 
             for (int i = 0; i < axeData.positions.Length; ++i)
             {

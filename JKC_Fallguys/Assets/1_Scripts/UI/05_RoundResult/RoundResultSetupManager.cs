@@ -24,7 +24,8 @@ public class RoundResultSetupManager : MonoBehaviour
     
     private void Awake()
     {
-        _runtimeAnimator = Resources.LoadAll<RuntimeAnimatorController>(Path.Combine(PathLiteral.AnimatorController, "ResultRoundAnimator"));
+        _runtimeAnimator = Resources.LoadAll<RuntimeAnimatorController>
+            (Path.Combine("Animation", "Controller", "ResultRoundAnimator"));
     }
 
     private void Start()
@@ -43,7 +44,7 @@ public class RoundResultSetupManager : MonoBehaviour
                 break;
             
             _fallGuy[fallGuyIndex] = ResourceManager.Load<GameObject>(
-                Path.Combine(PathLiteral.Prefabs, PathLiteral.Scene, "05_RoundResult", "RoundResultFallGuy"));
+                Path.Combine(PathLiteral.Prefabs, PathLiteral.Object, PathLiteral.RoundResult, "RoundResultFallGuy"));
 
             GameObject fallGuy = 
                 Instantiate(_fallGuy[fallGuyIndex], _fallGuyPositions[fallGuyIndex], _fallGuy[fallGuyIndex].transform.rotation);
