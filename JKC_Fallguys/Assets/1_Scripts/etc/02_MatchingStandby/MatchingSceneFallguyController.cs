@@ -1,5 +1,6 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using Model;
 using UnityEngine;
 
 public class MatchingSceneFallguyController : MonoBehaviour
@@ -19,7 +20,7 @@ public class MatchingSceneFallguyController : MonoBehaviour
         _startPosition = transform.position;
         MoveToStartPosition(_cancellationTokenSource.Token).Forget();
 
-        _bodyRenderer.material.mainTexture = PlayerTextureRegistry.PlayerTextures[ResourceManager.PlayerTextureIndex.Value];
+        _bodyRenderer.material.mainTexture = PlayerTextureRegistry.PlayerTextures[LobbySceneModel.PlayerTextureIndex.Value];
     }
 
     private async UniTaskVoid MoveToStartPosition(CancellationToken cancellationToken)

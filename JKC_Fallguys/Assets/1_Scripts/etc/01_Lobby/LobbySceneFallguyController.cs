@@ -1,6 +1,6 @@
-using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using Model;
 using UniRx;
 using UnityEngine;
 
@@ -27,18 +27,18 @@ public class LobbySceneFallguyController : MonoBehaviour
 
     private void InitializeRx()
     {
-        Model.LobbySceneModel.CurrentLobbyState
-            .Where(state => state == Model.LobbySceneModel.LobbyState.Customization)
+        LobbySceneModel.CurrentLobbyState
+            .Where(state => state == LobbySceneModel.LobbyState.Customization)
             .Subscribe(_ => CustomizationState())
             .AddTo(this);
         
-        Model.LobbySceneModel.CurrentLobbyState
-            .Where(state => state == Model.LobbySceneModel.LobbyState.Home)
+        LobbySceneModel.CurrentLobbyState
+            .Where(state => state == LobbySceneModel.LobbyState.Home)
             .Subscribe(_ => HomeState())
             .AddTo(this);
 
-        ResourceManager.PlayerTextureIndex
-            .Subscribe(_ => _fallGuyBody.material.mainTexture = PlayerTextureRegistry.PlayerTextures[ResourceManager.PlayerTextureIndex.Value])
+        LobbySceneModel.PlayerTextureIndex
+            .Subscribe(_ => _fallGuyBody.material.mainTexture = PlayerTextureRegistry.PlayerTextures[LobbySceneModel.PlayerTextureIndex.Value])
             .AddTo(this);
     }
 

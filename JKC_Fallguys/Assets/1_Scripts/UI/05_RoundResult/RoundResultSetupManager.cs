@@ -43,7 +43,7 @@ public class RoundResultSetupManager : MonoBehaviour
             if (fallGuyIndex >= RoundResultSceneModel.FallguyRankings.Count)
                 break;
             
-            _fallGuy[fallGuyIndex] = ResourceManager.Load<GameObject>(
+            _fallGuy[fallGuyIndex] = Resources.Load<GameObject>(
                 Path.Combine(PathLiteral.Prefabs, PathLiteral.Object, PathLiteral.RoundResult, "RoundResultFallGuy"));
 
             GameObject fallGuy = 
