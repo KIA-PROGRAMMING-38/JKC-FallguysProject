@@ -28,6 +28,10 @@ namespace ResourceRegistry
                 (Path.Combine(PathLiteral.Sounds, PathLiteral.Music, PathLiteral.Stage, PathLiteral.RoundMusic));
             FinalRoundMusic = Resources.LoadAll<AudioClip>
                 (Path.Combine(PathLiteral.Sounds, PathLiteral.Music, PathLiteral.Stage, PathLiteral.FinalRoundMusic));
+            RoundResultMusic = Resources.Load<AudioClip>
+                (Path.Combine(PathLiteral.Sounds, PathLiteral.Music, PathLiteral.Result, "MUS_InGame_Jingle_01_Win"));
+            IncreaseNumbersSFX = Resources.Load<AudioClip>
+                (Path.Combine(PathLiteral.Sounds, PathLiteral.SFX, PathLiteral.Result, "UI_RewardScreen_Numbers_LP"));
             FallGuySFXOnRoundResult = Resources.LoadAll<AudioClip>
                 (Path.Combine(PathLiteral.Sounds, PathLiteral.SFX, PathLiteral.RoundResult));
             GameResultMusic = Resources.LoadAll<AudioClip>
@@ -57,6 +61,8 @@ namespace ResourceRegistry
         public static AudioClip GameLoadingMusic { get; private set; }
         public static AudioClip[] RoundMusic { get; private set; }
         public static AudioClip[] FinalRoundMusic { get; private set; }
+        public static AudioClip RoundResultMusic { get; private set; }
+        public static AudioClip IncreaseNumbersSFX { get; private set; }
         public static AudioClip[] FallGuySFXOnRoundResult { get; private set; }
         public static AudioClip[] GameResultMusic { get; private set; }
         public static AudioClip[] VictoryFallGuySFX { get; private set; }
