@@ -91,7 +91,6 @@ public class LowerBar : MonoBehaviourPun
                 direction = direction.normalized;
 
                 rigidbody.AddForce(direction * test, ForceMode.Impulse);
-                Debug.Log("호출");
             }
         }
     }

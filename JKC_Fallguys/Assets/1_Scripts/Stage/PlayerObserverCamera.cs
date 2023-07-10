@@ -64,10 +64,10 @@ public class PlayerObserverCamera : MonoBehaviour
             .Subscribe(_ => FindAllObservedObjects())
             .AddTo(this);
         
-        _targetObject
-            .Where(obj => obj != null)
+        Observable.EveryUpdate()
+            .Select(_ => _targetObject.Value != null && !_targetObject.Value.activeSelf)
             .DistinctUntilChanged()
-            .Where(obj => !obj.activeSelf)
+            .Where(isInactive => isInactive)
             .Subscribe(_ => ObservedNextPlayer())
             .AddTo(this);
     }
@@ -81,16 +81,17 @@ public class PlayerObserverCamera : MonoBehaviour
     public void ObservedNextPlayer()
     {
         int startIndex = (_currentPlayerIndexInActorNumbers + 1) % _actorNumbersOfPlayers.Count;
-        SetObservingPlayer(startIndex);
+        SetObservingPlayer(startIndex, true);
     }
 
     public void ObservedPrevPlayer()
     {
         int startIndex = (_currentPlayerIndexInActorNumbers - 1 + _actorNumbersOfPlayers.Count) % _actorNumbersOfPlayers.Count;
-        SetObservingPlayer(startIndex);
+        SetObservingPlayer(startIndex, false);
     }
 
-    private void SetObservingPlayer(int startIndex)
+
+    private void SetObservingPlayer(int startIndex, bool isNext)
     {
         if (_playersByActorNumber.Count == 0 || _isObservationInProgress)
         {
@@ -105,20 +106,23 @@ public class PlayerObserverCamera : MonoBehaviour
         for (int i = 0; i < playerCount; i++)
         {
             GameObject current = _playersByActorNumber[_actorNumbersOfPlayers[_currentPlayerIndexInActorNumbers]];
-        
+    
             if (current != null && current.activeSelf && current.transform.Find("Character") != null)
             {
                 ChangeObservingPlayer(current);
                 _isObservationInProgress = false;
                 return;
             }
-        
-            _currentPlayerIndexInActorNumbers = (_currentPlayerIndexInActorNumbers + 1) % _actorNumbersOfPlayers.Count;
+    
+            _currentPlayerIndexInActorNumbers = isNext 
+                ? (_currentPlayerIndexInActorNumbers + 1) % _actorNumbersOfPlayers.Count 
+                : (_currentPlayerIndexInActorNumbers - 1 + _actorNumbersOfPlayers.Count) % _actorNumbersOfPlayers.Count;
         }
 
         _isObservationInProgress = false;
         _targetObject.Value = null;
     }
+
 
     private void BindObservedCharacter(Transform followPlayerCharacter)
     {
