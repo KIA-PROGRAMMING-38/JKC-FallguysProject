@@ -57,11 +57,13 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
 
     private void ScheduleGameStart(double startTime)
     {
+        Debug.Log("ScheduleGameStart");
         photonView.RPC("RpcSetGameStart", RpcTarget.All, startTime);
     }
 
     private void ScheduleOperationCountdown(double startTime)
     {
+        Debug.Log("ScheduleOperationCountdown");
         photonView.RPC("RpcStartTriggerOperationCountDown", RpcTarget.All, startTime);
     }
 
