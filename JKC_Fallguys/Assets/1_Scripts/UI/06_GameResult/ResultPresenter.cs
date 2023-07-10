@@ -27,26 +27,14 @@ public class ResultPresenter : Presenter
     protected override void OnUpdatedModel()
     {
         ResultSceneModel.IsVictorious
-            .Where(isVictorious => isVictorious)
-            .Subscribe(_ => LoadVictorySprite())
+            .Subscribe(isVictorious => LoadResultSprite(isVictorious ? PathLiteral.VictoryTextImage : PathLiteral.LoseTextImage))
             .AddTo(_compositeDisposable);
-        
-        ResultSceneModel.IsVictorious
-            .Where(isVictorious => !isVictorious)
-            .Subscribe(_ => LoadLoseSprite())
-            .AddTo(_compositeDisposable);
-    }
-
-    private void LoadVictorySprite()
-    {
-        _resultView.ResultTextImage.sprite = 
-            Resources.Load<Sprite>(Path.Combine(PathLiteral.Sprites, PathLiteral.UI, PathLiteral.GameResult, PathLiteral.VictoryTextImage));
     }
     
-    private void LoadLoseSprite()
+    private void LoadResultSprite(string spriteName)
     {
-        _resultView.ResultTextImage.sprite = 
-            Resources.Load<Sprite>(Path.Combine(PathLiteral.Sprites, PathLiteral.UI, PathLiteral.GameResult, PathLiteral.LoseTextImage));
+        string path = Path.Combine(PathLiteral.Sprites, PathLiteral.UI, PathLiteral.GameResult, spriteName);
+        _resultView.ResultTextImage.sprite = Resources.Load<Sprite>(path);
     }
     
     public override void OnRelease()

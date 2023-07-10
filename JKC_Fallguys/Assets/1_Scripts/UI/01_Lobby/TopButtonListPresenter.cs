@@ -9,7 +9,7 @@ public class TopButtonListPresenter : Presenter
     public override void OnInitialize(View view)
     {
         _topButtonListView = view as TopButtonListView;
-        Model.LobbySceneModel.SetLobbyState(Model.LobbySceneModel.LobbyState.Home);
+        LobbySceneModel.SetLobbyState(Model.LobbySceneModel.LobbyState.Home);
     
         InitializeRx();
     }
@@ -21,12 +21,12 @@ public class TopButtonListPresenter : Presenter
     {
         _topButtonListView.HomeButton
             .OnClickAsObservable()
-            .Subscribe(_ => Model.LobbySceneModel.SetLobbyState(Model.LobbySceneModel.LobbyState.Home))
+            .Subscribe(_ => LobbySceneModel.SetLobbyState(Model.LobbySceneModel.LobbyState.Home))
             .AddTo(_compositeDisposable);
         
         _topButtonListView.CustomizeButton
             .OnClickAsObservable()
-            .Subscribe(_ => Model.LobbySceneModel.SetLobbyState(Model.LobbySceneModel.LobbyState.Customization))
+            .Subscribe(_ => LobbySceneModel.SetLobbyState(Model.LobbySceneModel.LobbyState.Customization))
             .AddTo(_compositeDisposable);
     }
     
@@ -38,20 +38,14 @@ public class TopButtonListPresenter : Presenter
         {
             if ( state == LobbySceneModel.LobbyState.Home || state == LobbySceneModel.LobbyState.Customization )
             {
-                SetActiveTopButtonListView( true );
+                GameObjectHelper.SetActiveGameObject(_topButtonListView.gameObject, true );
             }
             else
             {
-                SetActiveTopButtonListView( false );
+                GameObjectHelper.SetActiveGameObject(_topButtonListView.gameObject, false );
             }
         } )
         .AddTo( _compositeDisposable );
-
-    }
-
-    void SetActiveTopButtonListView( bool status )
-    {
-        _topButtonListView.gameObject.SetActive( status );
     }
 
     public override void OnRelease()

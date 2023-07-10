@@ -27,13 +27,7 @@ public class CostumePresenter : Presenter
     protected override void OnUpdatedModel()
     {
         LobbySceneModel.CurrentLobbyState
-            .Where(state => state != LobbySceneModel.LobbyState.Costume)
-            .Subscribe(_ => SetActiveGameObject(false))
-            .AddTo(_compositeDisposable);
-        
-        LobbySceneModel.CurrentLobbyState
-            .Where(state => state == LobbySceneModel.LobbyState.Costume)
-            .Subscribe(_ => SetActiveGameObject(true))
+            .Subscribe(state => SetActiveGameObject(state == LobbySceneModel.LobbyState.Costume))
             .AddTo(_compositeDisposable);
 
         LobbySceneModel.CostumeColorName

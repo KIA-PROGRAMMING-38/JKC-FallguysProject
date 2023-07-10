@@ -42,27 +42,10 @@ public class StageExitPanelPresenter : Presenter
             .AddTo(_compositeDisposable);
         
         StageSceneModel.IsExitPanelPopUp
-            .Where(state => !state)
-            .Subscribe(_ => SetActiveGameObject(false))
-            .AddTo(_compositeDisposable);
-        
-        StageSceneModel.IsExitPanelPopUp
-            .Where(state => state)
-            .Subscribe(_ => SetActiveGameObject(true))
+            .Subscribe(state => GameObjectHelper.SetActiveGameObject(_stageExitPanelView.gameObject, state))
             .AddTo(_compositeDisposable);
     }
-    
-    /// <summary>
-    /// Exit Stage Panel의 활성화 여부를 설정합니다.
-    /// </summary>
-    /// <param name="status"></param>
-    private void SetActiveGameObject(bool status)
-    {
-        _stageExitPanelView.Default.gameObject.SetActive(status);
-        _stageExitPanelView.ResumeButton.gameObject.SetActive(status);
-        _stageExitPanelView.ExitButton.gameObject.SetActive(status);
-    }
-    
+ 
     private void ReturnLobby()
     {
         PhotonNetwork.LeaveRoom();

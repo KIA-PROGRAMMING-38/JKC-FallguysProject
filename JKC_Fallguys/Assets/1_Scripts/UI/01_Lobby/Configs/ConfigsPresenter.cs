@@ -48,13 +48,8 @@ public class ConfigsPresenter : Presenter
     protected override void OnUpdatedModel()
     {
         LobbySceneModel.CurrentLobbyState
-            .Subscribe(state => SetActiveConfigs(state == LobbySceneModel.LobbyState.Configs))
+            .Subscribe(state => GameObjectHelper.SetActiveGameObject(_configsView.gameObject, state == LobbySceneModel.LobbyState.Configs))
             .AddTo(_compositeDisposable);
-    }
-
-    private void SetActiveConfigs(bool status)
-    {
-        _configsView.gameObject.SetActive(status);
     }
 
     public override void OnRelease()

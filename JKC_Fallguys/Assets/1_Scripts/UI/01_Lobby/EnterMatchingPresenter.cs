@@ -29,20 +29,8 @@ public class EnterMatchingPresenter : Presenter
     protected override void OnUpdatedModel()
     {
         Model.LobbySceneModel.CurrentLobbyState
-            .Where(state => state != Model.LobbySceneModel.LobbyState.Home)
-            .Subscribe(_ => SetActiveGameObject(false))
+            .Subscribe(state => GameObjectHelper.SetActiveGameObject(_enterMatchingView.gameObject, state == Model.LobbySceneModel.LobbyState.Home))
             .AddTo(_compositeDisposable);
-        
-        Model.LobbySceneModel.CurrentLobbyState
-            .Where(state => state == Model.LobbySceneModel.LobbyState.Home)
-            .Subscribe(_ => SetActiveGameObject(true))
-            .AddTo(_compositeDisposable);
-    }
-
-    private void SetActiveGameObject(bool status)
-    {
-        _enterMatchingView.Default.SetActive(status);
-        _enterMatchingView.EnterMatchingButton.gameObject.SetActive(status);
     }
     
     public override void OnRelease()

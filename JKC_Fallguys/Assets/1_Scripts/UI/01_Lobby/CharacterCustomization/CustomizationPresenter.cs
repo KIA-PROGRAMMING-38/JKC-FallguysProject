@@ -17,28 +17,16 @@ public class CustomizationPresenter : Presenter
     {
         _customizationView.Costume
             .OnClickAsObservable()
-            .Subscribe(_ => Model.LobbySceneModel.SetLobbyState(LobbySceneModel.LobbyState.Costume));
+            .Subscribe(_ => LobbySceneModel.SetLobbyState(LobbySceneModel.LobbyState.Costume));
     }
 
     protected override void OnUpdatedModel()
     {
-        Model.LobbySceneModel.CurrentLobbyState
-            .Where(state => state == Model.LobbySceneModel.LobbyState.Customization)
-            .Subscribe(_ => SetActiveGameObject(true))
-            .AddTo(_compositeDisposable);
-        
-        Model.LobbySceneModel.CurrentLobbyState
-            .Where(state => state != Model.LobbySceneModel.LobbyState.Customization)
-            .Subscribe(_ => SetActiveGameObject(false))
+        LobbySceneModel.CurrentLobbyState
+            .Subscribe(state => GameObjectHelper.SetActiveGameObject(_customizationView.gameObject, state == LobbySceneModel.LobbyState.Customization))
             .AddTo(_compositeDisposable);
     }
 
-    private void SetActiveGameObject(bool status)
-    {
-        _customizationView.Default.SetActive(status);
-        _customizationView.Costume.gameObject.SetActive(status);
-    }
-    
     public override void OnRelease()
     {
         _customizationView = default;

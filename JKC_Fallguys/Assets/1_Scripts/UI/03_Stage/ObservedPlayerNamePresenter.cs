@@ -28,7 +28,8 @@ public class ObservedPlayerNamePresenter : Presenter
             .DistinctUntilChanged()
             .Subscribe(gameActive => 
             {
-                if (!gameActive) SetActiveGameObject(false);
+                if (!gameActive) 
+                    GameObjectHelper.SetActiveGameObject(_observedPlayerNameView.gameObject, false);
             })
             .AddTo(_compositeDisposable);
         
@@ -38,7 +39,7 @@ public class ObservedPlayerNamePresenter : Presenter
             .Subscribe(_ => 
             {
                 if (StageManager.Instance.StageDataManager.IsGameActive.Value)
-                    SetActiveGameObject(true);
+                    GameObjectHelper.SetActiveGameObject(_observedPlayerNameView.gameObject, true);
             })
             .AddTo(_compositeDisposable);
 
@@ -52,12 +53,6 @@ public class ObservedPlayerNamePresenter : Presenter
     private void SetObservedPlayerName()
     {
         _observedPlayerNameView.PlayerNameText.text = StageSceneModel.ObservedPlayerActorName.Value;
-    }
-
-    private void SetActiveGameObject(bool status)
-    {
-        _observedPlayerNameView.Default.SetActive(status);
-        _observedPlayerNameView.PlayerNameText.gameObject.SetActive(status);
     }
     
     public override void OnRelease()

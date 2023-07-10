@@ -40,7 +40,7 @@ public class HowToPlayPresenter : Presenter
 
         // HowToPlay Panel의 활성화 여부를 결정합니다.
         LobbySceneModel.CurrentLobbyState
-            .Subscribe(state => SetActiveHowToPlayPanel(state == HowToPlayState))
+            .Subscribe(state => GameObjectHelper.SetActiveGameObject(_howToPlayView.gameObject, state == HowToPlayState))
             .AddTo(_compositeDisposable);
 
         // Image를 업데이트 합니다.
@@ -89,11 +89,6 @@ public class HowToPlayPresenter : Presenter
         }
         
         _buttonClickCount = 0;
-    }
-
-    void SetActiveHowToPlayPanel(bool status)
-    {
-        _howToPlayView.gameObject.SetActive(status);
     }
     
     public override void OnRelease()
