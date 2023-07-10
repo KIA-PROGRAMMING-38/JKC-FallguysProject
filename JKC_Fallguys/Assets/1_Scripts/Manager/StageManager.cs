@@ -4,7 +4,7 @@ using Debug = System.Diagnostics.Debug;
 
 public class StageManager : SingletonMonoBehaviour<StageManager>
 {
-    public GameObject PlayerRepository { get; private set; }
+    public PlayerRepository PlayerRepository { get; private set; }
     public GameObject ObjectRepository { get; private set; }
 
     public StageDataManager StageDataManager = new StageDataManager();
@@ -37,10 +37,11 @@ public class StageManager : SingletonMonoBehaviour<StageManager>
     private void MakeRepository()
     {
         GameObject playerRepository = new GameObject(objectName[0]);
+        playerRepository.AddComponent<PlayerRepository>();
         playerRepository.transform.position = Vector3.zero;
         playerRepository.transform.rotation = Quaternion.identity;
         playerRepository.transform.SetParent(gameObject.transform);
-        PlayerRepository = playerRepository;
+        PlayerRepository = playerRepository.GetComponent<PlayerRepository>();
 
         GameObject objectRepository = new GameObject(objectName[1]);
         objectRepository.transform.position = Vector3.zero;
