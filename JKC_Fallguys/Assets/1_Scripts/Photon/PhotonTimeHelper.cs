@@ -5,6 +5,18 @@ using Photon.Pun;
 
 public class PhotonTimeHelper : MonoBehaviourPun
 {
+    public void Initialize()
+    {
+        DontDestroyOnLoad(gameObject);
+        photonView.RPC("RpcSetParentStageRepository", RpcTarget.AllBuffered);
+    }
+
+    [PunRPC]
+    public void RpcSetParentStageRepository()
+    {
+        transform.SetParent(StageRepository.Instance.gameObject.transform);
+    }
+    
     public static readonly int SyncIntervalMs = 100;
     
     private double _serverTime;

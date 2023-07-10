@@ -57,9 +57,10 @@ public class PhotonMatchingSceneRoomManager : MonoBehaviourPun
         }
         
         string path = Path.Combine(PathLiteral.Prefabs, PathLiteral.Object, PathLiteral.Stage, "PhotonTimeHelper");
-        GameObject obj = PhotonNetwork.Instantiate(path, transform.position, transform.rotation);
-        obj.transform.SetParent(StageRepository.Instance.gameObject.transform);
-        DontDestroyOnLoad(obj);
+        PhotonTimeHelper photonTimeHelper = 
+            PhotonNetwork.Instantiate(path, transform.position, transform.rotation).GetComponent<PhotonTimeHelper>();
+        
+        photonTimeHelper.Initialize();
     }
 
     [PunRPC]
