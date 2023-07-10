@@ -1,8 +1,11 @@
+using System;
 using System.IO;
+using Cysharp.Threading.Tasks;
 using LiteralRepository;
 using Model;
 using Photon.Pun;
 using ResourceRegistry;
+using UnityEngine.SceneManagement;
 
 public class GameResultSceneInitializer : SceneInitializer
 {
@@ -34,6 +37,8 @@ public class GameResultSceneInitializer : SceneInitializer
             (Path.Combine(PathLiteral.UI, PathLiteral.GameResult, "GameResultBackgroundImage"));
         ResourceManager.Instantiate
             (Path.Combine(PathLiteral.UI, PathLiteral.GameResult, "ResultViewController"));
+
+        LoadLobbyScene().Forget();
     }
 
     private void SetAudio()
@@ -47,5 +52,13 @@ public class GameResultSceneInitializer : SceneInitializer
         {
             AudioManager.Instance.Play(SoundType.MusicIntro, AudioRegistry.GameResultMusic[1], 0.3f);
         }
+    }
+
+    private const int LOAD_SCENE_DELAY = 10;
+    private async UniTaskVoid LoadLobbyScene()
+    {
+        await UniTask.Delay(TimeSpan.FromSeconds(LOAD_SCENE_DELAY));
+
+        SceneManager.LoadScene(SceneIndex.Lobby);
     }
 }
