@@ -4,6 +4,7 @@ using Cysharp.Threading.Tasks;
 using Model;
 using Photon.Pun;
 using UniRx;
+using UnityEngine;
 
 public class JumpClubController : StageController
 {
@@ -84,7 +85,7 @@ public class JumpClubController : StageController
         }
         else
         {
-            StageManager.Instance.PlayerContainer.SetPlayerState(actorNumber, PlayerContainer.PlayerState.Defeat);
+            StageManager.Instance.PlayerContainer.SetPlayerState(actorNumber, PlayerContainer.PlayerState.GameTerminated);
         }
     }
 

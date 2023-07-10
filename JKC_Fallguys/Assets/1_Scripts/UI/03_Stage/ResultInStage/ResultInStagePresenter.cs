@@ -42,6 +42,9 @@ public class ResultInStagePresenter : Presenter
                         Debug.Log("PlayerState를 설정해야 합니다.");
                         break;
                 }
+                
+                Debug.Log($"CurrentState: {currentState}");
+                Debug.Log(StageManager.Instance.PlayerContainer.IsPlayerActive(actorNumber).Value);
 
                 UIAnimation().Forget();
             

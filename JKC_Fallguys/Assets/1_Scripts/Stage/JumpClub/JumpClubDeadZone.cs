@@ -44,5 +44,12 @@ public class JumpClubDeadZone : MonoBehaviourPun
     public void RpcEndGameBroadCast()
     {
         StageManager.Instance.StageDataManager.SetGameStatus(false);
+        
+        int actorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
+
+        if (!StageManager.Instance.PlayerContainer.IsPlayerActive(actorNumber).Value)
+        {
+            StageManager.Instance.PlayerContainer.SetPlayerState(actorNumber, PlayerContainer.PlayerState.GameTerminated);
+        }
     }
 }
