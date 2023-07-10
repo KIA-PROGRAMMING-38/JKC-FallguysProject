@@ -3,7 +3,7 @@ using Photon.Pun;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerInput : MonoBehaviourPun
+public class PlayerInputController : MonoBehaviourPun
 {
     public Vector3 InputVec { get; private set; }
     public Vector2 ScreenToMousePos { get; private set; }

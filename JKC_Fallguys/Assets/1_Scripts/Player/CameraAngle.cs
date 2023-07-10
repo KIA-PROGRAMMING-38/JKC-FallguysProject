@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class CameraAngle : MonoBehaviourPun
 {
-    private PlayerInput _playerInput;
+    private PlayerInputController _playerInputController;
     private Transform _playerChracter;
 
     private void Awake()
@@ -23,12 +23,12 @@ public class CameraAngle : MonoBehaviourPun
         }
     }
 
-    public void BindPlayerData(PlayerInput playerInput, Transform playerCharacter)
+    public void BindPlayerData(PlayerInputController playerInputController, Transform playerCharacter)
     {
-        _playerInput = playerInput;
+        _playerInputController = playerInputController;
         _playerChracter = playerCharacter;
-        _playerInput.OnMouseMove -= SetCameraAngle;
-        _playerInput.OnMouseMove += SetCameraAngle;
+        _playerInputController.OnMouseMove -= SetCameraAngle;
+        _playerInputController.OnMouseMove += SetCameraAngle;
     }
 
     // 3인칭 카메라 앵글 구현
@@ -36,7 +36,7 @@ public class CameraAngle : MonoBehaviourPun
     {
         Vector3 cameraAngle = transform.rotation.eulerAngles;
         // 3인칭 기준으로 위 아래 시야를 rotation해주기 위해서는 x축을 기준으로 회전해야함
-        float xValueOfAngle = cameraAngle.x - _playerInput.ScreenToMousePos.y;
+        float xValueOfAngle = cameraAngle.x - _playerInputController.ScreenToMousePos.y;
 
         // 원작에서도 카메라의 시점을 위쪽으로 돌릴 수 있는 한계가 존재, 이를 구현
         if (xValueOfAngle < 180f)
@@ -51,7 +51,7 @@ public class CameraAngle : MonoBehaviourPun
 
         transform.rotation = Quaternion.Euler(
             xValueOfAngle,
-            cameraAngle.y + _playerInput.ScreenToMousePos.x,
+            cameraAngle.y + _playerInputController.ScreenToMousePos.x,
             cameraAngle.z);
     }
 

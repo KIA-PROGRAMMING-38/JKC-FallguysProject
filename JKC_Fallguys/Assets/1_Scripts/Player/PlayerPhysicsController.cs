@@ -11,7 +11,7 @@ using UnityEngine;
 public class PlayerPhysicsController : MonoBehaviourPun
 {
     private Rigidbody _playerRigidbody;
-    private PlayerInput _playerInput;
+    private PlayerInputController _playerInputController;
     private CameraAngle _camera;
     
     [SerializeField] private float _diveForce;
@@ -24,7 +24,7 @@ public class PlayerPhysicsController : MonoBehaviourPun
     private void Awake()
     {
         _playerRigidbody = GetComponent<Rigidbody>();
-        _playerInput = GetComponentInParent<PlayerInput>();
+        _playerInputController = GetComponentInParent<PlayerInputController>();
     }
 
     public void BindCameraAngle(CameraAngle cameraAngle)
@@ -39,8 +39,8 @@ public class PlayerPhysicsController : MonoBehaviourPun
 
     private void Start()
     {
-        _playerInput.OnMovement -= CurrentMoveDirection;
-        _playerInput.OnMovement += CurrentMoveDirection;
+        _playerInputController.OnMovement -= CurrentMoveDirection;
+        _playerInputController.OnMovement += CurrentMoveDirection;
     }
     
     private Vector3 _forwardAngleVec;
@@ -53,7 +53,7 @@ public class PlayerPhysicsController : MonoBehaviourPun
     {
         _forwardAngleVec = new Vector3(_camera.transform.forward.x, 0f, _camera.transform.forward.z).normalized;
         _rightAngleVec = new Vector3(_camera.transform.right.x, 0f, _camera.transform.right.z).normalized;
-        _moveDir = _forwardAngleVec * _playerInput.InputVec.z + _rightAngleVec * _playerInput.InputVec.x;
+        _moveDir = _forwardAngleVec * _playerInputController.InputVec.z + _rightAngleVec * _playerInputController.InputVec.x;
     }
 
     /// <summary>
@@ -66,7 +66,7 @@ public class PlayerPhysicsController : MonoBehaviourPun
         
         CheckGround();
         
-        if (_playerInput.InputVec != _zeroVec && _playerInput.CannotMove == false)
+        if (_playerInputController.InputVec != _zeroVec && _playerInputController.CannotMove == false)
         {
             Vector3 testVec = new Vector3(_moveDir.x, _moveDir.y, _moveDir.z);
             _playerRigidbody.velocity = testVec * _moveSpeed;
@@ -122,21 +122,21 @@ public class PlayerPhysicsController : MonoBehaviourPun
     public void ActivateOnJumpingAction()
     {
         jumpCancellationTokenSource = new CancellationTokenSource();
-        OnJumpingAction().Forget();
+        OnJumpingActionAsync().Forget();
     }
 
     /// <summary>
     /// 점프상태중에 인풋 방향대로 움직이기 위한 함수입니다.
     /// </summary>
     /// <returns></returns>
-    private async UniTaskVoid OnJumpingAction()
+    private async UniTaskVoid OnJumpingActionAsync()
     {
         if (!photonView.IsMine || !StageManager.Instance.StageDataManager.IsGameActive.Value)
             return;
 
         while ( !_jumpCancellationToken.IsCancellationRequested )
         {
-            if ( _playerInput.InputVec != _zeroVec && _playerInput.CannotMove == false )
+            if ( _playerInputController.InputVec != _zeroVec && _playerInputController.CannotMove == false )
             {
                 _playerRigidbody.AddForce( _moveDir * _jumpMovementForce, ForceMode.Force );
                 transform.rotation = Quaternion.Lerp( transform.rotation, Quaternion.LookRotation( _moveDir ), _rotSpeed * Time.deltaTime );
@@ -159,11 +159,11 @@ public class PlayerPhysicsController : MonoBehaviourPun
         if (!photonView.IsMine)
             return;
         
-        JumpAction().Forget();
+        JumpStartActionAsync().Forget();
     }
 
     // 위로 Jump한다.
-    private async UniTaskVoid JumpAction()
+    private async UniTaskVoid JumpStartActionAsync()
     {
         _playerRigidbody.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
         await UniTask.Yield( PlayerLoopTiming.FixedUpdate );
@@ -177,8 +177,8 @@ public class PlayerPhysicsController : MonoBehaviourPun
         if (!photonView.IsMine || !StageManager.Instance.StageDataManager.IsGameActive.Value)
             return;
         
-        DiveRotation().Forget();
-        DiveAction().Forget();
+        DiveRotationAsync().Forget();
+        DiveActionAsync().Forget();
     }
     
     private Vector3 _currentRotation;
@@ -188,9 +188,9 @@ public class PlayerPhysicsController : MonoBehaviourPun
     [SerializeField] private float _diveRotationSpeed;
     
     // 캐릭터가 Dive할때 회전하는 함수입니다.
-    private async UniTaskVoid DiveRotation()
+    private async UniTaskVoid DiveRotationAsync()
     {
-        _playerInput.CannotMove = true;
+        _playerInputController.CannotMove = true;
         
         _currentRotation = transform.rotation.eulerAngles;
         _targetRotation = Quaternion.Euler(_diveRotationX, _currentRotation.y, _currentRotation.z);
@@ -203,24 +203,24 @@ public class PlayerPhysicsController : MonoBehaviourPun
             await UniTask.Yield();
         }
         
-        _playerInput.CannotMove = false;
+        _playerInputController.CannotMove = false;
     }
 
     private Vector3 _playerDirection;
     private Vector3 _diveDirection;
     [SerializeField] private float _diveHeightDirection;
+    [SerializeField] private float _diveForwardDirection;
     
     // Dive시 앞으로 힘을 주어 움직이게 하는 함수 입니다.
-    private async UniTaskVoid DiveAction()
+    private async UniTaskVoid DiveActionAsync()
     {
-        await UniTask.DelayFrame(3);
-        
         // Player가 바라보고 있는 방향을 구한뒤 Dive Direction을 구합니다.
-        _playerDirection = transform.forward;
-        _diveDirection = new Vector3(_playerDirection.x, _diveHeightDirection, _playerDirection.z);
+        _diveDirection = transform.forward * _diveForwardDirection + transform.up * _diveHeightDirection;
 
         // Dive Direction으로 힘을 줍니다.
         _playerRigidbody.AddForce(_diveDirection * _diveForce, ForceMode.Impulse);
+
+        await UniTask.Yield(PlayerLoopTiming.FixedUpdate);
     }
 
     /// <summary>
@@ -231,15 +231,15 @@ public class PlayerPhysicsController : MonoBehaviourPun
         if (!photonView.IsMine || !StageManager.Instance.StageDataManager.IsGameActive.Value)
             return;
         
-        GetUp().Forget();
+        GetUpAsync().Forget();
     }
     
     [SerializeField] private float _getUpRotationSpeed;
 
     // 캐릭터가 Dive이후 일어나게 하는 함수입니다.
-    private async UniTaskVoid GetUp()
+    private async UniTaskVoid GetUpAsync()
     {
-        _playerInput.CannotMove = true;
+        _playerInputController.CannotMove = true;
         
         _currentRotation = transform.rotation.eulerAngles;
         _targetRotation = Quaternion.Euler(0, _currentRotation.y, _currentRotation.z);
@@ -252,7 +252,7 @@ public class PlayerPhysicsController : MonoBehaviourPun
             await UniTask.Yield();
         }
         
-        _playerInput.CannotMove = false;
+        _playerInputController.CannotMove = false;
     }
 
     /// <summary>
@@ -274,13 +274,13 @@ public class PlayerPhysicsController : MonoBehaviourPun
         if (!photonView.IsMine)
             return;
         
-        Recovery().Forget();
+        RecoveryAsync().Forget();
     }
     
     // 평지에서 Fall 이후 다시 일어나게 하는 함수입니다.
-    private async UniTaskVoid Recovery()
+    private async UniTaskVoid RecoveryAsync()
     {
-        _playerInput.CannotMove = true;
+        _playerInputController.CannotMove = true;
         
         await UniTask.Delay(TimeSpan.FromSeconds(0.5f));
         
@@ -297,7 +297,7 @@ public class PlayerPhysicsController : MonoBehaviourPun
             await UniTask.Yield();
         }
         
-        _playerInput.CannotMove = false;
+        _playerInputController.CannotMove = false;
     }
 
     /// <summary>
