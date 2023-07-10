@@ -1,7 +1,6 @@
 using System.IO;
 using LiteralRepository;
 using Model;
-using ResourceRegistry;
 using UnityEngine;
 
 public class GameResultFallGuyDataBinder : MonoBehaviour
