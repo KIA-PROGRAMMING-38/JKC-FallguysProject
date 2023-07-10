@@ -24,6 +24,12 @@ public class RemainingTimePresenter : Presenter
             .DistinctUntilChanged()
             .Subscribe(_ => SetReaminingTimeText())
             .AddTo(_compositeDisposable);
+        
+        StageManager.Instance.StageDataManager.IsGameActive
+            .Skip(1)
+            .Where(gameActive => !gameActive)
+            .Subscribe(_ => GameObjectHelper.SetActiveGameObject(_remainingTimeView.gameObject, false))
+            .AddTo(_compositeDisposable);
     }
 
     private void SetReaminingTimeText()

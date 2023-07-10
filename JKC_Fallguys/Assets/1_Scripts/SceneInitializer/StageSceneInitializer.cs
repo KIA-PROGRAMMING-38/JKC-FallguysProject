@@ -9,8 +9,7 @@ public class StageSceneInitializer : SceneInitializer
 {
     protected override void InitializeData()
     {
-        StageSceneModel.InitializeCountDown();
-        
+        StageSceneModel.Clear();
         StageManager.Instance.Clear();
     }
 
