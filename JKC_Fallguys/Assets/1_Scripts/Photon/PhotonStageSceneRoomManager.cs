@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -22,9 +21,8 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
     private double _serverTime;
     private const int GameStartDelaySeconds = 2;
     private const int OperationCountdownDelaySeconds = 3;
-    private const int SyncIntervalMs = 100;
 
-    private CancellationTokenSource _cts;
+    private CancellationTokenSource _cts = new CancellationTokenSource();
 
     private void Awake()
     {
@@ -32,39 +30,29 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
         StageDontDestroyOnLoadSet();
 
         _cts = new CancellationTokenSource();
-        
-        if (!PhotonNetwork.IsMasterClient)
+        Debug.Log($"MasterClient ActNum: {PhotonNetwork.MasterClient.ActorNumber}");
+
+        if (PhotonNetwork.IsMasterClient)
         {
-            photonView.RPC("IsClientReady", RpcTarget.MasterClient);
-        }
-        else
-        {
-            ++_readyClientsCount;
-            _serverTime = PhotonNetwork.Time;
-            SyncServerTime().Forget();
+            StageDataManager.Instance.PhotonTimeHelper.SyncServerTime(_cts.Token).Forget();
             WaitForAllClientsLoaded().Forget();
         }
+    
+        photonView.RPC("IsClientReady", RpcTarget.MasterClient);
     }
 
-    private async UniTask SyncServerTime()
-    {
-        while (true)
-        {
-            _serverTime = PhotonNetwork.Time;
-            photonView.RPC("RpcSyncServerTime", RpcTarget.Others, _serverTime);
-            await UniTask.Delay(TimeSpan.FromMilliseconds(SyncIntervalMs), cancellationToken: _cts.Token);
-        }
-    }
 
     private async UniTask WaitForAllClientsLoaded()
     {
         while (_readyClientsCount < PhotonNetwork.CountOfPlayersOnMaster)
         {
-            await UniTask.Delay(TimeSpan.FromMilliseconds(SyncIntervalMs), cancellationToken: _cts.Token);
+            await UniTask.Delay(TimeSpan.FromMilliseconds(PhotonTimeHelper.SyncIntervalMs), cancellationToken: _cts.Token);
         }
 
-        ScheduleGameStart(_serverTime + GameStartDelaySeconds);
-        ScheduleOperationCountdown(_serverTime + OperationCountdownDelaySeconds);
+        ScheduleGameStart
+            (StageDataManager.Instance.PhotonTimeHelper.GetFutureNetworkTime(GameStartDelaySeconds));
+        ScheduleOperationCountdown
+            (StageDataManager.Instance.PhotonTimeHelper.GetFutureNetworkTime(OperationCountdownDelaySeconds));
     }
 
     private void ScheduleGameStart(double startTime)
@@ -86,13 +74,13 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
     [PunRPC]
     public void RpcSetGameStart(double startPhotonNetworkTime)
     {
-        ScheduleDelayedAction(startPhotonNetworkTime, SetGameStart);
+        StageDataManager.Instance.PhotonTimeHelper.ScheduleDelayedAction(startPhotonNetworkTime, SetGameStart, _cts.Token);
     }
 
     [PunRPC]
     public void RpcStartTriggerOperationCountDown(double startPhotonNetworkTime)
     {
-        ScheduleDelayedAction(startPhotonNetworkTime, StartOperationCountdown);
+        StageDataManager.Instance.PhotonTimeHelper.ScheduleDelayedAction(startPhotonNetworkTime, StartOperationCountdown, _cts.Token);
     }
 
     private void SetGameStart()
@@ -108,27 +96,6 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
             .AddTo(this);
     }
 
-    [PunRPC]
-    public void RpcSyncServerTime(double serverTime)
-    {
-        _serverTime = serverTime;
-    }
-
-    private void ScheduleDelayedAction(double scheduledTime, Action action)
-    {
-        DelayedActionAsync(scheduledTime, action).Forget();
-    }
-
-    private async UniTask DelayedActionAsync(double scheduledTime, Action action)
-    {
-        while (PhotonNetwork.Time < scheduledTime)
-        {
-            await UniTask.Yield(PlayerLoopTiming.Update, cancellationToken: _cts.Token);
-        }
-
-        action?.Invoke();
-    }
-    
     private void OnDestroy()
     {
         _cts.Cancel();
@@ -320,7 +287,8 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
         StageDataManager.Instance.PlayerContainer.StagePlayerRankings.Clear();
         StageDataManager.Instance.PlayerContainer.FailedClearStagePlayers.Clear();
 
-        string playerScoresByIndexJson = JsonConvert.SerializeObject(StageDataManager.Instance.PlayerContainer.PlayerDataByIndex);
+        string playerScoresByIndexJson =
+            JsonConvert.SerializeObject(StageDataManager.Instance.PlayerContainer.PlayerDataByIndex);
 
         photonView.RPC("UpdateStageDataOnAllClients", RpcTarget.All, playerScoresByIndexJson,
             StageDataManager.Instance.PlayerContainer.CachedPlayerIndicesForResults.ToArray(),
@@ -332,7 +300,8 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
     {
         // PlayerData에 저장된 점수를 기준으로 플레이어를 정렬하고 그 순서대로 인덱스를 CachedPlayerIndicesForResults에 저장합니다.
         List<KeyValuePair<int, PlayerData>> sortedPlayers =
-            StageDataManager.Instance.PlayerContainer.PlayerDataByIndex.OrderByDescending(pair => pair.Value.Score).ToList();
+            StageDataManager.Instance.PlayerContainer.PlayerDataByIndex.OrderByDescending(pair => pair.Value.Score)
+                .ToList();
 
         StageDataManager.Instance.PlayerContainer.CachedPlayerIndicesForResults.Clear();
 
