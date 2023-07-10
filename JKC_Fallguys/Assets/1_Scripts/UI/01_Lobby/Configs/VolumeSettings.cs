@@ -23,10 +23,6 @@ public class VolumeSettings : MonoBehaviour
         _volumeSlider.onValueChanged.AddListener(SetVolume);
         
         LoadConfigsValue();
-        
-        // Login Scene에서 작성해야 함.
-        //AudioRegistry.GameAudioMixer.SetFloat(_audioMixerParameterName, Mathf.Log10(_volumeSlider.value) * 20);
-        //Debug.Log($"{gameObject.name}: {_volumeSlider.value}");
     }
 
     private void LoadConfigsValue()
@@ -40,17 +36,14 @@ public class VolumeSettings : MonoBehaviour
         AudioRegistry.GameAudioMixer.SetFloat( _audioMixerParameterName, Mathf.Log10( volume ) * 20 );
         
         DisplayVolumeValueText(volume);
+
+        SaveConfigsValue();
     }
 
     private void DisplayVolumeValueText(float volume)
     {
         int displayValue = Mathf.RoundToInt(volume * 100);
         _volumeValue.text = displayValue.ToString();
-    }
-
-    private void OnDisable()
-    {
-        SaveConfigsValue();
     }
 
     private void SaveConfigsValue()
