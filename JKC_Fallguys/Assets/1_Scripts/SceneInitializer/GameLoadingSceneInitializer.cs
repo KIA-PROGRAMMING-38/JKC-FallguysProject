@@ -5,11 +5,13 @@ using ResourceRegistry;
 
 public class GameLoadingSceneInitializer : SceneInitializer
 {
+    protected override void InitializeData()
+    {
+        Model.GameLoadingSceneModel.SetStatusLoadingSceneUI(true);
+    }
+    
     protected override void OnGetResources()
     {
-        AudioManager.Instance.Clear();
-        AudioManager.Instance.Play(SoundType.MusicLoop, AudioRegistry.GameLoadingMusic, 0.3f);
-        
         ResourceManager.Instantiate
             (Path.Combine(PathLiteral.Object, PathLiteral.GameLoading, "GameLoadingSceneManager"));
         ResourceManager.Instantiate
@@ -22,17 +24,17 @@ public class GameLoadingSceneInitializer : SceneInitializer
             (Path.Combine(PathLiteral.UI, PathLiteral.GameLoading, "WhiteScreenViewController"));
         ResourceManager.Instantiate
             (Path.Combine(PathLiteral.UI, PathLiteral.GameLoading, "GameLoadingMainPanelViewController"));
-        
-
-        if (PhotonNetwork.IsMasterClient)
-        {
-            string filePath = Path.Combine(PathLiteral.Prefabs, PathLiteral.Object, PathLiteral.GameLoading, "MapSelectionManager");
-            PhotonNetwork.Instantiate(filePath, transform.position, transform.rotation);
-        }
+    }
+    
+    protected override void OnGetResourcesOnMasterClient()
+    {
+        string filePath = Path.Combine(PathLiteral.Prefabs, PathLiteral.Object, PathLiteral.GameLoading, "MapSelectionManager");
+        PhotonNetwork.Instantiate(filePath, transform.position, transform.rotation);
     }
 
-    protected override void InitializeData()
+    protected override void SetAudio()
     {
-        Model.GameLoadingSceneModel.SetStatusLoadingSceneUI(true);
+        AudioManager.Instance.Clear();
+        AudioManager.Instance.Play(SoundType.MusicLoop, AudioRegistry.GameLoadingMusic, 0.3f);
     }
 }

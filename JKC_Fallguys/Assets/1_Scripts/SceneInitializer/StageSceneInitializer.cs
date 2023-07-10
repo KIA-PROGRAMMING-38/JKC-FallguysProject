@@ -16,8 +16,6 @@ public class StageSceneInitializer : SceneInitializer
 
     protected override void OnGetResources()
     {
-        SetStageSound();
-        
         ResourceManager.Instantiate
             (Path.Combine(PathLiteral.UI, PathLiteral.Stage, "ExitButtonViewController"));
         ResourceManager.Instantiate
@@ -36,14 +34,18 @@ public class StageSceneInitializer : SceneInitializer
             (Path.Combine(PathLiteral.UI, PathLiteral.Stage, "ObservedPlayerNameViewController"));
         ResourceManager.Instantiate
             (Path.Combine(PathLiteral.Object, PathLiteral.Stage, "PlayerObserverCamera"));
-
-        if (PhotonNetwork.IsMasterClient)
-        {
-            AsyncPhotonNetworkInstantiate();
-        }
     }
 
-    private void SetStageSound()
+    protected override void OnGetResourcesOnMasterClient()
+    {
+        string filePathInstantiateManager = Path.Combine(PathLiteral.Prefabs, PathLiteral.Object, PathLiteral.Stage, "StageInstantiateManager");
+        PhotonNetwork.Instantiate(filePathInstantiateManager, transform.position, transform.rotation);
+        
+        string filePathPhotonRoomManager = Path.Combine(PathLiteral.Prefabs, PathLiteral.Object, PathLiteral.Stage, "PhotonStageSceneRoomManager");
+        PhotonNetwork.Instantiate(filePathPhotonRoomManager, transform.position, transform.rotation);
+    }
+
+    protected override void SetAudio()
     {
         AudioManager.Instance.Clear();
         
@@ -58,14 +60,5 @@ public class StageSceneInitializer : SceneInitializer
             AudioManager.Instance.Play(SoundType.MusicIntro, AudioRegistry.FinalRoundMusic[0], 0.3f);
             AudioManager.Instance.ScheduleLoopPlayback(AudioRegistry.FinalRoundMusic[1], 0.3f);
         }
-    }
-
-    private void AsyncPhotonNetworkInstantiate()
-    {
-        string filePathInstantiateManager = Path.Combine(PathLiteral.Prefabs, PathLiteral.Object, PathLiteral.Stage, "StageInstantiateManager");
-        PhotonNetwork.Instantiate(filePathInstantiateManager, transform.position, transform.rotation);
-        
-        string filePathPhotonRoomManager = Path.Combine(PathLiteral.Prefabs, PathLiteral.Object, PathLiteral.Stage, "PhotonStageSceneRoomManager");
-        PhotonNetwork.Instantiate(filePathPhotonRoomManager, transform.position, transform.rotation);
     }
 }

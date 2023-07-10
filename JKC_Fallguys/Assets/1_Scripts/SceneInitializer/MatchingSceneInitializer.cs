@@ -1,19 +1,11 @@
 using System.IO;
 using LiteralRepository;
 using Model;
-using UnityEngine;
 
 public class MatchingSceneInitializer : SceneInitializer
 {
     private LineEffectPooler _lineEffectPooler;
     private RespawnZone _respawnZone;
-
-    protected override void Start()
-    {
-        base.Start();
-        
-        _lineEffectPooler.OnInitialize(_respawnZone);
-    }
 
     protected override void InitializeData()
     {
@@ -33,6 +25,7 @@ public class MatchingSceneInitializer : SceneInitializer
         _lineEffectPooler = ResourceManager.Instantiate
                 (Path.Combine(PathLiteral.Object, PathLiteral.Matching, "LineEffectPooler"))
             .GetComponent<LineEffectPooler>();
+        _lineEffectPooler.OnInitialize(_respawnZone);
 
         ResourceManager.Instantiate
             (Path.Combine(PathLiteral.Object, PathLiteral.Matching, "ReleaseZone"));

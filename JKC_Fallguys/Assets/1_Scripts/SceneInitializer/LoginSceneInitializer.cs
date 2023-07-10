@@ -5,6 +5,11 @@ using ResourceRegistry;
 
 public class LoginSceneInitializer : SceneInitializer
 {
+    protected override void InitializeData()
+    {
+        Screen.SetResolution(1920, 1080, FullScreenMode.Windowed);
+    }
+
     protected override void OnGetResources()
     {
         ResourceManager.Instantiate
@@ -13,12 +18,12 @@ public class LoginSceneInitializer : SceneInitializer
             (Path.Combine(PathLiteral.UI, PathLiteral.Login, "LoginBackgroundViewController"));
         ResourceManager.Instantiate
             (Path.Combine(PathLiteral.UI, PathLiteral.Login, "LoginPanelViewController"));
+    }
 
+    protected override void SetAudio()
+    {
         SetAudioMixerVolume();
-        
         AudioManager.Instance.Play(SoundType.MusicIntro, AudioRegistry.LoginMusic, 0.3f);
-
-        Screen.SetResolution(1920, 1080, FullScreenMode.Windowed);
     }
 
     private const string MASTER_VOLUME_KEY = "MasterVolume";
