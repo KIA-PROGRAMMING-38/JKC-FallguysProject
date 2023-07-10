@@ -960,8 +960,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1aab86becc27641e79c5092eee675ed6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _diveForce: 100
-  _jumpForce: 290
+  _diveForce: 90
+  _jumpForce: 270
   _rotSpeed: 4
   _moveSpeed: 6
   _groundCheckPoint: {fileID: 2387829583882509454}
@@ -1103,8 +1103,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 10
+  MinDistance: 10
+  MaxDistance: 15
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
