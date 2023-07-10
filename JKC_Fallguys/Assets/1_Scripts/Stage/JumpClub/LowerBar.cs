@@ -1,5 +1,6 @@
 using System;
 using System.Threading;
+using LiteralRepository;
 using Photon.Pun;
 using UniRx;
 using UnityEngine;
@@ -8,6 +9,8 @@ public class LowerBar : MonoBehaviourPun
 {
     [SerializeField] private float rotationSpeed;
     [SerializeField] private float acceleration;
+
+    [SerializeField] private float test;
     
     private Rigidbody _rotatingObstacle;
     private CancellationTokenSource _cancellationTokenSource;
@@ -73,5 +76,23 @@ public class LowerBar : MonoBehaviourPun
     private void OnDestroy()
     {
         _cancellationTokenSource.Cancel();
+    }
+
+    private void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.CompareTag(TagLiteral.Player))
+        {
+            PhotonView playerPhotonView = col.gameObject.GetComponent<PhotonView>();
+            if (playerPhotonView != null && playerPhotonView.IsMine)
+            {
+                Rigidbody rigidbody = col.collider.GetComponent<Rigidbody>();
+                
+                Vector3 direction = col.transform.position - transform.position;
+                direction = direction.normalized;
+
+                rigidbody.AddForce(direction * test, ForceMode.Impulse);
+                Debug.Log("호출");
+            }
+        }
     }
 }
