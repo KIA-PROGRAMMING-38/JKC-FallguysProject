@@ -19,8 +19,6 @@ public class GameResultSceneInitializer : SceneInitializer
 
     protected override void OnGetResources()
     {
-        SetAudio();
-        
         GameResultSceneFallGuyController fallGuyController = 
             ResourceManager.Instantiate
                 (Path.Combine(PathLiteral.Object, PathLiteral.GameResult, "GameResultSceneFallGuy"))
@@ -38,10 +36,10 @@ public class GameResultSceneInitializer : SceneInitializer
         ResourceManager.Instantiate
             (Path.Combine(PathLiteral.UI, PathLiteral.GameResult, "ResultViewController"));
 
-        LoadLobbyScene().Forget();
+        AsyncLoadLobbyScene().Forget();
     }
 
-    private void SetAudio()
+    protected override void SetAudio()
     {
         AudioManager.Instance.Clear();
         if (_isVictory)
@@ -55,7 +53,7 @@ public class GameResultSceneInitializer : SceneInitializer
     }
 
     private const int LOAD_SCENE_DELAY = 10;
-    private async UniTaskVoid LoadLobbyScene()
+    private async UniTaskVoid AsyncLoadLobbyScene()
     {
         await UniTask.Delay(TimeSpan.FromSeconds(LOAD_SCENE_DELAY));
 
