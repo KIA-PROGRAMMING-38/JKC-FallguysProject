@@ -74,5 +74,13 @@ namespace Model
         {
             _observedPlayerActorName.Value = actorName;
         }
+
+        public static void Clear()
+        {
+            InitializeCountDown();
+            RoomAdmissionStatus(true);
+            SetExitPanelActive(false);
+            SetExitButtonActive(false);
+        }
     }
 }
