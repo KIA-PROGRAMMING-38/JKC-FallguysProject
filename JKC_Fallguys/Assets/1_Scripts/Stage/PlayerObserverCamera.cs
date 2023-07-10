@@ -64,10 +64,10 @@ public class PlayerObserverCamera : MonoBehaviour
             .Subscribe(_ => FindAllObservedObjects())
             .AddTo(this);
         
-        _targetObject
-            .Where(obj => obj != null)
+        Observable.EveryUpdate()
+            .Select(_ => _targetObject.Value != null && !_targetObject.Value.activeSelf)
             .DistinctUntilChanged()
-            .Where(obj => !obj.activeSelf)
+            .Where(isInactive => isInactive)
             .Subscribe(_ => ObservedNextPlayer())
             .AddTo(this);
     }
