@@ -30,13 +30,7 @@ public class ExitMatchingPanelPresenter : Presenter
     protected override void OnUpdatedModel()
     {
         MatchingSceneModel.IsExitMatching
-            .Where(isActive => isActive)
-            .Subscribe(_ => SetActivePanel(true))
-            .AddTo(_compositeDisposable);
-        
-        MatchingSceneModel.IsExitMatching
-            .Where(isActive => !isActive)
-            .Subscribe(_ => SetActivePanel(false))
+            .Subscribe(isActive => GameObjectHelper.SetActiveGameObject(_exitMatchingPanelView.gameObject, isActive))
             .AddTo(_compositeDisposable);
 
         MatchingSceneModel.IsEnterPhotonRoom
@@ -47,17 +41,10 @@ public class ExitMatchingPanelPresenter : Presenter
         
         MatchingSceneModel.IsActionPossible
             .Where(isActive => !isActive)
-            .Subscribe(_ => SetActivePanel(false))
+            .Subscribe(isActive => GameObjectHelper.SetActiveGameObject(_exitMatchingPanelView.gameObject, false))
             .AddTo(_compositeDisposable);
     }
     
-    private void SetActivePanel(bool status)
-    {
-        _exitMatchingPanelView.Default.SetActive(status);
-        _exitMatchingPanelView.CheckButton.gameObject.SetActive(status);
-        _exitMatchingPanelView.CancelButton.gameObject.SetActive(status);
-    }
-
     private void ReturnLobby()
     {
         PhotonNetwork.LeaveRoom();

@@ -21,15 +21,10 @@ public class HorizontalRendererPresenter : Presenter
     {
         Model.GameLoadingSceneModel.IsLoadingSceneSwitch
             .Where(isActive => !isActive)
-            .Subscribe(_ => SetActiveGameObject(false))
+            .Subscribe(_ => GameObjectHelper.SetActiveGameObject(_horizontalRendererView.SplashArtPooler, false))
             .AddTo(_compositeDisposable);
     }
 
-    private void SetActiveGameObject(bool status)
-    {
-        _horizontalRendererView.SplashArtPooler.SetActive(status);
-    }
-    
     public override void OnRelease()
     {
         _horizontalRendererView = default;

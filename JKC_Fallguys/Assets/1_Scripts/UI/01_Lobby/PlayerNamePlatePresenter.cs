@@ -28,14 +28,9 @@ public class PlayerNamePlatePresenter : Presenter
         UpdateNamePlate();
         
         Model.LobbySceneModel.CurrentLobbyState
-            .Where(state => state != Model.LobbySceneModel.LobbyState.Home)
-            .Subscribe(_ => SetActiveGameObject(false))
+            .Subscribe(state => SetActiveGameObject(state == Model.LobbySceneModel.LobbyState.Home))
             .AddTo(_compositeDisposable);
-        
-        Model.LobbySceneModel.CurrentLobbyState
-            .Where(state => state == Model.LobbySceneModel.LobbyState.Home)
-            .Subscribe(_ => SetActiveGameObject(true))
-            .AddTo(_compositeDisposable);
+
     } 
     
     private void SetActiveGameObject(bool status)
