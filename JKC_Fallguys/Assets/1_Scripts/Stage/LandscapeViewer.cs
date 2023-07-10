@@ -17,13 +17,13 @@ public class LandscapeViewer : MonoBehaviour
 
     private void InitializeRx()
     {
-        StageDataManager.Instance.IsGameActive
+        StageManager.Instance.StageDataManager.IsGameActive
             .DistinctUntilChanged()
             .Where(isGameActive => !isGameActive)
             .Subscribe(_ => _camera.gameObject.SetActive(true))
             .AddTo(this);
         
-        StageDataManager.Instance.IsGameStart
+        StageManager.Instance.StageDataManager.IsGameStart
             .DistinctUntilChanged()
             .Where(isGameStarted => isGameStarted)
             .Subscribe(_ => _camera.gameObject.SetActive(false))

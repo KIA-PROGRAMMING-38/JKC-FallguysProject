@@ -8,7 +8,7 @@ public class PlayerPhotonController : MonoBehaviourPunCallbacks
     [PunRPC]
     public void RpcSetInitialize(int actorNum, string nickName, int textureIndex)
     {
-        transform.parent.SetParent(StageDataManager.Instance.gameObject.transform);
+        transform.parent.SetParent(StageManager.Instance.gameObject.transform);
         
         PlayerReferenceManager refManager = transform.parent.GetComponent<PlayerReferenceManager>();
         refManager.SetPlayerInformation(actorNum, nickName);

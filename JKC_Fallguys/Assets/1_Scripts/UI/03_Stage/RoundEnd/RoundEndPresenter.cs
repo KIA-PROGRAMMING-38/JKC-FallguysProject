@@ -20,7 +20,7 @@ public class RoundEndPresenter : Presenter
     private Vector2 _center = new Vector2(0.5f, 0.5f);
     protected override void OnUpdatedModel()
     {
-        StageDataManager.Instance.IsRoundCompleted
+        StageManager.Instance.StageDataManager.IsRoundCompleted
             .Where(isRoundCompleted => isRoundCompleted)
             .Subscribe(_ => UIAction())
             .AddTo(_compositeDisposable);

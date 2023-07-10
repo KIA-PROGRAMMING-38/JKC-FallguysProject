@@ -1,28 +1,8 @@
 using System.Collections.Generic;
-using Photon.Pun;
 using UniRx;
 
-public class StageDataManager : SingletonMonoBehaviour<StageDataManager>
+public class StageDataManager
 {
-    public PlayerContainer PlayerContainer = new PlayerContainer();
-    public PhotonTimeHelper PhotonTimeHelper;
-
-    private void Start()
-    {
-        PhotonTimeHelper = FindObjectOfType<PhotonTimeHelper>();
-    }
-
-    public void Clear()
-    {
-        SetGameStatus(false);
-        SetRoundState(false);
-        SetGameStart(false);
-        PlayerContainer.SetPlayerActive(PhotonNetwork.LocalPlayer.ActorNumber, true);
-        
-        int actorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
-        PlayerContainer.SetPlayerState(actorNumber, PlayerContainer.PlayerState.Default);
-    }
-
     public static readonly int MaxPlayableMaps = 3;
     
     // 게임 시작의 카운트다운을 관장합니다.
@@ -45,33 +25,15 @@ public class StageDataManager : SingletonMonoBehaviour<StageDataManager>
     // 라운드가 끝났는지 확인하기 위한 변수입니다.
     private ReactiveProperty<bool> _isRoundCompleted = new ReactiveProperty<bool>(false);
     public IReactiveProperty<bool> IsRoundCompleted => _isRoundCompleted;
-
-    /// <summary>
-    /// 게임 상태를 변경하는 메소드입니다.
-    /// </summary>
-    /// <param name="status">status의 값에 따라 게임을 활성화하거나 비활성화합니다.</param>
+    
     public void SetGameStatus(bool status)
     {
         _isGameActive.Value = status;
     }
 
-    /// <summary>
-    /// 라운드의 상태를 변경하는 메소드입니다.
-    /// </summary>
-    /// <param name="status">status의 값에 따라 라운드를 활성화하거나 비활성화합니다.</param>
     public void SetRoundState(bool status)
     {
         _isRoundCompleted.Value = status;
-    }
-
-    /// <summary>
-    /// StateDataManager는 Singleton으로 구성되어 있습니다.
-    /// 이 클래스는, Loading이 시작될 때 생성되고 Lobby로 돌아갈 경우 파괴되어야 합니다.
-    /// 이를 위한 public 함수입니다.
-    /// </summary>
-    public void DestorySelf()
-    {
-        Destroy(gameObject);
     }
 
     public bool IsFinalRound()
@@ -98,8 +60,10 @@ public class StageDataManager : SingletonMonoBehaviour<StageDataManager>
         _isGameStart.Value = status;
     }
 
-    private void OnDestroy()
+    public void Clear()
     {
-        PlayerContainer = default;
+        SetGameStatus(false);
+        SetRoundState(false);
+        SetGameStart(false);
     }
 }

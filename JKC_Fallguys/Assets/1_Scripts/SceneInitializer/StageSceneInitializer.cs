@@ -11,7 +11,7 @@ public class StageSceneInitializer : SceneInitializer
     {
         StageSceneModel.InitializeCountDown();
         
-        StageDataManager.Instance.Clear();
+        StageManager.Instance.Clear();
     }
 
     protected override void OnGetResources()
@@ -47,7 +47,7 @@ public class StageSceneInitializer : SceneInitializer
     {
         AudioManager.Instance.Clear();
         
-        if (!StageDataManager.Instance.IsFinalRound())
+        if (!StageManager.Instance.StageDataManager.IsFinalRound())
         {
             int randomIndex = Random.Range(0, AudioRegistry.RoundMusic.Length);
             AudioManager.Instance.Play(SoundType.MusicLoop, AudioRegistry.RoundMusic[randomIndex], 0.3f);

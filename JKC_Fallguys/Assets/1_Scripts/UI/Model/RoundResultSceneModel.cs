@@ -19,10 +19,10 @@ namespace Model
         private static void AddStageResultToList()
         {
             // CachedPlayerIndicesForResults 리스트의 모든 요소에 대해 반복합니다.
-            foreach (int index in StageDataManager.Instance.PlayerContainer.CachedPlayerIndicesForResults)
+            foreach (int index in StageManager.Instance.PlayerContainer.CachedPlayerIndicesForResults)
             {
                 // 딕셔너리에서 해당 인덱스의 플레이어 데이터를 가져옵니다.
-                if (StageDataManager.Instance.PlayerContainer.PlayerDataByIndex.TryGetValue(index, out PlayerData playerData))
+                if (StageManager.Instance.PlayerContainer.PlayerDataByIndex.TryGetValue(index, out PlayerData playerData))
                 {
                     _fallguyRankings.Add(playerData);
                 }

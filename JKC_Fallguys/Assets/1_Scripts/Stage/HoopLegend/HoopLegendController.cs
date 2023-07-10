@@ -23,7 +23,7 @@ public class HoopLegendController : StageController
 
     protected override void InitializeRx()
     {
-        StageDataManager.Instance.IsGameActive
+        StageManager.Instance.StageDataManager.IsGameActive
             .Where(state => state)
             .Subscribe(_ => GameStartBroadCast())
             .AddTo(this);
@@ -72,10 +72,10 @@ public class HoopLegendController : StageController
     [PunRPC]
     public void RpcEndGame()
     {
-        StageDataManager.Instance.IsGameActive.Value = false;
+        StageManager.Instance.StageDataManager.IsGameActive.Value = false;
         
         int actorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
-        StageDataManager.Instance.PlayerContainer.SetPlayerState(actorNumber, PlayerContainer.PlayerState.GameTerminated);
+        StageManager.Instance.PlayerContainer.SetPlayerState(actorNumber, PlayerContainer.PlayerState.GameTerminated);
     }
     
     private void OnDestroy()

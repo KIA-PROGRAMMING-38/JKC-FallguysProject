@@ -30,7 +30,7 @@ public class LowerBar : MonoBehaviourPun
 
     private void InitializeRx()
     {
-        StageDataManager.Instance.IsGameActive
+        StageManager.Instance.StageDataManager.IsGameActive
             .DistinctUntilChanged()
             .Skip(1)
             .Where(state => !state)
@@ -40,14 +40,14 @@ public class LowerBar : MonoBehaviourPun
 
     private void TriggerStart()
     {
-        double futureNetworkTime = StageDataManager.Instance.PhotonTimeHelper.GetFutureNetworkTime(3);
+        double futureNetworkTime = StageManager.Instance.PhotonTimeHelper.GetFutureNetworkTime(3);
         photonView.RPC("RpcInitiateRotation", RpcTarget.AllBuffered, futureNetworkTime);
     }
 
     [PunRPC]
     public void RpcInitiateRotation(double startNetworkTime)
     {
-        StageDataManager.Instance.PhotonTimeHelper.ScheduleDelayedAction(startNetworkTime, () => SetRotaition(), _cancellationTokenSource.Token);
+        StageManager.Instance.PhotonTimeHelper.ScheduleDelayedAction(startNetworkTime, () => SetRotaition(), _cancellationTokenSource.Token);
     }
 
     private void SetRotaition()

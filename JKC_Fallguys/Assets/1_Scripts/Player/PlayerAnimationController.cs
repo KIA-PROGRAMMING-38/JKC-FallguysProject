@@ -37,7 +37,7 @@ public class PlayerAnimationController : MonoBehaviourPun
 
     private void Update()
     {
-        if ( !photonView.IsMine || !StageDataManager.Instance.IsGameActive.Value )
+        if ( !photonView.IsMine || !StageManager.Instance.StageDataManager.IsGameActive.Value )
             return;
 
         // Grab시 max값의 변수를 0.5로 변환하게 하는 로직 필요. 평소에는 max값이 1.

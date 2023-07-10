@@ -20,7 +20,7 @@ public class PlayerObserverCamera : MonoBehaviour
     {
         _observerCamera = transform.Find("ObserverCamera").GetComponent<ObserverCamera>();
         Debug.Assert(_observerCamera != null);
-        _playerContainer = StageDataManager.Instance.PlayerContainer;
+        _playerContainer = StageManager.Instance.PlayerContainer;
         _observerCamera.Initialize(this);
 
         InitializeRx();
@@ -28,7 +28,7 @@ public class PlayerObserverCamera : MonoBehaviour
 
     private void FindAllObservedObjects()
     {
-        Transform parentTransform = StageDataManager.Instance.transform;
+        Transform parentTransform = StageManager.Instance.transform;
     
         for (int i = 0; i < parentTransform.childCount; i++)
         {
@@ -44,23 +44,23 @@ public class PlayerObserverCamera : MonoBehaviour
     private void InitializeRx()
     {
         int actorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
-        StageDataManager.Instance.PlayerContainer.IsPlayerActive(actorNumber)
+        StageManager.Instance.PlayerContainer.IsPlayerActive(actorNumber)
             .Skip(1)
             .DistinctUntilChanged()
             .Subscribe(_ => _observerCamera.gameObject.SetActive(true))
             .AddTo(this);
         
-        StageDataManager.Instance.IsGameActive
+        StageManager.Instance.StageDataManager.IsGameActive
             .Where(state => !state)
             .Subscribe(_ => _observerCamera.gameObject.SetActive(false))
             .AddTo(this);
         
-        StageDataManager.Instance.IsRoundCompleted
+        StageManager.Instance.StageDataManager.IsRoundCompleted
             .Where(state => state)
             .Subscribe(_ => _observerCamera.gameObject.SetActive(false))
             .AddTo(this);
         
-        StageDataManager.Instance.IsGameStart
+        StageManager.Instance.StageDataManager.IsGameStart
             .Where(isStart => isStart)
             .First()
             .Subscribe(_ => FindAllObservedObjects())

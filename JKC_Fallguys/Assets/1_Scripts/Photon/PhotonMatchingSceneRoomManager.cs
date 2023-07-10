@@ -5,7 +5,6 @@ using Photon.Pun;
 using Photon.Realtime;
 using UniRx;
 using LiteralRepository;
-using UnityEngine;
 
 /// <summary>
 /// 게임 시작을 관리하는 클래스입니다.
@@ -49,11 +48,9 @@ public class PhotonMatchingSceneRoomManager : MonoBehaviourPun
         foreach (KeyValuePair<int, Player> player in PhotonNetwork.CurrentRoom.Players)
         {
             int actorNumber = player.Value.ActorNumber;
-            // 새로운 PlayerData 객체를 만들고, 이를 PlayerScoresByIndex 딕셔너리에 추가합니다.
             int playerTextureIndex = (int)player.Value.CustomProperties["PlayerTextureIndex"];
-            StageDataManager.Instance.PlayerContainer.PlayerDataByIndex[actorNumber] =
+            StageManager.Instance.PlayerContainer.PlayerDataByIndex[actorNumber] =
                 new PlayerData(player.Value.NickName, playerTextureIndex, 0);
-            
         }
         
         string path = Path.Combine(PathLiteral.Prefabs, PathLiteral.Object, PathLiteral.Stage, "PhotonTimeHelper");
@@ -75,7 +72,7 @@ public class PhotonMatchingSceneRoomManager : MonoBehaviourPun
         for (int i = 0; i < StageDataManager.MaxPlayableMaps; ++i)
         {
             MapData mapData = ResourceManager.JsonLoader<MapData>($"Data/MapData_{i:D2}");
-            StageDataManager.Instance.MapDatas.Add(i, mapData);
+            StageManager.Instance.StageDataManager.MapDatas.Add(i, mapData);
         }
     }
     #pragma warning restore CS1998

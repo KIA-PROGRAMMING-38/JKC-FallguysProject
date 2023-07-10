@@ -22,7 +22,7 @@ public class ResultInStagePresenter : Presenter
     protected override void OnUpdatedModel()
     {
         int actorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
-        StageDataManager.Instance.PlayerContainer.GetCurrentState(actorNumber)
+        StageManager.Instance.PlayerContainer.GetCurrentState(actorNumber)
             .Skip(1) // 초기 Default로 설정된것은 Skip.
             .DistinctUntilChanged()
             .Subscribe(currentState =>

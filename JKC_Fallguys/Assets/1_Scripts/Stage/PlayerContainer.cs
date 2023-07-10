@@ -37,8 +37,7 @@ public class PlayerContainer
     }
     
     // 클라이언트 별 PlayerState를 관리하는 Dictionary입니다.
-    private Dictionary<int, ReactiveProperty<PlayerState>> _clientStates =
-        new Dictionary<int, ReactiveProperty<PlayerState>>();
+    private Dictionary<int, ReactiveProperty<PlayerState>> _clientStates = new Dictionary<int, ReactiveProperty<PlayerState>>();
 
     public IReactiveProperty<PlayerState> GetCurrentState(int actorNumber)
     {

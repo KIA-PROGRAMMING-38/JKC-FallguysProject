@@ -15,10 +15,10 @@ public class MapSelectionManager : MonoBehaviourPun
     {
         if (PhotonNetwork.IsMasterClient)
         {
-            if (!StageDataManager.Instance.MapPickupFlags[index])
+            if (!StageManager.Instance.StageDataManager.MapPickupFlags[index])
             {
-                StageDataManager.Instance.MapPickupFlags[index] = true;
-                StageDataManager.Instance.SetMapPickupFlag(index);
+                StageManager.Instance.StageDataManager.MapPickupFlags[index] = true;
+                StageManager.Instance.StageDataManager.SetMapPickupFlag(index);
                 
                 photonView.RPC("SetSelectedMapIndex", RpcTarget.All, index);
             }
@@ -35,6 +35,6 @@ public class MapSelectionManager : MonoBehaviourPun
     public void SetSelectedMapIndex(int mapIndex)
     {
         // 마스터 클라이언트가 선택한 맵의 인덱스를 설정합니다.
-        StageDataManager.Instance.SetMapPickupFlag(mapIndex);
+        StageManager.Instance.StageDataManager.SetMapPickupFlag(mapIndex);
     }
 }
