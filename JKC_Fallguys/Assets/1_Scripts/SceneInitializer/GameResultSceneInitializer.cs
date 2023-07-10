@@ -5,7 +5,6 @@ using LiteralRepository;
 using Model;
 using Photon.Pun;
 using ResourceRegistry;
-using UnityEngine.SceneManagement;
 
 public class GameResultSceneInitializer : SceneInitializer
 {
