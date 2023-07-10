@@ -58,7 +58,8 @@ public class ResultInStagePresenter : Presenter
 
         await UniTask.Delay(3000);
         
-        _resultInStageView.ResultPanel.MoveUI(_outPosition, _resultInStageView.CanvasRect, 0.5f);
+        _resultInStageView.ResultPanel.MoveUI(_outPosition, _resultInStageView.CanvasRect, 0.5f)
+            .SetEase(Ease.EaseOutElastic);
     }
 
     

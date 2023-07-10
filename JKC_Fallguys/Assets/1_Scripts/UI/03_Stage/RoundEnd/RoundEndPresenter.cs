@@ -28,7 +28,8 @@ public class RoundEndPresenter : Presenter
 
     private void UIAction()
     {
-        _roundEndView.RoundEndPanel.MoveUI(_center, _roundEndView.CanvasRect, 0.5f);
+        _roundEndView.RoundEndPanel.MoveUI(_center, _roundEndView.CanvasRect, 0.5f)
+            .SetEase(Ease.EaseOutElastic);
     }
 
     public override void OnRelease()
