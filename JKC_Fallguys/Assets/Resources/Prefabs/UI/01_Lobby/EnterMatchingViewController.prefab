@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8406248137381635486}
   - component: {fileID: 8406248137381635485}
   m_Layer: 0
-  m_Name: EnterMatchingStandbyView
+  m_Name: EnterMatchingView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -208,7 +208,7 @@ GameObject:
   - component: {fileID: 8406248137824288528}
   - component: {fileID: 8406248137824288531}
   m_Layer: 0
-  m_Name: EnterMatchingStandbyButton
+  m_Name: EnterMatchingButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -403,7 +403,7 @@ GameObject:
   - component: {fileID: 8406248138061035022}
   - component: {fileID: 8406248138061035023}
   m_Layer: 0
-  m_Name: EnterMatchingStandbyViewController
+  m_Name: EnterMatchingViewController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

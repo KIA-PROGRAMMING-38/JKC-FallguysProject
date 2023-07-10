@@ -56,7 +56,7 @@ public class PhotonMatchingSceneEventManager : MonoBehaviourPunCallbacks
     private void OnInstantiatePhotonRoomManager()
     {
         string filePath = Path.Combine
-            (PathLiteral.Prefabs, PathLiteral.Object, PathLiteral.MatchingStandby, "PhotonMatchingSceneRoomManager");
+            (PathLiteral.Prefabs, PathLiteral.Object, PathLiteral.Matching, "PhotonMatchingSceneRoomManager");
         
         PhotonMatchingSceneRoomManager roomManager = 
             PhotonNetwork.Instantiate(filePath, transform.position, transform.rotation)
