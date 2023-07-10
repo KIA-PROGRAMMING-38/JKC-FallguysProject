@@ -2,9 +2,6 @@ using LiteralRepository;
 using Photon.Pun;
 using ResourceRegistry;
 using UniRx;
-using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.SceneManagement;
 
 public class LoginPanelPresenter : Presenter
 {
@@ -46,7 +43,7 @@ public class LoginPanelPresenter : Presenter
             // 로그인 사운드 플레이
             AudioManager.Instance.Play(SoundType.SFX, AudioRegistry.LoginSFX, 1f);
             
-            SceneManager.LoadScene(SceneIndex.Lobby); // Lobby
+            SceneChangeHelper.ChangeLocalScene(SceneIndex.Lobby);
         }
         // 사용자가 닉네임을 올바르게 입력하지 않은 경우, 상태를 NotConditionEstablished로 변경합니다.
         else

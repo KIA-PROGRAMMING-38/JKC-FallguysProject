@@ -1,7 +1,6 @@
 using System;
 using Cysharp.Threading.Tasks;
 using LiteralRepository;
-using Photon.Pun;
 using UnityEngine;
 
 public class GameLoadingSceneManager : MonoBehaviour
@@ -38,6 +37,6 @@ public class GameLoadingSceneManager : MonoBehaviour
         
         await UniTask.Delay(TimeSpan.FromSeconds(2f));
         
-        PhotonNetwork.LoadLevel(SceneIndex.Stage);
+        SceneChangeHelper.ChangeNetworkLevel(SceneIndex.Stage);
     }
 }

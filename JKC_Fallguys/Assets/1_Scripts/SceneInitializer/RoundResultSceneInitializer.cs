@@ -2,7 +2,6 @@ using System;
 using System.IO;
 using Cysharp.Threading.Tasks;
 using LiteralRepository;
-using Photon.Pun;
 using ResourceRegistry;
 
 public class RoundResultSceneInitializer : SceneInitializer
@@ -37,6 +36,6 @@ public class RoundResultSceneInitializer : SceneInitializer
     {
         await UniTask.Delay(TimeSpan.FromSeconds(LOAD_SCENE_DELAY));
 
-        PhotonNetwork.LoadLevel(SceneIndex.GameLoading);
+        SceneChangeHelper.ChangeNetworkLevel(SceneIndex.GameLoading);
     }
 }

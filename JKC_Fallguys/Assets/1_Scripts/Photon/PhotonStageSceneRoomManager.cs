@@ -185,11 +185,11 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
 
         if (StageManager.Instance.StageDataManager.IsFinalRound())
         {
-            PhotonNetwork.LoadLevel(SceneIndex.GameResult);
+            SceneChangeHelper.ChangeNetworkLevel(SceneIndex.GameResult);
         }
         else if (!StageManager.Instance.StageDataManager.IsFinalRound())
         {
-            PhotonNetwork.LoadLevel(SceneIndex.RoundResult);
+            SceneChangeHelper.ChangeNetworkLevel(SceneIndex.RoundResult);
         }
     }
 
