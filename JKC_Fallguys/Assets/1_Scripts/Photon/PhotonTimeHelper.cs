@@ -7,14 +7,15 @@ public class PhotonTimeHelper : MonoBehaviourPun
 {
     public void Initialize()
     {
-        DontDestroyOnLoad(gameObject);
+        // DontDestroyOnLoad(gameObject);
         photonView.RPC("RpcSetParentStageRepository", RpcTarget.AllBuffered);
     }
 
     [PunRPC]
     public void RpcSetParentStageRepository()
     {
-        transform.SetParent(StageRepository.Instance.gameObject.transform);
+        // transform.SetParent(StageRepository.Instance.gameObject.transform);
+        DontDestroyOnLoad(gameObject);
     }
     
     public static readonly int SyncIntervalMs = 100;
@@ -58,11 +59,6 @@ public class PhotonTimeHelper : MonoBehaviourPun
     {
         double startNetworkTime = PhotonNetwork.Time + delayTime;
         return startNetworkTime;
-    }
-    
-    public double GetCurrentNetworkTime()
-    {
-        return PhotonNetwork.Time;
     }
     
     /// <summary>

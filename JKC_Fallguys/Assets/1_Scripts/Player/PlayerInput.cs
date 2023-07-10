@@ -13,7 +13,7 @@ public class PlayerInput : MonoBehaviourPun
     
     private void Update()
     {
-        if (!photonView.IsMine || !StageDataManager.Instance.IsGameActive.Value)
+        if (!photonView.IsMine || !StageManager.Instance.StageDataManager.IsGameActive.Value)
             return;
         
         if (_isMoving)
@@ -44,7 +44,7 @@ public class PlayerInput : MonoBehaviourPun
     public bool IsJump { get; private set; }
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (!photonView.IsMine || !StageDataManager.Instance.IsGameActive.Value)
+        if (!photonView.IsMine || !StageManager.Instance.StageDataManager.IsGameActive.Value)
             return;
         
         // Jump Button을 눌렀을때 JumpState를 실행한다.
@@ -79,7 +79,7 @@ public class PlayerInput : MonoBehaviourPun
 
     public void OnGrab(InputAction.CallbackContext context)
     {
-        if (!photonView.IsMine || !StageDataManager.Instance.IsGameActive.Value)
+        if (!photonView.IsMine || !StageManager.Instance.StageDataManager.IsGameActive.Value)
             return;
         
         if (context.started)
@@ -96,7 +96,7 @@ public class PlayerInput : MonoBehaviourPun
     public bool IsDive { get; private set; }
     public void OnDive(InputAction.CallbackContext context)
     {
-        if (!photonView.IsMine || !StageDataManager.Instance.IsGameActive.Value)
+        if (!photonView.IsMine || !StageManager.Instance.StageDataManager.IsGameActive.Value)
             return;
         
         if (context.started)

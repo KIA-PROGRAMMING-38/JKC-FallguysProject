@@ -61,9 +61,9 @@ public class LobbySceneInitializer : SceneInitializer
     {
         if (scene.buildIndex == SceneIndex.Lobby)
         {
-            if (StageDataManager.Instance != null)
+            if (StageManager.Instance != null)
             {
-                StageDataManager.Instance.DestorySelf();
+                StageManager.Instance.DestorySelf();
             }
         }
     }

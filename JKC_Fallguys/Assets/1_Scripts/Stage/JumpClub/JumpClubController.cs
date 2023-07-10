@@ -23,7 +23,7 @@ public class JumpClubController : StageController
 
     protected override void InitializeRx()
     {
-        StageDataManager.Instance.IsGameActive
+        StageManager.Instance.StageDataManager.IsGameActive
             .Where(state => state)
             .Subscribe(_ => GameStartBroadCast())
             .AddTo(this);
@@ -72,26 +72,26 @@ public class JumpClubController : StageController
     [PunRPC]
     public void RpcEndGame()
     {
-        StageDataManager.Instance.SetGameStatus(false);
+        StageManager.Instance.StageDataManager.SetGameStatus(false);
         
         int actorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
 
-        if (StageDataManager.Instance.PlayerContainer.IsPlayerActive(actorNumber).Value)
+        if (StageManager.Instance.PlayerContainer.IsPlayerActive(actorNumber).Value)
         {
-            StageDataManager.Instance.PlayerContainer.SetPlayerState(actorNumber, PlayerContainer.PlayerState.Victory);
+            StageManager.Instance.PlayerContainer.SetPlayerState(actorNumber, PlayerContainer.PlayerState.Victory);
             
             photonView.RPC("RpcDeclarationOfVictory", RpcTarget.All, actorNumber);
         }
         else
         {
-            StageDataManager.Instance.PlayerContainer.SetPlayerState(actorNumber, PlayerContainer.PlayerState.Defeat);
+            StageManager.Instance.PlayerContainer.SetPlayerState(actorNumber, PlayerContainer.PlayerState.Defeat);
         }
     }
 
     [PunRPC]
     public void RpcDeclarationOfVictory(int actorNumber)
     {
-        StageDataManager.Instance.PlayerContainer.StagePlayerRankings.Add(actorNumber);
+        StageManager.Instance.PlayerContainer.StagePlayerRankings.Add(actorNumber);
     }
 
     private void OnDestroy()

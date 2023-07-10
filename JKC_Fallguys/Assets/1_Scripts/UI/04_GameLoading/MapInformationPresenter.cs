@@ -33,7 +33,7 @@ public class MapInformationPresenter : Presenter
 
     private void SetData()
     {
-        MapData mapData = StageDataManager.Instance.MapDatas[StageDataManager.Instance.MapPickupIndex.Value];
+        MapData mapData = StageManager.Instance.StageDataManager.MapDatas[StageManager.Instance.StageDataManager.MapPickupIndex.Value];
         
         _mapInformationView.MapNameText.text = mapData.Info.MapName;
         _mapInformationView.MapSplashArtImage.sprite =

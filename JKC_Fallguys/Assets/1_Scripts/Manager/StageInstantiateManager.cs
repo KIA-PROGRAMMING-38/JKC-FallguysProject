@@ -13,7 +13,7 @@ public class StageInstantiateManager : MonoBehaviourPun
 
     private void InitializeMap()
     {
-        MapData mapData = StageDataManager.Instance.MapDatas[StageDataManager.Instance.MapPickupIndex.Value];
+        MapData mapData = StageManager.Instance.StageDataManager.MapDatas[StageManager.Instance.StageDataManager.MapPickupIndex.Value];
 
         if (PhotonNetwork.IsMasterClient)
         {
@@ -49,7 +49,7 @@ public class StageInstantiateManager : MonoBehaviourPun
         playerPhotonController.photonView.RPC
             ("RpcSetInitialize", RpcTarget.AllBuffered, actorNumber, playerName, playerTextureIndex);
 
-        playerPhotonController.transform.root.gameObject.transform.SetParent(StageDataManager.Instance.gameObject.transform);
+        playerPhotonController.transform.root.gameObject.transform.SetParent(StageManager.Instance.gameObject.transform);
     }
 
 }

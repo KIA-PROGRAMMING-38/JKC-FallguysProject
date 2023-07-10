@@ -61,7 +61,7 @@ public class PlayerPhysicsController : MonoBehaviourPun
     /// </summary>
     public void Move()
     {
-        if (!photonView.IsMine || !StageDataManager.Instance.IsGameActive.Value)
+        if (!photonView.IsMine || !StageManager.Instance.StageDataManager.IsGameActive.Value)
             return;
         
         CheckGround();
@@ -131,7 +131,7 @@ public class PlayerPhysicsController : MonoBehaviourPun
     /// <returns></returns>
     private async UniTaskVoid OnJumpingAction()
     {
-        if (!photonView.IsMine || !StageDataManager.Instance.IsGameActive.Value)
+        if (!photonView.IsMine || !StageManager.Instance.StageDataManager.IsGameActive.Value)
             return;
 
         while ( !_jumpCancellationToken.IsCancellationRequested )
@@ -174,7 +174,7 @@ public class PlayerPhysicsController : MonoBehaviourPun
     /// </summary>
     public void ActivateDiveAction()
     {
-        if (!photonView.IsMine || !StageDataManager.Instance.IsGameActive.Value)
+        if (!photonView.IsMine || !StageManager.Instance.StageDataManager.IsGameActive.Value)
             return;
         
         DiveRotation().Forget();
@@ -228,7 +228,7 @@ public class PlayerPhysicsController : MonoBehaviourPun
     /// </summary>
     public void ActivateGetUp()
     {
-        if (!photonView.IsMine || !StageDataManager.Instance.IsGameActive.Value)
+        if (!photonView.IsMine || !StageManager.Instance.StageDataManager.IsGameActive.Value)
             return;
         
         GetUp().Forget();
@@ -305,12 +305,18 @@ public class PlayerPhysicsController : MonoBehaviourPun
     /// </summary>
     public void Respawn(Vector3 respawnPos, Quaternion respawnAngle)
     {
-        if (!photonView.IsMine || !StageDataManager.Instance.IsGameActive.Value)
+        if (!photonView.IsMine || !StageManager.Instance.StageDataManager.IsGameActive.Value)
             return;
 
         transform.position = respawnPos;
         transform.rotation = respawnAngle;
         ResetCameraAngle();
         _playerRigidbody.constraints = RigidbodyConstraints.FreezeRotation;
+    }
+
+    private void OnDestroy()
+    {
+        if (jumpCancellationTokenSource != null)
+            jumpCancellationTokenSource.Cancel();
     }
 }

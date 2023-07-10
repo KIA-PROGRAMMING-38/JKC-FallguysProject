@@ -49,7 +49,7 @@ public class HoopController : MonoBehaviourPun
     private void InitializeRx()
     {
         // 게임이 비활성화 되면, 후프 카운트를 기반으로 플레이어 순위를 계산합니다.
-        StageDataManager.Instance.IsGameActive
+        StageManager.Instance.StageDataManager.IsGameActive
             .Where(isGameActive => !isGameActive && PhotonNetwork.IsMasterClient)
             .Subscribe(_ => CalculatePlayerRanking())
             .AddTo(this);
@@ -68,11 +68,11 @@ public class HoopController : MonoBehaviourPun
         {
             if (i < 3) 
             {
-                StageDataManager.Instance.PlayerContainer.AddPlayerToRanking(rankings[i]);
+                StageManager.Instance.PlayerContainer.AddPlayerToRanking(rankings[i]);
             }
             else
             {
-                StageDataManager.Instance.PlayerContainer.AddFailedPlayer(rankings[i]);
+                StageManager.Instance.PlayerContainer.AddFailedPlayer(rankings[i]);
             }
         }
     }

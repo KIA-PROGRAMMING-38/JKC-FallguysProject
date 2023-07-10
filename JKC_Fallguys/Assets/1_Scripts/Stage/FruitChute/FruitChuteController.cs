@@ -34,7 +34,7 @@ public class FruitChuteController : StageController
 
     protected override void InitializeRx()
     {
-        StageDataManager.Instance.IsGameActive
+        StageManager.Instance.StageDataManager.IsGameActive
             .Where(state => state)
             .Subscribe(_ => GameStartBroadCast())
             .AddTo(this);
@@ -83,26 +83,26 @@ public class FruitChuteController : StageController
     [PunRPC]
     public void RpcEndGame()
     {
-        StageDataManager.Instance.SetGameStatus(false);
+        StageManager.Instance.StageDataManager.SetGameStatus(false);
 
         int actorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
 
-        if (StageDataManager.Instance.PlayerContainer.GetCurrentState(actorNumber).Value != PlayerContainer.PlayerState.Victory)
+        if (StageManager.Instance.PlayerContainer.GetCurrentState(actorNumber).Value != PlayerContainer.PlayerState.Victory)
         {
-            StageDataManager.Instance.PlayerContainer.SetPlayerState(actorNumber, PlayerContainer.PlayerState.Defeat);
+            StageManager.Instance.PlayerContainer.SetPlayerState(actorNumber, PlayerContainer.PlayerState.Defeat);
             photonView.RPC
                 ("RpcAddFailedPlayer", RpcTarget.MasterClient, PhotonNetwork.LocalPlayer.ActorNumber);
         }
-        else if (StageDataManager.Instance.PlayerContainer.GetCurrentState(actorNumber).Value == PlayerContainer.PlayerState.Victory)
+        else if (StageManager.Instance.PlayerContainer.GetCurrentState(actorNumber).Value == PlayerContainer.PlayerState.Victory)
         {
-            StageDataManager.Instance.PlayerContainer.SetPlayerState(actorNumber, PlayerContainer.PlayerState.GameTerminated);
+            StageManager.Instance.PlayerContainer.SetPlayerState(actorNumber, PlayerContainer.PlayerState.GameTerminated);
         }
     }
 
     [PunRPC]
     public void RpcAddFailedPlayer(int actorNumber)
     {
-        StageDataManager.Instance.PlayerContainer.AddFailedPlayer(actorNumber);
+        StageManager.Instance.PlayerContainer.AddFailedPlayer(actorNumber);
     }
     
     private void OnDestroy()

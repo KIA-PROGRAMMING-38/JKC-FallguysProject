@@ -60,7 +60,7 @@ public class StageStartPresenter : Presenter
             _stageStartView.CountdownImage.gameObject.SetActive(false);
             AnimateTitleOut();
 
-            StageDataManager.Instance.SetGameStatus(true);
+            StageManager.Instance.StageDataManager.SetGameStatus(true);
             StageSceneModel.SetExitButtonActive(true);
         }
     }
@@ -87,7 +87,7 @@ public class StageStartPresenter : Presenter
 
     private void SetData()
     {
-        MapData mapData = StageDataManager.Instance.MapDatas[StageDataManager.Instance.MapPickupIndex.Value];
+        MapData mapData = StageManager.Instance.StageDataManager.MapDatas[StageManager.Instance.StageDataManager.MapPickupIndex.Value];
 
         _stageStartView.TitleText.text = mapData.Info.MapName;
         _stageStartView.SubTitleText.text = mapData.Info.Description;
