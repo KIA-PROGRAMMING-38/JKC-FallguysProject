@@ -5,8 +5,7 @@ using Photon.Pun;
 
 public class PhotonTimeHelper : MonoBehaviourPun
 {
-    public event Action<double> ServerTimeChanged;
-    private const int SyncIntervalMs = 100;
+    public static readonly int SyncIntervalMs = 100;
     
     private double _serverTime;
     public double ServerTime
@@ -18,7 +17,6 @@ public class PhotonTimeHelper : MonoBehaviourPun
         set
         {
             _serverTime = value;
-            ServerTimeChanged?.Invoke(_serverTime);
         }
     }
     
