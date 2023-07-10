@@ -11,8 +11,7 @@ public class PlayerAnimationController : MonoBehaviourPun
     private Animator _animator;
     private PlayerInput _playerInput;
     private AudioSource _audioSource;
-
-    // 플레이어 데이터로 변환 필요.
+    
     [SerializeField] private float _acceleration = 0.5f;
     [SerializeField] private float _deceleration = 0.5f;
     [SerializeField] private float _topplingForce;
