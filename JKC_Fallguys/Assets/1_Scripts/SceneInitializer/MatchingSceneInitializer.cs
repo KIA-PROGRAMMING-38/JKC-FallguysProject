@@ -25,29 +25,29 @@ public class MatchingSceneInitializer : SceneInitializer
     protected override void OnGetResources()
     {
         ResourceManager.Instantiate
-            (Path.Combine(PathLiteral.Object, PathLiteral.MatchingStandby, "PhotonMatchingSceneEventManager"));
+            (Path.Combine(PathLiteral.Object, PathLiteral.Matching, "PhotonMatchingSceneEventManager"));
 
         _respawnZone = ResourceManager.Instantiate
-                (Path.Combine(PathLiteral.Object, PathLiteral.MatchingStandby, "RespawnZone"))
+                (Path.Combine(PathLiteral.Object, PathLiteral.Matching, "RespawnZone"))
             .GetComponent<RespawnZone>();
         _lineEffectPooler = ResourceManager.Instantiate
-                (Path.Combine(PathLiteral.Object, PathLiteral.MatchingStandby, "LineEffectPooler"))
+                (Path.Combine(PathLiteral.Object, PathLiteral.Matching, "LineEffectPooler"))
             .GetComponent<LineEffectPooler>();
 
         ResourceManager.Instantiate
-            (Path.Combine(PathLiteral.Object, PathLiteral.MatchingStandby, "ReleaseZone"));
+            (Path.Combine(PathLiteral.Object, PathLiteral.Matching, "ReleaseZone"));
         ResourceManager.Instantiate
-            (Path.Combine(PathLiteral.Object, PathLiteral.MatchingStandby, "MatchingSceneFallGuy"));
+            (Path.Combine(PathLiteral.Object, PathLiteral.Matching, "MatchingSceneFallGuy"));
         
         ResourceManager.Instantiate
-            (Path.Combine(PathLiteral.UI, PathLiteral.MatchingStandby, "MatchingBackgroundImage"));
+            (Path.Combine(PathLiteral.UI, PathLiteral.Matching, "MatchingBackgroundImage"));
         ResourceManager.Instantiate
-            (Path.Combine(PathLiteral.UI, PathLiteral.MatchingStandby, "ExitMatchingPanelViewController"));
+            (Path.Combine(PathLiteral.UI, PathLiteral.Matching, "ExitMatchingPanelViewController"));
         ResourceManager.Instantiate
-            (Path.Combine(PathLiteral.UI, PathLiteral.MatchingStandby, "ReturnButtonViewController"));
+            (Path.Combine(PathLiteral.UI, PathLiteral.Matching, "ReturnButtonViewController"));
         ResourceManager.Instantiate
-            (Path.Combine(PathLiteral.UI, PathLiteral.MatchingStandby, "CurrentParticipantsViewController"));
+            (Path.Combine(PathLiteral.UI, PathLiteral.Matching, "CurrentParticipantsViewController"));
         ResourceManager.Instantiate
-            (Path.Combine(PathLiteral.UI, PathLiteral.MatchingStandby, "RotationFaceIconViewController"));
+            (Path.Combine(PathLiteral.UI, PathLiteral.Matching, "RotationFaceIconViewController"));
     }
 }

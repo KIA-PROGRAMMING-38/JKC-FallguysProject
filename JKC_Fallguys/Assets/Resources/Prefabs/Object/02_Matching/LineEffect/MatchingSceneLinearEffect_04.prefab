@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -7239695878077415265}
   - component: {fileID: 6544605937198669919}
   m_Layer: 5
-  m_Name: MatchingStandbySceneLinearEffect_04
+  m_Name: MatchingSceneLinearEffect_04
   m_TagString: LineEffect
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -2,21 +2,21 @@ using LiteralRepository;
 using UniRx;
 using UnityEngine.SceneManagement;
 
-public class EnterMatchingStandbyPresenter : Presenter
+public class EnterMatchingPresenter : Presenter
 {
-    private EnterMatchingStandbyView _enterMatchingStandbyView;
+    private EnterMatchingView _enterMatchingView;
     private CompositeDisposable _compositeDisposable = new CompositeDisposable();
     
     public override void OnInitialize(View view)
     {
-        _enterMatchingStandbyView = view as EnterMatchingStandbyView;
+        _enterMatchingView = view as EnterMatchingView;
         
         InitializeRx();
     }
 
     protected override void OnOccuredUserEvent()
     {
-        _enterMatchingStandbyView.EnterMatchingStandbyButton
+        _enterMatchingView.EnterMatchingButton
             .OnClickAsObservable()
             .Subscribe(_ => TryEnterMatchingStandby())
             .AddTo(_compositeDisposable);
@@ -42,13 +42,13 @@ public class EnterMatchingStandbyPresenter : Presenter
 
     private void SetActiveGameObject(bool status)
     {
-        _enterMatchingStandbyView.Default.SetActive(status);
-        _enterMatchingStandbyView.EnterMatchingStandbyButton.gameObject.SetActive(status);
+        _enterMatchingView.Default.SetActive(status);
+        _enterMatchingView.EnterMatchingButton.gameObject.SetActive(status);
     }
     
     public override void OnRelease()
     {
-        _enterMatchingStandbyView = default;
+        _enterMatchingView = default;
         _compositeDisposable.Dispose();
     }
 }

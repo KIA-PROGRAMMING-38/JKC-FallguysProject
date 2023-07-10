@@ -29,7 +29,7 @@ namespace LiteralRepository
 
         public static readonly string Login = "00_Login";
         public static readonly string Lobby = "01_Lobby";
-        public static readonly string MatchingStandby = "02_MatchingStandby";
+        public static readonly string Matching = "02_Matching";
         public static readonly string Stage = "03_Stage";
         public static readonly string GameLoading = "04_GameLoading";
         public static readonly string RoundResult = "05_RoundResult";
