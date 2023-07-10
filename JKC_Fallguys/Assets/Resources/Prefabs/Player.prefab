@@ -932,8 +932,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e26c87a466124f39aae8dcbef22b8df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _acceleration: 0.5
-  _deceleration: 0.5
+  _acceleration: 2
+  _deceleration: 2
   _topplingForce: 0
   _groundCheckPoint: {fileID: 2387829583882509454}
   _groundCheckDistance: 1
