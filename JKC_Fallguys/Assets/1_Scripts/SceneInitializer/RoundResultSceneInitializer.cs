@@ -1,4 +1,6 @@
+using System;
 using System.IO;
+using Cysharp.Threading.Tasks;
 using LiteralRepository;
 using Photon.Pun;
 using ResourceRegistry;
@@ -23,10 +25,15 @@ public class RoundResultSceneInitializer : SceneInitializer
         
         if (PhotonNetwork.IsMasterClient)
         {
-            string filePath = 
-                Path.Combine(PathLiteral.Prefabs, PathLiteral.UI, PathLiteral.RoundResult, "SceneChanger");
-
-            PhotonNetwork.Instantiate(filePath, transform.position, transform.rotation);
+            LoadGameLoadingScene().Forget();
         }
+    }
+
+    private const int LOAD_SCENE_DELAY = 10;
+    private async UniTaskVoid LoadGameLoadingScene()
+    {
+        await UniTask.Delay(TimeSpan.FromSeconds(LOAD_SCENE_DELAY));
+
+        PhotonNetwork.LoadLevel(SceneIndex.GameLoading);
     }
 }
