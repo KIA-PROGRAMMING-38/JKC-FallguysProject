@@ -23,7 +23,7 @@ public abstract class StageController : MonoBehaviourPun
     [PunRPC]
     public void RpcSetParentStageRepository()
     {
-        transform.SetParent(StageRepository.Instance.gameObject.transform);
+        transform.SetParent(StageManager.Instance.ObjectRepository.transform);
     }
 
     /// <summary>

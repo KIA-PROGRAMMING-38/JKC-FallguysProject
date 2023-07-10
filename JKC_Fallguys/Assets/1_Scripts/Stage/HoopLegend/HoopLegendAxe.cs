@@ -34,7 +34,7 @@ public class HoopLegendAxe : MonoBehaviourPun
     [PunRPC]
     public void RpcSetParentStageRepository()
     {
-        transform.SetParent(StageRepository.Instance.gameObject.transform);
+        transform.SetParent(StageManager.Instance.ObjectRepository.transform);
     }
 
     private void Start()

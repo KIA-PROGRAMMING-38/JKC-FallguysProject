@@ -47,7 +47,7 @@ public class SpecialHoop : MonoBehaviourPun
     [PunRPC]
     public void RpcSetParentStageRepository()
     {
-        transform.SetParent(StageRepository.Instance.gameObject.transform);
+        transform.SetParent(StageManager.Instance.ObjectRepository.transform);
     }
 
     private void Start()
@@ -61,7 +61,7 @@ public class SpecialHoop : MonoBehaviourPun
     [PunRPC]
     public void RpcSetHoopControllerReference()
     {
-        _hoopController = StageRepository.Instance.HoopController;
+        _hoopController = StageManager.Instance.ObjectRepository.transform.Find("MapHoopLegend(Clone)").GetComponentInChildren<HoopController>();
     }
 
     private void HandlePlayerEnter()

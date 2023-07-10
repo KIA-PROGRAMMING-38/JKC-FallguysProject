@@ -2,17 +2,9 @@ using System.IO;
 using LiteralRepository;
 using Photon.Pun;
 using ResourceRegistry;
-using UnityEngine;
 
 public class GameLoadingSceneInitializer : SceneInitializer
 {
-    protected override void Awake()
-    {
-        base.Awake();
-        
-        StageRepository.Instance.Initialize();
-    }
-    
     protected override void OnGetResources()
     {
         AudioManager.Instance.Clear();

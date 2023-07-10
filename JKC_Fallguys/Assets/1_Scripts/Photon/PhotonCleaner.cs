@@ -4,8 +4,8 @@ public class PhotonCleaner : MonoBehaviourPun
 {
     private void Awake()
     {
-        StageRepository.Instance.OnPlayerDispose -= TransferPhotonViewOwnership;
-        StageRepository.Instance.OnPlayerDispose += TransferPhotonViewOwnership;
+        StageManager.Instance.PlayerRepository.OnPlayerDispose -= TransferPhotonViewOwnership;
+        StageManager.Instance.PlayerRepository.OnPlayerDispose += TransferPhotonViewOwnership;
     }
 
     private void TransferPhotonViewOwnership()
@@ -23,7 +23,7 @@ public class PhotonCleaner : MonoBehaviourPun
             photonView.RPC("RpcDestroyOnNetwork", RpcTarget.MasterClient);
         }
         
-        StageRepository.Instance.OnPlayerDispose -= TransferPhotonViewOwnership;
+        StageManager.Instance.PlayerRepository.OnPlayerDispose -= TransferPhotonViewOwnership;
     }
 
     [PunRPC]

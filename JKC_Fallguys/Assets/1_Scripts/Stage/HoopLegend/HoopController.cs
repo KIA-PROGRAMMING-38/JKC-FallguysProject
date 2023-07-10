@@ -13,7 +13,6 @@ public class HoopController : MonoBehaviourPun
     
     private void Awake()
     {
-        StageRepository.Instance.SetHoopControllerReference(this);
         _hoopLegendController = GetComponentInParent<HoopLegendController>();
         Debug.Assert(_hoopLegendController != null);
 

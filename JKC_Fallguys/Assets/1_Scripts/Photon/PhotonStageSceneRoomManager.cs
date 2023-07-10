@@ -34,7 +34,7 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
             StageManager.Instance.PhotonTimeHelper.SyncServerTime(_cts.Token).Forget();
             WaitForAllClientsLoaded().Forget();
         }
-    
+
         photonView.RPC("IsClientReady", RpcTarget.MasterClient);
     }
 
@@ -118,7 +118,7 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
     [PunRPC]
     public void RpcSetParentStageRepository()
     {
-        transform.SetParent(StageRepository.Instance.gameObject.transform);
+        transform.SetParent(StageManager.Instance.ObjectRepository.transform);
     }
 
     #endregion
@@ -173,7 +173,7 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
     [PunRPC]
     public void RpcEveryClientPhotonViewTransferOwnerShip()
     {
-        StageRepository.Instance.PlayerDispose();
+        StageManager.Instance.PlayerRepository.PlayerDispose();
     }
 
 
@@ -203,7 +203,7 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
             children.Add(child.gameObject);
         }
 
-        foreach (Transform child in StageRepository.Instance.gameObject.transform)
+        foreach (Transform child in StageManager.Instance.ObjectRepository.transform)
         {
             children.Add(child.gameObject);
         }

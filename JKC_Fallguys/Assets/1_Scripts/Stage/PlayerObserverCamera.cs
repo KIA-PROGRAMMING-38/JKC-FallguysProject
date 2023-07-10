@@ -7,7 +7,6 @@ using UnityEngine;
 public class PlayerObserverCamera : MonoBehaviour
 {
     private ObserverCamera _observerCamera;
-    private PlayerContainer _playerContainer;
     
     private ReactiveProperty<GameObject> _targetObject = new ReactiveProperty<GameObject>();
     
@@ -20,7 +19,6 @@ public class PlayerObserverCamera : MonoBehaviour
     {
         _observerCamera = transform.Find("ObserverCamera").GetComponent<ObserverCamera>();
         Debug.Assert(_observerCamera != null);
-        _playerContainer = StageManager.Instance.PlayerContainer;
         _observerCamera.Initialize(this);
 
         InitializeRx();

@@ -40,14 +40,14 @@ public class CommonHoop : MonoBehaviourPun
     
     private void StageDontDestroyOnLoadSet()
     {
-        DontDestroyOnLoad(gameObject);
         photonView.RPC("RpcSetParentStageRepository", RpcTarget.AllBuffered);
     }
 
     [PunRPC]
     public void RpcSetParentStageRepository()
     {
-        transform.SetParent(StageRepository.Instance.gameObject.transform);
+        DontDestroyOnLoad(gameObject);
+        transform.SetParent(StageManager.Instance.ObjectRepository.transform);
     }
 
     private void Start()
@@ -61,7 +61,7 @@ public class CommonHoop : MonoBehaviourPun
     [PunRPC]
     public void RpcSetHoopControllerReference()
     {
-        _hoopController = StageRepository.Instance.HoopController;
+        _hoopController = StageManager.Instance.ObjectRepository.transform.Find("MapHoopLegend(Clone)").GetComponentInChildren<HoopController>();
     }
     
     private void HandlePlayerEnter()
