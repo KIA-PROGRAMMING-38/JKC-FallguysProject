@@ -10,7 +10,7 @@ using UnityEngine.SceneManagement;
 public class GameResultSceneInitializer : SceneInitializer
 {
     private bool _isVictory;
-    protected override void InitializeModel()
+    protected override void InitializeData()
     {
         _isVictory = StageManager.Instance.PlayerContainer.CachedPlayerIndicesForResults[0] == PhotonNetwork.LocalPlayer.ActorNumber;
 

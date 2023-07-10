@@ -39,7 +39,7 @@ public class GameLoadingSceneInitializer : SceneInitializer
         }
     }
 
-    protected override void InitializeModel()
+    protected override void InitializeData()
     {
         Model.GameLoadingSceneModel.SetStatusLoadingSceneUI(true);
     }

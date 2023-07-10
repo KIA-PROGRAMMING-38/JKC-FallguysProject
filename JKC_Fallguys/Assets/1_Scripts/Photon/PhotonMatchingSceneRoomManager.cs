@@ -68,6 +68,7 @@ public class PhotonMatchingSceneRoomManager : MonoBehaviourPun
     
     #pragma warning disable CS1998
     private async UniTaskVoid MapInstanceLoad()
+    #pragma warning restore CS1998
     {
         for (int i = 0; i < StageDataManager.MaxPlayableMaps; ++i)
         {
@@ -75,7 +76,6 @@ public class PhotonMatchingSceneRoomManager : MonoBehaviourPun
             StageManager.Instance.StageDataManager.MapDatas.Add(i, mapData);
         }
     }
-    #pragma warning restore CS1998
 
     /// <summary>
     /// 플레이어가 방에 입장했을 때 호출됩니다.
