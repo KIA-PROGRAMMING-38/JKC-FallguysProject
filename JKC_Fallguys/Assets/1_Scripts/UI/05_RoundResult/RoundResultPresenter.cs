@@ -53,6 +53,10 @@ public class RoundResultPresenter : Presenter
     {
         for (int playerIndex = 0; playerIndex < RoundResultSceneModel.FallguyRankings.Count; ++playerIndex)
         {
+            Debug.Log($"PlayerIndex: {playerIndex}");
+            if (playerIndex > 2)
+                break;
+            
             _roundResultView.PlayerIDs[playerIndex].text =
                 RoundResultSceneModel.FallguyRankings[playerIndex].PlayerName;
         }

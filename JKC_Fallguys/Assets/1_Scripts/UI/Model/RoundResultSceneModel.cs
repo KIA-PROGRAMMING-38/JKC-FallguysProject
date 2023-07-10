@@ -22,7 +22,7 @@ namespace Model
             
             foreach (int index in StageManager.Instance.PlayerContainer.CachedPlayerIndicesForResults)
             {
-                if (count >= 3)
+                if (count > 3)
                     break;
                 
                 if (StageManager.Instance.PlayerContainer.PlayerDataByIndex.TryGetValue(index, out PlayerData playerData))
