@@ -1,6 +1,5 @@
 using LiteralRepository;
 using UniRx;
-using UnityEngine.SceneManagement;
 
 public class EnterMatchingPresenter : Presenter
 {
@@ -24,7 +23,7 @@ public class EnterMatchingPresenter : Presenter
 
     private void TryEnterMatchingStandby()
     {
-        SceneManager.LoadScene(SceneIndex.MatchingStandby);
+        SceneChangeHelper.ChangeLocalScene(SceneIndex.MatchingStandby);
     }
 
     protected override void OnUpdatedModel()

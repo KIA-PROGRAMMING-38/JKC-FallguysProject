@@ -57,6 +57,6 @@ public class GameResultSceneInitializer : SceneInitializer
     {
         await UniTask.Delay(TimeSpan.FromSeconds(LOAD_SCENE_DELAY));
 
-        SceneManager.LoadScene(SceneIndex.Lobby);
+        SceneChangeHelper.ChangeLocalScene(SceneIndex.Lobby);
     }
 }

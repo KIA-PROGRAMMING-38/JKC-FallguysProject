@@ -4,7 +4,6 @@ using Model;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PhotonMatchingSceneEventManager : MonoBehaviourPunCallbacks
 {
@@ -45,7 +44,7 @@ public class PhotonMatchingSceneEventManager : MonoBehaviourPunCallbacks
 
     private void OnInitializeJoinRoom()
     {
-        Model.MatchingSceneModel.RoomAdmissionStatus(true);
+        MatchingSceneModel.RoomAdmissionStatus(true);
         
         _roomManager.PlayerEnterTheRoom();
         _roomManager.SetGameStartStream();
@@ -83,9 +82,9 @@ public class PhotonMatchingSceneEventManager : MonoBehaviourPunCallbacks
 
     public override void OnLeftRoom()
     {
-        if (Model.MatchingSceneModel.IsEnterPhotonRoom.Value == false)
+        if (MatchingSceneModel.IsEnterPhotonRoom.Value == false)
         {
-            SceneManager.LoadScene(SceneIndex.Lobby);
+            SceneChangeHelper.ChangeLocalScene(SceneIndex.Lobby);
         }
     }
 }

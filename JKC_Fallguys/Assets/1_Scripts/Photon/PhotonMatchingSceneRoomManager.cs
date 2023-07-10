@@ -29,11 +29,10 @@ public class PhotonMatchingSceneRoomManager : MonoBehaviourPun
         }
     }
 
-    // EnterLevel 메서드는 게임 시작 카운트를 감소시키고, 다음 레벨을 로드합니다.
     private void EnterGameLoading()
     {
         Model.MatchingSceneModel.DecreaseStartCount();
-        PhotonNetwork.LoadLevel(SceneIndex.GameLoading);
+        SceneChangeHelper.ChangeNetworkLevel(SceneIndex.GameLoading);
     }
 
     // LockUpEntrance 메서드는 현재 방의 입장을 막고, 각 플레이어에게 개인 ActorNumber를 부여합니다.
