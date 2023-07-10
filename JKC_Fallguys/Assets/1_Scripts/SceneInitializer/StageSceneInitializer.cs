@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class StageSceneInitializer : SceneInitializer
 {
-    protected override void InitializeModel()
+    protected override void InitializeData()
     {
         StageSceneModel.InitializeCountDown();
         

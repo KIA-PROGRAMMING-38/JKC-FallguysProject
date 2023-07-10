@@ -1,10 +1,22 @@
 using Photon.Pun;
+using UnityEngine;
+using Debug = System.Diagnostics.Debug;
 
 public class StageManager : SingletonMonoBehaviour<StageManager>
 {
+    public GameObject PlayerRepository { get; private set; }
+    public GameObject ObjectRepository { get; private set; }
+
     public StageDataManager StageDataManager = new StageDataManager();
     public PlayerContainer PlayerContainer = new PlayerContainer();
     public PhotonTimeHelper PhotonTimeHelper;
+
+    protected override void Awake()
+    {
+        base.Awake();
+
+        MakeRepository();
+    }
 
     private void Start()
     {
@@ -15,9 +27,26 @@ public class StageManager : SingletonMonoBehaviour<StageManager>
     {
         StageDataManager.Clear();
         PlayerContainer.SetPlayerActive(PhotonNetwork.LocalPlayer.ActorNumber, true);
-        
+
         int actorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
         PlayerContainer.SetPlayerState(actorNumber, PlayerContainer.PlayerState.Default);
+    }
+
+    public string[] objectName = { "PlayerRepository", "ObjectRepository" };
+
+    private void MakeRepository()
+    {
+        GameObject playerRepository = new GameObject(objectName[0]);
+        playerRepository.transform.position = Vector3.zero;
+        playerRepository.transform.rotation = Quaternion.identity;
+        playerRepository.transform.SetParent(gameObject.transform);
+        PlayerRepository = playerRepository;
+
+        GameObject objectRepository = new GameObject(objectName[1]);
+        objectRepository.transform.position = Vector3.zero;
+        objectRepository.transform.rotation = Quaternion.identity;
+        objectRepository.transform.SetParent(gameObject.transform);
+        ObjectRepository = objectRepository;
     }
 
     /// StateDataManager는 Singleton으로 구성되어 있습니다.

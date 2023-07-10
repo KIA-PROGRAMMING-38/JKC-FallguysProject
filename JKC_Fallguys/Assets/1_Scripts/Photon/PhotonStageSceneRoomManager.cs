@@ -29,9 +29,6 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
         InitializeRx();
         StageDontDestroyOnLoadSet();
 
-        _cts = new CancellationTokenSource();
-        Debug.Log($"MasterClient ActNum: {PhotonNetwork.MasterClient.ActorNumber}");
-
         if (PhotonNetwork.IsMasterClient)
         {
             StageManager.Instance.PhotonTimeHelper.SyncServerTime(_cts.Token).Forget();
@@ -57,13 +54,11 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
 
     private void ScheduleGameStart(double startTime)
     {
-        Debug.Log("ScheduleGameStart");
         photonView.RPC("RpcSetGameStart", RpcTarget.All, startTime);
     }
 
     private void ScheduleOperationCountdown(double startTime)
     {
-        Debug.Log("ScheduleOperationCountdown");
         photonView.RPC("RpcStartTriggerOperationCountDown", RpcTarget.All, startTime);
     }
 
@@ -203,7 +198,7 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
     {
         List<GameObject> children = new List<GameObject>();
 
-        foreach (Transform child in StageManager.Instance.gameObject.transform)
+        foreach (Transform child in StageManager.Instance.PlayerRepository.transform)
         {
             children.Add(child.gameObject);
         }
@@ -292,7 +287,7 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
         string playerScoresByIndexJson =
             JsonConvert.SerializeObject(StageManager.Instance.PlayerContainer.PlayerDataByIndex);
 
-        photonView.RPC("UpdateStageDataOnAllClients", RpcTarget.All, playerScoresByIndexJson,
+        photonView.RPC("RpcUpdateStageDataOnAllClients", RpcTarget.All, playerScoresByIndexJson,
             StageManager.Instance.PlayerContainer.CachedPlayerIndicesForResults.ToArray(),
             StageManager.Instance.PlayerContainer.StagePlayerRankings.ToArray());
     }
@@ -314,7 +309,7 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
     }
 
     [PunRPC]
-    public void UpdateStageDataOnAllClients(string playerScoresByIndexJson, int[] playerRanking,
+    public void RpcUpdateStageDataOnAllClients(string playerScoresByIndexJson, int[] playerRanking,
         int[] stagePlayerRankings)
     {
         StageManager.Instance.PlayerContainer.PlayerDataByIndex =

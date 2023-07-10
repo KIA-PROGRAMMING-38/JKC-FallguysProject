@@ -30,8 +30,6 @@ public class StageInstantiateManager : MonoBehaviourPun
         Quaternion mapRota = mapData.Data.MapRotation;
 
         PhotonNetwork.Instantiate(filePath, mapPos, mapRota);
-
-
     }
 
     private void InstantiatePlayer(MapData mapData)
@@ -51,5 +49,4 @@ public class StageInstantiateManager : MonoBehaviourPun
 
         playerPhotonController.transform.root.gameObject.transform.SetParent(StageManager.Instance.gameObject.transform);
     }
-
 }

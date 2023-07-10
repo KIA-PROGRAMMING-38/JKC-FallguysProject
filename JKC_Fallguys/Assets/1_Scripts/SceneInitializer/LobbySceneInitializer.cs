@@ -14,7 +14,7 @@ public class LobbySceneInitializer : SceneInitializer
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-    protected override void InitializeModel()
+    protected override void InitializeData()
     {
         LobbySceneModel.SetLobbyState(LobbySceneModel.LobbyState.Home);
     }

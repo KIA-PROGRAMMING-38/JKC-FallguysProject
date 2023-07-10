@@ -15,7 +15,7 @@ public class MatchingSceneInitializer : SceneInitializer
         _lineEffectPooler.OnInitialize(_respawnZone);
     }
 
-    protected override void InitializeModel()
+    protected override void InitializeData()
     {
         MatchingSceneModel.SetActiveEnterLobbyPanel(false);
         MatchingSceneModel.RoomAdmissionStatus(false);

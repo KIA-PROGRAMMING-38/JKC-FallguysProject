@@ -28,7 +28,7 @@ public class PlayerObserverCamera : MonoBehaviour
 
     private void FindAllObservedObjects()
     {
-        Transform parentTransform = StageManager.Instance.transform;
+        Transform parentTransform = StageManager.Instance.PlayerRepository.transform;
     
         for (int i = 0; i < parentTransform.childCount; i++)
         {
