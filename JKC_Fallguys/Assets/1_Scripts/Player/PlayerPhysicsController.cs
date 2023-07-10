@@ -11,7 +11,7 @@ using UnityEngine;
 public class PlayerPhysicsController : MonoBehaviourPun
 {
     private Rigidbody _playerRigidbody;
-    private PlayerInput _playerInput;
+    private PlayerInputController _playerInputController;
     private CameraAngle _camera;
     
     [SerializeField] private float _diveForce;
@@ -24,7 +24,7 @@ public class PlayerPhysicsController : MonoBehaviourPun
     private void Awake()
     {
         _playerRigidbody = GetComponent<Rigidbody>();
-        _playerInput = GetComponentInParent<PlayerInput>();
+        _playerInputController = GetComponentInParent<PlayerInputController>();
     }
 
     public void BindCameraAngle(CameraAngle cameraAngle)
@@ -39,8 +39,8 @@ public class PlayerPhysicsController : MonoBehaviourPun
 
     private void Start()
     {
-        _playerInput.OnMovement -= CurrentMoveDirection;
-        _playerInput.OnMovement += CurrentMoveDirection;
+        _playerInputController.OnMovement -= CurrentMoveDirection;
+        _playerInputController.OnMovement += CurrentMoveDirection;
     }
     
     private Vector3 _forwardAngleVec;
@@ -53,7 +53,7 @@ public class PlayerPhysicsController : MonoBehaviourPun
     {
         _forwardAngleVec = new Vector3(_camera.transform.forward.x, 0f, _camera.transform.forward.z).normalized;
         _rightAngleVec = new Vector3(_camera.transform.right.x, 0f, _camera.transform.right.z).normalized;
-        _moveDir = _forwardAngleVec * _playerInput.InputVec.z + _rightAngleVec * _playerInput.InputVec.x;
+        _moveDir = _forwardAngleVec * _playerInputController.InputVec.z + _rightAngleVec * _playerInputController.InputVec.x;
     }
 
     /// <summary>
@@ -66,7 +66,7 @@ public class PlayerPhysicsController : MonoBehaviourPun
         
         CheckGround();
         
-        if (_playerInput.InputVec != _zeroVec && _playerInput.CannotMove == false)
+        if (_playerInputController.InputVec != _zeroVec && _playerInputController.CannotMove == false)
         {
             Vector3 testVec = new Vector3(_moveDir.x, _moveDir.y, _moveDir.z);
             _playerRigidbody.velocity = testVec * _moveSpeed;
@@ -136,7 +136,7 @@ public class PlayerPhysicsController : MonoBehaviourPun
 
         while ( !_jumpCancellationToken.IsCancellationRequested )
         {
-            if ( _playerInput.InputVec != _zeroVec && _playerInput.CannotMove == false )
+            if ( _playerInputController.InputVec != _zeroVec && _playerInputController.CannotMove == false )
             {
                 _playerRigidbody.AddForce( _moveDir * _jumpMovementForce, ForceMode.Force );
                 transform.rotation = Quaternion.Lerp( transform.rotation, Quaternion.LookRotation( _moveDir ), _rotSpeed * Time.deltaTime );
@@ -190,7 +190,7 @@ public class PlayerPhysicsController : MonoBehaviourPun
     // 캐릭터가 Dive할때 회전하는 함수입니다.
     private async UniTaskVoid DiveRotationAsync()
     {
-        _playerInput.CannotMove = true;
+        _playerInputController.CannotMove = true;
         
         _currentRotation = transform.rotation.eulerAngles;
         _targetRotation = Quaternion.Euler(_diveRotationX, _currentRotation.y, _currentRotation.z);
@@ -203,7 +203,7 @@ public class PlayerPhysicsController : MonoBehaviourPun
             await UniTask.Yield();
         }
         
-        _playerInput.CannotMove = false;
+        _playerInputController.CannotMove = false;
     }
 
     private Vector3 _playerDirection;
@@ -239,7 +239,7 @@ public class PlayerPhysicsController : MonoBehaviourPun
     // 캐릭터가 Dive이후 일어나게 하는 함수입니다.
     private async UniTaskVoid GetUpAsync()
     {
-        _playerInput.CannotMove = true;
+        _playerInputController.CannotMove = true;
         
         _currentRotation = transform.rotation.eulerAngles;
         _targetRotation = Quaternion.Euler(0, _currentRotation.y, _currentRotation.z);
@@ -252,7 +252,7 @@ public class PlayerPhysicsController : MonoBehaviourPun
             await UniTask.Yield();
         }
         
-        _playerInput.CannotMove = false;
+        _playerInputController.CannotMove = false;
     }
 
     /// <summary>
@@ -280,7 +280,7 @@ public class PlayerPhysicsController : MonoBehaviourPun
     // 평지에서 Fall 이후 다시 일어나게 하는 함수입니다.
     private async UniTaskVoid RecoveryAsync()
     {
-        _playerInput.CannotMove = true;
+        _playerInputController.CannotMove = true;
         
         await UniTask.Delay(TimeSpan.FromSeconds(0.5f));
         
@@ -297,7 +297,7 @@ public class PlayerPhysicsController : MonoBehaviourPun
             await UniTask.Yield();
         }
         
-        _playerInput.CannotMove = false;
+        _playerInputController.CannotMove = false;
     }
 
     /// <summary>
