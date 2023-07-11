@@ -24,6 +24,8 @@
         ],
         "MapPosition": {"x": 0, "y": 0, "z": 0}, 
         "MapRotation": {"x": 0, "y": 1, "z": 0, "w": 0},
-        "PrefabFilePath": "Prefabs/Object/03_Stage/FruitChute/MapFruitChute"
+        "PrefabFilePath": "Prefabs/Object/03_Stage/FruitChute/MapFruitChute",
+        "LandscapeViewPosition": {"x":  -18.14, "y": 48.7, "z": -34.92 },
+        "LandscapeViewRotation": {"x":  28.17, "y": 8.3, "z": -1.3  }
     }
 }
