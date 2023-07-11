@@ -29,7 +29,7 @@ public class FruitChuteController : StageController
     
     protected override void SetGameTime()
     {
-        StageSceneModel.SetRemainingTime(60);
+        StageSceneModel.SetRemainingTime(30);
     }
 
     protected override void InitializeRx()

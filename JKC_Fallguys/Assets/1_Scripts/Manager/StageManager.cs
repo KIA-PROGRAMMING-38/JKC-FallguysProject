@@ -1,6 +1,5 @@
 using Photon.Pun;
 using UnityEngine;
-using Debug = System.Diagnostics.Debug;
 
 public class StageManager : SingletonMonoBehaviour<StageManager>
 {

@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using LiteralRepository;
 using Photon.Pun;
+using Photon.Realtime;
 using UniRx;
 using UnityEngine;
 
@@ -15,6 +16,11 @@ public class HoopController : MonoBehaviourPun
     {
         _hoopLegendController = GetComponentInParent<HoopLegendController>();
         Debug.Assert(_hoopLegendController != null);
+        
+        foreach (Player player in PhotonNetwork.PlayerList)
+        {
+            _playerHoopCounts[player.ActorNumber] = 0;
+        }
 
         if (PhotonNetwork.IsMasterClient)
         {
@@ -47,11 +53,13 @@ public class HoopController : MonoBehaviourPun
     {
         // 게임이 비활성화 되면, 후프 카운트를 기반으로 플레이어 순위를 계산합니다.
         StageManager.Instance.StageDataManager.IsGameActive
+            .Skip(1)
             .Where(isGameActive => !isGameActive && PhotonNetwork.IsMasterClient)
             .Subscribe(_ => CalculatePlayerRanking())
             .AddTo(this);
     }
 
+    // 마스터 클라이언트에서만 호출됩니다.
     private void CalculatePlayerRanking()
     {
         // 후프 카운트가 높은 플레이어부터 정렬하여 ActorNumber를 리스트로 변환합니다.
@@ -60,8 +68,14 @@ public class HoopController : MonoBehaviourPun
             .OrderByDescending(x => x.Value)
             .Select(x => x.Key)
             .ToList();
+     
+        photonView.RPC("UpdatePlayerRankings", RpcTarget.All, rankings.ToArray());
+    }
 
-        for (int i = 0; i < rankings.Count; i++)
+    [PunRPC]
+    public void UpdatePlayerRankings(int[] rankings)
+    {
+        for (int i = 0; i < rankings.Length; i++)
         {
             if (i < 3) 
             {
@@ -73,6 +87,7 @@ public class HoopController : MonoBehaviourPun
             }
         }
     }
+
 
 
     /// <summary>

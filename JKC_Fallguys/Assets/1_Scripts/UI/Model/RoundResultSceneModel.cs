@@ -11,8 +11,9 @@ namespace Model
         private static List<PlayerData> _fallguyRankings = new List<PlayerData>();
         public static List<PlayerData> FallguyRankings => _fallguyRankings;
 
-        static RoundResultSceneModel()
+        public static void Initialize()
         {
+            _fallguyRankings.Clear();
             AddStageResultToList();
         }
 

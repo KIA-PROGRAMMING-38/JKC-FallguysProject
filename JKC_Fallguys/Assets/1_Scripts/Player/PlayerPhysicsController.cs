@@ -13,6 +13,7 @@ public class PlayerPhysicsController : MonoBehaviourPun
     private Rigidbody _playerRigidbody;
     private PlayerInputController _playerInputController;
     private CameraAngle _camera;
+    private CancellationTokenSource _cts = new CancellationTokenSource();
     
     [SerializeField] private float _diveForce;
     [SerializeField] private float _jumpForce;
@@ -202,7 +203,7 @@ public class PlayerPhysicsController : MonoBehaviourPun
             float step = _diveRotationSpeed * Time.deltaTime;
             transform.rotation = Quaternion.RotateTowards(transform.rotation, _targetRotation, step);
             
-            await UniTask.Yield();
+            await UniTask.Yield(cancellationToken: _cts.Token);
         }
         
         _playerInputController.CannotMove = false;
@@ -233,7 +234,7 @@ public class PlayerPhysicsController : MonoBehaviourPun
         // Dive Direction으로 힘을 줍니다.
         _playerRigidbody.AddForce(_diveDirection * _diveForce, ForceMode.Impulse);
 
-        await UniTask.Yield(PlayerLoopTiming.FixedUpdate);
+        await UniTask.Yield(PlayerLoopTiming.FixedUpdate, cancellationToken: _cts.Token);
     }
 
     /// <summary>
@@ -262,7 +263,7 @@ public class PlayerPhysicsController : MonoBehaviourPun
             float step = _getUpRotationSpeed * Time.deltaTime;
             transform.rotation = Quaternion.RotateTowards(transform.rotation, _targetRotation, step);
             
-            await UniTask.Yield();
+            await UniTask.Yield(cancellationToken: _cts.Token);
         }
         
         _playerInputController.CannotMove = false;
@@ -307,7 +308,7 @@ public class PlayerPhysicsController : MonoBehaviourPun
             float step = _getUpRotationSpeed * Time.deltaTime;
             transform.rotation = Quaternion.RotateTowards(transform.rotation, _targetRotation, step);
             
-            await UniTask.Yield();
+            await UniTask.Yield(cancellationToken: _cts.Token);
         }
         
         _playerInputController.CannotMove = false;
@@ -331,5 +332,7 @@ public class PlayerPhysicsController : MonoBehaviourPun
     {
         if (jumpCancellationTokenSource != null)
             jumpCancellationTokenSource.Cancel();
+        
+        _cts.Cancel();
     }
 }

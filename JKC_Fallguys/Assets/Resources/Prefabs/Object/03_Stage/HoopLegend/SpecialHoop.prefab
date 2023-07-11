@@ -4885,7 +4885,6 @@ GameObject:
   - component: {fileID: 4187426158710262102}
   - component: {fileID: 1142444196239351064}
   - component: {fileID: -386831045037437429}
-  - component: {fileID: -9093707566938452470}
   m_Layer: 3
   m_Name: SpecialHoop
   m_TagString: Ground
@@ -5032,18 +5031,6 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &-9093707566938452470
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 852866592317982501}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e4a9d4b0af0b468b911d2f28904ca1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2454277622015711239
 GameObject:
   m_ObjectHideFlags: 0
