@@ -12,4 +12,9 @@ public class DiveStartState : StateMachineBehaviour
         _playerPhysicsController = animator.GetComponent<PlayerPhysicsController>();
         _playerPhysicsController.ActivateDiveAction();
     }
+
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        _playerPhysicsController.RestoreDiveHeightForce();
+    }
 }

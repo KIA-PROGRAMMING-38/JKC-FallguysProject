@@ -208,14 +208,24 @@ public class PlayerPhysicsController : MonoBehaviourPun
 
     private Vector3 _playerDirection;
     private Vector3 _diveDirection;
-    [SerializeField] private float _diveHeightDirection;
-    [SerializeField] private float _diveForwardDirection;
-    
+    [SerializeField] private float _diveHeightForce;
+    [SerializeField] private float _diveForwardForce;
+
+    public void ZeroizeDiveHeightForce()
+    {
+        _diveHeightForce = 0f;
+    }
+
+    public void RestoreDiveHeightForce()
+    {
+        _diveHeightForce = 2f;
+    }
+
     // Dive시 앞으로 힘을 주어 움직이게 하는 함수 입니다.
     private async UniTaskVoid DiveActionAsync()
     {
         // Player가 바라보고 있는 방향을 구한뒤 Dive Direction을 구합니다.
-        _diveDirection = transform.forward * _diveForwardDirection + transform.up * _diveHeightDirection;
+        _diveDirection = transform.forward * _diveForwardForce + transform.up * _diveHeightForce;
 
         // Dive Direction으로 힘을 줍니다.
         _playerRigidbody.AddForce(_diveDirection * _diveForce, ForceMode.Impulse);
