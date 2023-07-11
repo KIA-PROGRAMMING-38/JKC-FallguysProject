@@ -3,7 +3,6 @@ using UnityEngine.UI;
 
 public class MapInformationView : View
 {
-    public GameObject Default { get; private set; }
     public Text MapNameText { get; private set; }
     public GameObject MapSplashArtMask { get; private set; }
     public Image MapSplashArtImage { get; private set; }
@@ -11,8 +10,6 @@ public class MapInformationView : View
     
     private void Awake()
     {
-        Default = transform.Find("Default").gameObject;
-        Debug.Assert(Default != null);
         MapNameText = transform.Find("MapNameText").GetComponent<Text>();
         Debug.Assert(MapNameText != null);
         MapSplashArtMask = transform.Find("MapSplashArtMask").gameObject;

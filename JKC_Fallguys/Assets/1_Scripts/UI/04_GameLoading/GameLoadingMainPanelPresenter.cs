@@ -21,14 +21,8 @@ public class GameLoadingMainPanelPresenter : Presenter
     {
         Model.GameLoadingSceneModel.IsLoadingSceneSwitch
             .Where(isActive => !isActive)
-            .Subscribe(_ => SetActiveGameObject(false))
+            .Subscribe(_ => GameObjectHelper.SetActiveGameObject(_gameLoadingMainPanelView.gameObject, false))
             .AddTo(_compositeDisposable);
-    }
-    
-    private void SetActiveGameObject(bool status)
-    {
-        _gameLoadingMainPanelView.Default.SetActive(status);
-        _gameLoadingMainPanelView.Mask.SetActive(status);
     }
     
     public override void OnRelease()

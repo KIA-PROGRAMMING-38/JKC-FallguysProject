@@ -28,17 +28,10 @@ public class PlayerNamePlatePresenter : Presenter
         UpdateNamePlate();
         
         Model.LobbySceneModel.CurrentLobbyState
-            .Subscribe(state => SetActiveGameObject(state == Model.LobbySceneModel.LobbyState.Home))
+            .Subscribe(state => GameObjectHelper.SetActiveGameObject(_playerNamePlateView.gameObject, state == Model.LobbySceneModel.LobbyState.Home))
             .AddTo(_compositeDisposable);
-
     } 
     
-    private void SetActiveGameObject(bool status)
-    {
-        _playerNamePlateView.Default.SetActive(status);
-        _playerNamePlateView.PlayerNameText.gameObject.SetActive(status);
-    }
-
     private void UpdateNamePlate()
     {
         _playerNamePlateView.PlayerNameText.text = Model.LobbySceneModel.PlayerName.Value;

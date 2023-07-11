@@ -22,31 +22,20 @@ public class MapInformationPresenter : Presenter
     {
         Model.GameLoadingSceneModel.IsLoadingSceneSwitch
             .Where(isActive => !isActive)
-            .Subscribe(_ => SetActiveGameObject(true))
-            .AddTo(_compositeDisposable);
-
-        _mapInformationView.MapNameText
-            .OnEnableAsObservable()
             .Subscribe(_ => SetData())
             .AddTo(_compositeDisposable);
     }
 
     private void SetData()
     {
+        GameObjectHelper.SetActiveGameObject(_mapInformationView.gameObject, true);
+        
         MapData mapData = StageManager.Instance.StageDataManager.MapDatas[StageManager.Instance.StageDataManager.MapPickupIndex.Value];
         
         _mapInformationView.MapNameText.text = mapData.Info.MapName;
         _mapInformationView.MapSplashArtImage.sprite =
             SplashArtRegistry.SpriteArts[mapData.Info.SplashArtRegistryIndex];
         _mapInformationView.PlayExplanation.text = mapData.Info.Description;
-    }
-
-    private void SetActiveGameObject(bool status)
-    {
-        _mapInformationView.Default.SetActive(status);
-        _mapInformationView.MapNameText.gameObject.SetActive(status);
-        _mapInformationView.MapSplashArtMask.gameObject.SetActive(status);
-        _mapInformationView.PlayExplanation.gameObject.SetActive(status);
     }
     
     public override void OnRelease()

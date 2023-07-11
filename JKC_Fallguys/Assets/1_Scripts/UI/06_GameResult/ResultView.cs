@@ -8,7 +8,6 @@ public class ResultView : View
     private void Awake()
     {
         ResultTextImage = transform.Find("ResultTextImage").GetComponent<Image>();
-        // ResultTextImage.gameObject.SetActive(false);
         Debug.Assert(ResultTextImage != null);
     }
 }

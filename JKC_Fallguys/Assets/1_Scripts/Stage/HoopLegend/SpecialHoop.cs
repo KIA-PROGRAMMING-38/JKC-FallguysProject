@@ -98,13 +98,21 @@ public class SpecialHoop : MonoBehaviourPun
         float targetHeight = _originPosition.y + _heightOffset;
         float elapsedTime = 0f;
         float moveSpeedMultiplier = _moveSpeed;
+    
         while (_currentHeight < targetHeight)
         {
+            // If cancellation is requested, exit the loop
+            if (cancelToken.Token.IsCancellationRequested)
+            {
+                _isMoving = false;
+                return;
+            }
+
             elapsedTime += Time.deltaTime * moveSpeedMultiplier;
             _currentHeight = Mathf.Lerp(_originPosition.y, targetHeight, elapsedTime / _duration);
             transform.position = new Vector3(_originPosition.x, _currentHeight, _originPosition.z);
 
-            await UniTask.Yield(PlayerLoopTiming.Update, cancelToken.Token);
+            await UniTask.Yield(PlayerLoopTiming.Update);
         }
 
         await UniTask.Delay(TimeSpan.FromSeconds(_duration));
@@ -112,15 +120,23 @@ public class SpecialHoop : MonoBehaviourPun
         elapsedTime = 0f;
         while (_currentHeight > _originPosition.y)
         {
+            // If cancellation is requested, exit the loop
+            if (cancelToken.Token.IsCancellationRequested)
+            {
+                _isMoving = false;
+                return;
+            }
+
             elapsedTime += Time.deltaTime * moveSpeedMultiplier;
             _currentHeight = Mathf.Lerp(targetHeight, _originPosition.y, elapsedTime / _duration);
             transform.position = new Vector3(_originPosition.x, _currentHeight, _originPosition.z);
-            
-            await UniTask.Yield(PlayerLoopTiming.Update, cancelToken.Token);
+
+            await UniTask.Yield(PlayerLoopTiming.Update);
         }
 
         _isMoving = false;
     }
+
     
     private void OnDestroy()
     {
