@@ -7,14 +7,13 @@ public class PhotonTimeHelper : MonoBehaviourPun
 {
     public void Initialize()
     {
-        // DontDestroyOnLoad(gameObject);
         photonView.RPC("RpcSetParentStageRepository", RpcTarget.AllBuffered);
     }
 
     [PunRPC]
     public void RpcSetParentStageRepository()
     {
-        // transform.SetParent(StageRepository.Instance.gameObject.transform);
+        transform.SetParent(StageManager.Instance.gameObject.transform);
         DontDestroyOnLoad(gameObject);
     }
     

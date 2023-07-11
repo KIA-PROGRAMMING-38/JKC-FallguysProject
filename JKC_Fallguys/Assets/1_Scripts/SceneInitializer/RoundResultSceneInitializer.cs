@@ -2,10 +2,16 @@ using System;
 using System.IO;
 using Cysharp.Threading.Tasks;
 using LiteralRepository;
+using Model;
 using ResourceRegistry;
 
 public class RoundResultSceneInitializer : SceneInitializer
 {
+    protected override void InitializeData()
+    {
+        RoundResultSceneModel.Initialize();
+    }
+    
     protected override void OnGetResources()
     {
         ResourceManager.Instantiate

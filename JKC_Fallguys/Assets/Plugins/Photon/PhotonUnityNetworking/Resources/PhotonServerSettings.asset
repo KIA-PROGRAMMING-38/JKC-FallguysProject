@@ -108,6 +108,10 @@ MonoBehaviour:
   - RpcAddFailedPlayer
   - RpcUpdateStageDataOnAllClients
   - RpcHandlePlayerEnter
+  - UpdatePlayerRankings
+  - RpcTest
+  - DestroyPlayerObject
+  - RpcClearGameObject
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

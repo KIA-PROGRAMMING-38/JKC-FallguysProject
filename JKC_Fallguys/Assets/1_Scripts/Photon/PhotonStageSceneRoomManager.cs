@@ -131,25 +131,63 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
         if (!PhotonNetwork.IsMasterClient)
             return;
 
-        // 타 컴포넌트에서 게임 결과를 정리하는 로직이 실행되기를 기다립니다.
-        PrevEndProduction().Forget();
+        EndProductionScheduler().Forget();
     }
 
-    private async UniTaskVoid PrevEndProduction()
+    private async UniTaskVoid EndProductionScheduler()
     {
-        await UniTask.Delay(TimeSpan.FromSeconds(4f), DelayType.UnscaledDeltaTime);
+        // 타 컴포넌트에서 게임 결과를 정리하는 로직이 실행되기를 기다립니다.
+        
+        await UniTask.Delay(TimeSpan.FromSeconds(3f), DelayType.UnscaledDeltaTime);
 
         photonView.RPC("SetRoundState", RpcTarget.All);
-        EnterNextScene();
+        Test();
+        UpdatePlayerRanking();
+        
+        await UniTask.Delay(TimeSpan.FromSeconds(5f), DelayType.UnscaledDeltaTime);
+        
+        BroadCastData();
+        
+        await UniTask.Delay(TimeSpan.FromSeconds(5f), DelayType.UnscaledDeltaTime);
+
+        photonView.RPC("RpcClearGameObject", RpcTarget.AllBuffered);
+        
+        StageManager.Instance.PlayerContainer.StagePlayerRankings.Clear();
+        StageManager.Instance.PlayerContainer.FailedClearStagePlayers.Clear();
+
+        if (StageManager.Instance.StageDataManager.IsFinalRound())
+        {
+            SceneChangeHelper.ChangeNetworkLevel(SceneIndex.GameResult);
+        }
+        else if (!StageManager.Instance.StageDataManager.IsFinalRound())
+        {
+            SceneChangeHelper.ChangeNetworkLevel(SceneIndex.RoundResult);
+        }
     }
 
+    [PunRPC] 
+    public void RpcClearGameObject()
+    {
+        DestroyAllChildren(StageManager.Instance.PlayerRepository.gameObject);
+        DestroyAllChildren(StageManager.Instance.ObjectRepository.gameObject);
+    }
+    
+    private void DestroyAllChildren(GameObject parent)
+    {
+        foreach (Transform child in parent.transform)
+        {
+            if (child != null)
+                Destroy(child.gameObject);
+        }
+    }
+ 
     [PunRPC]
     public void SetRoundState()
     {
         StageManager.Instance.StageDataManager.SetRoundState(true);
     }
 
-    private void EnterNextScene()
+    public void Test()
     {
         if (StageManager.Instance.StageDataManager.MapDatas[StageManager.Instance.StageDataManager.MapPickupIndex.Value].Info.Type !=
             MapData.MapType.Survivor)
@@ -162,62 +200,9 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
         }
 
         CalculateLosersScore();
-        EndLogic();
-
-        photonView.RPC("RpcEveryClientPhotonViewTransferOwnerShip", RpcTarget.AllBuffered);
-
-        StageEndProduction().Forget();
     }
 
-    [PunRPC]
-    public void RpcEveryClientPhotonViewTransferOwnerShip()
-    {
-        StageManager.Instance.PlayerRepository.PlayerDispose();
-    }
-
-
-    private async UniTaskVoid StageEndProduction()
-    {
-        await UniTask.Delay(TimeSpan.FromSeconds(5f), DelayType.UnscaledDeltaTime);
-
-        photonView.RPC("RpcClearPlayerObject", RpcTarget.MasterClient);
-
-        if (StageManager.Instance.StageDataManager.IsFinalRound())
-        {
-            SceneChangeHelper.ChangeNetworkLevel(SceneIndex.GameResult);
-        }
-        else if (!StageManager.Instance.StageDataManager.IsFinalRound())
-        {
-            SceneChangeHelper.ChangeNetworkLevel(SceneIndex.RoundResult);
-        }
-    }
-
-    [PunRPC]
-    public void RpcClearPlayerObject()
-    {
-        List<GameObject> children = new List<GameObject>();
-
-        foreach (Transform child in StageManager.Instance.PlayerRepository.transform)
-        {
-            children.Add(child.gameObject);
-        }
-
-        foreach (Transform child in StageManager.Instance.ObjectRepository.transform)
-        {
-            children.Add(child.gameObject);
-        }
-
-        foreach (GameObject child in children)
-        {
-            PhotonView childPhotonView = child.GetComponent<PhotonView>();
-
-            if (childPhotonView == null || childPhotonView.ViewID < 0)
-                continue;
-
-            PhotonNetwork.Destroy(childPhotonView);
-        }
-    }
-
+   
     private void GiveScore()
     {
         for (int i = 0; i < StageManager.Instance.PlayerContainer.StagePlayerRankings.Count; i++)
@@ -275,21 +260,15 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
         }
     }
 
-    private void EndLogic()
+    private void BroadCastData()
     {
-        UpdatePlayerRanking();
-        StageManager.Instance.PlayerContainer.StagePlayerRankings.Clear();
-        StageManager.Instance.PlayerContainer.FailedClearStagePlayers.Clear();
-
         string playerScoresByIndexJson =
             JsonConvert.SerializeObject(StageManager.Instance.PlayerContainer.PlayerDataByIndex);
 
-        photonView.RPC("RpcUpdateStageDataOnAllClients", RpcTarget.All, 
+        photonView.RPC("RpcUpdateStageDataOnAllClients", RpcTarget.AllBuffered,
             playerScoresByIndexJson,
-            StageManager.Instance.PlayerContainer.CachedPlayerIndicesForResults.ToArray(),
-            StageManager.Instance.PlayerContainer.StagePlayerRankings.ToArray());
+            StageManager.Instance.PlayerContainer.CachedPlayerIndicesForResults.ToArray());
     }
-
 
     private void UpdatePlayerRanking()
     {
@@ -297,7 +276,7 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
         List<KeyValuePair<int, PlayerData>> sortedPlayers =
             StageManager.Instance.PlayerContainer.PlayerDataByIndex.OrderByDescending(pair => pair.Value.Score)
                 .ToList();
-
+        
         StageManager.Instance.PlayerContainer.CachedPlayerIndicesForResults.Clear();
 
         foreach (KeyValuePair<int, PlayerData> pair in sortedPlayers)
@@ -307,13 +286,11 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
     }
 
     [PunRPC]
-    public void RpcUpdateStageDataOnAllClients(string playerScoresByIndexJson, int[] playerRanking,
-        int[] stagePlayerRankings)
+    public void RpcUpdateStageDataOnAllClients(string playerScoresByIndexJson, int[] playerRanking)
     {
         StageManager.Instance.PlayerContainer.PlayerDataByIndex =
             JsonConvert.DeserializeObject<Dictionary<int, PlayerData>>(playerScoresByIndexJson);
         StageManager.Instance.PlayerContainer.CachedPlayerIndicesForResults = playerRanking.ToList();
-        StageManager.Instance.PlayerContainer.StagePlayerRankings = stagePlayerRankings.ToList();
     }
 
     #endregion
