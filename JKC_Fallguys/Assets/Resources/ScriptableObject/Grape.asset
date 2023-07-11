@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 133a9e62b5f7f41d5a668052b8d16d98, type: 3}
   m_Name: Grape
   m_EditorClassIdentifier: 
-  CostumeName: "\uD3EC"
+  CostumeName: "\uD3EC\uB3C4"
   TextureIndex: 6

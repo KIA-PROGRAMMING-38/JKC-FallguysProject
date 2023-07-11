@@ -31,7 +31,6 @@ public class CostumePresenter : Presenter
             .AddTo(_compositeDisposable);
 
         LobbySceneModel.CostumeColorName
-            .ObserveEveryValueChanged(_ => LobbySceneModel.CostumeColorName)
             .Subscribe(_ => SetColorNameString())
             .AddTo(_compositeDisposable);
     }

@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 133a9e62b5f7f41d5a668052b8d16d98, type: 3}
   m_Name: Orange
   m_EditorClassIdentifier: 
-  CostumeName: "\uC624\uB80C"
+  CostumeName: "\uC624\uB80C\uC9C0"
   TextureIndex: 1
