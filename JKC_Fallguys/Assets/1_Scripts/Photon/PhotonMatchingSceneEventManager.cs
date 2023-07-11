@@ -66,11 +66,14 @@ public class PhotonMatchingSceneEventManager : MonoBehaviourPunCallbacks
     
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
-        // 사용 가능한 방이 없을 때 새로운 방 생성
-        // null을 전달하면 무작위 방 생성
-        PhotonNetwork.CreateRoom(null);
-    }
+        // RoomOptions 객체 생성
+        RoomOptions roomOptions = new RoomOptions();
+        // 최대 플레이어 수를 12로 설정
+        roomOptions.MaxPlayers = 12;
 
+        // RoomOptions 객체를 전달하여 방 생성
+        PhotonNetwork.CreateRoom(null, roomOptions);
+    }
     
     /// <summary>
     /// 로비에 성공적으로 접속하였을 때 호출되는 콜백 메서드
