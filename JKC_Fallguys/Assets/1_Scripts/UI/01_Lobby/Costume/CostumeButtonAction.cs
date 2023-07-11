@@ -27,12 +27,18 @@ public class CostumeButtonAction : MonoBehaviour, ISelectHandler, IPointerClickH
 
     public void OnSelect(BaseEventData eventData)
     {
+        SetupHighlight();
+        LobbySceneModel.SetColorName(_costumeData.CostumeName);
+    }
+
+    private void SetupHighlight()
+    {
         _highlight.transform.SetParent(transform, false);
 
         _highlight.rectTransform.anchorMin = _senterVec;
         _highlight.rectTransform.anchorMax = _senterVec;
 
-        _highlight.rectTransform.localPosition = _zeroVec; 
+        _highlight.rectTransform.localPosition = _zeroVec;
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -50,7 +56,6 @@ public class CostumeButtonAction : MonoBehaviour, ISelectHandler, IPointerClickH
     /// </summary>
     private void CommonClickHandler()
     {
-        LobbySceneModel.SetColorName(_costumeData.CostumeName);
         LobbySceneModel.SetPlayerTexture(_costumeData.TextureIndex);
     }
 }
