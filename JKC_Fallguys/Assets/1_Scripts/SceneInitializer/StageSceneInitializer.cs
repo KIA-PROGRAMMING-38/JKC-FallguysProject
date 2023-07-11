@@ -16,6 +16,10 @@ public class StageSceneInitializer : SceneInitializer
     protected override void OnGetResources()
     {
         ResourceManager.Instantiate
+            (Path.Combine(PathLiteral.Object, PathLiteral.Stage, "PlayerObserverCamera"));
+        ResourceManager.Instantiate
+            (Path.Combine(PathLiteral.Object, PathLiteral.Stage, "LandscapeViewer"));
+        ResourceManager.Instantiate
             (Path.Combine(PathLiteral.UI, PathLiteral.Stage, "ExitButtonViewController"));
         ResourceManager.Instantiate
             (Path.Combine(PathLiteral.UI, PathLiteral.Stage, "PurposePanelViewController"));
@@ -31,8 +35,6 @@ public class StageSceneInitializer : SceneInitializer
             (Path.Combine(PathLiteral.UI, PathLiteral.Stage, "RoundEndViewController"));
         ResourceManager.Instantiate
             (Path.Combine(PathLiteral.UI, PathLiteral.Stage, "ObservedPlayerNameViewController"));
-        ResourceManager.Instantiate
-            (Path.Combine(PathLiteral.Object, PathLiteral.Stage, "PlayerObserverCamera"));
     }
 
     protected override void OnGetResourcesOnMasterClient()

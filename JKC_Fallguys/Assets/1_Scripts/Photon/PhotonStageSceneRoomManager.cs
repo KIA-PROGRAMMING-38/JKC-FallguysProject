@@ -41,7 +41,7 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
 
     private async UniTask WaitForAllClientsLoaded()
     {
-        while (_readyClientsCount < PhotonNetwork.CountOfPlayersOnMaster)
+        while (_readyClientsCount < PhotonNetwork.CurrentRoom.PlayerCount)
         {
             await UniTask.Delay(TimeSpan.FromMilliseconds(PhotonTimeHelper.SyncIntervalMs), cancellationToken: _cts.Token);
         }

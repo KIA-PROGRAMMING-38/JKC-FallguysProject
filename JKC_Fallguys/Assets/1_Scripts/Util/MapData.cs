@@ -25,6 +25,8 @@ public class MapData
         public Vector3 MapPosition;
         public Quaternion MapRotation;
         public string PrefabFilePath;
+        public Vector3 LandscapeViewPosition;
+        public Vector3 LandscapeViewRotation;
     }
     
     public MapInfo Info;
