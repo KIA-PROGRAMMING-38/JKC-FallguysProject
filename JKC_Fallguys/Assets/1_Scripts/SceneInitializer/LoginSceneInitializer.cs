@@ -13,8 +13,6 @@ public class LoginSceneInitializer : SceneInitializer
     protected override void OnGetResources()
     {
         ResourceManager.Instantiate
-            (Path.Combine(PathLiteral.Object, PathLiteral.Login, "PhotonLoginManager"));
-        ResourceManager.Instantiate
             (Path.Combine(PathLiteral.UI, PathLiteral.Login, "LoginBackgroundViewController"));
         ResourceManager.Instantiate
             (Path.Combine(PathLiteral.UI, PathLiteral.Login, "LoginPanelViewController"));
