@@ -33,7 +33,6 @@ public class FruitChuteGoalCollider : MonoBehaviourPun
     [PunRPC]
     public void RpcUpdatePlayerRanking(int playerIndex)
     {
-        // Each client updates their own ranking list through this function.
         PlayerContainer playerContainer = StageManager.Instance.PlayerContainer;
 
         playerContainer.AddPlayerToRanking(playerIndex);

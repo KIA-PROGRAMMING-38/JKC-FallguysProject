@@ -284,7 +284,8 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
         string playerScoresByIndexJson =
             JsonConvert.SerializeObject(StageManager.Instance.PlayerContainer.PlayerDataByIndex);
 
-        photonView.RPC("RpcUpdateStageDataOnAllClients", RpcTarget.All, playerScoresByIndexJson,
+        photonView.RPC("RpcUpdateStageDataOnAllClients", RpcTarget.All, 
+            playerScoresByIndexJson,
             StageManager.Instance.PlayerContainer.CachedPlayerIndicesForResults.ToArray(),
             StageManager.Instance.PlayerContainer.StagePlayerRankings.ToArray());
     }
