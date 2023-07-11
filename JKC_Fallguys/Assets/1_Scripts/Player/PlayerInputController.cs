@@ -111,11 +111,12 @@ public class PlayerInputController : MonoBehaviourPun
     }
 
     public event Action OnMouseMove;
+    [SerializeField] private float _mouseSensitivity;
     public void OnMouse(InputAction.CallbackContext context)
     {
         if (photonView.IsMine)
         {
-            ScreenToMousePos = context.ReadValue<Vector2>();
+            ScreenToMousePos = context.ReadValue<Vector2>() * _mouseSensitivity;
             OnMouseMove?.Invoke();            
         }
     }
