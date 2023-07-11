@@ -23,8 +23,6 @@ public class HoopController : MonoBehaviourPun
         }
     }
 
-    private CommonHoop _commonHoop;
-    private SpecialHoop _specialHoop;
     private void InitializeObject()
     {
         ObjectTransforms commonHoopData = ResourceManager.JsonLoader<ObjectTransforms>($"Data/CommonHoopTransformData");
@@ -85,18 +83,9 @@ public class HoopController : MonoBehaviourPun
     {
         if (PhotonNetwork.IsMasterClient)
         {
-            // 플레이어의 후프 카운트가 아직 Dictionary에 없다면, 먼저 0으로 초기화합니다.
-            if (!_playerHoopCounts.ContainsKey(actorNumber))
-            {
-                _playerHoopCounts[actorNumber] = 0;
-            }
-
-            // 해당 플레이어의 키에 대응하여 값을 증가시킵니다.
-            _playerHoopCounts[actorNumber] += increaseValue;
+            // 모든 클라이언트의 플레이어 후프 카운트를 갱신합니다.
+            photonView.RPC("UpdateHoopCount", RpcTarget.All, actorNumber, increaseValue);
         }
-
-        // 모든 클라이언트의 플레이어 후프 카운트를 갱신합니다.
-        photonView.RPC("UpdateHoopCount", RpcTarget.All, actorNumber, _playerHoopCounts[actorNumber]);
     }
 
     /// <summary>
@@ -104,15 +93,22 @@ public class HoopController : MonoBehaviourPun
     /// 변경된 카운트를 자신의 로컬 _playerHoopCounts Dictionary에 업데이트합니다.
     /// </summary>
     [PunRPC]
-    public void UpdateHoopCount(int actorNumber, int newCount)
+    public void UpdateHoopCount(int actorNumber, int increaseValue)
     {
-        _playerHoopCounts[actorNumber] = newCount;
+        // 플레이어의 후프 카운트가 아직 Dictionary에 없다면, 먼저 0으로 초기화합니다.
+        if (!_playerHoopCounts.ContainsKey(actorNumber))
+        {
+            _playerHoopCounts[actorNumber] = 0;
+        }
+
+        // 해당 플레이어의 키에 대응하여 값을 증가시킵니다.
+        _playerHoopCounts[actorNumber] += increaseValue;
     }
 
     /// <summary>
     /// 플레이어가 후프를 지나가면 호출됩니다.
     /// 자신의 ActorNumber와 Value를 HoopController.IncreaseCountAndBroadcast 메서드에 전달합니다.
-    /// </summary>
+    /// </summary> 
     /// <param name="value">플레이어가 획득한 점수입니다..</param>
     public void PlayerPassesHoop(int value)
     {
