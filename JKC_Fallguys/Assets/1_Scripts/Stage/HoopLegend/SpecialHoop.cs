@@ -52,16 +52,10 @@ public class SpecialHoop : MonoBehaviourPun
 
     private void Start()
     {
+        _hoopController = StageManager.Instance.ObjectRepository.transform.Find("MapHoopLegend(Clone)").GetComponentInChildren<HoopController>();
+        
         _goalCheck.OnPlayerEnter += HandlePlayerEnter;
         _goalCheck.OnPlayerExit += HandlePlayerExit;
-        
-        photonView.RPC("RpcSetHoopControllerReference", RpcTarget.AllBuffered);
-    }
-    
-    [PunRPC]
-    public void RpcSetHoopControllerReference()
-    {
-        _hoopController = StageManager.Instance.ObjectRepository.transform.Find("MapHoopLegend(Clone)").GetComponentInChildren<HoopController>();
     }
 
     private void HandlePlayerEnter()
@@ -69,11 +63,17 @@ public class SpecialHoop : MonoBehaviourPun
         if (!_playerEntered && !_isMoving)
         {
             _playerEntered = true;
-            ParticlePlay().Forget();
-            PropellerAnimation(_cancelToken).Forget();
-            
             _hoopController.PlayerPassesHoop(2);
+            
+            photonView.RPC("RpcHandlePlayerEnter", RpcTarget.AllBuffered);
         }
+    }
+
+    [PunRPC]
+    public void RpcHandlePlayerEnter()
+    {
+        ParticlePlay().Forget();
+        PropellerAnimation(_cancelToken).Forget();
     }
     
     private async UniTaskVoid ParticlePlay()

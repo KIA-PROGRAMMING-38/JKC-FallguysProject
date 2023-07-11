@@ -108,7 +108,6 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
             .AddTo(this);
     }
 
-
     private void StageDontDestroyOnLoadSet()
     {
         DontDestroyOnLoad(gameObject);
@@ -233,8 +232,7 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
                     int oldScore = playerData.Score;
                     int newScore = oldScore + 2500;
                     playerData.Score = newScore;
-                    StageManager.Instance.PlayerContainer.PlayerDataByIndex[playerIndex] =
-                        playerData; // Updated PlayerData back to dictionary
+                    StageManager.Instance.PlayerContainer.PlayerDataByIndex[playerIndex] = playerData;
                 }
             }
         }
@@ -256,8 +254,7 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
                     int prevScore = playerData.Score;
                     int updatedScore = prevScore + rankRewards[i];
                     playerData.Score = updatedScore;
-                    StageManager.Instance.PlayerContainer.PlayerDataByIndex[playerIndex] =
-                        playerData; // Updated PlayerData back to dictionary
+                    StageManager.Instance.PlayerContainer.PlayerDataByIndex[playerIndex] = playerData;
                 }
             }
         }
