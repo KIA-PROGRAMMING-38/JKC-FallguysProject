@@ -370,7 +370,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd571e67890bc4c2b91d009e673909b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mouseSensitivity: 0.05
+  _mouseSensitivity: 0.1
 --- !u!114 &-6049000865041229812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -963,13 +963,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _diveForce: 90
-  _jumpForce: 270
+  _jumpForce: 290
   _rotSpeed: 4
-  _moveSpeed: 7
+  _moveSpeed: 8
   _groundCheckPoint: {fileID: 2387829583882509454}
   _castRadius: 0.2
   _groundCheckDistance: 3
-  _jumpMovementForce: 240
+  _jumpMovementForce: 200
   _diveRotationSpeed: 300
   _diveHeightForce: 2
   _diveForwardForce: 1
