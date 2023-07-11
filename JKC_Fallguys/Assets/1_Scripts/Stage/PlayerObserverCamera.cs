@@ -90,7 +90,6 @@ public class PlayerObserverCamera : MonoBehaviour
         SetObservingPlayer(startIndex, false);
     }
 
-
     private void SetObservingPlayer(int startIndex, bool isNext)
     {
         if (_playersByActorNumber.Count == 0 || _isObservationInProgress)
