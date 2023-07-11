@@ -43,9 +43,6 @@ public class ResultInStagePresenter : Presenter
                         break;
                 }
                 
-                Debug.Log($"CurrentState: {currentState}");
-                Debug.Log(StageManager.Instance.PlayerContainer.IsPlayerActive(actorNumber).Value);
-
                 UIAnimation().Forget();
             
             })
