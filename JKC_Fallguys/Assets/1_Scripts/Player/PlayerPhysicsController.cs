@@ -41,6 +41,8 @@ public class PlayerPhysicsController : MonoBehaviourPun
     {
         _playerInputController.OnMovement -= CurrentMoveDirection;
         _playerInputController.OnMovement += CurrentMoveDirection;
+
+        _priviousDiveHeightForce = _diveHeightForce;
     }
     
     private Vector3 _forwardAngleVec;
@@ -210,6 +212,7 @@ public class PlayerPhysicsController : MonoBehaviourPun
     private Vector3 _diveDirection;
     [SerializeField] private float _diveHeightForce;
     [SerializeField] private float _diveForwardForce;
+    private float _priviousDiveHeightForce;
 
     public void ZeroizeDiveHeightForce()
     {
@@ -218,7 +221,7 @@ public class PlayerPhysicsController : MonoBehaviourPun
 
     public void RestoreDiveHeightForce()
     {
-        _diveHeightForce = 2f;
+        _diveHeightForce = _priviousDiveHeightForce;
     }
 
     // Dive시 앞으로 힘을 주어 움직이게 하는 함수 입니다.
