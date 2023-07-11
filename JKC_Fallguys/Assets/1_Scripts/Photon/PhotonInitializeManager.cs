@@ -2,7 +2,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
 
-public class PhotonLoginManager : MonoBehaviourPunCallbacks
+public class PhotonInitializeManager : MonoBehaviourPunCallbacks
 {
     private void Start()
     {
