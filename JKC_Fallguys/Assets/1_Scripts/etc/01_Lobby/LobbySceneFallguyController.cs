@@ -44,6 +44,7 @@ public class LobbySceneFallguyController : MonoBehaviour
 
     private void CustomizationState()
     {
+        _cancellationTokenSource.Cancel();
         _cancellationTokenSource = new CancellationTokenSource();
         MoveToPosition
             (transform.position, _customizationPosition, _customizationStateMoveDurattion,_cancellationTokenSource.Token).Forget();
@@ -51,6 +52,7 @@ public class LobbySceneFallguyController : MonoBehaviour
     
     private void HomeState()
     {
+        _cancellationTokenSource.Cancel();
         _cancellationTokenSource = new CancellationTokenSource();
         MoveToPosition
             (transform.position, _centerPosition, _homeStateMoveDuration,_cancellationTokenSource.Token).Forget();
