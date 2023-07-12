@@ -42,7 +42,7 @@ public class StageSceneInitializer : SceneInitializer
         string filePathInstantiateManager = Path.Combine(PathLiteral.Prefabs, PathLiteral.Object, PathLiteral.Stage, "StageInstantiateManager");
         PhotonNetwork.Instantiate(filePathInstantiateManager, transform.position, transform.rotation);
         
-        string filePathPhotonRoomManager = Path.Combine(PathLiteral.Prefabs, PathLiteral.Object, PathLiteral.Stage, "PhotonStageSceneRoomManager");
+        string filePathPhotonRoomManager = Path.Combine(PathLiteral.Prefabs, PathLiteral.Object, PathLiteral.Stage, "StageStateManager");
         PhotonNetwork.Instantiate(filePathPhotonRoomManager, transform.position, transform.rotation);
     }
 

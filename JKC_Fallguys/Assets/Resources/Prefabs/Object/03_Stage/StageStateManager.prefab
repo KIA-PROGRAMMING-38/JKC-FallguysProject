@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3389212619365125606}
   - component: {fileID: 6003157983223439633}
   m_Layer: 0
-  m_Name: PhotonStageSceneRoomManager
+  m_Name: StageStateManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
