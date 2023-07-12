@@ -82,7 +82,7 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
 
     private void SetGameStart()
     {
-        StageManager.Instance.StageDataManager.SetGameStart(true);
+        StageManager.Instance.StageDataManager.SetSequence(StageDataManager.StageSequence.PlayersReady);
     }
 
     private void StartOperationCountdown()
@@ -100,10 +100,10 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
 
     private void InitializeRx()
     {
-        StageManager.Instance.StageDataManager.IsGameActive
+        StageManager.Instance.StageDataManager.CurrentSequence
             .DistinctUntilChanged()
             .Skip(1)
-            .Where(state => !state)
+            .Where(sequence => sequence == StageDataManager.StageSequence.GameCompletion)
             .Subscribe(_ => CompleteStageAndRankPlayers())
             .AddTo(this);
     }
@@ -141,7 +141,7 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
         await UniTask.Delay(TimeSpan.FromSeconds(3f), DelayType.UnscaledDeltaTime);
 
         photonView.RPC("SetRoundState", RpcTarget.All);
-        Test();
+        Calculate();
         UpdatePlayerRanking();
         
         await UniTask.Delay(TimeSpan.FromSeconds(5f), DelayType.UnscaledDeltaTime);
@@ -168,26 +168,17 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
     [PunRPC] 
     public void RpcClearGameObject()
     {
-        DestroyAllChildren(StageManager.Instance.PlayerRepository.gameObject);
-        DestroyAllChildren(StageManager.Instance.ObjectRepository.gameObject);
-    }
-    
-    private void DestroyAllChildren(GameObject parent)
-    {
-        foreach (Transform child in parent.transform)
-        {
-            if (child != null)
-                Destroy(child.gameObject);
-        }
+        GameObjectHelper.DestroyAllChildren(StageManager.Instance.PlayerRepository.gameObject);
+        GameObjectHelper.DestroyAllChildren(StageManager.Instance.ObjectRepository.gameObject);
     }
  
     [PunRPC]
     public void SetRoundState()
     {
-        StageManager.Instance.StageDataManager.SetRoundState(true);
+        StageManager.Instance.StageDataManager.SetSequence(StageDataManager.StageSequence.RoundCompletion);
     }
 
-    public void Test()
+    public void Calculate()
     {
         if (StageManager.Instance.StageDataManager.MapDatas[StageManager.Instance.StageDataManager.MapPickupIndex.Value].Info.Type !=
             MapData.MapType.Survivor)

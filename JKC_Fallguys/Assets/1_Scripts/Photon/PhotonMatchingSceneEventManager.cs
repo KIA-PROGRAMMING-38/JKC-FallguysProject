@@ -44,18 +44,18 @@ public class PhotonMatchingSceneEventManager : MonoBehaviourPunCallbacks
 
         if (_joinRandomFailed) 
         {
-            if(PhotonNetwork.CountOfRooms == 0) 
-            {
+            // if(PhotonNetwork.CountOfRooms == 0) 
+            // {
                 RoomOptions roomOptions = new RoomOptions();
                 roomOptions.MaxPlayers = 12;
 
                 PhotonNetwork.CreateRoom(null, roomOptions);
-            }
-            else
-            {
-                _joinLobbyFlag = true;
-                PhotonNetwork.JoinRandomRoom();
-            }
+            // }
+            // else
+            // {
+                // _joinLobbyFlag = true;
+                // PhotonNetwork.JoinRandomRoom();
+            // }
 
             _joinRandomFailed = false;
         }

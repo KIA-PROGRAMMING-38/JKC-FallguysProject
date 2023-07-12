@@ -10,21 +10,21 @@ public class MapSelectionManager : MonoBehaviourPun
         }
     }
 
-    private int index = 0;
+    private int _index = 0;
     private void SelectRandomMap()
     {
         if (PhotonNetwork.IsMasterClient)
         {
-            if (!StageManager.Instance.StageDataManager.MapPickupFlags[index])
+            if (!StageManager.Instance.StageDataManager.MapPickupFlags[_index])
             {
-                StageManager.Instance.StageDataManager.MapPickupFlags[index] = true;
-                StageManager.Instance.StageDataManager.SetMapPickupFlag(index);
+                StageManager.Instance.StageDataManager.MapPickupFlags[_index] = true;
+                StageManager.Instance.StageDataManager.SetMapPickupFlag(_index);
                 
-                photonView.RPC("SetSelectedMapIndex", RpcTarget.All, index);
+                photonView.RPC("SetSelectedMapIndex", RpcTarget.All, _index);
             }
             else
             {
-                ++index;
+                ++_index;
 
                 SelectRandomMap();
             }

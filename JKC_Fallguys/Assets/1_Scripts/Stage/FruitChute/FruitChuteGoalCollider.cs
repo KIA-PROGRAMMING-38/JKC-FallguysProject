@@ -49,6 +49,6 @@ public class FruitChuteGoalCollider : MonoBehaviourPun
     [PunRPC]
     public void RpcEndGameBroadCast()
     {
-        StageManager.Instance.StageDataManager.SetGameStatus(false);
+        StageManager.Instance.StageDataManager.SetSequence(StageDataManager.StageSequence.GameCompletion);
     }
 }

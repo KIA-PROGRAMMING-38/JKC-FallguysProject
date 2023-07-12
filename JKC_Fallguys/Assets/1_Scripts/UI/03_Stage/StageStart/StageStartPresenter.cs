@@ -60,7 +60,7 @@ public class StageStartPresenter : Presenter
             _stageStartView.CountdownImage.gameObject.SetActive(false);
             AnimateTitleOut();
 
-            StageManager.Instance.StageDataManager.SetGameStatus(true);
+            StageManager.Instance.StageDataManager.SetSequence(StageDataManager.StageSequence.GameInProgress);
             StageSceneModel.SetExitButtonActive(true);
         }
     }
