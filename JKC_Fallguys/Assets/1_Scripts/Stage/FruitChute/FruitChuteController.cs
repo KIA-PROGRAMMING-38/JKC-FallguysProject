@@ -11,13 +11,11 @@ public class FruitChuteController : StageController
     private Camera _observeCamera;
     private FruitPooler _fruitPooler;
     private CanonController _canonController;
-    private CancellationTokenSource _cancellationTokenSource;
+    private CancellationTokenSource _cancellationTokenSource = new CancellationTokenSource();
 
     protected override void Awake()
     {
         base.Awake();
-
-        _cancellationTokenSource = new CancellationTokenSource();
         
         _fruitPooler = transform.Find("FruitPooler").GetComponent<FruitPooler>();
         Debug.Assert(_fruitPooler != null);
@@ -29,7 +27,7 @@ public class FruitChuteController : StageController
     
     protected override void SetGameTime()
     {
-        StageSceneModel.SetRemainingTime(30);
+        StageSceneModel.SetRemainingTime(60);
     }
 
     protected override void InitializeRx()
