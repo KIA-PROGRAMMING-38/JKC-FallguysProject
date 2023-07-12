@@ -32,7 +32,7 @@ public class PhotonTimeHelper : MonoBehaviourPun
         }
     }
     
-    public async UniTask SyncServerTime(CancellationToken cancellationToken)
+    public async UniTaskVoid SyncServerTime(CancellationToken cancellationToken)
     {
         while (true)
         {

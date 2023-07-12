@@ -333,6 +333,7 @@ public class PlayerPhysicsController : MonoBehaviourPun
         if (jumpCancellationTokenSource != null)
             jumpCancellationTokenSource.Cancel();
         
-        _cts.Cancel();
+        if (_cts != null)
+            _cts.Cancel();
     }
 }

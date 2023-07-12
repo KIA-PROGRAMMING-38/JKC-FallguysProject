@@ -17,6 +17,9 @@ public class StageDataManager
 
     private ReactiveProperty<StageSequence> _currentSequence = new ReactiveProperty<StageSequence>();
     public IReactiveProperty<StageSequence> CurrentSequence => _currentSequence;
+    
+    
+    public Dictionary<StageSequence, StageState> SequenceActionDictionary = new Dictionary<StageSequence, StageState>();
 
     public void SetSequence(StageSequence sequence)
     {

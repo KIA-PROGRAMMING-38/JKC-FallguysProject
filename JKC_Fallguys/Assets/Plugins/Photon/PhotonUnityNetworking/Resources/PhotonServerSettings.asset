@@ -112,6 +112,8 @@ MonoBehaviour:
   - RpcTest
   - DestroyPlayerObject
   - RpcClearGameObject
+  - RpcSetRoundState
+  - RpcSetTransitioningState
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
