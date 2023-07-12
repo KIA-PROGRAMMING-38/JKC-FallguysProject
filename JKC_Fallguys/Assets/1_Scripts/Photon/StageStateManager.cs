@@ -2,18 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Threading;
 using Photon.Pun;
 using UniRx;
-using UnityEngine;
 
-/// <summary>
-/// 점수를 결산한 뒤 다음 씬을 실행시키는 클래스입니다.
-/// </summary>
-public class PhotonStageSceneRoomManager : MonoBehaviourPun
+public class StageStateManager : MonoBehaviourPun
 {
-    private readonly CancellationTokenSource _cts = new CancellationTokenSource();
-
     private void Awake()
     {
         AddComponentStageStates();
@@ -22,8 +15,6 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
     private void Start()
     {
         Initialize();
-        
-        StageDontDestroyOnLoadSet();
     }
 
     private void AddComponentStageStates()
@@ -40,17 +31,14 @@ public class PhotonStageSceneRoomManager : MonoBehaviourPun
 
     private void Initialize()
     {
+        photonView.RPC("RpcSetParentStageRepository", RpcTarget.AllBuffered);
+        
         StageManager.Instance.StageDataManager.CurrentSequence
             .DistinctUntilChanged()
             .Subscribe(sequence => StageManager.Instance.StageDataManager.SequenceActionDictionary[sequence].Action())
             .AddTo(this);
     }
     
-    private void StageDontDestroyOnLoadSet()
-    {
-        photonView.RPC("RpcSetParentStageRepository", RpcTarget.AllBuffered);
-    }
-
     [PunRPC]
     public void RpcSetParentStageRepository()
     {
