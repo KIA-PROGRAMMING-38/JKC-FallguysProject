@@ -1,4 +1,7 @@
+using System;
 using System.IO;
+using System.Threading;
+using Cysharp.Threading.Tasks;
 using LiteralRepository;
 using Model;
 using Photon.Pun;
@@ -8,10 +11,13 @@ using UnityEngine;
 public class PhotonMatchingSceneEventManager : MonoBehaviourPunCallbacks
 {
     private PhotonMatchingSceneRoomManager _roomManager;
+    private CancellationTokenSource _cts = new CancellationTokenSource();
 
     private void Awake()
     {
-        PhotonNetwork.JoinRandomRoom();
+        _joinLobbyFlag = false;
+        
+        Initialize().Forget();
     }
  
     /// <summary>
@@ -21,6 +27,38 @@ public class PhotonMatchingSceneEventManager : MonoBehaviourPunCallbacks
     public override void OnDisconnected(DisconnectCause cause)
     {
         Debug.Log("Disconnected from server for reason " + cause.ToString());
+    }
+
+    private bool _joinRandomFailed = false;
+    private bool _joinLobbyFlag = false;
+    private async UniTaskVoid Initialize()
+    {
+        float elapsedTime = 0;
+        while (elapsedTime < 3f)
+        {
+            PhotonNetwork.JoinRandomRoom();
+            elapsedTime += 0.3f;
+
+            await UniTask.Delay(TimeSpan.FromSeconds(0.3f), cancellationToken: _cts.Token);
+        }
+
+        if (_joinRandomFailed) 
+        {
+            if(PhotonNetwork.CountOfRooms == 0) 
+            {
+                RoomOptions roomOptions = new RoomOptions();
+                roomOptions.MaxPlayers = 12;
+
+                PhotonNetwork.CreateRoom(null, roomOptions);
+            }
+            else
+            {
+                _joinLobbyFlag = true;
+                PhotonNetwork.JoinRandomRoom();
+            }
+
+            _joinRandomFailed = false;
+        }
     }
     
     public override void OnJoinedRoom()
@@ -66,13 +104,12 @@ public class PhotonMatchingSceneEventManager : MonoBehaviourPunCallbacks
     
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
-        // RoomOptions 객체 생성
-        RoomOptions roomOptions = new RoomOptions();
-        // 최대 플레이어 수를 12로 설정
-        roomOptions.MaxPlayers = 12;
-
-        // RoomOptions 객체를 전달하여 방 생성
-        PhotonNetwork.CreateRoom(null, roomOptions);
+        _joinRandomFailed = true;
+        
+        if (_joinLobbyFlag)
+        {
+            SceneChangeHelper.ChangeLocalScene(SceneIndex.Lobby);
+        }
     }
     
     /// <summary>
