@@ -33,10 +33,10 @@ public class LowerBar : MonoBehaviourPun
 
     private void InitializeRx()
     {
-        StageManager.Instance.StageDataManager.IsGameActive
+        StageManager.Instance.StageDataManager.CurrentSequence
             .DistinctUntilChanged()
             .Skip(1)
-            .Where(state => !state)
+            .Where(sequence => sequence == StageDataManager.StageSequence.GameCompletion)
             .Subscribe(_ => StopRigidbodyMovement())
             .AddTo(this);
     }

@@ -48,18 +48,13 @@ public class PlayerObserverCamera : MonoBehaviour
             .Subscribe(_ => _observerCamera.gameObject.SetActive(true))
             .AddTo(this);
         
-        StageManager.Instance.StageDataManager.IsGameActive
-            .Where(state => !state)
+        StageManager.Instance.StageDataManager.CurrentSequence
+            .Where(sequence => sequence != StageDataManager.StageSequence.GameInProgress)
             .Subscribe(_ => _observerCamera.gameObject.SetActive(false))
             .AddTo(this);
         
-        StageManager.Instance.StageDataManager.IsRoundCompleted
-            .Where(state => state)
-            .Subscribe(_ => _observerCamera.gameObject.SetActive(false))
-            .AddTo(this);
-        
-        StageManager.Instance.StageDataManager.IsGameStart
-            .Where(isStart => isStart)
+        StageManager.Instance.StageDataManager.CurrentSequence
+            .Where(sequence => sequence == StageDataManager.StageSequence.GameInProgress)
             .First()
             .Subscribe(_ => FindAllObservedObjects())
             .AddTo(this);

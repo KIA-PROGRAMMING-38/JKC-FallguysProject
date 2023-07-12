@@ -76,7 +76,7 @@ public class PlayerPhysicsController : MonoBehaviourPun
     /// </summary>
     public void Move()
     {
-        if (!photonView.IsMine || !StageManager.Instance.StageDataManager.IsGameActive.Value)
+        if (!photonView.IsMine || StageManager.Instance.StageDataManager.CurrentSequence.Value != StageDataManager.StageSequence.GameInProgress)
             return;
         
         CheckGround();
@@ -146,7 +146,7 @@ public class PlayerPhysicsController : MonoBehaviourPun
     /// <returns></returns>
     private async UniTaskVoid OnJumpingActionAsync()
     {
-        if (!photonView.IsMine || !StageManager.Instance.StageDataManager.IsGameActive.Value)
+        if (!photonView.IsMine || StageManager.Instance.StageDataManager.CurrentSequence.Value != StageDataManager.StageSequence.GameInProgress)
             return;
 
         while ( !_jumpCancellationToken.IsCancellationRequested )
@@ -189,7 +189,7 @@ public class PlayerPhysicsController : MonoBehaviourPun
     /// </summary>
     public void ActivateDiveAction()
     {
-        if (!photonView.IsMine || !StageManager.Instance.StageDataManager.IsGameActive.Value)
+        if (!photonView.IsMine || StageManager.Instance.StageDataManager.CurrentSequence.Value != StageDataManager.StageSequence.GameInProgress)
             return;
         
         DiveRotationAsync().Forget();
@@ -254,7 +254,7 @@ public class PlayerPhysicsController : MonoBehaviourPun
     /// </summary>
     public void ActivateGetUp()
     {
-        if (!photonView.IsMine || !StageManager.Instance.StageDataManager.IsGameActive.Value)
+        if (!photonView.IsMine || StageManager.Instance.StageDataManager.CurrentSequence.Value != StageDataManager.StageSequence.GameInProgress)
             return;
         
         GetUpAsync().Forget();
@@ -331,7 +331,7 @@ public class PlayerPhysicsController : MonoBehaviourPun
     /// </summary>
     public void Respawn(Vector3 respawnPos, Quaternion respawnAngle)
     {
-        if (!photonView.IsMine || !StageManager.Instance.StageDataManager.IsGameActive.Value)
+        if (!photonView.IsMine || StageManager.Instance.StageDataManager.CurrentSequence.Value != StageDataManager.StageSequence.GameInProgress)
             return;
 
         transform.position = respawnPos;
@@ -345,6 +345,7 @@ public class PlayerPhysicsController : MonoBehaviourPun
         if (jumpCancellationTokenSource != null)
             jumpCancellationTokenSource.Cancel();
         
-        _cts.Cancel();
+        if (_cts != null)
+            _cts.Cancel();
     }
 }

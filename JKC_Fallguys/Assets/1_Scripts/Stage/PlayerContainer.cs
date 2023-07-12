@@ -21,13 +21,11 @@ public class PlayerContainer
     public List<int> CachedPlayerIndicesForResults = new List<int>();
 
     // 두 리스트는 스테이지가 넘어갈 때, 초기화됩니다.
-    // 클리어에 실패한 사용자를 기록하는 리스트입니다
+    // 스테이지에서 클리어에 실패한 사용자를 기록하는 리스트입니다
     public List<int> FailedClearStagePlayers = new List<int>();
-
-    // 스테이지에서 사용될 순위를 기록하는 리스트입니다.
+    // 스테이지에서의 순위를 기록하는 리스트입니다.
     public List<int> StagePlayerRankings = new List<int>();
 
-    // Round Result Panel의 성공, 실패, 종료 여부를 설정하기 위한 변수입니다.
     public enum PlayerState
     {
         Default,
@@ -38,7 +36,6 @@ public class PlayerContainer
     
     // 클라이언트 별 PlayerState를 관리하는 Dictionary입니다.
     private Dictionary<int, ReactiveProperty<PlayerState>> _clientStates = new Dictionary<int, ReactiveProperty<PlayerState>>();
-
     public IReactiveProperty<PlayerState> GetCurrentState(int actorNumber)
     {
         if (!_clientStates.ContainsKey(actorNumber))

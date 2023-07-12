@@ -4,37 +4,36 @@ using UniRx;
 public class StageDataManager
 {
     public static readonly int MaxPlayableMaps = 3;
-    
-    // 게임 시작의 카운트다운을 관장합니다.
-    private ReactiveProperty<bool> _isGameStart = new ReactiveProperty<bool>(false);
-    public ReactiveProperty<bool> IsGameStart => _isGameStart;
 
-    // 게임의 활성화 상태를 나타냅니다.
-    private ReactiveProperty<bool> _isGameActive = new ReactiveProperty<bool>(false);
-    public IReactiveProperty<bool> IsGameActive => _isGameActive;
+    public enum StageSequence
+    {
+        WaitingForPlayers,    
+        PlayersReady,         
+        GameInProgress,       
+        GameCompletion,       
+        RoundCompletion,      
+        Transitioning         
+    }
+
+    private ReactiveProperty<StageSequence> _currentSequence = new ReactiveProperty<StageSequence>();
+    public IReactiveProperty<StageSequence> CurrentSequence => _currentSequence;
+    
+    
+    public Dictionary<StageSequence, StageState> SequenceActionDictionary = new Dictionary<StageSequence, StageState>();
+
+    public void SetSequence(StageSequence sequence)
+    {
+        _currentSequence.Value = sequence;
+    }
 
     // 맵에서 쓰일 데이타가 저장되는 딕셔너리입니다. 
     public Dictionary<int, MapData> MapDatas = new Dictionary<int, MapData>();
 
     // 선택할 맵 데이터를 판별하는 객체입니다.
     public bool[] MapPickupFlags = new bool[MaxPlayableMaps];
-    private ReactiveProperty<int> _mapPickupIndex = new ReactiveProperty<int>();
-
-    public IReactiveProperty<int> MapPickupIndex => _mapPickupIndex;
-
-    // 라운드가 끝났는지 확인하기 위한 변수입니다.
-    private ReactiveProperty<bool> _isRoundCompleted = new ReactiveProperty<bool>(false);
-    public IReactiveProperty<bool> IsRoundCompleted => _isRoundCompleted;
     
-    public void SetGameStatus(bool status)
-    {
-        _isGameActive.Value = status;
-    }
-
-    public void SetRoundState(bool status)
-    {
-        _isRoundCompleted.Value = status;
-    }
+    private ReactiveProperty<int> _mapPickupIndex = new ReactiveProperty<int>();
+    public IReactiveProperty<int> MapPickupIndex => _mapPickupIndex;
 
     public bool IsFinalRound()
     {
@@ -55,15 +54,8 @@ public class StageDataManager
         _mapPickupIndex.Value = index;
     }
     
-    public void SetGameStart(bool status)
-    {
-        _isGameStart.Value = status;
-    }
-
     public void Clear()
     {
-        SetGameStatus(false);
-        SetRoundState(false);
-        SetGameStart(false);
+        SetSequence(StageSequence.WaitingForPlayers);
     }
 }

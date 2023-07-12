@@ -52,9 +52,8 @@ public class HoopController : MonoBehaviourPun
     private void InitializeRx()
     {
         // 게임이 비활성화 되면, 후프 카운트를 기반으로 플레이어 순위를 계산합니다.
-        StageManager.Instance.StageDataManager.IsGameActive
-            .Skip(1)
-            .Where(isGameActive => !isGameActive && PhotonNetwork.IsMasterClient)
+        StageManager.Instance.StageDataManager.CurrentSequence
+            .Where(sequence => sequence == StageDataManager.StageSequence.GameCompletion && PhotonNetwork.IsMasterClient)
             .Subscribe(_ => CalculatePlayerRanking())
             .AddTo(this);
     }
@@ -68,7 +67,7 @@ public class HoopController : MonoBehaviourPun
             .OrderByDescending(x => x.Value)
             .Select(x => x.Key)
             .ToList();
-     
+        
         photonView.RPC("UpdatePlayerRankings", RpcTarget.All, rankings.ToArray());
     }
 
@@ -111,10 +110,7 @@ public class HoopController : MonoBehaviourPun
     public void UpdateHoopCount(int actorNumber, int increaseValue)
     {
         // 플레이어의 후프 카운트가 아직 Dictionary에 없다면, 먼저 0으로 초기화합니다.
-        if (!_playerHoopCounts.ContainsKey(actorNumber))
-        {
-            _playerHoopCounts[actorNumber] = 0;
-        }
+        _playerHoopCounts.TryAdd(actorNumber, 0);
 
         // 해당 플레이어의 키에 대응하여 값을 증가시킵니다.
         _playerHoopCounts[actorNumber] += increaseValue;

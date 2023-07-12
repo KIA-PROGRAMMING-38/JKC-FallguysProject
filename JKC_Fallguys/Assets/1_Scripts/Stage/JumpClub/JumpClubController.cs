@@ -24,8 +24,8 @@ public class JumpClubController : StageController
 
     protected override void InitializeRx()
     {
-        StageManager.Instance.StageDataManager.IsGameActive
-            .Where(state => state)
+        StageManager.Instance.StageDataManager.CurrentSequence
+            .Where(sequence => sequence == StageDataManager.StageSequence.GameInProgress)
             .Subscribe(_ => GameStartBroadCast())
             .AddTo(this);
 
@@ -73,7 +73,7 @@ public class JumpClubController : StageController
     [PunRPC]
     public void RpcEndGame()
     {
-        StageManager.Instance.StageDataManager.SetGameStatus(false);
+        StageManager.Instance.StageDataManager.SetSequence(StageDataManager.StageSequence.GameCompletion);
         
         int actorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
 
