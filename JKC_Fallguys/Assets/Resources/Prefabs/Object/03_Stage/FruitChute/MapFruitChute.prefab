@@ -2576,7 +2576,7 @@ GameObject:
   - component: {fileID: 8027757773684641974}
   m_Layer: 3
   m_Name: ENV_SY01_SPEED_BumpySlide_Start_InflatableWalls_MO_0
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -2964,7 +2964,7 @@ GameObject:
   - component: {fileID: 8027757774235540809}
   m_Layer: 3
   m_Name: ENV_SY01_SPEED_BumpySlide_Start_InflatableWalls_MO_0
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -3061,7 +3061,7 @@ GameObject:
   - component: {fileID: 8027757774502518940}
   m_Layer: 3
   m_Name: ENV_SY01_SPEED_BumpySlide_Start_InflatableWalls_MO_0
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -3158,7 +3158,7 @@ GameObject:
   - component: {fileID: 8027757774581904186}
   m_Layer: 3
   m_Name: ENV_SY01_SPEED_BumpySlide_Start_InflatableWalls_MO_0
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -10591,7 +10591,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7181335917873349323}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.57999694, y: -1.29, z: 22.490002}
+  m_LocalPosition: {x: 0.5800009, y: -1.2899997, z: 22.489998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -10628,7 +10628,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2683940b32bb4ca45820b37f9b3f91d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 7
+  _conveyorForce: 0.4
 --- !u!1 &7181335917922319589
 GameObject:
   m_ObjectHideFlags: 0
@@ -11338,7 +11339,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2683940b32bb4ca45820b37f9b3f91d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 7
+  _conveyorForce: 0.4
 --- !u!1 &7181335918749119573
 GameObject:
   m_ObjectHideFlags: 0
@@ -11594,7 +11596,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2683940b32bb4ca45820b37f9b3f91d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 7
+  _conveyorForce: 0.4
 --- !u!1 &7181335918857265169
 GameObject:
   m_ObjectHideFlags: 0
@@ -11915,7 +11918,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2683940b32bb4ca45820b37f9b3f91d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 7
+  _conveyorForce: 0.4
 --- !u!1 &7181335919072458629
 GameObject:
   m_ObjectHideFlags: 0
@@ -12107,7 +12111,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2683940b32bb4ca45820b37f9b3f91d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 7
+  _conveyorForce: 0.4
 --- !u!1 &7181335919288420754
 GameObject:
   m_ObjectHideFlags: 0
@@ -12267,7 +12272,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2683940b32bb4ca45820b37f9b3f91d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 7
+  _conveyorForce: 0.4
 --- !u!1 &7181335919453685990
 GameObject:
   m_ObjectHideFlags: 0
@@ -12427,7 +12433,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2683940b32bb4ca45820b37f9b3f91d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 7
+  _conveyorForce: 0.4
 --- !u!1 &7181335919626000984
 GameObject:
   m_ObjectHideFlags: 0
@@ -12523,7 +12530,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2683940b32bb4ca45820b37f9b3f91d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 7
+  _conveyorForce: 0.4
 --- !u!1 &7181335919761206853
 GameObject:
   m_ObjectHideFlags: 0
@@ -12587,7 +12595,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2683940b32bb4ca45820b37f9b3f91d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 7
+  _conveyorForce: 0.4
 --- !u!1 &7181335919767381821
 GameObject:
   m_ObjectHideFlags: 0
@@ -14121,7 +14130,7 @@ GameObject:
   - component: {fileID: 8027757775267085592}
   m_Layer: 3
   m_Name: StartRamp_ExteriorWalls
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647

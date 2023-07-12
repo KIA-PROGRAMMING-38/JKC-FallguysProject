@@ -59,6 +59,18 @@ public class PlayerPhysicsController : MonoBehaviourPun
         _moveDir = _forwardAngleVec * _playerInputController.InputVec.z + _rightAngleVec * _playerInputController.InputVec.x;
     }
 
+    private Vector3 _conveyorDirection;
+
+    public void AddForcePlayerMove(Vector3 direction)
+    {
+        _conveyorDirection = direction;
+    }
+
+    public void ClearPlayerMove()
+    {
+        _conveyorDirection = Vector3.zero;
+    }
+
     /// <summary>
     /// Movement State에서 호출.
     /// </summary>
@@ -71,8 +83,8 @@ public class PlayerPhysicsController : MonoBehaviourPun
         
         if (_playerInputController.InputVec != _zeroVec && _playerInputController.CannotMove == false)
         {
-            Vector3 testVec = new Vector3(_moveDir.x, _moveDir.y, _moveDir.z);
-            _playerRigidbody.velocity = testVec * _moveSpeed;
+            Vector3 moveVec = new Vector3(_moveDir.x, _moveDir.y, _moveDir.z);
+            _playerRigidbody.velocity = (moveVec + _conveyorDirection) * _moveSpeed;
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(_moveDir), _rotSpeed * Time.deltaTime);
         }
     }
