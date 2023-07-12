@@ -8,8 +8,8 @@ public class StageState_WaitingForPlayers : StageState
     private int _readyClientsCount = 0;
     private const int GameStartDelaySeconds = 2;
     private CancellationTokenSource _cts = new CancellationTokenSource();
-    
-    public override void AddToDictionary()
+
+    protected override void AddToSequenceActionDictionary()
     {
         StageManager.Instance.StageDataManager.SequenceActionDictionary[StageDataManager.StageSequence.WaitingForPlayers] = this;
     }

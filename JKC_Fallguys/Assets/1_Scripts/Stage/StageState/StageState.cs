@@ -4,10 +4,10 @@ public abstract class StageState : MonoBehaviourPun
 {
     protected void Awake()
     {
-        AddToDictionary();
+        AddToSequenceActionDictionary();
     }
 
-    public abstract void AddToDictionary();
+    protected abstract void AddToSequenceActionDictionary();
     
     public abstract void Action();
 }

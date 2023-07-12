@@ -1,6 +1,6 @@
 public class StageState_GameInProgress : StageState
 {
-    public override void AddToDictionary()
+    protected override void AddToSequenceActionDictionary()
     {
         StageManager.Instance.StageDataManager.SequenceActionDictionary[StageDataManager.StageSequence.GameInProgress] = this;
     }

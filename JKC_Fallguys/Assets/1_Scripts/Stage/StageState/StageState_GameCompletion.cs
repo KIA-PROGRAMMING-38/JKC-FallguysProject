@@ -7,7 +7,7 @@ using Util.Helper;
 
 public class StageState_GameCompletion : StageState
 {
-    public override void AddToDictionary()
+    protected override void AddToSequenceActionDictionary()
     {
         StageManager.Instance.StageDataManager.SequenceActionDictionary[StageDataManager.StageSequence.GameCompletion] = this;
     }

@@ -7,7 +7,7 @@ using Photon.Pun;
 
 public class StageState_RoundCompletion : StageState
 {
-    public override void AddToDictionary()
+    protected override void AddToSequenceActionDictionary()
     {
         StageManager.Instance.StageDataManager.SequenceActionDictionary[StageDataManager.StageSequence.RoundCompletion] = this;
     }

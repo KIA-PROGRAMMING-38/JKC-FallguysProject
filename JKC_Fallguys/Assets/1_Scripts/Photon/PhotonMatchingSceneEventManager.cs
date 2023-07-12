@@ -108,6 +108,7 @@ public class PhotonMatchingSceneEventManager : MonoBehaviourPunCallbacks
         
         if (_joinLobbyFlag)
         {
+            Debug.Log("현재 플레이하고 있는 룸이 존재합니다! 게임이 끝날 때까지 기다려주세요.");
             SceneChangeHelper.ChangeLocalScene(SceneIndex.Lobby);
         }
     }

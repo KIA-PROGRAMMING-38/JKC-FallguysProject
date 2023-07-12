@@ -1,5 +1,7 @@
 using LiteralRepository;
+using Photon.Pun;
 using UniRx;
+using UnityEngine;
 
 public class EnterMatchingPresenter : Presenter
 {
@@ -23,7 +25,14 @@ public class EnterMatchingPresenter : Presenter
 
     private void TryEnterMatchingStandby()
     {
-        SceneChangeHelper.ChangeLocalScene(SceneIndex.MatchingStandby);
+        if (PhotonNetwork.InLobby)
+        {
+            SceneChangeHelper.ChangeLocalScene(SceneIndex.MatchingStandby);
+        }
+        else
+        {
+            Debug.Log("Failed to enter matching standby: not currently in lobby");
+        }
     }
 
     protected override void OnUpdatedModel()

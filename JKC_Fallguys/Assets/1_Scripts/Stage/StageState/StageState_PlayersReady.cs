@@ -8,8 +8,8 @@ public class StageState_PlayersReady : StageState
 {
     private const int OperationCountdownDelaySeconds = 3;
     private readonly CancellationTokenSource _cts = new CancellationTokenSource();
-    
-    public override void AddToDictionary()
+
+    protected override void AddToSequenceActionDictionary()
     {
         StageManager.Instance.StageDataManager.SequenceActionDictionary[StageDataManager.StageSequence.PlayersReady] = this;
     }
