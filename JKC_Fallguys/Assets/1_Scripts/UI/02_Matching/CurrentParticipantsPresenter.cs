@@ -39,7 +39,7 @@ public class CurrentParticipantsPresenter : Presenter
     private void UpdateCurrentPlayerCountText()
     {
         int playerCount = PhotonNetwork.CurrentRoom != null ? PhotonNetwork.CurrentRoom.PlayerCount : 0;
-        _currentParticipantsView.CurrentParticipantsCount.text = $"{playerCount}명의 플레이어와 매치 발견!";
+        _currentParticipantsView.CurrentParticipantsCount.text = $"{--playerCount}명의 플레이어와 매치 발견!";
     }
 
     public override void OnRelease()
