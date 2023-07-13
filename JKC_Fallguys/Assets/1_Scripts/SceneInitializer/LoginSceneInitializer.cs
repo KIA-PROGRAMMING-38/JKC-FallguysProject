@@ -7,7 +7,7 @@ public class LoginSceneInitializer : SceneInitializer
 {
     protected override void InitializeData()
     {
-        Screen.SetResolution(1920, 1080, FullScreenMode.Windowed);
+        Screen.SetResolution(1920, 1080, FullScreenMode.FullScreenWindow);
     }
 
     protected override void OnGetResources()
