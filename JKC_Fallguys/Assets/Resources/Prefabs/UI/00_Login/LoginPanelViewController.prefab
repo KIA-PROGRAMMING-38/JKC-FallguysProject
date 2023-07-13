@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3417987836470500321}
   - component: {fileID: 1475874721293308171}
   - component: {fileID: 438254988849948735}
+  - component: {fileID: 7443745634514814819}
   m_Layer: 5
   m_Name: ErrorText
   m_TagString: Untagged
@@ -59,7 +60,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0.9433962, g: 0.9433962, b: 0.9433962, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -67,7 +68,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: b2c70c104ed014454aa69972ab427816, type: 3}
     m_FontSize: 25
     m_FontStyle: 1
     m_BestFit: 0
@@ -81,6 +82,21 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: "\uC544\uC774\uB514\uB294 1\uAE00\uC790 \uC774\uC0C1 10\uAE00\uC790 \uC774\uD558\uC5EC\uC57C
     \uD569\uB2C8\uB2E4\n\n"
+--- !u!114 &7443745634514814819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1521424704550226017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &2501322410976815781
 GameObject:
   m_ObjectHideFlags: 0
@@ -1148,6 +1164,7 @@ GameObject:
   - component: {fileID: 8434728075979367976}
   - component: {fileID: 8436131796714976991}
   - component: {fileID: 3923476180379310676}
+  - component: {fileID: 6745257083831906337}
   m_Layer: 5
   m_Name: ErrorTextSub
   m_TagString: Untagged
@@ -1196,7 +1213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0.9433962, g: 0.9433962, b: 0.9433962, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1204,7 +1221,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: b2c70c104ed014454aa69972ab427816, type: 3}
     m_FontSize: 20
     m_FontStyle: 1
     m_BestFit: 0
@@ -1218,3 +1235,18 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: "\n\uCC3D\uC744 \uB2EB\uC73C\uB824\uBA74 \uB9C8\uC6B0\uC2A4 \uC67C\uCABD
     \uBC84\uD2BC\uC744 \uB204\uB974\uC138\uC694"
+--- !u!114 &6745257083831906337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8227017534004932036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1

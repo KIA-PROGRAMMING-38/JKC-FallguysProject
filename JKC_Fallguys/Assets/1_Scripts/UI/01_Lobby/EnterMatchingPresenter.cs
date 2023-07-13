@@ -1,4 +1,5 @@
 using LiteralRepository;
+using Model;
 using Photon.Pun;
 using UniRx;
 using UnityEngine;
@@ -32,6 +33,7 @@ public class EnterMatchingPresenter : Presenter
         else
         {
             Debug.Log("Failed to enter matching standby: not currently in lobby");
+            LobbySceneModel.SetPhotonLobbyWarmingPanelState(true);
         }
     }
 

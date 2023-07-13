@@ -29,7 +29,10 @@ namespace Model
         public static IReactiveProperty<string> CostumeColorName => _costumeColorName;
         
         private static ReactiveProperty<int> _playerTextureIndex = new ReactiveProperty<int>();
-        public static IReactiveProperty<int> PlayerTextureIndex = _playerTextureIndex;
+        public static readonly IReactiveProperty<int> PlayerTextureIndex = _playerTextureIndex;
+
+        private static ReactiveProperty<bool> _isConnectedToPhotonLobby = new ReactiveProperty<bool>(false );
+        public static IReactiveProperty<bool> IsConnectedToPhotonLobby => _isConnectedToPhotonLobby;
 
         public static void IncreaseImageIndex()
         {
@@ -59,6 +62,11 @@ namespace Model
         public static void SetPlayerTexture(int index)
         {
             _playerTextureIndex.Value = index;
+        }
+        
+        public static void SetPhotonLobbyWarmingPanelState(bool status)
+        {
+            _isConnectedToPhotonLobby.Value = status;
         }
     }
 }
