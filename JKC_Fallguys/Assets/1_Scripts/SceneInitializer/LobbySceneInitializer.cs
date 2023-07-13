@@ -34,6 +34,8 @@ public class LobbySceneInitializer : SceneInitializer
             (Path.Combine(PathLiteral.UI, PathLiteral.Lobby, "EnterConfigViewController"));
         ResourceManager.Instantiate
             (Path.Combine(PathLiteral.UI, PathLiteral.Lobby, "EnterMatchingViewController"));
+        ResourceManager.Instantiate
+            (Path.Combine(PathLiteral.UI, PathLiteral.Lobby, "LobbyConnectionWarningPanelViewController"));
         
         ResourceManager.Instantiate
             (Path.Combine(PathLiteral.UI, PathLiteral.Lobby, "HowToPlayViewController"));
