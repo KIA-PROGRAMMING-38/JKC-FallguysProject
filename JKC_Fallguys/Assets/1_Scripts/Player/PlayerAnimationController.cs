@@ -147,6 +147,7 @@ public class PlayerAnimationController : MonoBehaviourPun
 
         if ( other.gameObject.CompareTag( TagLiteral.Boundary ) )
         {
+            Debug.Log("바운더리에 닿았는가?");
             _animator.SetBool( AnimLiteral.IsFall, true );
         }
 

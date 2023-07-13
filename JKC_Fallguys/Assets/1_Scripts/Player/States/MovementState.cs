@@ -10,6 +10,8 @@ public class MovementState : StateMachineBehaviour
     {
         _playerInputController = animator.GetComponentInParent<PlayerInputController>();
         _playerPhysicsController = animator.GetComponent<PlayerPhysicsController>();
+
+        _playerPhysicsController.RestoreDiveHeightForce();
     }
     
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
