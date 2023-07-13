@@ -41,7 +41,19 @@ public class ConfigsPresenter : Presenter
     private void SetResolution(int resolutionIndex)
     {
         (string resolution, int width, int height) resolutionSettings = _resolutions[resolutionIndex];
-        Screen.SetResolution(resolutionSettings.width, resolutionSettings.height, FullScreenMode.FullScreenWindow);
+
+        switch ( resolutionIndex )
+        {
+            case 0:
+                Screen.SetResolution(resolutionSettings.width, resolutionSettings.height, FullScreenMode.FullScreenWindow);
+                break;
+
+            case 1:
+            case 2:
+                Screen.SetResolution(resolutionSettings.width, resolutionSettings.height, FullScreenMode.Windowed);
+                break;
+        }
+
         _configsView.ResolutionSettings.text = resolutionSettings.resolution;
     }
 

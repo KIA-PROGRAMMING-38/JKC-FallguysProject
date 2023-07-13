@@ -7823,7 +7823,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6875068432177367804}
   - component: {fileID: 6875068432177367805}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Boundary
   m_TagString: Boundary
   m_Icon: {fileID: 0}
