@@ -50,7 +50,7 @@ public class StageSceneInitializer : SceneInitializer
     {
         AudioManager.Instance.Clear();
         
-        if (!StageManager.Instance.StageDataManager.IsFinalRound())
+        if (!StageManager.Instance.ObjectRepository.IsFinalRound())
         {
             int randomIndex = Random.Range(0, AudioRegistry.RoundMusic.Length);
             AudioManager.Instance.Play(SoundType.MusicLoop, AudioRegistry.RoundMusic[randomIndex], 0.3f);

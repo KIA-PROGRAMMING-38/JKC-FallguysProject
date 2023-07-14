@@ -4,7 +4,7 @@ namespace Util.Helper
     {
         public static void Calculate()
         {
-            if (StageManager.Instance.StageDataManager.MapDatas[StageManager.Instance.StageDataManager.MapPickupIndex.Value].Info.Type !=
+            if (StageManager.Instance.ObjectRepository.MapDatas[StageManager.Instance.ObjectRepository.MapPickupIndex.Value].Info.Type !=
                 MapData.MapType.Survivor)
             {
                 RankingSettlement();

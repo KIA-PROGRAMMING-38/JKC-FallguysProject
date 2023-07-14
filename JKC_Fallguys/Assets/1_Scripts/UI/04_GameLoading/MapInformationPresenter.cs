@@ -30,7 +30,7 @@ public class MapInformationPresenter : Presenter
     {
         GameObjectHelper.SetActiveGameObject(_mapInformationView.gameObject, true);
         
-        MapData mapData = StageManager.Instance.StageDataManager.MapDatas[StageManager.Instance.StageDataManager.MapPickupIndex.Value];
+        MapData mapData = StageManager.Instance.ObjectRepository.MapDatas[StageManager.Instance.ObjectRepository.MapPickupIndex.Value];
         
         _mapInformationView.MapNameText.text = mapData.Info.MapName;
         _mapInformationView.MapSplashArtImage.sprite =

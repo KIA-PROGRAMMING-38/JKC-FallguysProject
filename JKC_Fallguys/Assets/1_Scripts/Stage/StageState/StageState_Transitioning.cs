@@ -6,7 +6,7 @@ public class StageState_Transitioning : StageState
 {
     protected override void AddToSequenceActionDictionary()
     {
-        StageManager.Instance.StageDataManager.SequenceActionDictionary[StageDataManager.StageSequence.Transitioning] = this;
+        StageManager.Instance.ObjectRepository.SequenceActionDictionary[ObjectRepository.StageSequence.Transitioning] = this;
     }
 
     public override void Action()
@@ -16,11 +16,11 @@ public class StageState_Transitioning : StageState
         if (!PhotonNetwork.IsMasterClient)
             return;
 
-        if (StageManager.Instance.StageDataManager.IsFinalRound())
+        if (StageManager.Instance.ObjectRepository.IsFinalRound())
         {
             SceneChangeHelper.ChangeNetworkLevel(SceneIndex.GameResult);
         }
-        else if (!StageManager.Instance.StageDataManager.IsFinalRound())
+        else if (!StageManager.Instance.ObjectRepository.IsFinalRound())
         {
             SceneChangeHelper.ChangeNetworkLevel(SceneIndex.RoundResult);
         }
@@ -28,7 +28,7 @@ public class StageState_Transitioning : StageState
     
     private void StageClear()
     {
-        GameObjectHelper.DestroyAllChildren(StageManager.Instance.PlayerRepository.gameObject);
-        GameObjectHelper.DestroyAllChildren(StageManager.Instance.ObjectRepository.gameObject);
+        StageManager.Instance.PlayerRepository.Clear();
+        StageManager.Instance.ObjectRepository.Clear();
     }
 }

@@ -12,7 +12,7 @@ public class StageState_WaitingForPlayers : StageState
 
     protected override void AddToSequenceActionDictionary()
     {
-        StageManager.Instance.StageDataManager.SequenceActionDictionary[StageDataManager.StageSequence.WaitingForPlayers] = this;
+        StageManager.Instance.ObjectRepository.SequenceActionDictionary[ObjectRepository.StageSequence.WaitingForPlayers] = this;
     }
 
     public override void Action()
@@ -55,6 +55,6 @@ public class StageState_WaitingForPlayers : StageState
     
     private void SetGameStart()
     {
-        StageManager.Instance.StageDataManager.SetSequence(StageDataManager.StageSequence.PlayersReady);
+        StageManager.Instance.ObjectRepository.SetSequence(ObjectRepository.StageSequence.PlayersReady);
     }
 }

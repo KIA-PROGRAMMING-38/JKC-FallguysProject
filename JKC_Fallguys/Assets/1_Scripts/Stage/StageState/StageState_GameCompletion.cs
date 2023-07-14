@@ -9,7 +9,7 @@ public class StageState_GameCompletion : StageState
 {
     protected override void AddToSequenceActionDictionary()
     {
-        StageManager.Instance.StageDataManager.SequenceActionDictionary[StageDataManager.StageSequence.GameCompletion] = this;
+        StageManager.Instance.ObjectRepository.SequenceActionDictionary[ObjectRepository.StageSequence.GameCompletion] = this;
     }
 
     public override void Action()
@@ -49,6 +49,6 @@ public class StageState_GameCompletion : StageState
     [PunRPC]
     public void RpcSetRoundState()
     {
-        StageManager.Instance.StageDataManager.SetSequence(StageDataManager.StageSequence.RoundCompletion);
+        StageManager.Instance.ObjectRepository.SetSequence(ObjectRepository.StageSequence.RoundCompletion);
     }
 }

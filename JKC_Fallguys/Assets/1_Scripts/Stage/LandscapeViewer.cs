@@ -9,10 +9,10 @@ public class LandscapeViewer : MonoBehaviour
     {
         _camera = GetComponent<Camera>();
 
-        transform.position = StageManager.Instance.StageDataManager
-            .MapDatas[StageManager.Instance.StageDataManager.MapPickupIndex.Value].Data.LandscapeViewPosition;
-        transform.rotation = Quaternion.Euler(StageManager.Instance.StageDataManager
-            .MapDatas[StageManager.Instance.StageDataManager.MapPickupIndex.Value].Data.LandscapeViewRotation);
+        transform.position = StageManager.Instance.ObjectRepository
+            .MapDatas[StageManager.Instance.ObjectRepository.MapPickupIndex.Value].Data.LandscapeViewPosition;
+        transform.rotation = Quaternion.Euler(StageManager.Instance.ObjectRepository
+            .MapDatas[StageManager.Instance.ObjectRepository.MapPickupIndex.Value].Data.LandscapeViewRotation);
     }
 
     private void Start()
@@ -22,9 +22,9 @@ public class LandscapeViewer : MonoBehaviour
 
     private void InitializeRx()
     {
-        StageManager.Instance.StageDataManager.CurrentSequence
+        StageManager.Instance.ObjectRepository.CurrentSequence
             .DistinctUntilChanged()
-            .Subscribe(sequence => _camera.gameObject.SetActive(!(sequence == StageDataManager.StageSequence.GameInProgress || sequence == StageDataManager.StageSequence.PlayersReady)))
+            .Subscribe(sequence => _camera.gameObject.SetActive(!(sequence == ObjectRepository.StageSequence.GameInProgress || sequence == ObjectRepository.StageSequence.PlayersReady)))
             .AddTo(this);
     }
 }

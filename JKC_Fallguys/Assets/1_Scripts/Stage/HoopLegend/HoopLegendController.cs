@@ -23,8 +23,8 @@ public class HoopLegendController : StageController
 
     protected override void InitializeRx()
     {
-        StageManager.Instance.StageDataManager.CurrentSequence
-            .Where(sequence => sequence == StageDataManager.StageSequence.GameInProgress)
+        StageManager.Instance.ObjectRepository.CurrentSequence
+            .Where(sequence => sequence == ObjectRepository.StageSequence.GameInProgress)
             .Subscribe(_ => GameStartBroadCast())
             .AddTo(this);
 
@@ -72,7 +72,7 @@ public class HoopLegendController : StageController
     [PunRPC]
     public void RpcEndGame()
     {
-        StageManager.Instance.StageDataManager.SetSequence(StageDataManager.StageSequence.GameCompletion);
+        StageManager.Instance.ObjectRepository.SetSequence(ObjectRepository.StageSequence.GameCompletion);
         
         int actorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
         StageManager.Instance.PlayerContainer.SetPlayerState(actorNumber, PlayerContainer.PlayerState.GameTerminated);

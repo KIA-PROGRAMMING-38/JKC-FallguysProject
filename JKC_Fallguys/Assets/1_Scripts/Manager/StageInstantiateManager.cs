@@ -13,7 +13,7 @@ public class StageInstantiateManager : MonoBehaviourPun
 
     private void InitializeMap()
     {
-        MapData mapData = StageManager.Instance.StageDataManager.MapDatas[StageManager.Instance.StageDataManager.MapPickupIndex.Value];
+        MapData mapData = StageManager.Instance.ObjectRepository.MapDatas[StageManager.Instance.ObjectRepository.MapPickupIndex.Value];
 
         if (PhotonNetwork.IsMasterClient)
         {

@@ -33,9 +33,9 @@ public class StageStateManager : MonoBehaviourPun
     {
         photonView.RPC("RpcSetParentStageRepository", RpcTarget.AllBuffered);
         
-        StageManager.Instance.StageDataManager.CurrentSequence
+        StageManager.Instance.ObjectRepository.CurrentSequence
             .DistinctUntilChanged()
-            .Subscribe(sequence => StageManager.Instance.StageDataManager.SequenceActionDictionary[sequence].Action())
+            .Subscribe(sequence => StageManager.Instance.ObjectRepository.SequenceActionDictionary[sequence].Action())
             .AddTo(this);
     }
     

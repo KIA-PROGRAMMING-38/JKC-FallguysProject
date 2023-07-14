@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 using UniRx;
 using UnityEngine;
+using Util.Helper;
 
-public class StageDataManager
+public class ObjectRepository : MonoBehaviour
 {
     public static readonly int MaxPlayableMaps = 3;
 
@@ -19,7 +20,6 @@ public class StageDataManager
     private ReactiveProperty<StageSequence> _currentSequence = new ReactiveProperty<StageSequence>();
     public IReactiveProperty<StageSequence> CurrentSequence => _currentSequence;
     
-    
     public Dictionary<StageSequence, StageState> SequenceActionDictionary = new Dictionary<StageSequence, StageState>();
 
     public void SetSequence(StageSequence sequence)
@@ -28,7 +28,7 @@ public class StageDataManager
     }
 
     // 맵에서 쓰일 데이타가 저장되는 딕셔너리입니다. 
-    public Dictionary<int, MapData> MapDatas = new Dictionary<int, MapData>();
+    public readonly Dictionary<int, MapData> MapDatas = new Dictionary<int, MapData>();
 
     // 선택할 맵 데이터를 판별하는 객체입니다.
     public bool[] MapPickupFlags = new bool[MaxPlayableMaps];
@@ -57,6 +57,7 @@ public class StageDataManager
     
     public void Clear()
     {
+        GameObjectHelper.DestroyAllChildren(gameObject);
         SetSequence(StageSequence.WaitingForPlayers);
     }
 }
