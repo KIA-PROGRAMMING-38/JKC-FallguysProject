@@ -52,11 +52,7 @@ public class PhotonMatchingSceneRoomManager : MonoBehaviourPun
                 new PlayerData(player.Value.NickName, playerTextureIndex, 0);
         }
         
-        string path = Path.Combine(PathLiteral.Prefabs, PathLiteral.Object, PathLiteral.Stage, "PhotonTimeHelper");
-        PhotonTimeHelper photonTimeHelper = 
-            PhotonNetwork.Instantiate(path, transform.position, transform.rotation).GetComponent<PhotonTimeHelper>();
-        
-        photonTimeHelper.Initialize();
+        StageManager.Instance.Initialize();
     }
 
     [PunRPC]

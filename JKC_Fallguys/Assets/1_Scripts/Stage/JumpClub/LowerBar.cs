@@ -4,6 +4,7 @@ using LiteralRepository;
 using Photon.Pun;
 using UniRx;
 using UnityEngine;
+using Util.Helper;
 
 public class LowerBar : MonoBehaviourPun
 {
@@ -43,14 +44,14 @@ public class LowerBar : MonoBehaviourPun
 
     private void TriggerStart()
     {
-        double futureNetworkTime = StageManager.Instance.PhotonTimeHelper.GetFutureNetworkTime(3);
+        double futureNetworkTime = PhotonTimeHelper.GetFutureNetworkTime(3);
         photonView.RPC("RpcInitiateRotation", RpcTarget.AllBuffered, futureNetworkTime);
     }
 
     [PunRPC]
     public void RpcInitiateRotation(double startNetworkTime)
     {
-        StageManager.Instance.PhotonTimeHelper.ScheduleDelayedAction(startNetworkTime, () => SetRotaition(), _cancellationTokenSource.Token);
+        PhotonTimeHelper.ScheduleDelayedAction(startNetworkTime, () => SetRotaition(), _cancellationTokenSource.Token);
     }
 
     private void SetRotaition()
