@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Photon.Pun;
 using UniRx;
 
 public class PlayerContainer
@@ -64,5 +65,13 @@ public class PlayerContainer
     public void SetPlayerActive(int actorNumber, bool status)
     {
         IsPlayerActive(actorNumber).Value = status;
+    }
+
+    public void Clear()
+    {
+        SetPlayerActive(PhotonNetwork.LocalPlayer.ActorNumber, true);
+
+        int actorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
+        SetPlayerState(actorNumber, PlayerContainer.PlayerState.Default);
     }
 }

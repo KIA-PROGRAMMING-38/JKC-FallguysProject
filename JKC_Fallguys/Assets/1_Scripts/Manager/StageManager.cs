@@ -1,4 +1,3 @@
-using Photon.Pun;
 using UnityEngine;
 
 public class StageManager : SingletonMonoBehaviour<StageManager>
@@ -8,27 +7,16 @@ public class StageManager : SingletonMonoBehaviour<StageManager>
 
     public StageDataManager StageDataManager = new StageDataManager();
     public PlayerContainer PlayerContainer = new PlayerContainer();
-    public PhotonTimeHelper PhotonTimeHelper;
 
-    protected override void Awake()
+    public void Initialize()
     {
-        base.Awake();
-
         MakeRepository();
-    }
-
-    private void Start()
-    {
-        PhotonTimeHelper = FindObjectOfType<PhotonTimeHelper>();
     }
 
     public void Clear()
     {
         StageDataManager.Clear();
-        PlayerContainer.SetPlayerActive(PhotonNetwork.LocalPlayer.ActorNumber, true);
-
-        int actorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
-        PlayerContainer.SetPlayerState(actorNumber, PlayerContainer.PlayerState.Default);
+        PlayerContainer.Clear();
     }
 
     public string[] objectName = { "PlayerRepository", "ObjectRepository" };

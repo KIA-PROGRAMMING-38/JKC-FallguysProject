@@ -3,6 +3,7 @@ using System.Threading;
 using Model;
 using Photon.Pun;
 using UniRx;
+using Util.Helper;
 
 public class StageState_PlayersReady : StageState
 {
@@ -19,7 +20,7 @@ public class StageState_PlayersReady : StageState
         if (!PhotonNetwork.IsMasterClient)
             return;
         
-        ScheduleOperationCountdown(StageManager.Instance.PhotonTimeHelper.GetFutureNetworkTime(OperationCountdownDelaySeconds));
+        ScheduleOperationCountdown(PhotonTimeHelper.GetFutureNetworkTime(OperationCountdownDelaySeconds));
     }
     
     private void ScheduleOperationCountdown(double startTime)
@@ -30,7 +31,7 @@ public class StageState_PlayersReady : StageState
     [PunRPC]
     public void RpcStartTriggerOperationCountDown(double startPhotonNetworkTime)
     {
-        StageManager.Instance.PhotonTimeHelper.ScheduleDelayedAction(startPhotonNetworkTime, StartOperationCountdown, _cts.Token);
+        PhotonTimeHelper.ScheduleDelayedAction(startPhotonNetworkTime, StartOperationCountdown, _cts.Token);
     }
 
     private void StartOperationCountdown()

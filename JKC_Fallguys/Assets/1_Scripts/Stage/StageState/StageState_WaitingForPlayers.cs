@@ -2,6 +2,7 @@ using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using Photon.Pun;
+using Util.Helper;
 
 public class StageState_WaitingForPlayers : StageState
 {
@@ -18,7 +19,6 @@ public class StageState_WaitingForPlayers : StageState
     {
         if (PhotonNetwork.IsMasterClient)
         {
-            StageManager.Instance.PhotonTimeHelper.SyncServerTime(_cts.Token).Forget();
             WaitForAllClientsLoaded().Forget();
         }
         
@@ -38,7 +38,7 @@ public class StageState_WaitingForPlayers : StageState
             await UniTask.Delay(TimeSpan.FromMilliseconds(PhotonTimeHelper.SyncIntervalMs));
         }
 
-        ScheduledGameStart(StageManager.Instance.PhotonTimeHelper.GetFutureNetworkTime(GameStartDelaySeconds));
+        ScheduledGameStart(PhotonTimeHelper.GetFutureNetworkTime(GameStartDelaySeconds));
     }
 
     private void ScheduledGameStart(double startTime)
@@ -50,7 +50,7 @@ public class StageState_WaitingForPlayers : StageState
     [PunRPC]
     public void RpcSetGameStart(double startPhotonNetworkTime)
     {
-        StageManager.Instance.PhotonTimeHelper.ScheduleDelayedAction(startPhotonNetworkTime, SetGameStart, _cts.Token);
+        PhotonTimeHelper.ScheduleDelayedAction(startPhotonNetworkTime, SetGameStart, _cts.Token);
     }
     
     private void SetGameStart()
