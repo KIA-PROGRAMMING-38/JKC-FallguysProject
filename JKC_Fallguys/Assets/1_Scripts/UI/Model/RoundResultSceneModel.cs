@@ -21,12 +21,12 @@ namespace Model
         {
             int count = 0;
             
-            foreach (int index in StageManager.Instance.PlayerContainer.CachedPlayerIndicesForResults)
+            foreach (int index in StageManager.Instance.PlayerRepository.CachedPlayerIndicesForResults)
             {
                 if (count > 3)
                     break;
                 
-                if (StageManager.Instance.PlayerContainer.PlayerDataByIndex.TryGetValue(index, out PlayerData playerData))
+                if (StageManager.Instance.PlayerRepository.PlayerDataByIndex.TryGetValue(index, out PlayerData playerData))
                 {
                     _fallguyRankings.Add(playerData);
                 }

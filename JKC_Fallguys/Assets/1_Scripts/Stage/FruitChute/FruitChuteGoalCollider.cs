@@ -13,8 +13,8 @@ public class FruitChuteGoalCollider : MonoBehaviourPun
             {
                 int actorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
 
-                StageManager.Instance.PlayerContainer.SetPlayerState(actorNumber, PlayerContainer.PlayerState.Victory);
-                StageManager.Instance.PlayerContainer.SetPlayerActive(actorNumber, false);
+                StageManager.Instance.PlayerRepository.SetPlayerState(actorNumber, PlayerRepository.PlayerState.Victory);
+                StageManager.Instance.PlayerRepository.SetPlayerActive(actorNumber, false);
                 
                 playerPhotonView.RPC("RpcSetDeActivePlayerObject", RpcTarget.AllBuffered);
         
@@ -33,7 +33,7 @@ public class FruitChuteGoalCollider : MonoBehaviourPun
     [PunRPC]
     public void RpcUpdatePlayerRanking(int playerIndex)
     {
-        PlayerContainer playerContainer = StageManager.Instance.PlayerContainer;
+        PlayerRepository playerContainer = StageManager.Instance.PlayerRepository;
 
         playerContainer.AddPlayerToRanking(playerIndex);
 

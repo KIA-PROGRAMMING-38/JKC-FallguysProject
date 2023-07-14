@@ -35,14 +35,14 @@ public class StageState_GameCompletion : StageState
     private void UpdatePlayerRanking()
     {
         List<KeyValuePair<int, PlayerData>> sortedPlayers =
-            StageManager.Instance.PlayerContainer.PlayerDataByIndex.OrderByDescending(pair => pair.Value.Score)
+            StageManager.Instance.PlayerRepository.PlayerDataByIndex.OrderByDescending(pair => pair.Value.Score)
                 .ToList();
 
-        StageManager.Instance.PlayerContainer.CachedPlayerIndicesForResults.Clear();
+        StageManager.Instance.PlayerRepository.CachedPlayerIndicesForResults.Clear();
 
         foreach (KeyValuePair<int, PlayerData> pair in sortedPlayers)
         {
-            StageManager.Instance.PlayerContainer.CachedPlayerIndicesForResults.Add(pair.Key);
+            StageManager.Instance.PlayerRepository.CachedPlayerIndicesForResults.Add(pair.Key);
         }
     }
 

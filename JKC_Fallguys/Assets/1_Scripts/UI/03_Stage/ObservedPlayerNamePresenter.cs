@@ -34,7 +34,7 @@ public class ObservedPlayerNamePresenter : Presenter
             })
             .AddTo(_compositeDisposable);
         
-        StageManager.Instance.PlayerContainer.GetCurrentState(actorNumber)
+        StageManager.Instance.PlayerRepository.GetCurrentState(actorNumber)
             .Skip(1)
             .DistinctUntilChanged()
             .Subscribe(_ => 
