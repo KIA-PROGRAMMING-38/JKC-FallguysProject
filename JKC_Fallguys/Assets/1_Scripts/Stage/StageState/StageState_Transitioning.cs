@@ -1,5 +1,6 @@
 using LiteralRepository;
 using Photon.Pun;
+using Util.Helper;
 
 public class StageState_Transitioning : StageState
 {
@@ -29,8 +30,5 @@ public class StageState_Transitioning : StageState
     {
         GameObjectHelper.DestroyAllChildren(StageManager.Instance.PlayerRepository.gameObject);
         GameObjectHelper.DestroyAllChildren(StageManager.Instance.ObjectRepository.gameObject);
-        
-        StageManager.Instance.PlayerContainer.StagePlayerRankings.Clear();
-        StageManager.Instance.PlayerContainer.FailedClearStagePlayers.Clear();
     }
 }
