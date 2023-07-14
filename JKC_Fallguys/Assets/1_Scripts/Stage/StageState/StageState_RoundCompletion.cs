@@ -32,19 +32,19 @@ public class StageState_RoundCompletion : StageState
     private void BroadCastData()
     {
         string playerScoresByIndexJson =
-            JsonConvert.SerializeObject(StageManager.Instance.PlayerContainer.PlayerDataByIndex);
+            JsonConvert.SerializeObject(StageManager.Instance.PlayerRepository.PlayerDataByIndex);
 
         photonView.RPC("RpcUpdateStageDataOnAllClients", RpcTarget.AllBuffered,
             playerScoresByIndexJson,
-            StageManager.Instance.PlayerContainer.CachedPlayerIndicesForResults.ToArray());
+            StageManager.Instance.PlayerRepository.CachedPlayerIndicesForResults.ToArray());
     }
 
     [PunRPC]
     public void RpcUpdateStageDataOnAllClients(string playerScoresByIndexJson, int[] playerRanking)
     {
-        StageManager.Instance.PlayerContainer.PlayerDataByIndex =
+        StageManager.Instance.PlayerRepository.PlayerDataByIndex =
             JsonConvert.DeserializeObject<Dictionary<int, PlayerData>>(playerScoresByIndexJson);
-        StageManager.Instance.PlayerContainer.CachedPlayerIndicesForResults = playerRanking.ToList();
+        StageManager.Instance.PlayerRepository.CachedPlayerIndicesForResults = playerRanking.ToList();
     }
     
     [PunRPC]

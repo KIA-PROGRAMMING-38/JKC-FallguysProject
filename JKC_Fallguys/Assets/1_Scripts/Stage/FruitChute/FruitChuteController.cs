@@ -85,22 +85,22 @@ public class FruitChuteController : StageController
 
         int actorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
 
-        if (StageManager.Instance.PlayerContainer.GetCurrentState(actorNumber).Value != PlayerContainer.PlayerState.Victory)
+        if (StageManager.Instance.PlayerRepository.GetCurrentState(actorNumber).Value != PlayerRepository.PlayerState.Victory)
         {
-            StageManager.Instance.PlayerContainer.SetPlayerState(actorNumber, PlayerContainer.PlayerState.Defeat);
+            StageManager.Instance.PlayerRepository.SetPlayerState(actorNumber, PlayerRepository.PlayerState.Defeat);
             photonView.RPC
                 ("RpcAddFailedPlayer", RpcTarget.MasterClient, PhotonNetwork.LocalPlayer.ActorNumber);
         }
-        else if (StageManager.Instance.PlayerContainer.GetCurrentState(actorNumber).Value == PlayerContainer.PlayerState.Victory)
+        else if (StageManager.Instance.PlayerRepository.GetCurrentState(actorNumber).Value == PlayerRepository.PlayerState.Victory)
         {
-            StageManager.Instance.PlayerContainer.SetPlayerState(actorNumber, PlayerContainer.PlayerState.GameTerminated);
+            StageManager.Instance.PlayerRepository.SetPlayerState(actorNumber, PlayerRepository.PlayerState.GameTerminated);
         }
     }
 
     [PunRPC]
     public void RpcAddFailedPlayer(int actorNumber)
     {
-        StageManager.Instance.PlayerContainer.AddFailedPlayer(actorNumber);
+        StageManager.Instance.PlayerRepository.AddFailedPlayer(actorNumber);
     }
     
     private void OnDestroy()

@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.IO;
 using Cysharp.Threading.Tasks;
 using Photon.Pun;
 using Photon.Realtime;
@@ -50,10 +49,9 @@ public class PhotonMatchingSceneRoomManager : MonoBehaviourPun
         {
             int actorNumber = player.Value.ActorNumber;
             int playerTextureIndex = (int)player.Value.CustomProperties["PlayerTextureIndex"];
-            StageManager.Instance.PlayerContainer.PlayerDataByIndex[actorNumber] =
+            StageManager.Instance.PlayerRepository.PlayerDataByIndex[actorNumber] =
                 new PlayerData(player.Value.NickName, playerTextureIndex, 0);
         }
-        
     }
 
     [PunRPC]

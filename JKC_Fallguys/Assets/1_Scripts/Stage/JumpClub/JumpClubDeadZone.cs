@@ -15,8 +15,8 @@ public class JumpClubDeadZone : MonoBehaviourPun
                 playerPhotonView.transform.parent.gameObject.SetActive(false);
                 
                 int actorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
-                StageManager.Instance.PlayerContainer.SetPlayerActive(actorNumber, false);
-                StageManager.Instance.PlayerContainer.SetPlayerState(actorNumber, PlayerContainer.PlayerState.Defeat);
+                StageManager.Instance.PlayerRepository.SetPlayerActive(actorNumber, false);
+                StageManager.Instance.PlayerRepository.SetPlayerState(actorNumber, PlayerRepository.PlayerState.Defeat);
                 
                 playerPhotonView.RPC("RpcSetDeActivePlayerObject", RpcTarget.AllBuffered);
 
@@ -28,7 +28,7 @@ public class JumpClubDeadZone : MonoBehaviourPun
     [PunRPC]
     public void RpcAddPlayerToFailedList(int actorNumber)
     {
-        PlayerContainer playerContainer = StageManager.Instance.PlayerContainer;
+        PlayerRepository playerContainer = StageManager.Instance.PlayerRepository;
     
         playerContainer.AddFailedPlayer(actorNumber);
 
@@ -47,9 +47,9 @@ public class JumpClubDeadZone : MonoBehaviourPun
         
         int actorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
 
-        if (!StageManager.Instance.PlayerContainer.IsPlayerActive(actorNumber).Value)
+        if (!StageManager.Instance.PlayerRepository.IsPlayerActive(actorNumber).Value)
         {
-            StageManager.Instance.PlayerContainer.SetPlayerState(actorNumber, PlayerContainer.PlayerState.GameTerminated);
+            StageManager.Instance.PlayerRepository.SetPlayerState(actorNumber, PlayerRepository.PlayerState.GameTerminated);
         }
     }
 }

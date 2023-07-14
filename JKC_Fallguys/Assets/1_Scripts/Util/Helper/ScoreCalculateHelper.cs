@@ -19,21 +19,21 @@ namespace Util.Helper
 
         private static void UpdatePlayerScore(int playerIndex, int scoreToAdd)
         {
-            if (StageManager.Instance.PlayerContainer.PlayerDataByIndex.ContainsKey(playerIndex))
+            if (StageManager.Instance.PlayerRepository.PlayerDataByIndex.ContainsKey(playerIndex))
             {
-                PlayerData playerData = StageManager.Instance.PlayerContainer.PlayerDataByIndex[playerIndex];
+                PlayerData playerData = StageManager.Instance.PlayerRepository.PlayerDataByIndex[playerIndex];
                 int previousScore = playerData.Score;
                 int updatedScore = previousScore + scoreToAdd;
                 playerData.Score = updatedScore;
-                StageManager.Instance.PlayerContainer.PlayerDataByIndex[playerIndex] = playerData;
+                StageManager.Instance.PlayerRepository.PlayerDataByIndex[playerIndex] = playerData;
             }
         }
 
         private static void GiveScore()
         {
-            for (int i = 0; i < StageManager.Instance.PlayerContainer.StagePlayerRankings.Count; i++)
+            for (int i = 0; i < StageManager.Instance.PlayerRepository.StagePlayerRankings.Count; i++)
             {
-                int playerIndex = StageManager.Instance.PlayerContainer.StagePlayerRankings[i];
+                int playerIndex = StageManager.Instance.PlayerRepository.StagePlayerRankings[i];
                 UpdatePlayerScore(playerIndex, 2500);
             }
         }
@@ -44,9 +44,9 @@ namespace Util.Helper
 
             for (int i = 0; i < rankRewards.Length; i++)
             {
-                if (i < StageManager.Instance.PlayerContainer.StagePlayerRankings.Count)
+                if (i < StageManager.Instance.PlayerRepository.StagePlayerRankings.Count)
                 {
-                    int playerIndex = StageManager.Instance.PlayerContainer.StagePlayerRankings[i];
+                    int playerIndex = StageManager.Instance.PlayerRepository.StagePlayerRankings[i];
                     UpdatePlayerScore(playerIndex, rankRewards[i]);
                 }
             }
@@ -54,7 +54,7 @@ namespace Util.Helper
 
         private static void CalculateLosersScore()
         {
-            foreach (int playerIndex in StageManager.Instance.PlayerContainer.FailedClearStagePlayers)
+            foreach (int playerIndex in StageManager.Instance.PlayerRepository.FailedClearStagePlayers)
             {
                 UpdatePlayerScore(playerIndex, 100);
             }

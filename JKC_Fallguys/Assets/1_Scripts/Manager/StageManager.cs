@@ -5,8 +5,6 @@ public class StageManager : SingletonMonoBehaviour<StageManager>
     public PlayerRepository PlayerRepository { get; private set; }
     public ObjectRepository ObjectRepository { get; private set; }
 
-    public PlayerContainer PlayerContainer = new PlayerContainer();
-
     public void Initialize()
     {
         PlayerRepository = GameObjectHelper.CreateRepository<PlayerRepository>("PlayerRepository", gameObject.transform);
@@ -16,7 +14,7 @@ public class StageManager : SingletonMonoBehaviour<StageManager>
     public void Clear()
     {
         ObjectRepository.Clear();
-        PlayerContainer.Clear();
+        PlayerRepository.Clear();
     }
 
     /// StateDataManager는 Singleton으로 구성되어 있습니다.
@@ -26,11 +24,5 @@ public class StageManager : SingletonMonoBehaviour<StageManager>
     public void DestorySelf()
     {
         Destroy(gameObject);
-    }
-
-    private void OnDestroy()
-    {
-        PlayerContainer = default;
-        ObjectRepository = default;
     }
 }
