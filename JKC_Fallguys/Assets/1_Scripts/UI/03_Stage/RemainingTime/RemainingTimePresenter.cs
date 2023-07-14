@@ -26,8 +26,8 @@ public class RemainingTimePresenter : Presenter
             .Subscribe(_ => SetReaminingTimeText())
             .AddTo(_compositeDisposable);
         
-        StageManager.Instance.StageDataManager.CurrentSequence
-            .Subscribe(sequence => GameObjectHelper.SetActiveGameObject(_remainingTimeView.gameObject, sequence == StageDataManager.StageSequence.GameInProgress))
+        StageManager.Instance.ObjectRepository.CurrentSequence
+            .Subscribe(sequence => GameObjectHelper.SetActiveGameObject(_remainingTimeView.gameObject, sequence == ObjectRepository.StageSequence.GameInProgress))
             .AddTo(_compositeDisposable);
     }
 

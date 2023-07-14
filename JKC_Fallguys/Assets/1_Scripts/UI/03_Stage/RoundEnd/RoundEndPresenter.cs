@@ -20,8 +20,8 @@ public class RoundEndPresenter : Presenter
     private Vector2 _center = new Vector2(0.5f, 0.5f);
     protected override void OnUpdatedModel()
     {
-        StageManager.Instance.StageDataManager.CurrentSequence
-            .Where(sequence => sequence == StageDataManager.StageSequence.RoundCompletion)
+        StageManager.Instance.ObjectRepository.CurrentSequence
+            .Where(sequence => sequence == ObjectRepository.StageSequence.RoundCompletion)
             .Subscribe(_ => UIAction())
             .AddTo(_compositeDisposable);
     }

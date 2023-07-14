@@ -4,7 +4,6 @@ using Cysharp.Threading.Tasks;
 using Model;
 using Photon.Pun;
 using UniRx;
-using UnityEngine;
 
 public class JumpClubController : StageController
 {
@@ -24,8 +23,8 @@ public class JumpClubController : StageController
 
     protected override void InitializeRx()
     {
-        StageManager.Instance.StageDataManager.CurrentSequence
-            .Where(sequence => sequence == StageDataManager.StageSequence.GameInProgress)
+        StageManager.Instance.ObjectRepository.CurrentSequence
+            .Where(sequence => sequence == ObjectRepository.StageSequence.GameInProgress)
             .Subscribe(_ => GameStartBroadCast())
             .AddTo(this);
 
@@ -73,7 +72,7 @@ public class JumpClubController : StageController
     [PunRPC]
     public void RpcEndGame()
     {
-        StageManager.Instance.StageDataManager.SetSequence(StageDataManager.StageSequence.GameCompletion);
+        StageManager.Instance.ObjectRepository.SetSequence(ObjectRepository.StageSequence.GameCompletion);
         
         int actorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
 

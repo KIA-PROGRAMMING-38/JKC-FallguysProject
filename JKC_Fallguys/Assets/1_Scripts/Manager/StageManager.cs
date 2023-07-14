@@ -1,29 +1,22 @@
-using UnityEngine;
 using Util.Helper;
 
 public class StageManager : SingletonMonoBehaviour<StageManager>
 {
     public PlayerRepository PlayerRepository { get; private set; }
-    public GameObject ObjectRepository { get; private set; }
+    public ObjectRepository ObjectRepository { get; private set; }
 
-    public StageDataManager StageDataManager = new StageDataManager();
     public PlayerContainer PlayerContainer = new PlayerContainer();
 
     public void Initialize()
     {
-        MakeRepository();
+        PlayerRepository = GameObjectHelper.CreateRepository<PlayerRepository>("PlayerRepository", gameObject.transform);
+        ObjectRepository = GameObjectHelper.CreateRepository<ObjectRepository>("ObjectRepository", gameObject.transform);
     }
 
     public void Clear()
     {
-        StageDataManager.Clear();
+        ObjectRepository.Clear();
         PlayerContainer.Clear();
-    }
-
-    private void MakeRepository()
-    {
-        PlayerRepository = GameObjectHelper.CreateRepository<PlayerRepository>("PlayerRepository", gameObject.transform);
-        ObjectRepository = GameObjectHelper.CreateRepository("ObjectRepository", gameObject.transform);
     }
 
     /// StateDataManager는 Singleton으로 구성되어 있습니다.
@@ -38,6 +31,6 @@ public class StageManager : SingletonMonoBehaviour<StageManager>
     private void OnDestroy()
     {
         PlayerContainer = default;
-        StageDataManager = default;
+        ObjectRepository = default;
     }
 }

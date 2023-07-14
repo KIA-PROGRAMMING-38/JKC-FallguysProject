@@ -9,7 +9,7 @@ public class StageState_RoundCompletion : StageState
 {
     protected override void AddToSequenceActionDictionary()
     {
-        StageManager.Instance.StageDataManager.SequenceActionDictionary[StageDataManager.StageSequence.RoundCompletion] = this;
+        StageManager.Instance.ObjectRepository.SequenceActionDictionary[ObjectRepository.StageSequence.RoundCompletion] = this;
     }
 
     public override void Action()
@@ -50,6 +50,6 @@ public class StageState_RoundCompletion : StageState
     [PunRPC]
     public void RpcSetTransitioningState()
     {
-        StageManager.Instance.StageDataManager.SetSequence(StageDataManager.StageSequence.Transitioning);
+        StageManager.Instance.ObjectRepository.SetSequence(ObjectRepository.StageSequence.Transitioning);
     }
 }

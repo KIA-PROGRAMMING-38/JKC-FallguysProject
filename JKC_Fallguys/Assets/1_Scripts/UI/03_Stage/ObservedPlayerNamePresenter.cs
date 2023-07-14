@@ -25,11 +25,11 @@ public class ObservedPlayerNamePresenter : Presenter
     {
         int actorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
 
-        StageManager.Instance.StageDataManager.CurrentSequence
+        StageManager.Instance.ObjectRepository.CurrentSequence
             .DistinctUntilChanged()
             .Subscribe(gameActive => 
             {
-                if (StageManager.Instance.StageDataManager.CurrentSequence.Value != StageDataManager.StageSequence.GameInProgress) 
+                if (StageManager.Instance.ObjectRepository.CurrentSequence.Value != ObjectRepository.StageSequence.GameInProgress) 
                     GameObjectHelper.SetActiveGameObject(_observedPlayerNameView.gameObject, false);
             })
             .AddTo(_compositeDisposable);
@@ -39,7 +39,7 @@ public class ObservedPlayerNamePresenter : Presenter
             .DistinctUntilChanged()
             .Subscribe(_ => 
             {
-                if (StageManager.Instance.StageDataManager.CurrentSequence.Value == StageDataManager.StageSequence.GameInProgress)
+                if (StageManager.Instance.ObjectRepository.CurrentSequence.Value == ObjectRepository.StageSequence.GameInProgress)
                     GameObjectHelper.SetActiveGameObject(_observedPlayerNameView.gameObject, true);
             })
             .AddTo(_compositeDisposable);

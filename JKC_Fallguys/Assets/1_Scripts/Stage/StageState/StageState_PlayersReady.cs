@@ -12,7 +12,7 @@ public class StageState_PlayersReady : StageState
 
     protected override void AddToSequenceActionDictionary()
     {
-        StageManager.Instance.StageDataManager.SequenceActionDictionary[StageDataManager.StageSequence.PlayersReady] = this;
+        StageManager.Instance.ObjectRepository.SequenceActionDictionary[ObjectRepository.StageSequence.PlayersReady] = this;
     }
 
     public override void Action()

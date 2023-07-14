@@ -38,6 +38,8 @@ public class PhotonMatchingSceneRoomManager : MonoBehaviourPun
     // LockUpEntrance 메서드는 현재 방의 입장을 막고, 각 플레이어에게 개인 ActorNumber를 부여합니다.
     private void LockUpEntrance()
     {
+        StageManager.Instance.Initialize();
+        
         PhotonNetwork.CurrentRoom.IsOpen = false;
         Model.MatchingSceneModel.PossibleToExit(false);
         Model.StageSceneModel.SetObservedPlayerActorName(PhotonNetwork.MasterClient.NickName);
@@ -52,7 +54,6 @@ public class PhotonMatchingSceneRoomManager : MonoBehaviourPun
                 new PlayerData(player.Value.NickName, playerTextureIndex, 0);
         }
         
-        StageManager.Instance.Initialize();
     }
 
     [PunRPC]
@@ -65,10 +66,10 @@ public class PhotonMatchingSceneRoomManager : MonoBehaviourPun
     private async UniTaskVoid MapInstanceLoad()
     #pragma warning restore CS1998
     {
-        for (int i = 0; i < StageDataManager.MaxPlayableMaps; ++i)
+        for (int i = 0; i < ObjectRepository.MaxPlayableMaps; ++i)
         {
             MapData mapData = ResourceManager.JsonLoader<MapData>($"Data/MapData_{i:D2}");
-            StageManager.Instance.StageDataManager.MapDatas.Add(i, mapData);
+            StageManager.Instance.ObjectRepository.MapDatas.Add(i, mapData);
         }
     }
 
