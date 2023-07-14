@@ -1,5 +1,5 @@
 using UniRx;
-using UniRx.Triggers;
+using Util.Helper;
 
 public class MapInformationPresenter : Presenter
 {

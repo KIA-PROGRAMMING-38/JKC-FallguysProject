@@ -1,4 +1,5 @@
 using UnityEngine;
+using Util.Helper;
 
 public class StageManager : SingletonMonoBehaviour<StageManager>
 {
@@ -19,22 +20,10 @@ public class StageManager : SingletonMonoBehaviour<StageManager>
         PlayerContainer.Clear();
     }
 
-    public string[] objectName = { "PlayerRepository", "ObjectRepository" };
-
     private void MakeRepository()
     {
-        GameObject playerRepository = new GameObject(objectName[0]);
-        playerRepository.AddComponent<PlayerRepository>();
-        playerRepository.transform.position = Vector3.zero;
-        playerRepository.transform.rotation = Quaternion.identity;
-        playerRepository.transform.SetParent(gameObject.transform);
-        PlayerRepository = playerRepository.GetComponent<PlayerRepository>();
-
-        GameObject objectRepository = new GameObject(objectName[1]);
-        objectRepository.transform.position = Vector3.zero;
-        objectRepository.transform.rotation = Quaternion.identity;
-        objectRepository.transform.SetParent(gameObject.transform);
-        ObjectRepository = objectRepository;
+        PlayerRepository = GameObjectHelper.CreateRepository<PlayerRepository>("PlayerRepository", gameObject.transform);
+        ObjectRepository = GameObjectHelper.CreateRepository("ObjectRepository", gameObject.transform);
     }
 
     /// StateDataManager는 Singleton으로 구성되어 있습니다.

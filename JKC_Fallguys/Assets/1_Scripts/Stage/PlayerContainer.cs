@@ -73,5 +73,8 @@ public class PlayerContainer
 
         int actorNumber = PhotonNetwork.LocalPlayer.ActorNumber;
         SetPlayerState(actorNumber, PlayerContainer.PlayerState.Default);
+        
+        StagePlayerRankings.Clear();
+        FailedClearStagePlayers.Clear();
     }
 }
